@@ -1,0 +1,404 @@
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import WheelSectorsView from './WheelSectorsView';
+import { FRAME_RATE } from '../../../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../../../common/PIXI/src/animation/Sequence';
+import * as Easing from '../../../../../../../common/PIXI/src/animation/easing';
+import WheelBottomFlare from './animation/WheelBottomFlare';
+import WheelRimEffects from './animation/WheelRimEffects';
+import WheelWinValueAnimation from './animation/WheelWinValueAnimation';
+import Timer from '../../../../../../../common/PIXI/src/Timer';
+import SimpleUIView from '../../../../../../../common/PIXI/src/view/base/SimpleUIView';
+
+export const WHEEL_POSITION_STATES = {
+	FAR: 0, // 0 or 1/3 treasures collected
+	NEAR: 1, // 2/3 treasures collected
+	IMPACT: 2 // 3/3 treasures collected
+};
+
+const BASE_SCALE = 0.7;
+
+export const WHEEL_POSITION = {x: 960/2, y: 540/2+6};
+
+class WheelView extends SimpleUIView
+{
+	static get EVENT_ON_WHEEL_MOVE_STARTED() { return "EVENT_ON_WHEEL_MOVE_STARTED" };
+	static get EVENT_ON_WHEEL_MOVED() { return "EVENT_ON_WHEEL_MOVED" };
+	static get EVENT_ON_WIN_VALUE_ANIMATION_COMPLETED() { return WheelWinValueAnimation.EVENT_ON_WIN_VALUE_ANIMATION_COMPLETED };
+	static get EVENT_ON_WIN_ANIMATION_STARTED() { return "EVENT_ON_WIN_ANIMATION_STARTED" };
+	static get EVENT_ON_WIN_ANIMATION_COMPLETED() { return "EVENT_ON_WIN_ANIMATION_COMPLETED" };
+
+	set data (aData_num_arr)
+	{
+		this._sectorsView.data = aData_num_arr;
+	}
+
+	showWin(aWin_num, aBetLevel_num)
+	{
+		this._showWin(aWin_num, aBetLevel_num);
+	}
+
+	resetView()
+	{
+		this._resetView();
+	}
+
+	get isWinAnimationInProgress()
+	{
+		return this._fIsWinAnimationInProgress_bl;
+	}
+
+	get isAnimInProgress()
+	{
+		return this._fAnimInProgress_bln;
+	}
+
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	constructor(aData_num_arr)
+	{
+		super();
+
+		this._fBottomEffects_sprt = this.addChild(new Sprite);
+		this._fContainer_sprt = this.addChild(new Sprite);
+		
+		this._fWheelBottomFlareContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+		this._fBaseContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+		this._fSectorsContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+
+		this._fArrowContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+		this._fWheelTopFlareContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+
+		this._sectorsView = null;
+		this._targetWinValue = undefined;
+		this._glowSeq = null;
+		this._backTintSeq = null;
+		this._fWinValueAnimDelayTimeout_t = null;
+
+		this._fIsWinAnimationInProgress_bl = false;
+		this._fAnimInProgress_bln = false;
+		
+		this._addBase();
+		this._addSectors();
+		this._addArrow();
+
+		this.data = aData_num_arr;
+
+		this._fContainer_sprt.scale.set(BASE_SCALE);
+		this._fContainer_sprt.visible = false;
+	}
+
+	_addBase()
+	{
+		let base = this._fBaseContainer_sprt.addChild(APP.library.getSprite("quests/wheel/wheel_base"));
+		base.anchor.set(0.51, 0.47);
+	}
+
+	_addSectors()
+	{
+		let sectors = this._sectorsView = this._fSectorsContainer_sprt.addChild(new WheelSectorsView());
+	}
+
+	_addArrow()
+	{
+		let arrow = this._fArrowContainer_sprt.addChild(APP.library.getSprite("quests/wheel/wheel_arrow"));
+		arrow.anchor.set(0.5, 0.53);
+		arrow.x = 174;
+	}
+
+	_startAnimation()
+	{
+		this._fAnimInProgress_bln = true;
+		this._fContainer_sprt.visible = true;
+		this.visible = true;
+
+		this._fContainer_sprt.scale.set(0);
+
+		Sequence.destroy(Sequence.findByTarget(this._fContainer_sprt));
+
+		let l_seq = [
+			{tweens: [{prop: 'scale.x', to: BASE_SCALE}, {prop: 'scale.y', to: BASE_SCALE}], duration: 3*FRAME_RATE,  ease: Easing.sine.easeIn, onfinish: () => {
+				this._moveToPositionStateQuickly()
+			}}
+		];
+		Sequence.start(this._fContainer_sprt, l_seq);
+	}
+
+	_moveToPositionStateQuickly()
+	{
+		Sequence.destroy(Sequence.findByTarget(this._fContainer_sprt));
+
+		let targetPos = WHEEL_POSITION;
+		this._fContainer_sprt.position.set(targetPos.x, targetPos.y);
+
+		this._onWheelMoveToPositionStateCompleted();
+	}
+
+	get _positionStateSeq()
+	{
+		let targetPos = WHEEL_POSITION;
+
+		let sequence = [
+			{tweens: [{prop: 'x', to: targetPos.x+14}], duration: 17*FRAME_RATE},
+			{tweens: [{prop: 'x', to: targetPos.x}], duration: 6*FRAME_RATE, onfinish: () => {this._onWheelMoveToPositionStateCompleted()} }
+		];
+
+		return sequence;
+	}
+
+	_onWheelMoveToPositionStateStarted()
+	{
+		this.emit(WheelView.EVENT_ON_WHEEL_MOVE_STARTED);
+	}
+
+	_onWheelMoveToPositionStateCompleted()
+	{
+		this.emit(WheelView.EVENT_ON_WHEEL_MOVED);
+	}
+
+	//WIN ANIM ...
+	_showWin(aWin_num, aBetLevel_num)
+	{
+		this._targetWinValue = aWin_num;
+		this._wheelBetLevel = aBetLevel_num;
+		this._fIsWinAnimationInProgress_bl = true;
+
+		Sequence.start(this._fContainer_sprt, this._wheelWinMoveSequence);
+		Sequence.start(this._fContainer_sprt, this._wheelWinScaleSequence);
+
+		APP.soundsController.play("quests_wheel_move_center", false);
+
+		this._startWheelGlowAnimation();
+		this._addWinValueAnimation();
+		this._addBackEffects();
+
+		this.emit(WheelView.EVENT_ON_WIN_ANIMATION_STARTED);
+	}
+
+	_onTimeToStartRotation()
+	{
+		let lTargetValue = this._targetWinValue;
+		this._sectorsView.rotateToValue(lTargetValue/this._wheelBetLevel);
+	}
+
+	_tryToCompleteWinAnimation()
+	{
+		if (this._isWheelWinScaleSequenceCompleted)
+		{
+			this._onWinAnimationCompleted();
+		}
+	}
+
+	_onWinAnimationCompleted()
+	{
+		this._fIsWinAnimationInProgress_bl = false;
+
+		this._resetView();
+
+		this.emit(WheelView.EVENT_ON_WIN_ANIMATION_COMPLETED);
+	}
+
+	get _wheelWinMoveSequence()
+	{
+		let statePos = WHEEL_POSITION;
+		return [
+					{tweens: [{prop: 'x', to: statePos.x+31}], duration: 8*FRAME_RATE,  ease: Easing.sine.easeIn},
+					{tweens: [{prop: 'x', to: statePos.x}], duration: 1*FRAME_RATE},
+					{tweens: [{prop: 'x', to: statePos.x-27}], duration: 1*FRAME_RATE},
+					{tweens: [{prop: 'x', to: statePos.x+3}], duration: 6*FRAME_RATE,  ease: Easing.sine.easeOut},
+					{tweens: [], duration: 2*FRAME_RATE, onfinish: () => {this._onTimeToStartRotation();} },
+					{tweens: [{prop: 'x', to: statePos.x+3+14}], duration: 32*FRAME_RATE,  ease: Easing.sine.easeOut},
+					{tweens: [{prop: 'x', to: statePos.x}], duration: 40*FRAME_RATE,  ease: Easing.sine.easeOut},
+					{tweens: [], duration: 43*FRAME_RATE},
+					{tweens: [{prop: 'x', to: statePos.x}], duration: 4*FRAME_RATE}
+				];
+	}
+
+	get _wheelWinScaleSequence()
+	{
+		return [
+					{tweens: [], duration: 8*FRAME_RATE},
+					{tweens: [{prop: 'scale.x', to: 0.86*BASE_SCALE},	{prop: 'scale.y', to: 0.86*BASE_SCALE}], duration: 1*FRAME_RATE},
+					{tweens: [{prop: 'scale.x', to: 0.57*BASE_SCALE},	{prop: 'scale.y', to: 0.57*BASE_SCALE}], duration: 2*FRAME_RATE},
+					{tweens: [{prop: 'scale.x', to: 1*BASE_SCALE},		{prop: 'scale.y', to: 1*BASE_SCALE}], duration: 2*FRAME_RATE},
+					{tweens: [{prop: 'scale.x', to: 1.7*BASE_SCALE},	{prop: 'scale.y', to: 1.7*BASE_SCALE}], duration: 3*FRAME_RATE},
+					{tweens: [{prop: 'scale.x', to: 1.43*BASE_SCALE},	{prop: 'scale.y', to: 1.43*BASE_SCALE}], duration: 5*FRAME_RATE},
+					{tweens: [{prop: 'scale.x', to: 1.34*BASE_SCALE},	{prop: 'scale.y', to: 1.34*BASE_SCALE}], duration: 2*FRAME_RATE},
+					{tweens: [{prop: 'scale.x', to: 1.43*BASE_SCALE},	{prop: 'scale.y', to: 1.43*BASE_SCALE}], duration: 5*FRAME_RATE},
+					{tweens: [], duration: (62+43)*FRAME_RATE},
+					{tweens: [{prop: 'scale.x', to: 0},	{prop: 'scale.y', to: 0}], duration: 4*FRAME_RATE, onfinish: () => { this._onWheelWinScaleSequenceCompleted(); }},
+				];
+	}
+
+	get _isWheelWinScaleSequenceCompleted()
+	{
+		return this._fContainer_sprt.scale.x == 0;
+	}
+
+	_onWheelWinScaleSequenceCompleted()
+	{
+		this._tryToCompleteWinAnimation();
+	}
+
+	_startWheelGlowAnimation()
+	{
+		if (!APP.profilingController.info.isVfxProfileValueLowerOrGreater)
+		{
+			return;
+		}
+
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			//WHEEL GLOW...
+			let glow = this._fWheelTopFlareContainer_sprt.addChild(APP.library.getSprite("quests/wheel/wheel_glow"));
+			glow.anchor.set(0.5, 0.47);
+			glow.scale.set(2);
+			glow.blendMode = PIXI.BLEND_MODES.ADD;
+
+			glow.alpha = 0;
+
+			let seq = [
+				{tweens: [], duration: 1*FRAME_RATE},
+				{tweens: [{prop: 'alpha', to: 1}], duration: 8*FRAME_RATE},
+				{tweens: [], duration: 5*FRAME_RATE},
+				{tweens: [{prop: 'alpha', to: 0}], duration: 3*FRAME_RATE},
+				{tweens: [], duration: (73+43)*FRAME_RATE},
+				{tweens: [{prop: 'alpha', to: 1}], duration: 1*FRAME_RATE},
+				{tweens: [{prop: 'alpha', to: 0}], duration: 3*FRAME_RATE}
+			];
+			this._glowSeq = Sequence.start(glow, seq);
+			//...WHEEL GLOW
+		}
+
+		this._fWheelTopFlareContainer_sprt.addChild(new WheelRimEffects());
+		
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._fWheelBottomFlareContainer_sprt.addChild(new WheelBottomFlare());
+		}
+	}
+
+	_addWinValueAnimation()
+	{
+		let lWinValueAnimDelayTimeout_t = this._fWinValueAnimDelayTimeout_t = new Timer(() => { this._startWinValueAnimation(); }, (61+43)*FRAME_RATE, true);
+		lWinValueAnimDelayTimeout_t.start();
+	}
+
+	_startWinValueAnimation()
+	{
+		this._destroyWinValueAnimDelayTimeout();
+
+		let lWheelWinValueAnimation = this._fWheelTopFlareContainer_sprt.addChild(new WheelWinValueAnimation(this._targetWinValue/this._wheelBetLevel));
+		lWheelWinValueAnimation.position.set(130, 0);
+		lWheelWinValueAnimation.once(WheelWinValueAnimation.EVENT_ON_HIGHLIGHT_ANIMATION_COMPLETED, this._onHighlightAnimationCompleted, this);
+		lWheelWinValueAnimation.once(WheelWinValueAnimation.EVENT_ON_WIN_VALUE_ANIMATION_COMPLETED, this._onWinValueAnimationCompleted, this);
+
+		// this._sectorsView.setSelectedWinView();
+	}
+
+	_onHighlightAnimationCompleted()
+	{
+		this._sectorsView.setSelectedWinView();
+	}
+
+	_onWinValueAnimationCompleted()
+	{
+		this.emit(WheelWinValueAnimation.EVENT_ON_WIN_VALUE_ANIMATION_COMPLETED);
+	}
+
+	_destroyWinValueAnimDelayTimeout()
+	{
+		this._fWinValueAnimDelayTimeout_t && this._fWinValueAnimDelayTimeout_t.destructor();
+		this._fWinValueAnimDelayTimeout_t = null;
+	}
+
+	_addBackEffects()
+	{
+		if (!APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			return;
+		}
+
+		let backTint = this._fBottomEffects_sprt.addChild(APP.library.getSprite("quests/wheel/wheel_back_tint"));
+		backTint.position.set(WHEEL_POSITION.x, WHEEL_POSITION.y);
+		// backTint.anchor.set(0, 0);
+		backTint.scale.set(4);
+
+		backTint.alpha = 0;
+
+		let seq = [
+			{tweens: [], duration: 12*FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 1}], duration: 24*FRAME_RATE},
+			{tweens: [], duration: 43*FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}], duration: 45*FRAME_RATE}
+		];
+		this._backTintSeq = Sequence.start(backTint, seq);
+	}
+	//...WIN ANIM
+
+	_resetView()
+	{
+		this._interruptAnimations();
+
+		this._targetWinValue = undefined;
+
+		this._fContainer_sprt.scale.set(BASE_SCALE);
+		this._fContainer_sprt.visible = false;
+	}
+
+	_interruptAnimations()
+	{
+		this._fIsWinAnimationInProgress_bl = false;
+		this._fAnimInProgress_bln = false;
+
+		this._destroyWinValueAnimDelayTimeout();
+
+		Sequence.destroy(Sequence.findByTarget(this._fContainer_sprt));
+
+		this._glowSeq && this._glowSeq.destructor();
+		this._glowSeq = null;
+
+		this._backTintSeq && this._backTintSeq.destructor();
+		this._backTintSeq = null;
+
+		this._fWheelTopFlareContainer_sprt.destroyChildren();
+		this._fWheelBottomFlareContainer_sprt.destroyChildren();
+		this._fBottomEffects_sprt.destroyChildren();
+
+		this._sectorsView.resetView();
+	}
+
+	destroy()
+	{
+		Sequence.destroy(Sequence.findByTarget(this._fContainer_sprt));
+		
+		this._fBottomEffects_sprt = null;
+		this._fContainer_sprt = null;
+		this._fWheelBottomFlareContainer_sprt = null;
+		this._fBaseContainer_sprt = null;
+		this._fSectorsContainer_sprt = null;
+
+		this._fArrowContainer_sprt = null;
+		this._fWheelTopFlareContainer_sprt = null;
+		this._sectorsView = null;
+		this._targetWinValue = undefined;
+
+		this._glowSeq && this._glowSeq.destructor();
+		this._glowSeq = null;
+
+		this._backTintSeq && this._backTintSeq.destructor();
+		this._backTintSeq = null;
+
+		this._destroyWinValueAnimDelayTimeout();
+
+		this._fIsWinAnimationInProgress_bl = undefined;
+		this._fAnimInProgress_bln = undefined;
+
+		super.destroy();
+	}
+}
+
+export default WheelView;

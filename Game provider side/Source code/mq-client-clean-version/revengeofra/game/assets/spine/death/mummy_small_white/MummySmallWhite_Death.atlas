@@ -1,0 +1,118 @@
+
+MummySmallWhite_Death.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Dust1
+  rotate: false
+  xy: 173, 56
+  size: 116, 70
+  orig: 116, 70
+  offset: 0, 0
+  index: -1
+Small_arm1
+  rotate: false
+  xy: 409, 84
+  size: 108, 42
+  orig: 108, 43
+  offset: 0, 1
+  index: -1
+Small_bone1_v1
+  rotate: true
+  xy: 291, 2
+  size: 53, 56
+  orig: 53, 56
+  offset: 0, 0
+  index: -1
+Small_bone2_v1
+  rotate: false
+  xy: 681, 82
+  size: 71, 44
+  orig: 71, 44
+  offset: 0, 0
+  index: -1
+Small_dust1
+  rotate: false
+  xy: 291, 57
+  size: 116, 69
+  orig: 116, 70
+  offset: 0, 1
+  index: -1
+Small_head1
+  rotate: false
+  xy: 349, 13
+  size: 45, 42
+  orig: 46, 42
+  offset: 0, 0
+  index: -1
+Small_leg1
+  rotate: false
+  xy: 519, 90
+  size: 86, 36
+  orig: 87, 37
+  offset: 0, 1
+  index: -1
+Small_shadow1
+  rotate: false
+  xy: 2, 41
+  size: 169, 85
+  orig: 170, 86
+  offset: 0, 1
+  index: -1
+Small_wrap1_v1
+  rotate: true
+  xy: 173, 41
+  size: 13, 67
+  orig: 14, 68
+  offset: 0, 1
+  index: -1
+Small_wrap2_v1
+  rotate: false
+  xy: 396, 26
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+Small_wrap3_v1
+  rotate: false
+  xy: 94, 7
+  size: 75, 32
+  orig: 76, 32
+  offset: 0, 0
+  index: -1
+Small_wrap4_v1
+  rotate: false
+  xy: 607, 83
+  size: 72, 43
+  orig: 73, 44
+  offset: 0, 1
+  index: -1
+Small_wrap5_v1
+  rotate: false
+  xy: 2, 6
+  size: 90, 33
+  orig: 91, 33
+  offset: 0, 0
+  index: -1
+Small_wrap6_v1
+  rotate: true
+  xy: 409, 57
+  size: 25, 36
+  orig: 26, 37
+  offset: 0, 1
+  index: -1
+Small_wrap7_v1
+  rotate: false
+  xy: 242, 37
+  size: 47, 17
+  orig: 48, 17
+  offset: 0, 0
+  index: -1
+Small_wrap8_v1
+  rotate: false
+  xy: 754, 111
+  size: 42, 15
+  orig: 42, 16
+  offset: 0, 1
+  index: -1

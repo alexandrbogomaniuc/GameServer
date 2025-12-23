@@ -1,0 +1,400 @@
+import Sprite from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import { Utils } from '../../../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+import Sequence from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
+import * as Easing from '../../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import Timer from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer';
+import { ENEMIES, FRAME_RATE } from '../../../../../shared/src/CommonConstants';
+import CommonEffectsManager from '../../CommonEffectsManager'
+
+const ANIM_SPEED = 1; // DEBUG
+
+const FLAMES_PARAMS = [
+	{ delay: 43*FRAME_RATE,	scaleX: 1,		scaleY: 1,		x: -4,	y: 20	},
+	{ delay: 45*FRAME_RATE,	scaleX: -0.88,	scaleY: 0.83,	x: 12,	y: 25	},
+	{ delay: 53*FRAME_RATE,	scaleX: -0.88,	scaleY: 0.83,	x: 14,	y: 24	},
+	{ delay: 65*FRAME_RATE,	scaleX: -0.88,	scaleY: 0.83,	x: -10,	y: 14	}
+];
+
+const SMOKE_PARAMS = [
+	{ delay: 15*FRAME_RATE,	scaleX: 2*1.38,	scaleY: 2*1.38,	x: -93,		y: -155	},
+	{ delay: 33*FRAME_RATE,	scaleX: 2*1.38,	scaleY: 2*1.38,	x: -101,	y: -172	},
+	{ delay: 47*FRAME_RATE,	scaleX: 2*1.38,	scaleY: 2*1.38,	x: -101,	y: -172	},
+	{ delay: 58*FRAME_RATE,	scaleX: 2*-0.87,scaleY: 2*0.87,	x: 56,		y: -92, rotation: 17}
+];
+
+const SPLAT_PARAMS = [
+	{ delay: 49*FRAME_RATE,	x: 0,	y: 4	},
+	{ delay: 60*FRAME_RATE,	x: -10,	y: -4	},
+	{ delay: 64*FRAME_RATE,	x: -8,	y: -9	}
+];
+
+class EscortHvAppearingEffects extends Sprite
+{
+	constructor(aContainer_sprt, aPosition_pt, aEnemyName_str)
+	{
+		super();
+		this._fContainer_sprt = aContainer_sprt;
+		this._fPosition_pt = aPosition_pt;
+
+		this._fFire1_sprt = null;
+		this._fFire2_sprt = null;
+		this._fFlame_sprt = null;
+
+		this._fTimers_arr = [];
+
+		// DEBUG...
+		// let lBack_grphc = this.addChild(new PIXI.Graphics());
+		// lBack_grphc.beginFill(0x000000).drawRect(-960, -540, 1920, 1080).endFill();
+
+		// let lCenter_grphc = this.addChild(new PIXI.Graphics());
+		// lCenter_grphc.beginFill(0x00ff2f).drawRect(-1, -1, 2, 2).endFill();
+
+		// this.hitCircle = this.addChild(new PIXI.Graphics());
+		// this.hitCircle.beginFill(0xaabbaa, 0.9).drawCircle(0, 0, 15).endFill();
+		// this.hitCircle.zIndex = 30;
+		// ...DEBUG
+
+		this._fContainer_sprt.addChild(this);
+		this.position.set(aPosition_pt.x, aPosition_pt.y);
+
+		this._createView(aEnemyName_str);
+	}
+
+	_createView(aEnemyName_str)
+	{
+		this._initFlamesLoop();
+		this._initSmokeView();
+		this._initFireView();
+
+		if (aEnemyName_str !== ENEMIES.Osiris)
+		{
+			this._initLightningView();
+		}
+
+		this._initMuzzleGlow();
+		this._initSplatAnimation();
+	}
+
+	_initFlamesLoop()
+	{
+		for (let lParam_obj of FLAMES_PARAMS)
+		{
+			let lFlamesLoop_fsl = this.addChild(new EscortHvAppearingEffects.FlamesLoop(lParam_obj.delay));
+			lFlamesLoop_fsl.once(EscortHvAppearingEffects.FlamesLoop.EVENT_FLAMES_ANIMATION_COMPLETE, this._onAnotherAnimationComplete, this);
+			lFlamesLoop_fsl.scale.x = lParam_obj.scaleX;
+			lFlamesLoop_fsl.scale.y = lParam_obj.scaleY;
+			lFlamesLoop_fsl.position.set(lParam_obj.x, lParam_obj.y);
+		}
+	}
+
+	_initSmokeView()
+	{
+		for (let lParam_obj of SMOKE_PARAMS)
+		{
+			let lSmoke_sprt = this._generateSmokeView({x: lParam_obj.x, y: lParam_obj.y}, {x: lParam_obj.scaleX, y: lParam_obj.scaleY}, lParam_obj.rotation);
+			let lTimer_t = new Timer(() => {
+					lSmoke_sprt.visible = true;
+					lSmoke_sprt.play();
+				},
+				lParam_obj.delay
+			);
+			this._fTimers_arr.push(lTimer_t);
+		}
+	}
+
+	_generateSmokeView(aPos_obj, aScale_obj, aRotation_num)
+	{
+		let lSmoke_sprt = this.addChild(new Sprite);
+		lSmoke_sprt.textures = CommonEffectsManager.getDieSmokeUnmultTextures();
+		lSmoke_sprt.position.set(aPos_obj.x, aPos_obj.y);
+		lSmoke_sprt.once('animationend', this._onAnotherAnimationComplete, this);
+		lSmoke_sprt.scale.x = aScale_obj.x;
+		lSmoke_sprt.scale.y = aScale_obj.y;
+		lSmoke_sprt.visible = false;
+		lSmoke_sprt.animationSpeed *= ANIM_SPEED;
+		if (aRotation_num) lSmoke_sprt.rotation = Utils.gradToRad(aRotation_num);
+
+		return lSmoke_sprt;
+	}
+
+	_initFireView()
+	{
+		let lFire1_sprt = this.addChild(APP.library.getSprite('hv_fire'));
+		lFire1_sprt.position.set(0, -20);
+		lFire1_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lFire1_sprt.scale.set(0);
+
+		let lFire1Sequence_seq = [
+			{tweens: [{ prop: "scale.x", to: 0.22},	{ prop: "scale.y", to: 0.54}],	duration: 6*FRAME_RATE, ease: Easing.sine.easeIn},
+			{tweens: [{ prop: "scale.x", to: 0.14},	{ prop: "scale.y", to: 0.22}],	duration: 5*FRAME_RATE, ease: Easing.sine.easeIn},
+			{tweens: [{ prop: "scale.x", to: 0},	{ prop: "scale.y", to: 0}],		duration: 4*FRAME_RATE, ease: Easing.sine.easeOut,
+				onfinish: (e) => {
+					this._onAnotherAnimationComplete(e);
+				}
+			}
+		];
+
+		let lFire2_sprt = this.addChild(APP.library.getSprite('hv_fire2'));
+		lFire2_sprt.position.set(0, -20);
+		lFire2_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lFire2_sprt.scale.set(0);
+
+		let lFire2Sequence_seq = [
+			{tweens: [{ prop: "scale.x", to: 0.16},	{ prop: "scale.y", to: 0.54}],	duration: 6*FRAME_RATE, ease: Easing.sine.easeInOut},
+			{tweens: [{ prop: "scale.x", to: 0.1},	{ prop: "scale.y", to: 0.22}],	duration: 9*FRAME_RATE, ease: Easing.sine.easeIn}
+		];
+
+		let lFire2Sequence2_seq = [
+			{tweens: [], duration: 12*FRAME_RATE},
+			{tweens: [{ prop: "alpha", to: 0}],	duration: 7*FRAME_RATE, ease: Easing.sine.easeIn,
+				onfinish: (e) => { this._onAnotherAnimationComplete(e) }
+			}
+		];
+
+		this._fFire1_sprt = lFire1_sprt;
+		this._fFire2_sprt = lFire2_sprt;
+
+		Sequence.start(lFire1_sprt, lFire1Sequence_seq, 46*FRAME_RATE);
+		Sequence.start(lFire2_sprt, lFire2Sequence_seq, 68*FRAME_RATE);
+		Sequence.start(lFire2_sprt, lFire2Sequence2_seq, 68*FRAME_RATE);
+	}
+
+	_initLightningView()
+	{
+		let lGlobalPosition_pt = this._fContainer_sprt.startPosition;
+		let lBoltScaleY_num = Math.max(lGlobalPosition_pt.y/212, 1);
+
+		let lBoltSequence_seq = [
+			{tweens: [{prop: "alpha", to: 1}], duration: 1*FRAME_RATE, ease: Easing.linear.easeIn},
+			{tweens: [], duration: 2*FRAME_RATE},
+			{tweens: [{prop: "alpha", to: 0}], duration: 1*FRAME_RATE, ease: Easing.linear.easeIn,
+				onfinish: (e) => { this._onAnotherAnimationComplete(e) }
+			}
+		];
+
+		let lBolt1_sprt = this._getBoltView({x: 1, y: lBoltScaleY_num});
+		let lBolt2_sprt = this._getBoltView({x: -1, y: lBoltScaleY_num});
+		let lBolt3_sprt = this._getBoltView({x: 1, y: lBoltScaleY_num});
+
+		Sequence.start(lBolt1_sprt, lBoltSequence_seq, 48*FRAME_RATE);
+		Sequence.start(lBolt2_sprt, lBoltSequence_seq, 59*FRAME_RATE);
+		Sequence.start(lBolt3_sprt, lBoltSequence_seq, 63*FRAME_RATE);
+	}
+
+	_getBoltView(aScale_obj)
+	{
+		let lBolt_sprt = this.addChild(APP.library.getSprite('hv_bolt'));
+		lBolt_sprt.anchor.set(0.5, 0.82);
+		lBolt_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lBolt_sprt.scale.set(aScale_obj.x, aScale_obj.y);
+		lBolt_sprt.alpha = 0;
+
+		return lBolt_sprt;
+	}
+
+	_initMuzzleGlow()
+	{
+		let lMuzzleGlow1_sprt = this.addChild(APP.library.getSprite('hv_muzzle_glow'));
+		lMuzzleGlow1_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lMuzzleGlow1_sprt.position.set(-8, -4);
+		lMuzzleGlow1_sprt.alpha = 0;
+		lMuzzleGlow1_sprt.scale.set(2);
+
+		let lMuzzleSequence1_seq = [
+			{tweens: [], duration: 14*FRAME_RATE},
+			{tweens: [{prop: "alpha", to: 1}], duration: 1*FRAME_RATE, ease: Easing.linear.easeIn},
+			{tweens: [], duration: 19*FRAME_RATE},
+			{tweens: [{prop: "alpha", to: 0}], duration: 1*FRAME_RATE, ease: Easing.linear.easeIn,
+				onfinish: (e) => {this._onAnotherAnimationComplete(e)}
+			}
+		];
+
+		let lMuzzleGlow2_sprt = this.addChild(APP.library.getSprite('hv_muzzle_glow'));
+		lMuzzleGlow2_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lMuzzleGlow2_sprt.position.set(0, 4);
+		lMuzzleGlow2_sprt.alpha = 0;
+		lMuzzleGlow2_sprt.scale.set(1.5);
+
+		let lMuzzleSequence2_seq = [
+			{tweens: [], duration: 46*FRAME_RATE},
+			{tweens: [{prop: "alpha", to: 1}], duration: 7*FRAME_RATE, ease: Easing.linear.easeIn},
+			{tweens: [], duration: 3*FRAME_RATE},
+			{tweens: [{prop: "alpha", to: 0.59}], duration: 7*FRAME_RATE, ease: Easing.linear.easeIn},
+			{tweens: [], duration: 5*FRAME_RATE},
+			{tweens: [{prop: "alpha", to: 0}], duration: 10*FRAME_RATE, ease: Easing.linear.easeIn,
+				onfinish: (e) => {this._onAnotherAnimationComplete(e)}
+			}
+		];
+
+		Sequence.start(lMuzzleGlow1_sprt, lMuzzleSequence1_seq);
+		Sequence.start(lMuzzleGlow2_sprt, lMuzzleSequence2_seq);
+	}
+
+	_initSplatAnimation()
+	{
+		let lSplatSequence_seq = [
+			{tweens: [{prop: "alpha", to: 1}], duration: 0},
+			{tweens: [{prop: "alpha", to: 0}], duration: 7*FRAME_RATE, ease: Easing.linear.easeIn,
+				onfinish: (e) => {this._onAnotherAnimationComplete(e)}
+			}
+		];
+
+		for (let lParam_obj of SPLAT_PARAMS)
+		{
+			let lSplat_sprt = this._getSplat({x: lParam_obj.x, y: lParam_obj.y});
+			Sequence.start(lSplat_sprt, lSplatSequence_seq, lParam_obj.delay);
+		}
+	}
+
+	_getSplat(aPos_obj)
+	{
+		let lSplat_sprt = this.addChild(APP.library.getSprite('hv_splat'));
+		lSplat_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lSplat_sprt.scale.set(4);
+		lSplat_sprt.position.set(aPos_obj.x, aPos_obj.y);
+		lSplat_sprt.alpha = 0;
+
+		return lSplat_sprt;
+	}
+
+	_onAnotherAnimationComplete(e)
+	{
+		e && e.target && e.target.obj && e.target.obj.destroy && e.target.obj.destroy();
+		e && e.target && e.target.destroy && e.target.destroy();
+		if (this.children.length == 0)
+		{
+			this.destroy();
+		}
+	}
+
+	destroy()
+	{
+		Sequence.destroy(Sequence.findByTarget(this));
+
+		if (this._fFire1_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fFire1_sprt));
+		}
+
+		if (this._fFire2_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fFire2_sprt));
+		}
+
+		if (this._fFlame_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fFlame_sprt));
+		}
+
+		if (this._fTimers_arr)
+		{
+			for (let i = 0; i < this._fTimers_arr.length; ++i)
+			{
+				let lTimer_t = this._fTimers_arr[i];
+				if (lTimer_t) lTimer_t.destructor();
+			}
+		}
+
+		super.destroy();
+
+		this._fContainer_sprt = null;
+		this._fPosition_pt = null;
+
+		this._fFire1_sprt = null;
+		this._fFire2_sprt = null;
+		this._fFlame_sprt = null;
+
+		this._fTimers_arr = null;
+	}
+
+	//internal class
+	static FlamesLoop = class extends Sprite
+	{
+		static get EVENT_FLAMES_ANIMATION_COMPLETE() {return "flamesAnimationComplete"};
+
+		constructor(aStartDelay_num)
+		{
+			super();
+
+			this._fFlame_sprt = null;
+			this._fTimers_arr = [];
+
+			this._startFlamesAnimation(aStartDelay_num);
+		}
+
+		_startFlamesAnimation(aStartDelay_num)
+		{
+			let lStart_num = aStartDelay_num;
+
+			let lTimer1_t = new Timer(() => {this._startAnotherFlame({x: 0, y:0})},		lStart_num);
+			let lTimer2_t = new Timer(() => {this._startAnotherFlame({x: 5, y:1})},		lStart_num + 4*FRAME_RATE);
+			let lTimer3_t = new Timer(() => {this._startAnotherFlame({x: -1, y:3})},	lStart_num + 10*FRAME_RATE);
+
+			this._fTimers_arr.push(lTimer1_t);
+			this._fTimers_arr.push(lTimer2_t);
+			this._fTimers_arr.push(lTimer3_t);
+		}
+
+		_startAnotherFlame(aPos_obj)
+		{
+			let lFlame_sprt = this.addChild(APP.library.getSprite('hv_flame'));
+			lFlame_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+
+			lFlame_sprt.scale.x = -0.01;
+			lFlame_sprt.scale.y = 0.01;
+			lFlame_sprt.rotation = Utils.gradToRad(0.9);
+			lFlame_sprt.alpha = 1;
+			lFlame_sprt.position.set(aPos_obj.x, aPos_obj.y);
+
+			let lAnimsDuration_num = 19*FRAME_RATE;
+
+			lFlame_sprt.scaleXTo(-0.65, lAnimsDuration_num);
+			lFlame_sprt.scaleYTo(0.65, lAnimsDuration_num);
+			lFlame_sprt.rotateBy(Utils.gradToRad(58), lAnimsDuration_num);
+			lFlame_sprt.moveTo(3.5/2, -64/2, lAnimsDuration_num);
+
+			let lAlphaSequence_seq = [
+				{tweens: [], duration: 10*FRAME_RATE},
+				{tweens: [{prop: "alpha", to: 0}], duration: 9*FRAME_RATE,
+					onfinish: (e) => {
+						e.target.obj.destroy();
+						if (this.children.length == 0)
+						{
+							this.emit(EscortHvAppearingEffects.FlamesLoop.EVENT_FLAMES_ANIMATION_COMPLETE);
+						}
+					}
+				}
+			];
+			this._fFlame_sprt = lFlame_sprt;
+			Sequence.start(lFlame_sprt, lAlphaSequence_seq);
+		}
+
+		destroy()
+		{
+			Sequence.destroy(Sequence.findByTarget(this));
+			
+			if (this._fFlame_sprt)
+			{
+				Sequence.destroy(Sequence.findByTarget(this._fFlame_sprt));
+			}
+
+			if (this._fTimers_arr)
+			{
+				for (let i = 0; i < this._fTimers_arr.length; ++i)
+				{
+					let lTimer_t = this._fTimers_arr[i];
+					if (lTimer_t) lTimer_t.destructor();
+				}
+			}
+
+			super.destroy();
+
+			this._fFlame_sprt = null;
+			this._fTimers_arr = null;
+		}
+	}
+
+}
+
+export default EscortHvAppearingEffects;

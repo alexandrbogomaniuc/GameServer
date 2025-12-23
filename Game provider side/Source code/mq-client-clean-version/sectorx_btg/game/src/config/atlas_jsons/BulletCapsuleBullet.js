@@ -1,0 +1,1120 @@
+let BulletCapsuleBullet = {
+	"frames": {
+		"MQ_SX_ChainreactionContainer_example_00043.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00044.png": {
+			"frame": {
+				"x": 206,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00045.png": {
+			"frame": {
+				"x": 411,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00046.png": {
+			"frame": {
+				"x": 616,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00047.png": {
+			"frame": {
+				"x": 821,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00048.png": {
+			"frame": {
+				"x": 1026,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00049.png": {
+			"frame": {
+				"x": 1231,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00050.png": {
+			"frame": {
+				"x": 1436,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00051.png": {
+			"frame": {
+				"x": 1641,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00052.png": {
+			"frame": {
+				"x": 1846,
+				"y": 1,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00053.png": {
+			"frame": {
+				"x": 1,
+				"y": 206,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00054.png": {
+			"frame": {
+				"x": 1,
+				"y": 411,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00055.png": {
+			"frame": {
+				"x": 1,
+				"y": 616,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00056.png": {
+			"frame": {
+				"x": 1,
+				"y": 821,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00057.png": {
+			"frame": {
+				"x": 1,
+				"y": 1026,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00058.png": {
+			"frame": {
+				"x": 1,
+				"y": 1231,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00059.png": {
+			"frame": {
+				"x": 1,
+				"y": 1436,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00060.png": {
+			"frame": {
+				"x": 1,
+				"y": 1641,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00061.png": {
+			"frame": {
+				"x": 1,
+				"y": 1846,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00062.png": {
+			"frame": {
+				"x": 206,
+				"y": 1846,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00063.png": {
+			"frame": {
+				"x": 411,
+				"y": 163,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00064.png": {
+			"frame": {
+				"x": 163,
+				"y": 163,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00065.png": {
+			"frame": {
+				"x": 616,
+				"y": 163,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00066.png": {
+			"frame": {
+				"x": 821,
+				"y": 163,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00067.png": {
+			"frame": {
+				"x": 1026,
+				"y": 163,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00068.png": {
+			"frame": {
+				"x": 1231,
+				"y": 163,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00069.png": {
+			"frame": {
+				"x": 1436,
+				"y": 163,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00070.png": {
+			"frame": {
+				"x": 1641,
+				"y": 163,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00071.png": {
+			"frame": {
+				"x": 1846,
+				"y": 206,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00072.png": {
+			"frame": {
+				"x": 411,
+				"y": 325,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00073.png": {
+			"frame": {
+				"x": 163,
+				"y": 325,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00074.png": {
+			"frame": {
+				"x": 616,
+				"y": 325,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00075.png": {
+			"frame": {
+				"x": 821,
+				"y": 325,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00076.png": {
+			"frame": {
+				"x": 1026,
+				"y": 325,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00077.png": {
+			"frame": {
+				"x": 1231,
+				"y": 325,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00078.png": {
+			"frame": {
+				"x": 1436,
+				"y": 325,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00079.png": {
+			"frame": {
+				"x": 1641,
+				"y": 325,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00080.png": {
+			"frame": {
+				"x": 1846,
+				"y": 411,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00081.png": {
+			"frame": {
+				"x": 163,
+				"y": 616,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00082.png": {
+			"frame": {
+				"x": 163,
+				"y": 821,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00083.png": {
+			"frame": {
+				"x": 163,
+				"y": 1026,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00084.png": {
+			"frame": {
+				"x": 163,
+				"y": 1231,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00085.png": {
+			"frame": {
+				"x": 163,
+				"y": 1436,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00086.png": {
+			"frame": {
+				"x": 163,
+				"y": 1641,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00087.png": {
+			"frame": {
+				"x": 325,
+				"y": 616,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00088.png": {
+			"frame": {
+				"x": 325,
+				"y": 821,
+				"w": 203,
+				"h": 160
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 570,
+				"y": 139,
+				"w": 203,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 540
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		}
+	},
+	"meta": {
+		"app": "http://free-tex-packer.com/",
+		"version": "0.3.3",
+		"image": "texture.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 2007,
+			"h": 2007
+		},
+		"scale": 2
+	}
+}
+export default BulletCapsuleBullet;

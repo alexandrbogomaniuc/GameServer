@@ -1,0 +1,69 @@
+
+ScarabDown.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+down/body
+  rotate: false
+  xy: 2, 2
+  size: 139, 111
+  orig: 139, 111
+  offset: 0, 0
+  index: -1
+down/head
+  rotate: false
+  xy: 143, 11
+  size: 99, 102
+  orig: 99, 102
+  offset: 0, 0
+  index: -1
+down/horn
+  rotate: true
+  xy: 710, 86
+  size: 27, 102
+  orig: 27, 102
+  offset: 0, 0
+  index: -1
+down/leg_lf1
+  rotate: false
+  xy: 342, 45
+  size: 90, 68
+  orig: 90, 68
+  offset: 0, 0
+  index: -1
+down/leg_lf2
+  rotate: false
+  xy: 434, 38
+  size: 86, 75
+  orig: 86, 75
+  offset: 0, 0
+  index: -1
+down/leg_lf3
+  rotate: false
+  xy: 244, 12
+  size: 55, 33
+  orig: 55, 33
+  offset: 0, 0
+  index: -1
+down/leg_rt1
+  rotate: true
+  xy: 522, 61
+  size: 52, 97
+  orig: 52, 97
+  offset: 0, 0
+  index: -1
+down/leg_rt2
+  rotate: false
+  xy: 621, 64
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+down/leg_rt3
+  rotate: false
+  xy: 244, 47
+  size: 96, 66
+  orig: 96, 66
+  offset: 0, 0
+  index: -1

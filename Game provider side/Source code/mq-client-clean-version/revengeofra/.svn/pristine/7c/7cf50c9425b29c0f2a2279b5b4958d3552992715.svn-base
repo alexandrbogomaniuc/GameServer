@@ -1,0 +1,275 @@
+import SimpleController from '../../../../../../../common/PIXI/src/controller/base/SimpleController';
+import PromosInfo from '../../../../model/uis/custom/promo/PromosInfo';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import PromoInfo from '../../../../../../../common/PIXI/src/model/uis/custom/PromoInfo';
+import PromoController from './PromoController';
+import LobbyWebSocketInteractionController from '../../../interaction/server/LobbyWebSocketInteractionController';
+import { GAME_MESSAGES } from '../../../../../../../common/PIXI/src/external/betsoftgaming/ExternalCommunicator';
+import LobbyExternalCommunicator from '../../../../external/LobbyExternalCommunicator';
+import LobbyApp from '../../../../LobbyAPP';
+import TournamentModeController from '../../../custom/tournament/TournamentModeController';
+import LobbyBonusController from '../bonus/LobbyBonusController';
+import FRBController from '../../../custom/frb/FRBController';
+
+class PromosController extends SimpleController
+{
+	static get EVENT_ON_PROMOS_STATUS_UPDATED()				{ return "EVENT_ON_PROMOS_STATUS_UPDATED" }
+	static get EVENT_ON_PROMO_REMOVED()						{ return "EVENT_ON_PROMO_REMOVED" }
+	static get EVENT_ON_PROMOS_PREVIEW_STATUS_UPDATED()		{ return "EVENT_ON_PROMOS_PREVIEW_STATUS_UPDATED" }
+	
+	constructor(optInfo)
+	{
+		super(new PromosInfo());
+
+		this._promoControllers = null;
+		this._fTournamentModeInfo_tmi = null;
+		this._fLobbyBonusInfo_lbi = null;
+		this._fFRBInfo_frbi = null;
+
+		this._initPromosController();
+	}
+
+	destroy()
+	{
+		while (this._promoControllers && this._promoControllers.length)
+		{
+			this._promoControllers.pop().destroy();
+		}
+		this._promoControllers = null;
+
+		super.destroy();
+	}
+
+	get promoControllers()
+	{
+		return this._promoControllers;
+	}
+
+	_initPromosController()
+	{
+		this._promoControllers = [];
+	}
+
+	__init ()
+	{
+		super.__init();
+	}
+
+	__initControlLevel ()
+	{
+		super.__initControlLevel();
+
+		if (APP.appParamsInfo.isActivePromosDefined)
+		{
+			this._initActivePromos();
+
+			let webSocketInteractionController = APP.webSocketInteractionController;
+			webSocketInteractionController.on(LobbyWebSocketInteractionController.EVENT_ON_SERVER_ERROR_MESSAGE, this._onServerErrorMessage, this);
+
+			let externalCommunicator = APP.externalCommunicator;
+			externalCommunicator.on(LobbyExternalCommunicator.GAME_MESSAGE_RECEIVED, this._onGameMessageReceived, this);
+
+			APP.once(LobbyApp.EVENT_ON_LOBBY_STARTED, this._onLobbyStarted, this);
+		}
+	}
+
+	_initActivePromos()
+	{
+		// return;
+		var promosServerInfo = APP.appParamsInfo.activePromos;
+
+		let promos = promosServerInfo.split("|");
+		
+		if (promos && promos.length > 0)
+		{
+			for (let i=0; i<promos.length; i++)
+			{
+				let promoServerInfo = promos[i].split(",");
+
+				let promoInfo = new PromoInfo();
+				promoInfo.promoId = promoServerInfo[0];
+				promoInfo.title = decodeURIComponent(promoServerInfo[1]);
+				promoInfo.endTime = +promoServerInfo[2];
+				promoInfo.detailsUrl = decodeURIComponent(promoServerInfo[3]);
+
+				let promoController = new PromoController(promoInfo);
+				promoController.once(PromoController.EVENT_PROMO_COMPLETED, this._onPromoCompleted, this);
+				promoController.init();
+				
+				if (promoController.info.promoCompleted)
+				{
+					promoController.destroy();
+				}
+				else
+				{
+					this._promoControllers.push(promoController);
+				}
+			}
+		}
+
+		this._updatePromoActiveState();
+		this._updatePromosPreviewState();
+	}
+
+	_onPromoCompleted(event)
+	{
+		let completedPromo = event.target;
+
+		this.emit(PromosController.EVENT_ON_PROMO_REMOVED, {promoId: completedPromo.info.promoId});
+
+		let index = this._promoControllers.indexOf(completedPromo);
+		if (index >= 0)
+		{
+			this._promoControllers.splice(index, 1);
+			completedPromo.destroy();
+		}
+
+		if (!this._hasActivePromos)
+		{
+			this._onAllActivePromosRemoved();
+		}
+	}
+
+	get _activePromosInfos()
+	{
+		if (!this._promoControllers || !this._promoControllers.length)
+		{
+			return null;
+		}
+
+
+		let promosInfos = [];
+		for (let i=0; i<this._promoControllers.length; i++)
+		{
+			let promoController = this._promoControllers[i];
+
+			promosInfos.push(promoController.info);
+		}
+
+		return promosInfos;
+	}
+
+	get _hasActivePromos()
+	{
+		return !!this._promoControllers && !!this._promoControllers.length;
+	}
+
+	_removeAllPromos()
+	{
+		if (this._hasActivePromos)
+		{
+			while (this._promoControllers.length)
+			{
+				let promoController = this._promoControllers.pop();
+				promoController.destroy();
+			}
+		}
+
+		this._onAllActivePromosRemoved();
+	}
+
+	_onAllActivePromosRemoved()
+	{
+		this._updatePromoActiveState();
+	}
+
+	_onServerErrorMessage(event)
+	{
+		let serverData = event.messageData;
+
+		if (LobbyWebSocketInteractionController.isFatalError(event.errorType))
+		{
+			this._removeAllPromos();
+		}
+	}
+
+	_onGameMessageReceived(event)
+	{
+		let msgType = event.type;
+
+		switch (msgType)
+		{
+			case GAME_MESSAGES.SERVER_ERROR_MESSAGE_RECIEVED:
+				if (LobbyWebSocketInteractionController.isFatalError(event.data.errorType))
+				{
+					this._removeAllPromos();
+				}
+				break;
+		}
+	}
+
+	_updatePromoActiveState()
+	{
+		let hasActivePromosNewState_bl = this._hasActivePromos;
+		if (this.info.hasActivePromos === hasActivePromosNewState_bl)
+		{
+			return;
+		}
+
+		this.info.hasActivePromos = hasActivePromosNewState_bl;
+		this.emit(PromosController.EVENT_ON_PROMOS_STATUS_UPDATED, {isActive: hasActivePromosNewState_bl});
+	}
+
+	_onLobbyStarted(event)
+	{
+		let lTournamentModeController_tmc = APP.tournamentModeController;
+		this._fTournamentModeInfo_tmi = lTournamentModeController_tmc.info;
+
+		let lLobbyBonusController_lbc = APP.lobbyBonusController;
+		this._fLobbyBonusInfo_lbi = lLobbyBonusController_lbc.info;
+
+		let lFRBController_frbc = APP.FRBController;
+		this._fFRBInfo_frbi = lFRBController_frbc.info;
+
+		this._updatePromosPreviewState();
+
+		lTournamentModeController_tmc.on(TournamentModeController.EVENT_ON_TOURNAMENT_STATE_CHANGED, this._onTournamentStateChanged, this);
+		lLobbyBonusController_lbc.on(LobbyBonusController.EVENT_ON_BONUS_STATE_CHANGED, this._onBonusStateChanged, this);
+		lFRBController_frbc.on(FRBController.EVENT_ON_FRB_STATE_CHANGED, this._onFRBStateChanged, this);
+	}
+
+	_onTournamentStateChanged()
+	{
+		this._updatePromosPreviewState();
+	}
+
+	_onBonusStateChanged()
+	{
+		this._updatePromosPreviewState();
+	}
+
+	_onFRBStateChanged()
+	{
+		this._updatePromosPreviewState();
+	}
+
+	_updatePromosPreviewState()
+	{
+		let lIsPreviewAvailable_bl = this.info.hasActivePromos;
+		
+		if (this._fTournamentModeInfo_tmi)
+		{
+			lIsPreviewAvailable_bl = lIsPreviewAvailable_bl && !this._fTournamentModeInfo_tmi.isTournamentMode;
+		}
+
+		if (this._fLobbyBonusInfo_lbi)
+		{
+			lIsPreviewAvailable_bl = lIsPreviewAvailable_bl && !(this._fLobbyBonusInfo_lbi.isActivated || this._fLobbyBonusInfo_lbi.isCompletionInProgress);
+		}
+
+		if (this._fFRBInfo_frbi)
+		{
+			lIsPreviewAvailable_bl = lIsPreviewAvailable_bl && !(this._fFRBInfo_frbi.isActivated);
+		}
+
+		if (this.info.isPreviewAvailable === lIsPreviewAvailable_bl)
+		{
+			return;
+		}
+
+		this.info.isPreviewAvailable = lIsPreviewAvailable_bl;
+		this.emit(PromosController.EVENT_ON_PROMOS_PREVIEW_STATUS_UPDATED, {isPreviewAvailable: lIsPreviewAvailable_bl});
+	}
+}
+
+export default PromosController

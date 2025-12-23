@@ -1,0 +1,268 @@
+import SimpleUIView from '../../../../../../common/PIXI/src/view/base/SimpleUIView';
+import Sprite from '../../../../../../common/PIXI/src/display/Sprite';
+import KillStreakNumberView from './KillStreakNumberView';
+import KillStreakFirstNumberView from './KillStreakFirstNumberView';
+import KillStreakSmokeView from './KillStreakSmokeView';
+import KillStreakCaptionView from './KillStreakCaptionView';
+import { APP } from '../../../../../../common/PIXI/src/globals';
+
+const NUM_MIN_SCALE = 0.7;
+const NUM_MAX_SCALE = 1.3;
+const NUM_SCALE_STEP = 0.2;
+
+class KillStreakCounterView extends SimpleUIView
+{
+	static get ON_ANIMATION_CYCLE_COMPLETION() 	{ return "ON_ANIMATION_CYCLE_COMPLETION"; }
+	static get ON_ANIMATION_CYCLE_COMPLETED() 	{ return "ON_ANIMATION_CYCLE_COMPLETED"; }
+	static get ON_NUMBER_APPEARING_STARTED() 	{ return "ON_NUMBER_APPEARING_STARTED"; }
+	static get ON_NUMBER_APPEARRED() 			{ return "ON_NUMBER_APPEARRED"; }
+
+	initOnScreen(killStreakCounterContainerInfo)
+	{
+		killStreakCounterContainerInfo.container.addChild(this);
+
+		this.zIndex = killStreakCounterContainerInfo.zIndex;
+	}
+
+	startStreakAnimation(killsAmount)
+	{
+		this._numsAmount = 0;
+		this._currentNum = null;
+		this._prevNum = null;
+		this._killAmountsQueue = [];
+
+		this._showCaptionStartAnimation();
+		this._showNumberStartAnimation(killsAmount);
+
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._showSmokeStartAnimation();
+		}
+	}
+
+	interrupt()
+	{
+		this._interrupt();
+	}
+
+	get isAnimationCycleStarted()
+	{
+		return !!this._currentNum;
+	}
+
+	addStreakKill(killsAmount)
+	{
+		if (this._currentNum.isIntroInProgress)
+		{
+			this._killAmountsQueue.push(killsAmount);
+		}
+		else
+		{
+			this._showNextKillsAmount(killsAmount);
+		}
+	}
+
+	_showNextKillsAmount(killsAmount)
+	{
+		if (this._currentNum)
+		{
+			this._currentNum.startOutro(false);
+			this._prevNum = this._currentNum;
+			this._currentNum = null;
+		}
+
+		this._captionView.startHighlightAnimation()
+		this._showNumberStartAnimation(killsAmount);
+	}
+
+	completeStreakAnimation()
+	{
+		if (!this._currentNum)
+		{
+			throw new Error("Cannot complete kill streak animations, due to number view is not defined!");
+			return;
+		}
+
+		if (this._killAmountsQueue.length > 0 || this._currentNum.isIntroInProgress)
+		{
+			this._pendingCycleCompleteAnimation = true;
+		}
+		else
+		{
+			this._showCycleCompleteAnimation();
+		}
+	}
+
+	_showCycleCompleteAnimation()
+	{
+		this._currentNum.startOutro(true);
+		this._prevNum = this._currentNum;
+		this._currentNum = null;
+
+		this._captionView.startOutroAnimation();
+
+		this.emit(KillStreakCounterView.ON_ANIMATION_CYCLE_COMPLETION);
+	}
+
+	constructor(containerInfo)
+	{
+		super();
+
+		this._container = null;
+		this._captionView = null;
+		this._smokeView = null;
+		this._currentNum = null;
+		this._prevNum = null;
+		this._pendingCycleCompleteAnimation = false;
+		this._numsAmount = 0;
+	}
+
+	__init()
+	{
+		super.__init();
+
+		this._container = this.addChild(new Sprite);
+		this._container.position.set(960/2, 540/2);
+	}
+
+	_showCaptionStartAnimation()
+	{
+		let captionAnim = this._captionView;
+		if (!captionAnim)
+		{
+			captionAnim = this._captionView = new KillStreakCaptionView();
+			captionAnim.on(KillStreakCaptionView.ON_INTRO_ANIMATION_COMPLETED, this._onCaptionIntroAnimationCompleted, this);
+			captionAnim.on(KillStreakCaptionView.ON_OUTRO_ANIMATION_COMPLETED, this._onCaptionOutroAnimationCompleted, this);
+			this._container.addChild(captionAnim);
+		}
+
+		captionAnim.startIntroAnimation();
+	}
+
+	_onCaptionIntroAnimationCompleted(event)
+	{
+	}
+
+	_onCaptionOutroAnimationCompleted(event)
+	{
+		let captionAnim = this._captionView;
+		captionAnim.resetView();
+
+		if (this._currentNum)
+		{
+			throw new Error("Cannot complete streak animation cycle, number animation is stilll in progress!");
+			return;
+		}
+
+		this.emit(KillStreakCounterView.ON_ANIMATION_CYCLE_COMPLETED);
+	}
+
+	_showNumberStartAnimation(killsAmount)
+	{
+		let streakNumber = killsAmount;
+		let numberAnim;
+		let isFirstStreakNumber = this._numsAmount === 0;
+		let lSpeed_num = Math.exp(this._killAmountsQueue.length);
+		if (isFirstStreakNumber)
+		{
+			numberAnim = new KillStreakFirstNumberView(streakNumber);
+		}
+		else
+		{
+			numberAnim = new KillStreakNumberView(streakNumber, lSpeed_num);
+		}
+		numberAnim.once(KillStreakNumberView.ON_INTRO_ANIMATION_COMPLETED, this._onNumberIntroAnimationCompleted, this)
+		numberAnim.once(KillStreakNumberView.ON_OUTRO_ANIMATION_COMPLETED, this._onNumberOutroAnimationCompleted, this)
+		numberAnim.startIntro();
+
+		let numberScale = NUM_MIN_SCALE + NUM_SCALE_STEP*this._numsAmount;
+		if (numberScale > NUM_MAX_SCALE)
+		{
+			numberScale = NUM_MAX_SCALE;
+		}
+		numberAnim.scale.set(numberScale, numberScale);
+
+		this._container.addChild(numberAnim);
+
+		this._currentNum = numberAnim;
+
+		this._numsAmount++;
+
+		this.emit(KillStreakCounterView.ON_NUMBER_APPEARING_STARTED);
+	}
+
+	_onNumberIntroAnimationCompleted(event)
+	{
+		this.emit(KillStreakCounterView.ON_NUMBER_APPEARRED);
+
+		if (this._killAmountsQueue.length > 0)
+		{
+			this._showNextKillsAmount(this._killAmountsQueue.shift());
+		}
+		else
+		{
+			if (this._pendingCycleCompleteAnimation)
+			{
+				this._pendingCycleCompleteAnimation = false;
+				this._showCycleCompleteAnimation();
+			}
+		}
+	}
+
+	_onNumberOutroAnimationCompleted(event)
+	{
+		event.target.destroy();
+		this._prevNum = null;
+	}
+
+	_showSmokeStartAnimation()
+	{
+		let smokeAnim = this._smokeAnim;
+		if (!smokeAnim)
+		{
+			smokeAnim = this._smokeAnim = new KillStreakSmokeView();
+			smokeAnim.once(KillStreakSmokeView.ON_ANIMATION_COMPLETED, this._onSmokeAnimationCompleted, this);
+			this._container.addChild(smokeAnim);
+		}
+
+		smokeAnim.startAnimation();
+	}
+
+	_onSmokeAnimationCompleted(event)
+	{
+		let smokeAnim = this._smokeAnim;
+		smokeAnim.resetView();
+	}
+
+	_interrupt()
+	{
+		this._smokeAnim && this._smokeAnim.resetView();
+
+		this._currentNum && this._currentNum.destroy();
+		this._currentNum = null;
+
+		this._prevNum && this._prevNum.destroy();
+		this._prevNum = null;
+
+		this._captionView && this._captionView.resetView();
+
+		this._numsAmount = 0;
+		this._pendingCycleCompleteAnimation = false;
+	}
+
+	destroy()
+	{
+		this._container = null;
+		this._numsAmount = undefined;
+		this._pendingCycleCompleteAnimation = undefined;
+
+		this._captionView = null;
+		this._smokeView = null;
+		this._currentNum = null;
+		this._prevNum = null;
+
+		super.destroy();
+	}
+}
+
+export default KillStreakCounterView

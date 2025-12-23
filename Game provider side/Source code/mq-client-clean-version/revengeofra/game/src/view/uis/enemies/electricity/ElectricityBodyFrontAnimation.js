@@ -1,0 +1,143 @@
+import { APP } from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import Sprite from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import AtlasSprite from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/AtlasSprite';
+import AtlasConfig from '../../../../config/AtlasConfig';
+import ElectricityArmWeaponAnimation from './ElectricityArmWeaponAnimation';
+import ElectricityBodyFrontArcsAnimation from './ElectricityBodyFrontArcsAnimation';
+import ElectricityBodyLightenArcsAnimation from './ElectricityBodyLightenArcsAnimation';
+import Timer from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer';
+import { ENEMIES } from '../../../../../../shared/src/CommonConstants';
+
+const CYCLES_INTERVAL_IN_FRAMES = 15;
+
+class ElectricityBodyFrontAnimation extends Sprite
+{
+	static get EVENT_ON_ANIMATION_CYCLE_COMPLETED()		{return "EVENT_ON_ANIMATION_CYCLE_COMPLETED"};	
+
+	startAnimation(targetEnemy)
+	{
+		this._targetEnemy = targetEnemy;
+
+		this._startAnimation();
+	}
+
+	pauseAnimationCycling()
+	{
+		this._cyclePaused_bl = true;
+		this._clearNextCycleTimer();
+	}
+
+	resumeAnimationCycling()
+	{
+		this._cyclePaused_bl = false;
+		this._startNextCycle();
+	}
+
+	//INIT...
+	constructor()
+	{
+		super();
+
+		this._targetEnemy = null;
+		this._cyclePaused_bl = false;
+		this._nextCycleTimer = null;
+	}
+	//...INIT
+
+	//ANIMATION...
+	_startAnimation()
+	{
+		if (this._isArmWeaponAnimationRequired)
+		{
+			let armSwordAnimation = this.addChild(new ElectricityArmWeaponAnimation(this._targetEnemy));
+			armSwordAnimation.startAnimation();
+		}
+
+		if (this._isBodyLightenArcsAnimationRequired)
+		{
+			let bodyLightenArcsAnimation = this.addChild(new ElectricityBodyLightenArcsAnimation(this._targetEnemy));
+			bodyLightenArcsAnimation.startAnimation();
+		}
+		
+		if (this._isBodyFrontArcsAnimationRequired)
+		{
+			let bodyArcsAnimation = this.addChild(this._generateBodyFrontArcsAnimationInstance());
+			bodyArcsAnimation.on(ElectricityBodyFrontArcsAnimation.EVENT_ON_ANIMATION_CYCLE_COMPLETED, this._onElectricityBodyAnimatedArcsCycleCompleted, this);
+			bodyArcsAnimation.startAnimation();
+		}
+	}
+
+	get _isArmWeaponAnimationRequired()
+	{
+		return false;
+	}
+
+	get _isBodyLightenArcsAnimationRequired()
+	{
+		return true;
+	}
+
+	get _isBodyFrontArcsAnimationRequired()
+	{
+		return true;
+	}
+
+	_generateBodyFrontArcsAnimationInstance()
+	{
+		return new ElectricityBodyFrontArcsAnimation(this._targetEnemy);
+	}
+
+	_onElectricityBodyAnimatedArcsCycleCompleted(event)
+	{
+		this.emit(ElectricityBodyFrontAnimation.EVENT_ON_ANIMATION_CYCLE_COMPLETED);
+
+		if (!this._cyclePaused_bl)
+		{
+			this._startNextCycleTimer();
+		}
+	}
+
+	_startNextCycleTimer()
+	{
+		this._nextCycleTimer = new Timer(this._onNextCycleTimerCompleted.bind(this), CYCLES_INTERVAL_IN_FRAMES*2*16.7);
+	}
+
+	_clearNextCycleTimer()
+	{
+		this._nextCycleTimer && this._nextCycleTimer.destructor();
+		this._nextCycleTimer = null;
+	}
+
+	_onNextCycleTimerCompleted()
+	{
+		this._clearNextCycleTimer();
+
+		this._startNextCycle();
+	}
+
+	_startNextCycle()
+	{
+		this._clearNextCycleTimer();
+		if (this.children && !!this.children.length)
+		{
+			for (let i=0; i<this.children.length; i++)
+			{
+				let chld = this.children[i];
+				chld.startAnimation();
+			}
+		}
+	}
+	//...ANIMATION
+	
+	destroy()
+	{
+		this._clearNextCycleTimer();
+
+		this._targetEnemy = null;
+		this._cyclePaused_bl = false;
+
+		super.destroy();
+	}
+}
+
+export default ElectricityBodyFrontAnimation;

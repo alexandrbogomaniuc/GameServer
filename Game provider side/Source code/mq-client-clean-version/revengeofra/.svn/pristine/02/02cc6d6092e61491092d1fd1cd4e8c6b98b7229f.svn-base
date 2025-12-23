@@ -1,0 +1,62 @@
+
+MummyWarrior270.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummyWarrior270_armL
+  rotate: true
+  xy: 1, 1
+  size: 102, 126
+  orig: 102, 126
+  offset: 0, 0
+  index: -1
+MummyWarrior270_armR
+  rotate: false
+  xy: 1, 104
+  size: 142, 131
+  orig: 142, 131
+  offset: 0, 0
+  index: -1
+MummyWarrior270_hair
+  rotate: true
+  xy: 144, 84
+  size: 45, 96
+  orig: 45, 96
+  offset: 0, 0
+  index: -1
+MummyWarrior270_head
+  rotate: false
+  xy: 241, 90
+  size: 32, 39
+  orig: 32, 39
+  offset: 0, 0
+  index: -1
+MummyWarrior270_hips
+  rotate: true
+  xy: 144, 130
+  size: 64, 115
+  orig: 64, 115
+  offset: 0, 0
+  index: -1
+MummyWarrior270_legL
+  rotate: true
+  xy: 399, 188
+  size: 47, 104
+  orig: 47, 104
+  offset: 0, 0
+  index: -1
+MummyWarrior270_legR
+  rotate: true
+  xy: 144, 195
+  size: 40, 145
+  orig: 40, 145
+  offset: 0, 0
+  index: -1
+MummyWarrior270_torso
+  rotate: true
+  xy: 290, 170
+  size: 65, 108
+  orig: 65, 108
+  offset: 0, 0
+  index: -1

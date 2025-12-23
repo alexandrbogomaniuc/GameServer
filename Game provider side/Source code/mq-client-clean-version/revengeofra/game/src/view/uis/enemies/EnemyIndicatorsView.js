@@ -1,0 +1,141 @@
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import SimpleUIView from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/SimpleUIView';
+import Sprite from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import { ENEMY_TYPES, ENEMIES } from '../../../../../shared/src/CommonConstants';
+
+import EnemyHPBarIndicator from '../../../ui/EnemyHPBarIndicator';
+import TextField from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/TextField';
+
+class EnemyIndicatorsView extends SimpleUIView
+{
+	updateHp(aDemage_num)
+	{
+		this._updateHp(aDemage_num);
+	}
+
+	updateHpBar()
+	{
+		this._updateHpBar();
+	}
+
+	hideHPValue()
+	{
+		this._fEnemyHPBar_expbi.hideValue();
+	}
+
+	hideHPBar()
+	{
+		this._fEnemyHPBar_expbi.visible = false;
+	}
+
+	disableHPBar()
+	{
+		this._fEnemyHPBar_expbi.visible = false;
+		this._fIsDisabled_bl = true;
+	}
+
+	showHPBar()
+	{
+		!this._fIsDisabled_bl && (this._fEnemyHPBar_expbi.visible = true);
+	}
+
+	get hpBarGlobalPos()
+	{
+		if (!this._fEnemyHPBar_expbi || !this._fEnemyHPBar_expbi.parent)
+		{
+			return null;
+		}
+
+		return this._fEnemyHPBar_expbi.parent.localToGlobal(this._fEnemyHPBar_expbi.x, this._fEnemyHPBar_expbi.y);
+	}
+
+	constructor()
+	{
+		super();
+
+		this._fEnemyIndicatorsContainer_spr = this.addChild(new Sprite());
+
+		this._fEnemyHPBar_expbi = null;
+		this._fIsDisabled_bl = null;
+	}
+
+	__init()
+	{
+		super.__init();
+
+		this._initView();
+	}
+
+	_initView()
+	{
+		this._addEnemyHPBar();
+
+		//DEBUG show enemy ID...
+		// let lStyle_obj = {
+		// 	fontFamily: "fnt_nm_barlow_semibold",
+		// 	fontSize: 11.6,
+		// 	fill: 0Xff0000
+		// };
+		// let tf = new TextField(lStyle_obj);
+		// tf.text = this.uiInfo.id;
+		// this.addChild(tf);
+		// tf.zIndex = 100;
+		// tf.x = - 20;
+		// tf.y = 0;
+		//...DEBUG
+	}
+
+	//ENEMY XP BAR INDICATOR...
+	_addEnemyHPBar()
+	{
+		this._fEnemyHPBar_expbi = this._fEnemyIndicatorsContainer_spr.addChild(this.enemyHPBar)
+	}
+
+	get enemyHPBar()
+	{
+		return this._fEnemyHPBar_expbi || (this._fEnemyHPBar_expbi = this._initEnemyHPBar());
+	}
+
+	_initEnemyHPBar()
+	{
+		let lInfo_eii = this.uiInfo;
+
+		let l_expbi = new EnemyHPBarIndicator(lInfo_eii.fullEnergy, lInfo_eii.energy);
+		this._fEnemyHPBar_expbi = l_expbi;
+
+		if(!APP.gameScreen.healthBarEnabled)
+		{
+			this._fEnemyHPBar_expbi.visible = false;
+		}
+
+		this._fEnemyHPBar_expbi.scale.set(1, 1);
+
+		return l_expbi;
+	}
+
+	_updateHp(aDemage_num)
+	{
+		this.enemyHPBar.updateHp(aDemage_num);
+	}
+
+	_updateHpBar()
+	{
+		this.enemyHPBar.updateHpBar();
+	}
+	//ENEMY XP BAR INDICATOR...
+
+	destroy()
+	{
+		super.destroy();
+
+		this._fEnemyHPBar_expbi && this._fEnemyHPBar_expbi.destroy();
+		this._fEnemyHPBar_expbi = null;
+
+		this._fEnemyIndicatorsContainer_spr && this._fEnemyIndicatorsContainer_spr.destroy();
+		this._fEnemyIndicatorsContainer_spr = null;
+
+		this._fIsDisabled_bl = null;
+	}
+}
+
+export default EnemyIndicatorsView;

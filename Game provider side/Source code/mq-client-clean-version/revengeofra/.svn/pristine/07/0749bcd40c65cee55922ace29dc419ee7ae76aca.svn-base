@@ -1,0 +1,120 @@
+import Button from '../../../../../../../common/PIXI/src/display/ui/Button';
+import Carousel from '../secondary/player_collection/list/Carousel';
+import { List } from '../secondary/player_collection/list/List';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+
+class ActivePromosCarousel extends Carousel
+{
+	constructor(activePromosList)
+	{
+		super(activePromosList);
+
+		if (activePromosList)
+		{
+			activePromosList.on(List.EVENT_ON_ITEM_REMOVED, this._onItemRemoved, this);
+		}
+	}
+
+	_addBase()
+	{
+	}
+
+	get _contentContainerPosition()
+	{
+		return new PIXI.Point(0, 0);
+	}
+
+	get _visibleArea()
+	{
+		return new PIXI.Rectangle(0, 0, 190, 16);
+	}
+
+	_generatePrevButtonView()
+	{
+		let btn = new Button("promo/promos_list_btn", null, true);
+		btn.position.set(-14, 8);
+		btn.hitArea = new PIXI.Rectangle(-16, -10, 32, 20);
+
+		return btn;
+	}
+
+	_generateNextButtonView()
+	{
+		let btn = new Button("promo/promos_list_btn", null, true);
+		btn.position.set(this._contentContainerPosition.x+this._visibleArea.width+14, 8);
+		btn.scale.x *= -1;
+		btn.hitArea = new PIXI.Rectangle(-16, -10, 32, 20);
+
+		return btn;
+	}
+
+	get _scrollStep()
+	{
+		return 190;
+	}
+
+	_onPrevBtnClicked(event)
+	{
+		if (APP.soundsController && APP.soundsController.play) // soundsController should be removed from here
+		{
+			APP.soundsController.play("mq_gui_button_accept");
+		}
+
+		super._onPrevBtnClicked(event);
+	}
+
+	_onNextBtnClicked(event)
+	{
+		if (APP.soundsController && APP.soundsController.play) // soundsController should be removed from here
+		{
+			APP.soundsController.play("mq_gui_button_accept");
+		}
+		
+		super._onNextBtnClicked(event);
+	}
+
+	_enablePrevButton()
+	{
+		super._enablePrevButton();
+
+		this._fPrevButton_btn.alpha = 1;
+	}
+
+	_disablePrevButton()
+	{
+		super._disablePrevButton();
+
+		this._fPrevButton_btn.tint = 0xcccccc;
+	}
+
+	_enableNextButton()
+	{
+		super._enableNextButton();
+
+		this._fNextButton_btn.alpha = 1;
+	}
+
+	_disableNextButton()
+	{
+		super._disableNextButton();
+
+		this._fNextButton_btn.tint = 0xcccccc;
+	}
+
+	_onItemRemoved(event)
+	{
+		let list = event.target;
+		let itemsAmount = list.data ? list.data.length : 0;
+		let curCarouselStep = this._fCurrentStepIndex_int;
+
+		this._moveToStep(curCarouselStep, true);
+		if (curCarouselStep > 0 && curCarouselStep >= itemsAmount)
+		{
+			this._moveToStep(--curCarouselStep, true);
+		}
+
+		this._validateArrowButtons();
+	}
+}
+
+export default ActivePromosCarousel

@@ -1,0 +1,148 @@
+import {GlowFilter} from '@pixi/filter-glow';
+import Sprite from '../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../common/PIXI/src/globals';
+import {WHITE_FILTER} from './../config/Constants';
+
+class GlowingSprite extends Sprite {
+
+	static convertIntoGlowingSprite(aSprite_sprt, aOptGlowFilterParams_obj = null)
+	{
+		return new GlowingSprite(aSprite_sprt, aOptGlowFilterParams_obj);
+	}
+
+	get duplicateSprite()
+	{
+		return this._fDuplicate_sprt || (this._fDuplicate_sprt = this._createDuplicateSprite());
+	}
+
+	get baseSprite()
+	{
+		return this._fBaseSprite_sprt;
+	}
+
+	get _overlayColor()
+	{
+		return this._glowFilterParams.overlayColor;
+	}
+
+	get _glowColor()
+	{
+		return this._glowFilterParams.glowColor;
+	}
+
+	get _distance()
+	{
+		return this._glowFilterParams.distance;
+	}
+
+	get _outerStrength()
+	{
+		return this._glowFilterParams.outerStrength;
+	}
+
+	get _innerStrength()
+	{
+		return this._glowFilterParams.innerStrength;
+	}
+
+	get _quality()
+	{
+		return this._glowFilterParams.quality;
+	}
+
+	get _glowFilterParams()
+	{
+		return this._fGlowFilterParams_obj;
+	}
+
+	i_invalidateDuplicateSprite()
+	{
+		this._invalidateDuplicateSprite();
+	}
+
+	constructor(aBaseSprite_sprt, aOptGlowFilterParams_obj = null)
+	{
+		super();
+		this._fBaseSprite_sprt = aBaseSprite_sprt;
+
+		this._fGlowFilterParams_obj = aOptGlowFilterParams_obj || {};
+
+		if (this._fGlowFilterParams_obj.distance == null) this._fGlowFilterParams_obj.distance = 12;
+		if (this._fGlowFilterParams_obj.outerStrength == null) this._fGlowFilterParams_obj.outerStrength = 3;
+		if (this._fGlowFilterParams_obj.innerStrength == null) this._fGlowFilterParams_obj.innerStrength = 0;
+		if (this._fGlowFilterParams_obj.glowColor == null) this._fGlowFilterParams_obj.glowColor = 0xFFD33B;
+		if (this._fGlowFilterParams_obj.overlayColor == null) this._fGlowFilterParams_obj.overlayColor = 0xF3DCB0;
+		if (this._fGlowFilterParams_obj.quality == null) this._fGlowFilterParams_obj.quality = 2;
+
+		this._fDuplicate_sprt = null;
+
+		let lParent_sprt = aBaseSprite_sprt.parent;
+		let lPosition_obj = {x: aBaseSprite_sprt.position.x, y: aBaseSprite_sprt.position.y};
+		let lZIndex_int = aBaseSprite_sprt.zIndex;
+
+		this.addChild(this._fBaseSprite_sprt)
+		this._fBaseSprite_sprt.position.set(0, 0);
+
+		lParent_sprt.addChild(this);
+		this.position.set(lPosition_obj.x, lPosition_obj.y);
+		this.zIndex = lZIndex_int;
+
+		this._fDuplicate_sprt = this._createDuplicateSprite();
+	}
+
+	_createDuplicateSprite()
+	{
+		this.baseSprite.filters = [WHITE_FILTER, new GlowFilter(this._distance, this._outerStrength, this._innerStrength, this._glowColor, this._quality)];
+
+		let bounds = this.baseSprite.getLocalBounds();
+		bounds.x = bounds.x - 30;
+		bounds.y = bounds.y - 30;
+		bounds.width = bounds.width + 60;
+		bounds.height = bounds.height + 60;
+
+		let l_txtr = APP.stage.renderer.generateTexture(this.baseSprite, PIXI.SCALE_MODES.LINEAR, 2, bounds);
+		let l_sprt = new Sprite();
+		l_sprt.texture = l_txtr;
+		l_sprt.tint = this._overlayColor;
+		l_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		this.baseSprite.filters = [];
+
+		let lLocalBounds_obj = this.baseSprite.getLocalBounds();
+		lLocalBounds_obj.x *= this.baseSprite.scale.x;
+		lLocalBounds_obj.y *= this.baseSprite.scale.y;
+		lLocalBounds_obj.width *= this.baseSprite.scale.x;
+		lLocalBounds_obj.height *= this.baseSprite.scale.y;
+
+		l_sprt.position.set(lLocalBounds_obj.x + lLocalBounds_obj.width/2, lLocalBounds_obj.y + lLocalBounds_obj.height/2);
+
+		this.addChild(l_sprt);
+		return l_sprt;
+	}
+
+	_invalidateDuplicateSprite()
+	{
+		this._destroyDuplicateSprite();
+
+		// create new
+		this._fDuplicate_sprt = this._createDuplicateSprite();
+	}
+
+	_destroyDuplicateSprite()
+	{
+		if (this._fDuplicate_sprt)
+		{
+			this._fDuplicate_sprt.destroy({children: true, texture: true, baseTexture: true});
+			this._fDuplicate_sprt = null;
+		}
+	}
+
+	destroy()
+	{
+		this._destroyDuplicateSprite();
+		this._fBaseSprite_sprt = null;
+
+		super.destroy();
+	}
+}
+
+export default GlowingSprite;

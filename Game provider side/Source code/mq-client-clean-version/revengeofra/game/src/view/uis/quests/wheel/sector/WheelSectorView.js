@@ -1,0 +1,198 @@
+import Sprite from '../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import BitmapText from '../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/BitmapText';
+import AtlasSprite from '../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/AtlasSprite';
+import { APP } from '../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import AtlasConfig from '../../../../../config/AtlasConfig';
+
+export const SECTOR_STATES = {
+	NORMAL: 0,
+	WIN: 	1,
+}
+
+const MAX_WIDTH = 85;
+
+class WheelSectorView extends Sprite
+{
+	updateState(aState_int)
+	{
+		this._updateState(aState_int);
+	}
+
+	get state()
+	{
+		return this._state;
+	}
+
+	set value(aValue_num)
+	{
+		this._value = aValue_num;
+
+		this._validateStateView();
+	}
+
+	get value()
+	{
+		return this._value;
+	}
+
+	constructor()
+	{
+		super();
+
+		this._state = undefined;
+		this._value = undefined;
+
+		this._normalStateValueView_bt = null;
+		this._winStateValueView_bt = null;
+
+		this._fContainer_sprt = this.addChild(new Sprite);
+		this._fBrownContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+		this._fGreenContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+
+		// debug...
+		// this.addChild(new PIXI.Graphics).beginFill(0xff0000).drawRect(-MAX_WIDTH/2, -2, MAX_WIDTH, 4).endFill().beginFill(0x0000ff).drawCircle(0, 0, 5).endFill();
+		// ...debug
+
+		this._updateState(SECTOR_STATES.NORMAL);
+	}
+
+	_updateState(aState_int)
+	{
+		this._state = aState_int;
+
+		this._validateStateView();
+	}
+
+	_validateStateView()
+	{
+		this._normalStateValueView.write(this._formattedValue);
+		this._winStateValueView.write(this._formattedValue);
+
+		if (this._state !== SECTOR_STATES.WIN)
+		{
+			this._alignValue();
+		}
+
+		this._normalStateValueView.alpha = (this._state == SECTOR_STATES.NORMAL) ? 1 : 0;
+		this._winStateValueView.alpha = (this._state == SECTOR_STATES.WIN) ? 1 : 0;
+	}
+
+	get _formattedValue()
+	{
+		if (isNaN(this._value) || this._value <= 0)
+		{
+			return "";
+		}
+
+		return  ("x"+this._value);
+	}
+
+	_alignValue()
+	{
+		let globalScale = this._currentGlobalScale;
+
+		if (globalScale.x == 0 || globalScale.y == 0)
+		{
+			return;
+		}
+
+		let prevRotation = this.rotation;
+		this.rotation = 0;
+		this.scale.set(this.scale.x/globalScale.x, this.scale.y/globalScale.y);
+
+		this._fBrownContainer_sprt.scale.x = 1;
+		let valueWidth = this._fBrownContainer_sprt.getBounds().width;
+		if (valueWidth > MAX_WIDTH)
+		{
+			this._fBrownContainer_sprt.scale.x = MAX_WIDTH/valueWidth;
+		}
+		this._fBrownContainer_sprt.position.x = -this._fBrownContainer_sprt.getBounds().width/2;
+
+		this._fGreenContainer_sprt.scale.x = 1;
+		valueWidth = this._fGreenContainer_sprt.getBounds().width;
+		if (valueWidth > MAX_WIDTH)
+		{
+			this._fGreenContainer_sprt.scale.x = MAX_WIDTH/valueWidth;
+		}
+		this._fGreenContainer_sprt.position.x = -this._fGreenContainer_sprt.getBounds().width/2;
+
+		this.scale.set(this.scale.x*globalScale.x, this.scale.y*globalScale.y);
+		this.rotation = prevRotation;
+	}
+
+	get _currentGlobalScale()
+	{
+		let lScale_obj = {x: this.scale.x, y: this.scale.y};
+
+		let lCurParent = this.parent;
+		while (lCurParent)
+		{
+			lScale_obj.x *= lCurParent.scale.x;
+			lScale_obj.y *= lCurParent.scale.y;
+
+			lCurParent = lCurParent.parent;
+		}
+
+		return lScale_obj;
+	}
+
+	get _normalStateValueView()
+	{
+		return this._normalStateValueView_bt || (this._normalStateValueView_bt = this._createValueView(this._fBrownContainer_sprt, WheelSectorView.getBrownDigitsTextures(), -4));
+	}
+
+	get _winStateValueView()
+	{
+		return this._winStateValueView_bt || (this._winStateValueView_bt = this._createValueView(this._fGreenContainer_sprt, WheelSectorView.getGreenDigitsTextures()));
+	}
+
+	_createValueView(aContainer_sprt, aTextures_tx_arr, aLetterSpacing_num=0)
+	{
+		return aContainer_sprt.addChild(new BitmapText(aTextures_tx_arr, "0123456789x", "", aLetterSpacing_num));
+	}
+
+	destroy()
+	{
+		this._state = undefined;
+		this._value = undefined;
+
+		this._normalStateValueView_bt = null;
+		this._winStateValueView_bt = null;
+
+		this._fContainer_sprt = null;
+		this._fBrownContainer_sprt = null;
+		this._fGreenContainer_sprt = null;
+
+		super.destroy();
+	}
+}
+
+WheelSectorView.getBrownDigitsTextures = function ()
+{
+	if (!WheelSectorView.brownDigitsTextures)
+	{
+		WheelSectorView.setBrownDigitsTextures();
+	}
+	return WheelSectorView.brownDigitsTextures;
+}
+
+WheelSectorView.setBrownDigitsTextures = function ()
+{
+	WheelSectorView.brownDigitsTextures = AtlasSprite.getFrames(APP.library.getAsset("quests/wheel/sector/digits/wheel_sector_digits_brown"), AtlasConfig.WheelSectorBrownNumbers, "");
+}
+
+WheelSectorView.getGreenDigitsTextures = function ()
+{
+	if (!WheelSectorView.greenDigitsTextures)
+	{
+		WheelSectorView.setGreenDigitsTextures();
+	}
+	return WheelSectorView.greenDigitsTextures;
+}
+
+WheelSectorView.setGreenDigitsTextures = function ()
+{
+	WheelSectorView.greenDigitsTextures = AtlasSprite.getFrames(APP.library.getAsset("quests/wheel/sector/digits/wheel_sector_digits_green"), AtlasConfig.WheelSectorGreenNumbers, "");
+}
+
+export default WheelSectorView;

@@ -1,0 +1,189 @@
+import AppearanceMagicCircleView from './AppearanceMagicCircleView';
+import TorchFxAnimation from '../../../../../../main/animation/TorchFxAnimation';
+import Sprite from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import Timer from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer';
+import * as Easing from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import { Utils } from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+import { FRAME_RATE } from '../../../../../../../../shared/src/CommonConstants';
+import { APP } from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+
+const BIG_TORCH_PARAMS = [
+	{x:34,		y: 20 - 14.5+5,	scale:2.2,		rotation:92},
+	{x:26.5,	y: 20 - 22.5,	scale:2.2,		rotation:26},
+	{x:1,		y: 20 - 27,		scale:2.2,		rotation:0},
+	{x:-23,		y: 20 - 24,		scale:2.2,		rotation:-34},
+	{x:-26,		y: 20 - 9.5+5,	scale:2.2,		rotation:-88},
+	{x:1,		y: 20 + 18,		scale:2.2,		rotation:0}
+];
+
+const TORCHES_PARAMS = [
+	{x:-125,	y:-55},
+	{x: 107,	y:-58},
+	{x: 159,	y:17},
+	{x: 105,	y:81},
+	{x:-183,	y:17},
+	{x:-130,	y:88},
+	{x: -15,	y:109},
+];
+
+class AppearanceAnubisMagicCircleView extends AppearanceMagicCircleView
+{
+	constructor()
+	{
+		super();
+
+		TorchFxAnimation.initTextures();
+
+		this._fTorchContainer_sprt = null;
+		this._fTorches_sprt_arr = null;
+		this._fBigTorch_sprt = null;
+
+		this._fTorchCenterTimer_t = null;
+		this._fStartTorchesTimer_t = null;
+	}
+
+	//INIT...
+	_initAnimations()
+	{
+		super._initAnimations();
+
+		this._fTorchContainer_sprt = this.addChild(new Sprite());
+
+		this._initTorches();
+	}
+
+	_initTorches()
+	{
+		this._initCenterTorch();
+		APP.profilingController.info.isVfxProfileValueMediumOrGreater && this._initSmallTorches();
+	}
+
+	_initCenterTorch()
+	{
+		this._fTorches_sprt_arr = [];
+		this._fTorchContainer_sprt.addChild(this._fBigTorch_sprt = new Sprite());
+
+		for (let i = 0; i < BIG_TORCH_PARAMS.length; i++)
+		{
+			let lTorch1_sprt = this._fBigTorch_sprt.addChild(this._initTorchFx(BIG_TORCH_PARAMS[i]));
+			let lTorch2_sprt = this._fBigTorch_sprt.addChild(this._initTorchFx(BIG_TORCH_PARAMS[i]));
+			this._fTorches_sprt_arr.push(lTorch1_sprt);
+			this._fTorches_sprt_arr.push(lTorch2_sprt);
+		}
+	}
+
+	_initSmallTorches()
+	{
+		this._fSmallTorches_sprt_arr = [];
+
+		for (let i = 0; i < TORCHES_PARAMS.length; ++i)
+		{
+			let lTorch1_sprt = this._fTorchContainer_sprt.addChild(this._initTorchFx(TORCHES_PARAMS[i]));
+			let lTorch2_sprt = this._fTorchContainer_sprt.addChild(this._initTorchFx(TORCHES_PARAMS[i]));
+			this._fSmallTorches_sprt_arr.push(lTorch1_sprt);
+			this._fSmallTorches_sprt_arr.push(lTorch2_sprt);
+		}
+	}
+
+	_initTorchFx(aParams_obj)
+	{
+			let lTorch_sprt = new Sprite();
+			lTorch_sprt.anchor.set(0.5, 0.73);
+			lTorch_sprt.textures = TorchFxAnimation.textures.torch_blue;
+			lTorch_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+			lTorch_sprt.position.set(aParams_obj.x, aParams_obj.y);
+			lTorch_sprt.rotation = Utils.gradToRad(aParams_obj.rotation || 0);
+			lTorch_sprt.scale.set(aParams_obj.scale || 1);
+			lTorch_sprt.visible = false;
+			return lTorch_sprt;
+	}
+	//...INIT
+
+	//ANIMATION...
+	_playAnimations()
+	{
+		super._playAnimations();
+
+		this._playTorchAnimations();
+	}
+
+	_playTorchAnimations()
+	{
+		this._fStartTorchesTimer_t && this._fStartTorchesTimer_t.destructor();
+		this._fStartTorchesTimer_t = new Timer(this._onPlayTorchTimeout.bind(this), 52*FRAME_RATE);
+	}
+
+	_onPlayTorchTimeout()
+	{
+		this._playCenterTorch();
+		APP.profilingController.info.isVfxProfileValueMediumOrGreater && this._playSmallTorches();
+	}
+
+	_playCenterTorch()
+	{
+		for (let i = 0; i < this._fTorches_sprt_arr.length; i++)
+		{
+			this._fTorches_sprt_arr[i].play();
+			this._fTorches_sprt_arr[i].visible = true;
+		}
+
+		this._fTorchCenterTimer_t && this._fTorchCenterTimer_t.destructor();
+		this._fTorchCenterTimer_t = new Timer(this._completeTorchAnimations.bind(this), 145*FRAME_RATE);
+	}
+
+	_playSmallTorches()
+	{
+		for (let i = 0; i < this._fSmallTorches_sprt_arr.length; ++i)
+		{
+			this._fSmallTorches_sprt_arr[i].play();
+			this._fSmallTorches_sprt_arr[i].visible = true;
+		}
+	}
+
+	_completeTorchAnimations()
+	{
+		this._fBigTorch_sprt.scaleTo(0, 9*FRAME_RATE, Easing.sine.easeInOut, this._onTorchAnimationsCompleted.bind(this));
+
+		if (this._fSmallTorches_sprt_arr)
+		{
+			for (let i = 0; i < this._fSmallTorches_sprt_arr.length; ++i)
+			{
+				this._fSmallTorches_sprt_arr[i].scaleTo(0, 8*FRAME_RATE, Easing.sine.easeInOut);
+			}
+		}
+	}
+
+	_onTorchAnimationsCompleted()
+	{
+		for (let i = 0; i < this._fTorches_sprt_arr.length; i++)
+		{
+			this._fTorches_sprt_arr[i].stop();
+		}
+	}
+	//...ANIMATION
+
+	destroy()
+	{
+		this._fStartTorchesTimer_t && this._fStartTorchesTimer_t.destructor();
+		this._fTorchCenterTimer_t && this._fTorchCenterTimer_t.destructor();
+
+		if (this._fTorches_sprt_arr)
+		{
+			while (this._fTorches_sprt_arr.length)
+			{
+				this._fTorches_sprt_arr.pop().destroy();
+			}
+		}
+
+		super.destroy();
+
+		this._fTorchCenterTimer_t = null;
+		this._fStartTorchesTimer_t = null;
+
+		this._fTorches_sprt_arr = null;
+		this._fTorchContainer_sprt = null;
+		this._fBigTorch_sprt = null;
+	}
+}
+
+export default AppearanceAnubisMagicCircleView;

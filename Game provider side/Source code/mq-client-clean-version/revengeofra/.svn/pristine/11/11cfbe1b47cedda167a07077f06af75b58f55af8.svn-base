@@ -1,0 +1,241 @@
+import SimpleUIController from '../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import {GAME_MESSAGES} from '../../../../../../../common/PIXI/src/external/betsoftgaming/ExternalCommunicator';
+import Timer from '../../../../../../../common/PIXI/src/Timer';
+
+import GameStateController from '../../../state/GameStateController';
+import GameTooltipsView from '../../../../view/uis/custom/tooltips/GameTooltipsView';
+import GameTooltipsInfo from '../../../../model/uis/custom/tooltips/GameTooltipsInfo';
+import GamePlayerController from '../../../custom/GamePlayerController';
+import GameWebSocketInteractionController from './../../../interaction/server/GameWebSocketInteractionController';
+import GameScreen from './../../../../main/GameScreen';
+
+class GameTooltipsController extends SimpleUIController
+{
+	static get EVENT_ON_TIP_SHOWN()				{ return GameTooltipsView.EVENT_ON_TIP_SHOWN; }
+	static get EVENT_ON_TIP_HIDED()				{ return GameTooltipsView.EVENT_ON_TIP_HIDED; }
+	static get EVENT_ON_TIPS_ENDED()			{ return GameTooltipsView.EVENT_ON_TIPS_ENDED; }
+	static get EVENT_ON_GAME_TIPS_ENDED()		{ return "onGameTipsEnded"; }
+
+	//INIT...
+	constructor()
+	{
+		super(new GameTooltipsInfo());
+
+		this._fTooltipsInProgress_bln = false;
+		this._fConnectionClosed_bln = false;
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		APP.playerController.on(GamePlayerController.EVENT_ON_TOOLTIPS_UPDATED, this._onPlayerInfoTipsUpdated, this);
+		APP.webSocketInteractionController.on(GameWebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, this._onServerConnectionClosed, this);
+
+		this.info.gameTipsEnabled = APP.playerController.info.toolTipEnabled;
+	}
+
+	__initModelLevel()
+	{
+		this.info.gameTipsEnabled = APP.playerController.info.toolTipEnabled;
+	}
+
+	__initViewLevel()
+	{
+		super.__initViewLevel();
+
+		let l_ltv = this.view;
+
+		if (l_ltv)
+		{
+			l_ltv.on(GameTooltipsView.EVENT_ON_TIP_SHOWN, this._onTooltipShown, this);
+			l_ltv.on(GameTooltipsView.EVENT_ON_TIP_HIDED, this._onTooltipHided, this);
+			l_ltv.on(GameTooltipsView.EVENT_ON_TIPS_ENDED, this._onTooltipsEnded, this);
+
+			if (this.info.gameTipsEnabled)
+			{
+				let lIsPlayerSitIn_bln = this._gameStateInfo.isPlayerSitIn;
+				let lIsGameInProgress_bln = this._gameStateInfo.isGameInProgress;
+
+				if (lIsPlayerSitIn_bln && lIsGameInProgress_bln)
+				{
+					let lStartTimer_t = new Timer(this._startTooltips.bind(this), 1000, false);
+				}
+
+				let lGameStateController_gsc = APP.currentWindow.gameStateController;
+				lGameStateController_gsc.on(GameStateController.EVENT_ON_GAME_ROUND_STATE_CHANGED, this._onGameRoundStateChanged, this);
+				lGameStateController_gsc.on(GameStateController.EVENT_ON_PLAYER_SEAT_STATE_CHANGED, this._onGamePlayerStateChanged, this);
+			}
+		}
+	}
+	//...INIT
+
+	_onServerConnectionClosed()
+	{
+		this._pauseTooltips();
+		this._fConnectionClosed_bln = true;
+	}
+
+	get _gameStateInfo()
+	{
+		return APP.currentWindow.gameStateController.info;
+	}
+
+	_onGameRoundStateChanged(event)
+	{
+		let lIsGameInProgress_bln = event.value;
+		let lIsPlayerSitIn_bln = this._gameStateInfo.isPlayerSitIn;
+
+		if (lIsPlayerSitIn_bln && lIsGameInProgress_bln)
+		{
+			if (this.info.gameTipsEnabled)
+			{
+				this._resumeTooltips();
+			}
+		}
+		else
+		{
+			this._pauseTooltips();
+		}
+	}
+
+	_onGamePlayerStateChanged(event)
+	{
+		let lIsPlayerSitIn_bln = event.value;
+		let lIsGameInProgress_bln = this._gameStateInfo.isGameInProgress;
+
+		if (lIsPlayerSitIn_bln && lIsGameInProgress_bln)
+		{
+			if (this.info.gameTipsEnabled)
+			{
+				this._resumeTooltips();
+			}
+		}
+		else
+		{
+			this._pauseTooltips();
+		}
+	}
+
+	_onPlayerInfoTipsUpdated(aEvent_obj)
+	{
+		this.info.gameTipsEnabled = aEvent_obj.value;
+
+		if (this.info.gameTipsEnabled)
+		{
+			if (this._fConnectionClosed_bln)
+			{
+				this._fConnectionClosed_bln = false;
+				this._resumeTooltips();
+			}
+			else
+			{
+				this._startTooltips();
+			}
+		}
+		else
+		{
+			this._stopTooltips();
+		}
+	}
+
+	_startTooltips()
+	{
+		if (this._fTooltipsInProgress_bln) return;
+
+		let l_ltv = this.view;
+
+		if (l_ltv)
+		{
+			this._fTooltipsInProgress_bln = true;
+			l_ltv.startTooltips();
+		}
+	}
+
+	_resumeTooltips()
+	{
+		if (this._fTooltipsInProgress_bln) return;
+
+		let l_ltv = this.view;
+
+		if (l_ltv)
+		{
+			this._fTooltipsInProgress_bln = true;
+			l_ltv.resumeTooltips();
+		}
+	}
+
+	_pauseTooltips()
+	{
+		if (!this._fTooltipsInProgress_bln) return;
+
+		let l_ltv = this.view;
+
+		if (l_ltv)
+		{
+			this._fTooltipsInProgress_bln = false;
+			l_ltv.pauseTooltips();
+		}
+	}
+
+	_stopTooltips()
+	{
+		if (!this._fTooltipsInProgress_bln) return;
+
+		let l_ltv = this.view;
+
+		if (l_ltv)
+		{
+			this._fTooltipsInProgress_bln = false;
+			l_ltv.stopTooltips();
+		}
+	}
+
+	_onTooltipShown(aEvent_obj)
+	{
+		let lTipId_num = aEvent_obj.id;
+
+		this.emit(GameTooltipsController.EVENT_ON_TIP_SHOWN, {id: lTipId_num});
+	}
+
+	_onTooltipHided(aEvent_obj)
+	{
+		let lTipId_num = aEvent_obj.id;	
+
+		this.emit(GameTooltipsController.EVENT_ON_TIP_HIDED, {id: lTipId_num});
+	}
+
+	_onTooltipsEnded()
+	{
+		this.info.gameTipsEnabled = false;
+		this._fTooltipsInProgress_bln = false;
+
+		APP.externalCommunicator.sendExternalMessage(GAME_MESSAGES.TOOLTIP_STATE_CHANGE, {value: false});
+	}
+
+	destroy()
+	{
+		APP.playerController.off(GamePlayerController.EVENT_ON_TOOLTIPS_UPDATED, this._onPlayerInfoTipsUpdated, this);
+
+		let lGameStateController_gsc = APP.currentWindow.gameStateController;
+		lGameStateController_gsc.off(GameStateController.EVENT_ON_GAME_ROUND_STATE_CHANGED, this._onGameRoundStateChanged, this);
+		lGameStateController_gsc.off(GameStateController.EVENT_ON_PLAYER_SEAT_STATE_CHANGED, this._onGamePlayerStateChanged, this);
+
+		let l_ltv = this.view;
+
+		if (l_ltv)
+		{
+			l_ltv.off(GameTooltipsView.EVENT_ON_TIP_SHOWN, this._onTooltipShown, this);
+			l_ltv.off(GameTooltipsView.EVENT_ON_TIP_HIDED, this._onTooltipHided, this);
+			l_ltv.off(GameTooltipsView.EVENT_ON_TIPS_ENDED, this._onTooltipsEnded, this);
+		}
+
+		super.destroy();
+
+		this._fTooltipsInProgress_bln = null;
+		this._fConnectionClosed_bln = null;
+	}
+}
+
+export default GameTooltipsController

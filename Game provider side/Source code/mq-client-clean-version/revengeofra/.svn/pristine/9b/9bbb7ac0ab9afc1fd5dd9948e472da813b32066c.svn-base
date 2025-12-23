@@ -1,0 +1,147 @@
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import { FRAME_RATE } from '../../../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../../../common/PIXI/src/animation/Sequence';
+import EternalOrbAnimation from './EternalOrbAnimation';
+import { Utils } from '../../../../../../../common/PIXI/src/Utils';
+import * as Easing from '../../../../../../../common/PIXI/src/animation/easing';
+
+const START_DELAY = 300;
+
+class TeleportOrbFxAnimation extends Sprite {
+
+	static get EVENT_ON_ANIMATION_COMPLETED() { return "EVENT_ON_ANIMATION_COMPLETED"};
+
+	i_startAnimation(duration) {
+		this._startAnimation(duration);
+	}
+
+	constructor() {
+		super();
+
+		this.container = this.addChild(new Sprite());
+		this._fEternalOrbAnimation_eoa = null;
+		this._fEternalOrbAnimationBlurred_eoa = null;
+
+		this._initView();
+	}
+
+	_initView() {
+		let lEternalOrbAnimationBlurred_eoa = new EternalOrbAnimation(true /*blurred*/);
+		lEternalOrbAnimationBlurred_eoa.scale.set(6.55);
+		this.container.addChild(lEternalOrbAnimationBlurred_eoa);
+		this._fEternalOrbAnimationBlurred_eoa = lEternalOrbAnimationBlurred_eoa;
+
+		let lEternalOrbAnimation_eoa = new EternalOrbAnimation();
+		lEternalOrbAnimation_eoa.scale.set(6.55);
+		this.container.addChild(lEternalOrbAnimation_eoa);
+		this._fEternalOrbAnimation_eoa = lEternalOrbAnimation_eoa;
+
+		lEternalOrbAnimationBlurred_eoa.alpha = 1;
+		lEternalOrbAnimation_eoa.alpha = 0;
+	}
+
+	_startAnimation(duration) {
+		this.scale.set(0.44);
+		this.alpha = 0;
+		this.rotation = Utils.gradToRad(57.3);
+
+		let alphaSequence = [
+			{
+				tweens: [],
+				duration: 0.10 * duration,
+				onfinish: () => {
+					this.scaleTo(1.126, duration * 0.9, Easing.cubic.easeInOut);
+					this.rotateTo(Utils.gradToRad(70.7), duration * 0.9);
+				}
+			},
+			{
+				tweens: [
+					{ prop: "alpha", to: 1 }
+				],
+				duration: 0.13 * duration
+			},
+			{
+				tweens: [],
+				duration: 0.23* duration
+			},
+			{
+				tweens: [
+					{ prop: "alpha", to: 0 }
+				],
+				duration: 0.54 * duration,
+				onfinish: () => {
+					this._onAnimationCompleted();
+				}
+			}
+		];
+		Sequence.start(this, alphaSequence);
+
+		this._startBlurChangeAnimation(duration);
+	}
+
+	_startBlurChangeAnimation(duration) {
+		let blurSequence_1 = [
+			{
+				tweens: [],
+				duration: 0.10 * duration + START_DELAY
+			},
+			{
+				tweens: [
+					{ prop: "alpha", to: 0 }
+				],
+				duration: 0.13 * duration
+			},
+			{
+				tweens: [],
+				duration: 0.23 * duration
+			},
+			{
+				tweens: [
+					{ prop: "alpha", to: 1 }
+				],
+				duration: 0.54 * duration
+			}
+		];
+
+		let blurSequence_2 = [
+			{
+				tweens: [],
+				duration: 0.10 * duration + START_DELAY
+			},
+			{
+				tweens: [
+					{ prop: "alpha", to: 1 }
+				],
+				duration: 0.13 * duration
+			},
+			{
+				tweens: [],
+				duration: 0.23 * duration
+			},
+			{
+				tweens: [
+					{ prop: "alpha", to: 0 }
+				],
+				duration: 0.54 * duration
+			}
+		];
+
+		Sequence.start(this._fEternalOrbAnimationBlurred_eoa, blurSequence_1);
+		Sequence.start(this._fEternalOrbAnimation_eoa, blurSequence_2);
+	}
+
+	_onAnimationCompleted() {
+		this.emit(TeleportOrbFxAnimation.EVENT_ON_ANIMATION_COMPLETED);
+	}
+
+
+	destroy() {
+		Sequence.destroy(Sequence.findByTarget(this));
+		Sequence.destroy(Sequence.findByTarget(this._fEternalOrbAnimationBlurred_eoa));
+		Sequence.destroy(Sequence.findByTarget(this._fEternalOrbAnimation_eoa));
+
+		super.destroy();
+	}
+}
+
+export default TeleportOrbFxAnimation;

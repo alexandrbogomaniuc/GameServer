@@ -1,0 +1,48 @@
+
+SectorX_Big_Enemy7.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 4, 533
+  size: 813, 456
+  orig: 813, 456
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 4, 4
+  size: 525, 613
+  orig: 525, 613
+  offset: 0, 0
+  index: -1
+tentacle1
+  rotate: false
+  xy: 821, 844
+  size: 136, 54
+  orig: 136, 54
+  offset: 0, 0
+  index: -1
+tentacle2
+  rotate: false
+  xy: 961, 767
+  size: 59, 131
+  orig: 59, 131
+  offset: 0, 0
+  index: -1
+tentacle3
+  rotate: false
+  xy: 621, 360
+  size: 54, 169
+  orig: 54, 169
+  offset: 0, 0
+  index: -1
+tentacle4
+  rotate: false
+  xy: 821, 902
+  size: 175, 87
+  orig: 175, 87
+  offset: 0, 0
+  index: -1

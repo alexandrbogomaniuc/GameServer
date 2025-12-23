@@ -1,0 +1,808 @@
+import SpineEnemy from './SpineEnemy';
+import { Utils } from '../../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+import { APP } from '../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import { FRAME_RATE } from '../../../../shared/src/CommonConstants';
+import { Sequence } from '../../../../../common/PIXI/src/dgphoenix/unified/controller/animation';
+import * as Easing from '../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import { STATE_WALK, STATE_TURN, DIRECTION, STATE_DEATH, TURN_DIRECTION } from './Enemy';
+import StaffOrbAnimation from '../../view/uis/enemies/horus/StaffOrbAnimation';
+import HorusEffectsManager from '../../view/uis/enemies/horus/HorusEffectsManager';
+import Sprite from '../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import HorusTeleportManager from './HorusTeleportManager';
+import Enemy from './Enemy';
+import TeleportOrbFxAnimation from '../../view/uis/enemies/horus/TeleportOrbFxAnimation';
+
+const FIRES_COUNT = 3;
+
+const LEFT_WING_FIRE_POSITIONS = [
+	{x: -20, y: -270},
+	{x:  40, y: -280},
+	{x:  20, y: -200}
+]
+
+const RIGHT_WING_FIRE_POSITIONS = [
+	{x:  -90, y: -270},
+	{x: -130, y: -280},
+	{x:  -80, y: -200}
+]
+
+class HorusEnemy extends SpineEnemy
+{
+	static get EVENT_ON_ENEMY_FLY_OUT_COMPLETED() 	{ return "EVENT_ON_ENEMY_FLY_OUT_COMPLETED"; }
+	static get EVENT_ON_ENEMY_FLY_IN_COMPLETED() 	{ return "EVENT_ON_ENEMY_FLY_IN_COMPLETED"; }
+	static get EVENT_ON_TRAJECTORY_UPDATED() 		{ return "EVENT_ON_TRAJECTORY_UPDATED";}
+
+	i_startFlyOutAnimation(duration) {
+		this._startFlyOutAnimation(duration);
+	}
+
+	i_startFlyInAnimation(duration, startPosition, targetPosition, angle) {
+		this._startFlyInAnimation(duration, startPosition, targetPosition, angle);
+	}
+
+	i_resetTeleportAnimation()
+	{
+		this._resetTeleportAnimation();
+	}
+
+	get flyOutInProgress()
+	{
+		return this._fFlyOutInProgress_bl;
+	}
+
+	get flyInInProgress()
+	{
+		return this._fFlyInInProgress_bl;
+	}
+
+	constructor(aParams_obj)
+	{
+		super(aParams_obj);
+	}
+
+	_invalidateStates()
+	{
+		this._fHorusTeleportManager_htm = new HorusTeleportManager(this);
+		this._fFlyOutInProgress_bl = false;
+		this._fFlyInInProgress_bl = false;
+		this._fTeleportShadowSeq = null;
+		this._fTeleportResetPosition_pt = null;
+		this._fTeleportOrbFx_tofa = null;
+
+		if (!this._fIsLasthand_bl)
+		{
+			this._showAppearanceAnimation();
+		}
+
+		super._invalidateStates();
+	}
+
+	_addSpecialEffectsIfRequired()
+	{
+		this._orb = null;
+		this._leftWingMask = null;
+		this._rightWingMask = null;
+ 		this._leftFire = [];
+ 		this._rightFire = [];
+ 		this._fAppearanceShadowSeq = null;
+
+ 		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+ 		{
+			this._initWingsFire();
+			this._updateWingsParams(true);
+		}
+
+		this._initOrb();
+		this._updateOrbOffset(true);
+	}
+
+	_updateOrbOffset(aOptInitial)
+	{
+		Sequence.destroy(Sequence.filter("position.x", this._orb));
+
+		let offset;
+
+		switch (this.direction)
+		{
+			case DIRECTION.LEFT_DOWN:
+				offset = {x: -95, y: -160};
+				break;
+			case DIRECTION.LEFT_UP:
+				offset = {x: -20, y: -220};
+				break;
+			case DIRECTION.RIGHT_DOWN:
+				offset = {x: 10, y: -130};
+				break;
+			case DIRECTION.RIGHT_UP:
+				offset = {x: 90, y: -175};
+				break;
+		}
+
+		if (aOptInitial)
+		{
+			this._orb.position.set(offset.x, offset.y);
+		}
+		else
+		{
+			Sequence.start(this._orb, [{tweens: [{prop: "position.x", to: offset.x}, {prop: "position.y", to: offset.y}], duration: FRAME_RATE * 8}]);
+		}
+	}
+
+	_updateWingsParams(aOptInitial)
+	{
+		Sequence.destroy(Sequence.findByTarget(this._leftWingMask));
+		Sequence.destroy(Sequence.findByTarget(this._rightWingMask));
+
+		let leftOffsetX, leftOffsetY, rightOffsetX, rightOffsetY, leftScaleX, leftScaleY, rightScaleX, rightScaleY, leftRotation, rightRotation;
+		let leftFirePositions = [], rightFirePositions = [];
+
+		switch (this.direction)
+		{
+			case DIRECTION.LEFT_DOWN:
+				leftOffsetX = -25;
+				leftOffsetY = -100;
+				rightOffsetX = -20;
+				rightOffsetY = -110;
+				leftScaleX = 1.4;
+				leftScaleY = 1.2;
+				rightScaleX = 1.2;
+				rightScaleY = 0.9;
+				leftRotation = Utils.gradToRad(-30);
+				rightRotation = Utils.gradToRad(210);
+
+				leftFirePositions = [-240, -250, -170];
+				rightFirePositions = [-240, -250, -170];
+				break;
+			case DIRECTION.LEFT_UP:
+				leftOffsetX = -25;
+				leftOffsetY = -115;
+				rightOffsetX = 10;
+				rightOffsetY = -110;
+				leftScaleX = 1.6;
+				leftScaleY = 1.2;
+				rightScaleX = 1.3;
+				rightScaleY = 1.1;
+				leftRotation = Utils.gradToRad(-50);
+				rightRotation = Utils.gradToRad(200);
+
+				leftFirePositions = [-300, -300, -250];
+				rightFirePositions = [-210, -200, -170];
+				break;
+			case DIRECTION.RIGHT_DOWN:
+				leftOffsetX = 25;
+				leftOffsetY = -130;
+				rightOffsetX = 15;
+				rightOffsetY = -85;
+				leftScaleX = 0.7;
+				leftScaleY = 0.7;
+				rightScaleX = 1.4;
+				rightScaleY = 1;
+				leftRotation = Utils.gradToRad(-60);
+				rightRotation = Utils.gradToRad(230);
+
+				leftFirePositions = [-240, -250, -170];
+				rightFirePositions = [-240, -250, -170];
+				break;
+			case DIRECTION.RIGHT_UP:
+				leftOffsetX = 0;
+				leftOffsetY = -105;
+				rightOffsetX = 0;
+				rightOffsetY = -110;
+				leftScaleX = 1;
+				leftScaleY = 1.2;
+				rightScaleX = 1.3;
+				rightScaleY = 1;
+				leftRotation = Utils.gradToRad(-20);
+				rightRotation = Utils.gradToRad(220);
+
+				leftFirePositions = [-220, -230, -150];
+				rightFirePositions = [-240, -250, -210];
+				break;
+		}
+
+		for (let i = 0; i < this._leftFire.length; i++)
+		{
+			this._leftFire[i].alpha = 0;
+			this._leftFire[i].position.y = leftFirePositions[i];
+
+			this._rightFire[i].alpha = 0;
+			this._rightFire[i].position.y = rightFirePositions[i];
+		}
+
+		this._leftWingMask.position.set(leftOffsetX, leftOffsetY);
+		this._leftWingMask.scale.set(leftScaleX, leftScaleY);
+		this._leftWingMask.rotation = leftRotation;
+
+		this._rightWingMask.position.set(rightOffsetX, rightOffsetY);
+		this._rightWingMask.scale.set(rightScaleX, rightScaleY);
+		this._rightWingMask.rotation = rightRotation;
+	}
+
+	_startWingsAnimation()
+	{
+		Sequence.destroy(Sequence.findByTarget(this._leftWingMask));
+		Sequence.destroy(Sequence.findByTarget(this._rightWingMask));
+
+		for (let i = 0; i < this._leftFire.length; i++)
+		{
+			this._leftFire[i].alpha = 1;
+			this._rightFire[i].alpha = 1;
+		}
+
+		let animTime = this.spineView.view.state.tracks[0].animationEnd / this.getSpineSpeed();
+		let animStep = animTime * 1000 / 8;
+		
+		let leftRotation, rightRotation, leftRotationOffset, rightRotationOffset;
+
+		switch (this.direction)
+		{
+			case DIRECTION.LEFT_DOWN:
+				//left wing
+				leftRotation = Utils.gradToRad(-30);
+				leftRotationOffset = Utils.gradToRad(20);
+
+				this._leftWingSequence = Sequence.start(this._leftWingMask, [
+					{tweens:[{prop: "rotation", to: leftRotation + leftRotationOffset}], duration: 2 * animStep, ease: Easing.quadratic.easeInOut},
+					{tweens:[{prop: "rotation", to: leftRotation}], duration: 4 * animStep, ease: Easing.quadratic.easeInOut}
+				]);
+
+				//right wing
+				rightRotation = Utils.gradToRad(210);
+				rightRotationOffset = Utils.gradToRad(-20);
+
+				this._rightWingSequence = Sequence.start(this._rightWingMask, [
+					{tweens:[{prop: "rotation", to: rightRotation + rightRotationOffset}], duration: 2 * animStep, ease: Easing.quadratic.easeInOut},
+					{tweens:[{prop: "rotation", to: rightRotation}], duration: 4 * animStep, ease: Easing.quadratic.easeInOut}
+				]);
+				break;
+			case DIRECTION.LEFT_UP:
+				//left wing
+				leftRotation = Utils.gradToRad(-50);
+				leftRotationOffset = Utils.gradToRad(15);
+
+				this._leftWingSequence = Sequence.start(this._leftWingMask, [
+					{tweens:[{prop: "rotation", to: leftRotation + leftRotationOffset}], duration: 2 * animStep, ease: Easing.quadratic.easeInOut},
+					{tweens:[{prop: "rotation", to: leftRotation}], duration: 6 * animStep, ease: Easing.quadratic.easeInOut},
+				]);
+
+				//right wing
+				rightRotation = Utils.gradToRad(190);
+				rightRotationOffset = Utils.gradToRad(-30);
+
+				this._rightWingSequence = Sequence.start(this._rightWingMask, [
+					{tweens:[{prop: "rotation", to: rightRotation + rightRotationOffset}], duration: 2 * animStep, ease: Easing.quadratic.easeInOut},
+					{tweens:[{prop: "rotation", to: rightRotation}], duration: 6 * animStep, ease: Easing.quadratic.easeInOut}
+				]);
+				break;
+			case DIRECTION.RIGHT_DOWN:
+				//left wing
+				leftRotation = Utils.gradToRad(-55);
+				leftRotationOffset = Utils.gradToRad(45);
+
+				this._leftWingSequence = Sequence.start(this._leftWingMask, [
+					{tweens:[{prop: "rotation", from: leftRotation + leftRotationOffset / 2, to: leftRotation + leftRotationOffset}], duration: 1.5 * animStep, ease: Easing.quadratic.easeOut},
+					{tweens:[{prop: "rotation", to: leftRotation}], duration: 4 * animStep, ease: Easing.quadratic.easeInOut},
+					{tweens:[{prop: "rotation", to: leftRotation + leftRotationOffset / 2}], duration: 2.5 * animStep, ease: Easing.quadratic.easeIn},
+				]);
+
+				//right wing
+				rightRotation = Utils.gradToRad(230);
+				rightRotationOffset = Utils.gradToRad(-20);
+
+				this._rightWingSequence = Sequence.start(this._rightWingMask, [
+					{tweens:[{prop: "rotation", from: rightRotation + rightRotationOffset / 2, to: rightRotation + rightRotationOffset}], duration: 1.5 * animStep, ease: Easing.quadratic.easeOut},
+					{tweens:[{prop: "rotation", to: rightRotation}], duration: 4 * animStep, ease: Easing.quadratic.easeInOut},
+					{tweens:[{prop: "rotation", to: rightRotation + rightRotationOffset / 2}], duration: 2.5 * animStep, ease: Easing.quadratic.easeIn},
+				]);
+				break;
+			case DIRECTION.RIGHT_UP:
+				//left wing
+				leftRotation = Utils.gradToRad(0);
+				leftRotationOffset = Utils.gradToRad(15);
+
+				this._leftWingSequence = Sequence.start(this._leftWingMask, [
+					{tweens:[{prop: "rotation", from: leftRotation + leftRotationOffset / 2, to: leftRotation + leftRotationOffset}], duration: 1 * animStep},
+					{tweens:[{prop: "rotation", to: leftRotation}], duration: 3 * animStep, ease: Easing.quadratic.easeInOut},
+					{tweens:[{prop: "rotation", to: leftRotation + leftRotationOffset / 2}], duration: 4 * animStep, ease: Easing.quadratic.easeIn},
+				]);
+
+				//right wing
+				rightRotation = Utils.gradToRad(220);
+				rightRotationOffset = Utils.gradToRad(-20);
+
+				this._rightWingSequence = Sequence.start(this._rightWingMask, [
+					{tweens:[{prop: "rotation", from: rightRotation + rightRotationOffset / 2, to: rightRotation + rightRotationOffset}], duration: 1 * animStep},
+					{tweens:[{prop: "rotation", to: rightRotation}], duration: 3 * animStep, ease: Easing.quadratic.easeInOut},
+					{tweens:[{prop: "rotation", to: rightRotation + rightRotationOffset / 2}], duration: 4 * animStep, ease: Easing.quadratic.easeIn},
+				]);
+				break;
+			
+		}
+		
+	}
+
+	_initOrb()
+	{
+		let orb = this._orb = this.container.addChild(new StaffOrbAnimation());
+		orb.zIndex = 100;
+	}
+
+	_initWingsFire()
+	{
+		let leftMaskTexture = Sprite.getFrames(APP.library.getAsset("enemies/horus/fx/wings_mask", true))[0];
+
+ 		let leftWing = this._leftWingMask = this.container.addChild(new PIXI.Sprite(leftMaskTexture));
+		leftWing.anchor.set(0, 0.5);
+		leftWing.scale.set(2);
+		leftWing.convertToHeaven();
+		leftWing.blendMode = PIXI.BLEND_MODES.ADD;
+		leftWing.alpha = 0;
+
+		let rightMaskTexture = Sprite.getFrames(APP.library.getAsset("enemies/horus/fx/wings_mask", true))[0];
+
+ 		let rightWing = this._rightWingMask = this.container.addChild(new PIXI.Sprite(rightMaskTexture));
+		rightWing.anchor.set(0, 0.5);
+		rightWing.scale.set(2);
+		rightWing.convertToHeaven();
+		rightWing.blendMode = PIXI.BLEND_MODES.ADD;
+		rightWing.alpha = 0;
+
+ 		for (var i = 0; i < FIRES_COUNT; i++)
+ 		{
+			let leftFire = this._leftFire[i] = this.container.addChild(new PIXI.heaven.Sprite());
+			let lLeftAnimState_as = new PIXI.heaven.AnimationState(HorusEffectsManager.getWingsFireTextures());
+			lLeftAnimState_as.loop = true;
+			lLeftAnimState_as.bind(leftFire);
+			lLeftAnimState_as.animationSpeed = 30/60;
+			leftFire.scale.set(2);
+			leftFire.position.x += LEFT_WING_FIRE_POSITIONS[i].x;
+			leftFire.position.y += LEFT_WING_FIRE_POSITIONS[i].y;
+			leftFire.blendMode = PIXI.BLEND_MODES.ADD;
+			leftFire.maskSprite = leftWing;
+			leftFire.pluginName = 'batchMasked';
+			leftFire.animState.play();
+			leftFire.zIndex = 100;
+			//leftFire.renderable = false;
+
+			let rightFire = this._rightFire[i] = this.container.addChild(new PIXI.heaven.Sprite());
+			let lRightAnimState_as = new PIXI.heaven.AnimationState(HorusEffectsManager.getWingsFireTextures());
+			lRightAnimState_as.loop = true;
+			lRightAnimState_as.bind(rightFire);
+			lRightAnimState_as.animationSpeed = 30/60;
+			rightFire.scale.set(2);
+			rightFire.position.x += RIGHT_WING_FIRE_POSITIONS[i].x;
+			rightFire.position.y += RIGHT_WING_FIRE_POSITIONS[i].y;
+			rightFire.blendMode = PIXI.BLEND_MODES.ADD;
+			rightFire.maskSprite = rightWing;
+			rightFire.pluginName = 'batchMasked';
+			rightFire.animState.play();
+			rightFire.zIndex = 100;
+			//rightFire.renderable = false;
+ 		}
+	}
+
+	//override
+	getStepTimers()
+	{
+		let timers = [];
+
+		if (this.state == STATE_WALK)
+		{
+			timers = [ {time: 0} ];
+		}
+
+		this._stepsAmount = timers.length;
+
+		return timers;
+	}
+
+	//override
+	_onFootStepOccured(curStepId)
+	{
+		super._onFootStepOccured(curStepId);
+
+		this._startWingsAnimation();
+	}
+
+	//override
+	changeTextures(type, noChangeFrame, switchView, checkBackDirection)
+	{
+		super.changeTextures(type, noChangeFrame, switchView, checkBackDirection);
+
+		if (type == STATE_TURN)
+		{
+			this._updateOrbOffset();
+			APP.profilingController.info.isVfxProfileValueMediumOrGreater && this._updateWingsParams();
+		}
+
+		if (type == STATE_DEATH)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._orb));
+			Sequence.destroy(Sequence.findByTarget(this._leftWingMask));
+			Sequence.destroy(Sequence.findByTarget(this._rightWingMask));
+
+			for (let i = 0; i < this._leftFire.length; i++)
+			{
+				Sequence.destroy(Sequence.findByTarget(this._leftFire[i]));
+				Sequence.destroy(Sequence.findByTarget(this._rightFire[i]));
+
+				this._leftFire[i].alpha = 0;
+				this._rightFire[i].alpha = 0;
+			}
+
+			this._orb.destroy();
+		}
+	}
+
+	//override
+	_freeze(aIsAnimated_bl = true)
+	{
+		super._freeze(aIsAnimated_bl);
+
+		this._leftWingSequence && this._leftWingSequence.pause();
+		this._rightWingSequence && this._rightWingSequence.pause();
+
+		this._fTeleportShadowSeq && this._fTeleportShadowSeq.pause();
+		this._fFly_seq && this._fFly_seq.pause();
+
+		Sequence.destroy(Sequence.filter('alpha', this._orb));
+		Sequence.start(this._orb, [{tweens: {prop: 'alpha', to: 0}, duration: FRAME_RATE * 8}]);
+
+		for (let i = 0; i < this._leftFire.length; i++)
+		{
+			Sequence.start(this._leftFire[i], [{tweens: {prop: 'alpha', to: 0}, duration: FRAME_RATE * 5}]);
+			Sequence.start(this._rightFire[i], [{tweens: {prop: 'alpha', to: 0}, duration: FRAME_RATE * 5}]);
+		}
+	}
+
+	//override
+	_unfreeze(aIsAnimated_bl = true)
+	{
+		super._unfreeze(aIsAnimated_bl);
+
+		this._leftWingSequence && this._leftWingSequence.resume();
+		this._rightWingSequence && this._rightWingSequence.resume();
+
+		this._fTeleportShadowSeq && this._fTeleportShadowSeq.resume();
+		this._fFly_seq && this._fFly_seq.resume();
+
+		Sequence.destroy(Sequence.filter('alpha', this._orb));
+		Sequence.start(this._orb, [{tweens: {prop: 'alpha', to: 1}, duration: FRAME_RATE * 5}]);
+
+		for (let i = 0; i < this._leftFire.length; i++)
+		{
+			Sequence.start(this._leftFire[i], [{tweens: {prop: 'alpha', to: 1}, duration: FRAME_RATE * 5}]);
+			Sequence.start(this._rightFire[i], [{tweens: {prop: 'alpha', to: 1}, duration: FRAME_RATE * 5}]);
+		}
+	}
+
+	updateTrajectory(aTrajectory_obj)
+	{
+		super.updateTrajectory(aTrajectory_obj);
+
+		this.emit(HorusEnemy.EVENT_ON_TRAJECTORY_UPDATED);
+	}
+
+	//APPEARANCE...
+	_showAppearanceAnimation()
+	{
+		this.bossAppearanceDelta = {x: 0, y: -300, rotation: 0};
+		this.bossAppearanceDelta.sequences = [];
+
+		let landingSeq = [{tweens:[{prop: "y", to: 0}], duration: 60 * FRAME_RATE, ease: Easing.cubic.easeOut, onfinish: () => { this._resetAppearanceDelta() }}]
+
+		this.changeShadowPosition();
+		this.shadow.scale.set(0.5);
+		this.shadow.alpha = 0;
+
+		let shadowSeq = [{
+			tweens:
+			[
+				{prop: "alpha", to: 0.9},
+				{prop: "scale.x", to: 1.2},
+				{prop: "scale.y", to: 1.2},
+				{prop: "position.y", to: this.shadow.position.y}
+			],
+			duration: 60 * FRAME_RATE, ease: Easing.cubic.easeOut, onfinish: () => { this._resetAppearanceShadowAnimation() }
+		}]
+
+		this.bossAppearanceDelta.sequences.push(Sequence.start(this.bossAppearanceDelta, landingSeq));
+
+		this.shadow.position.y += 300;
+		this._fAppearanceShadowSeq = Sequence.start(this.shadow, shadowSeq);
+	}
+
+	_resetAppearanceAnimation()
+	{
+		this._resetAppearanceDelta();
+		this._resetAppearanceShadowAnimation();
+		this.changeShadowPosition();
+	}
+
+	_resetAppearanceShadowAnimation()
+	{
+		this._fAppearanceShadowSeq && this._fAppearanceShadowSeq.destructor();
+		this._fAppearanceShadowSeq = null;
+	}
+
+	get _isAppearanceInProgress()
+	{
+		return !!this.bossAppearanceDelta || this._fAppearanceShadowSeq;
+	}
+
+	//override
+	changeShadowPosition()
+	{
+		if (this._isAppearanceInProgress)
+		{
+			return;
+		}
+
+		super.changeShadowPosition();
+	}
+	//...APPEARANCE
+
+	//TELEPORT...
+	//override
+	tick() {
+		super.tick();
+		this._fHorusTeleportManager_htm.i_invalidate();
+	}
+
+	//FLY OUT...
+	_startFlyOutAnimation(duration)
+	{
+		if (!this || this._fFlyOutInProgress_bl || !this.position || this._fIsDeathActivated_bl)
+		{
+			return;
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this));
+
+		this._fTeleportResetPosition_pt = new PIXI.Point(this.position.x, this.position.y);
+
+		this._fFlyOutInProgress_bl = true;
+
+		let flyOutSeq = [{
+							tweens:[{ prop: "y", to: -300 }],
+							duration: duration,
+							ease: Easing.cubic.easeIn,
+							onfinish: () => { this._onFlyOutCompleted() }
+						}];
+
+		let shadowSeq = [{
+			tweens:
+			[
+				{prop: "alpha", to: 0},
+				{prop: "y", to: this.shadow.position.y + this.position.y + 300}
+			],
+			ease: Easing.cubic.easeIn,
+			duration: duration
+		}]
+
+		this._fFly_seq = Sequence.start(this, flyOutSeq);
+		this._fTeleportShadowSeq = Sequence.start(this.shadow, shadowSeq);
+	}
+
+	_onFlyOutCompleted() {
+		this._fFly_seq = null;
+		this._fFlyOutInProgress_bl = false;
+		this.emit(HorusEnemy.EVENT_ON_ENEMY_FLY_OUT_COMPLETED);
+	}
+	//...FLY OUT
+
+	//FLY IN...
+	_startFlyInAnimation(duration, startPosition, targetPosition, angle)
+	{
+		if (!this || this._fFlyInInProgress_bl || !this.position || this._fIsDeathActivated_bl)
+		{
+			return;
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this));
+
+		this.enemyAngle = angle;
+
+		this._fTeleportResetPosition_pt = new PIXI.Point(targetPosition.x, targetPosition.y);
+
+		this._fFlyInInProgress_bl = true;
+
+		this.position.set(startPosition.x, startPosition.y);
+
+		let flyInSeq = [{
+							tweens:[
+								{ prop: "x", to: targetPosition.x },
+								{ prop: "y", to: targetPosition.y }
+							],
+							duration: duration,
+							ease: Easing.cubic.easeInOut,
+							onfinish: () => { this._onFlyInCompleted() }
+						}];
+
+		this.changeShadowPosition(); //reset shadow position
+		this.shadow.alpha = 0;
+		let shadowSeq = [{
+			tweens:
+			[
+				{prop: "alpha", to: 0.9},
+				{prop: "position.y", to: this.shadow.position.y }
+			],
+			ease: Easing.cubic.easeInOut,
+			duration: duration
+		}];
+
+		let delta = targetPosition.y - startPosition.y;
+		this.shadow.position.y += delta;
+
+		this._fFly_seq = Sequence.start(this, flyInSeq);
+		this._fTeleportShadowSeq = Sequence.start(this.shadow, shadowSeq);
+
+		this._startFlyInFx(duration+4*FRAME_RATE);
+	}
+
+	_onFlyInCompleted() {
+		this._fFly_seq = null;
+		this._fFlyInInProgress_bl = false;
+		this.emit(HorusEnemy.EVENT_ON_ENEMY_FLY_IN_COMPLETED);
+	}
+
+	_startFlyInFx(duration) {
+		if (!APP.profilingController.info.isVfxDynamicProfileValueMediumOrGreater) return;
+
+		this._fTeleportOrbFx_tofa = new TeleportOrbFxAnimation();
+		let lOffset_pt = this.getLocalCenterOffset();
+		this._fTeleportOrbFx_tofa.position.x = lOffset_pt.x;
+		this._fTeleportOrbFx_tofa.position.y = lOffset_pt.y;
+		this.addChild(this._fTeleportOrbFx_tofa);
+		this._fTeleportOrbFx_tofa.on(TeleportOrbFxAnimation.EVENT_ON_ANIMATION_COMPLETED, this._resetFlyInFx, this);
+		this._fTeleportOrbFx_tofa.i_startAnimation(duration);
+	}
+
+	_resetFlyInFx() {
+		if (this._fTeleportOrbFx_tofa)
+		{
+			this._fTeleportOrbFx_tofa.off(TeleportOrbFxAnimation.EVENT_ON_ANIMATION_COMPLETED, this._resetFlyInFx, this);
+			this._fTeleportOrbFx_tofa.destroy();
+			this._fTeleportOrbFx_tofa = null;
+		}
+
+	}
+	//...FLY IN
+
+	_resetTeleportAnimation()
+	{
+		if (!this._fTeleportResetPosition_pt)
+		{
+			this._fTeleportResetPosition_pt = this.position;
+		}
+
+		let seqRestorePosition = [
+			{
+				tweens: [
+					{prop: "y", to: this._fTeleportResetPosition_pt.y},
+				],
+				duration: 200
+			}
+		];
+
+		this._fFlyOutInProgress_bl = false;
+		this._fFlyInInProgress_bl = false;
+		Sequence.destroy(Sequence.findByTarget(this));
+		this._fTeleportShadowSeq && this._fTeleportShadowSeq.destructor();
+
+		Sequence.start(this, seqRestorePosition);
+	}
+	//...TELEPORT
+
+	setDeathFramesAnimation(aIsInstantKill_bl = false, aPlayerWin_obj = null)
+	{
+		this._resetAppearanceAnimation();
+		super.setDeathFramesAnimation(aIsInstantKill_bl, aPlayerWin_obj);
+	}
+
+	changeZindex()
+	{
+		if (this._fTeleportResetPosition_pt && (this._fFlyInInProgress_bl || this._fFlyOutInProgress_bl)) {
+
+			this.zIndex = this._fTeleportResetPosition_pt.y + this.footPoint.y + 30;
+			return;
+		}
+		super.changeZindex();
+	}
+
+	_calculateDirection()
+	{
+		return HorusEnemy.getDirection(this.enemyAngle);
+	}
+
+	static getDirection(angle)
+	{
+		let direction = DIRECTION.RIGHT_DOWN;
+		if (angle > Math.PI*2) angle -= Math.PI*2;
+		if (angle < 0) angle = 2*Math.PI - angle;
+
+		if (angle > 0) direction = DIRECTION.RIGHT_DOWN;
+		if (angle > Math.PI/2) direction = DIRECTION.LEFT_DOWN;
+
+		return direction
+	}
+
+	_getPossibleDirections()
+	{
+		return [0, 90];
+	}
+
+	getTurnAnimationName()
+	{
+		let lDirectionsAngles_int_arr = [0, 90]; //CCW
+		let lFinalAngle_num = Number(this.direction.substr(3));
+		let lFinalAngleIndex_int = lDirectionsAngles_int_arr.indexOf(lFinalAngle_num);
+
+		let j = this.turnDirection == TURN_DIRECTION.CCW ? -1 : 1;
+		let lPreviousAngleIndex_int = (lFinalAngleIndex_int + j) % lDirectionsAngles_int_arr.length;
+		if (lPreviousAngleIndex_int < 0)
+		{
+			lPreviousAngleIndex_int = lDirectionsAngles_int_arr.length + lPreviousAngleIndex_int;
+		}
+		let lPreviousAngle_num = lDirectionsAngles_int_arr[lPreviousAngleIndex_int];
+
+		return (lPreviousAngle_num + "_to_" + lFinalAngle_num + this.turnPostfix); //i.e. 270_to_180_turn
+
+	}
+
+	destroy(purely = false)
+	{
+		this._fHorusTeleportManager_htm && this._fHorusTeleportManager_htm.destroy();
+		this._fHorusTeleportManager_htm = null;
+
+		this._fFly_seq = null;
+
+		this._fFlyOutInProgress_bl = false;
+		this._fFlyInInProgress_bl = false;
+		Sequence.destroy(Sequence.findByTarget(this));
+		this._fTeleportShadowSeq && this._fTeleportShadowSeq.destructor();
+		this._fTeleportResetPosition_pt = null;
+
+		this.appearancePositionUpdated = false;
+
+		Sequence.destroy(Sequence.findByTarget(this._orb));
+		Sequence.destroy(Sequence.findByTarget(this._leftWingMask));
+		Sequence.destroy(Sequence.findByTarget(this._rightWingMask));
+
+		for (let i = 0; i < this._leftFire.length; i++)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._leftFire[i]));
+			Sequence.destroy(Sequence.findByTarget(this._rightFire[i]));
+		}
+
+		this._fAppearanceShadowSeq && this._fAppearanceShadowSeq.destructor();
+		this._fAppearanceShadowSeq = null;
+
+		this._orb.destroy();
+
+		super.destroy(purely);
+	}
+
+	//override
+	updateIndicatorsPosition()
+	{
+		super.updateIndicatorsPosition();
+
+		if(
+			!this._fFlyOutInProgress_bl &&
+			!this._fFlyInInProgress_bl
+			)
+		{
+			let lMinY_num = 40;
+			let lIndicatorY_num =  this.enemyIndicatorsController.view.position.y + this.position.y;
+			if(lIndicatorY_num < lMinY_num)
+			{
+				this.enemyIndicatorsController.view.position.y += lMinY_num - lIndicatorY_num;
+			}
+		}
+
+		
+	}
+}
+
+export default HorusEnemy;

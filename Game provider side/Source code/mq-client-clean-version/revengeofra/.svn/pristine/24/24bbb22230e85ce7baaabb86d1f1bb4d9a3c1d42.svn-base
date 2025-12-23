@@ -1,0 +1,495 @@
+{
+  "frames": {
+    "fire_0000_Слой 20.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0001_Слой 19.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 307,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0002_Слой 18.jpg": {
+      "frame": {
+        "x": 152,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0003_Слой 17.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 614,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0004_Слой 16.jpg": {
+      "frame": {
+        "x": 152,
+        "y": 307,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0005_Слой 15.jpg": {
+      "frame": {
+        "x": 304,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0006_Слой 14.jpg": {
+      "frame": {
+        "x": 152,
+        "y": 614,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0007_Слой 13.jpg": {
+      "frame": {
+        "x": 304,
+        "y": 307,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0008_Слой 12.jpg": {
+      "frame": {
+        "x": 456,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0009_Слой 11.jpg": {
+      "frame": {
+        "x": 304,
+        "y": 614,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0010_Слой 10.jpg": {
+      "frame": {
+        "x": 456,
+        "y": 307,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0011_Слой 9.jpg": {
+      "frame": {
+        "x": 608,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0012_Слой 8.jpg": {
+      "frame": {
+        "x": 456,
+        "y": 614,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0013_Слой 7.jpg": {
+      "frame": {
+        "x": 608,
+        "y": 307,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0014_Слой 6.jpg": {
+      "frame": {
+        "x": 760,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0015_Слой 5.jpg": {
+      "frame": {
+        "x": 608,
+        "y": 614,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0016_Слой 4.jpg": {
+      "frame": {
+        "x": 760,
+        "y": 307,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0017_Слой 3.jpg": {
+      "frame": {
+        "x": 912,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0018_Слой 2.jpg": {
+      "frame": {
+        "x": 760,
+        "y": 614,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "fire_0019_Слой 1.jpg": {
+      "frame": {
+        "x": 912,
+        "y": 307,
+        "w": 152,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 152,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 152,
+        "h": 307
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "texture.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 2048,
+      "h": 1024
+    },
+    "scale": 2
+  }
+}

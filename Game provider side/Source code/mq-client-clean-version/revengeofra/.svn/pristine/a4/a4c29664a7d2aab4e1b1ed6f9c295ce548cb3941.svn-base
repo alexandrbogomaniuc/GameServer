@@ -1,0 +1,181 @@
+import Sprite from '../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import { APP } from '../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import { FRAME_RATE } from '../../../../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
+import * as Easing from '../../../../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import AtlasSprite from '../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/AtlasSprite';
+import AtlasConfig from '../../../../../config/AtlasConfig';
+
+class WheelRimEffects extends Sprite
+{
+	constructor()
+	{
+		super();
+
+		this._delaysSeq = null;
+		this._strongGlow = null;
+		this._normalOuterGlow = null;
+		this._normalInnerGlow = null;
+
+		WheelRimEffects.initTextures();
+
+		this._initAnimation();
+	}
+
+	_initAnimation()
+	{
+		this._startDelaysSequence();
+	}
+
+	_startDelaysSequence()
+	{
+		let seq = [
+			{tweens: [], duration: 9*FRAME_RATE, onfinish: () => { this._onOuterGlowsTime(); } },
+			{tweens: [], duration: (61+43)*FRAME_RATE, onfinish: () => { this._onInnerGlowTime(); } },
+		];
+
+		this._delaysSeq = Sequence.start(this, seq);
+	}
+
+	_onOuterGlowsTime()
+	{
+		this._addStrongGlow();
+		this._addNormalOuterGlow();
+	}
+
+	_addStrongGlow()
+	{
+		let strongGlow = this._strongGlow = this.addChild(new Sprite);
+		strongGlow.textures = WheelRimEffects._rimTextures.strongGlow;
+		strongGlow.blendMode = PIXI.BLEND_MODES.ADD;
+		strongGlow.scale.set(4);
+		strongGlow.alpha = 0;
+
+		let scaleSeq = [
+			{tweens: [], duration: 5*FRAME_RATE },
+			{tweens: [{prop: 'scale.x', to: 4*2}, {prop: 'scale.y', to: 4*2}], duration: 7*FRAME_RATE }
+		];
+
+		let fadeSeq = [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 1*FRAME_RATE },
+			{tweens: [], duration: 2*FRAME_RATE },
+			{tweens: [{prop: 'alpha', to: 0}], duration: 9*FRAME_RATE, ease: Easing.sine.easeIn, onfinish: () => { this._destroyStrongGlow(); } }
+		];
+
+		Sequence.start(strongGlow, scaleSeq);
+		Sequence.start(strongGlow, fadeSeq);		
+	}
+
+	_destroyStrongGlow()
+	{
+		if (!this._strongGlow)
+		{
+			return;
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this._strongGlow));
+
+		this._strongGlow.destroy();
+		this._strongGlow = null;
+	}
+
+	_addNormalOuterGlow()
+	{
+		let normalOuterGlow = this._normalOuterGlow = this.addChild(new Sprite);
+		normalOuterGlow.textures = WheelRimEffects._rimTextures.normalOuterGlow;
+		normalOuterGlow.blendMode = PIXI.BLEND_MODES.ADD;
+		normalOuterGlow.scale.set(4.25);
+		normalOuterGlow.alpha = 0;
+		normalOuterGlow.anchor.set(0.505, 0.5);
+
+		let fadeSeq = [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 1*FRAME_RATE },
+			{tweens: [], duration: 21*FRAME_RATE },
+			{tweens: [{prop: 'alpha', to: 0}], duration: 9*FRAME_RATE },
+			{tweens: [], duration: (20+43)*FRAME_RATE },
+			{tweens: [{prop: 'alpha', to: 1}], duration: 1*FRAME_RATE },
+			{tweens: [{prop: 'alpha', to: 0}], duration: 9*FRAME_RATE, ease: Easing.sine.easeOut, onfinish: () => { this._destroyNormalOuterGlow(); } }
+		];
+
+		Sequence.start(normalOuterGlow, fadeSeq);		
+	}
+
+	_destroyNormalOuterGlow()
+	{
+		if (!this._normalOuterGlow)
+		{
+			return;
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this._normalOuterGlow));
+
+		this._normalOuterGlow.destroy();
+		this._normalOuterGlow = null;
+	}
+
+	_onInnerGlowTime()
+	{
+		this._addNormalInnerGlow();
+	}
+
+	_addNormalInnerGlow()
+	{
+		let normalInnerGlow = this._normalInnerGlow = this.addChild(new Sprite);
+		normalInnerGlow.textures = WheelRimEffects._rimTextures.mormalInnerGlow;
+		normalInnerGlow.blendMode = PIXI.BLEND_MODES.ADD;
+		normalInnerGlow.scale.set(4.25);
+		normalInnerGlow.alpha = 0;
+
+		let fadeSeq = [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 4*FRAME_RATE },
+			{tweens: [{prop: 'alpha', to: 0}], duration: 14*FRAME_RATE, ease: Easing.sine.easeOut, onfinish: () => { this.destroy(); } }
+		];
+
+		Sequence.start(normalInnerGlow, fadeSeq);		
+	}
+
+	_destroyNormalInnerGlow()
+	{
+		if (!this._normalInnerGlow)
+		{
+			return;
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this._normalInnerGlow));
+
+		this._normalInnerGlow.destroy();
+		this._normalInnerGlow = null;
+	}
+
+	destroy ()
+	{
+		this._delaysSeq && this._delaysSeq.destructor();
+		this._delaysSeq = null;
+
+		this._destroyStrongGlow();
+		this._destroyNormalOuterGlow();
+		this._destroyNormalInnerGlow();
+
+		super.destroy();
+	}
+}
+
+WheelRimEffects.getBrownDigitsTextures = function ()
+{
+	if (!WheelRimEffects.brownDigitsTextures)
+	{
+		WheelRimEffects.setBrownDigitsTextures();
+	}
+	return WheelRimEffects.brownDigitsTextures;
+}
+
+WheelRimEffects.initTextures = function ()
+{
+	WheelRimEffects._rimTextures = {};
+
+	WheelRimEffects._rimTextures.strongGlow = AtlasSprite.getFrames(APP.library.getAsset("quests/wheel/wheel_rim_glow"), AtlasConfig.WheelRimGlow, "strong");
+	WheelRimEffects._rimTextures.mormalInnerGlow = AtlasSprite.getFrames(APP.library.getAsset("quests/wheel/wheel_rim_glow"), AtlasConfig.WheelRimGlow, "normal_inner");
+	WheelRimEffects._rimTextures.normalOuterGlow = AtlasSprite.getFrames(APP.library.getAsset("quests/wheel/wheel_rim_glow"), AtlasConfig.WheelRimGlow, "normal_outer");
+}
+
+export default WheelRimEffects;

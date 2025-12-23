@@ -1,0 +1,53 @@
+---
+  - name: Uploading lobby
+    copy:
+      src: "{{ build_root }}/sector-x-btg-lobby.tar.gz"
+      dest: "/home/users/{{ user }}/deploy/sector-x-btg-lobby.tar.gz"
+
+  - name: Uploading game
+    copy:
+      src: "{{ build_root }}/sector-x-btg-game.tar.gz"
+      dest: "/home/users/{{ user }}/deploy/sector-x-btg-game.tar.gz"
+
+  - name: Removing old backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/_backup"
+      state: absent
+
+  - name: Creating dir for backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/_backup"
+      state: directory
+
+  - name: Check lobby exists before backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/lobby/"
+      state: directory
+
+  - name: Creating lobby backup
+    shell: "mv /www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/lobby/ /www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/_backup/lobby/"
+
+  - name: Creating dir for lobby
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/lobby/"
+      state: directory
+
+  - name: Extracting lobby
+    shell: "tar -xzf /home/users/{{ user }}/deploy/sector-x-btg-lobby.tar.gz -C /www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/lobby/"
+
+  - name: Check game exists before backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/game/"
+      state: directory
+
+  - name: Creating game backup
+    shell: "mv /www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/game/ /www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/_backup/game/"
+
+  - name: Creating dir for game
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/game/"
+      state: directory
+
+  - name: Extracting game
+    shell: "tar -xzf /home/users/{{ user }}/deploy/sector-x-btg-game.tar.gz -C /www/html/{{ lobby_name }}/html5pc/actiongames/sectorx_btg/game/"
+

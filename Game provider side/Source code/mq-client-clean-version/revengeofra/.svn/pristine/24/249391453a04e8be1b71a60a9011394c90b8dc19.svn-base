@@ -1,0 +1,1073 @@
+var AnubisElectricity = {
+  "frames": {
+    "arc_4/electricity_arc_4.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 59,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 59,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 59,
+        "h": 37
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "arc_6/electricity_arc_6.jpg": {
+      "frame": {
+        "x": 62,
+        "y": 1,
+        "w": 64,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 28
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "arc_back/electricity_arc_back.jpg": {
+      "frame": {
+        "x": 128,
+        "y": 1,
+        "w": 54,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 54,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 54,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "arc_overlay/electricity_arc_overlay.jpg": {
+      "frame": {
+        "x": 62,
+        "y": 31,
+        "w": 88,
+        "h": 60
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 88,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 92,
+        "h": 60
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "arc_lighten_overlay/electricity_lighten_arc_overlay.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 35,
+        "w": 69,
+        "h": 55
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 18,
+        "w": 69,
+        "h": 55
+      },
+      "sourceSize": {
+        "w": 69,
+        "h": 73
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_01.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 106,
+        "w": 47,
+        "h": 40
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 56,
+        "y": 56,
+        "w": 47,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_02.jpg": {
+      "frame": {
+        "x": 184,
+        "y": 1,
+        "w": 45,
+        "h": 44
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 56,
+        "y": 56,
+        "w": 45,
+        "h": 44
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_03.jpg": {
+      "frame": {
+        "x": 124,
+        "y": 35,
+        "w": 48,
+        "h": 50
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 56,
+        "y": 52,
+        "w": 48,
+        "h": 50
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_04.jpg": {
+      "frame": {
+        "x": 124,
+        "y": 85,
+        "w": 51,
+        "h": 56
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 53,
+        "y": 48,
+        "w": 51,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_05.jpg": {
+      "frame": {
+        "x": 50,
+        "y": 121,
+        "w": 56,
+        "h": 58
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 46,
+        "w": 56,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_06.jpg": {
+      "frame": {
+        "x": 50,
+        "y": 179,
+        "w": 58,
+        "h": 64
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 40,
+        "w": 58,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_07.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 239,
+        "w": 61,
+        "h": 67
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 48,
+        "y": 40,
+        "w": 61,
+        "h": 67
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_08.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 308,
+        "w": 70,
+        "h": 68
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 40,
+        "w": 70,
+        "h": 68
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_09.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 380,
+        "w": 71,
+        "h": 73
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 37,
+        "w": 71,
+        "h": 73
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_10.jpg": {
+      "frame": {
+        "x": 71,
+        "y": 239,
+        "w": 72,
+        "h": 79
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 33,
+        "w": 72,
+        "h": 79
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_11.jpg": {
+      "frame": {
+        "x": 116,
+        "y": 138,
+        "w": 72,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 32,
+        "w": 72,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_12.jpg": {
+      "frame": {
+        "x": 182,
+        "y": 47,
+        "w": 72,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 32,
+        "w": 72,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_13.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 455,
+        "w": 70,
+        "h": 75
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 42,
+        "y": 32,
+        "w": 70,
+        "h": 75
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_14.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 532,
+        "w": 72,
+        "h": 77
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 35,
+        "w": 72,
+        "h": 77
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_15.jpg": {
+      "frame": {
+        "x": 73,
+        "y": 455,
+        "w": 72,
+        "h": 76
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 36,
+        "w": 72,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/foot_arcs/foot_arcs_16.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 148,
+        "w": 24,
+        "h": 78
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 32,
+        "w": 24,
+        "h": 78
+      },
+      "sourceSize": {
+        "w": 146,
+        "h": 148
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_01.jpg": {
+      "frame": {
+        "x": 71,
+        "y": 320,
+        "w": 50,
+        "h": 24
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 64,
+        "y": 48,
+        "w": 50,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_02.jpg": {
+      "frame": {
+        "x": 231,
+        "y": 1,
+        "w": 66,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 59,
+        "y": 43,
+        "w": 66,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_03.jpg": {
+      "frame": {
+        "x": 74,
+        "y": 372,
+        "w": 101,
+        "h": 56
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 42,
+        "y": 32,
+        "w": 101,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_04.jpg": {
+      "frame": {
+        "x": 145,
+        "y": 220,
+        "w": 152,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 24,
+        "w": 152,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_05.jpg": {
+      "frame": {
+        "x": 256,
+        "y": 39,
+        "w": 188,
+        "h": 101
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 16,
+        "w": 188,
+        "h": 101
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_06.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 611,
+        "w": 188,
+        "h": 109
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 188,
+        "h": 109
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_07.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 801,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_08.jpg": {
+      "frame": {
+        "x": 112,
+        "y": 529,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_09.jpg": {
+      "frame": {
+        "x": 177,
+        "y": 302,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_10.jpg": {
+      "frame": {
+        "x": 120,
+        "y": 719,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_11.jpg": {
+      "frame": {
+        "x": 231,
+        "y": 492,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_12.jpg": {
+      "frame": {
+        "x": 296,
+        "y": 302,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_13.jpg": {
+      "frame": {
+        "x": 350,
+        "y": 142,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_14.jpg": {
+      "frame": {
+        "x": 446,
+        "y": 1,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_15.jpg": {
+      "frame": {
+        "x": 239,
+        "y": 682,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_16.jpg": {
+      "frame": {
+        "x": 350,
+        "y": 492,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_17.jpg": {
+      "frame": {
+        "x": 239,
+        "y": 872,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_18.jpg": {
+      "frame": {
+        "x": 358,
+        "y": 682,
+        "w": 188,
+        "h": 117
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 188,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_19.jpg": {
+      "frame": {
+        "x": 429,
+        "y": 872,
+        "w": 188,
+        "h": 115
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 188,
+        "h": 115
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_20.jpg": {
+      "frame": {
+        "x": 415,
+        "y": 261,
+        "w": 188,
+        "h": 108
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 9,
+        "w": 188,
+        "h": 108
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_21.jpg": {
+      "frame": {
+        "x": 469,
+        "y": 451,
+        "w": 188,
+        "h": 98
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 14,
+        "w": 188,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_22.jpg": {
+      "frame": {
+        "x": 525,
+        "y": 261,
+        "w": 188,
+        "h": 96
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 16,
+        "w": 188,
+        "h": 96
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "foot_step/electric_fx/foot_electric_fx_23.jpg": {
+      "frame": {
+        "x": 623,
+        "y": 261,
+        "w": 178,
+        "h": 94
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 16,
+        "w": 178,
+        "h": 94
+      },
+      "sourceSize": {
+        "w": 188,
+        "h": 117
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "electricity_arcs.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 1024,
+      "h": 1024
+    },
+    "scale": 2
+  }
+}
+
+export default AnubisElectricity;

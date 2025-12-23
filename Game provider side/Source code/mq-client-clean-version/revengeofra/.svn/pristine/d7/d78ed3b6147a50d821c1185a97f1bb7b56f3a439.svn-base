@@ -1,0 +1,150 @@
+import SimpleUIView from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/SimpleUIView';
+import { APP } from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+
+import BigWinCoinsAward from './BigWinCoinsAward';
+
+import MegaWinAnimation from './MegaWinAnimation';
+import HugeWinAnimation from './HugeWinAnimation';
+import BigWinAnimation from './BigWinAnimation';
+
+
+class BigWinView extends SimpleUIView {
+
+	static get EVENT_ON_ANIMATION_COMPLETED() 	{ return "EVENT_ON_ANIMATION_COMPLETED"; }
+	static get EVENT_ON_ANIMATION_INTERRUPTED() { return "EVENT_ON_ANIMATION_INTERRUPTED"; }
+	static get EVENT_ON_COIN_LANDED() 			{ return BigWinCoinsAward.EVENT_ON_COIN_LANDED; }
+	static get EVENT_ON_BIG_WIN_AWARD_COUNTED() { return "EVENT_ON_BIG_WIN_AWARD_COUNTED"; }
+
+	i_startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	i_interrupt()
+	{
+		this._interrupt();
+	}
+
+	constructor(aParentContainer_sprt)
+	{
+		super();
+		this._fParentContainer_sprt = aParentContainer_sprt;
+		this._fBigWinAnimation_bwa = null;
+		this._fBigWinCoinsAward_bwca = null;
+
+		this._fIsBigWinCoinsAwardCompleted_bl = false;
+		this._fIsBigWinAnimationCompleted_bl = false;
+	}
+
+	__init()
+	{
+		super.__init();
+	}
+
+	get _screenCenterPoint()
+	{
+		return {x: APP.config.size.width/4, y: APP.config.size.height/4}
+	}
+
+	get _masterCoinsLandingPoint()
+	{
+		return APP.currentWindow.gameField.getMasterCoinsLandingPosition();
+	}
+
+	_startAnimation()
+	{
+		this._fParentContainer_sprt.addChild(this);
+
+		const lCurrencySymbol_str = APP.playerController.info.currencySymbol;
+		const lTotalWin_num = this.uiInfo.totalWin;
+
+		if (this.uiInfo.isMegaWin)
+		{
+			this._fBigWinAnimation_bwa = this.addChild(new MegaWinAnimation(lTotalWin_num, lCurrencySymbol_str));
+		}
+		else if (this.uiInfo.isHugeWin)
+		{
+			this._fBigWinAnimation_bwa = this.addChild(new HugeWinAnimation(lTotalWin_num, lCurrencySymbol_str));
+		}
+		else
+		{
+			this._fBigWinAnimation_bwa = this.addChild(new BigWinAnimation(lTotalWin_num, lCurrencySymbol_str));
+		}
+
+		APP.soundsController.muteBgMusic();
+
+		this._fBigWinAnimation_bwa.position.set(APP.config.size.width/2, APP.config.size.height/2);
+		this._fBigWinAnimation_bwa.once(BigWinAnimation.EVENT_ON_BIG_WIN_ANIMATION_COMPLETED, this._onBigWinAnimationCompleted, this);
+		this._fBigWinAnimation_bwa.once(BigWinAnimation.EVENT_ON_BIG_WIN_COINS_REQUIRED, this._onBigWinCoinsRequired, this);
+		this._fBigWinAnimation_bwa.startAnimation();
+	}
+
+	_onBigWinAnimationCompleted()
+	{
+		this._fIsBigWinAnimationCompleted_bl = true;
+		this._validateCompletion();
+	}
+
+	_onBigWinCoinsRequired()
+	{
+		this._startFinalCoinsAnimation();
+	}
+
+	_startFinalCoinsAnimation()
+	{
+		APP.soundsController.fadeBackBgMusic(true);
+
+		this._fBigWinCoinsAward_bwca = this.addChild(new BigWinCoinsAward(this.uiInfo.totalWin, this._screenCenterPoint, this._masterCoinsLandingPoint));
+		this._fBigWinCoinsAward_bwca.on(BigWinCoinsAward.EVENT_ON_COIN_LANDED, this.emit, this);
+		this._fBigWinCoinsAward_bwca.on(BigWinCoinsAward.EVENT_AWARDING_COMPLETED, this._onBigWinCoinsAwardCompleted, this);
+		this._fBigWinCoinsAward_bwca.i_startAnimation(this._coinsNumber);
+	}
+
+	_onBigWinCoinsAwardCompleted()
+	{
+		this._fIsBigWinCoinsAwardCompleted_bl = true;
+		this.emit(BigWinView.EVENT_ON_BIG_WIN_AWARD_COUNTED, {money: this.uiInfo.totalWin});
+		this._validateCompletion();
+	}
+
+	_validateCompletion()
+	{
+		if (this._fIsBigWinAnimationCompleted_bl && this._fIsBigWinCoinsAwardCompleted_bl)
+		{
+			this.emit(BigWinView.EVENT_ON_ANIMATION_COMPLETED);
+		}
+	}
+
+	_interrupt()
+	{
+		if (this._fBigWinCoinsAward_bwca)
+		{
+			this._fBigWinCoinsAward_bwca.destroy();
+			this._fBigWinCoinsAward_bwca = null;
+		}
+
+		if (this._fBigWinAnimation_bwa)
+		{
+			this._fBigWinAnimation_bwa.destroy();
+			this._fBigWinAnimation_bwa = null;
+		}
+
+		APP.soundsController.stop("big_win_sound");
+		APP.soundsController.stop("huge_win_sound");
+		APP.soundsController.stop("mega_win_sound");
+		APP.soundsController.fadeBackBgMusic(true);
+	}
+
+	get _coinsNumber()
+	{
+		if (this.uiInfo.isMegaWin) return 40;
+		return 20;
+	}
+
+	destroy()
+	{
+		super.destroy();
+	}
+}
+
+export default BigWinView;

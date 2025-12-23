@@ -1,0 +1,82 @@
+const PACKAGE = require('./package.json');
+const path = require('path');
+const webpack = require('webpack');
+
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const PROJECT_SRC = path.resolve(__dirname, 'src');
+const PIXI_SRC = path.resolve(__dirname, "../../common/PIXI/src");
+const SHARED_SRC = path.resolve(__dirname, "../shared/src");
+const BUILD_OUTPUT = path.resolve(__dirname, "dist/build");
+
+module.exports = {
+	context: __dirname,
+	entry: {
+		game: [
+			'babel-polyfill',
+			path.resolve(PROJECT_SRC, 'index.js')
+		]
+	},
+	output: {
+		path: __dirname + "/dist/build",
+		filename: '[name].js'
+	},
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				include: [PIXI_SRC, PROJECT_SRC, SHARED_SRC],
+				exclude: [/node_modules/],
+				loader: 'babel-loader',
+				query: { presets: ["es2015", "stage-0"] }
+			}
+		],
+		noParse: [
+			/.*[\/\\]bin[\/\\].+\.js/,
+			/.*[\/\\]api_src[\/\\].+\.js/,
+			/game\.js/
+		]
+	},
+	resolve: {
+		extensions: ['.js', '.json'],
+		alias: {
+			"P2M": PIXI_SRC
+		}
+	},
+	optimization: {
+		minimize: true
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			title: PACKAGE.description,
+			filename: 'index.html',
+			template: 'index.html',
+			inject: false,
+			minify: {
+				removeComments: true,
+				collapseWhitespace: true,
+				removeAttributeQuotes: true
+			},
+		}),
+		new webpack.ProvidePlugin({
+			PIXI: path.resolve(path.join(__dirname, '../../common/PIXI/node_modules/pixi.js-legacy'))
+		}),
+		new CopyWebpackPlugin([
+			{ from: 'index.html', to: path.resolve(BUILD_OUTPUT, 'index.html') },
+			{ from: 'version.json', to: path.resolve(BUILD_OUTPUT, 'version.json') },
+			{ from: 'assets/**/*', to: BUILD_OUTPUT },
+			{ from: 'favicon.ico', to: path.resolve(BUILD_OUTPUT, 'favicon.ico') },
+			{
+				from: 'assets/spine/**/**/*.json',
+				transform: function (content) {
+					return JSON.stringify(JSON.parse(content.toString()));
+				},
+				to: BUILD_OUTPUT
+			}
+		], { copyUnmodified: true, debug: "warning" })
+	],
+	performance: {
+		hints: false
+	}
+};

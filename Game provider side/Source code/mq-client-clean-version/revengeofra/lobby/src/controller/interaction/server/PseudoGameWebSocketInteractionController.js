@@ -1,0 +1,198 @@
+import WebSocketInteractionController from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/interaction/server/WebSocketInteractionController';
+import DialogController from '../../uis/custom/dialogs/DialogController';
+import {PseudoGameWebSocketInteractionInfo, SERVER_MESSAGES, CLIENT_MESSAGES} from '../../../model/interaction/server/PseudoGameWebSocketInteractionInfo';
+import {APP} from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import I18 from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/translations/I18';
+import TournamentModeController from '../../custom/tournament/TournamentModeController';
+
+class PseudoGameWebSocketInteractionController extends WebSocketInteractionController
+{
+	static get EVENT_ON_SERVER_MESSAGE()				{ return WebSocketInteractionController.EVENT_ON_SERVER_MESSAGE };
+	static get EVENT_ON_SERVER_CONNECTION_CLOSED()		{ return WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED };
+	static get EVENT_ON_SERVER_CONNECTION_OPENED()		{ return WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_OPENED };
+	static get EVENT_ON_CONNECTION_RECOVERY_STARTED()	{ return "EVENT_ON_CONNECTION_RECOVERY_STARTED" };
+	static get EVENT_ON_CONNECTION_CLOSED()				{ return "EVENT_ON_CONNECTION_CLOSED" };
+	static get EVENT_ON_COMPENSATION_REQUIRED()			{ return "EVENT_ON_COMPENSATION_REQUIRED" };
+
+	setParams(aParams_obj)
+	{
+		this._pseudoGameParams = aParams_obj;
+		if (!this.__fInitialized_bl)
+		{
+			this.__init();
+		}
+	}
+
+	constructor()
+	{
+		super(new PseudoGameWebSocketInteractionInfo());
+		
+		this._reconnectingAfterGameUrlUpdatedRequired = false;
+	}
+
+	get _debugWebSocketUrl()
+	{
+		return this._webSocketUrl;
+	}
+
+	get _webSocketUrl()
+	{
+		if (this._pseudoGameParams && this._pseudoGameParams.WEB_SOCKET_URL)
+		{
+			return this._pseudoGameParams.WEB_SOCKET_URL;
+		}
+		return APP.urlBasedParams.WEB_SOCKET_URL;
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		let tournamentModeController = APP.tournamentModeController;
+		tournamentModeController.on(TournamentModeController.EVENT_ON_TOURNAMENT_STATE_CHANGED, this._onTournamentModeStateChanged, this);
+	}
+
+	_onTournamentModeStateChanged(event)
+	{
+		let l_cpv = this.view;
+		let lTournamentModeInfo_tmi = APP.tournamentModeController.info;
+		
+		if (lTournamentModeInfo_tmi.isTournamentCompletedOrFailedState)
+		{
+			this._blockAfterCriticalError();
+			this._stopServerMesagesHandling();
+			this._closeConnectionIfPossible();
+		}		
+	}
+
+	_handleServerMessage(messageData, requestData)
+	{
+		super._handleServerMessage(messageData, requestData);
+
+		let msgClass = messageData.class;
+		switch(msgClass)
+		{
+			case SERVER_MESSAGES.OK:
+				let requestClass = undefined;
+				if (requestData && requestData.rid >= 0)
+				{
+					requestClass = requestData.class;
+					if (requestClass === CLIENT_MESSAGES.CLOSE_ROOM)
+					{
+						this._closeConnection();
+					}
+				}
+				break;
+		}
+	}
+
+	_onConnectionOpened()
+	{
+		console.log("PseudoGame -> _onConnectionOpened");
+		super._onConnectionOpened();
+
+		if (!this._pseudoGameParams)
+		{
+			this._closeConnection();
+			return;
+		}
+		
+		this._sendRequest(CLIENT_MESSAGES.OPEN_ROOM, {sid: this._pseudoGameParams.SID, serverId: this._pseudoGameParams.serverId, roomId: this._pseudoGameParams.roomId, lang: this._pseudoGameParams.lang});
+	}
+
+	_onConnectionClosed(event)
+	{
+		console.log("PseudoGame -> _onConnectionClosed");
+		super._onConnectionClosed(event);
+	}
+
+	_activateReconnectTimeout()
+	{
+		console.log("PseudoGame -> _activateReconnectTimeout");
+		super._activateReconnectTimeout();
+	}
+
+	get recoveringConnectionInProgress ()
+	{
+		return this._reconnectingAfterGameUrlUpdatedRequired 
+				|| super.recoveringConnectionInProgress;
+	}
+
+	_startRecoveringSocketConnection()
+	{
+		let lTournamentModeInfo_tmi = APP.tournamentModeController.info;		
+		if (lTournamentModeInfo_tmi.isTournamentCompletedOrFailedState)
+		{
+			return;
+		}
+
+		// reconnect to new start game url, requested when server connection lost
+		this._reconnectingAfterGameUrlUpdatedRequired = true;
+
+		this.emit(PseudoGameWebSocketInteractionController.EVENT_ON_CONNECTION_RECOVERY_STARTED);
+	}
+
+	_startReconnectingOnConnectionLost()
+	{
+		let lTournamentModeInfo_tmi = APP.tournamentModeController.info;		
+		if (lTournamentModeInfo_tmi.isTournamentCompletedOrFailedState)
+		{
+			return;
+		}
+
+		super._startReconnectingOnConnectionLost();
+	}
+
+	_specifyEventMessageType(messageData)
+	{
+		let eventType;
+		switch(messageData.class)
+		{
+			case SERVER_MESSAGES.GET_ROOM_INFO_RESPONSE:
+				this._sendRequest(CLIENT_MESSAGES.SIT_OUT, {});
+				break;
+			case SERVER_MESSAGES.SIT_OUT_RESPONSE:
+				if (messageData.compensateSpecialWeapons > 0)
+				{
+					let midRoundCompensateSWExitDialogController = APP.dialogsController.midRoundCompensateSWExitDialogController;
+					midRoundCompensateSWExitDialogController.once(DialogController.EVENT_REQUEST_CONFIRMED, this._onMidRoundCompensateSWExitDialogRequestConfirmed, this);
+
+					this.emit(PseudoGameWebSocketInteractionController.EVENT_ON_COMPENSATION_REQUIRED, {data:{compensateSpecialWeapons:messageData.compensateSpecialWeapons, roomId:this._pseudoGameParams.roomId}});
+				}
+				else
+				{
+					this._sendRequest(CLIENT_MESSAGES.CLOSE_ROOM, {roomId: this._pseudoGameParams.roomId});
+				}
+				break;
+			default:
+				eventType = super._specifyEventMessageType(messageData);
+				break;
+		}
+
+		return eventType;
+	}
+
+	_onMidRoundCompensateSWExitDialogRequestConfirmed(event)
+	{
+		this._sendRequest(CLIENT_MESSAGES.CLOSE_ROOM, {roomId: this._pseudoGameParams.roomId});
+	}
+
+	_handleGeneralError(errorCode, requestData)
+	{
+		this._closeConnection();
+		super._handleGeneralError(errorCode, requestData);
+	}
+
+	_closeConnection()
+	{
+		this._closeConnectionIfPossible();
+		this.emit(PseudoGameWebSocketInteractionController.EVENT_ON_CONNECTION_CLOSED);
+	}
+
+	destroy()
+	{
+		super.destroy();
+	}
+}
+
+export default PseudoGameWebSocketInteractionController

@@ -1,0 +1,132 @@
+
+Orc180.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/arm_lf
+  rotate: false
+  xy: 543, 831
+  size: 178, 175
+  orig: 178, 175
+  offset: 0, 0
+  index: -1
+180/arm_rt
+  rotate: false
+  xy: 325, 736
+  size: 214, 270
+  orig: 214, 270
+  offset: 0, 0
+  index: -1
+180/body
+  rotate: false
+  xy: 4, 709
+  size: 317, 297
+  orig: 317, 297
+  offset: 0, 0
+  index: -1
+180/calf_lf
+  rotate: true
+  xy: 235, 135
+  size: 109, 155
+  orig: 109, 155
+  offset: 0, 0
+  index: -1
+180/calf_rt
+  rotate: true
+  xy: 198, 4
+  size: 127, 144
+  orig: 127, 144
+  offset: 0, 0
+  index: -1
+180/foot_lf
+  rotate: false
+  xy: 300, 535
+  size: 109, 87
+  orig: 109, 87
+  offset: 0, 0
+  index: -1
+180/foot_rt
+  rotate: false
+  xy: 725, 804
+  size: 158, 72
+  orig: 158, 72
+  offset: 0, 0
+  index: -1
+180/forearm_lf
+  rotate: false
+  xy: 235, 248
+  size: 154, 166
+  orig: 154, 166
+  offset: 0, 0
+  index: -1
+180/forearm_rt
+  rotate: true
+  xy: 716, 665
+  size: 135, 147
+  orig: 135, 147
+  offset: 0, 0
+  index: -1
+180/hair
+  rotate: false
+  xy: 4, 214
+  size: 227, 200
+  orig: 227, 200
+  offset: 0, 0
+  index: -1
+180/hand_lf
+  rotate: true
+  xy: 325, 626
+  size: 106, 124
+  orig: 106, 124
+  offset: 0, 0
+  index: -1
+180/hand_lf2
+  rotate: false
+  xy: 300, 429
+  size: 87, 102
+  orig: 87, 102
+  offset: 0, 0
+  index: -1
+180/hand_rt
+  rotate: false
+  xy: 346, 4
+  size: 94, 127
+  orig: 94, 127
+  offset: 0, 0
+  index: -1
+180/hand_rt2
+  rotate: false
+  xy: 941, 891
+  size: 75, 115
+  orig: 75, 115
+  offset: 0, 0
+  index: -1
+180/head
+  rotate: true
+  xy: 725, 880
+  size: 126, 212
+  orig: 126, 212
+  offset: 0, 0
+  index: -1
+180/hip
+  rotate: false
+  xy: 4, 418
+  size: 292, 287
+  orig: 292, 287
+  offset: 0, 0
+  index: -1
+180/leg_lf
+  rotate: true
+  xy: 543, 674
+  size: 153, 169
+  orig: 153, 169
+  offset: 0, 0
+  index: -1
+180/leg_rt
+  rotate: false
+  xy: 4, 60
+  size: 190, 150
+  orig: 190, 150
+  offset: 0, 0
+  index: -1

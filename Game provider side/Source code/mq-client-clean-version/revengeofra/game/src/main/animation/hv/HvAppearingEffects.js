@@ -1,0 +1,265 @@
+import Sprite from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import { Utils } from '../../../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+import Sequence from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
+import * as Easing from '../../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+
+const FLAMES_PARAMS = [
+	{ startDelay: 0*2*16.7, 	scaleX: 1, 		scaleY: 1, 		x: -7/2, 		y: 0.5	},
+	{ startDelay: 2*2*16.7, 	scaleX: -0.88, 	scaleY: 0.83, 	x: 23/2,		y: 5	},
+	{ startDelay: 10*2*16.7, 	scaleX: -0.88,	scaleY: 0.83,	x: 19/2, 		y: 1.5	},
+	{ startDelay: 22*2*16.7,	scaleX: -0.88,	scaleY: 0.83, 	x: -11/2,   	y: -12.5}
+];
+
+class HvAppearingEffects extends Sprite
+{
+	constructor(aContainer_sprt, aPosition_pt)
+	{
+		super();
+
+		this._fContainer_sprt = aContainer_sprt;
+		this._fPosition_pt = aPosition_pt;
+		this._fPosition_pt.y += 15;
+
+		this._fFire1_sprt = null;
+		this._fFire2_sprt = null;
+		this._fFlame_sprt = null;
+
+		// this.hitCircle = this.addChild(new PIXI.Graphics());
+		// var color = "aabbaa";
+		// var alpha = 0.9;
+		// this.hitCircle.clear()
+		// 	.beginFill(color, alpha)
+		// 	.drawCircle(0, 0, 15);
+		// this.hitCircle.zIndex = 30;
+
+		this._fContainer_sprt.addChild(this);
+		this.position.set(aPosition_pt.x, aPosition_pt.y);
+
+		this._createView();
+	}
+
+	_createView()
+	{
+		for (let lFlamesParams_obj of FLAMES_PARAMS)
+		{
+			let lFlamesLoop_fsl = new HvAppearingEffects.FlamesLoop(lFlamesParams_obj.startDelay, this._flameAssetName);
+			this.addChild(lFlamesLoop_fsl);
+			lFlamesLoop_fsl.once(HvAppearingEffects.FlamesLoop.EVENT_FLAMES_ANIMATION_COMPLETE, this._onAnotherAnimationComplete, this);
+			lFlamesLoop_fsl.scale.x = lFlamesParams_obj.scaleX;
+			lFlamesLoop_fsl.scale.y = lFlamesParams_obj.scaleY;
+			lFlamesLoop_fsl.position.set(lFlamesParams_obj.x, lFlamesParams_obj.y);
+		}
+
+		//fire 1
+		let lFire1_sprt = this.addChild(APP.library.getSprite(this._fireAssetName));
+		lFire1_sprt.anchor.set(0.5, 0.84);
+		lFire1_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lFire1_sprt.scale.set(0);
+
+		let lFire1Sequence_seq = [
+			{tweens: [], duration: 99},
+			{tweens: [{ prop: "scale.x", to: 0.22}, 	{ prop: "scale.y", to: 0.56}], 	duration: 198, ease: Easing.sine.easeInOut},
+			{tweens: [{ prop: "scale.x", to: 0.154}, 	{ prop: "scale.y", to: 0.234}], duration: 165, ease: Easing.sine.easeIn},
+			{tweens: [{ prop: "scale.x", to: 0}, 		{ prop: "scale.y", to: 0}], 	duration: 132, ease: Easing.sine.easeOut,
+				onfinish: (e) => {
+					e.target.obj.destroy();
+					this._onAnotherAnimationComplete(e);
+				}
+			}
+		];
+		this._fFire1_sprt = lFire1_sprt;
+		Sequence.start(lFire1_sprt, lFire1Sequence_seq);
+
+		//fire 2
+		let lFire2_sprt = this.addChild(APP.library.getSprite(this._fireAssetName));
+		lFire2_sprt.anchor.set(0.5, 0.84);
+		lFire2_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lFire2_sprt.scale.set(0);
+
+		let lFire2Sequence_seq = [
+			{tweens: [], duration: 1650},
+			{tweens: [{ prop: "scale.x", to: 0.16}, 	{ prop: "scale.y", to: 0.56}], 	duration: 396, ease: Easing.sine.easeInOut},
+			{tweens: [{ prop: "scale.x", to: 0.11}, 	{ prop: "scale.y", to: 0.234}], duration: 594, ease: Easing.sine.easeIn}
+		];
+
+		let lFire2Sequence2_seq = [
+			{tweens: [], duration: 2442},
+			{tweens: [{prop: "alpha", to: 0}], duration: 462,
+				onfinish: (e) => {
+					e.target.obj.destroy();
+					this._onAnotherAnimationComplete();
+				}
+			}
+		];
+		this._fFire2_sprt = lFire2_sprt;
+		Sequence.start(lFire2_sprt, lFire2Sequence_seq);
+		Sequence.start(lFire2_sprt, lFire2Sequence2_seq);
+
+		let lGlobalPosition_pt = this._fContainer_sprt.startPosition;
+		let lBoltScaleY_num = Math.max(lGlobalPosition_pt.y/163*1.3, 1);
+
+		let lBoltSequence_seq = [
+			// {tweens: [], duration: 165},
+			{tweens: [{prop: "alpha", to: 1}], duration: 33, ease: Easing.linear.easeIn},
+			{tweens: [], duration: 66},
+			{tweens: [{prop: "alpha", to: 0}], duration: 33, ease: Easing.linear.easeIn,
+				onfinish: (e) => {
+					e.target.obj.destroy();
+					this._onAnotherAnimationComplete();}
+			}
+		];
+
+		let lBolt1_sprt = this.addChild(APP.library.getSprite(this._boltAssetName));
+		lBolt1_sprt.anchor.set(0.5, 0.8);
+		lBolt1_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lBolt1_sprt.scale.set(1, lBoltScaleY_num);
+		lBolt1_sprt.alpha = 0;
+
+		let lBolt2_sprt = this.addChild(APP.library.getSprite(this._boltAssetName));
+		lBolt2_sprt.anchor.set(0.5, 0.8);
+		lBolt2_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lBolt2_sprt.scale.set(-1, lBoltScaleY_num);
+		lBolt2_sprt.alpha = 0;
+
+		let lBolt3_sprt = this.addChild(APP.library.getSprite(this._boltAssetName));
+		lBolt3_sprt.anchor.set(0.5, 0.8);
+		lBolt3_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lBolt3_sprt.scale.set(1, lBoltScaleY_num);
+		lBolt3_sprt.alpha = 0;
+
+		Sequence.start(lBolt1_sprt, lBoltSequence_seq, 165);
+		Sequence.start(lBolt2_sprt, lBoltSequence_seq, 528);
+		Sequence.start(lBolt3_sprt, lBoltSequence_seq, 660);
+	}
+
+	_onAnotherAnimationComplete(e)
+	{
+		e && e.target && e.target.destroy && e.target.destroy();
+		if (this.children.length == 0)
+		{
+			this.destroy();
+		}
+	}
+
+	get _boltAssetName()
+	{
+		return 'hv_bolt';
+	}
+
+	get _fireAssetName()
+	{
+		return 'hv_fire';
+	}
+
+	get _flameAssetName()
+	{
+		return 'hv_flame';
+	}
+
+	destroy()
+	{
+		Sequence.destroy(Sequence.findByTarget(this));
+
+		if (this._fFire1_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fFire1_sprt));
+		}
+
+		if (this._fFire2_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fFire2_sprt));
+		}
+
+		if (this._fFlame_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fFlame_sprt));
+		}
+
+		this._fContainer_sprt = null;
+		this._fPosition_pt = null;
+
+		this._fFire1_sprt = null;
+		this._fFire2_sprt = null;
+		this._fFlame_sprt = null;
+
+		super.destroy();
+	}
+
+	//internal class
+	static FlamesLoop = class extends Sprite
+	{
+		static get EVENT_FLAMES_ANIMATION_COMPLETE() {return "flamesAnimationComplete"};
+
+		constructor(aStartDelay_num, aFlameAssetName_str)
+		{
+			super();
+
+			this._fFlame_sprt = null;
+			this._fFlameAssetName_str = aFlameAssetName_str;
+
+			this._startFlamesAnimation(aStartDelay_num);
+		}
+
+		_startFlamesAnimation(aStartDelay_num)
+		{
+			let lSequenceFlames_seq = [
+				{tweens: [], duration: aStartDelay_num, onfinish: () => {this._startAnotherFlame();}},
+				{tweens: [], duration: 132, 	onfinish: () => {this._startAnotherFlame();}},
+				{tweens: [], duration: 1518, 	onfinish: () => {this._startAnotherFlame();}}
+			];
+
+			Sequence.start(this, lSequenceFlames_seq);
+		}
+
+		_startAnotherFlame()
+		{
+			let lFlame_sprt = this.addChild(APP.library.getSprite(this._fFlameAssetName_str));
+			lFlame_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+
+			lFlame_sprt.scale.x = -0.01;
+			lFlame_sprt.scale.y = 0.01;
+			lFlame_sprt.rotation = Utils.gradToRad(0.9);
+			lFlame_sprt.alpha = 1;
+			lFlame_sprt.position.set(0, 0);
+
+			lFlame_sprt.scaleXTo(-0.65, 693);
+			lFlame_sprt.scaleYTo(0.65, 693);
+			lFlame_sprt.rotateBy(Utils.gradToRad(58), 693);
+			lFlame_sprt.moveTo(3.5/2, -64/2, 693);
+
+			let lAlphaSequence_seq = [
+				{tweens: [{prop: "alpha", to: 0.95}], duration: 330},
+				{tweens:[{prop: "alpha", to: 0}], duration: 363,
+					onfinish: (e) => {
+						e.target.obj.destroy();
+						if (this.children.length == 0)
+						{
+							this.emit(HvAppearingEffects.FlamesLoop.EVENT_FLAMES_ANIMATION_COMPLETE);
+							//? this.destroy();
+						}
+					}
+				}
+			];
+			this._fFlame_sprt = lFlame_sprt;
+			Sequence.start(lFlame_sprt, lAlphaSequence_seq);
+		}
+
+		destroy()
+		{
+			Sequence.destroy(Sequence.findByTarget(this));
+			
+			if (this._fFlame_sprt)
+			{
+				Sequence.destroy(Sequence.findByTarget(this._fFlame_sprt));
+			}
+
+			this._fFlame_sprt = null;
+
+			super.destroy();
+		}
+	}
+
+}
+
+export default HvAppearingEffects;

@@ -1,0 +1,42 @@
+import Sprite from '../../../../../../../../common/PIXI/src/display/Sprite';
+import LobbyPlayerNameView from '../../LobbyPlayerNameView';
+
+class PlayerCollectionScreenPlayerView extends Sprite
+{
+	updateNickName(aName_str)
+	{
+		this._fPlayerNameView_lpnv.updateName(aName_str);
+	}
+
+	constructor()
+	{
+		super();
+
+		this._fPlayerNameView_lpnv = null;
+
+		this._initPlayerCollectionScreenPlayerView();
+	}
+
+	_initPlayerCollectionScreenPlayerView()
+	{
+		this._addPlayerNick();
+
+		this.anchor.set(0, 0.5);
+	}
+
+	_addPlayerNick()
+	{
+		this._fPlayerNameView_lpnv = this.addChild(new LobbyPlayerNameView());
+		this._fPlayerNameView_lpnv.init("", new PIXI.Point(0, 0.5), 11, 94);
+		this._fPlayerNameView_lpnv.position.set(0, 0);
+	}
+
+	destroy()
+	{
+		this._fPlayerNameView_lpnv = null;
+
+		super.destroy();
+	}
+}
+
+export default PlayerCollectionScreenPlayerView 

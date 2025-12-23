@@ -1,0 +1,48 @@
+
+SectorX_Med_Enemy5.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_lf
+  rotate: false
+  xy: 811, 423
+  size: 115, 78
+  orig: 115, 78
+  offset: 0, 0
+  index: -1
+foot_lf
+  rotate: false
+  xy: 385, 12
+  size: 127, 93
+  orig: 127, 93
+  offset: 0, 0
+  index: -1
+forearm_lf
+  rotate: false
+  xy: 615, 133
+  size: 92, 112
+  orig: 92, 112
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 4, 109
+  size: 607, 392
+  orig: 607, 392
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: false
+  xy: 4, 4
+  size: 377, 101
+  orig: 377, 101
+  offset: 0, 0
+  index: -1
+tail
+  rotate: false
+  xy: 615, 249
+  size: 192, 252
+  orig: 192, 252
+  offset: 0, 0
+  index: -1

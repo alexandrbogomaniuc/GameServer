@@ -1,0 +1,545 @@
+var DragonstoneParticlesSpread = {
+  "frames": {
+    "particles_spread_01.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 62,
+        "h": 64
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 16,
+        "w": 62,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_02.jpg": {
+      "frame": {
+        "x": 67,
+        "y": 1,
+        "w": 67,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 16,
+        "w": 67,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_03.jpg": {
+      "frame": {
+        "x": 136,
+        "y": 1,
+        "w": 75,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 16,
+        "w": 75,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_04.jpg": {
+      "frame": {
+        "x": 213,
+        "y": 1,
+        "w": 76,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 16,
+        "w": 76,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_05.jpg": {
+      "frame": {
+        "x": 291,
+        "y": 1,
+        "w": 78,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 16,
+        "w": 78,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_06.jpg": {
+      "frame": {
+        "x": 371,
+        "y": 1,
+        "w": 82,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 14,
+        "w": 82,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_07.jpg": {
+      "frame": {
+        "x": 291,
+        "y": 61,
+        "w": 84,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 13,
+        "w": 84,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_08.jpg": {
+      "frame": {
+        "x": 377,
+        "y": 61,
+        "w": 85,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 12,
+        "w": 85,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_09.jpg": {
+      "frame": {
+        "x": 67,
+        "y": 63,
+        "w": 87,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 12,
+        "w": 87,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_10.jpg": {
+      "frame": {
+        "x": 156,
+        "y": 63,
+        "w": 88,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 88,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_11.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 65,
+        "w": 88,
+        "h": 59
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 88,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_12.jpg": {
+      "frame": {
+        "x": 246,
+        "y": 122,
+        "w": 88,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 88,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_13.jpg": {
+      "frame": {
+        "x": 336,
+        "y": 123,
+        "w": 88,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 88,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_14.jpg": {
+      "frame": {
+        "x": 62,
+        "y": 125,
+        "w": 88,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 88,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_15.jpg": {
+      "frame": {
+        "x": 152,
+        "y": 129,
+        "w": 88,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 88,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_16.jpg": {
+      "frame": {
+        "x": 426,
+        "y": 123,
+        "w": 88,
+        "h": 56
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 88,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_17.jpg": {
+      "frame": {
+        "x": 242,
+        "y": 183,
+        "w": 88,
+        "h": 56
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 88,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_18.jpg": {
+      "frame": {
+        "x": 332,
+        "y": 184,
+        "w": 87,
+        "h": 56
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 87,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_19.jpg": {
+      "frame": {
+        "x": 1,
+        "y": 155,
+        "w": 86,
+        "h": 56
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 4,
+        "w": 86,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_20.jpg": {
+      "frame": {
+        "x": 59,
+        "y": 186,
+        "w": 80,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 80,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_21.jpg": {
+      "frame": {
+        "x": 455,
+        "y": 1,
+        "w": 56,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 24,
+        "w": 56,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "particles_spread_22.jpg": {
+      "frame": {
+        "x": 464,
+        "y": 35,
+        "w": 56,
+        "h": 32
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 24,
+        "w": 56,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 80
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "particles_spread.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 512,
+      "h": 256
+    },
+    "scale": 2
+  }
+}
+
+export default DragonstoneParticlesSpread;

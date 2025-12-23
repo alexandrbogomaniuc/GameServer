@@ -1,0 +1,41 @@
+
+SectorX_Small_Enemy3.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body1
+  rotate: false
+  xy: 4, 318
+  size: 642, 592
+  orig: 642, 592
+  offset: 0, 0
+  index: -1
+body2
+  rotate: false
+  xy: 650, 631
+  size: 258, 279
+  orig: 258, 279
+  offset: 0, 0
+  index: -1
+body3
+  rotate: false
+  xy: 385, 109
+  size: 217, 205
+  orig: 217, 205
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 4, 4
+  size: 54, 69
+  orig: 54, 69
+  offset: 0, 0
+  index: -1
+fingers
+  rotate: false
+  xy: 4, 77
+  size: 377, 237
+  orig: 377, 237
+  offset: 0, 0
+  index: -1

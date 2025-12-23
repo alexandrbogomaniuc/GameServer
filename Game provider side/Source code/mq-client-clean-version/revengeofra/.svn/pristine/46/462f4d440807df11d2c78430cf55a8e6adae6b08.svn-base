@@ -1,0 +1,39 @@
+import ActivePromosListItem from './ActivePromosListItem';
+import { List, ITEMS_DIRECTION } from '../secondary/player_collection/list/List';
+
+class ActivePromosList extends List
+{
+	static get ON_PROMO_DETAILS_BTN_CLICKED()		{ return ActivePromosListItem.ON_PROMO_DETAILS_BTN_CLICKED }
+
+	constructor()
+	{
+		super();
+	}
+
+	_init ()
+	{
+		this._direction = ITEMS_DIRECTION.HORIZONTAL;
+
+		super._init();
+	}
+
+	_generateNewItemInstance(itemInfo)
+	{
+		let item = new ActivePromosListItem(itemInfo);
+		item.on(ActivePromosListItem.ON_PROMO_DETAILS_BTN_CLICKED, this._onPromoDetailsBtnClicked, this);
+
+		return item;
+	}
+
+	_onPromoDetailsBtnClicked(event)
+	{
+		this.emit(ActivePromosList.ON_PROMO_DETAILS_BTN_CLICKED, {promoInfo:event.target.info})
+	}
+
+	get _itemsDistance()
+	{
+		return 0;
+	}
+}
+
+export default ActivePromosList

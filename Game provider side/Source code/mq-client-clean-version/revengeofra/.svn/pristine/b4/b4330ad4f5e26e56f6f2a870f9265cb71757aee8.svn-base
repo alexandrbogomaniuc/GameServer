@@ -1,0 +1,560 @@
+import { APP } from '../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import I18 from '../../../../common/PIXI/src/dgphoenix/unified/controller/translations/I18';
+import { default as BaseUI } from '../../../../common/PIXI/src/dgphoenix/gunified/view/layout/GULoaderUI';
+import Sprite from '../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import Timer from "../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer";
+import LobbyPreloaderSoundButtonController from '../controller/uis/custom/preloader/LobbyPreloaderSoundButtonController';
+import LobbyPreloaderSoundButtonView from '../view/uis/custom/preloader/LobbyPreloaderSoundButtonView';
+import SyncQueue from '../../../../common/PIXI/src/dgphoenix/unified/controller/interaction/resources/loaders/SyncQueue';
+import PreloaderTooltip from '../components/tips/PreloaderTooltip';
+import { Sequence } from '../../../../common/PIXI/src/dgphoenix/unified/controller/animation';
+import * as Easing from '../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import LobbyPreloaderLogoView from '../view/uis/custom/preloader/LobbyPreloaderLogoView';
+import { Utils } from '../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+import { FRAME_RATE , DISABLE_TIP_AUTOFIRE } from '../../../shared/src/CommonConstants';
+import PreloaderSparks from '../view/uis/custom/PreloaderSparks';
+
+let PROGRESS_SPEED = 100;   // time for 1 percent move
+let TIP_COUNT = 4;
+
+let SPARKS_PARAMS = [
+	{animationSpeed: 0.4, scale:   3, x: -260, y: 100, rotation: -10},
+	{animationSpeed: 0.5, scale:   3, x:  260, y:  80, rotation:  10},
+	{animationSpeed: 0.3, scale: 2.5, x: -350, y:  70, rotation: -20},
+	{animationSpeed: 0.4, scale: 3.2, x:  330, y:  40, rotation:  15}
+];
+
+class LoaderUI extends BaseUI
+{
+	static get EVENT_ON_CLICK_TO_START_CLICKED() 	{return "onClickToStartClicked";}
+
+	constructor(layout, loader)
+	{
+		super(layout, loader = new SyncQueue());
+
+		this._fPreloaderView_spr = null;
+		this._fLastProgress_num = 0;
+		this._fCompleteTimer_t = null;
+		this._barMask = null;
+		this._fTooltipsContainer = null;
+		this._fTooltips_pt_arr = [];
+		this._fTipQueue_arr = [];
+		this._fCurrentTip_num = null;
+		this._fIntervalTimer_t = null;
+		this._fOrangeFlare_sprt = null;
+		this._fEyeGlow_sprt = null;
+		this._fEyeGlowSeq_seq = null;
+
+		this._smoke0 = null;
+		this._smoke1 = null;
+		this._smoke2 = null;
+
+		this._burst0 = null;
+		this._burst1 = null;
+		this._burst2 = null;
+	}
+
+	createLayout()
+	{
+		this._addPreloaderContainer();
+		this._addBack();
+		this._addBottomBar();
+		this._addLogo();
+		this._addTipsBase();
+		this._addSoundButton();
+		this._addLoadingBar();
+		this._addBrand();
+
+		this._fIntervalTimer_t = new Timer(this._showNextTooltip.bind(this), 500, true);
+		this._fIntervalTimer_t.start();
+
+		this.addListeners();
+	}
+
+	_addPreloaderContainer()
+	{
+		let lBackOffsetY_num = ((APP.config.margin.bottom || 0) - (APP.config.margin.top || 0)) / 2;
+
+		this._fPreloaderView_spr = APP.preloaderStage.view.addChild(new Sprite());
+		this._fPreloaderView_spr.position.y = -lBackOffsetY_num;
+	}
+
+	_addBack()
+	{
+		let lBackOffsetY_num = ((APP.config.margin.bottom || 0) - (APP.config.margin.top || 0)) / 2;
+
+		let lBack_spr = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/back'));
+		lBack_spr.position.y = ~~lBackOffsetY_num;
+
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._addBgAnimation();
+			this._addBackSmoke();
+			this._addBurst();
+			this._addSparks();
+		}
+	}
+
+	// BG ANIMATION...
+	_addBgAnimation()
+	{
+		let flare = this._fOrangeFlare_sprt = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/orange_flare'));
+		flare.scale.set(2.5, 2.5);
+		flare.position.set(-215, 230);
+		flare.blendMode = PIXI.BLEND_MODES.ADD;
+		this._rotateFlare();
+
+		let mummy = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/mummy'));
+		mummy.position.set(-191, 98);
+
+		let lEyeGlow_sprt = this._fEyeGlow_sprt = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/eye_glow'));
+		lEyeGlow_sprt.position.set(-232, -40);
+		lEyeGlow_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lEyeGlow_sprt.alpha = 0;
+
+		this._startEyeGlowAnimation();
+	}
+
+	_addBottomBar()
+	{
+		var lBottomBar = this._fPreloaderView_spr.addChild(new Sprite);
+		var lBottomBarMask = lBottomBar.addChild(new PIXI.Graphics());
+		lBottomBarMask.beginFill(0x000000).drawRect(-480, 268, 960, 40);
+	}
+
+	_addBackSmoke()
+	{
+		this._smoke0 = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/smoke'));
+		this._smoke0.blendMode = PIXI.BLEND_MODES.ADD;
+		this._smoke0.rotation = Utils.gradToRad(90);
+		this._smoke0.position.y += 200;
+
+		this._startSmokeLeftAnimation();
+
+		this._smoke1 = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/smoke'));
+		this._smoke1.blendMode = PIXI.BLEND_MODES.ADD;
+		this._smoke1.rotation = Utils.gradToRad(-90);
+		this._smoke1.position.y += 270;
+
+		this._startSmokeRightAnimation();
+
+		this._smoke2 = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/smoke'));
+		this._smoke2.blendMode = PIXI.BLEND_MODES.ADD;
+		this._smoke2.position.x -= 100;
+
+		this._startSmokeTopAnimation();
+	}
+
+	_startSmokeLeftAnimation()
+	{
+		Sequence.start(this._smoke0, [
+			{tweens: [{prop: 'position.x', from: -580, to: -250}], duration: 900 * FRAME_RATE, onfinish: (e) => { this._startSmokeLeftAnimation() } }
+		]);
+
+		Sequence.start(this._smoke0, [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 100 * FRAME_RATE},
+			{tweens: [], duration: 700 * FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}], duration: 100 * FRAME_RATE}
+		]);
+	}
+
+	_startSmokeRightAnimation()
+	{
+		Sequence.start(this._smoke1, [
+			{tweens: [{prop: 'position.x', from: 350, to: 100}], duration: 1500 * FRAME_RATE, onfinish: (e) => { this._startSmokeRightAnimation() } }
+		]);
+
+		Sequence.start(this._smoke1, [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 100 * FRAME_RATE},
+			{tweens: [], duration: 1300 * FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}], duration: 100 * FRAME_RATE}
+		]);
+	}
+
+	_startSmokeTopAnimation()
+	{
+		Sequence.start(this._smoke2, [
+			{tweens: [{prop: 'position.y', from: 250, to: -250}], duration: 800 * FRAME_RATE, onfinish: (e) => { this._startSmokeTopAnimation() } }
+		]);
+
+		Sequence.start(this._smoke2, [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 100 * FRAME_RATE},
+			{tweens: [], duration: 600 * FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}], duration: 100 * FRAME_RATE}
+		]);
+	}
+
+	_addBurst()
+	{
+		this._burst0 = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/burst'));
+		this._burst0.blendMode = PIXI.BLEND_MODES.ADD;
+		this._burst0.scale.set(2);
+
+		this._startBurstLeftAnimation();
+
+		this._burst1 = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/burst'));
+		this._burst1.blendMode = PIXI.BLEND_MODES.ADD;
+		this._burst1.scale.set(2);
+
+		this._startBurstRightAnimation();
+
+		this._burst2 = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/burst'));
+		this._burst2.blendMode = PIXI.BLEND_MODES.ADD;
+		this._burst2.scale.set(2);
+
+		this._startBurstTopAnimation();
+	}
+
+	_startBurstLeftAnimation()
+	{
+		Sequence.start(this._burst0, [
+			{tweens: [{prop: 'position.x', from: -350, to: -345}, {prop: 'position.y', from: 270, to: 220}], duration: 500 * FRAME_RATE, onfinish: (e) => { this._startBurstLeftAnimation() } }
+		]);
+
+		Sequence.start(this._burst0, [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 100 * FRAME_RATE},
+			{tweens: [], duration: 300 * FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}], duration: 100 * FRAME_RATE}
+		]);
+	}
+
+	_startBurstRightAnimation()
+	{
+		Sequence.start(this._burst1, [
+			{tweens: [{prop: 'position.x', from: 450, to: 500}, {prop: 'position.y', from: 250, to: 230}], duration: 700 * FRAME_RATE, onfinish: (e) => { this._startBurstRightAnimation() } }
+		]);
+
+		Sequence.start(this._burst1, [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 100 * FRAME_RATE},
+			{tweens: [], duration: 500 * FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}], duration: 100 * FRAME_RATE}
+		]);
+	}
+
+	_startBurstTopAnimation()
+	{
+		Sequence.start(this._burst2, [
+			{tweens: [{prop: 'position.x', from: 620, to: 650}, {prop: 'position.y', from: -350, to: -400}], duration: 800 * FRAME_RATE, onfinish: (e) => { this._startBurstTopAnimation() } }
+		]);
+
+		Sequence.start(this._burst2, [
+			{tweens: [{prop: 'alpha', to: 1}], duration: 100 * FRAME_RATE},
+			{tweens: [], duration: 600 * FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}], duration: 100 * FRAME_RATE}
+		]);
+	}
+
+	_addSparks()
+	{
+		let sparks = PreloaderSparks.getSparksTextures();
+
+		for (var i = 0; i < SPARKS_PARAMS.length; i++)
+		{
+			let params = SPARKS_PARAMS[i];
+			let anim = this._fPreloaderView_spr.addChild(new Sprite);
+			anim.textures = sparks;
+			anim.scale.set(params.scale);
+			anim.position.set(params.x, params.y);
+			anim.rotation = Utils.gradToRad(params.rotation);
+			anim.blendMode = PIXI.BLEND_MODES.ADD;
+			anim.play();
+		}
+	}
+
+	_rotateFlare()
+	{
+		this._fOrangeFlare_sprt.rotateTo(Utils.gradToRad(360), 1800*FRAME_RATE, undefined, () => { this._onFlareRotationCycleCompleted() });
+	}
+
+	_onFlareRotationCycleCompleted()
+	{
+		this._fOrangeFlare_sprt.rotation = 0;
+		this._rotateFlare();
+	}
+
+	get _eyeGlowSequence()
+	{
+		let lFlareSeq_arr = [
+			{tweens: [{prop: 'alpha', to: 1}],	duration: 30*FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}],		duration: 30*FRAME_RATE, onfinish: (e) => { this._onEyeGlowCycleCompleted() } }
+
+		];
+
+		return lFlareSeq_arr
+	}
+
+	_startEyeGlowAnimation()
+	{
+		this._fEyeGlowSeq_seq = Sequence.start(this._fEyeGlow_sprt, this._eyeGlowSequence);
+	}
+
+	_onEyeGlowCycleCompleted()
+	{
+		this._fEyeGlowSeq_seq.destructor();
+
+		this._startEyeGlowAnimation();
+	}
+	// ...BG ANIMATION
+
+	_addLogo()
+	{
+		let lLogo_spr = this._fPreloaderView_spr.addChild(new LobbyPreloaderLogoView);
+		lLogo_spr.position.set(236, -190);
+	}
+
+	_addTipsBase()
+	{
+		let lTipsBack_spr = this._fPreloaderView_spr.addChild(APP.library.getSprite('preloader/tips_base'));
+		lTipsBack_spr.position.set(236, -8);
+	}
+
+	_addBrand()
+	{
+		let lCustomerBrand_obj = APP.customerspecController.info.brand;
+		let lSettingsBrand_obj = APP.config.brand;
+		let lBrandEnable_bln = lSettingsBrand_obj.enable;
+
+		if (lCustomerBrand_obj && lCustomerBrand_obj.priority >= lSettingsBrand_obj.priority)
+		{
+			lBrandEnable_bln = lCustomerBrand_obj.enable;
+		}
+
+		if (lBrandEnable_bln)
+		{
+			let lBrand_spr = this._fPreloaderView_spr.addChild(I18.generateNewCTranslatableAsset('TAPreloaderBrand'));
+			lBrand_spr.position.set(-346, APP.isMobile ? -187: -199);
+		}
+	}
+
+	_addLoadingBar()
+	{
+		let lLoadingBarContainer_spr = this._fPreloaderView_spr.addChild(new Sprite);
+		lLoadingBarContainer_spr.position.set(236, 218);
+
+		let lBack_grphc = lLoadingBarContainer_spr.addChild(APP.library.getSprite("preloader/loading_bar/back"));
+
+		let lBarContainer_spr = lLoadingBarContainer_spr.addChild(new Sprite);
+
+		let lBarFill = lBarContainer_spr.addChild(APP.library.getSprite("preloader/loading_bar/fill"));
+		lBarFill.anchor.set(0, 0.5);
+
+		var lBarMask = this._barMask = lBarContainer_spr.addChild(new Sprite);
+		var lBarMaskGr = lBarMask.addChild(new PIXI.Graphics());
+		lBarMaskGr.beginFill(0x00ff00).drawRect(0, -6, 420, 12);
+
+		lBarContainer_spr.position.x = lBarContainer_spr.position.x - lBarContainer_spr.getBounds().width / 2;
+
+		lBarMask.scale.x = 0.001;
+		lBarFill.mask = lBarMaskGr;
+	}
+
+	initTooltips()
+	{
+		this._fTooltipsContainer = APP.preloaderStage.view.addChild(new Sprite());
+		this._fTooltipsContainer.position.set(236, APP.isMobile ? -8 : -20);
+
+		let lTooltip_pt;
+
+		this._fCurrentTip_num = -1;
+
+		for(let i = 0; i < TIP_COUNT; i++)
+		{
+			if (APP.playerController.info.isDisableAutofiring && i == DISABLE_TIP_AUTOFIRE)
+			{
+				// skip autofiring tooltip for disable autofiring mode
+				continue;
+			}
+
+			lTooltip_pt = this._fTooltipsContainer.addChild(new PreloaderTooltip(i));
+			lTooltip_pt.on(PreloaderTooltip.END_OF_HIDE_ANIMATION, this._showNextTooltip, this);
+			this._fTooltips_pt_arr.push(lTooltip_pt);
+			this._fTipQueue_arr.push(i);
+		}
+
+		this._fTipQueue_arr.sort(this._compareRandom);
+	}
+
+	_compareRandom(a, b)
+	{
+		return Math.random() - 0.5;
+	}
+
+	_showNextTooltip()
+	{
+		if(!this._fTooltipsContainer)
+		{
+			this.initTooltips();
+		}
+
+		if (this._fIntervalTimer_t) this._fIntervalTimer_t.destructor();
+
+		this._fCurrentTip_num++;
+
+		if(this._fCurrentTip_num ==  this._fTipQueue_arr.length) this._fCurrentTip_num = 0;
+
+		this._fTooltips_pt_arr.forEach(tip => tip.id == this._fTipQueue_arr[this._fCurrentTip_num] && tip.show());
+	}
+
+	//PRELOADER SOUND BUTTON...
+	__providePreloaderSoundButtonControllerInstance()
+	{
+		return new LobbyPreloaderSoundButtonController();
+	}
+
+	_initSoundButtonView()
+	{
+		let l_sbv = this._fPreloaderView_spr.addChild(new LobbyPreloaderSoundButtonView());
+		l_sbv.position.set(-432, -199);
+
+		let platformInf = window.getPlatformInfo ? window.getPlatformInfo() : {};
+		this._isMobile = platformInf.mobile;
+
+		if (this._isMobile)
+		{
+			l_sbv.scale.set(1.8);
+			l_sbv.position.y += 14;
+			l_sbv.position.x += 4;
+		}
+
+		return l_sbv;
+	}
+	//...PRELOADER SOUND BUTTON
+
+	fitLayout()
+	{
+	}
+
+	showProgress(aPercent_num = 0)
+	{
+		if (this._fLastProgress_num === aPercent_num)
+		{
+			return;
+		}
+
+		this._fLastProgress_num = aPercent_num;
+		let lEndScaleCount_num = Math.max(aPercent_num / 100, 0.001);
+
+		this._barMask.removeTweens();
+		this._barMask.addTween(
+									'x',
+									lEndScaleCount_num, PROGRESS_SPEED,
+									null, this._onProgressTweenCompleted.bind(this),
+									() => {},
+									this._barMask.scale
+								).play();
+	}
+
+	_onProgressTweenCompleted()
+	{
+		if (this._fLastProgress_num === 100)
+		{
+			this._barMask.removeTweens();
+
+			this._fCompleteTimer_t = new Timer(this.onCompleteTimerFinished.bind(this), PROGRESS_SPEED * 3);
+		}
+	}
+
+	showComplete()
+	{
+		this.showProgress(100);
+	}
+
+	onCompleteTimerFinished()
+	{
+		this._fCompleteTimer_t && this._fCompleteTimer_t.destructor();
+		this._fCompleteTimer_t = null;
+
+		this.dispatchComplete();
+	}
+
+	//CLICK TO START...
+	showClickToStart()
+	{
+		let lClickToStart_cta;
+
+		if (APP.isMobile)
+		{
+			lClickToStart_cta = I18.generateNewCTranslatableAsset('TAPreloderClickToStartLabelMobile');
+		}
+		else
+		{
+			lClickToStart_cta = I18.generateNewCTranslatableAsset('TAPreloderClickToStartLabel');
+		}
+
+		lClickToStart_cta.position.set(236, 243);
+		this._fPreloaderView_spr.addChild(lClickToStart_cta);
+
+		this.startPulsating(lClickToStart_cta);
+
+		this._fPreloaderView_spr.once("pointerclick", () => {
+			this.stopPulsating(lClickToStart_cta);
+			this.emit(LoaderUI.EVENT_ON_CLICK_TO_START_CLICKED);
+		});
+	}
+
+	startPulsating(aContainer_cntr)
+	{
+		let sequence = [
+			{tweens: [{prop: 'scale.x', to: 1.2}, {prop: 'scale.y', to: 1.2}], duration: 250, ease: Easing.sine.easeIn},
+			{tweens: [{prop: 'scale.x', to: 1}, {prop: 'scale.y', to: 1}], duration: 250, ease: Easing.sine.easeOut, onfinish: () => this.startPulsating(aContainer_cntr)}
+		];
+
+		Sequence.start(aContainer_cntr, sequence);
+	}
+
+	stopPulsating(aContainer_cntr)
+	{
+		aContainer_cntr.scale.set(1, 1);
+		Sequence.destroy(Sequence.findByTarget(aContainer_cntr));
+		aContainer_cntr.destroy();
+	}
+	//...CLICK TO START
+
+	destructor()
+	{
+		super.destructor();
+
+		Sequence.destroy(Sequence.findByTarget(this._smoke0));
+		Sequence.destroy(Sequence.findByTarget(this._smoke1));
+		Sequence.destroy(Sequence.findByTarget(this._smoke2));
+
+		Sequence.destroy(Sequence.findByTarget(this._burst0));
+		Sequence.destroy(Sequence.findByTarget(this._burst1));
+		Sequence.destroy(Sequence.findByTarget(this._burst2));
+
+		this._fLastProgress_num = undefined;
+
+		this._fCompleteTimer_t && this._fCompleteTimer_t.destructor();
+		this._fCompleteTimer_t = null;
+
+		this._fIntervalTimer_t && this._fIntervalTimer_t.destructor();
+		this._fIntervalTimer_t = null;
+
+		this._fPreloaderView_spr = null;
+		this._barMask = null;
+		this._fTooltipsContainer = null;
+
+		this._fTipQueue_arr = null;
+		this._fCurrentTip_num = null;
+
+		if (this._fTooltips_pt_arr)
+		{
+			while (this._fTooltips_pt_arr.length)
+			{
+				let lTargetTip_pt = this._fTooltips_pt_arr.shift();
+				lTargetTip_pt.off(PreloaderTooltip.END_OF_HIDE_ANIMATION, this._showNextTooltip, this);
+				lTargetTip_pt.destroy();
+			}
+		}
+		this._fTooltips_pt_arr = null;
+
+		this._fOrangeFlare_sprt = null;
+
+		this._fEyeGlowSeq_seq && this._fEyeGlowSeq_seq.destructor();
+		this._fEyeGlow_sprt = null;
+
+		PreloaderSparks.removeTextures();
+	}
+}
+
+export default LoaderUI;

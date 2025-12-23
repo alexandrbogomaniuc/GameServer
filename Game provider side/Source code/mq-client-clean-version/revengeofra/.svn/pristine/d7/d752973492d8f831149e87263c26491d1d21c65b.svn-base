@@ -1,0 +1,55 @@
+
+MummySmall270.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummySmall270_ArmL
+  rotate: true
+  xy: 2, 2
+  size: 34, 87
+  orig: 34, 87
+  offset: 0, 0
+  index: -1
+MummySmall270_ArmR
+  rotate: true
+  xy: 149, 72
+  size: 47, 107
+  orig: 47, 107
+  offset: 0, 0
+  index: -1
+MummySmall270_Head
+  rotate: true
+  xy: 421, 83
+  size: 36, 50
+  orig: 36, 50
+  offset: 0, 0
+  index: -1
+MummySmall270_Hips
+  rotate: false
+  xy: 363, 72
+  size: 56, 47
+  orig: 56, 47
+  offset: 0, 0
+  index: -1
+MummySmall270_LegL
+  rotate: true
+  xy: 2, 81
+  size: 38, 145
+  orig: 38, 145
+  offset: 0, 0
+  index: -1
+MummySmall270_LegR
+  rotate: true
+  xy: 2, 38
+  size: 41, 132
+  orig: 41, 132
+  offset: 0, 0
+  index: -1
+MummySmall270_Torso
+  rotate: true
+  xy: 258, 53
+  size: 66, 103
+  orig: 66, 103
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,69 @@
+
+ScarabUp.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+up/body
+  rotate: false
+  xy: 2, 2
+  size: 131, 115
+  orig: 131, 115
+  offset: 0, 0
+  index: -1
+up/head
+  rotate: false
+  xy: 135, 5
+  size: 99, 112
+  orig: 99, 112
+  offset: 0, 0
+  index: -1
+up/horn
+  rotate: true
+  xy: 613, 90
+  size: 27, 112
+  orig: 27, 112
+  offset: 0, 0
+  index: -1
+up/leg_lf1
+  rotate: false
+  xy: 335, 54
+  size: 90, 63
+  orig: 90, 63
+  offset: 0, 0
+  index: -1
+up/leg_lf2
+  rotate: false
+  xy: 236, 8
+  size: 86, 45
+  orig: 86, 45
+  offset: 0, 0
+  index: -1
+up/leg_lf3
+  rotate: true
+  xy: 516, 64
+  size: 53, 95
+  orig: 53, 95
+  offset: 0, 0
+  index: -1
+up/leg_rt1
+  rotate: false
+  xy: 727, 83
+  size: 52, 34
+  orig: 52, 34
+  offset: 0, 0
+  index: -1
+up/leg_rt2
+  rotate: false
+  xy: 427, 47
+  size: 87, 70
+  orig: 87, 70
+  offset: 0, 0
+  index: -1
+up/leg_rt3
+  rotate: false
+  xy: 236, 55
+  size: 97, 62
+  orig: 97, 62
+  offset: 0, 0
+  index: -1

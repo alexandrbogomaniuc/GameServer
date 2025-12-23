@@ -1,0 +1,27 @@
+const path = require('path');
+const PROJECT_SRC = path.resolve(__dirname, 'src');
+const PIXI_SRC = path.resolve(__dirname, "../../common/PIXI/src");
+const SHARED_SRC = path.resolve(__dirname, "../shared/src");
+
+module.exports = {
+	entry: [
+		'babel-polyfill',
+		'./src/index',
+		'webpack-dev-server/client?http://localhost:8081'
+	],
+	output: { filename: 'game.js' },
+	devtool: 'source-map',
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				include: [PIXI_SRC, PROJECT_SRC, SHARED_SRC],
+				exclude: [/node_modules/],
+				loader: 'babel-loader',
+				query: { presets: ["es2015", "stage-0"] }
+			}
+		],
+		noParse: /.*[\/\\]bin[\/\\].+\.js/
+	},
+	devServer: { contentBase: __dirname }
+};

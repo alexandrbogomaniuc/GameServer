@@ -1,0 +1,768 @@
+{
+	"images": [
+		{
+			"name": "paytable/active_btn",
+			"src": "paytable/active_btn.png",
+			"width": 130,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/deactive_btn",
+			"src": "paytable/deactive_btn.png",
+			"width": 130,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/slider_pre_btn",
+			"src": "paytable/slider_pre_btn.png",
+			"width": 76,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/slider_next_btn",
+			"src": "paytable/slider_next_btn.png",
+			"width": 76,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/exit_btn",
+			"src": "paytable/exit_btn.png",
+			"width": 18.5,
+			"height": 18.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		
+		{
+			"name": "paytable/pages/how_to_play/index_1",
+			"src": "paytable/pages/how_to_play/index_1.png",
+			"width": 49,
+			"height": 49,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/how_to_play/index_2",
+			"src": "paytable/pages/how_to_play/index_2.png",
+			"width": 49,
+			"height": 49,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/how_to_play/index_3",
+			"src": "paytable/pages/how_to_play/index_3.png",
+			"width": 49,
+			"height": 49,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/how_to_play/icon_1",
+			"src": "paytable/pages/how_to_play/icon_1.png",
+			"width": 258,
+			"height": 266.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/how_to_play/icon_2",
+			"src": "paytable/pages/how_to_play/icon_2.png",
+			"width": 258,
+			"height": 266.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/how_to_play/icon_3",
+			"src": "paytable/pages/how_to_play/icon_3.png",
+			"width": 258,
+			"height": 266.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/how_to_play/weapon_indicator_1",
+			"src": "paytable/pages/how_to_play/weapon_indicator_1.png",
+			"width": 24.5,
+			"height": 13.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/how_to_play/weapon_indicator_2",
+			"src": "paytable/pages/how_to_play/weapon_indicator_2.png",
+			"width": 24.5,
+			"height": 13.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemie_hp_and_victory/screen",
+			"src": "paytable/pages/enemie_hp_and_victory/screen.png",
+			"width": 502,
+			"height": 236,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemie_hp_and_victory/special_weapons",
+			"src": "paytable/pages/enemie_hp_and_victory/special_weapons.png",
+			"width": 527,
+			"height": 158.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/internal_forgemaster",
+			"src": "paytable/pages/enemies/internal_forgemaster.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/scarab_hatchling",
+			"src": "paytable/pages/enemies/scarab_hatchling.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/shadow_scarab",
+			"src": "paytable/pages/enemies/shadow_scarab.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/golden_scarab",
+			"src": "paytable/pages/enemies/golden_scarab.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/ruby_scarab",
+			"src": "paytable/pages/enemies/ruby_scarab.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/bewjelled_scarab",
+			"src": "paytable/pages/enemies/bewjelled_scarab.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/swarming_locust",
+			"src": "paytable/pages/enemies/swarming_locust.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/devouring_locust",
+			"src": "paytable/pages/enemies/devouring_locust.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/giant_scorpion",
+			"src": "paytable/pages/enemies/giant_scorpion.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/wrapped_minion",
+			"src": "paytable/pages/enemies/wrapped_minion.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/wrapped_shadowguard",
+			"src": "paytable/pages/enemies/wrapped_shadowguard.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/wrapped_spiritguard",
+			"src": "paytable/pages/enemies/wrapped_spiritguard.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/tahawy_warrior",
+			"src": "paytable/pages/enemies/tahawy_warrior.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/tahawy_commander",
+			"src": "paytable/pages/enemies/tahawy_commander.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/crimson_bataanta",
+			"src": "paytable/pages/enemies/crimson_bataanta.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/emerald_bataanta",
+			"src": "paytable/pages/enemies/emerald_bataanta.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/cursed_brawler",
+			"src": "paytable/pages/enemies/cursed_brawler.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/horus",
+			"src": "paytable/pages/enemies/horus.png",
+			"width": 99,
+			"height": 122,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/special_enemies/infernal_forgemaster",
+			"src": "paytable/pages/special_enemies/infernal_forgemaster.png",
+			"width": 450,
+			"height": 412,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/special_enemies/wild_textures",
+			"src": "paytable/pages/special_enemies/wild_textures.png",
+			"width": 455,
+			"height": 230,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+
+		},
+		{
+			"name": "paytable/pages/special_enemies/unstable_avatar",
+			"src": "paytable/pages/special_enemies/unstable_avatar.png",
+			"width": 510,
+			"height": 500,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/unstable_avatar/back",
+			"src": "paytable/pages/unstable_avatar/back.png",
+			"width": 960,
+			"height": 473,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+
+		},
+		{
+			"name": "paytable/pages/unstable_avatar/exploder",
+			"src": "paytable/pages/unstable_avatar/exploder.png",
+			"width": 405.5,
+			"height": 240,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/unstable_avatar/explosion",
+			"src": "paytable/pages/unstable_avatar/explosion.png",
+			"width": 405.5,
+			"height": 240,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/unstable_avatar/fx",
+			"src": "paytable/pages/unstable_avatar/fx.png",
+			"width": 442,
+			"height": 356,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/legendary_bosses/ra",
+			"src": "paytable/pages/legendary_bosses/ra.png",
+			"width": 254,
+			"height": 263,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/legendary_bosses/osiris",
+			"src": "paytable/pages/legendary_bosses/osiris.png",
+			"width": 254,
+			"height": 263,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/legendary_bosses/anubis",
+			"src": "paytable/pages/legendary_bosses/anubis.png",
+			"width": 220,
+			"height": 263,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/weapons/turret",
+			"src": "paytable/pages/weapons/turret.png",
+			"width": 804,
+			"height": 421,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/back",
+			"src": "paytable/pages/enemies/weapon_slider/back.png",
+			"width": 64,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/arrow_btn",
+			"src": "paytable/pages/enemies/weapon_slider/arrow_btn.png",
+			"width": 10,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/artillery_grenade",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/artillery_grenade.png",
+			"width": 37,
+			"height": 57.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/cryogun",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/cryogun.png",
+			"width": 77,
+			"height": 111,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/flamethrower",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/flamethrower.png",
+			"width": 62.5,
+			"height": 110,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/gun_off",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/gun_off.png",
+			"width": 57.5,
+			"height": 96,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/mine_laucher",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/mine_laucher.png",
+			"width": 131.5,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/turret_1",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/turret_1.png",
+			"width": 63,
+			"height": 86.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/turret_2",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/turret_2.png",
+			"width": 61.5,
+			"height": 89.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/turret_3",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/turret_3.png",
+			"width": 67,
+			"height": 90,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/turret_4",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/turret_4.png",
+			"width": 65.5,
+			"height": 92,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/enemies/weapon_slider/weapons/turret_5",
+			"src": "paytable/pages/enemies/weapon_slider/weapons/turret_5.png",
+			"width": 65.5,
+			"height": 92.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/special_weapons/weapons/mine_launcher",
+			"src": "paytable/pages/special_weapons/weapons/mine_launcher.png",
+			"width": 113,
+			"height": 81.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/special_weapons/weapons/plasma_rifle",
+			"src": "paytable/pages/special_weapons/weapons/plasma_rifle.png",
+			"width": 119,
+			"height": 80,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/special_weapons/weapons/flamethrower",
+			"src": "paytable/pages/special_weapons/weapons/flamethrower.png",
+			"width": 119,
+			"height": 81.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/special_weapons/weapons/cryogun",
+			"src": "paytable/pages/special_weapons/weapons/cryogun.png",
+			"width": 121.5,
+			"height": 76.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/special_weapons/weapons/artillery_strike",
+			"src": "paytable/pages/special_weapons/weapons/artillery_strike.png",
+			"width": 51.5,
+			"height": 90.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},		
+		{
+			"name": "paytable/pages/special_weapons/weapon_back",
+			"src": "paytable/pages/special_weapons/weapon_back.png",
+			"width": 172,
+			"height": 195,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "paytable/pages/money_wheel/wheel",
+			"src": "paytable/pages/money_wheel/wheel.png",
+			"width": 783.5,
+			"height": 417.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/back",
+			"src": "paytable/pages/controls/back.png",
+			"width": 910,
+			"height": 459.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "paytable/pages/controls/cross",
+			"src": "paytable/pages/controls/cross.png",
+			"width": 42,
+			"height": 42.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/cursor",
+			"src": "paytable/pages/controls/cursor.png",
+			"width": 16.5,
+			"height": 42.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/mouse",
+			"src": "paytable/pages/controls/mouse.png",
+			"width": 23,
+			"height": 42.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/finger",
+			"src": "paytable/pages/controls/finger.png",
+			"width": 37.5,
+			"height": 46,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/finger_tap",
+			"src": "paytable/pages/controls/finger_tap.png",
+			"width": 37.5,
+			"height": 46,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/gun",
+			"src": "paytable/pages/controls/gun.png",
+			"width": 27.5,
+			"height": 21,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/cup",
+			"src": "paytable/pages/controls/cup.png",
+			"width": 22.5,
+			"height": 21,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/gear",
+			"src": "paytable/pages/controls/gear.png",
+			"width": 27.5,
+			"height": 21,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/sound",
+			"src": "paytable/pages/controls/sound.png",
+			"width": 27.5,
+			"height": 20.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/back_icon",
+			"src": "paytable/pages/controls/back_icon.png",
+			"width": 27.5,
+			"height": 20.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/sw_1",
+			"src": "paytable/pages/controls/sw_1.png",
+			"width": 94.5,
+			"height": 71.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/sw_8",
+			"src": "paytable/pages/controls/sw_8.png",
+			"width": 55.5,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/sw_3",
+			"src": "paytable/pages/controls/sw_3.png",
+			"width": 110,
+			"height": 141,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/sw_7",
+			"src": "paytable/pages/controls/sw_7.png",
+			"width": 101.5,
+			"height": 125,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/sw_5",
+			"src": "paytable/pages/controls/sw_5.png",
+			"width": 74,
+			"height": 61,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/minus",
+			"src": "paytable/pages/controls/minus.png",
+			"width": 25,
+			"height": 25,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/plus",
+			"src": "paytable/pages/controls/plus.png",
+			"width": 25,
+			"height": 25,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/turret",
+			"src": "paytable/pages/controls/turret.png",
+			"width": 44,
+			"height": 44,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/pages/controls/target",
+			"src": "paytable/pages/controls/target.png",
+			"width": 44.5,
+			"height": 61,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "paytable/header_gradient",
+			"src": "paytable/header_gradient.png",
+			"width": 128,
+			"height": 8,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		}
+	]
+}

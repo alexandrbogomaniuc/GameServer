@@ -1,0 +1,83 @@
+
+Thoth0.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Thoth270_Head
+  rotate: false
+  xy: 689, 25
+  size: 112, 157
+  orig: 112, 157
+  offset: 0, 0
+  index: -1
+Thoth270_Hips
+  rotate: true
+  xy: 171, 139
+  size: 115, 209
+  orig: 115, 209
+  offset: 0, 0
+  index: -1
+Thoth270_Torso
+  rotate: true
+  xy: 803, 17
+  size: 131, 139
+  orig: 131, 139
+  offset: 0, 0
+  index: -1
+Thoth_Apron
+  rotate: true
+  xy: 594, 184
+  size: 70, 221
+  orig: 70, 221
+  offset: 0, 0
+  index: -1
+Thoth_ArmL
+  rotate: true
+  xy: 382, 83
+  size: 84, 159
+  orig: 84, 159
+  offset: 0, 0
+  index: -1
+Thoth_ArmR
+  rotate: false
+  xy: 270, 2
+  size: 70, 135
+  orig: 70, 135
+  offset: 0, 0
+  index: -1
+Thoth_Head
+  rotate: true
+  xy: 817, 150
+  size: 104, 168
+  orig: 104, 168
+  offset: 0, 0
+  index: -1
+Thoth_Hips
+  rotate: false
+  xy: 2, 63
+  size: 167, 191
+  orig: 167, 191
+  offset: 0, 0
+  index: -1
+Thoth_LegL
+  rotate: false
+  xy: 171, 2
+  size: 97, 135
+  orig: 97, 135
+  offset: 0, 0
+  index: -1
+Thoth_LegR
+  rotate: true
+  xy: 382, 169
+  size: 85, 210
+  orig: 85, 210
+  offset: 0, 0
+  index: -1
+Thoth_Torso
+  rotate: true
+  xy: 543, 2
+  size: 146, 144
+  orig: 146, 144
+  offset: 0, 0
+  index: -1

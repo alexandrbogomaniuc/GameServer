@@ -1,0 +1,405 @@
+import SpineEnemy from './SpineEnemy';
+import { DIRECTION, TURN_DIRECTION, STATE_DEATH, STATE_TURN, STATE_IMPACT, SPINE_SCALE, STATE_STAY } from './Enemy';
+import { ENEMIES } from '../../../../shared/src/CommonConstants';
+import { APP } from '../../../../../common/PIXI/src/globals';
+import ProfilingInfo from '../../../../../common/PIXI/src/model/profiling/ProfilingInfo';
+import { Utils } from '../../../../../common/PIXI/src/Utils';
+
+class EightWayEnemy extends SpineEnemy
+{
+	get isScarab()
+	{
+		return this.name == ENEMIES.ScarabGreen ||
+				this.name == ENEMIES.ScarabBrown ||
+				this.name == ENEMIES.ScarabGold ||
+				this.name == ENEMIES.ScarabRuby ||
+				this.name == ENEMIES.ScarabDiamond ||
+				super.isScarab;
+	}
+
+	constructor(params)
+	{
+		super(params);
+
+		this._fTurnOrder_num = 0;
+	}
+
+	getImageName(aName_str)
+	{
+		switch (aName_str)
+		{
+			case ENEMIES.ScarabGreen:	return 'enemies/scarabs/scarab_green/Scarab';
+			case ENEMIES.ScarabBrown:	return 'enemies/scarabs/scarab_brown/Scarab';
+			case ENEMIES.ScarabGold:	return 'enemies/scarabs/scarab_gold/Scarab';
+			case ENEMIES.ScarabRuby:	return 'enemies/scarabs/scarab_ruby/Scarab';
+			case ENEMIES.ScarabDiamond:	return 'enemies/scarabs/scarab_diamond/Scarab';
+		}
+	}
+
+	playDeathSound()
+	{
+		if (Math.random() > 0.5) return;
+
+		let randomSoundIndex = 1;
+		let soundName = "";
+		let lowProfile = APP.profilingController.info.isVfxProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE_VALUES.MEDIUM);
+
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:
+			case ENEMIES.ScarabBrown:
+			case ENEMIES.ScarabGold:
+			case ENEMIES.ScarabRuby:
+			case ENEMIES.ScarabDiamond:
+				randomSoundIndex = APP.isMobile || lowProfile ? 2 : Utils.random(1, 2);
+				soundName = 'mq_enemies_bug_death_' + randomSoundIndex;
+			break;
+		}
+
+		if (!!soundName)
+		{
+			APP.soundsController.play(soundName);
+		}		
+	}
+
+	getScaleCoefficient()
+	{
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:		return 0.25;
+			case ENEMIES.ScarabBrown:		return 0.25;
+			case ENEMIES.ScarabGold:  		return 0.25*1.3;
+			case ENEMIES.ScarabRuby:  		return 0.25*1.3;
+			case ENEMIES.ScarabDiamond:  	return 0.25*1.3;
+		}
+	}
+
+	_getFreezeGroundScaleCoef()
+	{
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:	return 0.9;
+			case ENEMIES.ScarabBrown:	return 0.9;
+			case ENEMIES.ScarabGold: 	return 1;
+			case ENEMIES.ScarabRuby:  	return 1;
+			case ENEMIES.ScarabDiamond:	return 1;
+		}
+	}
+
+	setViewPos()
+	{
+		this.viewPos = {x: 0, y: 0};
+	}
+
+	_getHitRectWidth()
+	{
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:	return 25;
+			case ENEMIES.ScarabBrown:	return 25;
+			case ENEMIES.ScarabGold:	return 25*1.3;
+			case ENEMIES.ScarabRuby:	return 25*1.3;
+			case ENEMIES.ScarabDiamond:	return 25*1.3;
+		}
+	}
+
+	_getHitRectHeight()
+	{
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:	return 25;
+			case ENEMIES.ScarabBrown:	return 25;
+			case ENEMIES.ScarabGold:	return 25*1.3;
+			case ENEMIES.ScarabRuby:	return 25*1.3;
+			case ENEMIES.ScarabDiamond:	return 25*1.3;
+		}
+	}
+
+	changeShadowPosition()
+	{
+		let lPos_obj = {x: 0, y: 0};
+		let lScale_num = 1;
+		let lAlpha_num = 1;
+
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:
+			case ENEMIES.ScarabBrown:
+				lScale_num = 0.4;
+				lAlpha_num = 0.72;
+				lPos_obj.y = -4;
+			break;
+			case ENEMIES.ScarabGold:
+			case ENEMIES.ScarabRuby:
+			case ENEMIES.ScarabDiamond:
+				lScale_num = 0.4*1.3;
+				lAlpha_num = 0.72;
+				lPos_obj.y = -4*1.3;
+			break;
+		}
+
+		this.shadow.position.set(lPos_obj.x, lPos_obj.y);
+		this.shadow.scale.set(lScale_num);
+		this.shadow.alpha = lAlpha_num;
+	}
+
+	getLocalCenterOffset()
+	{
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:
+			case ENEMIES.ScarabBrown:
+				return {x: 0, y: -6};
+			case ENEMIES.ScarabGold:
+			case ENEMIES.ScarabRuby:
+			case ENEMIES.ScarabDiamond:
+				return {x: 0, y: -6*1.3};
+		}
+	}
+
+	static getDirection(angle)
+	{
+		let direction = DIRECTION.RIGHT;
+		if (angle > Math.PI*2) angle -= Math.PI*2;
+
+		if (angle > Math.PI*1/8) direction = DIRECTION.RIGHT_DOWN;
+		if (angle > Math.PI*3/8) direction = DIRECTION.DOWN;
+		if (angle > Math.PI*5/8) direction = DIRECTION.LEFT_DOWN;
+		if (angle > Math.PI*7/8) direction = DIRECTION.LEFT;
+		if (angle > Math.PI*9/8) direction = DIRECTION.LEFT_UP;
+		if (angle > Math.PI*11/8) direction = DIRECTION.UP;
+		if (angle > Math.PI*13/8) direction = DIRECTION.RIGHT_UP;
+		if (angle > Math.PI*15/8) direction = DIRECTION.RIGHT;
+
+		return direction
+	}
+
+	getTurnDirection(direction)
+	{
+		this._calculateTurnOrder(direction);
+
+		let d1 = +this.direction.slice(3);
+		let d2 = +direction.slice(3);
+
+		let lDir_str = "";
+		if (d1 >= 180)
+		{
+			if (d2 >= 180)
+			{
+				if (d2 > d1)
+				{
+					lDir_str = TURN_DIRECTION.CCW;
+				}
+				else
+				{
+					lDir_str = TURN_DIRECTION.CW;
+				}
+			}
+			else if (d1 - d2 > 180)
+			{
+				lDir_str = TURN_DIRECTION.CCW;
+			}
+			else
+			{
+				lDir_str = TURN_DIRECTION.CW;
+			}
+		}
+		else
+		{
+			if (d2 < 180)
+			{
+				if (d2 > d1)
+				{
+					lDir_str = TURN_DIRECTION.CCW;
+				}
+				else
+				{
+					lDir_str = TURN_DIRECTION.CW;
+				}
+			}
+			else if (d2 - d1 > 180)
+			{
+				lDir_str = TURN_DIRECTION.CW;
+			}
+			else
+			{
+				lDir_str = TURN_DIRECTION.CCW;
+			}
+		}
+
+		return lDir_str;
+	}
+
+	_calculateTurnOrder(direction)
+	{
+		this._fTurnOrder_num = 0;
+
+		let d1 = +this.direction.slice(3);
+		let d2 = +direction.slice(3);
+
+		if (d1 >= 180)
+		{
+			if (d2 >= 180)
+			{
+				if (d2 > d1)
+				{
+					this._fTurnOrder_num = -1;
+				}
+				else
+				{
+					this._fTurnOrder_num = 1;
+				}
+			}
+			else if (d1 - d2 > 180)
+			{
+				this._fTurnOrder_num = -1;
+			}
+			else
+			{
+				this._fTurnOrder_num = 1;
+			}
+		}
+		else
+		{
+			if (d2 < 180)
+			{
+				if (d2 > d1)
+				{
+					this._fTurnOrder_num = -1;
+				}
+				else
+				{
+					this._fTurnOrder_num = 1;
+				}
+			}
+			else if (d2 - d1 > 180)
+			{
+				this._fTurnOrder_num = 1;
+			}
+			else
+			{
+				this._fTurnOrder_num = -1;
+			}
+		}
+
+		let lDiv_num = Math.abs(d2 - d1);
+		if (lDiv_num > 45 && lDiv_num != 315)
+		{
+			this._fTurnOrder_num *= 2;
+		}
+
+		if (this._fTurnOrder_num > 2) this._fTurnOrder_num = 2;
+		if (this._fTurnOrder_num < -2) this._fTurnOrder_num = -2;
+		if (this._fTurnOrder_num == 0) this._fTurnOrder_num = 1;
+	}
+
+	getTurnAnimationName()
+	{
+		let lNextAngle_num = +this.direction.substr(3);
+		let lDirAngles_arr = this._getPossibleDirections();
+
+		let lPrevId_num = (lDirAngles_arr.indexOf(lNextAngle_num) + this._fTurnOrder_num) % lDirAngles_arr.length;
+		if (lPrevId_num < 0) lPrevId_num = lDirAngles_arr.length + lPrevId_num;
+		let lPrevAngle_num = lDirAngles_arr[lPrevId_num];
+
+		let lAnimName_str = lPrevAngle_num + "_to_" + lNextAngle_num + "_turn";
+		return lAnimName_str;
+	}
+
+	_calcWalkAnimationName(aDirection_str, aBaseWalkAnimationName_str = "walk")
+	{
+		let lSuffix_str = '0_';
+
+		switch (aDirection_str)
+		{
+			case DIRECTION.LEFT_DOWN:	lSuffix_str = '0_';		break;
+			case DIRECTION.DOWN:		lSuffix_str = '45_';	break;
+			case DIRECTION.RIGHT_DOWN:	lSuffix_str = '90_';	break;
+			case DIRECTION.RIGHT:		lSuffix_str = '135_';	break;
+			case DIRECTION.RIGHT_UP:	lSuffix_str = '180_';	break;
+			case DIRECTION.UP:			lSuffix_str = '225_';	break;
+			case DIRECTION.LEFT_UP:		lSuffix_str = '270_';	break;
+			case DIRECTION.LEFT:		lSuffix_str = '315_';	break;
+		}
+
+		return lSuffix_str + aBaseWalkAnimationName_str;
+	}
+
+	_calculateDirection()
+	{
+		return EightWayEnemy.getDirection(this.angle);
+	}
+
+	changeSpineView(type, noChangeFrame)
+	{
+		super.changeSpineView(type, noChangeFrame);
+
+		if (this.state === STATE_TURN)
+		{
+			let lSpineName_str = this._calculateSpineTurnName(this._fAnimationName_str, this.imageName);
+			let lAngle_str = "";
+			for (let i = lSpineName_str.length-1; i >= 0; --i)
+			{
+				if (isNaN(lSpineName_str[i])) break;
+				lAngle_str = lSpineName_str[i] + lAngle_str;
+			}
+
+			this.setSpineViewPos(+lAngle_str);
+			this.spineView.position.set(this.spineViewPos.x, this.spineViewPos.y);
+		}
+		else if (this.state !== STATE_DEATH)
+		{
+			this.setSpineViewPos();
+			this.spineView.position.set(this.spineViewPos.x, this.spineViewPos.y);
+		}
+	}
+
+	_getPossibleDirections()
+	{
+		return [0, 45, 90, 135, 180, 225, 270, 315];
+	}
+
+	setSpineViewPos(aAngle_num)
+	{
+		let lPos_obj = {x: 0, y: 0};
+
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:
+			case ENEMIES.ScarabBrown:
+			case ENEMIES.ScarabGold:
+			case ENEMIES.ScarabRuby:
+			case ENEMIES.ScarabDiamond:
+				lPos_obj = {x: 0, y: 0};
+			break;
+		}
+
+		this.spineViewPos = lPos_obj;
+	}
+
+	_isDirectionStraight(aDir_str)
+	{
+		let lAngle_num = +aDir_str.substr(3);
+
+		return this._isAngleStraight(lAngle_num);
+	}
+
+	_isAngleStraight(aAngle_num)
+	{
+		if (aAngle_num == 45 || aAngle_num == 135 || aAngle_num == 225 || aAngle_num == 315)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	destroy(purely)
+	{
+		super.destroy(purely);
+
+		this._fTurnOrder_num = null;
+	}
+}
+
+export default EightWayEnemy;

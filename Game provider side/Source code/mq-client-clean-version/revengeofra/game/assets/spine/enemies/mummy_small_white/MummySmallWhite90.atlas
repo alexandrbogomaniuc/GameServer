@@ -1,0 +1,55 @@
+
+MummySmallWhite90.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummySmallWhite90_ArmL
+  rotate: true
+  xy: 144, 87
+  size: 34, 109
+  orig: 34, 109
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_ArmR
+  rotate: true
+  xy: 255, 77
+  size: 44, 94
+  orig: 44, 94
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_Head
+  rotate: true
+  xy: 2, 2
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_Hips
+  rotate: true
+  xy: 351, 65
+  size: 56, 75
+  orig: 56, 75
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_LegL
+  rotate: true
+  xy: 2, 83
+  size: 38, 140
+  orig: 38, 140
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_LegR
+  rotate: true
+  xy: 2, 39
+  size: 42, 135
+  orig: 42, 135
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_Torso
+  rotate: true
+  xy: 428, 54
+  size: 67, 72
+  orig: 67, 72
+  offset: 0, 0
+  index: -1

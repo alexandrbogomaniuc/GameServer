@@ -1,0 +1,1179 @@
+import Enemy from './Enemy';
+import { STATE_WALK, STATE_IMPACT, STATE_DEATH, STATE_TURN, STATE_STAY, SPINE_SCALE, DIRECTION, TURN_DIRECTION } from './Enemy';
+import { ENEMIES } from '../../../../shared/src/CommonConstants';
+import { APP } from '../../../../../common/PIXI/src/globals';
+import { Utils } from '../../../../../common/PIXI/src/Utils';
+import ElectricityEffectsController from '../../controller/uis/enemies/ElectricityEffectsController';
+import Sprite from '../../../../../common/PIXI/src/display/Sprite';
+import ProfilingInfo from '../../../../../common/PIXI/src/model/profiling/ProfilingInfo';
+
+const BOSS_SCALE = 1.25;
+
+export const FOOT_STEPS_POSITIONS =
+{
+	[ENEMIES.Anubis]: {
+		[DIRECTION.LEFT_UP]: 		[ {x: -55 * BOSS_SCALE, y: -10 * BOSS_SCALE},	{x: -20 * BOSS_SCALE, y: -23 * BOSS_SCALE} ],
+		[DIRECTION.LEFT_DOWN]: 		[ {x: -15 * BOSS_SCALE, y: 22 * BOSS_SCALE},	{x: -45 * BOSS_SCALE, y: -3 * BOSS_SCALE} ],
+		[DIRECTION.RIGHT_UP]: 		[ {x: 20 * BOSS_SCALE, y: -28 * BOSS_SCALE},	{x: 42 * BOSS_SCALE, y: -8 * BOSS_SCALE} ],
+		[DIRECTION.RIGHT_DOWN]: 	[ {x: 49 * BOSS_SCALE, y: -6 * BOSS_SCALE},	{x: 22 * BOSS_SCALE, y: 10 * BOSS_SCALE} ]
+	},
+	[ENEMIES.Osiris]: {
+		[DIRECTION.LEFT_UP]: 		[ {x: -78 * BOSS_SCALE, y: -26 * BOSS_SCALE},	{x: -43 * BOSS_SCALE, y: -39 * BOSS_SCALE} ],
+		[DIRECTION.LEFT_DOWN]: 		[ {x: -25 * BOSS_SCALE, y: 32 * BOSS_SCALE},	{x: -55 * BOSS_SCALE, y: 7 * BOSS_SCALE} ],
+		[DIRECTION.RIGHT_UP]: 		[ {x: 45 * BOSS_SCALE, y: -40 * BOSS_SCALE},	{x: 67 * BOSS_SCALE, y: -20 * BOSS_SCALE} ],
+		[DIRECTION.RIGHT_DOWN]: 	[ {x: 49 * BOSS_SCALE, y: 10 * BOSS_SCALE},	{x: 22 * BOSS_SCALE, y: 26 * BOSS_SCALE} ]
+	},
+	[ENEMIES.Thoth]: {
+		[DIRECTION.LEFT_UP]: 		[ {x: -75 * BOSS_SCALE, y: -27 * BOSS_SCALE},	{x: -40 * BOSS_SCALE, y: -43 * BOSS_SCALE} ],
+		[DIRECTION.LEFT_DOWN]: 		[ {x: -15 * BOSS_SCALE, y: 37 * BOSS_SCALE},	{x: -45 * BOSS_SCALE, y: 16 * BOSS_SCALE} ],
+		[DIRECTION.RIGHT_UP]: 		[ {x: 40 * BOSS_SCALE, y: -38 * BOSS_SCALE},	{x: 58 * BOSS_SCALE, y: -19 * BOSS_SCALE} ],
+		[DIRECTION.RIGHT_DOWN]: 	[ {x: 54 * BOSS_SCALE, y: 24 * BOSS_SCALE},	{x: 16 * BOSS_SCALE, y: 26 * BOSS_SCALE} ]
+	}
+};
+
+const MIN_TURN_SPEED = 0.8;
+
+class SpineEnemy extends Enemy
+{
+	static get EVENT_STATE_CHANGED ()			{ return "onEnemyStateChanged" };
+	static get EVENT_ON_FOOT_STEP_OCCURRED ()	{ return "EVENT_ON_FOOT_STEP_OCCURRED" };
+
+	constructor(params)
+	{
+		super(params);
+	}
+
+	get electricityBackContainer()
+	{
+		return this._electricityBackContainer;
+	}
+
+	get electricityFrontContainer()
+	{
+		return this._electricityFrontContainer;
+	}
+
+	get minTurnSpeed()
+	{
+		return MIN_TURN_SPEED;
+	}
+
+	//override...
+	getSpineSpeed()
+	{
+		let lSpeed_num = 0.2;
+		switch (this.name)
+		{
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedBlack:
+			case ENEMIES.WrappedWhite:
+				lSpeed_num = 0.48;
+				break;
+
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:  lSpeed_num = 0.143; break;
+					case DIRECTION.LEFT_UP:	   lSpeed_num = 0.133; break;
+					case DIRECTION.RIGHT_DOWN: lSpeed_num = 0.133; break;
+					case DIRECTION.RIGHT_UP:   lSpeed_num = 0.143; break;
+				}
+				break;
+
+			case ENEMIES.MummyGodRed:
+			case ENEMIES.MummyGodGreen:
+				lSpeed_num = 0.25;
+				break;
+			case ENEMIES.BombEnemy:
+				lSpeed_num = 0.25/1.15;
+				break;
+
+			case ENEMIES.LocustTeal:
+			case ENEMIES.Locust:
+				lSpeed_num = 0.1;
+				break;
+
+				break;
+		}
+		return lSpeed_num * this.speed;
+	}
+
+	setViewPos()
+	{
+		let pos = {x: 0, y: 0};
+		this.viewPos = pos;
+	}
+
+	setSpineViewPos()
+	{
+		let pos = {x: 0, y: 0};
+		switch (this.name)
+		{
+			case ENEMIES.Osiris:
+				pos = {x: 0, y: 0};
+				break;
+			case ENEMIES.Anubis:
+				pos = {x: 0, y: -14};
+				break;
+			case ENEMIES.Thoth:
+				pos = {x: 0, y: 0};
+				break;
+		}
+		this.spineViewPos = pos;
+	}
+
+	setStay()
+	{
+		this.state = STATE_STAY;
+		this._stopSpinePlaying();
+	}
+
+	calcMeshesHull(optMeshNames)
+	{
+		if (!this.spineView)
+		{
+			return null;
+		}
+
+		return this.spineView.calcMeshesHull(optMeshNames);
+	}
+
+	_onDebugTintUpdated()
+	{
+		this.tintColor = APP.gameDebuggingController.debugTintColor;
+		this.tintIntensity = APP.gameDebuggingController.debugTintIntencity;
+		super._onDebugTintUpdated();
+	}
+
+	//override protected
+	_untint()
+	{
+		this.spineView && this.spineView.untint();
+	}
+
+	//override protected
+	_updateTint()
+	{
+		if (this.tintColor !== undefined)
+		{
+			this.spineView && this.spineView.tintIt(this.tintColor, this.tintIntensity);
+		}
+	}
+
+	_initView()
+	{
+		this.spineView = this.container.addChild(APP.spineLibrary.getSprite(this.imageName + this.direction.substr(3)));
+		this._onSpineViewChanged();
+		this._updateTint();
+
+		if (this.tintColor !== undefined)
+		{
+			this.spineView.tintIt(this.tintColor, this.tintIntensity);
+		}
+
+		this.spineView.scale.set(SPINE_SCALE);
+
+		let lWalkAnimationName_str = this.getWalkAnimationName();
+		this.spineView.setAnimationByName(0, lWalkAnimationName_str, true);
+		this._startSpinePlaying();
+		this.spineView.view.state.timeScale = this.spineSpeed;
+		this.spineView.position.set(this.spineViewPos.x, this.spineViewPos.y);
+		this.spineView.zIndex = 3;
+
+		this.stepTimers = this.getStepTimers();
+
+		this.state = STATE_WALK;
+
+		this.changeTextures(this.state);
+
+		//DEBUG...
+		// this.hitCircle = this.container.addChild(new PIXI.Graphics());
+		// let color = 0xff0000;//this.getColor();
+		// let alpha = 0.5;
+		// this.hitCircle.clear()
+		// 	.beginFill(color, alpha)
+		// 	.drawCircle(this.footPoint.position.x, this.footPoint.position.y, 5);
+		// this.hitCircle.zIndex = 3;
+		//...DEBUG
+
+		this._initElectricityIfRequired();
+	}
+
+	_initElectricityIfRequired()
+	{
+		if (this._isElectricityEffectSupported)
+		{
+			this._initElectricity();
+		}
+	}
+
+	get _isElectricityEffectSupported()
+	{
+		return this.isBoss && APP.profilingController.info.isVfxDynamicProfileValueMediumOrGreater;
+	}
+
+	_initElectricity()
+	{
+		this._electricityBackContainer = this.container.addChild(new Sprite());
+		this._electricityBackContainer.zIndex = 1;
+
+		this._electricityFrontContainer = this.container.addChild(new Sprite());
+		this._electricityFrontContainer.zIndex = 300;
+
+		this._fElectricityEffectsController_eesc = this._retrieveElectricityEffectsControllerInstance();
+		this._fElectricityEffectsController_eesc.i_init();
+	}
+
+	_retrieveElectricityEffectsControllerInstance()
+	{
+		return new ElectricityEffectsController(this);
+	}
+
+	changeView()
+	{
+		if (this.checkInitialTurn())
+		{
+			return;
+		}
+		let direction = this._calculateDirection();
+		if (this._isRotationOnChangeViewRequired(direction))
+		{
+			this.turnDirection = this.getTurnDirection(direction);
+			this.direction = direction;
+
+			if (this.state == STATE_DEATH) return;
+			if (this.state == STATE_STAY) return;
+
+			if (this.isRunner)
+			{
+				this._runnerTurn();
+			}
+			else
+			{
+				this.changeTextures(STATE_TURN, false, true);
+				if (this.spineView && this.spineView.view)
+				{
+					this.stateListener = {complete: (e) => {
+						this._stopSpinePlaying();
+						this.endTurn();
+						this.stateListener = null;
+					}};
+					this.spineView.view.state.addListener(this.stateListener);
+				}
+				else
+				{
+					this.setWalk();
+				}
+			}
+		}
+
+		if (this.isWalkState)
+		{
+			let lSpeedDelta_num = (this.spineView && this.spineView.view) ? Math.abs(this.spineView.view.state.timeScale - this.getSpineSpeed()) : 0;
+			//need update speed?
+			if (lSpeedDelta_num > 0.01)
+			{
+				this.spineSpeed = this.getSpineSpeed();
+				this.setWalk(); //guarantees re-creation of spineView & updating its speed
+			}
+		}
+		else if (this.isStayState)
+		{
+			this._stopSpinePlaying();
+		}
+		else
+		{
+			this._startSpinePlaying();
+		}
+		this.changeFootPointPosition();
+		this.changeShadowPosition();
+		this.changeInstaMarkPosition();
+	}
+
+	_stopSpinePlaying()
+	{
+		this.spineView && this.spineView.stop();
+	}
+
+	_startSpinePlaying()
+	{
+		this.spineView && this.spineView.play();
+	}
+
+	_runnerTurn()
+	{
+		this.setWalk();
+	}
+
+	_isRotationOnChangeViewRequired(targetDirection)
+	{
+		return (targetDirection != this.direction);
+	}
+
+	endTurn(aInitial_bl = false)
+	{
+		if (this._fIsDeathActivated_bl) // we were waiting for endTurn to proceed with the Death animation
+		{
+			this.setDeath();
+		}
+		else
+		{
+			if (this.isBoss || this.isBossEscort)
+			{
+				if (aInitial_bl && (this.isFireDenied || !this.trajectoryPositionChangeInitiated))
+				{
+					return; // stay still while fire is denied or trajectory keeps unchanged point (for boss or bossEscort) ; fireDenied property is set only for Boss and his escort
+				}
+			}
+
+			if (this._isHVRisingUpInProgress)
+			{
+				return;
+			}
+
+			this.setWalk();
+		}
+	}
+
+	changeTextures(type, noChangeFrame, switchView, checkBackDirection)
+	{
+		if (this.spineView)
+		{
+			if (this.spineView.view && this.spineView.view.state)
+			{
+				this.spineView.removeAllListeners();
+				this.stateListener = null;
+			}
+			this._stopSpinePlaying();
+			this.spineView.destroy();
+			this.spineView = null;
+		}
+		this.changeSpineView(type, noChangeFrame);
+
+		if (type == STATE_TURN)
+		{
+			this.emit("turn");
+		}
+	}
+
+	changeSpineView(type, noChangeFrame)
+	{
+		if (type === undefined)
+		{
+			throw new Error('SpineEnemy :: changeSpineView >> type = undefined');
+		}
+		if (this.impactAnimated && type != STATE_IMPACT)
+		{
+			this.impactAnimated = false;
+		}
+
+		let x = this.spineViewPos.x;
+		let y = this.spineViewPos.y;
+		let lSpineName_str = this.imageName;
+		let animationName = '';
+		let animationLoop = true;
+		let scale = SPINE_SCALE;
+		let timers = {
+						start: this._calcSpineViewStartTime(type),
+						delay: this._calcSpineViewStartDelay(type)
+						};
+
+		let scaleCoefficient = this.getScaleCoefficient();
+
+		if (type == STATE_DEATH)
+		{
+			scaleCoefficient = this._getDeathSpineScaleCoefficient();
+
+			lSpineName_str = this._getDeathSpineName();
+
+			if (this.isCritter || this.isBoss || !lSpineName_str)
+			{
+				this.destroy();
+				return;
+			}
+		}
+		else if (type != STATE_TURN)
+		{
+			lSpineName_str += this._calculateSpineSpriteNameSuffix(type);
+		}
+
+		animationName = this._calculateAnimationName(type);
+		animationLoop = this._calculateAnimationLoop(type);
+		this._fAnimationName_str = animationName;
+
+		if (type == STATE_TURN)
+		{
+			lSpineName_str = this._calculateSpineTurnName(animationName, this.imageName);
+		}
+
+		scale *= scaleCoefficient;
+
+		let prevState = this.state;
+		this.state = type;
+		let newState = this.state;
+
+		this.spineView = this.container.addChild(APP.spineLibrary.getSprite(lSpineName_str));
+		this._onSpineViewChanged();
+		if (this.tintColor !== undefined)
+		{
+			this.spineView.tintIt(this.tintColor, this.tintIntensity);
+		}
+		this._updateTint();
+
+		this.spineView.scale.set(scale);
+		try
+		{
+			this.spineView.setAnimationByName(0, animationName, animationLoop);
+		}
+		catch (e)
+		{
+			console.trace("[y] ERROR! Animation not found >>  ANIMATION NAME = " + animationName, ", type = " + type, "this.state = " + this.state);
+		}
+		this.spineView.view.state.tracks[0].animationStart = timers.start;
+		this.spineView.view.state.tracks[0].delay = timers.delay;
+
+		if (type === STATE_DEATH)
+		{
+			let pos = this._getDeathSpineAssetPosition();
+			x = pos.x;
+			y = pos.y;
+
+			this.spineSpeed = 1;
+		}
+		else
+		{
+			this.spineSpeed = this.getSpineSpeed();
+		}
+
+		this.spineView.position.set(x, y);
+		this.spineView.zIndex = 3;
+		this.spineView.view.state.timeScale = this.isTurnState && this.spineSpeed < this.minTurnSpeed ? this.minTurnSpeed : this.spineSpeed;
+
+		if (type === STATE_STAY)
+		{
+			this._stopSpinePlaying();
+		}
+		else
+		{
+			this._startSpinePlaying();
+		}
+
+		if (prevState !== newState)
+		{
+			this.emit(SpineEnemy.EVENT_STATE_CHANGED, {prevState: prevState, newState: newState});
+		}
+
+		this.stepTimers = this.getStepTimers();
+		this.spineView.view.state.onComplete = ((e) => { this.stepTimers = this.getStepTimers(); });
+
+		if (this.hvEffects)
+		{
+			this.hvEffects.updatePositions();
+		}
+	}
+
+	_calculateSpineTurnName(aAnimName_str, aSpineName_str)
+	{
+		let lDirAngles_arr = this._getPossibleDirections();
+		for (let lAngle_num of lDirAngles_arr)
+		{
+			let lResultSpineName_str = aSpineName_str + lAngle_num;
+			let lDataAnimations_obj = APP.spineLibrary.getData(lResultSpineName_str).animations;
+			for (let lAnim_obj of lDataAnimations_obj)
+			{
+				if (lAnim_obj.name == aAnimName_str)
+				{
+					return lResultSpineName_str;
+				}
+			}
+		}
+
+		return 0;
+	}
+
+	_getPossibleDirections()
+	{
+		return [0, 90, 180, 270];
+	}
+
+	_calcSpineViewStartTime(type)
+	{
+		return 0;
+	}
+
+	_calcSpineViewStartDelay(type)
+	{
+		return 0;
+	}
+
+	_getDeathSpineScaleCoefficient()
+	{
+		let lScaleCoef_num = 1;
+
+		switch (this.name)
+		{
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedBlack:
+			case ENEMIES.WrappedWhite:
+			case ENEMIES.Horus:
+				lScaleCoef_num = 0.3;
+				break;
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+			case ENEMIES.BrawlerBerserk:
+				lScaleCoef_num = 0.414;
+				break;
+			case ENEMIES.BombEnemy:
+				lScaleCoef_num = 0.25*1.15;
+				break;
+			case ENEMIES.MummyGodRed:
+			case ENEMIES.MummyGodGreen:
+				lScaleCoef_num = 0.25;
+				break;
+			default:
+				throw new Error('No Death Spine scale coefficient is set for the enemy ' + this.name);
+				break;
+		}
+
+		return lScaleCoef_num;
+	}
+
+	_getDeathSpineName()
+	{
+		let lSpineName_str = null;
+
+		switch (this.name)
+		{
+			case ENEMIES.BrawlerBerserk:
+			case ENEMIES.Horus:
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedWhite:
+				lSpineName_str = 'death/mummy_small_white/MummySmallWhite_Death';
+				break;
+			case ENEMIES.WrappedBlack:
+				lSpineName_str = 'death/mummy_small_black/MummySmallBlack_Death';
+				break;
+			case ENEMIES.BombEnemy:
+			case ENEMIES.MummyGodRed:
+				lSpineName_str = 'death/mummy_god_red/MummyGodRed_Death';
+				break;
+			case ENEMIES.MummyGodGreen:
+				lSpineName_str = 'death/mummy_god_green/MummyGodGreen_Death';
+				break;
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+				lSpineName_str = 'death/mummy_warrior/MummyWarrior_Death';
+				break;
+			default:
+				throw new Error('No Death animation is set for the enemy ' + this.name);
+				break;
+		}
+
+		return lSpineName_str;
+	}
+
+	_getDeathSpineAssetPosition()
+	{
+		let lPos_obj = {x: 0, y: 0};
+
+		switch (this.name)
+		{
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedWhite:
+			case ENEMIES.WrappedBlack:
+				lPos_obj.x -= 465 * 0.3 * SPINE_SCALE;
+				lPos_obj.y += 261 * 0.3 * SPINE_SCALE;
+				break;
+			case ENEMIES.BombEnemy:
+			case ENEMIES.MummyGodRed:
+				lPos_obj.x -= 465 * 0.25 * SPINE_SCALE*1.15;
+				lPos_obj.y += 261 * 0.25 * SPINE_SCALE*1.15;
+				break;
+			case ENEMIES.MummyGodGreen:
+				lPos_obj.x -= 465 * 0.25 * SPINE_SCALE;
+				lPos_obj.y += 261 * 0.25 * SPINE_SCALE;
+				break;
+			case ENEMIES.Horus:
+				lPos_obj.x -= 465 * 0.25 * SPINE_SCALE;
+				lPos_obj.y += 261 * 0.25 * SPINE_SCALE + 30;
+				break;
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+			case ENEMIES.BrawlerBerserk:
+				lPos_obj.x -= 190 * SPINE_SCALE;
+				lPos_obj.y += 95 * SPINE_SCALE;
+				break;
+			default:
+				throw new Error('No Death Spine asset position is set for the enemy ' + this.name);
+				break;
+		}
+		return lPos_obj;
+	}
+
+	_calculateSpineSpriteNameSuffix(stateType)
+	{
+		if (stateType == STATE_TURN)
+		{
+			return this.getTurnSuffix();
+		}
+		else
+		{
+			return this.direction.substr(3);
+		}
+	}
+
+	_calculateAnimationName(stateType)
+	{
+		let animationName = '';
+
+		switch (stateType)
+		{
+			case STATE_STAY:
+			case STATE_WALK:
+			case STATE_IMPACT:
+				animationName = this.getWalkAnimationName();
+				break;
+			case STATE_DEATH:
+				animationName = 'Death';
+				break;
+			case STATE_TURN:
+				animationName = this.getTurnAnimationName();
+				break;
+		}
+
+		return animationName;
+	}
+
+	_calculateAnimationLoop(stateType)
+	{
+		let animationLoop = true;
+
+		switch (stateType)
+		{
+			case STATE_DEATH:
+			case STATE_TURN:
+				animationLoop = false;
+				break;
+		}
+
+		return animationLoop;
+	}
+
+	updateSpineAnimation()
+	{
+		if (this.spineView && this.spineView.alpha != 0 && this.spineView.view && this.spineView.view.state && this.spineView.view.state.tracks[0])
+		{
+			let animTime = this.spineView.view.state.tracks[0].animationLast;
+			if (this.lastAnimTime && animTime < this.lastAnimTime)
+			{
+				this.lastAnimTime = 0;
+			}
+			if (this.stepTimers.length > 0)
+			{
+				for (let i = 0; i < this.stepTimers.length; i ++)
+				{
+					if (animTime >= this.stepTimers[i].time && !this.lastAnimTime)
+					{
+						this._playStepSound();
+
+						if (this.isBoss)
+						{
+							this.emit(Enemy.EVENT_ON_GROUNDSHAKE);
+						}
+
+						this.stepTimers.splice(i, 1);
+						--i;
+
+						if (this.stepTimers.length == 0)
+						{
+							this.lastAnimTime = animTime;
+						}
+
+						let curStepId = this._stepsAmount - this.stepTimers.length - 1;
+						this._onFootStepOccured(curStepId);
+					}
+				}
+			}
+		}
+	}
+
+	_onFootStepOccured(curStepId)
+	{
+		this.emit(SpineEnemy.EVENT_ON_FOOT_STEP_OCCURRED, {stepId:curStepId});
+	}
+
+	_playStepSound()
+	{
+		let soundName = '';
+		let soundIndex = 1;
+		switch(this.name)
+		{
+			case ENEMIES.Anubis:
+			case ENEMIES.Osiris:
+			case ENEMIES.Thoth:
+				soundIndex = APP.isMobile || APP.profilingController.info.isVfxProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE_VALUES.MEDIUM) ? 6 : Utils.random(1, 6);
+				soundName += ('mq_boss_footsteps_' + soundIndex);
+			break;
+
+			default:
+				return;
+			break;
+		}
+
+		APP.soundsController.play(soundName);
+	}
+
+	getFootStepPosition(stepId)
+	{
+		let pos = new PIXI.Point(0, 0);
+
+		let lFootStepPositionsDescriptor = this._footStepPositionsDescriptor;
+		if (!!lFootStepPositionsDescriptor[this.name])
+		{
+			let stepDescription = lFootStepPositionsDescriptor[this.name][this.direction][stepId];
+			pos = new PIXI.Point(stepDescription.x, stepDescription.y);
+		}
+
+		return pos;
+	}
+
+	get _footStepPositionsDescriptor()
+	{
+		return FOOT_STEPS_POSITIONS;
+	}
+
+	changeFootPointPosition()
+	{
+		let x = 0, y = 0;
+
+		this.footPoint.position.set(x, y);
+
+		this._updateHitPointerRectangle();
+	}
+
+	getStepTimers()
+	{
+		let timers = [];
+
+		this._stepsAmount = timers.length;
+
+		return timers;
+	}
+
+	//override
+	_getHitRectWidth()
+	{
+		let hitWidth = 0;
+		switch (this.name)
+		{
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedBlack:
+			case ENEMIES.WrappedWhite:
+				hitWidth = 40;
+				break;
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+			case ENEMIES.Horus:
+				hitWidth = 70;
+				break;
+			case ENEMIES.BombEnemy:
+				hitWidth = 40*1.15;
+				break;
+			case ENEMIES.MummyGodRed:
+			case ENEMIES.MummyGodGreen:
+				hitWidth = 40;
+				break;
+
+			case ENEMIES.Scorpion:
+				hitWidth = 80;
+				break;
+
+			case ENEMIES.LocustTeal:
+				hitWidth = 45;
+				break;
+			case ENEMIES.Locust:
+				hitWidth = 50;
+				break;
+			case ENEMIES.Anubis:
+				hitWidth = 120;
+				break;
+			case ENEMIES.Osiris:
+				hitWidth = 120;
+				break;
+			case ENEMIES.Thoth:
+				hitWidth = 100;
+				break;
+		}
+		return hitWidth;
+	}
+
+	//override
+	_getHitRectHeight()
+	{
+		let hitHeight = 0;
+		switch (this.name)
+		{
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedBlack:
+			case ENEMIES.WrappedWhite:
+			case ENEMIES.Horus:
+				hitHeight = 70;
+				break;
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+				hitHeight = 140;
+				break;
+			case ENEMIES.BombEnemy:
+				hitHeight = 80*1.15;
+				break;
+			case ENEMIES.MummyGodRed:
+			case ENEMIES.MummyGodGreen:
+				hitHeight = 80;
+				break;
+
+			case ENEMIES.Scorpion:
+				hitHeight = 80;
+				break;
+			case ENEMIES.LocustTeal:
+				hitHeight = 45;
+				break;
+			case ENEMIES.Locust:
+				hitHeight = 50;
+				break;
+			case ENEMIES.Anubis:
+				hitHeight = 278;
+				break;
+			case ENEMIES.Osiris:
+				hitHeight = 278;
+				break;
+			case ENEMIES.Thoth:
+				hitHeight = 262;
+				break;
+		}
+		return hitHeight;
+	}
+
+	//override
+	getHitRectangle()
+	{
+		let rect = new PIXI.Rectangle();
+		rect.width = 0;
+		rect.height = 0;
+		if (this.isScarab || this.isLocust)
+		{
+			return rect;
+		}
+
+		rect.width =  10;
+		rect.height = Math.abs(80) / (this.isBoss ? 1.2 : 2);
+		return rect;
+	}
+
+	get crosshairsOffsetPosition()
+	{
+		let lOffset_pt = {x: 0, y: 0};
+
+		return lOffset_pt;
+	}
+
+	setDeath(aIsInstantKill_bl = false, aPlayerWin_obj = null)
+	{
+		super.setDeath(aIsInstantKill_bl, aPlayerWin_obj);
+
+		this._fIsDeathActivated_bl = true;
+		this.stateListener = null;
+
+		if (aIsInstantKill_bl)
+		{
+			this.setDeathFramesAnimation(true, aPlayerWin_obj);
+		}
+		else
+		{
+			this.setDeathFramesAnimation(false, aPlayerWin_obj);
+		}
+
+		this._stopDetectingRightClick();
+		this.emit(Enemy.EVENT_ON_ENEMY_START_DYING, {bossName: this.name});
+	}
+
+	setDeathFramesAnimation(aIsInstantKill_bl = false, aPlayerWin_obj = null)
+	{
+		this._deathInProgress = true;
+
+		if (this.isBoss)
+		{
+			this._stopSpinePlaying();
+			this._playBossDeathFxAnimation(aPlayerWin_obj);
+		}
+		else if (this.isCritter)
+		{
+			this.playDeathSound();
+
+			this._stopSpinePlaying();
+			this.spineView.visible = false;
+
+			this._forceHVRisingUpIfRequired();
+
+			this._playDeathFxAnimation(aIsInstantKill_bl);
+		}
+		else
+		{
+
+			this.preDeathSpineView = this.spineView;
+			this.preDeathSpineView.fadeTo(0, 100, null, () => {this.preDeathSpineView.destroy()});
+			this.preDeathSpineView.stop();
+			this.spineView = null;
+
+			if (!aIsInstantKill_bl)
+			{
+				this.playDeathSound();
+				this.changeTextures(STATE_DEATH);
+				this.spineView.view.state.onComplete = (e) => {
+					let lEnemyPosition_pt = this.getGlobalPosition();
+					lEnemyPosition_pt.x += this.getCurrentFootPointPosition().x;
+					lEnemyPosition_pt.y += this.getCurrentFootPointPosition().y;
+					this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_BONES_FELL_DOWN, {position: lEnemyPosition_pt, angle: this.angle});
+				}
+
+				if (this.hvEffects)
+				{
+					this.hvEffects.i_fadeOut();
+				}
+			}
+			else
+			{
+				if (this.hvEffects)
+				{
+					this.hvEffects.destroy();
+					this.hvEffects = null;
+				}
+			}
+
+			this._forceHVRisingUpIfRequired();
+
+			this._playDeathFxAnimation(aIsInstantKill_bl);
+		}
+
+		let lEnemyPosition_pt = this.getGlobalPosition();
+		lEnemyPosition_pt.x += this.getCurrentFootPointPosition().x;
+		lEnemyPosition_pt.y += this.getCurrentFootPointPosition().y;
+		this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED, {position: lEnemyPosition_pt, angle: this.angle});
+	}
+
+	changeShadowPosition()
+	{
+		let x = 0, y = 0, scale = 1, alpha = 1;
+
+		switch (this.name)
+		{
+			case ENEMIES.LocustTeal:
+				alpha = 0.3;
+				scale = 0.35;
+				y = 200;
+				break;
+			case ENEMIES.Locust:
+				alpha = 0.3;
+				scale = 0.5;
+				y = 200;
+				break;
+			case ENEMIES.Horus:
+				y = 30;
+				alpha = 0.9;
+				scale = 1.2;
+				break;
+		}
+
+		this.shadow.position.set(x, y);
+		this.shadow.scale.set(scale);
+		this.shadow.alpha = alpha;
+	}
+
+	getWalkAnimationName()
+	{
+		return this._calcWalkAnimationName(this.direction);
+	}
+
+	_calcWalkAnimationName(aDirection_str, aBaseWalkAnimationName_str = "walk")
+	{
+		switch (aDirection_str)
+		{
+			case DIRECTION.LEFT_UP:
+				return '270_' + aBaseWalkAnimationName_str;
+				break;
+			case DIRECTION.LEFT_DOWN:
+				return '0_' + aBaseWalkAnimationName_str;
+				break;
+			case DIRECTION.RIGHT_UP:
+				return '180_' + aBaseWalkAnimationName_str;
+				break;
+			case DIRECTION.RIGHT_DOWN:
+				return '90_' + aBaseWalkAnimationName_str;
+				break;
+		}
+		throw new Error (aDirection_str + " is not supported direction.");
+	}
+
+	getTurnAnimationName()
+	{
+		let lDirectionsAngles_int_arr = [0, 90, 180, 270]; //CCW
+		let lFinalAngle_num = Number(this.direction.substr(3));
+		let lFinalAngleIndex_int = lDirectionsAngles_int_arr.indexOf(lFinalAngle_num);
+
+		let j = this.turnDirection == TURN_DIRECTION.CCW ? -1 : 1;
+		let lPreviousAngleIndex_int = (lFinalAngleIndex_int + j) % lDirectionsAngles_int_arr.length;
+		if (lPreviousAngleIndex_int < 0)
+		{
+			lPreviousAngleIndex_int = lDirectionsAngles_int_arr.length + lPreviousAngleIndex_int;
+		}
+		let lPreviousAngle_num = lDirectionsAngles_int_arr[lPreviousAngleIndex_int];
+
+		return (lPreviousAngle_num + "_to_" + lFinalAngle_num + this.turnPostfix); //i.e. 270_to_180_turn
+
+	}
+
+	get turnPostfix()
+	{
+		return "_turn";
+	}
+
+	getTurnSuffix()
+	{
+		let lFinalDirection_str = this.direction;
+		let lTurnDirection_str = this.turnDirection;
+
+		let lDirections_str_arr = [	DIRECTION.LEFT_DOWN,
+									DIRECTION.RIGHT_DOWN,
+									DIRECTION.RIGHT_UP,
+									DIRECTION.LEFT_UP
+									];
+
+		let lFinalDirectionIndex_int = lDirections_str_arr.indexOf(lFinalDirection_str);
+
+		let j = lTurnDirection_str == TURN_DIRECTION.CCW ? -1 : 1;
+		let lPreviousDirection_ind = (lFinalDirectionIndex_int + j) % lDirections_str_arr.length;
+		if (lPreviousDirection_ind < 0)
+		{
+			lPreviousDirection_ind = lDirections_str_arr.length + lPreviousDirection_ind;
+		}
+		let lPreviousDirection_str = lDirections_str_arr[lPreviousDirection_ind];
+
+		if (lTurnDirection_str == TURN_DIRECTION.CW)
+		{
+			return lPreviousDirection_str.substr(3);
+		}
+		else if (lTurnDirection_str == TURN_DIRECTION.CCW)
+		{
+			return lFinalDirection_str.substr(3);
+		}
+		throw new Error ('Wrong turn direction ' + lTurnDirection_str);
+	}
+
+	getLocalCenterOffset()
+	{
+		let pos = {x: 0, y: 0};
+		switch (this.name)
+		{
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedBlack:
+			case ENEMIES.WrappedWhite:
+				pos = {x: 0, y: -40};
+				break;
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+			case ENEMIES.MummyGodRed:
+			case ENEMIES.MummyGodGreen:
+			case ENEMIES.BombEnemy:
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:	pos = {x: -20, y: -50};	break;
+					case DIRECTION.RIGHT_DOWN:	pos = {x: 20, y: -50};	break;
+					default:					pos = {x: 0, y: -50};	break;
+				}
+				break;
+
+			case ENEMIES.Horus:
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:  pos = {x: -20, y:  -90}; break;
+					case DIRECTION.LEFT_UP:	   pos = {x: -20, y: -110}; break;
+					case DIRECTION.RIGHT_DOWN: pos = {x:  20, y:  -90}; break;
+					case DIRECTION.RIGHT_UP:   pos = {x:   5, y:  -90}; break;
+				}
+				break;
+			case ENEMIES.Scorpion:
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:  pos = {x:  0,  y: -25}; break;
+					case DIRECTION.LEFT_UP:	   pos = {x: -20, y: -25}; break;
+					case DIRECTION.RIGHT_DOWN: pos = {x:  0,  y: -25}; break;
+					case DIRECTION.RIGHT_UP:   pos = {x:  10, y: -25}; break;
+				}
+				break;
+			case ENEMIES.LocustTeal:
+			case ENEMIES.Locust:
+				pos.y = 0;
+				break;
+			case ENEMIES.Anubis:
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:  pos = {x: -15, y: -125};	break;
+					case DIRECTION.LEFT_UP:    pos = {x: -20, y: -125};	break;
+					case DIRECTION.RIGHT_DOWN: pos = {x:  25, y: -125};	break;
+					case DIRECTION.RIGHT_UP:   pos = {x:  18, y: -125};	break;
+				}
+				break;
+			case ENEMIES.Osiris:
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:	pos = {x: -12, y: -128};	break;
+					case DIRECTION.LEFT_UP:		pos = {x: -28, y: -144};	break;
+					case DIRECTION.RIGHT_DOWN:	pos = {x:  10, y: -131};	break;
+					case DIRECTION.RIGHT_UP:	pos = {x:  11, y: -135};	break;
+				}
+				break;
+			case ENEMIES.Thoth:
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:	pos = {x:  -5, y: -116};	break;
+					case DIRECTION.LEFT_UP:		pos = {x: -20, y: -139};	break;
+					case DIRECTION.RIGHT_DOWN:	pos = {x:  16, y: -110};	break;
+					case DIRECTION.RIGHT_UP:	pos = {x:  25, y: -124};	break;
+				}
+				break;
+		}
+		return pos;
+	}
+
+	_onSpineViewChanged()
+	{
+		//to be overriden
+	}
+
+	destroy(purely = false)
+	{
+		this.stateListener = null;
+
+		this._electricityBackContainer = null;
+		this._electricityFrontContainer = null;
+
+		this._fElectricityEffectsController_eesc && this._fElectricityEffectsController_eesc.destroy();
+		this._fElectricityEffectsController_eesc = null;
+
+		this.tintColor = undefined;
+		this.tintIntensity = undefined;
+
+		this._fAnimationName_str = null;
+
+		super.destroy(purely);
+	}
+}
+
+export default SpineEnemy;

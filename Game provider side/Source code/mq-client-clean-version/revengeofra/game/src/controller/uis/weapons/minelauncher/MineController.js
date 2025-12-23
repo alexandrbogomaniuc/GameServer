@@ -1,0 +1,194 @@
+import SimpleUIController from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/uis/base/SimpleUIController';
+import { APP } from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import GameScreen from '../../../../main/GameScreen';
+import GameField from '../../../../main/GameField';
+import { WEAPONS } from '../../../../../../shared/src/CommonConstants';
+import MineView from '../../../../view/uis/weapons/minelauncher/MineView';
+import GameSoundsController from '../../../sounds/GameSoundsController';
+import SimpleSoundController from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/sounds/SimpleSoundController';
+
+class MineController extends SimpleUIController {
+
+
+	static get EVENT_ON_DETONATED() { return MineView.EVENT_ON_DETONATED };
+
+	constructor(aMineInfo_mi, aAnimatedLaunch_bl = true)
+	{
+		super(aMineInfo_mi, new MineView());
+
+		this._gameScreen = null;
+		this._fAnimatedLaunch_bl = aAnimatedLaunch_bl;
+		this._fDetonationCallback_func = null;
+		this._fArmSound_snd = null;
+	}
+
+	__init()
+	{
+		super.__init();
+
+		this._gameScreen = APP.currentWindow;
+
+		this._gameScreen.on(GameScreen.EVENT_ON_ROOM_UNPAUSED, this._onRoomUnpaused, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_ROOM_PAUSED, this._onRoomPaused, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_ROOM_FIELD_CLEARED, this._onRoomFieldCleared, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_PLAYER_REMOVED, this._onPlayerRemoved, this);
+
+		this._gameScreen.gameField.on(GameField.EVENT_ON_MINE_DETONATION_REQUIRED, this._onMineDetonationRequired, this);
+
+		if (!this._fAnimatedLaunch_bl)
+		{
+			//immediately add
+			this._addMineToScreen();
+		}
+		else
+		{
+			this._gameScreen.gameField.on(GameField.EVENT_ON_LANDMINE_LANDED, this._onSomeLandmineLanded, this);
+		}
+	}
+
+	__initViewLevel()
+	{
+		super.__initViewLevel();
+
+		this.view.on(MineView.EVENT_ON_DETONATED, this._onMineViewDetonated, this);
+	}
+
+	//PRIVATE...
+	_onRoomPaused(aEvent_obj)
+	{
+		this._clearAll();
+	}
+
+	_onRoomUnpaused(aEvent_obj)
+	{
+
+	}
+
+	_onSomeLandmineLanded(data)
+	{
+		if (data.mineInfo && data.mineInfo.mineId === this.info.mineId)
+		{
+			this._gameScreen.gameField.off(GameField.EVENT_ON_LANDMINE_LANDED, this._onSomeLandmineLanded, this);
+			this._addMineToScreen();
+		}
+	}
+
+	_onMineViewDetonated(aEvent_obj)
+	{
+		if (!this._fDetonationCallback_func)
+		{
+			throw new Error(`No callback function for Mine id=${this.info.mineid} detonation`);
+		}
+		this._fDetonationCallback_func.call();
+		this.emit(MineController.EVENT_ON_DETONATED);
+	}
+
+	_addMineToScreen()
+	{
+		this.view.i_addToScreen(this.info.coords);
+		if (this._fAnimatedLaunch_bl)
+		{
+			this._playArmSound();
+			this.view.i_animateAppearing();
+		}
+		this.info.isAdded = true;
+		this._detonationSuspicion();
+	}
+
+	_playArmSound()
+	{
+		let lOtherPlayerShot_bl = this.info.rid === -1;
+		let lVolume_num = lOtherPlayerShot_bl ? GameSoundsController.OPPONENT_WEAPON_VOLUME : 1;
+
+		let lArmSound_snd = this._fArmSound_snd = APP.soundsController.play('mine_launcher_arm', false, lVolume_num, lOtherPlayerShot_bl);
+		lArmSound_snd && lArmSound_snd.once(SimpleSoundController.i_EVENT_SOUND_DESTROYING, this._onArmSoundDestroying, this);
+	}
+
+	_onArmSoundDestroying(event)
+	{
+		this._fArmSound_snd = null;
+	}
+
+	_destroyArmSound()
+	{
+		if (this._fArmSound_snd)
+		{
+			this._fArmSound_snd.off(SimpleSoundController.i_EVENT_SOUND_DESTROYING, this._onArmSoundDestroying, this, true);
+			this._fArmSound_snd.i_destroy();
+			this._fArmSound_snd = null;
+		}
+	}
+
+	_onMineDetonationRequired(e)
+	{
+		if (!this.info)
+		{
+			throw new Error("MineController :: _onMineDetonationRequired >> called, but the object is already destroyed!");
+		}
+		if (e.mineId === this.info.mineId)
+		{
+			this._gameScreen.gameField.off(GameField.EVENT_ON_MINE_DETONATION_REQUIRED, this._onMineDetonationRequired, this);
+			this._fDetonationCallback_func = e.callback;
+			this._detonationSuspicion();
+		}
+	}
+
+	_detonationSuspicion()
+	{
+		if (this._fDetonationCallback_func && this.info.isAdded)
+		{
+			this._startDetonation();
+		}
+	}
+
+	_startDetonation()
+	{
+		this._destroyArmSound();
+		this.view.i_detonate();
+	}
+
+	_onRoomFieldCleared()
+	{
+		this._clearAll();
+	}
+
+	_onPlayerRemoved(e)
+	{
+		let lSeatId_int = e.seatId;
+		if (lSeatId_int === this.info.seatId)
+		{
+			this._clearWithoutAnimation();
+		}
+	}
+
+	_clearWithoutAnimation()
+	{
+		this.emit(MineController.EVENT_ON_DETONATED);
+	}
+
+	_clearAll()
+	{
+		this.destroy();
+	}
+	//...PRIVATE
+
+	destroy()
+	{
+		this._gameScreen.off(GameScreen.EVENT_ON_ROOM_UNPAUSED, this._onRoomUnpaused, this);
+		this._gameScreen.off(GameScreen.EVENT_ON_ROOM_PAUSED, this._onRoomPaused, this);
+		this._gameScreen.off(GameScreen.EVENT_ON_ROOM_FIELD_CLEARED, this._onRoomFieldCleared, this);
+		this._gameScreen.off(GameScreen.EVENT_ON_PLAYER_REMOVED, this._onPlayerRemoved, this);
+		this._gameScreen.gameField.off(GameField.EVENT_ON_LANDMINE_LANDED, this._onSomeLandmineLanded, this);
+		this._gameScreen.gameField.off(GameField.EVENT_ON_MINE_DETONATION_REQUIRED, this._onMineDetonationRequired, this);
+
+		this._fDetonationCallback_func = null;
+
+		this._destroyArmSound();
+
+		this.view && this.view.removeAllListeners();
+
+		super.destroy();
+	}
+}
+
+export default MineController

@@ -1,0 +1,2811 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_barlow_italic_medium" url="[root_resources_path]translations/en/fonts/barlow_mediumitalic_en.ttf"/>
+		<font name="fnt_nm_barlow" url="[root_resources_path]translations/en/fonts/barlow_medium_en.ttf"/>
+		<font name="fnt_nm_barlow_bold" url="[root_resources_path]translations/en/fonts/barlow_bold_en.ttf"/>
+		<font name="fnt_nm_booter" url="[root_resources_path]translations/en/fonts/BOOTERFZ.ttf"/>
+		<font name="fnt_nm_united_kingdom" url="[root_resources_path]translations/en/fonts/united_kingdom_en.ttf"/>
+	</fonts>
+
+	<tasds>
+		<!--BATTLEGROUND...-->
+		<tad id="TABattlegroundPlayerSpotAmmo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Ammo</source_meaning>
+				<translated_meaning>Ammo</translated_meaning>
+			</meaning>
+			<area x="-18" y="-5" w="36" h="10">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="12" color="0xffffff"></font>
+				<content>Ammo</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundPlayerSpotScore" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SCORE</source_meaning>
+				<translated_meaning>SCORE</translated_meaning>
+			</meaning>
+			<area x="-25" y="-6" w="50" h="13">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xFFFFFF"></font>
+				<content>SCORE</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TABattlegroundResultTotalScoreCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOTAL SCORE</source_meaning>
+				<translated_meaning>TOTAL SCORE</translated_meaning>
+			</meaning>
+			<area x="-70" y="-20" w="140" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>TOTAL SCORE</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABattlegroundPotValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>POT VALUE</source_meaning>
+				<translated_meaning>POT VALUE</translated_meaning>
+			</meaning>
+			<area x="-70" y="-15" w="140" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="7" color="0xFFFFFF"/>
+				<content>POT VALUE</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundReturnToLobby" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RETURN TO LOBBY</source_meaning>
+				<translated_meaning>RETURN TO LOBBY</translated_meaning>
+			</meaning>
+			<area x="-70" y="-15" w="140" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="13" color="0xFFFFFF"/>
+				<content>RETURN TO LOBBY</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundPlayAgain" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PLAY AGAIN</source_meaning>
+				<translated_meaning>PLAY AGAIN</translated_meaning>
+			</meaning>
+			<area x="-70" y="-15" w="140" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="13" color="0xFFFFFF"/>
+				<content>PLAY AGAIN</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundScoreboardRoundEndsIn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ROUND ENDS IN</source_meaning>
+				<translated_meaning>ROUND ENDS IN</translated_meaning>
+			</meaning>
+			<area x="20" y="0" w="70" h="25">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1">
+				<font name="fnt_nm_barlow_bold" size="8" color="0xFFFFFF"/>
+				<content>ROUND ENDS IN</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundScoreboardPrize" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PRIZE</source_meaning>
+				<translated_meaning>PRIZE</translated_meaning>
+			</meaning>
+			<area x="20" y="0" w="47" h="25">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="18" color="0xFFFFFF"/>
+				<content>PRIZE</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundScoreboardBossScore" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BOSS SCORE</source_meaning>
+				<translated_meaning>BOSS SCORE</translated_meaning>
+			</meaning>
+			<area x="-35" y="-12" w="70" h="25">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="13" color="0xFFFFFF"/>
+				<content>BOSS&#010;SCORE</content>
+			</txt>
+		</tad>
+		<!--...BATTLEGROUND-->
+
+		<!--ROUND RESULTS...-->
+		<tad id="TARoundResultsTitle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ROUND RESULTS</source_meaning>
+				<translated_meaning>ROUND RESULTS</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="200" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0xffffff" >
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>ROUND RESULTS</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultPlusMoneyCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>+</source_meaning>
+				<translated_meaning>+</translated_meaning>
+			</meaning>
+			<area x="-70" y="-14" w="140" h="28">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xfccc32"></font>
+				<content>+</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultTotalKillsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>KILLS</source_meaning>
+				<translated_meaning>KILLS</translated_meaning>
+			</meaning>
+			<area x="-45" y="-20" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>KILLS</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultTotalFreeShotsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BONUS SHOTS TAKEN</source_meaning>
+				<translated_meaning>BONUS SHOTS TAKEN</translated_meaning>
+			</meaning>
+			<area x="-45" y="-20" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>BONUS SHOTS TAKEN</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultBulletsFiredCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BULLETS FIRED</source_meaning>
+				<translated_meaning>BULLETS FIRED</translated_meaning>
+			</meaning>
+			<area x="-45" y="-20" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>BULLETS FIRED</content>
+			</txt>
+		</tad>
+
+		<!--BATTLEGROUND ROUND RESULTS...-->
+
+		<tad id="TABattlegroundRoundResultRoundComplete" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ROUND COMPLETE</source_meaning>
+				<translated_meaning>ROUND COMPLETE</translated_meaning>
+			</meaning>
+			<area x="-120" y="-25" w="240" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1">
+				<font name="fnt_nm_barlow_bold" size="24" color="non-uniform">
+				<stroke color="0x303030" thickness="1"/>
+				<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xa9bcf4"/>
+						<key position="0.32" color="0xbac9f7"/>
+						<key position="0.4" color="0xffffff"/>
+						<key position="0.65" color="0xa9bcf4"/>
+						<key position="0.85" color="0xa9bcf4"/>
+						<key position="1" color="0xede7e7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.8" blur="3"/>
+					</shadows>
+				</filters>
+				<content>ROUND COMPLETE</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultYouWonThePot" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>YOU WIN:</source_meaning>
+				<translated_meaning>YOU WIN:</translated_meaning>
+			</meaning>
+			<area x="-82" y="-25" w="164" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="24" color="non-uniform">
+				<stroke color="0x303030" thickness="1"/>
+				<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xa9bcf4"/>
+						<key position="0.32" color="0xbac9f7"/>
+						<key position="0.4" color="0xffffff"/>
+						<key position="0.65" color="0xa9bcf4"/>
+						<key position="0.85" color="0xa9bcf4"/>
+						<key position="1" color="0xede7e7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.8" blur="3"/>
+					</shadows>
+				</filters>
+				<content>YOU WIN:</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultYouGotRefund" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You got a refund XX</source_meaning>
+				<translated_meaning>You got a refund XX</translated_meaning>
+			</meaning>
+			<area x="-110" y="-25" w="220" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="24" color="non-uniform">
+				<stroke color="0x303030" thickness="1"/>
+				<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xa9bcf4"/>
+						<key position="0.32" color="0xbac9f7"/>
+						<key position="0.4" color="0xffffff"/>
+						<key position="0.65" color="0xa9bcf4"/>
+						<key position="0.85" color="0xa9bcf4"/>
+						<key position="1" color="0xede7e7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.8" blur="3"/>
+					</shadows>
+				</filters>
+				<content>You got a refund /MINUS_RAKE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultYouWonThePotTie" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>It’s a tie! You win:</source_meaning>
+				<translated_meaning>It’s a tie! You win:</translated_meaning>
+			</meaning>
+			<area x="-82" y="-25" w="164" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="24" color="non-uniform">
+				<stroke color="0x303030" thickness="1"/>
+				<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xa9bcf4"/>
+						<key position="0.32" color="0xbac9f7"/>
+						<key position="0.4" color="0xffffff"/>
+						<key position="0.65" color="0xa9bcf4"/>
+						<key position="0.85" color="0xa9bcf4"/>
+						<key position="1" color="0xede7e7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.8" blur="3"/>
+					</shadows>
+				</filters>
+				<content>It’s a tie! You win:</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultYouWonTheRound" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>YOU WIN THE ROUND!</source_meaning>
+				<translated_meaning>YOU WIN THE ROUND!</translated_meaning>
+			</meaning>
+			<area x="-183" y="-60" w="1024" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="35" color="0xffffff">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.8" blur="3"/>
+					</shadows>
+				</filters>
+				<content>YOU WIN THE ROUND!</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultYouWin" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WIN</source_meaning>
+				<translated_meaning>WIN</translated_meaning>
+			</meaning>
+			<area x="-82" y="-25" w="1024" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="35" color="0xffffff">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.8" blur="3"/>
+					</shadows>
+				</filters>
+				<content>WIN</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultYouWonThePotValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="-45" y="-25" w="90" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="30" color="0xfccc32"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.6" blur="2"/>
+					</shadows>
+				</filters>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultYouWonTheSmallPanelValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX!</source_meaning>
+				<translated_meaning>XX!</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="180" h="130">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="70" color="0xfccc32"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.6" blur="2"/>
+					</shadows>
+				</filters>
+				<content>/VALUE/!</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultAnotherPlayerWon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX Won:</source_meaning>
+				<translated_meaning>XX Won!</translated_meaning>
+			</meaning>
+			<area x="-110" y="-25" w="220" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="24" color="non-uniform">
+				<stroke color="0x303030" thickness="1"/>
+				<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xa9bcf4"/>
+						<key position="0.32" color="0xbac9f7"/>
+						<key position="0.4" color="0xffffff"/>
+						<key position="0.65" color="0xa9bcf4"/>
+						<key position="0.85" color="0xa9bcf4"/>
+						<key position="1" color="0xede7e7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.8" blur="3"/>
+					</shadows>
+				</filters>
+				<content>/PLAYER_NAME/ Won!</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultAnotherPlayerWonTie" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>It’s a tie! # players have won</source_meaning>
+				<translated_meaning>It’s a tie! # players have won</translated_meaning>
+			</meaning>
+			<area x="-110" y="-25" w="220" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.8">
+				<font name="fnt_nm_barlow_bold" size="24" color="non-uniform">
+				<stroke color="0x303030" thickness="1"/>
+				<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xa9bcf4"/>
+						<key position="0.32" color="0xbac9f7"/>
+						<key position="0.4" color="0xffffff"/>
+						<key position="0.65" color="0xa9bcf4"/>
+						<key position="0.85" color="0xa9bcf4"/>
+						<key position="1" color="0xede7e7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.8" blur="3"/>
+					</shadows>
+				</filters>
+				<content>It’s a tie! /WINNERS_COUNT/ players have won</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultNextBattle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Next Battle In</source_meaning>
+				<translated_meaning>Next Battle In</translated_meaning>
+			</meaning>
+			<area x="-60" y="-20" w="120" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_italic_medium" size="16" color="0x252525"  ></font>
+				<content>Next Battle In</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultScoreCard" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SCORE CARD</source_meaning>
+				<translated_meaning>SCORE CARD</translated_meaning>
+			</meaning>
+			<area x="-70" y="-25" w="140" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1">
+				<font name="fnt_nm_barlow_bold" size="16" color="non-uniform">
+				<stroke color="0x3e3e3e" thickness="1"/>
+				<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xa9bcf4"/>
+						<key position="0.32" color="0xbac9f7"/>
+						<key position="0.4" color="0xffffff"/>
+						<key position="0.65" color="0xa9bcf4"/>
+						<key position="0.85" color="0xa9bcf4"/>
+						<key position="1" color="0xede7e7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.6" blur="3"/>
+					</shadows>
+				</filters>
+				<content>SCORE CARD</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultQuickStats" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>QUICK STATS</source_meaning>
+				<translated_meaning>QUICK STATS</translated_meaning>
+			</meaning>
+			<area x="-70" y="-25" w="140" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.7">
+				<font name="fnt_nm_barlow_bold" size="16" color="non-uniform">
+				<stroke color="0x3e3e3e" thickness="1"/>
+				<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xa9bcf4"/>
+						<key position="0.32" color="0xbac9f7"/>
+						<key position="0.4" color="0xffffff"/>
+						<key position="0.65" color="0xa9bcf4"/>
+						<key position="0.85" color="0xa9bcf4"/>
+						<key position="1" color="0xede7e7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" angle="90" alpha="0.6" blur="3"/>
+					</shadows>
+				</filters>
+				<content>QUICK STATS</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultFreeShotsWon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BONUS SHOTS TAKEN</source_meaning>
+				<translated_meaning>BONUS SHOTS TAKEN</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0" padding="5">
+				<font name="fnt_nm_barlow_bold" size="9" color="0xffffff">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="60" alpha="0.8" blur="1"/>
+					</shadows>
+				</filters>
+				<content>BONUS SHOTS TAKEN</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultFreeEnemiesDefeated" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ENEMIES DEFEATED</source_meaning>
+				<translated_meaning>ENEMIES DEFEATED</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0" padding="5">
+				<font name="fnt_nm_barlow_bold" size="9" color="0xffffff">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="60" alpha="0.8" blur="1"/>
+					</shadows>
+				</filters>
+				<content>ENEMIES DEFEATED</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultFreeBulletsFired" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BULLETS FIRED</source_meaning>
+				<translated_meaning>BULLETS FIRED</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0" padding="5">
+				<font name="fnt_nm_barlow_bold" size="9" color="0xffffff">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="60" alpha="0.8" blur="1"/>
+					</shadows>
+				</filters>
+				<content>BULLETS FIRED</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultChangeWorld" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Change World / Buy-In</source_meaning>
+				<translated_meaning>Change World / Buy-In</translated_meaning>
+			</meaning>
+			<area x="-70" y="-18" w="140" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="13" color="0xFFFFFF"/>
+				<content>Change World / Buy-In</content>
+			</txt>
+		</tad>
+
+		<tad id="TABattlegroundRoundResultPlayAgain" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Play Again?</source_meaning>
+				<translated_meaning>Play Again?</translated_meaning>
+			</meaning>
+			<area x="-70" y="-18" w="140" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="15" color="0xFFFFFF"/>
+				<content>Play Again?</content>
+			</txt>
+		</tad>
+		<!--...BATTLEGROUND ROUND RESULTS-->
+		<!-- DIALOGS... -->
+		<tad id="TADialogButtonClose" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CLOSE</source_meaning>
+				<translated_meaning>CLOSE</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" ></font>
+				<content>CLOSE</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonOK" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" ></font>
+				<content>OK</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonCancel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CANCEL</source_meaning>
+				<translated_meaning>CANCEL</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF"/>
+				<content>CANCEL</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonRetry" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RETRY</source_meaning>
+				<translated_meaning>RETRY</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF"/>
+				<content>RETRY</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonExit" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>EXIT</source_meaning>
+				<translated_meaning>EXIT</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF"/>
+				<content>EXIT</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TADialogButtonBuyIn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BUY IN</source_meaning>
+				<translated_meaning>BUY IN</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF"/>
+				<content>BUY IN</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonCopy" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>COPY</source_meaning>
+				<translated_meaning>COPY</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="16" color="0xFFFFFF"/>
+				<content>COPY</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonYes" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>YES</source_meaning>
+				<translated_meaning>YES</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" ></font>
+				<content>YES</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonNo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>NO</source_meaning>
+				<translated_meaning>NO</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" ></font>
+				<content>NO</content>
+			</txt>
+		</tad>
+		<!--...DIALOGS-->
+		<!--...ROUND RESULTS-->
+
+		<!--BIG WIN...-->
+		<tad id="TABigWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BIG WIN!</source_meaning>
+				<translated_meaning>BIG WIN!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/big_win_caption.png"/>
+		</tad>
+
+		<tad id="TABigWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BIG WIN!</source_meaning>
+				<translated_meaning>BIG WIN!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/big_win_glow_caption.png"/>
+		</tad>
+
+		<tad id="TAHugeWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>HUGE WIN!</source_meaning>
+				<translated_meaning>HUGE WIN!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/huge_win_caption.png"/>
+		</tad>
+
+		<tad id="TAHugeWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>HUGE WIN!</source_meaning>
+				<translated_meaning>HUGE WIN!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/huge_win_glow_caption.png"/>
+		</tad>
+
+		<tad id="TAMegaWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MEGA WIN!</source_meaning>
+				<translated_meaning>MEGA WIN!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/mega_win_caption.png"/>
+		</tad>
+
+		<tad id="TAMegaWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MEGA WIN!</source_meaning>
+				<translated_meaning>MEGA WIN!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/mega_win_glow_caption.png"/>
+		</tad>
+		<!--...BIG WIN-->
+
+		<!--CALLOUTS...-->
+		<tad id="TARareEnemyCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>RARE ENEMY ALERT</source_meaning>
+				<translated_meaning>RARE ENEMY ALERT</translated_meaning>
+			</meaning>
+			<area x="-107" y="17" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/rare_enemy/caption_rare_enemy.png"/>
+		</tad>
+
+		<tad id="TABombCapsuleCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MULTIPLIER BOMB</source_meaning>
+				<translated_meaning>MULTIPLIER BOMB</translated_meaning>
+			</meaning>
+			<area x="-107" y="18" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/rare_enemy/bomb_of_multiplier.png"/>
+		</tad>
+		<tad id="TABulletCapsuleCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>CHAIN REACTION SHOT</source_meaning>
+				<translated_meaning>CHAIN REACTION SHOT</translated_meaning>
+			</meaning>
+			<area x="-107" y="18" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/rare_enemy/chain_reaction.png"/>
+		</tad>
+		<tad id="TAFreezeCapsuleCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>FLASH BLIZZARD</source_meaning>
+				<translated_meaning>FLASH BLIZZARD</translated_meaning>
+			</meaning>
+			<area x="-107" y="18" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/rare_enemy/glacial_crusher.png"/>
+		</tad>
+		<tad id="TAGoldCapsuleCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MONEY_WHEEL</source_meaning>
+				<translated_meaning>MONEY_WHEEL</translated_meaning>
+			</meaning>
+			<area x="-107" y="18" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/rare_enemy/direct_cash_prize.png"/>
+		</tad>
+		<tad id="TAKillerCapsuleCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>ENEMY SEEKER</source_meaning>
+				<translated_meaning>ENEMY SEEKER</translated_meaning>
+			</meaning>
+			<area x="-107" y="18" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/rare_enemy/kill_enemies.png"/>
+		</tad>
+		<tad id="TALaserCapsuleCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>LASER NET</source_meaning>
+				<translated_meaning>LASER NET</translated_meaning>
+			</meaning>
+			<area x="-107" y="18" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/rare_enemy/laser_net.png"/>
+		</tad>
+		<tad id="TALightningCapsuleCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>ARC LIGHTNING</source_meaning>
+				<translated_meaning>ARC LIGHTNING</translated_meaning>
+			</meaning>
+			<area x="-107" y="18" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/rare_enemy/lightning.png"/>
+		</tad>
+
+		<tad id="TABossIsEnragedCalloutCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>RARE ENEMY ALERT</source_meaning>
+				<translated_meaning>RARE ENEMY ALERT</translated_meaning>
+			</meaning>
+			<area x="-107" y="17" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="top"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/boss/boss_is_enraged.png"/>
+		</tad>
+
+		<tad id="TAFinishEnragedBossCalloutCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MULTIPLIER BOMB</source_meaning>
+				<translated_meaning>MULTIPLIER BOMB</translated_meaning>
+			</meaning>
+			<area x="-107" y="18" w="512" h="31">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="bottom"/>
+			</area>
+			<img url="[current_translations_images_path]/callouts/boss/finish_him_off.png"/>
+		</tad>
+		<!--...CALLOUTS-->
+
+		<!--CRITICAL HIT...-->
+		<tad id="TACriticalHitLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>CRITICAL HIT</source_meaning>
+				<translated_meaning>CRITICAL HIT</translated_meaning>
+			</meaning>
+			<area x="-128" y="-16" w="256" h="32">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/critical_hit/critical_hit.png"/>
+		</tad>
+
+		<tad id="TACriticalHitTextWidthDescriptor" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="0"> <!-- w - real width of TACriticalHitLabel text -->
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		<!--...CRITICAL HIT-->
+
+		<!--BONUS CAPSULE...-->
+		<tad id="TABonusCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BONUS</source_meaning>
+				<translated_meaning>BONUS</translated_meaning>
+			</meaning>
+			<area x="-143" y="-56" w="527" h="113">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/bonus_capsule/bonus.png"/>
+		</tad>
+
+		<tad id="TABonusGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BONUS</source_meaning>
+				<translated_meaning>BONUS</translated_meaning>
+			</meaning>
+			<area x="-143" y="-56" w="527" h="113">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/bonus_capsule/bonus_glow.png"/>
+		</tad>
+		<!--...BONUS CAPSULE-->
+
+		<!--FIRE_SETTINGS...-->
+		<tad id="TAFireSettingsOptions" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OPTIONS</source_meaning>
+				<translated_meaning>OPTIONS</translated_meaning>
+			</meaning>
+			<area x="-19" y="-11" w="38" h="22">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="7" color="0xffffff">
+				</font>
+				<content>OPTIONS</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetHigh" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target HIGH</source_meaning>
+				<translated_meaning>Target HIGH</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Target HIGH</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetLow" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target LOW</source_meaning>
+				<translated_meaning>Target LOW</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Target LOW</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetSame" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target SAME</source_meaning>
+				<translated_meaning>Target SAME</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Target SAME</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingslockOnTarget" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Lock on Target</source_meaning>
+				<translated_meaning>Lock on Target</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Lock on Target</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsAutoFire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto Fire</source_meaning>
+				<translated_meaning>Auto Fire</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Auto Fire</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsFireSpeed" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Fire Speed</source_meaning>
+				<translated_meaning>Fire Speed</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Fire Speed</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsOkMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="24" color="0x000000">
+				</font>
+				<content>OK</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsOptionsMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OPTIONS</source_meaning>
+				<translated_meaning>OPTIONS</translated_meaning>
+			</meaning>
+			<area x="0" y="-23" w="220" h="46">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="24" color="0xffffff">
+				</font>
+				<content>OPTIONS</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetHighMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target HIGH</source_meaning>
+				<translated_meaning>Target HIGH</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Target HIGH</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetLowMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target LOW</source_meaning>
+				<translated_meaning>Target LOW</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Target LOW</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetSameMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target SAME</source_meaning>
+				<translated_meaning>Target SAME</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Target SAME</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingslockOnTargetMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Lock on Target</source_meaning>
+				<translated_meaning>Lock on Target</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Lock on Target</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsAutoFireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto Fire</source_meaning>
+				<translated_meaning>Auto Fire</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Auto Fire</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsFireSpeedMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Fire Speed</source_meaning>
+				<translated_meaning>Fire Speed</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Fire Speed</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTimerMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Round starts in</source_meaning>
+				<translated_meaning>Round starts in</translated_meaning>
+			</meaning>
+			<area x="0" y="-30" w="400" h="70">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="18" color="0xffffff" ></font>
+				<content>Round starts in</content>
+			</txt>
+		</tad>
+		<!--...FIRE_SETTINGS-->
+
+		<!--BOSS MODE...-->
+		<!--LIGHTNING...-->
+		<tad id="TABossModeLightningBossLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>LIGHTNING BOSS</source_meaning>
+				<translated_meaning>LIGHTNING BOSS</translated_meaning>
+			</meaning>
+			<area x="-730" y="-144" w="1698" h="351">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_lightning.png"/>
+		</tad>
+
+		<tad id="TABossModeLightningBossAddLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>LIGHTNING BOSS ADD</source_meaning>
+				<translated_meaning>LIGHTNING BOSS ADD</translated_meaning>
+			</meaning>
+			<area x="-730" y="-144" w="1698" h="351">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_lightning_add.png"/>
+		</tad>
+		<!--...LIGHTNING-->
+
+		<!--EARTH...-->
+		<tad id="TABossModeEarthBossLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>EARTH BOSS</source_meaning>
+				<translated_meaning>EARTH BOSS</translated_meaning>
+			</meaning>
+			<area x="-840" y="-256" w="1799" h="512">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_earth.png"/>
+		</tad>
+
+		<tad id="TABossModeEarthBossAddLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>EARTH BOSS ADD</source_meaning>
+				<translated_meaning>EARTH BOSS ADD</translated_meaning>
+			</meaning>
+			<area x="-840" y="-256" w="1799" h="512">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_earth_add.png"/>
+		</tad>
+		<!--...EARTH-->
+
+		<!--FIRE...-->
+		<tad id="TABossModeFireBossLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>FIRE BOSS</source_meaning>
+				<translated_meaning>FIRE BOSS</translated_meaning>
+			</meaning>
+			<area x="-520" y="-200" w="1403" h="400">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_fire.png"/>
+		</tad>
+		<!--...FIRE-->
+		
+		<!--ICE...-->
+		<tad id="TABossModeIceBossLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>ICE BOSS</source_meaning>
+				<translated_meaning>ICE BOSS</translated_meaning>
+			</meaning>
+			<area x="-670" y="-190" w="1613" h="650">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_ice.png"/>
+		</tad>
+		<!--...ICE-->
+
+		<tad id="TABossModeCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BOSS STRENGTH</source_meaning>
+				<translated_meaning>BOSS STRENGTH</translated_meaning>
+			</meaning>
+			<area x="-26" y="-11" w="52" h="22">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>BOSS&#010;STRENGTH</content>
+			</txt>
+		</tad>
+
+		<tad id="TABossModeCaptionMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BOSS STRENGTH</source_meaning>
+				<translated_meaning>BOSS STRENGTH</translated_meaning>
+			</meaning>
+			<area x="-26" y="-11" w="63" h="42">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>BOSS&#010;STRENGTH</content>
+			</txt>
+		</tad>
+
+		<tad id="TABossModeTotalValueCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOTAL VALUE:</source_meaning>
+				<translated_meaning>TOTAL VALUE:</translated_meaning>
+			</meaning>
+			<area x="-40" y="-15" w="80" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>TOTAL VALUE:</content>
+			</txt>
+		</tad>
+		
+		<tad id="TABossModePlayerWin" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>DEFEATED BY /USERNAME/</source_meaning>
+				<translated_meaning>DEFEATED BY /USERNAME/</translated_meaning>
+			</meaning>
+			<area x="-320" y="-160" w="640" h="160">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="-4">
+				<font name="fnt_nm_united_kingdom" size="70" color="non-uniform">
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0.25" color="0xffa800"/>
+						<key position="0.43" color="0xffc400"/>
+						<key position="0.56" color="0xdb4b00"/>
+						<key position="0.66" color="0xf28b00"/>
+						<key position="0.8" color="0xffc500"/>
+					</fill>
+					<stroke color="0x000000" thickness="2"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x241501" distance="10" angle="90" alpha="1" padding="1" blur="0"/>
+					</shadows>
+				</filters>
+				<content>DEFEATED BY&#010;/USERNAME/</content>
+			</txt>
+		</tad>
+		<!--...BOSS MODE-->
+
+		<!--MONEY WHEEL...-->
+		<tad id="TAMoneyWheelValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="120" h="70">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="30" color="0xffffff">
+					<stroke color="0x000000" thickness="3"/>
+				</font>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+
+		
+		<tad id="TAMoneyWheelValueMobile" type="txt_based" translated="true">
+            <meaning>
+                <source_meaning>XX</source_meaning>
+                <translated_meaning>XX</translated_meaning>
+            </meaning>
+            <area x="30" y="-9" w="120" h="70">
+                <scale x="auto" y="auto" distortion="false"/>
+                <align h="left" v="middle"/>
+            </area>
+            <txt width="auto" auto_wrap="false" linespacing="auto">
+                <font name="fnt_nm_barlow_bold" size="30" color="0xffffff">
+                    <stroke color="0x000000" thickness="3"/>
+                </font>
+                <content>/VALUE/</content>
+            </txt>
+        </tad>
+
+		<tad id="TAMoneyWheelYouWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>YOU WIN!</source_meaning>
+				<translated_meaning>YOU WIN!</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="108">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]money_wheel/you_win_caption.png"/>
+		</tad>
+		<!--...MONEY WHEEL-->
+
+		<!--BOMB...-->
+		<tad id="TABombValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX</source_meaning>
+				<translated_meaning>XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="237" h="227">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="100" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="5" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>X/VALUE/</content>
+			</txt>
+		</tad>
+		
+		<!--...BOMB-->
+
+		<!--INFO PANEL...-->
+		<tad id="TAInfoPanelRoomLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Room XX</source_meaning>
+				<translated_meaning>Room XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Room /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="InfoPanelLatencyLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Latency:</source_meaning>
+				<translated_meaning>Latency:</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Latency:</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelRoundIdLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning> / Round ID XX</source_meaning>
+				<translated_meaning> / Round ID XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content> / Round ID /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelKillsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX killed YY</source_meaning>
+				<translated_meaning>XX killed YY</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>/PLAYER_NAME/ killed /ENEMY_NAME/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelKilledBossLabelTemplate" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX has killed YY</source_meaning>
+				<translated_meaning>XX has killed YY</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>/PLAYER_NAME/ has killed /ENEMY_NAME/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelCPBLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cost per bullet</source_meaning>
+				<translated_meaning>Cost per bullet</translated_meaning>
+			</meaning>
+			<area x="-200" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Cost per bullet</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelGameNameLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MAXDUEL: SECTOR X</source_meaning>
+				<translated_meaning>MAXDUEL: SECTOR X</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>MAXDUEL: SECTOR X</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelGameNameLabelBTG" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MAXDUEL: SECTOR X (BATTLEGROUND)</source_meaning>
+				<translated_meaning>MAXDUEL: SECTOR X (BATTLEGROUND)</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="220" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>MAXDUEL: SECTOR X (BATTLEGROUND)</content>
+			</txt>
+		</tad>
+
+		<!--ENEMIES...-->
+		<tad id="TAInfoPanelEnemyMalachiteEyeFlyer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Malachite Eye Flyer</source_meaning>
+				<translated_meaning>a Malachite Eye Flyer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Malachite Eye Flyer</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyAmberEyeFlyer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Amber Eye Flyer</source_meaning>
+				<translated_meaning>a Amber Eye Flyer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Amber Eye Flyer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyAmethystEyeFlyer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Amethyst Eye Flyer</source_meaning>
+				<translated_meaning>a Amethyst Eye Flyer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Amethyst Eye Flyer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyCitrineEyeFlyer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Citrine Eye Flyer</source_meaning>
+				<translated_meaning>a Citrine Eye Flyer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Citrine Eye Flyer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyJelliedSkyswimmer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Jellied Skyswimmer</source_meaning>
+				<translated_meaning>a Jellied Skyswimmer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Jellied Skyswimmer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyMalignantRay" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Malignant Ray</source_meaning>
+				<translated_meaning>a Malignant Ray</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Malignant Ray</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyEmeraldJumper" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Emerald Jumper</source_meaning>
+				<translated_meaning>a Emerald Jumper</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Emerald Jumper</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemySapphireJumper" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Sapphire Jumper</source_meaning>
+				<translated_meaning>a Sapphire Jumper</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Sapphire Jumper</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyAlbinoJumper" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Albino Jumper</source_meaning>
+				<translated_meaning>a Albino Jumper</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Albino Jumper</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyGrotesqueSlug" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Grotesque Slug</source_meaning>
+				<translated_meaning>a Grotesque Slug</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Grotesque Slug</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyInvaderTrooper" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Invader Trooper</source_meaning>
+				<translated_meaning>a Invader Trooper</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Invader Trooper</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemySpikedTriclops" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Spiked Triclops</source_meaning>
+				<translated_meaning>a Spiked Triclops</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Spiked Triclops</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyBuzzingWatcher" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Buzzing Watcher</source_meaning>
+				<translated_meaning>a Buzzing Watcher</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Buzzing Watcher</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyOcularTerror" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Ocular Terror</source_meaning>
+				<translated_meaning>a Ocular Terror</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Ocular Terror</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyNimbleJumper" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Nimble Jumper</source_meaning>
+				<translated_meaning>a Nimble Jumper</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Nimble Jumper</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarletGlider" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Scarlet Glider</source_meaning>
+				<translated_meaning>a Scarlet Glider</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Scarlet Glider</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyAzureDevourer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Azure Devourer</source_meaning>
+				<translated_meaning>a Azure Devourer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Azure Devourer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyCrimsonDevourer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Crimson Devourer</source_meaning>
+				<translated_meaning>a Crimson Devourer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Crimson Devourer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyAlbinoDevourer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Albino Devourer</source_meaning>
+				<translated_meaning>a Albino Devourer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Albino Devourer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyYellowDevourer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Yellow Devourer</source_meaning>
+				<translated_meaning>a Yellow Devourer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Yellow Devourer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyFlutteringScreecher" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Fluttering Screecher</source_meaning>
+				<translated_meaning>a Fluttering Screecher</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Fluttering Screecher</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyInvaderCommander" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Invader Commander</source_meaning>
+				<translated_meaning>a Invader Commander</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Invader Commander</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyCyborgRaider" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Cyborg Raider</source_meaning>
+				<translated_meaning>a Cyborg Raider</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Cyborg Raider</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyMegaCyborgRaider" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Mega Cyborg Raider</source_meaning>
+				<translated_meaning>a Mega Cyborg Raider</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Mega Cyborg Raider</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyTrinocularLeaper" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Trinocular Leaper</source_meaning>
+				<translated_meaning>a Trinocular Leaper</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Trinocular Leaper</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyCrawlingHellmouth" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Crawling Hellmouth</source_meaning>
+				<translated_meaning>a Crawling Hellmouth</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Crawling Hellmouth</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyRazortooth" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Razortooth</source_meaning>
+				<translated_meaning>a Razortooth</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Razortooth</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemySpikedBeholder" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Spiked Beholder</source_meaning>
+				<translated_meaning>a Spiked Beholder</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Spiked Beholder</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyDarkwingMutant" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Darkwing Mutant</source_meaning>
+				<translated_meaning>a Darkwing Mutant</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Darkwing Mutant</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyHivemindOverlord" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Hivemind Overlord</source_meaning>
+				<translated_meaning>a Hivemind Overlord</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Hivemind Overlord</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyLivingMagma" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Living Magma</source_meaning>
+				<translated_meaning>a Living Magma</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Living Magma</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyRampagingBehemoth" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Rampaging Behemoth</source_meaning>
+				<translated_meaning>a Rampaging Behemoth</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Rampaging Behemoth</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyMegaRampagingBehemoth" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Mega Rampaging Behemoth</source_meaning>
+				<translated_meaning>a Mega Rampaging Behemoth</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Mega Rampaging Behemoth</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyConcealedCoins" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Concealed Coins</source_meaning>
+				<translated_meaning>a Concealed Coins</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Concealed Coins</content>
+			</txt>
+		</tad>
+		<!--CAPSULE...-->
+		<tad id="TAInfoPanelEnemyCapsuleMoneyWheel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Money Wheel</source_meaning>
+				<translated_meaning>a Money Wheel</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Money Wheel</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyCapsuleArcLightning" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Arc Lightning</source_meaning>
+				<translated_meaning>a Arc Lightning</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Arc Lightning</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyCapsuleMultiplierBomb" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Multiplier Bomb</source_meaning>
+				<translated_meaning>a Multiplier Bomb</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Multiplier Bomb</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyCapsuleFlashBlizzard" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Flash Blizzard</source_meaning>
+				<translated_meaning>a Flash Blizzard</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Flash Blizzard</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyCapsuleEnemySeeker" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Enemy Seeker</source_meaning>
+				<translated_meaning>a Enemy Seeker</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Enemy Seeker</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyCapsuleLaserNet" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Laser Net</source_meaning>
+				<translated_meaning>a Laser Net</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Laser Net</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyCapsuleChainReactionShot" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Chain Reaction Shot</source_meaning>
+				<translated_meaning>a Chain Reaction Shot</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Chain Reaction Shot</content>
+			</txt>
+		</tad>
+		<!--...CAPSULE-->
+		<!--BOSS...-->
+		<tad id="TAInfoPanelEnemyRagingInferno" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Raging Inferno</source_meaning>
+				<translated_meaning>a Raging Inferno</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Raging Inferno</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyStormbringer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Stormbringer</source_meaning>
+				<translated_meaning>a Stormbringer</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Stormbringer</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyGlacialCrusher" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Glacial Crusher</source_meaning>
+				<translated_meaning>a Glacial Crusher</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Glacial Crusher</content>
+			</txt>
+		</tad>
+		
+		<tad id="TAInfoPanelEnemyMonolithicMauler" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Monolithic Mauler</source_meaning>
+				<translated_meaning>a Monolithic Mauler</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>a Monolithic Mauler</content>
+			</txt>
+		</tad>
+		<!--...BOSS-->
+		<!--...ENEMIES-->
+		<!--...INFO PANEL-->
+
+		<!--PLAYER SPOT...-->
+		<tad id="TAPlayerSpotFree" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FREE</source_meaning>
+				<translated_meaning>FREE</translated_meaning>
+			</meaning>
+			<area x="-25" y="-10" w="50" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xffffff"></font>
+				<content>FREE</content>
+			</txt>
+		</tad>
+		<!--...PLAYER SPOT-->
+
+		<!-- AWARDED FREE SHOTS COUNTER... -->
+		<tad id="TAAwardedFreeShotsCounterLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>#freeshot:FREESHOT,BONUSSHOTS#</source_meaning>
+				<translated_meaning>#freeshot:FREESHOT,BONUSSHOTS#</translated_meaning>
+			</meaning>
+			<area x="0" y="-75" w="500" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="1">
+				<font name="fnt_nm_barlow_bold" size="63" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>#freeshot:FREESHOT,BONUSSHOTS#</content>
+			</txt>
+		</tad>
+
+		<tad id="TAAwardedFreeShotsCounterValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>/VALUE/</source_meaning>
+				<translated_meaning>/VALUE/</translated_meaning>
+			</meaning>
+			<area x="-110" y="-75" w="100" h="150"> <!-- x<0 - value is placed on the left of TAAwardedFreeShotsCounterLabel, x>=0 - value is placed on the right of TAAwardedFreeShotsCounterLabel -->
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="1">
+				<font name="fnt_nm_barlow_bold" size="74" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="3" angle="90" alpha="1" blur="5"/>
+					</shadows>
+				</filters>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+		<!-- ...AWARDED FREE SHOTS COUNTER -->
+
+		<tad id="TAWaitingForNewRoundCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Waiting for new round</source_meaning>
+				<translated_meaning>Waiting for new round</translated_meaning>
+			</meaning>
+			<area x="-230" y="-100" w="460" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="36" color="0xffffff" ></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Waiting for new round</content>
+			</txt>
+		</tad>
+
+		<tad id="TAWaitScreenGameInProgressCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Game in progress, please wait...</source_meaning>
+				<translated_meaning>Game in progress, please wait...</translated_meaning>
+			</meaning>
+			<area x="-230" y="-100" w="460" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="36" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Game in progress,&#010;please wait...</content>
+			</txt>
+		</tad>
+
+		<!-- MAPS... -->
+		<tad id="TAWaitWhileMapIsLoadingCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The map is loading...</source_meaning>
+				<translated_meaning>The map is loading...</translated_meaning>
+			</meaning>
+			<area x="-230" y="-100" w="460" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="38" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>The map is loading...</content>
+			</txt>
+		</tad>
+		<!-- ...MAPS -->
+
+		<!--
+
+		To change position of a tip, add correspondent descriptor as following:
+
+		<tad id="[TIP_TA_ID]Position" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		DEFAULT DESKTOP POSITIONS:
+		TATipsSpecialWeaponNewPlayerPosition:	x: -290		y: 0
+		TATipsAutofirePosition:					x: -180		y: -60
+		TATipsRightClickAutofirePosition:		x: 203		y: -68
+
+		DEFAULT MOBILE POSITIONS:
+		TATipsAutofireMobilePosition			x: -180		y: -60
+		TATipsRightClickAutofireMobilePosition	x: 258		y: -55
+		
+		-->
+
+		<tad id="TATipsSpecialWeaponNewPlayer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use SPECIAL WEAPONS to score MASSIVE WINS</source_meaning>
+				<translated_meaning>Use SPECIAL WEAPONS to score MASSIVE WINS</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>Use SPECIAL WEAPONS&#010;to score MASSIVE WINS</content>
+			</txt>
+		</tad>
+
+		<!--
+		To change position of a base weapon tip, add correspondent descriptor as following:
+
+		<tad id="TATipsSwitchToBaseWeaponPosition0|1|2|3|4|5" type="void_based" translated="true"> \\TATipsSwitchToBaseWeaponMobilePosition for mobile
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		DEFAULT DESKTOP POSITIONS:
+		Player5 x: 349.5 	y: -145 (top right)
+		Player4 x: 250 		y: -215
+		Player3 x: -82 	y: -215 (top left)
+		Player2 x: 349.5 	y: 155	(bottom right)
+		Player1 x: 250 		y: 225
+		Player0 x: -82	y: 225	(bottom left)
+
+		DEFAULT MOBILE POSITIONS:
+		Player5 x: 349.5 	y: -125 (top right)
+		Player4 x: 250 		y: -194
+		Player3 x: -82 	y: -194 (top left)
+		Player2 x: 349.5 	y: 135	(bottom right)
+		Player1 x: 250		y: 204
+		Player0 x: -82	y: 204	(bottom left)
+		-->
+		
+		<tad id="TATipsSwitchToBaseWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use this button to switch to BASE WEAPON</source_meaning>
+				<translated_meaning>Use this button to switch to BASE WEAPON</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>Use this button to switch&#010;to BASE WEAPON</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Hold CLICK for AUTOFIRE</source_meaning>
+				<translated_meaning>Hold CLICK for AUTOFIRE</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>Hold CLICK&#010;for AUTOFIRE</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsAutofireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP and hold to AUTOFIRE</source_meaning>
+				<translated_meaning>TAP and hold to AUTOFIRE</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>TAP and hold&#010;to AUTOFIRE</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RIGHT-CLICK to lock target and AUTO-FIRE</source_meaning>
+				<translated_meaning>RIGHT-CLICK to lock target and AUTO-FIRE</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>RIGHT-CLICK to lock&#010;target and AUTO-FIRE</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireDisableAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RIGHT-CLICK to lock target</source_meaning>
+				<translated_meaning>RIGHT-CLICK to lock target</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>RIGHT-CLICK to lock&#010;target</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP on right icon to lock target and AUTO-FIRE</source_meaning>
+				<translated_meaning>TAP on right icon to lock target and AUTO-FIRE</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>TAP on right icon to lock&#010;target and AUTO-FIRE</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireMobileDisableAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP on right icon to lock target</source_meaning>
+				<translated_meaning>TAP on right icon to lock target</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>TAP on right icon to lock&#010;target</content>
+			</txt>
+		</tad>
+
+		<!--
+		To change position of a bet level tip, add correspondent descriptor as following:
+
+		<tad id="TATipsBetLevelPositionPlayer0|1|2|3|4|5" type="void_based" translated="true"> \\TATipsBetLevelMobilePositionPlayer for mobile
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		DEFAULT DESKTOP POSITIONS:
+		Player5 x: 349.5 	y: -145 (top right)
+		Player4 x: 0 		y: -145
+		Player3 x: -349.5 	y: -145 (top left)
+		Player2 x: 349.5 	y: 155	(bottom right)
+		Player1 x: 0 		y: 155
+		Player0 x: -349.5	y: 155	(bottom left)
+
+		DEFAULT MOBILE POSITIONS:
+		Player5 x: 349.5 	y: -125 (top right)
+		Player4 x: 0 		y: -125
+		Player3 x: -349.5 	y: -125 (top left)
+		Player2 x: 349.5 	y: 135	(bottom right)
+		Player1 x: 0		y: 135
+		Player0 x: -349.5	y: 135	(bottom left)
+		-->
+
+		<tad id="TATipsBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Change BET LEVEL by using (–) and (+)</source_meaning>
+				<translated_meaning>Change BET LEVEL by using (–) and (+)</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" />
+				<content>Change BET LEVEL&#010;by using /MINUS_IMG/ and /PLUS_IMG/</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsBetLevelPlusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="140" y="10" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMinusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="80" y="10" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePlusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="140" y="11" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobileMinusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="80" y="11" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+
+	<!--TRANSITION END ROUND...-->
+		<tad id="TATransitionRoundRoundCompletedCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>ROUND COMPLETED!</source_meaning>
+				<translated_meaning>ROUND COMPLETED!</translated_meaning>
+			</meaning>
+			<area x="-420" y="-64" w="840" h="76">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]transition/round_complete.png"/>
+		</tad>
+
+		<tad id="TATransitionRoundNextRoundLoadingCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>LOADING NEXT ROUND...</source_meaning>
+				<translated_meaning>LOADING NEXT ROUND...</translated_meaning>
+			</meaning>
+			<area x="-424" y="-64" w="848" h="67">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]transition/next_round_loading.png"/>
+		</tad>
+
+		<tad id="TARefundEndGameValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>REFUND</source_meaning>
+				<translated_meaning>REFUND</translated_meaning>
+			</meaning>
+			<area x="-480" y="-64" w="848" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="26" color="0xFFFFFF"/>
+				<content>REFUNDED:</content>
+			</txt>
+		</tad>
+	<!--...TRANSITION END ROUND-->
+
+		
+	</tasds>
+</td>

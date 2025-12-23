@@ -1,0 +1,2497 @@
+<div class="paytable_container" id="PAYTABLE">
+
+	<!--HOW TO PLAY...-->
+	<div class="page" id="how_to_play">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageHowToPlayHowToPlay" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						HOW TO PLAY
+					</source_meaning>
+					<translated_meaning>
+						怎么玩
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			怎么玩
+		</span>
+		<div class="row">
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_1"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle1" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								CHOOSE A COIN TO PLAY AND WIN
+							</source_meaning>
+							<translated_meaning>
+								选择硬币玩游戏并赢大奖
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					选择硬币玩游戏并赢大奖
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_1">
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_1" style="margin-left: 75px"></span>
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_1" style="margin-left: 151px"></span>
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_2" style="margin-left: 226px"></span>
+				</span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText1" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Each shot is a bet with the coin value you chose. Each Game Room is grouped by the Cost Per Bullet Range (bet) amount chosen in the lobby.
+							</source_meaning>
+							<translated_meaning>
+								每次射击都是使用您选择的硬币值进行的投注。加入哪个游戏房间是由在游戏大厅选择的每发子弹价格区间（投注额）决定的。
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					<span class="description_bold">每次射击都是使用您选择的硬币值进行的投注。</span>加入哪个游戏房间是由在游戏大厅选择的每发子弹价格区间（投注额）决定的。
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_2"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle2" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								EACH SHOT GUARANTEED TO HIT
+							</source_meaning>
+							<translated_meaning>
+								每次射击都能保证击中敌人
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					每次射击都能保证击中敌人
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_2"></span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText2" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								No skill is necessary! In the case that the fired shot does not strike a target, the shot will hit the nearest valid enemy. If there are no valid targets for the shot to hit, the shot (wager) is returned to the player.
+							</source_meaning>
+							<translated_meaning>
+								无需任何技能！如果发出的射击没有击中目标，则该射击会击中最近的敌人（有效目标）。如果没有有效的射击目标，则射击（投注）将退还给玩家。
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					无需任何技能！如果发出的射击没有击中目标，则该射击会击中最近的敌人（有效目标）。如果没有有效的射击目标，则射击（投注）将退还给玩家。
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_3"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle3" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								EACH SHOT HAS A CHANCE TO WIN
+							</source_meaning>
+							<translated_meaning>
+								每次射击都有机会赢利
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					每次射击都有机会赢利
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_3"></span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText3" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Any shot fired has a chance to destroy the enemy it hits. Special Weapons have a higher chance to destroy enemies compared to the standard turret. Enemies can award cash payouts or Special Weapons!
+							</source_meaning>
+							<translated_meaning>
+								任何一次射击都有几率摧毁被击中的敌人。与标准炮塔相比，特殊武器摧毁敌人的几率更高。敌人可以奖励现金支付或特殊武器！
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					任何一次射击都有几率摧毁被击中的敌人。与标准炮塔相比，特殊武器摧毁敌人的几率更高。敌人可以奖励现金支付或特殊武器！
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--...HOW TO PLAY-->
+
+	<!--ENEMIE HP AND VICTORY...-->
+	<div class="page" id="enemie_hp_and_victory">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageEnemieHpAndVictoryCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						ENEMY HIT POINTS AND VICTORY!
+					</source_meaning>
+					<translated_meaning>
+						敌人的生命值和胜利！
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			敌人的生命值和胜利！
+		</span>
+		<div class='screen'>
+			<span type="img" src="paytable/pages/enemie_hp_and_victory/screen"></span>
+		</div>
+		<span class="text_block">
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextHP" type="txt_based" translated="false">
+					<meaning>
+						<source_meaning>
+							Every enemy in MAX QUEST: RISE OF THE MUMMY has a defined number of hit points, or HP.
+							Enemies have levels that can range from 1 – 3. Their amount of hit points rises with their level.
+							Enemy HP is reduced by attacks with the Turret, or Special Weapons.
+						</source_meaning>
+						<translated_meaning>
+							终极任务：之木乃伊的崛起中的每个敌人都有一定数量的生命值，简称HP。
+							敌人的等级范围为1 – 3。他们的生命值随其等级而增加。
+							通过使用炮塔或特殊武器攻击敌人可以减少敌人的HP。
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				终极任务：之木乃伊的崛起中的每个敌人都有一定数量的生命值，简称HP。</br>
+				敌人的等级范围为1 – 3。他们的生命值随其等级而增加。</br>
+				通过使用炮塔或特殊武器攻击敌人可以减少敌人的HP。
+			</span>
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextDamage" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Damage determines the size of your payout. The more damage you do with your weapon, the higher your payout will be!
+						</source_meaning>
+						<translated_meaning>
+							伤害大小决定了您获得支付的多少。您使用武器造成的伤害越大，您获得的支付就会越高！
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				伤害大小决定了您获得支付的多少。您使用武器造成的伤害越大，您获得的支付就会越高！!
+			</span>
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextSW" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Special Weapons do more damage to all enemies, especially groups and Legendary Bosses!
+						</source_meaning>
+						<translated_meaning>
+							特殊武器对所有敌人，尤其是敌群和传奇boss造成更大的伤害！
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				特殊武器对所有敌人，尤其是敌群和传奇boss造成更大的伤害！
+			</span>
+		</span>
+		<span type="img" class="center special_wepon" src="paytable/pages/enemie_hp_and_victory/special_weapons"></span>
+
+	</div>
+	<!--ENEMIE HP AND VICTORY...-->
+
+	<!--ENEMIES 1...-->
+	<div class="page" id="enemies">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageEnemiesCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						ENEMIES
+					</source_meaning>
+					<translated_meaning>
+						敌人
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			敌人
+		</span>
+		<div class="row">
+			
+			<div class='col-1 center'>
+				<div id="enemy_weapon_slider" style="position: absolute; margin-left: 10px; margin-top: 0px;"></div>
+				
+			</div>
+			<div class='col-9'>
+				<div class="row">
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/scarab_hatchling">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesScarabHatchling" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Scarab Hatchling
+									</source_meaning>
+									<translated_meaning>
+										圣甲虫幼体
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							圣甲虫幼体
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytablePageEnemiesEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										最大HP：XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							最大HP：<span class="hp_value" id="HP_ENEMY_0"></span>
+						</span>
+						<span class='enemy_payout' id="0"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/shadow_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesShadowScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Shadow Scarab
+									</source_meaning>
+									<translated_meaning>
+										暗影圣甲虫
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							暗影圣甲虫
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										最大HP：XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							最大HP：<span class="hp_value" id="HP_ENEMY_1"></span>
+						</span>
+						<span class='enemy_payout' id="1"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/golden_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesGoldenScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Golden Scarab
+									</source_meaning>
+									<translated_meaning>
+										黄金圣甲虫
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							黄金圣甲虫
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										最大HP：XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							最大HP：<span class="hp_value" id="HP_ENEMY_2"></span>
+						</span>
+						<span class='enemy_payout' id="2"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/ruby_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesRubyScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Ruby Scarab
+									</source_meaning>
+									<translated_meaning>
+										红宝石圣甲虫
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							红宝石圣甲虫
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										最大HP：XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							最大HP：<span class="hp_value" id="HP_ENEMY_3"></span>
+						</span>
+						<span class='enemy_payout' id="3"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/bewjelled_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesBewjelledScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Bejeweled Scarab
+									</source_meaning>
+									<translated_meaning>
+										宝石圣甲虫
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							宝石圣甲虫
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										最大HP：XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							最大HP：<span class="hp_value" id="HP_ENEMY_4"></span>
+						</span>
+						<span class='enemy_payout' id="4"></span>
+					</div>
+				</div>
+				</div>
+				<div class="row">
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/swarming_locust">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesSwarmingLocust" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Swarming Locust
+										</source_meaning>
+										<translated_meaning>
+											狂舞蝗虫
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								狂舞蝗虫
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_5"></span>
+							</span>
+							<span class='enemy_payout' id="5"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/devouring_locust">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesDevouringLocustr" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Devouring Locust
+										</source_meaning>
+										<translated_meaning>
+											吞噬蝗虫
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								吞噬蝗虫
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_6"></span>
+							</span>
+							<span class='enemy_payout' id="6"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/giant_scorpion">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesGiantScorpion" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Giant Scorpion
+										</source_meaning>
+										<translated_meaning>
+											巨蝎
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								巨蝎
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_7"></span>
+							</span>
+							<span class='enemy_payout' id="7"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_minion">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesWrappedMinion" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Minion
+										</source_meaning>
+										<translated_meaning>
+											包裹的杂役
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								包裹的杂役
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_8"></span>
+							</span>
+							<span class='enemy_payout' id="8"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_shadowguard">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesWrappedShadowguard" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Shadowguard
+										</source_meaning>
+										<translated_meaning>
+											包裹的暗影守卫
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								包裹的暗影守卫
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_9"></span>
+							</span>
+							<span class='enemy_payout' id="9"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_spiritguard">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesWrappedSpiritguard" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Spiritguard
+										</source_meaning>
+										<translated_meaning>
+											包裹的灵魂守卫
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								包裹的灵魂守卫
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_10"></span>
+							</span>
+							<span class='enemy_payout' id="10"></span>
+						</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/tahawy_warrior">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesTahawyWarrior" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Tahawy Warrior
+										</source_meaning>
+										<translated_meaning>
+											游牧勇士
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								游牧勇士
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_11"></span>
+							</span>
+							<span class='enemy_payout' id="11"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/tahawy_commander">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesTahawyCommander" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Tahawy Commander
+										</source_meaning>
+										<translated_meaning>
+											塔哈维指挥官
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								塔哈维指挥官
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_12"></span>
+							</span>
+							<span class='enemy_payout' id="12"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/crimson_bataanta">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCrimsonBataanta" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Crimson Bataanta
+										</source_meaning>
+										<translated_meaning>
+											深红色巴塔马
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								深红色巴塔马
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_13"></span>
+							</span>
+							<span class='enemy_payout' id="13"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/emerald_bataanta">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCrimsonBataanta" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Emerald Bataanta
+										</source_meaning>
+										<translated_meaning>
+											祖母绿巴塔马
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								祖母绿巴塔马
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_14"></span>
+							</span>
+							<span class='enemy_payout' id="14"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/cursed_brawler">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCursedBrawler" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Cursed Brawler
+										</source_meaning>
+										<translated_meaning>
+											被诅咒的喧哗兵
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								被诅咒的喧哗兵
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_15"></span>
+							</span>
+							<span class='enemy_payout' id="15"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/horus">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesHorus" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Horus
+										</source_meaning>
+										<translated_meaning>
+											荷鲁斯
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								荷鲁斯
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											最大HP：XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								最大HP：<span class="hp_value" id="HP_ENEMY_16"></span>
+							</span>
+							<span class='enemy_payout' id="16"></span>
+						</div>
+					</div>
+					</div>
+				</div>
+			<div class='col-1 center'>
+				<span class='enemy_values_text'>
+					<!--tad id="TAPaytablePageEnemiesStakeIndicatorText" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+						</source_meaning>
+						<translated_meaning>
+							所显示的值是根据[#STAKE #CURRENCY]硬币和[#VALUE]投注等级得出的。
+						</translated_meaning>
+					</meaning>
+					</tad-->
+					所显示的值是根据[<span id='stake_indicator_text'></span>]硬币和[<span id='stake_bet_level_value' style="display:inline-block"></span>]投注等级得出的。
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--...ENEMIES 1-->
+
+	<!--SPECIAL ENEMIES...-->
+	<div class="page" id="special_enemies">
+		<div class="texture">
+			<span type="img" src="paytable/pages/special_enemies/wild_textures"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageSpecialEnemies" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						SPECIAL ENEMIES
+					</source_meaning>
+					<translated_meaning>
+						特殊敌人
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			特殊敌人
+		</span>
+		<span class='description light_grey center' style="font-size: 13px;">
+			<!--tad id="TAPaytablePageEnemyHPAndVictoryTextHP" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Special Enemies will randomly appear on the playing field!
+						These enemies offer unique rewards and effects when they are defeated.
+					</source_meaning>
+					<translated_meaning>
+						特殊敌人会随机出现在赛场上！
+						这些敌人在被击败时提供特殊奖励和效果。
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			特殊敌人会随机出现在赛场上！</br>
+			这些敌人在被击败时提供特殊奖励和效果。
+		</span>
+		<div class="row">
+			<div class='col-1 center'>
+				<div id="special_enemies_weapon_slider" style="position: absolute; margin-left: 48px; margin-top: 148px;"></div>
+			</div>
+			<div class='col-9 center'>
+				<div class="col-6">
+					<div class="infernal_forgemaster">
+						<span type="img" src="paytable/pages/special_enemies/infernal_forgemaster"></span>
+						<span class='infernal_forgemaster_max_hp'>
+							<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										最大HP：XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							最大HP：<span class="hp_value" id="HP_ENEMY_17"></span>
+						</span>
+						<div class="infernal_forgemaster_text">
+								<span class='infernal_forgemaster_capture'>
+									<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterCapture" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Infernal Forgemaster
+											</source_meaning>
+											<translated_meaning>
+												地狱锻造师
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									地狱锻造师
+								</span>
+								<span class='infernal_forgemaster_specific'>
+									<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterSpecific" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Always drops a Special Weapon!
+											</source_meaning>
+											<translated_meaning>
+												总是掉落一个特殊武器！
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									总是掉落一个特殊武器！
+								</span>
+								<span class='enemy_payout' id="17"></span>
+								
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 unstable_avatar">
+					<div class="infernal_forgemaster">
+						<span type="img" src="paytable/pages/special_enemies/unstable_avatar"></span>
+						<div class="unstable_avatar_text">
+								<span class='unstable_avatar_capture'>
+									<!--tad id="TAPaytablePageSpecialEnemiesUnstableAvatarCapture" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Unstable Avatar
+											</source_meaning>
+											<translated_meaning>
+												不稳定的神使
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									不稳定的神使
+								</span>
+								<span class='unstable_avatar_specific'>
+									<!--tad id="TAPaytablePageSpecialEnemiesUnstableAvatarSpecific" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Explodes when destroyed, dealing up to 5000 damage
+												to nearby enemies!
+											</source_meaning>
+											<translated_meaning>
+												被击败时会爆炸，对附近敌人造成最高5000点伤害！
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									被击败时会爆炸，<br/>对附近敌人造成最高5000点伤害！
+								</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class='col-1 center'>
+				<div class='enemy_values_block'>
+					<span class="enemy_values_text">
+						<!--tad id="TAPaytablePageSpecialEnemiesStakeIndicatorText" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+							</source_meaning>
+							<translated_meaning>
+								所显示的值是根据[#STAKE #CURRENCY]硬币和[#VALUE]投注等级得出的。
+							</translated_meaning>
+						</meaning>
+						</tad-->
+						所显示的值是根据[<span id='stake_se_indicator_text'></span>]硬币和[<span id='stake_se_bet_level_value' style="display:inline-block"></span>]投注等级得出的。 
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--SPECIAL ENEMIES...-->
+
+	<!--UNSTABLE AVATAR...-->
+	<div class="page" id="unstable_avatar">
+		<div id="fx">
+			<span type="img" src="paytable/pages/unstable_avatar/fx"></span>
+		</div>
+		<div id="back">
+			<span type="img" src="paytable/pages/unstable_avatar/back"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageUnstableAvatarUnstableAvatar" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						UNSTABLE AVATAR
+					</source_meaning>
+					<translated_meaning>
+						不稳定的神使
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			不稳定的神使
+		</span>
+		<div class="row">
+			<div class='exploder'>
+				<span type="img" src="paytable/pages/unstable_avatar/exploder"></span>
+			</div>
+			<div class='exploder'>
+				<span type="img" src="paytable/pages/unstable_avatar/explosion"></span>
+			</div>
+		</div>
+		<span class='description light_grey' style="margin-top: -5px">
+			<!--tad id="TAPaytablePageUnstableAvatarText" type="txt_based" translated="false">
+				<meaning>
+					<source_meaning>
+						This mysterious enemy will explode when killed, potentially destroying all enemies on the playing field, except for Legendary Bosses and Infernal Forgemasters, instantly awarding the sum of the their payouts to the player, up to 5000x their wager. Unstable Avatars only award prizes when destroyed.
+					</source_meaning>
+					<translated_meaning>
+						This mysterious enemy will explode when killed, potentially destroying all enemies on the playing field, except for Legendary Bosses and Infernal Forgemasters, instantly awarding the sum of the their payouts to the player, up to 5000x their wager. Unstable Avatars only award prizes when destroyed.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			This mysterious enemy will explode when killed, potentially destroying all enemies on the playing field, except for Legendary Bosses and Infernal Forgemasters, instantly awarding the sum of the their payouts to the player, up to 5000x their wager. Unstable Avatars only award prizes when destroyed.
+		</span>
+	</div>
+	<!--...UNSTABLE AVATAR-->
+
+	<!--LEGENDARY BOSSES...-->
+	<div class="page" id="legendary_bosses">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageLegendaryBossesLegendaryBosses" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						LEGENDARY BOSSES
+					</source_meaning>
+					<translated_meaning>
+						传奇BOSS
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			传奇BOSS
+		</span>
+		<span class='description light_grey center' style="height: 80px">
+			<!--tad id="TAPaytablePageLegendaryBossesText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						This mysterious enemy will explode when killed, potentially destroying all enemies on the playing field,
+ 						except for Legendary Bosses and Infernal Forgemasters, instantly awarding the sum of the their payouts to the player, 
+						up to 5000x their wager. Unstable Avatars only award prizes when destroyed.
+					</source_meaning>
+					<translated_meaning>
+						每摧毁一个敌人，都有可能触发特殊boss战斗中3个传奇怪物中的一个出现。
+						特殊武器会对传奇boss造成额外伤害。战斗期间，传奇boss在受到伤害时发放奖励。
+						传奇boss在最后被打败时会奖励大奖。
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			每摧毁一个敌人，都有可能触发特殊boss战斗中3个传奇怪物中的一个出现。</br>
+			特殊武器会对传奇boss造成额外伤害。战斗期间，传奇boss在受到伤害时发放奖励。</br>
+			传奇boss在最后被打败时会奖励大奖。
+		</span>
+		<div class="row">
+			<div class='col-1 center'>
+				<div id="legendary_bosses_weapon_slider" style="position: absolute; margin-left: 10px; margin-top: 124px;"></div>
+			</div>
+			<div class='col-9 center'>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 17px">
+						<span type="img" src="paytable/pages/legendary_bosses/ra">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesRa" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											RA
+										</source_meaning>
+										<translated_meaning>
+											拉
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								拉
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesTheEternalSun" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											The Eternal Sun
+										</source_meaning>
+										<translated_meaning>
+											永恒太阳
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								永恒太阳
+							</span>
+							<span id="BOSS_HP_0" class='boss_hp'></span>
+							<span class='enemy_payout' id="18"></span>
+						</span>
+					</div>
+				</div>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 235px; ">
+						<span type="img" src="paytable/pages/legendary_bosses/osiris">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesOsiris" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											OSIRIS
+										</source_meaning>
+										<translated_meaning>
+											奥西里斯
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								奥西里斯
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesDeathsJudgment" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Death’s Judgment
+										</source_meaning>
+										<translated_meaning>
+											死亡审判
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								死亡审判
+							</span>
+							<span id="BOSS_HP_1" class='boss_hp'></span>
+							<span class='enemy_payout' id="18"></span>
+						</span>
+					</div>
+				</div>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 453px;">
+						<span type="img" src="paytable/pages/legendary_bosses/anubis">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesAnubis" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											ANUBIS
+										</source_meaning>
+										<translated_meaning>
+											阿努比斯
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								阿努比斯
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesAfterlifesKing" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Afterlife’s King
+										</source_meaning>
+										<translated_meaning>
+											转世之王
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								转世之王
+							</span>
+							<span id="BOSS_HP_2" class='boss_hp'></span>
+							<span class='enemy_payout' id="18"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-1 center'>
+				<div class='enemy_values_block'>
+					<span class='enemy_values_text'>
+						<!--tad id="TAPaytablePageLegendaryBossesStakeIndicatorText" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+							</source_meaning>
+							<translated_meaning>
+								所显示的值是根据[#STAKE #CURRENCY]硬币和[#VALUE]投注等级得出的。
+							</translated_meaning>
+						</meaning>
+						</tad-->
+						所显示的值是根据[<span id='stake_lb_indicator_text'></span>]硬币和[<span id='stake_lb_bet_level_value' style="display:inline-block"></span>]投注等级得出的。
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...LEGENDARY BOSSES-->
+
+	<!--WEAPONS...-->
+	<div class="page" id="weapons">
+		<div class="texture">
+			<span type="img" src="paytable/pages/special_enemies/wild_textures"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageWeaponsCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						WEAPONS
+					</source_meaning>
+					<translated_meaning>
+						武器
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			武器
+		</span>
+		<span class='description light_grey left'>
+			<!--tad id="TAPaytablePageWeaponsText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Game rooms are sorted by the cost of each bullet. Select a cost per bullet value from the lobby to be taken to the first available room of that type.
+
+						The standard base weapon is the Turret, which can be aimed by using the onscreen crosshair. The Turret has 5 bet levels.
+						This can be adjusted up by increasing your bet per shot. The shot payouts will get bigger as the Turret rises in level.
+
+						Misuse/Malfunction voids all pays and plays.
+					</source_meaning>
+					<translated_meaning>
+						游戏房间按每个子弹花费分类。从大厅中选择每个子弹的费用值，以进入该类型的第一个可用房间。
+
+						炮塔是标准基础武器，通过使用屏幕上的十字线瞄准。炮塔有5个投注等级。
+						这可以通过增加您每次射击的投注额来向上调整。射击支付会随着炮塔等级增加而增加。
+
+						使用不当/故障使所有支付和游戏无效。
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			游戏房间按每个子弹花费分类。从大厅中选择每个子弹的费用值，以进入该类型的第一个可用房间。
+			</br></br>
+			炮塔是标准基础武器，通过使用屏幕上的十字线瞄准。炮塔有5个投注等级。
+			</br>
+			这可以通过增加您每次射击的投注额来向上调整。射击支付会随着炮塔等级增加而增加。
+			</br></br>
+			使用不当/故障使所有支付和游戏无效。
+		</span>
+		<div class="turret">
+			<span type="img" src="paytable/pages/weapons/turret"></span>
+			<span class='description light_grey left turret_caption'>
+				<!--tad id="TAPaytablePageWeaponsTurretCaption" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							TURRET
+						</source_meaning>
+						<translated_meaning>
+							炮塔
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				炮塔
+			</span>
+			<span class='description light_grey left turret_available'>
+				<!--tad id="TAPaytablePageWeaponsTurretAvailable" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							The base weapon available at all times.
+						</source_meaning>
+						<translated_meaning>
+							基础武器在任何时候都可用。
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				基础武器在任何时候都可用。
+			</span>
+		</div>
+	</div>
+	<!--...WEAPONS-->
+
+	<!--SPECIAL WEAPONS...-->
+	<div class="page" id="special_weapons">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageSpecialWeaponsCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						SPECIAL WEAPONS
+					</source_meaning>
+					<translated_meaning>
+						特殊武器
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			特殊武器
+		</span>
+		<span class='description light_grey left'>
+			<!--tad id="TAPaytablePageSpecialWeaponsText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						In addition to the base weapon, the Turret, enemies may drop Special Weapons when they are hit. These Special Weapons are stronger and can affect one or more enemies. Use the Special Weapons wisely: they are most effective when used against strong enemies or groups of enemies. Special Weapons have a greater chance for Instant Wins and Bonus Wins! Special Weapons that are dropped by enemies do not require a wager to fire.
+
+						You can purchase a pay-per-shot Special Weapon at any time during gameplay! These shots multiply your wager depending on the chosen weapon. Simply click on the image of the Special Weapon you want to use on the left side of the screen. Free shots from dropped Special Weapons are played at the bet level they were won at, and the bet level cannot be changed until the free shots are used.
+					</source_meaning>
+					<translated_meaning>
+						在基础武器炮塔之外，敌人还有可能在被击中时掉落特殊武器。这些特殊武器更加强大，可以伤害一个或多个敌人。明智地使用特殊武器：它们在对抗强敌或一群敌人时最有效。特殊武器奖励即时赢利和奖金赢利的几率更高！被敌人掉落的特殊武器不需要投注即可射击。
+						
+						在游戏中您可以随时购买按次计费的特殊武器。根据所选武器，这些射击会乘以您的投注额。只需要点击屏幕左边您想使用的特殊武器的图片。掉落的特殊武器所带的免费射击次数的投注等级是武器被奖励时对应的投注等级，并且在免费射击用完之前不能改变投注等级。
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			在基础武器炮塔之外，敌人还有可能在被击中时掉落特殊武器。这些特殊武器更加强大，可以伤害一个或多个敌人。<br/>明智地使用特殊武器：它们在对抗强敌或一群敌人时最有效。特殊武器奖励即时赢利和奖金赢利的几率更高！被敌人<br/>掉落的特殊武器不需要投注即可射击。
+			</br>
+			</br>
+			在游戏中您可以随时购买按次计费的特殊武器。根据所选武器，这些射击会乘以您的投注额。只需要点击屏幕左边<br/>您想使用的特殊武器的图片。掉落的特殊武器所带的免费射击次数的投注等级是武器被奖励时对应的投注等级，<br/>并且在免费射击用完之前不能改变投注等级。
+		</span>
+
+		<div class="row">
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/mine_launcher"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnher" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									MINE LAUNCHER
+								</source_meaning>
+								<translated_meaning>
+									地雷发射器
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						地雷发射器
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Launches a land mine at the target area that waits until an enemy comes near before exploding. Can hit multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									在目标区域掩埋地雷，等待敌人靠近并爆炸。可以打中多个敌人。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						在目标区域掩埋地雷，等待敌人靠近并爆炸。可以打中多个敌人。
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										费用：
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							费用：
+							</span>
+						</div>
+						<span id="WEAPON_PAID_0" class='block cost_value_description'></span>						
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										倍当前投注额
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							倍当前投注额
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/plasma_rifle"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifle" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									PLASMA RIFLE
+								</source_meaning>
+								<translated_meaning>
+									等离子步枪
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						等离子步枪
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires a stream of super-heated plasma that deals massive damage to a single target.
+								</source_meaning>
+								<translated_meaning>
+									射击超热等离子光束可以对单个目标造成巨大伤害。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						射击超热等离子光束可以对单个目标造成巨大伤害。
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										费用：
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							费用：
+							</span>
+						</div>
+						<span id="WEAPON_PAID_1" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										倍当前投注额
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							倍当前投注额
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/flamethrower"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsFlamethrower" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									FLAMETHROWER
+								</source_meaning>
+								<translated_meaning>
+									火焰发射器
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						火焰发射器
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Engulfs an enemy in a stream of burning napalm. Can hit multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									用一束凝固汽油弹点燃敌人。可以打中多个敌人。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						用一束凝固汽油弹点燃敌人。可以打中多个敌人。
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										费用：
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							费用：
+							</span>
+						</div>
+						<span id="WEAPON_PAID_2" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										倍当前投注额
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							倍当前投注额
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/cryogun"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsCryogun" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									CRYOGUN
+								</source_meaning>
+								<translated_meaning>
+									冰冻枪
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						冰冻枪
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsCryogunDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Freezes enemies with a blast of super-chilled gas. Can freeze multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									用超级冷冻气体冻住敌人。可以冻住多个敌人。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						用超级冷冻气体冻住敌人。可以冻住多个敌人。
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsCryogunCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										费用：
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							费用：
+							</span>
+						</div>
+						<span id="WEAPON_PAID_3" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsCryogunCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										倍当前投注额
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							倍当前投注额
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/artillery_strike"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrike" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									ARTILLERY STRIKE
+								</source_meaning>
+								<translated_meaning>
+									炮兵攻击
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						炮兵攻击
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Smoke grenade calls down an artillery strike on its location, inflicting high damage to multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									烟雾弹可以在降落的位置召唤炮兵攻击，对多个敌人造成显著伤害。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						烟雾弹可以在降落的位置召唤炮兵攻击，对多个敌人造成显著伤害。
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										费用：
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							费用：
+							</span>
+						</div>
+						<span id="WEAPON_PAID_4" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										倍当前投注额
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							倍当前投注额
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<span class='sw_info'>
+			<span class='description light_grey left'>
+				<!--tad id="TAPaytablePageSpecialWeaponsWInfo" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Unused special weapons get converted into cash prize at the end of the round.
+						</source_meaning>
+						<translated_meaning>
+							未使用的特殊武器会在回合结束后变为现金奖励。
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				未使用的特殊武器会在回合结束后变为现金奖励。
+			</span>
+		</span>
+	</div>
+	<!--...SPECIAL WEAPONS-->
+
+	<!--WIN BIG WITH THE MONEY WHEEL!...-->
+	<div class="page" id="money_wheel">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageMoneyWheelWinBigWithTheMoneyWheel" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						WIN BIG WITH THE MONEY WHEEL!
+					</source_meaning>
+					<translated_meaning>
+						用金钱转轮赢大奖！
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			用金钱转轮赢大奖！
+		</span>
+		<div class='wheel'>
+			<span type="img" src="paytable/pages/money_wheel/wheel"></span>
+		</div>
+		<span class='description'>
+			<!--tad id="TAPaytablePageMoneyWheelText" type="txt_based" translated="false">
+				<meaning>
+					<source_meaning>
+						Any shot at any enemy except Legendary Bosses, with any weapon can win an instant spin on the Money Wheel.
+						Special Weapons have a higher chance to trigger the Money Wheel!
+					</source_meaning>
+					<translated_meaning>
+						Any shot at any enemy except Legendary Bosses, with any weapon can win an instant spin on the Money Wheel.
+						特殊武器触发金钱转轮的几率更高！
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			Any shot at any enemy except Legendary Bosses, with any weapon can win an instant spin on the Money Wheel.</br>
+			特殊武器触发金钱转轮的几率更高！
+		</span>
+	</div>
+	<!--WIN BIG WITH THE MONEY WHEEL!...-->
+
+	<!--KILLS...-->
+	<div class="page" id="kills">
+		<div class="row">
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsCriticalHitCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								CRITICAL HITS
+							</source_meaning>
+							<translated_meaning>
+								关键一击
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					关键一击
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsCriticalHit" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsCriticalHit" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									CRITICAL HIT
+								</source_meaning>
+								<translated_meaning>
+									关键一击
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>				
+				<span class='description light_grey center' style="line-height: 14px">
+					<!--tad id="TAPaytablePageKillsCriticalHitsDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								All weapons have a random chance to deliver a Critical Hit to an enemy with every shot fired. Critical Hits from weapons are different for each weapon against each enemy.
+
+								Special Weapons have a greater chance to score a Critical Hit and can affect any enemy! Critical Hits apply a multiplier to the amount won from the shot fired. Multipliers are 2x, 3x, 5x, 7x, and 10x. Shots with the Turret can only receive a 2x multiplier.
+							</source_meaning>
+							<translated_meaning>
+								每次射击，所有武器都可能随机对敌人造成关键一击。各个武器对各个敌人造成的关键一击伤害不同。
+
+								特殊武器有更高几率可以创造关键一击并伤害所有敌人！关键一击将一个翻倍器应用到发出射击的赢利金额上。Multipliers are 2x, 3x, 5x, 7x, and 10x. Shots with the Turret can only receive a 2x multiplier.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					每次射击，所有武器都可能随机对敌人造成关键一击。各个武器对各个敌人造成的关键一击伤害不同。
+					</br>
+					</br>
+					特殊武器有更高几率可以创造关键一击并伤害所有敌人！关键一击将一个翻倍器应用到发出射击的赢利金额上。Multipliers are 2x, 3x, 5x, 7x, and 10x. Shots with the Turret can only receive a 2x multiplier.
+				</span>				
+			</div>
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsInstantWinsCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								INSTANT WINS
+							</source_meaning>
+							<translated_meaning>
+								即时赢利
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					即时赢利
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsInstantWin" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsInstantWin" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									INSTANT WIN!!!
+								</source_meaning>
+								<translated_meaning>
+									即时赢利！！！
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsInstantWinsDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								The chance for an instant win is dynamic, depending on the enemy’s current HP and the weapon being used.
+
+								Instant wins can instantly defeat any enemy except the Legendary Bosses, Infernal Forgemasters, and Unstable Avatars, if its HP is low enough.
+								
+								Instant wins award random prizes!
+							</source_meaning>
+							<translated_meaning>
+								即时赢利的机会是可变的，具体取决于敌人当前的HP和所使用的武器。
+
+								只要敌人的HP足够低，即时赢利可以立刻击败除传奇boss、地狱锻造师和不稳定的神使之外的任何敌人。
+								
+								即时赢利随机奖励奖品！
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					即时赢利的机会是可变的，具体取决于敌人当前的HP和所使用的武器。
+					</br>
+					</br>
+					只要敌人的HP足够低，即时赢利可以立刻击败除传奇boss、地狱锻造师和不稳定的神使之外的任何敌人。
+					</br>
+					</br>					
+					即时赢利随机奖励奖品！
+				</span>				
+			</div>
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsBonusWinCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								BONUS WIN!
+							</source_meaning>
+							<translated_meaning>
+								奖金赢利！
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					奖金赢利！
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsBonusWin" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsBonusWin" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									BONUS WIN
+								</source_meaning>
+								<translated_meaning>
+									奖金赢利
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsBonusWinDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								If an enemy’s HP is low enough, and your shot does more damage than what remains, it is considered a Bonus Win!
+
+								Bonus Wins award a bonus cash prize in addition to the standard prize won by doing damage to the enemy.
+							</source_meaning>
+							<translated_meaning>
+								如果一个敌人的HP足够低，并且您的射击造成的伤害大于敌人剩余的HP，您就创造了奖金赢利！
+
+								通过对敌人造成伤害赢得标准奖励，奖金赢利会在标准奖励外再奖励一个现金奖励。
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					如果一个敌人的HP足够低，并且您的射击造成的伤害大于敌人剩余的HP，您就创造了奖金赢利！
+					</br>
+					</br>
+					通过对敌人造成伤害赢得标准奖励，奖金赢利会在标准奖励外再奖励一个现金奖励。
+				</span>
+			</div>
+		</div>	
+	</div>
+	<!--KILLS...-->	
+
+	<!--...CONTROLS_1-->
+	<div class="page" id="controls_1">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/cross"></span>
+						<span class="center" type="img" src="paytable/pages/controls/cursor" style="width: 42px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsMouseCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Mouse Symbol
+										Crosshair
+									</source_meaning>
+									<translated_meaning>
+										鼠标符号
+										十字准心
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							鼠标符号</br>
+							十字准心
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsMouse" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									The player’s left click position designates the intended target. Any fired shot will proceed to the location where the screen is clicked.
+								</source_meaning>
+								<translated_meaning>
+									玩家通过左击确定射击目标。任何发出的射击都会击中屏幕上玩家所点击的位置。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						玩家通过左击确定射击目标。任何发出的射击都会击中屏幕上玩家所点击的位置。
+					</span>
+					<br>
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/mouse" style="width: 42px;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsLeftClickCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Left Click
+										Fires Weapon
+									</source_meaning>
+									<translated_meaning>
+										左键单击
+										发射武器
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							左键单击</br>
+							发射武器
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsLeftClick1" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires the current weapon at the location indicated by the crosshair. If no enemy target is present at the location of the crosshair, the bullet will bounce around until it hits an enemy target. Holding this button down allows for continuous fire until the button is released.
+								</source_meaning>
+								<translated_meaning>
+									向十字准心指示的位置发射当前武器。如果在十字准心的位置没有目标敌人，则子弹会弹飞直到击中目标敌人。按住此按钮可以持续射击，直到松开按钮。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						向十字准心指示的位置发射当前武器。如果在十字准心的位置没有目标敌人，则子弹会弹飞直到击中目标敌人。按住此按钮可以持续射击，直到松开按钮。
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/mouse" style="width: 42px; transform: scaleX(-1); text-align: right;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsRightClickCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Right Click
+										Locks Target
+									</source_meaning>
+									<translated_meaning>
+										右键单击
+										锁定目标
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							右键单击</br>
+							锁定目标
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsRightClick" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Click the crosshair button and then click an enemy to Lock On. It will then show a targeting reticule on the chosen enemy.
+
+									Any shots fired by the player will hit this target, no matter what is in the way. If Auto-Lock is enabled, the game will automatically switch to the next available target.
+								</source_meaning>
+								<translated_meaning>
+									点击十字准线按钮，然后点击敌人进行锁定。之后会在所选敌人上显示一个目标十字线。
+									
+									无论有何障碍，玩家发射的任何射击都会击中该目标。如果启用了自动锁定，游戏将自动切换到下一个可用目标。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						点击十字准线按钮，然后点击敌人进行锁定。之后会在所选敌人上显示一个目标十字线。
+						</br></br>
+						无论有何障碍，玩家发射的任何射击都会击中该目标。如果启用了自动锁定，游戏将自动切换到下一个可用目标。
+					</span>
+				</div>
+			</div>
+			<div class='col-4 center'>
+				<div class='line_weight'></div>
+				<div class="row_content">
+					<div class='col-6 center'>
+						<span type="img" src="paytable/pages/controls/sw_5" class="sw_5"></span>
+						<span type="img" src="paytable/pages/controls/sw_3" class="sw_3"></span>
+						<span type="img" src="paytable/pages/controls/sw_1" class="sw_1"></span>
+						<span type="img" src="paytable/pages/controls/sw_7" class="sw_7"></span>
+						<span type="img" src="paytable/pages/controls/sw_8" class="sw_8"></span>
+					</div>			
+					<div class='col-6 center'>
+						<span class='title_capture weapon_capture'>
+							<!--tad id="TAPaytablePageControlsWeaponCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Special 
+										Weapons
+									</source_meaning>
+									<translated_meaning>
+										特殊武器
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							特殊武器
+						</span>
+						<span class='description light_grey weapon_description'>
+							<!--tad id="TAPaytablePageControlsWeaponDescription" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Use any Special Weapon at any time on demand by clicking the desired weapon’s button on the left side of the screen. The Cost Per Shot of the weapon is indicated on the button.
+									</source_meaning>
+									<translated_meaning>
+										通过点击屏幕左边您想使用武器的按钮可以随时使用任何特殊武器。按钮上会显示该武器每射击一次的费用。
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							通过点击屏幕左边您想使用武器的按钮可以随时使用任何特殊武器。按钮上会显示该武器每射击一次的费用。
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-2 center'>
+				<div class="row_content">
+					<div class="title" style="margin-left: -6px;">
+						<span type="img" src="paytable/pages/controls/minus" style="width: 30px"></span>
+						<span type="img" src="paytable/pages/controls/plus" style="width: 30px"></span>
+						<span class='title_capture' style="margin-left: 4px; margin-top: 2px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Buttons
+									</source_meaning>
+									<translated_meaning>
+										按钮
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							按钮
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: 6px; margin-left: -6px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Changes the bet level.
+									</source_meaning>
+									<translated_meaning>
+										改变投注等级。
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							改变投注等级。
+					</span>
+					<span type="img" src="paytable/pages/controls/turret" class="turret_img"></span>
+					<span class='description light_grey' style="margin-left: -6px; margin-top: 4px;">
+						<!--tad id="TAPaytablePageControlsSwitch" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Switches between your equipped Special Weapon and the Standard Turret.
+								</source_meaning>
+								<translated_meaning>
+									在您已装备的特殊武器和标准炮塔之间切换。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						在您已装备的特殊武器和标准炮塔之间切换。
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_1-->
+
+	<!--CONTROLS_1_MOBILE...-->
+	<div class="page" id="mobile_controls_1">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/finger" style="width: 60px"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsFingerTap" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Finger Tap
+									</source_meaning>
+									<translated_meaning>
+										手指轻点
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							手指轻点
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsFingerTapText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									The player’s finger tap position designates the intended target. Any fired shot will proceed to the location where the screen is tapped.
+								</source_meaning>
+								<translated_meaning>
+									玩家手指轻点的位置指定了预期目标。任何发出的射击都会发射到屏幕被点的位置。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						玩家手指轻点的位置指定了预期目标。任何发出的射击都会发射到屏幕被点的位置。
+					</span>
+					<div class="title" style="margin-top: 18px;">
+						<span type="img" src="paytable/pages/controls/target" style="width: 60px;"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsLockOnTarget" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Lock Target
+									</source_meaning>
+									<translated_meaning>
+										锁定目标
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							锁定目标
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: -13px;">
+						<!--tad id="TAPaytablePageControlsLockOnTargeText" type="txt_based" translated="false">
+							<meaning>
+								<source_meaning>
+									Tap/click the crosshair button and then tap/click an enemy to Lock On. It will then show a targeting reticule on the chosen enemy. Any shots fired by the player will hit this target, no matter what is in the way. If Auto-Lock is enabled, the game will automatically switch to the next available target.
+								</source_meaning>
+								<translated_meaning>
+									Tap/click the crosshair button and then tap/click an enemy to Lock On. 之后会在所选敌人上显示一个目标十字线。无论有何障碍，玩家发射的任何射击都会击中该目标。如果启用了自动锁定，游戏将自动切换到下一个可用目标。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Tap/click the crosshair button and then tap/click an enemy to Lock On. 之后会在所选敌人上显示一个目标十字线。无论有何障碍，玩家发射的任何射击都会击中该目标。如果启用了自动锁定，游戏将自动切换到下一个可用目标。
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/finger_tap" style="width: 60px"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsFingerTap" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Fire Weapon
+									</source_meaning>
+									<translated_meaning>
+										发射武器
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							发射武器
+						</span>
+					</div>
+					<span class='description light_grey' id="dis">
+						<!--tad id="TAPaytablePageControlsLeftClick" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires the current weapon at the location indicated. If no enemy target is present at the tapped location, the bullet will bounce around until it hits an enemy target.
+								</source_meaning>
+								<translated_meaning>
+									对指定位置发射当前武器。如果所点的位置没有目标敌人，则子弹会弹飞直到击中目标敌人。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						对指定位置发射当前武器。如果所点的位置没有目标敌人，则子弹会弹飞直到击中目标敌人。</br>
+					</span>
+					<span class='description light_grey' id="disableAutofire">
+						<!--tad id="TAPaytablePageControlsLeftClick1" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Holding their finger on the screen allows for continuous fire until the player stops touching the screen.
+								</source_meaning>
+								<translated_meaning>
+									把手指按在屏幕上可以持续发射，直到玩家停止触摸屏幕。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						把手指按在屏幕上可以持续发射，直到玩家停止触摸屏幕。
+					</span>
+				</div>
+			</div>
+			<div class='col-4 center'>
+				<div class='line_weight'></div>
+				<div class="row_content">
+					<div class='col-6 center'>
+						<span type="img" src="paytable/pages/controls/sw_1" class="sw_1"></span>
+						<span type="img" src="paytable/pages/controls/sw_8" class="sw_8"></span>
+						<span type="img" src="paytable/pages/controls/sw_3" class="sw_3"></span>
+						<span type="img" src="paytable/pages/controls/sw_7" class="sw_7"></span>
+						<span type="img" src="paytable/pages/controls/sw_5" class="sw_5"></span>
+					</div>
+					<div class='col-6 center'>
+						<span class='title_capture weapon_capture'>
+							<!--tad id="TAPaytablePageControlsWeaponCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Special 
+										Weapons
+									</source_meaning>
+									<translated_meaning>
+										特殊武器
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							特殊武器
+						</span>
+						<span class='description light_grey weapon_description'>
+							<!--tad id="TAPaytablePageControlsWeaponDescription" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Use any Special Weapon at any time on demand by clicking the desired weapon’s button on the left side of the screen. The Cost Per Shot of the weapon is indicated on the button.
+									</source_meaning>
+									<translated_meaning>
+										通过点击屏幕左边您想使用武器的按钮可以随时使用任何特殊武器。按钮上会显示该武器每射击一次的费用。
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							通过点击屏幕左边您想使用武器的按钮可以随时使用任何特殊武器。按钮上会显示该武器每射击一次的费用。
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-2 center'>
+				<div class="row_content">
+					<div class="title" style="margin-left: -6px;">
+						<span type="img" src="paytable/pages/controls/minus" style="width: 30px"></span>
+						<span type="img" src="paytable/pages/controls/plus" style="width: 30px"></span>
+						<span class='title_capture' style="margin-left: 4px; margin-top: 2px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Buttons
+									</source_meaning>
+									<translated_meaning>
+										按钮
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							按钮
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: 6px; margin-left: -6px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Changes the bet level.
+									</source_meaning>
+									<translated_meaning>
+										改变投注等级。
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							改变投注等级。
+					</span>
+					<span type="img" src="paytable/pages/controls/turret" class="turret_img"></span>
+					<span class='description light_grey' style="margin-left: -6px; margin-top: 4px;">
+						<!--tad id="TAPaytablePageControlsSwitch" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Switches between your equipped Special Weapon and the Standard Turret.
+								</source_meaning>
+								<translated_meaning>
+									在您已装备的特殊武器和标准炮塔之间切换。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						在您已装备的特殊武器和标准炮塔之间切换。
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_1_MOBILE-->
+
+	<!--CONTROLS_2...-->
+	<div class="page" id="controls_2">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-6 center'>
+				<div class='line' style="margin-left: 450px"></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/gun" style="width: 60px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsFireControlPanel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Fire Control Panel
+									</source_meaning>
+									<translated_meaning>
+										射击控制面板
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							射击控制面板
+						</span>
+					</div>
+					<span class='description light_grey' id="disableAutofire">
+						<!--tad id="TAPaytablePageControlsMouse" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Fire Control Panel, where you can configure the settings for Auto-Fire, Auto-Lock and other options.
+									
+									• Lock On Target: When active, the game will automatically target the next enemy on screen depending on which Target Mode is selected.
+									
+									• Auto Fire: When active, the game will automatically fire at a locked target with the active weapon. If no target is selected, holding down the fire button will cause the game to fire continuously at whatever the cursor is pointing at.
+									
+									• Fire Speed [> >> >>>]: Configures the speed that Auto Fire will fire shots.
+									> denotes the slowest speed. >>> denotes the fastest.
+								</source_meaning>
+								<translated_meaning>
+									打开射击控制面板，您可以在此设置自动射击、自动锁定和其他选项。
+									
+									• 锁定目标：当激活时，根据所选择的目标模式，游戏会自动瞄准屏幕上的下一个敌人。
+									
+									• 自动射击：当激活时，游戏会使用活跃武器自动射击锁定的目标。如果没有选择目标，按住发射按钮会使得游戏对着光标指向的任何位置连续射击。
+									
+									• 射击速度[> >> >>>]：设置自动射击的发射速度。
+									> 表示最慢速度。>>> 表示最快速度。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						打开射击控制面板，您可以在此设置自动射击、自动锁定和其他选项。</br>
+						</br>
+						<span class="description_bold light_grey">• 锁定目标：</span>当激活时，根据所选择的目标模式，游戏会自动瞄准屏幕上的下一个敌人。</br>
+						</br>
+						<span class="description_bold light_grey">• 自动射击：</span>当激活时，游戏会使用活跃武器自动射击锁定的目标。如果没有选择目标，按住发射按钮会使得游戏对着光标指向的任何位置连续射击。</br>
+						</br>
+						<span class="description_bold light_grey">• 射击速度[> >> >>>]：</span>设置自动射击的发射速度。</br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> 表示最慢速度。>>> 表示最快速度。</br>
+					</span>
+					<span class='description light_grey' id="enebleAutofire">
+						<!--tad id="TAPaytablePageControlsMouseEnebleAutofire" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Fire Control Panel, where you can configure the settings for Auto-Lock and other options.
+									
+									• Lock On Target: When active, the game will automatically target the next enemy on screen depending on which Target Mode is selected.
+								</source_meaning>
+								<translated_meaning>
+									打开射击控制面板，您可以在此设置自动锁定和其他选项。
+									
+									• 锁定目标：当激活时，根据所选择的目标模式，游戏会自动瞄准屏幕上的下一个敌人。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						打开射击控制面板，您可以在此设置自动锁定和其他选项。
+						</br>
+						</br>
+						<span class="description_bold light_grey">• 锁定目标：</span>当激活时，根据所选择的目标模式，游戏会自动瞄准屏幕上的下一个敌人。
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/gun" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsTargetMode" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Target Mode
+									</source_meaning>
+									<translated_meaning>
+										目标模式
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							目标模式
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsTargetModeText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Changes mode for Lock on Target
+									
+									• SAME: Will target the next available enemy with the closest amount of HP the previous target had.
+									
+									• LOW: Will target the next available enemy with the lowest HP.
+									
+									• HIGH: Will target the next available enemy with the highest HP.
+								</source_meaning>
+								<translated_meaning>
+									更改锁定目标模式
+									
+									• 相同：将会瞄准下一个与之前目标HP最接近的可选敌人。
+									
+									• 低值：将HP最低的敌人作为下一个目标。
+									
+									• 高值：将HP最高的敌人作为下一个目标。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						更改锁定目标模式</br>
+						</br></br>
+						<span class="description_bold light_grey">• 相同：</span>将会瞄准下一个与之前目标HP最接近的可选敌人。</br>
+						</br></br>
+						<span class="description_bold light_grey">• 低值：</span>将HP最低的敌人作为下一个目标。</br>
+						</br></br>
+						<span class="description_bold light_grey">• 高值：</span>将HP最高的敌人作为下一个目标。
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/cup" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsLeaderboard" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Leaderboard
+									</source_meaning>
+									<translated_meaning>
+										Leaderboard
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Leaderboard
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsLeaderboard" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Leaderboard Panel.
+								</source_meaning>
+								<translated_meaning>
+									Opens the Leaderboard Panel.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Opens the Leaderboard Panel.</br>
+					</span>
+					<div class="title" style="margin-top: 13px">
+						<span class="left" type="img" src="paytable/pages/controls/sound" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsSound" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Sound
+									</source_meaning>
+									<translated_meaning>
+										声音
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							声音
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsSoundText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Turns all sounds off or on.
+								</source_meaning>
+								<translated_meaning>
+									关闭或打开所有声音。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						关闭或打开所有声音。
+					</span>
+					<div class="title" style="margin-top: 13px">
+						<span class="left" type="img" src="paytable/pages/controls/back_icon" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsBack" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Back
+									</source_meaning>
+									<translated_meaning>
+										返回
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							返回
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsBackText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Leaves the room and returns to the game lobby.
+								</source_meaning>
+								<translated_meaning>
+									离开房间，返回游戏大厅。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						离开房间，返回游戏大厅。
+					</span>
+					<div class="title" id="setting">
+						<div class="title" style="margin-top: 13px;">
+						<span class="left" type="img" src="paytable/pages/controls/gear" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsSettings" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Settings
+									</source_meaning>
+									<translated_meaning>
+										设置
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							设置
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-left: -75px; margin-top: 50px;">
+						<!--tad id="TAPaytablePageControlsSettingsText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Settings Panel.
+									Note: Gameplay continues in background.
+								</source_meaning>
+								<translated_meaning>
+									打开设置面板。
+									注意：游戏在后台继续进行。
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						打开设置面板。</br>
+						<span class="description_italic light_grey">注意：游戏在后台继续进行。</span>
+					</span>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_2-->
+</div>

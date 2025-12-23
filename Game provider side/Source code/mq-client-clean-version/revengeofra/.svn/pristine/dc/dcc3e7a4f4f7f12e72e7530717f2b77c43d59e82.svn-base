@@ -1,0 +1,145 @@
+import Sprite from '../../../../../../../../../common/PIXI/src/display/Sprite';
+import Button from '../../../../../../../../../common/PIXI/src/display/ui/Button';
+import TextField from '../../../../../../../../../common/PIXI/src/display/TextField';
+import { APP } from '../../../../../../../../../common/PIXI/src/globals';
+
+const AREA = new PIXI.Rectangle(0, 0, 360, 110);
+const TITLE_AREA = new PIXI.Rectangle(-180, -55+40+5, 360, 66);
+
+class PromotionsScreenActivePromosListItem extends Sprite
+{
+	static get ON_PROMO_DETAILS_BTN_CLICKED()		{ return "ON_PROMO_DETAILS_BTN_CLICKED" }
+
+	get info()
+	{
+		return this._fInfo_obj;
+	}
+
+	get borders()
+	{
+		return AREA.clone(); 
+	}
+
+	constructor(itemInfo)
+	{
+		super();
+
+		this._fInfo_obj = itemInfo;
+		this._detailsBtnRequired_bl = itemInfo.isDetailsUrlDefined;
+		this._fCollectedItemsText_tf = null;
+		
+		this._initView();
+	}
+
+	_initView()
+	{
+		// this._addBack();
+
+		this._container = this.addChild(new Sprite());
+		this._container.position.set(AREA.width/2, AREA.height/2);
+
+		this._addInfoBtn();
+		
+		this._addPromoTitle();
+	}
+
+	_addBack()
+	{
+		let gr = this.addChild(new PIXI.Graphics());
+		gr.beginFill(0x00ff00).drawRect(AREA.x, AREA.y, AREA.width, AREA.height).endFill();
+	}
+
+	_addInfoBtn()
+	{
+		let btn = new Button("promo/screen/btn_info", "TAPromotionsScreenInfoButtonCaption", true);
+		btn.position.set(0, -AREA.height/4);
+		btn.hitArea = new PIXI.Rectangle(-96, -21, 192, 42);
+		btn.caption.position.set(-20, -1);
+		btn.on("pointerclick", this._onInfoBtnClicked, this);
+
+		this._container.addChild(btn);
+		if (!this._detailsBtnRequired_bl)
+		{
+			btn.setDisabled();
+		}
+	}
+
+	_onInfoBtnClicked(event)
+	{
+		this.emit(PromotionsScreenActivePromosListItem.ON_PROMO_DETAILS_BTN_CLICKED);
+	}
+
+	_addPromoTitle()
+	{
+		let promoTitle = this._fInfo_obj.title;
+		this._fCollectedItemsText_tf = this._container.addChild(new TextField(this._promoTitleTextStyle));
+		
+		let lIsFontIncludesCurrencySymbol_bl = APP.fonts.isGlyphsSupported(this._fCollectedItemsText_tf.style.fontFamily, promoTitle);
+		if (!lIsFontIncludesCurrencySymbol_bl)
+		{
+			Object.assign(this._fCollectedItemsText_tf.style, {fontFamily: "sans-serif"});
+		}		
+
+		this._fCollectedItemsText_tf.text = promoTitle;
+
+		this._writePromoTitleIntoArea();
+	}
+
+	get _promoTitleTextStyle()
+	{
+		return {
+			align: "left",
+			fontFamily: "fnt_nm_barlow_semibold",
+			fontSize: 20,
+			letterSpacing: 0.5,
+			padding: 5,
+			fill: 0xffffff
+		}
+	}
+
+	_writePromoTitleIntoArea()
+	{
+		let lTextArea_obj = this._titleArea;
+		let l_tf = this._fCollectedItemsText_tf;
+
+		let levelTfBounds = l_tf.getLocalBounds();
+		l_tf.pivot.set(levelTfBounds.x, levelTfBounds.y);
+
+		let scaleX = l_tf.scale.x;
+		if (!isNaN(lTextArea_obj.width) && lTextArea_obj.width < levelTfBounds.width*scaleX)
+		{
+			scaleX *= lTextArea_obj.width / (levelTfBounds.width*scaleX);
+		}
+
+		let scaleY = l_tf.scale.y;
+		if (lTextArea_obj.height < levelTfBounds.height*scaleY)
+		{
+			scaleY *= lTextArea_obj.height / (levelTfBounds.height*scaleY);
+		}
+		
+		l_tf.scale.set(scaleX, scaleY);
+
+		let lScaledObjectWidth_num = levelTfBounds.width * scaleX;
+		let lScaledObjectHeight_num = levelTfBounds.height * scaleY;
+		let lX_num = lTextArea_obj.x + (lTextArea_obj.width - lScaledObjectWidth_num) / 2;;
+		let lY_num = lTextArea_obj.y + (lTextArea_obj.height - lScaledObjectHeight_num) / 2;
+
+		l_tf.x = lX_num;
+		l_tf.y = lY_num;
+	}
+
+	get _titleArea()
+	{
+		return TITLE_AREA;
+	}
+
+	destroy()
+	{
+		this._fInfo_obj = null;
+		this._fCollectedItemsText_tf = null;
+
+		super.destroy();
+	}
+}
+
+export default PromotionsScreenActivePromosListItem

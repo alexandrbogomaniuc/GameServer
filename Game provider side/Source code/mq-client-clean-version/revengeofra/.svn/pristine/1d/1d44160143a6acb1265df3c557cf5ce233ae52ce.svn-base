@@ -1,0 +1,233 @@
+import SimpleUIController from '../../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import SettingsScreenView from '../../../../../view/uis/custom/secondary/settings/SettingsScreenView';
+import LobbySoundButtonController from '../LobbySoundButtonController';
+import LobbyTooltipsController from '../../tooltips/LobbyTooltipsController';
+import { APP } from '../../../../../../../../common/PIXI/src/globals';
+import CookieStorage from '../../../../../../../../common/PIXI/src/storage/CookieStorage';
+
+const COOKIE_KEY_HEALTH_BAR = "cookieKeyHealthBar";
+const HP_BAR_DEFAULT_VALUE = "false";
+
+class SettingsScreenController extends SimpleUIController
+{
+	static get EVENT_ON_CLOSE_BTN_CLICKED()					{ return SettingsScreenView.EVENT_ON_CLOSE_BTN_CLICKED; }
+	static get EVENT_ON_SOUND_VOLUME_CHANGED()				{ return SettingsScreenView.EVENT_ON_SOUND_VOLUME_CHANGED; }
+	static get EVENT_ON_MUSIC_VOLUME_CHANGED()				{ return SettingsScreenView.EVENT_ON_MUSIC_VOLUME_CHANGED; }
+	static get EVENT_ON_OK_BUTTON_CLICKED()					{ return SettingsScreenView.EVENT_ON_OK_BUTTON_CLICKED; }
+	static get EVENT_ON_SETTINGS_TOOLTIPS_STATE_CHANGED()	{ return SettingsScreenView.EVENT_ON_SETTINGS_TOOLTIPS_STATE_CHANGED; }
+	static get EVENT_ON_SETTINGS_HEALTH_BAR_STATE_CHANGED()	{ return SettingsScreenView.EVENT_ON_SETTINGS_HEALTH_BAR_STATE_CHANGED; }
+	static get EVENT_SCREEN_ACTIVATED()						{ return "onSettingsScreenActivated"; }
+	static get EVENT_SCREEN_DEACTIVATED()					{ return "onSettingsScreenDeactivated"; }
+
+	showScreen()
+	{
+		this._showScreen();
+	}
+
+	hideScreen()
+	{
+		this._hideSceeen();
+	}
+
+	cancelChanges()
+	{
+		this._restoreVolumeSettings();
+	}
+
+	getVolumeSettings()
+	{
+		return this._fVolumeSettings_obj;
+	}
+
+	//INIT...
+	__init()
+	{
+		this._fVolumeSettings_obj = {};
+		this._fHealthCookieStorage_cs = new CookieStorage(COOKIE_KEY_HEALTH_BAR);
+
+		this._fTooltipsRememberState_bln = null;
+		this._fHealthBarRememberState_bln = null;
+
+		super.__init();
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		APP.commonPanelController.soundButtonController.on(LobbySoundButtonController.EVENT_SOUND_ON_BUTTON_CLICKED, this._updateVolumeSettings, this);
+		APP.commonPanelController.soundButtonController.on(LobbySoundButtonController.EVENT_SOUND_OFF_BUTTON_CLICKED, this._updateVolumeSettings, this);
+
+		APP.tooltipsController.on(LobbyTooltipsController.EVENT_ON_TIPS_STATE_CHANGED, this._onTooltipsStateChanged, this);
+	}
+
+	__initViewLevel()
+	{
+		super.__initViewLevel();
+
+		let lView_ssv = this.view;
+		lView_ssv.on(SettingsScreenView.EVENT_ON_CLOSE_BTN_CLICKED, this._onClose, this);
+		lView_ssv.on(SettingsScreenView.EVENT_ON_OK_BUTTON_CLICKED, this.emit, this);
+		lView_ssv.on(SettingsScreenView.EVENT_ON_SOUND_VOLUME_CHANGED, this.emit, this);
+		lView_ssv.on(SettingsScreenView.EVENT_ON_MUSIC_VOLUME_CHANGED, this.emit, this);
+		lView_ssv.on(SettingsScreenView.EVENT_ON_SETTINGS_TOOLTIPS_STATE_CHANGED, this.emit, this);
+		lView_ssv.on(SettingsScreenView.EVENT_ON_SETTINGS_HEALTH_BAR_STATE_CHANGED, this._onHealthBarStateChanged, this);
+
+		this._getHealthBarState();
+	}
+	//...INIT
+
+	_getHealthBarState()
+	{
+		this._fHealthCookieStorage_cs.load((aState_bln)=>this._onHealthCookieLoaded(aState_bln));
+	}
+
+	_onHealthCookieLoaded(aState_str)
+	{
+		aState_str = aState_str || HP_BAR_DEFAULT_VALUE;
+		let lState_bln = aState_str == "false" ? false : true;
+		let lView_ssv = this.view;
+
+		if (lView_ssv)
+		{
+			lView_ssv.updateHealthBarState(Boolean(lState_bln));
+			this.emit(SettingsScreenController.EVENT_ON_SETTINGS_HEALTH_BAR_STATE_CHANGED, {value: lState_bln});
+		}
+	}
+
+	_onHealthBarStateChanged(aEvent_obj)
+	{
+		let lState_bln = aEvent_obj.value;
+
+		this._setHealthBarState(lState_bln);
+	}
+
+	_setHealthBarState(aState_bln)
+	{
+		let lExpiresDate_d = new Date();
+		lExpiresDate_d.setTime(lExpiresDate_d.getTime() + (100*60*60*24*30)); // One month
+		this._fHealthCookieStorage_cs.save(aState_bln, null, lExpiresDate_d);
+
+		this.emit(SettingsScreenController.EVENT_ON_SETTINGS_HEALTH_BAR_STATE_CHANGED, {value: aState_bln});
+	}
+
+	_onTooltipsStateChanged(aEvent_obj)
+	{
+		let lView_ssv = this.view;
+
+		if (lView_ssv)
+		{
+			let lTooltipsState_bln = aEvent_obj.state;
+			lView_ssv.updateTooltipsToggleState(lTooltipsState_bln);
+		}
+	}
+
+	_showScreen()
+	{
+		let lView_ssv = this.view;
+		lView_ssv.visible = true;
+
+		let lTooltipsState_bln = APP.tooltipsController.info.tooltipsEnabled;
+		lView_ssv.updateTooltipsToggleState(lTooltipsState_bln);
+
+		this._updateVolumeSettings();
+
+		this._fTooltipsRememberState_bln = lTooltipsState_bln;
+		this._fHealthBarRememberState_bln = APP.playerController.info.healthBarEnabled;
+
+		this.emit(SettingsScreenController.EVENT_SCREEN_ACTIVATED);
+	}
+
+	_hideSceeen()
+	{
+		let lView_ssv = this.view;
+		if (lView_ssv)
+		{
+			lView_ssv.visible = false;
+			this.emit(SettingsScreenController.EVENT_SCREEN_DEACTIVATED);
+		}
+	}
+
+	_onClose()
+	{
+		let lTooltipsState_bln = APP.tooltipsController.info.tooltipsEnabled;
+		let lHealthBarState_bln = APP.playerController.info.healthBarEnabled;
+
+		if (lTooltipsState_bln != this._fTooltipsRememberState_bln)
+		{
+			this.view.updateTooltipsToggleState(this._fTooltipsRememberState_bln);
+			this.emit(SettingsScreenView.EVENT_ON_SETTINGS_TOOLTIPS_STATE_CHANGED, {value: this._fTooltipsRememberState_bln});
+		}
+
+		if (lHealthBarState_bln != this._fHealthBarRememberState_bln)
+		{
+			this.view.updateHealthBarState(this._fHealthBarRememberState_bln);
+			this._setHealthBarState(this._fHealthBarRememberState_bln);
+		}
+
+		this.emit(SettingsScreenController.EVENT_ON_CLOSE_BTN_CLICKED);
+
+		this._fTooltipsRememberState_bln = null;
+		this._fHealthBarRememberState_bln = null;
+	}
+
+	_saveVolumeSettings()
+	{
+		let lSoundSettingsInfo_ssi = APP.soundSettingsController.info;
+
+		this._fVolumeSettings_obj.fxVolume = lSoundSettingsInfo_ssi.i_getFxSoundsVolume();
+		this._fVolumeSettings_obj.musicVolume = lSoundSettingsInfo_ssi.i_getBgSoundsVolume();
+	}
+
+	_updateVolumeSettings()
+	{
+		let lView_ssv = this.view;
+		if (lView_ssv && lView_ssv.visible)
+		{
+			this._saveVolumeSettings();
+			lView_ssv.setSettings({soundVolumes: this._fVolumeSettings_obj});
+		}
+	}
+
+	_restoreVolumeSettings()
+	{
+		this.emit(SettingsScreenController.EVENT_ON_SOUND_VOLUME_CHANGED, {value: this._fVolumeSettings_obj.fxVolume});
+		this.emit(SettingsScreenController.EVENT_ON_MUSIC_VOLUME_CHANGED, {value: this._fVolumeSettings_obj.musicVolume});
+	}
+
+	destroy()
+	{
+		let lView_ssv = this.view;
+
+		if (lView_ssv)
+		{
+			lView_ssv.off(SettingsScreenView.EVENT_ON_CLOSE_BTN_CLICKED, this.emit, this);
+			lView_ssv.off(SettingsScreenView.EVENT_ON_OK_BUTTON_CLICKED, this.emit, this);
+			lView_ssv.off(SettingsScreenView.EVENT_ON_SOUND_VOLUME_CHANGED, this.emit, this);
+			lView_ssv.off(SettingsScreenView.EVENT_ON_MUSIC_VOLUME_CHANGED, this.emit, this);
+			lView_ssv.off(SettingsScreenView.EVENT_ON_SETTINGS_TOOLTIPS_STATE_CHANGED, this.emit, this);
+			lView_ssv.off(SettingsScreenView.EVENT_ON_SETTINGS_HEALTH_BAR_STATE_CHANGED, this._onHealthBarStateChanged, this);
+		}
+
+		if (APP.commonPanelController && APP.commonPanelController.soundButtonController)
+		{
+			APP.commonPanelController.soundButtonController.off(LobbySoundButtonController.EVENT_SOUND_ON_BUTTON_CLICKED, this._updateVolumeSettings, this);
+			APP.commonPanelController.soundButtonController.off(LobbySoundButtonController.EVENT_SOUND_OFF_BUTTON_CLICKED, this._updateVolumeSettings, this);
+		}
+
+		if (APP.tooltipsController)
+		{
+			APP.tooltipsController.off(LobbyTooltipsController.EVENT_ON_TIPS_STATE_CHANGED, this._onTooltipsStateChanged, this);
+		}
+
+		super.destroy();
+
+		this._fVolumeSettings_obj = null;
+		this._fHealthCookieStorage_cs = null;
+
+		this._fTooltipsRememberState_bln = null;
+		this._fHealthBarRememberState_bln = null;
+	}
+}
+
+export default SettingsScreenController

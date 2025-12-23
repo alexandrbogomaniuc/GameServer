@@ -1,0 +1,2505 @@
+<div class="paytable_container" id="PAYTABLE">
+
+	<!--HOW TO PLAY...-->
+	<div class="page" id="how_to_play">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageHowToPlayHowToPlay" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						HOW TO PLAY
+					</source_meaning>
+					<translated_meaning>
+						ΠΩΣ ΝΑ ΠΑΙΞΕΤΕ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΠΩΣ ΝΑ ΠΑΙΞΕΤΕ
+		</span>
+		<div class="row">
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_1"></span>
+				<span class='title center' style="margin-top: -8px; margin-bottom: -23px;">
+					<!--tad id="TAPaytablePageHowToPlayTitle1" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								CHOOSE A COIN TO PLAY AND WIN
+							</source_meaning>
+							<translated_meaning>
+								ΕΠΙΛΕΞΤΕ ΕΝΑ ΝΟΜΙΣΜΑ ΓΙΑ ΝΑ ΠΑΙΞΕΤΕ ΚΑΙ ΚΕΡΔΙΣΤΕ
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					ΕΠΙΛΕΞΤΕ ΕΝΑ ΝΟΜΙΣΜΑ ΓΙΑ ΝΑ ΠΑΙΞΕΤΕ ΚΑΙ ΚΕΡΔΙΣΤΕ
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_1">
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_1" style="margin-left: 75px"></span>
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_1" style="margin-left: 151px"></span>
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_2" style="margin-left: 226px"></span>
+				</span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText1" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Each shot is a bet with the coin value you chose. Each Game Room is grouped by the Cost Per Bullet Range (bet) amount chosen in the lobby. Coinciding wins are added together on-screen when awarded to players.
+							</source_meaning>
+							<translated_meaning>
+								Κάθε βολή είναι ένα στοίχημα με την αξία του νομίσματος που έχετε επιλέξει. Κάθε Δωμάτιο Παιχνιδιού ταξινομείται ανάλογα με το Εύρος Κόστους Ανά Σφαίρα για το ποσό (πονταρίσματος) που επιλέχθηκε στο λόμπι. Τα κέρδη που επιτυγχάνονται ταυτόχρονα προστίθενται στην οθόνη όταν απονέμονται στους παίκτες.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					<span class="description_bold">Κάθε βολή είναι ένα στοίχημα με την αξία του νομίσματος που έχετε επιλέξει.</span> Κάθε Δωμάτιο Παιχνιδιού ταξινομείται ανάλογα με το Εύρος Κόστους Ανά Σφαίρα για το ποσό (πονταρίσματος) που επιλέχθηκε στο λόμπι. Τα κέρδη που επιτυγχάνονται ταυτόχρονα προστίθενται στην οθόνη όταν απονέμονται στους παίκτες.
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_2"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle2" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								EACH SHOT GUARANTEED TO HIT
+							</source_meaning>
+							<translated_meaning>
+								ΚΑΘΕ ΒΟΛΗ ΕΓΓΥΗΜΕΝΑ ΘΑ ΕΠΙΦΕΡΕΙ ΠΛΗΓΜΑ
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					ΚΑΘΕ ΒΟΛΗ ΕΓΓΥΗΜΕΝΑ ΘΑ ΕΠΙΦΕΡΕΙ ΠΛΗΓΜΑ
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_2"></span>
+				<span id="noSkillNecessaryDescriptionElement" class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText2" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								No skill is necessary! In the case that the fired shot does not strike your target, the shot will ricochet around the screen until it hits another enemy. You can only have a maximum of ##SHOTS_COUNT## active shots at any given time. If any shots remain in the air at the end of the round without having hit any target, your wager will be returned to you. You cannot change your bet while you have active shots in flight.
+							</source_meaning>
+							<translated_meaning>
+								Δεν απαιτείται κάποια επιδεξιότητα! Στην περίπτωση που η βολή που πυροδοτήθηκε δεν βρει τον στόχο σας, θα εξοστρακίζεται στην οθόνη μέχρι να χτυπήσει έναν άλλο εχθρό. Σε οποιαδήποτε δεδομένη στιγμή μπορείτε μόνο να έχετε ##SHOTS_COUNT## ενεργές βολές το μέγιστο. Αν παραμένουν βολές στον αέρα στο τέλος του γύρου χωρίς να έχουν χτυπήσει κάποιον στόχο, το ποντάρισμά σας θα σας επιστραφεί. Δεν μπορείτε να αλλάξετε το ποντάρισμά σας ενώ έχετε ενεργές βολές στον αέρα.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					Δεν απαιτείται κάποια επιδεξιότητα! Στην περίπτωση που η βολή που πυροδοτήθηκε δεν βρει τον στόχο σας, θα εξοστρακίζεται στην οθόνη μέχρι να χτυπήσει έναν άλλο εχθρό. Σε οποιαδήποτε δεδομένη στιγμή μπορείτε μόνο να έχετε <span class="max_shots_value" id="MAX_SHOTS_COUNT"></span> ενεργές βολές το μέγιστο. Αν παραμένουν βολές στον αέρα στο τέλος του γύρου χωρίς να έχουν χτυπήσει κάποιον στόχο, το ποντάρισμά σας θα σας επιστραφεί. Δεν μπορείτε να αλλάξετε το ποντάρισμά σας ενώ έχετε ενεργές βολές στον αέρα.
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_3"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle3" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								EACH SHOT HAS A CHANCE TO WIN
+							</source_meaning>
+							<translated_meaning>
+								ΚΑΘΕ ΒΟΛΗ ΕΧΕΙ ΠΙΘΑΝΟΤΗΤΑ ΚΕΡΔΟΥΣ
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					ΚΑΘΕ ΒΟΛΗ ΕΧΕΙ ΠΙΘΑΝΟΤΗΤΑ ΚΕΡΔΟΥΣ
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_3"></span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText3" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Any shot fired has a chance to destroy the enemy it hits. Special Weapons have a higher chance to destroy enemies compared to the standard turret. Enemies can award cash payouts or Special Weapons!
+							</source_meaning>
+							<translated_meaning>
+								Οποιαδήποτε βολή έχει πιθανότητα να καταστρέψει τον εχθρό που χτυπά. Τα Ειδικά Όπλα έχουν υψηλότερη πιθανότητα να καταστρέψουν εχθρούς σε σύγκριση με το βασικό πυροβόλο πυργίσκου. Οι εχθροί μπορούν να απονείμουν πληρωμές σε μετρητά ή Ειδικά Όπλα!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					Οποιαδήποτε βολή έχει πιθανότητα να καταστρέψει τον εχθρό που χτυπά. Τα Ειδικά Όπλα έχουν υψηλότερη πιθανότητα να καταστρέψουν εχθρούς σε σύγκριση με το βασικό πυροβόλο πυργίσκου. Οι εχθροί μπορούν να απονείμουν πληρωμές σε μετρητά ή Ειδικά Όπλα!
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--...HOW TO PLAY-->
+
+	<!--ENEMIE HP AND VICTORY...-->
+	<div class="page" id="enemie_hp_and_victory">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageEnemieHpAndVictoryCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						ENEMY HIT POINTS AND VICTORY!
+					</source_meaning>
+					<translated_meaning>
+						ΠΟΝΤΟΙ ΖΩΗΣ ΤΟΥ ΕΧΘΡΟΥ ΚΑΙ ΝΙΚΗ!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΠΟΝΤΟΙ ΖΩΗΣ ΤΟΥ ΕΧΘΡΟΥ ΚΑΙ ΝΙΚΗ!
+		</span>
+		<div class='screen'>
+			<span type="img" src="paytable/pages/enemie_hp_and_victory/screen"></span>
+		</div>
+		<span class="text_block">
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextHP" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Every enemy in MAX QUEST: RISE OF THE MUMMY has a defined number of hit points, or HP.
+							Enemies have levels that can range from 1 – 3. Their amount of hit points rises with their level.
+							Enemy HP is reduced by attacks with the Turret, or Special Weapons.
+						</source_meaning>
+						<translated_meaning>
+							Κάθε εχθρός στο MAX QUEST: RISE OF THE MUMMY έχει έναν καθορισμένο αριθμό Πόντων Ζωής, ή ΠΖ.
+							Οι εχθροί έχουν επίπεδα που κυμαίνονται από 1 έως 3. Το πλήθος των πόντων ζωής τους αυξάνει με το επίπεδό τους.
+							Οι ΠΖ του εχθρού μειώνονται από τις επιθέσεις με το Πυροβόλο Πυργίσκου, ή με τα Ειδικά Όπλα.
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				Κάθε εχθρός στο MAX QUEST: RISE OF THE MUMMY έχει έναν καθορισμένο αριθμό Πόντων Ζωής, ή ΠΖ.</br>
+				Οι εχθροί έχουν επίπεδα που κυμαίνονται από 1 έως 3. Το πλήθος των πόντων ζωής τους αυξάνει με το επίπεδό τους.</br>
+				Οι ΠΖ του εχθρού μειώνονται από τις επιθέσεις με το Πυροβόλο Πυργίσκου, ή με τα Ειδικά Όπλα.
+			</span>
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextDamage" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Damage determines the size of your payout. The more damage you do with your weapon, the higher your payout will be!
+						</source_meaning>
+						<translated_meaning>
+							Η προκληθείσα ζημιά καθορίζει το μέγεθος της πληρωμής. Όσο μεγαλύτερη ζημιά προκαλείτε με το όπλο σας τόσο υψηλότερη θα είναι πληρωμή σας!
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				Η προκληθείσα ζημιά καθορίζει το μέγεθος της πληρωμής. Όσο μεγαλύτερη ζημιά προκαλείτε με το όπλο σας τόσο υψηλότερη θα είναι πληρωμή σας!
+			</span>
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextSW" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Special Weapons do more damage to all enemies, especially groups and Legendary Bosses!
+						</source_meaning>
+						<translated_meaning>
+							Τα Ειδικά Όπλα προκαλούν μεγαλύτερη ζημιά σε όλους τους εχθρούς, ειδικά σε ομάδες και Μυθικά αφεντικά! 
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				Τα Ειδικά Όπλα προκαλούν μεγαλύτερη ζημιά σε όλους τους εχθρούς, ειδικά σε ομάδες και Μυθικά αφεντικά! 
+			</span>
+		</span>
+		<span type="img" class="center special_wepon" src="paytable/pages/enemie_hp_and_victory/special_weapons"></span>
+
+	</div>
+	<!--ENEMIE HP AND VICTORY...-->
+
+	<!--ENEMIES 1...-->
+	<div class="page" id="enemies">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageEnemiesCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						ENEMIES
+					</source_meaning>
+					<translated_meaning>
+						ΕΧΘΡΟΙ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΕΧΘΡΟΙ
+		</span>
+		<div class="row">
+			
+			<div class='col-1 center'>
+				<div id="enemy_weapon_slider" style="position: absolute; margin-left: 10px; margin-top: 0px;"></div>
+				
+			</div>
+			<div class='col-9'>
+				<div class="row">
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/scarab_hatchling">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesScarabHatchling" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Scarab Hatchling
+									</source_meaning>
+									<translated_meaning>
+										Μικρός Σκαραβαίος
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Μικρός Σκαραβαίος
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytablePageEnemiesEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										ΜΕΓ. ΠΖ: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_0"></span>
+						</span>
+						<span class='enemy_payout' id="0"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/shadow_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesShadowScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Shadow Scarab
+									</source_meaning>
+									<translated_meaning>
+										Σκοτεινός Σκαραβαίος
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Σκοτεινός Σκαραβαίος
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										ΜΕΓ. ΠΖ: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_1"></span>
+						</span>
+						<span class='enemy_payout' id="1"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/golden_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesGoldenScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Golden Scarab
+									</source_meaning>
+									<translated_meaning>
+										Χρυσός Σκαραβαίος
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Χρυσός Σκαραβαίος
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										ΜΕΓ. ΠΖ: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_2"></span>
+						</span>
+						<span class='enemy_payout' id="2"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/ruby_scarab">
+						<span class='enemy_capture' style="margin-top: 70px; line-height: 10px;">
+							<!--tad id="TAPaytablePageEnemiesRubyScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Ruby Scarab
+									</source_meaning>
+									<translated_meaning>
+										Ρουμπινένιος Σκαραβαίος
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Ρουμπινένιος<br/>Σκαραβαίος
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										ΜΕΓ. ΠΖ: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_3"></span>
+						</span>
+						<span class='enemy_payout' id="3"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/bewjelled_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesBewjelledScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Bejeweled Scarab
+									</source_meaning>
+									<translated_meaning>
+										Κοσμημένος Σκαραβαίος
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κοσμημένος Σκαραβαίος
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										ΜΕΓ. ΠΖ: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_4"></span>
+						</span>
+						<span class='enemy_payout' id="4"></span>
+					</div>
+				</div>
+				</div>
+				<div class="row">
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/swarming_locust">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesSwarmingLocust" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Swarming Locust
+										</source_meaning>
+										<translated_meaning>
+											Ακρίδα Επιδρομέας
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Ακρίδα Επιδρομέας
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_5"></span>
+							</span>
+							<span class='enemy_payout' id="5"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/devouring_locust">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesDevouringLocustr" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Devouring Locust
+										</source_meaning>
+										<translated_meaning>
+											Αδηφάγα Ακρίδα
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Αδηφάγα Ακρίδα
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_6"></span>
+							</span>
+							<span class='enemy_payout' id="6"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/giant_scorpion">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesGiantScorpion" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Giant Scorpion
+										</source_meaning>
+										<translated_meaning>
+											Γιγάντιος Σκορπιός
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Γιγάντιος Σκορπιός
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_7"></span>
+							</span>
+							<span class='enemy_payout' id="7"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_minion">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesWrappedMinion" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Minion
+										</source_meaning>
+										<translated_meaning>
+											Τυλιγμένος Ακόλουθος
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Τυλιγμένος Ακόλουθος
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_8"></span>
+							</span>
+							<span class='enemy_payout' id="8"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_shadowguard">
+							<span class='enemy_capture' style="margin-top: 70px; line-height: 10px;">
+								<!--tad id="TAPaytablePageEnemiesWrappedShadowguard" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Shadowguard
+										</source_meaning>
+										<translated_meaning>
+											Τυλιγμένος Υπό Την Σκιά Σου Φύλακας
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Τυλιγμένος Υπό Την<br/>Σκιά Σου Φύλακας
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_9"></span>
+							</span>
+							<span class='enemy_payout' id="9"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_spiritguard">
+							<span class='enemy_capture' style="margin-top: 70px; line-height: 10px;">
+								<!--tad id="TAPaytablePageEnemiesWrappedSpiritguard" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Spiritguard
+										</source_meaning>
+										<translated_meaning>
+											Τυλιγμένος Πνευματικός Φύλακας
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Τυλιγμένος<br/>Πνευματικός Φύλακας
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_10"></span>
+							</span>
+							<span class='enemy_payout' id="10"></span>
+						</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/tahawy_warrior">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesTahawyWarrior" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Tahawy Warrior
+										</source_meaning>
+										<translated_meaning>
+											Πολεμιστής Ταχάγουι
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Πολεμιστής Ταχάγουι
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_11"></span>
+							</span>
+							<span class='enemy_payout' id="11"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/tahawy_commander">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesTahawyCommander" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Tahawy Commander
+										</source_meaning>
+										<translated_meaning>
+											Διοικητής Ταχάγουι
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Διοικητής Ταχάγουι
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_12"></span>
+							</span>
+							<span class='enemy_payout' id="12"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/crimson_bataanta">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCrimsonBataanta" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Crimson Bataanta
+										</source_meaning>
+										<translated_meaning>
+											Πορφυρή Bataanta
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Πορφυρή Bataanta
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_13"></span>
+							</span>
+							<span class='enemy_payout' id="13"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/emerald_bataanta">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCrimsonBataanta" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Emerald Bataanta
+										</source_meaning>
+										<translated_meaning>
+											Σμαραγδένια Bataanta
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Σμαραγδένια Bataanta
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_14"></span>
+							</span>
+							<span class='enemy_payout' id="14"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/cursed_brawler">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCursedBrawler" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Cursed Brawler
+										</source_meaning>
+										<translated_meaning>
+											Καταραμένος Μαχητής
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Καταραμένος Μαχητής
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_15"></span>
+							</span>
+							<span class='enemy_payout' id="15"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/horus">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesHorus" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Horus
+										</source_meaning>
+										<translated_meaning>
+											Ώρος
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Ώρος
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											ΜΕΓ. ΠΖ: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_16"></span>
+							</span>
+							<span class='enemy_payout' id="16"></span>
+						</div>
+					</div>
+					</div>
+				</div>
+			<div class='col-1 center'>
+				<span class='enemy_values_text' style="margin-top: 17px;">
+					<!--tad id="TAPaytablePageEnemiesStakeIndicatorText" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+						</source_meaning>
+						<translated_meaning>
+							Οι αξίες εμφανίζονται βασιζόμενες σε νόμισμα [#STAKE #CURRENCY] και επίπεδο πονταρίσματος [#VALUE].
+						</translated_meaning>
+					</meaning>
+					</tad-->
+					Οι αξίες εμφανίζονται βασιζόμενες σε νόμισμα [<span id='stake_indicator_text'></span>]<br/>και επίπεδο πονταρίσματος [<span id='stake_bet_level_value' style="display:inline-block"></span>].
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--...ENEMIES 1-->
+
+	<!--SPECIAL ENEMIES...-->
+	<div class="page" id="special_enemies">
+		<div class="texture">
+			<span type="img" src="paytable/pages/special_enemies/wild_textures"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageSpecialEnemies" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						SPECIAL ENEMIES
+					</source_meaning>
+					<translated_meaning>
+						ΕΙΔΙΚΟΙ ΕΧΘΡΟΙ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΕΙΔΙΚΟΙ ΕΧΘΡΟΙ
+		</span>
+		<span class='description light_grey center'>
+			<!--tad id="TAPaytablePageEnemyHPAndVictoryTextHP" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Special Enemies will randomly appear on the playing field!
+						These enemies offer unique rewards and effects when they are defeated.
+					</source_meaning>
+					<translated_meaning>
+						Οι Ειδικοί Εχθροί θα εμφανιστούν τυχαία στο πεδίο του παιχνιδιού!
+						Αυτοί οι εχθροί προσφέρουν μοναδικές ανταμοιβές και εφέ όταν νικηθούν.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			Οι Ειδικοί Εχθροί θα εμφανιστούν τυχαία στο πεδίο του παιχνιδιού!</br>
+			Αυτοί οι εχθροί προσφέρουν μοναδικές ανταμοιβές και εφέ όταν νικηθούν.
+		</span>
+		<div class="row">
+			<div class='col-1 center'>
+				<div id="special_enemies_weapon_slider" style="position: absolute; margin-left: 48px; margin-top: 148px;"></div>
+			</div>
+			<div class='col-9 center'>
+				<div class="col-6">
+					<div class="infernal_forgemaster">
+						<span type="img" src="paytable/pages/special_enemies/infernal_forgemaster"></span>
+						<span class='infernal_forgemaster_max_hp'>
+							<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										ΜΕΓ. ΠΖ: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ΜΕΓ. ΠΖ: <span class="hp_value" id="HP_ENEMY_17"></span>
+						</span>
+						<div class="infernal_forgemaster_text">
+								<span class='infernal_forgemaster_capture'>
+									<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterCapture" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Infernal Forgemaster
+											</source_meaning>
+											<translated_meaning>
+												Καταχθόνιος Σιδηρουργός
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									Καταχθόνιος Σιδηρουργός
+								</span>
+								<span class='infernal_forgemaster_specific'>
+									<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterSpecific" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Always drops a Special Weapon upon defeat!
+											</source_meaning>
+											<translated_meaning>
+												Πάντοτε ρίχνει ένα Ειδικό Όπλο όταν νικηθεί!
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									Πάντοτε ρίχνει ένα Ειδικό Όπλο όταν νικηθεί!
+								</span>
+								<span class='enemy_payout' id="17"></span>
+								
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 unstable_avatar">
+					<div class="infernal_forgemaster">
+						<span type="img" src="paytable/pages/special_enemies/unstable_avatar"></span>
+						<div class="unstable_avatar_text">
+								<span class='unstable_avatar_capture'>
+									<!--tad id="TAPaytablePageSpecialEnemiesUnstableAvatarCapture" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Unstable Avatar
+											</source_meaning>
+											<translated_meaning>
+												Ασταθές Είδωλο
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									Ασταθές Είδωλο
+								</span>
+								<span class='unstable_avatar_specific'>
+									<!--tad id="TAPaytablePageSpecialEnemiesUnstableAvatarSpecific" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Explodes when destroyed, dealing up to 5000 damage
+												to nearby enemies!
+											</source_meaning>
+											<translated_meaning>
+												Μόλις καταστραφεί εκρήγνυται, προκαλώντας
+												ζημιά έως 5000 σε διπλανούς εχθρούς!
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									Μόλις καταστραφεί εκρήγνυται, προκαλώντας<br/>
+									ζημιά έως 5000 σε διπλανούς εχθρούς!
+								</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class='col-1 center'>
+				<div class='enemy_values_block'>
+					<span class="enemy_values_text">
+						<!--tad id="TAPaytablePageSpecialEnemiesStakeIndicatorText" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+							</source_meaning>
+							<translated_meaning>
+								Οι αξίες εμφανίζονται βασιζόμενες σε νόμισμα [#STAKE #CURRENCY] και επίπεδο πονταρίσματος [#VALUE].
+							</translated_meaning>
+						</meaning>
+						</tad-->
+						Οι αξίες εμφανίζονται βασιζόμενες σε νόμισμα [<span id='stake_se_indicator_text'></span>]<br/>και επίπεδο πονταρίσματος [<span id='stake_se_bet_level_value' style="display:inline-block"></span>].
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--SPECIAL ENEMIES...-->
+
+	<!--UNSTABLE AVATAR...-->
+	<div class="page" id="unstable_avatar">
+		<div id="fx">
+			<span type="img" src="paytable/pages/unstable_avatar/fx"></span>
+		</div>
+		<div id="back">
+			<span type="img" src="paytable/pages/unstable_avatar/back"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageUnstableAvatarUnstableAvatar" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						UNSTABLE AVATAR
+					</source_meaning>
+					<translated_meaning>
+						ΑΣΤΑΘΕΣ ΕΙΔΩΛΟ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΑΣΤΑΘΕΣ ΕΙΔΩΛΟ
+		</span>
+		<div class="row">
+			<div class='exploder'>
+				<span type="img" src="paytable/pages/unstable_avatar/exploder"></span>
+			</div>
+			<div class='exploder'>
+				<span type="img" src="paytable/pages/unstable_avatar/explosion"></span>
+			</div>
+		</div>
+		<span class='description light_grey' style="margin-top: -5px">
+			<!--tad id="TAPaytablePageUnstableAvatarText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						This mysterious enemy will explode when killed, potentially destroying all enemies on the playing field, except for Legendary Bosses and Infernal Forgemasters, instantly awarding the sum of their payouts to the player, up to 500x their wager. Unstable Avatars only award prizes when destroyed.
+					</source_meaning>
+					<translated_meaning>
+						Αυτός ο μυστηριώδης εχθρός θα εκραγεί όταν σκοτωθεί, καταστρέφοντας δυνητικά όλους τους εχθρούς στο πεδίο του παιχνιδιού, με εξαίρεση τα Μυθικά Αφεντικά και τους Καταχθόνιους Σιδηρουργούς, και απονέμοντας άμεσα στον παίκτη το σύνολο των πληρωμών τους έως x500 το ποντάρισμα. Τα Ασταθή Είδωλα απονέμουν έπαθλα μόνο όταν καταστρέφονται.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			Αυτός ο μυστηριώδης εχθρός θα εκραγεί όταν σκοτωθεί, καταστρέφοντας δυνητικά όλους τους εχθρούς στο πεδίο του παιχνιδιού, με εξαίρεση τα Μυθικά Αφεντικά και τους Καταχθόνιους Σιδηρουργούς, και απονέμοντας άμεσα στον παίκτη το σύνολο των πληρωμών τους έως x500 το ποντάρισμα. Τα Ασταθή Είδωλα απονέμουν έπαθλα μόνο όταν καταστρέφονται.
+		</span>
+	</div>
+	<!--...UNSTABLE AVATAR-->
+
+	<!--LEGENDARY BOSSES...-->
+	<div class="page" id="legendary_bosses">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageLegendaryBossesLegendaryBosses" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						LEGENDARY BOSSES
+					</source_meaning>
+					<translated_meaning>
+						ΜΥΘΙΚΑ ΑΦΕΝΤΙΚΑ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΜΥΘΙΚΑ ΑΦΕΝΤΙΚΑ
+		</span>
+		<span class='description light_grey center' style="height: 80px">
+			<!--tad id="TAPaytablePageLegendaryBossesText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Any time an enemy is destroyed, there is the chance of triggering the appearance of one of the 3 Legendary Bosses in a special battle.
+						Special Weapons do additional damage to the Legendary Bosses. During the battle, the Legendary Bosses will award prizes as it takes damage.
+						Finally, a large prize is awarded when it is defeated.
+					</source_meaning>
+					<translated_meaning>
+						Κάθε φορά που ένας εχθρός καταστρέφεται, υπάρχει πιθανότητα εμφάνισης ενός από τα 3 Μυθικά Αφεντικά σε μια ειδική μάχη.
+						Τα Ειδικά Όπλα προκαλούν επιπλέον ζημιά στα Μυθικά Αφεντικά. Κατά τη διάρκεια της μάχης, το Μυθικό Αφεντικό θα
+						απονέμει βραβεία καθώς πλήττεται. Τελικά, ένα μεγάλο βραβείο απονέμεται μόλις νικηθεί.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			Κάθε φορά που ένας εχθρός καταστρέφεται, υπάρχει πιθανότητα εμφάνισης ενός από τα 3 Μυθικά Αφεντικά σε μια ειδική μάχη.<br/>
+			Τα Ειδικά Όπλα προκαλούν επιπλέον ζημιά στα Μυθικά Αφεντικά. Κατά τη διάρκεια της μάχης, το Μυθικό Αφεντικό θα<br/>
+			απονέμει βραβεία καθώς πλήττεται. Τελικά, ένα μεγάλο βραβείο απονέμεται μόλις νικηθεί.
+		</span>
+		<div class="row">
+			<div class='col-1 center'>
+				<div id="legendary_bosses_weapon_slider" style="position: absolute; margin-left: 10px; margin-top: 124px;"></div>
+			</div>
+			<div class='col-9 center'>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 17px;">
+						<span type="img" src="paytable/pages/legendary_bosses/anubis">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesAnubis" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											ANUBIS
+										</source_meaning>
+										<translated_meaning>
+											ΑΝΟΥΒΙΣ
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΑΝΟΥΒΙΣ
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesAfterlifesKing" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Afterlife’s King
+										</source_meaning>
+										<translated_meaning>
+											Ο Μετά Θάνατον Βασιλιάς
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Ο Μετά Θάνατον Βασιλιάς
+							</span>
+							<span id="BOSS_HP_2" class='boss_hp'></span>
+							<span class='enemy_payout' id="18"></span>
+						</span>
+					</div>
+				</div>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 235px; ">
+						<span type="img" src="paytable/pages/legendary_bosses/osiris">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesOsiris" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											OSIRIS
+										</source_meaning>
+										<translated_meaning>
+											ΟΣΙΡΙΣ
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΟΣΙΡΙΣ
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesDeathsJudgment" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Death’s Judgment
+										</source_meaning>
+										<translated_meaning>
+											Ο Κρίση του Θανάτου
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Ο Κρίση του Θανάτου
+							</span>
+							<span id="BOSS_HP_1" class='boss_hp'></span>
+							<span class='enemy_payout' id="19"></span>
+						</span>
+					</div>
+				</div>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 453px">
+						<span type="img" src="paytable/pages/legendary_bosses/ra">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesRa" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											RA
+										</source_meaning>
+										<translated_meaning>
+											ΡΑ
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ΡΑ
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesTheEternalSun" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											The Eternal Sun
+										</source_meaning>
+										<translated_meaning>
+											Ο Αιώνιος Ήλιος
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								Ο Αιώνιος Ήλιος
+							</span>
+							<span id="BOSS_HP_0" class='boss_hp'></span>
+							<span class='enemy_payout' id="20"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-1 center'>
+				<div class='enemy_values_block'>
+					<span class='enemy_values_text'>
+						<!--tad id="TAPaytablePageLegendaryBossesStakeIndicatorText" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+							</source_meaning>
+							<translated_meaning>
+								Οι αξίες εμφανίζονται βασιζόμενες σε νόμισμα [#STAKE #CURRENCY] και επίπεδο πονταρίσματος [#VALUE].
+							</translated_meaning>
+						</meaning>
+						</tad-->
+						Οι αξίες εμφανίζονται βασιζόμενες σε νόμισμα [<span id='stake_lb_indicator_text'></span>]<br/>και επίπεδο πονταρίσματος [<span id='stake_lb_bet_level_value' style="display:inline-block"></span>].
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...LEGENDARY BOSSES-->
+
+	<!--WEAPONS...-->
+	<div class="page" id="weapons">
+		<div class="texture">
+			<span type="img" src="paytable/pages/special_enemies/wild_textures"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageWeaponsCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						WEAPONS
+					</source_meaning>
+					<translated_meaning>
+						ΟΠΛΑ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΟΠΛΑ
+		</span>
+		<span class='description light_grey left'>
+			<!--tad id="TAPaytablePageWeaponsText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Game rooms are sorted by the cost of each bullet. Select a cost per bullet value from the lobby to be taken to the first available room of that type.
+
+						The standard base weapon is the Turret, which can be aimed by using the onscreen crosshair. The Turret has 5 bet levels.
+						This can be adjusted up by increasing your bet per shot. The shot payouts will get bigger as the Turret rises in level.
+
+						Misuse/Malfunction voids all pays and plays.
+					</source_meaning>
+					<translated_meaning>
+						Τα Δωμάτια Παιχνιδιού κατατάσσονται ανάλογα με το κόστος της κάθε σφαίρας. Επιλέξτε το κόστος ανά τιμή σφαίρας από το λόμπι για να οδηγηθείτε στο πρώτο διαθέσιμο δωμάτιο αυτού του τύπου.
+
+						Το βασικό όπλο είναι το Πυροβόλο Πυργίσκου, το οποίο μπορεί να στοχεύσει χρησιμοποιώντας το πλέγμα στόχευσης στην οθόνη. Το Πυροβόλο Πυργίσκου έχει 5 επίπεδα πονταρίσματος.
+						
+						Η αναπροσαρμογή προς τα πάνω γίνεται αυξάνοντας το ποντάρισμά σας ανά βολή. Οι πληρωμές των βολών σας θα γίνονται μεγαλύτερες καθώς το Πυροβόλο Πυργίσκου ανεβαίνει επίπεδο.
+
+						Λανθασμένη χρήση/δυσλειτουργία ακυρώνει όλες τις πληρωμές και τα παιχνίδια.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			Τα Δωμάτια Παιχνιδιού κατατάσσονται ανάλογα με το κόστος της κάθε σφαίρας. Επιλέξτε το κόστος ανά τιμή σφαίρας από το λόμπι για να οδηγηθείτε στο πρώτο διαθέσιμο δωμάτιο αυτού του τύπου.
+			</br></br>
+			Το βασικό όπλο είναι το Πυροβόλο Πυργίσκου, το οποίο μπορεί να στοχεύσει χρησιμοποιώντας το πλέγμα στόχευσης στην οθόνη. Το Πυροβόλο Πυργίσκου έχει 5 επίπεδα πονταρίσματος.
+			</br>
+			Η αναπροσαρμογή προς τα πάνω γίνεται αυξάνοντας το ποντάρισμά σας ανά βολή. Οι πληρωμές των βολών σας θα γίνονται μεγαλύτερες καθώς το Πυροβόλο Πυργίσκου ανεβαίνει επίπεδο.
+			</br></br>
+			Λανθασμένη χρήση/δυσλειτουργία ακυρώνει όλες τις πληρωμές και τα παιχνίδια.
+		</span>
+		<div class="turret">
+			<span type="img" src="paytable/pages/weapons/turret"></span>
+			<span class='description light_grey left turret_caption'>
+				<!--tad id="TAPaytablePageWeaponsTurretCaption" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							TURRET
+						</source_meaning>
+						<translated_meaning>
+							ΠΥΡΟΒΟΛΟ ΠΥΡΓΙΣΚΟΥ
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				ΠΥΡΟΒΟΛΟ ΠΥΡΓΙΣΚΟΥ
+			</span>
+			<span class='description light_grey left turret_available'>
+				<!--tad id="TAPaytablePageWeaponsTurretAvailable" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							The base weapon available at all times.
+						</source_meaning>
+						<translated_meaning>
+							Το βασικό όπλο διαθέσιμο ανά πάσα στιγμή.
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				Το βασικό όπλο διαθέσιμο ανά πάσα στιγμή.
+			</span>
+		</div>
+	</div>
+	<!--...WEAPONS-->
+
+	<!--SPECIAL WEAPONS...-->
+	<div class="page" id="special_weapons">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageSpecialWeaponsCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						SPECIAL WEAPONS
+					</source_meaning>
+					<translated_meaning>
+						ΕΙΔΙΚΑ ΟΠΛΑ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΕΙΔΙΚΑ ΟΠΛΑ
+		</span>
+		<span class='description light_grey left'>
+			<!--tad id="TAPaytablePageSpecialWeaponsText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						In addition to the base weapon, the Turret, enemies may drop Special Weapons when they are hit. These Special Weapons are stronger and can affect one or more enemies. Use the Special Weapons wisely: they are most effective when used against strong enemies or groups of enemies. Special Weapons have a greater chance for Instant Wins and Bonus Wins! Special Weapons that are dropped by enemies do not require a wager to fire. Weapon shots do not bounce off walls, but instead will target the nearest enemy to where you clicked. Unused special weapons get converted into cash prize at the end of the round.
+					</source_meaning>
+					<translated_meaning>
+						Επιπλέον του βασικού όπλου, του Πυροβόλου Πυργίσκου, οι εχθροί μπορεί να ρίξουν Ειδικά Όπλα όταν χτυπηθούν. Αυτά τα ειδικά όπλα είναι ισχυρότερα και μπορούν να πλήξουν έναν ή περισσότερους εχθρούς. Κάντε έξυπνη χρήση των Ειδικών Όπλων: Αυτά είναι τα πλέον αποτελεσματικά όταν χρησιμοποιούνται εναντίον δυνατών εχθρών ή ομάδων εχθρών. Τα Ειδικά Όπλα έχουν μεγαλύτερη πιθανότητα για Άμεσα Κέρδη και Μπόνους Κέρδη! Τα Ειδικά Όπλα που ρίχνονται από τους εχθρούς δεν απαιτούν κάποιο ποντάρισμα για να πυροβολήσετε. Οι βολές των όπλων δεν αναπηδούν στους τοίχους, αντιθέτως θα στοχεύσουν στον πλησιέστερο εχθρό από το σημείο που κάνατε κλικ. Μη χρησιμοποιημένα ειδικά όπλα μετατρέπονται σε χρηματικό βραβείο στο τέλος του γύρου.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			Επιπλέον του βασικού όπλου, του Πυροβόλου Πυργίσκου, οι εχθροί μπορεί να ρίξουν Ειδικά Όπλα όταν χτυπηθούν. Αυτά τα ειδικά όπλα είναι ισχυρότερα και μπορούν να πλήξουν έναν ή περισσότερους εχθρούς. Κάντε έξυπνη χρήση των Ειδικών Όπλων: Αυτά είναι τα πλέον αποτελεσματικά όταν χρησιμοποιούνται εναντίον δυνατών εχθρών ή ομάδων εχθρών. Τα Ειδικά Όπλα έχουν μεγαλύτερη πιθανότητα για Άμεσα Κέρδη και Μπόνους Κέρδη! Τα Ειδικά Όπλα που ρίχνονται από τους εχθρούς δεν απαιτούν κάποιο ποντάρισμα για να πυροβολήσετε. Οι βολές των όπλων δεν αναπηδούν στους τοίχους, αντιθέτως θα στοχεύσουν στον πλησιέστερο εχθρό από το σημείο που κάνατε κλικ. <span id='sw_info_cash_prize' style="display:inline-block">Μη χρησιμοποιημένα ειδικά όπλα μετατρέπονται σε χρηματικό βραβείο στο τέλος του γύρου.</span>
+		</span>
+
+		<div class="row">
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/mine_launcher"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnher" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									MINE LAUNCHER
+								</source_meaning>
+								<translated_meaning>
+									ΕΚΤΟΞΕΥΤΗΣ ΝΑΡΚΩΝ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ΕΚΤΟΞΕΥΤΗΣ ΝΑΡΚΩΝ
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Launches a land mine at the target area that waits until an enemy comes near before exploding. Can hit multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									Εκτοξεύει μία νάρκη ξηράς προς την περιοχή στόχο η οποία είναι σε αναμονή μέχρι ο εχθρός να πλησιάσει οπότε και εκρήγνυται. Μπορεί να χτυπήσει πολλούς εχθρούς.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Εκτοξεύει μία νάρκη ξηράς προς την περιοχή στόχο η οποία είναι σε αναμονή μέχρι ο εχθρός να πλησιάσει οπότε και εκρήγνυται. Μπορεί να χτυπήσει πολλούς εχθρούς.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										Κόστος:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κόστος:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_0" class='block cost_value_description'></span>						
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										Τρέχον Ποντάρισμα
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Τρέχον Ποντάρισμα
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/plasma_rifle"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifle" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									PLASMA RIFLE
+								</source_meaning>
+								<translated_meaning>
+									ΠΥΡΟΒΟΛΟ ΟΠΛΟ ΠΛΑΣΜΑΤΟΣ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ΠΥΡΟΒΟΛΟ ΟΠΛΟ ΠΛΑΣΜΑΤΟΣ
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires a stream of super-heated plasma that deals massive damage to a single target.
+								</source_meaning>
+								<translated_meaning>
+									Εκτοξεύει μία ριπή από υπερθερμασμένο πλάσμα που προκαλεί τεράστια ζημιά σε έναν μόνο στόχο.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Εκτοξεύει μία ριπή από υπερθερμασμένο πλάσμα που προκαλεί τεράστια ζημιά σε έναν μόνο στόχο.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										Κόστος:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κόστος:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_1" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										Τρέχον Ποντάρισμα
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Τρέχον Ποντάρισμα
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/flamethrower"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsFlamethrower" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									FLAMETHROWER
+								</source_meaning>
+								<translated_meaning>
+									ΦΛΟΓΟΒΟΛΟ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ΦΛΟΓΟΒΟΛΟ
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Engulfs an enemy in a stream of burning napalm. Can hit multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									Τυλίγει στις φλόγες τον εχθρό με μια ριπή ναπάλμ. Μπορεί να χτυπήσει πολλούς εχθρούς.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Τυλίγει στις φλόγες τον εχθρό με μια ριπή ναπάλμ. Μπορεί να χτυπήσει πολλούς εχθρούς.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										Κόστος:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κόστος:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_2" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										Τρέχον Ποντάρισμα
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Τρέχον Ποντάρισμα
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/cryogun"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsCryogun" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									CRYOGUN
+								</source_meaning>
+								<translated_meaning>
+									ΟΠΛΟ ΚΡΥΟΥ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ΟΠΛΟ ΚΡΥΟΥ
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsCryogunDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Freezes enemies with a blast of super-chilled gas. Can freeze multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									Παγώνει τους εχθρούς με μια έκρηξη υπερβολικά παγωμένων αερίων. Μπορεί να παγώσει πολλούς εχθρούς.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Παγώνει τους εχθρούς με μια έκρηξη υπερβολικά παγωμένων αερίων. Μπορεί να παγώσει πολλούς εχθρούς.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsCryogunCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										Κόστος:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κόστος:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_3" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsCryogunCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										Τρέχον Ποντάρισμα
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Τρέχον Ποντάρισμα
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/artillery_strike"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrike" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									ARTILLERY STRIKE
+								</source_meaning>
+								<translated_meaning>
+									ΧΤΥΠΗΜΑ ΠΥΡΟΒΟΛΙΚΟΥ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ΧΤΥΠΗΜΑ ΠΥΡΟΒΟΛΙΚΟΥ
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Smoke grenade calls down an artillery strike on its location, inflicting high damage to multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									Η Χειροβομβίδα Καπνού δημιουργεί στην περιοχή της ένα χτύπημα πυροβολικού προκαλώντας μεγάλη ζημιά σε πολλούς εχθρούς.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Η Χειροβομβίδα Καπνού δημιουργεί στην περιοχή της ένα χτύπημα πυροβολικού προκαλώντας μεγάλη ζημιά σε πολλούς εχθρούς.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										Κόστος:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κόστος:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_4" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										Τρέχον Ποντάρισμα
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Τρέχον Ποντάρισμα
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		
+
+		<span class='sw_info' >
+			<span id='sw_info_hide_when_frb' class='description light_grey left'>
+				<!--tad id="TAPaytablePageSpecialWeaponsWInfo" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							You can purchase a pay-per-shot Special Weapon at any time during gameplay! These shots multiply your wager depending on the chosen weapon. Simply click on the image of the Special Weapon you want to use on the left side of the screen. Free shots from dropped Special Weapons are played at the bet level they were won at, and the bet level cannot be changed until the free shots are used.
+						</source_meaning>
+						<translated_meaning>
+							Μπορείτε να αγοράσετε Ειδικό Όπλο για πληρωμή ανά βολή οποιαδήποτε στιγμή στο παιχνίδι! Αυτές οι βολές πολλαπλασιάζουν το ποντάρισμά σας ανάλογα με το επιλεγμένο όπλο. Απλώς κάντε κλικ στην εικόνα του Ειδικού Όπλου που θέλετε να χρησιμοποιήσετε στα αριστερά της οθόνης. Οι δωρεάν βολές από Ειδικά Όπλα που ρίχτηκαν παίζονται στο επίπεδο πονταρίσματος που κερδήθηκαν, και το επίπεδο πονταρίσματος δεν μπορεί να αλλάξει μέχρι να χρησιμοποιηθούν οι δωρεάν βολές.
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				Μπορείτε να αγοράσετε Ειδικό Όπλο για πληρωμή ανά βολή οποιαδήποτε στιγμή στο παιχνίδι! Αυτές οι βολές πολλαπλασιάζουν το ποντάρισμά σας ανάλογα με το επιλεγμένο όπλο. Απλώς κάντε κλικ στην εικόνα του Ειδικού Όπλου που θέλετε να χρησιμοποιήσετε στα αριστερά της οθόνης. Οι δωρεάν βολές από Ειδικά Όπλα που ρίχτηκαν παίζονται στο επίπεδο πονταρίσματος που κερδήθηκαν, και το επίπεδο πονταρίσματος δεν μπορεί να αλλάξει μέχρι να χρησιμοποιηθούν οι δωρεάν βολές.
+			</span>
+
+			<span class='description light_grey left' id='sw_info_lose'>
+				<!--tad id="TAPaytablePageSpecialWeaponsBonusModeInfo" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Special weapons must be used in the round they were won in. Any unused special weapons are lost at the end of the round.
+						</source_meaning>
+						<translated_meaning>
+							Τα ειδικά όπλα πρέπει να χρησιμοποιηθούν στον γύρο που κερδήθηκαν. Οποιαδήποτε μη χρησιμοποιημένα ειδικά όπλα χάνονται στο τέλος του γύρου.
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				Τα ειδικά όπλα πρέπει να χρησιμοποιηθούν στον γύρο που κερδήθηκαν. Οποιαδήποτε μη χρησιμοποιημένα ειδικά όπλα χάνονται στο τέλος του γύρου.
+			</span>
+		</span>
+	</div>
+	<!--...SPECIAL WEAPONS-->
+
+	<!--WIN BIG WITH THE MONEY WHEEL!...-->
+	<div class="page" id="money_wheel">
+		<span id="gradient" class='big_header orange center' style="letter-spacing: -0.5px; font-size: 25px;">
+			<!--tad id="TAPaytablePageMoneyWheelWinBigWithTheMoneyWheel" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						WIN BIG WITH THE MONEY WHEEL!
+					</source_meaning>
+					<translated_meaning>
+						ΚΕΡΔΙΣΤΕ ΠΟΛΛΑ ΜΕ ΤΟΝ ΤΡΟΧΟ ΤΟΥ ΧΡΗΜΑΤΟΣ!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ΚΕΡΔΙΣΤΕ ΠΟΛΛΑ ΜΕ ΤΟΝ ΤΡΟΧΟ ΤΟΥ ΧΡΗΜΑΤΟΣ!
+		</span>
+		<div class='wheel'>
+			<span type="img" src="paytable/pages/money_wheel/wheel"></span>
+		</div>
+		<span class='description'>
+			<!--tad id="TAPaytablePageMoneyWheelText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Any shot at any enemy except Legendary Bosses, with any weapon can win an instant spin on the Money Wheel.
+						Special Weapons have a higher chance to trigger the Money Wheel!
+					</source_meaning>
+					<translated_meaning>
+						Οποιαδήποτε βολή προς οποιονδήποτε εχθρό, εκτός από τα Μυθικά Αφεντικά, με οποιοδήποτε όπλο μπορεί να απονείμει μία άμεση περιστροφή στον Τροχό του Χρήματος.
+						Τα Ειδικά Όπλα έχουν μεγαλύτερη πιθανότητα να ενεργοποιήσουν τον Τροχό του Χρήματος!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			Οποιαδήποτε βολή προς οποιονδήποτε εχθρό, εκτός από τα Μυθικά Αφεντικά, με οποιοδήποτε<br/>όπλο μπορεί να απονείμει μία άμεση περιστροφή στον Τροχό του Χρήματος.</br>
+			Τα Ειδικά Όπλα έχουν μεγαλύτερη πιθανότητα να ενεργοποιήσουν τον Τροχό του Χρήματος!
+		</span>
+	</div>
+	<!--WIN BIG WITH THE MONEY WHEEL!...-->
+
+	<!--KILLS...-->
+	<div class="page" id="kills">
+		<div class="row">
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsCriticalHitCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								CRITICAL HITS
+							</source_meaning>
+							<translated_meaning>
+								ΚΡΙΣΙΜΑ ΧΤΥΠΗΜΑΤΑ
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					ΚΡΙΣΙΜΑ ΧΤΥΠΗΜΑΤΑ
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsCriticalHit" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsCriticalHit" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									CRITICAL HIT
+								</source_meaning>
+								<translated_meaning>
+									ΚΡΙΣΙΜΟ ΧΤΥΠΗΜΑ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>				
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsCriticalHitsDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								All weapons have a random chance to deliver a Critical Hit to an enemy with every shot fired. Critical Hits from weapons are different for each weapon against each enemy.
+
+								Special Weapons have a greater chance to score a Critical Hit and can affect any enemy! Critical Hits apply a multiplier to the amount won from the shot fired. Multipliers are 2x, 3x, 5x, 7x, and 10x. Shots with the Turret can only receive a 2x multiplier.
+							</source_meaning>
+							<translated_meaning>
+								Όλα τα όπλα έχουν μια τυχαία δυνατότητα να προκαλέσουν κρίσιμο χτύπημα στον εχθρό με κάθε βολή που πυροδοτείται. Τα κρίσιμα χτυπήματα από τα όπλα είναι διαφορετικά για κάθε όπλο απέναντι σε κάθε εχθρό.
+
+								Τα Ειδικά Όπλα έχουν μεγαλύτερη πιθανότητα να επιφέρουν ένα Κρίσιμο Χτύπημα και να πλήξουν οποιονδήποτε εχθρό! Τα κρίσιμα χτυπήματα εφαρμόζουν έναν πολλαπλασιαστή στο ποσό που κερδήθηκε από τη βολή που πυροδοτήθηκε. Οι πολλαπλασιαστές είναι x2, x3, x5, x7, και x10. Οι βολές με το Πυροβόλο Πυργίσκου μπορούν να έχουν μόνο x2 πολλαπλασιαστή.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					Όλα τα όπλα έχουν μια τυχαία δυνατότητα να προκαλέσουν κρίσιμο χτύπημα στον εχθρό με κάθε βολή που πυροδοτείται. Τα κρίσιμα χτυπήματα από τα όπλα είναι διαφορετικά για κάθε όπλο απέναντι σε κάθε εχθρό.
+					</br>
+					<span style="line-height: 11px;"></br></span>	
+					Τα Ειδικά Όπλα έχουν μεγαλύτερη πιθανότητα να επιφέρουν ένα Κρίσιμο Χτύπημα και να πλήξουν οποιονδήποτε εχθρό! Τα κρίσιμα χτυπήματα εφαρμόζουν έναν πολλαπλασιαστή στο ποσό που κερδήθηκε από τη βολή που πυροδοτήθηκε. Οι πολλαπλασιαστές είναι x2, x3, x5, x7, και x10. Οι βολές με το Πυροβόλο Πυργίσκου μπορούν να έχουν μόνο x2 πολλαπλασιαστή.
+				</span>				
+			</div>
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsInstantWinsCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								INSTANT WINS
+							</source_meaning>
+							<translated_meaning>
+								ΑΜΕΣΑ ΚΕΡΔΗ
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					ΑΜΕΣΑ ΚΕΡΔΗ
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsInstantWin" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsInstantWin" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									INSTANT WIN!!!
+								</source_meaning>
+								<translated_meaning>
+									ΑΜΕΣΟ ΚΕΡΔΟΣ!!!
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsInstantWinsDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								The chance for an instant win is dynamic, depending on the enemy’s current HP and the weapon being used.
+
+								Instant wins can instantly defeat any enemy except the Legendary Bosses, Infernal Forgemasters, and Unstable Avatars, if its HP is low enough.
+								
+								Instant wins award random prizes!
+							</source_meaning>
+							<translated_meaning>
+								Η πιθανότητα για ένα άμεσο κέρδος είναι δυναμική και εξαρτάται από τους ΠΖ του εχθρού και το όπλο που χρησιμοποιείται.
+
+								Τα άμεσα κέρδη μπορούν να νικήσουν αμέσως οποιονδήποτε εχθρό αν οι ΠΖ του είναι αρκετά χαμηλοί, εκτός από τα Μυθικά αφεντικά, τους Καταχθόνιους Σιδηρουργούς, και τα Ασταθή Είδωλα.
+								
+								Τα άμεσα κέρδη απονέμουν τυχαία βραβεία!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					Η πιθανότητα για ένα άμεσο κέρδος είναι δυναμική και εξαρτάται από τους ΠΖ του εχθρού και το όπλο που χρησιμοποιείται.
+					</br>
+					</br>
+					Τα άμεσα κέρδη μπορούν να νικήσουν αμέσως οποιονδήποτε εχθρό αν οι ΠΖ του είναι αρκετά χαμηλοί, εκτός από τα Μυθικά αφεντικά, τους Καταχθόνιους Σιδηρουργούς, και τα Ασταθή Είδωλα.
+					</br>
+					</br>					
+					Τα άμεσα κέρδη απονέμουν τυχαία βραβεία!
+				</span>				
+			</div>
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsBonusWinCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								BONUS WIN!
+							</source_meaning>
+							<translated_meaning>
+								ΜΠΟΝΟΥΣ ΚΕΡΔΟΣ!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					ΜΠΟΝΟΥΣ ΚΕΡΔΟΣ!
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsBonusWin" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsBonusWin" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									BONUS WIN
+								</source_meaning>
+								<translated_meaning>
+									ΜΠΟΝΟΥΣ ΚΕΡΔΟΣ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsBonusWinDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								If an enemy’s HP is low enough, and your shot does more damage than what remains, it is considered a Bonus Win!
+
+								Bonus Wins award a bonus cash prize in addition to the standard prize won by doing damage to the enemy.
+							</source_meaning>
+							<translated_meaning>
+								Αν οι ΠΖ ενός εχθρού είναι αρκετά χαμηλά και η βολή σας προκαλεί μεγαλύτερη ζημιά από ό,τι απομένει, τότε θεωρείται Μπόνους κέρδος!
+
+								Τα μπόνους κέρδη απονέμουν ένα μπόνους χρηματικό βραβείο επιπρόσθετα του βασικού βραβείου που κερδήθηκε με την πρόκληση ζημιάς στον εχθρό.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					Αν οι ΠΖ ενός εχθρού είναι αρκετά χαμηλά και η βολή σας προκαλεί μεγαλύτερη ζημιά από ό,τι απομένει, τότε θεωρείται Μπόνους κέρδος!
+					</br>
+					</br>
+					Τα μπόνους κέρδη απονέμουν ένα μπόνους χρηματικό βραβείο επιπρόσθετα του βασικού βραβείου που κερδήθηκε με την πρόκληση ζημιάς στον εχθρό.
+				</span>
+			</div>
+		</div>	
+	</div>
+	<!--KILLS...-->	
+
+	<!--...CONTROLS_1-->
+	<div class="page" id="controls_1">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-2 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/cross"></span>
+						<span class="center" type="img" src="paytable/pages/controls/cursor" style="width: 42px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsMouseCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Mouse Symbol
+										Crosshair
+									</source_meaning>
+									<translated_meaning>
+										Σύμβολο ποντικιού
+										Σταυρός
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Σύμβολο ποντικιού</br>
+							Σταυρός
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsMouse" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									The player’s cursor acts as a crosshair for their weapon. Any fired shot will hit wherever the cursor is pointed.
+								</source_meaning>
+								<translated_meaning>
+									Ο κέρσορας του παίχτη ενεργεί σαν στόχαστρο του όπλου του. Οποιαδήποτε πυροδοτημένη σφαίρα θα χτυπήσει οτιδήποτε στοχεύει ο κέρσορας.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Ο κέρσορας του παίχτη ενεργεί σαν στόχαστρο του όπλου του. Οποιαδήποτε πυροδοτημένη σφαίρα θα χτυπήσει οτιδήποτε στοχεύει ο κέρσορας.
+					</span>
+					<br>
+					<div class="title" style="margin-top: 20px;">
+						<span type="img" src="paytable/pages/controls/keyboard" style="padding-left: 19px; padding-right: 19px; padding-top: 4px;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePage10KeyboardCommands" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Keyboard 
+										Commands
+									</source_meaning>
+									<translated_meaning>
+										Εντολές
+										Πληκτρολόγιου
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Εντολές</br>
+							Πληκτρολόγιου
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePage10KeyboardCommands1" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Spacebar: Fires the currently selected weapon wherever the cursor is pointing. Hold down to fire continuously.
+								</source_meaning>
+								<translated_meaning>
+									Πλήκτρο διαστήματος: Πυροδοτεί το τρέχον επιλεγμένο όπλο προς το σημείο που σημαδεύει ο κέρσορας. Κρατήστε πατημένο για να πυροδοτήσετε συνεχόμενα.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Πλήκτρο διαστήματος: Πυροδοτεί το τρέχον επιλεγμένο όπλο προς το σημείο που σημαδεύει ο κέρσορας. Κρατήστε πατημένο για να πυροδοτήσετε συνεχόμενα.</br>
+					</span>
+					
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line_weight'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/mouse" style="width: 42px; transform: scaleX(-1); text-align: right;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsRightClickCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Right Click
+										Locks Target
+									</source_meaning>
+									<translated_meaning>
+										Δεξί Κλικ
+										Κλειδώνει Στόχο
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Δεξί Κλικ</br>
+							Κλειδώνει Στόχο
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsRightClick" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Click the crosshair button and then click an enemy to Lock On. It will then show a targeting reticule on the chosen enemy. Any shots fired by the player will hit this target, no matter what is in the way. If Auto-Lock is enabled, the game will automatically switch to the next available target.
+								</source_meaning>
+								<translated_meaning>
+									Κάντε κλικ στο κουμπί του στόχαστρου και μετά πατήστε πάνω σε έναν εχθρό για Κλείδωμα. Θα εμφανίσει τότε ένα δικτυωτό στόχευσης πάνω στον επιλεγμένο εχθρό. Οποιεσδήποτε βολές πυροδοτήθηκαν από τον παίχτη θα πετύχουν τον στόχο, ανεξάρτητα από το τι βρίσκεται μπροστά από τον στόχο. Εάν το Αυτόματο Κλείδωμα είναι ενεργοποιημένο, το παιχνίδι αυτόματα θα μεταβεί στον επόμενο διαθέσιμο στόχο.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Κάντε κλικ στο κουμπί του στόχαστρου και μετά πατήστε πάνω σε έναν εχθρό για Κλείδωμα. Θα εμφανίσει τότε ένα δικτυωτό στόχευσης πάνω στον επιλεγμένο εχθρό. Οποιεσδήποτε βολές πυροδοτήθηκαν από τον παίχτη θα πετύχουν τον στόχο, ανεξάρτητα από το τι βρίσκεται μπροστά από τον στόχο. Εάν το Αυτόματο Κλείδωμα είναι ενεργοποιημένο, το παιχνίδι αυτόματα θα μεταβεί στον επόμενο διαθέσιμο στόχο.
+					</span>
+					<br>
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/mouse" style="width: 42px;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsLeftClickCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Left Click
+										Fires Weapon
+									</source_meaning>
+									<translated_meaning>
+										Αριστερό Κλικ
+										Πυροδοτεί Όπλο
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Αριστερό Κλικ</br>
+							Πυροδοτεί Όπλο
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsLeftClick1" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires the current weapon at the location indicated by the crosshair. If no enemy target is present at the location of the crosshair, the bullet will bounce off the edges of the screen until it hits an enemy target. Holding this button down allows for continuous fire until the button is released.
+								</source_meaning>
+								<translated_meaning>
+									Πυροβολεί το τρέχον όπλο στη θέση που υποδεικνύει το στόχαστρο. Εάν δεν υπάρχει στόχος εχθρού στη θέση του στόχαστρου, η σφαίρα θα αναπηδήσει στις πλευρές της οθόνης μέχρι να χτυπήσει έναν εχθρικό στόχο. Το συνεχές πάτημα αυτού του κουμπιού, επιτρέπει τις συνεχείς βολές μέχρι να απελευθερωθεί το κουμπί.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Πυροβολεί το τρέχον όπλο στη θέση που υποδεικνύει το στόχαστρο. Εάν δεν υπάρχει στόχος εχθρού στη θέση του στόχαστρου, η σφαίρα θα αναπηδήσει στις πλευρές της οθόνης μέχρι να χτυπήσει έναν εχθρικό στόχο. Το συνεχές πάτημα αυτού του κουμπιού, επιτρέπει τις συνεχείς βολές μέχρι να απελευθερωθεί το κουμπί.
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line_weight_less'></div>
+				<div class="row_content">
+					<div class='col-6 center'>
+						<span type="img" src="paytable/pages/controls/sw_5" class="sw_5"></span>
+						<span type="img" src="paytable/pages/controls/sw_3" class="sw_3"></span>
+						<span type="img" src="paytable/pages/controls/sw_1" class="sw_1"></span>
+						<span type="img" src="paytable/pages/controls/sw_7" class="sw_7"></span>
+						<span type="img" src="paytable/pages/controls/sw_8" class="sw_8"></span>
+					</div>			
+					<div class='col-6 center'>
+						<span class='title_capture weapon_capture'>
+							<!--tad id="TAPaytablePageControlsWeaponCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Special 
+										Weapons
+									</source_meaning>
+									<translated_meaning>
+										Ειδικά
+										Όπλα
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Ειδικά<br/>
+							Όπλα
+						</span>
+						<span class='description light_grey weapon_description'>
+							<!--tad id="TAPaytablePageControlsWeaponDescription" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										You can use Special Weapons from a series of buttons on the left side of the screen. The Cost Per Shot of the Weapon is indicated on the button. Special Weapons do not ricochet off walls.
+									</source_meaning>
+									<translated_meaning>
+										Μπορείτε να χρησιμοποιήσετε Ειδικά Όπλα από μια σειρά κουμπιών στο αριστερό μέρος της οθόνης. Το Κόστος Ανά Βολή του όπλου επισημαίνεται στο κουμπί. Οι βολές από τα Ειδικά Όπλα δεν εξοστρακίζονται στους τοίχους.
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Μπορείτε να χρησιμοποιήσετε Ειδικά Όπλα από μια σειρά κουμπιών στο αριστερό μέρος της οθόνης. Το Κόστος Ανά Βολή του όπλου επισημαίνεται στο κουμπί. Οι βολές από τα Ειδικά Όπλα δεν εξοστρακίζονται στους τοίχους.
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-1 center'>
+				<div class="row_content">
+					<div class="title" style="margin-left: -6px;">
+						<span type="img" src="paytable/pages/controls/minus" style="width: 30px"></span>
+						<span type="img" src="paytable/pages/controls/plus" style="width: 30px"></span>
+						<span class='title_capture' style="margin-left: 4px; margin-top: 2px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Buttons
+									</source_meaning>
+									<translated_meaning>
+										Κουμπιά
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κουμπιά
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: 6px; margin-left: -6px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Changes the bet level.
+									</source_meaning>
+									<translated_meaning>
+										Αλλάζει το επίπεδο πονταρίσματος.
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Αλλάζει το επίπεδο πονταρίσματος.
+					</span>
+					<span type="img" src="paytable/pages/controls/turret" class="turret_img"></span>
+					<span class='description light_grey' style="margin-left: -6px; margin-top: 4px;">
+						<!--tad id="TAPaytablePageControlsSwitch" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Switches between your equipped Special Weapon and the Standard Turret.
+								</source_meaning>
+								<translated_meaning>
+									Εναλλάσσει μεταξύ του εξοπλισμένου Ειδικού Όπλου σας και του Βασικού Πυροβόλου Πυργίσκου.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Εναλλάσσει μεταξύ του εξοπλισμένου Ειδικού Όπλου σας και του Βασικού Πυροβόλου Πυργίσκου.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_1-->
+
+	<!--CONTROLS_1_MOBILE...-->
+	<div class="page" id="mobile_controls_1">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/finger" style="width: 60px"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsFingerTap" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Finger Tap
+									</source_meaning>
+									<translated_meaning>
+										Πάτημα με δάχτυλο
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Πάτημα με δάχτυλο
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsFingerTapText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									The player’s finger tap position designates the intended target. Any fired shot will proceed to the location where the screen is tapped.
+								</source_meaning>
+								<translated_meaning>
+									Η θέση του πατήματος με δάχτυλο του παίχτη προσδιορίζει τον επιδιωκόμενο στόχο. Οποιαδήποτε πυροβολημένη βολή θα προχωρήσει στη θέση στην οποία έχει πατηθεί η οθόνη.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Η θέση του πατήματος με δάχτυλο του παίχτη προσδιορίζει τον επιδιωκόμενο στόχο. Οποιαδήποτε πυροβολημένη βολή θα προχωρήσει στη θέση στην οποία έχει πατηθεί η οθόνη.
+					</span>
+					<div class="title" style="margin-top: 18px;">
+						<span type="img" src="paytable/pages/controls/target" style="width: 60px;"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsLockOnTarget" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Lock Target
+									</source_meaning>
+									<translated_meaning>
+										Κλείδωμα στόχου
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κλείδωμα στόχου
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: -20px; line-height: 14px; width: 210px;">
+						<!--tad id="TAPaytablePageControlsLockOnTargeText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Tap the crosshair button and then tap an enemy to Lock On. It will then show a targeting crosshair on the chosen enemy. Any shots fired by the player will hit this target, no matter what is in the way. If Auto-Lock is enabled, the game will automatically switch to the next available target.
+								</source_meaning>
+								<translated_meaning>
+									Πατήστε το κουμπί του στόχαστρου και μετά πατήστε πάνω σε έναν εχθρό για Κλείδωμα. Θα εμφανίσει τότε ένα στόχαστρο στόχευσης πάνω στον επιλεγμένο εχθρό. Οποιεσδήποτε βολές πυροδοτηθούν από τον παίχτη θα πετύχουν αυτόν τον στόχο, ανεξάρτητα από το τι βρίσκεται ενδιάμεσα. Εάν το Αυτόματο Κλείδωμα είναι ενεργοποιημένο, το παιχνίδι αυτόματα θα μεταβεί στον επόμενο διαθέσιμο στόχο.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Πατήστε το κουμπί του στόχαστρου<br/>και μετά πατήστε πάνω σε έναν εχθρό<br/>για Κλείδωμα. Θα εμφανίσει τότε ένα στόχαστρο στόχευσης πάνω στον επιλεγμένο εχθρό. Οποιεσδήποτε<br/>βολές πυροδοτηθούν από τον παίχτη<br/>θα πετύχουν αυτόν τον στόχο, ανεξάρτητα από το τι βρίσκεται ενδιάμεσα. Εάν το Αυτόματο Κλείδωμα είναι ενεργοποιημένο, το παιχνίδι αυτόματα θα μεταβεί στον επόμενο διαθέσιμο στόχο.
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/finger_tap" style="width: 60px"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsFingerTap" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Fire Weapon
+									</source_meaning>
+									<translated_meaning>
+										Πυροβολήστε όπλα
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Πυροβολήστε όπλα
+						</span>
+					</div>
+					<span class='description light_grey' id="dis">
+						<!--tad id="TAPaytablePageControlsLeftClick" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires the current weapon at the location indicated by the crosshair. If no enemy target is present at the location of the crosshair, the bullet will bounce off the edges of the screen until it hits an enemy target. Holding your finger on the screen allows for continuous fire until the finger is released.
+								</source_meaning>
+								<translated_meaning>
+									Πυροβολεί το τρέχον όπλο στη θέση που υποδεικνύει το στόχαστρο. Εάν δεν υπάρχει στόχος εχθρού στη θέση του στόχαστρου, η σφαίρα θα αναπηδήσει στις πλευρές της οθόνης μέχρι να χτυπήσει έναν εχθρικό στόχο. Αν κρατήσετε το δάχτυλό σας στην οθόνη, θα μπορείτε να ρίχνετε συνεχόμενα πυρά μέχρι να απελευθερώσετε το δάχτυλό σας.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Πυροβολεί το τρέχον όπλο στη θέση που υποδεικνύει το στόχαστρο. Εάν δεν υπάρχει στόχος εχθρού στη θέση του στόχαστρου, η σφαίρα θα αναπηδήσει στις πλευρές της οθόνης μέχρι να χτυπήσει έναν εχθρικό στόχο. Αν κρατήσετε το δάχτυλό σας στην οθόνη, θα μπορείτε να ρίχνετε συνεχόμενα πυρά μέχρι να απελευθερώσετε το δάχτυλό σας.
+					</span>
+				</div>
+			</div>
+			<div class='col-4 center'>
+				<div class='line_weight'></div>
+				<div class="row_content">
+					<div class='col-6 center'>
+						<span type="img" src="paytable/pages/controls/sw_1" class="sw_1"></span>
+						<span type="img" src="paytable/pages/controls/sw_8" class="sw_8"></span>
+						<span type="img" src="paytable/pages/controls/sw_3" class="sw_3"></span>
+						<span type="img" src="paytable/pages/controls/sw_7" class="sw_7"></span>
+						<span type="img" src="paytable/pages/controls/sw_5" class="sw_5"></span>
+					</div>
+					<div class='col-6 center'>
+						<span class='title_capture weapon_capture'>
+							<!--tad id="TAPaytablePageControlsWeaponCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Special 
+										Weapons
+									</source_meaning>
+									<translated_meaning>
+										Ειδικά
+										Όπλα
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Ειδικά</br> 
+							Όπλα
+						</span>
+						<span class='description light_grey weapon_description'>
+							<!--tad id="TAPaytablePageControlsWeaponDescription" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										You can use Special Weapons from a series of buttons on the left side of the screen. The Cost Per Shot of the Weapon is indicated on the button. Special Weapons do not ricochet off walls.
+									</source_meaning>
+									<translated_meaning>
+										Μπορείτε να χρησιμοποιήσετε Ειδικά Όπλα από μια σειρά κουμπιών στο αριστερό μέρος της οθόνης. Το Κόστος Ανά Βολή του όπλου επισημαίνεται στο κουμπί. Οι βολές από τα Ειδικά Όπλα δεν εξοστρακίζονται στους τοίχους.
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Μπορείτε να χρησιμοποιήσετε Ειδικά Όπλα από μια σειρά κουμπιών στο αριστερό μέρος της οθόνης. Το Κόστος Ανά Βολή του όπλου επισημαίνεται στο κουμπί. Οι βολές από τα Ειδικά Όπλα δεν εξοστρακίζονται στους τοίχους.
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-2 center'>
+				<div class="row_content">
+					<div class="title" style="margin-left: -6px;">
+						<span type="img" src="paytable/pages/controls/minus" style="width: 30px"></span>
+						<span type="img" src="paytable/pages/controls/plus" style="width: 30px"></span>
+						<span class='title_capture' style="margin-left: 4px; margin-top: 2px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Buttons
+									</source_meaning>
+									<translated_meaning>
+										Κουμπιά
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Κουμπιά
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: 6px; margin-left: -6px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Changes the bet level.
+									</source_meaning>
+									<translated_meaning>
+										Αλλάζει το επίπεδο πονταρίσματος.
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Αλλάζει το επίπεδο πονταρίσματος.
+					</span>
+					<span type="img" src="paytable/pages/controls/turret" class="turret_img"></span>
+					<span class='description light_grey' style="margin-left: -6px; margin-top: 4px;">
+						<!--tad id="TAPaytablePageControlsSwitch" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Switches between your equipped Special Weapon and the Standard Turret.
+								</source_meaning>
+								<translated_meaning>
+									Εναλλάσσει μεταξύ του εξοπλισμένου Ειδικού Όπλου σας και του Βασικού Πυροβόλου Πυργίσκου.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Εναλλάσσει μεταξύ του εξοπλισμένου Ειδικού Όπλου σας και του Βασικού Πυροβόλου Πυργίσκου.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_1_MOBILE-->
+
+	<!--CONTROLS_2...-->
+	<div class="page" id="controls_2">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-6 center'>
+				<div class='line' style="margin-left: 450px"></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/gun" style="width: 60px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsFireControlPanel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Fire Control Panel
+									</source_meaning>
+									<translated_meaning>
+										Πίνακας ελέγχου πυροβολισμού
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Πίνακας ελέγχου πυροβολισμού
+						</span>
+					</div>
+					<span class='description light_grey' id="disableAutofire">
+						<!--tad id="TAPaytablePageControlsMouse" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Fire Control Panel, where you can configure the settings for Auto-Fire, Auto-Lock and other options.
+									
+									• Lock On Target: When active, the game will automatically target the next enemy on screen depending on which Target Mode is selected.
+									
+									• Auto Fire: When active, the game will automatically fire at a locked target with the active weapon. If no target is selected, holding down the fire button will cause the game to fire continuously at whatever the cursor is pointing at.
+									
+									• Fire Speed [> >> >>>]: Configures the speed that Auto Fire will fire shots.
+									> denotes the slowest speed. >>> denotes the fastest.
+								</source_meaning>
+								<translated_meaning>
+									Ανοίγει τον Πίνακας ελέγχου πυροβολισμού, όπου μπορείτε να διαμορφώσετε τις ρυθμίσεις για Αυτόματες Βολές, Αυτόματο Κλείδωμα και άλλες επιλογές.
+									
+									• Κλείδωμα Στον Στόχο: Όταν είναι ενεργό, το παιχνίδι θα στοχεύει αυτόματα τον επόμενο εχθρό στην οθόνη ανάλογα με τη Λειτουργία Στόχου που έχει επιλεγεί.
+									
+									• Αυτόματη Βολή: Όταν είναι ενεργό, το παιχνίδι θα πυροβολεί αυτόματα στον κλειδωμένο στόχο με το ενεργό όπλο. Εάν δεν έχει επιλεχθεί ένας στόχος, το πάτημα του κουμπιού βολής θα προκαλέσει στο παιχνίδι να πυροβολεί συνεχώς όπου και εάν σημαδεύει ο κέρσορας.
+									
+									• Ταχύτητα πυροβολισμού [> >> >>>]: Ρυθμίζει την ταχύτητα που η Αυτόματη Βολή θα πυροβολεί τις σφαίρες.
+									> υποδηλώνει τη βραδύτερη ταχύτητα. >>> υποδηλώνει τη γρηγορότερη.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Ανοίγει τον Πίνακας ελέγχου πυροβολισμού, όπου μπορείτε να διαμορφώσετε τις ρυθμίσεις για Αυτόματες Βολές, Αυτόματο Κλείδωμα και άλλες επιλογές.</br>
+						</br>
+						<span class="description_bold light_grey">• Κλείδωμα Στον Στόχο:</span> Όταν είναι ενεργό, το παιχνίδι θα στοχεύει αυτόματα τον επόμενο εχθρό στην οθόνη ανάλογα με τη Λειτουργία Στόχου που έχει επιλεγεί.</br>
+						</br>
+						<span class="description_bold light_grey">• Αυτόματη Βολή:</span> Όταν είναι ενεργό, το παιχνίδι θα πυροβολεί αυτόματα στον κλειδωμένο στόχο με το ενεργό όπλο. Εάν δεν έχει επιλεχθεί ένας στόχος, το πάτημα του κουμπιού βολής θα προκαλέσει στο παιχνίδι να πυροβολεί συνεχώς όπου και εάν σημαδεύει ο κέρσορας.</br>
+						</br>
+						<span class="description_bold light_grey">• Ταχύτητα πυροβολισμού [> >> >>>]:</span> Ρυθμίζει την ταχύτητα που η Αυτόματη Βολή θα πυροβολεί τις σφαίρες.</br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> υποδηλώνει τη βραδύτερη ταχύτητα. >>> υποδηλώνει τη γρηγορότερη.</br>
+					</span>
+					<span class='description light_grey' id="enebleAutofire">
+					<span class='description light_grey' id="enebleAutofire">
+						<!--tad id="TAPaytablePageControlsMouseEnebleAutofire" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Fire Control Panel, where you can configure the settings for Auto-Lock and other options.
+									
+									• Lock On Target: When active, the game will automatically target the next enemy on screen depending on which Target Mode is selected.
+									• Fire Speed [> >> >>>]: Configures the minimal time intervals between shots. > denotes the slowest speed. >>> denotes the fastest.
+								</source_meaning>
+								<translated_meaning>
+									Ανοίγει τον Πίνακα ελέγχου πυροβολισμού, όπου μπορείτε να διαμορφώσετε τις ρυθμίσεις για Αυτόματο Κλείδωμα και άλλες επιλογές.
+									
+									• Κλείδωμα Στον Στόχο: Όταν είναι ενεργό, το παιχνίδι θα στοχεύει αυτόματα τον επόμενο εχθρό στην οθόνη ανάλογα με τη Λειτουργία Στόχου που έχει επιλεγεί.
+									• Ταχύτητα πυροβολισμού [> >> >>>]: Διαμορφώνει το ελάχιστο χρονικό διάστημα μεταξύ των βολών. > υποδηλώνει τη βραδύτερη ταχύτητα. >>> υποδηλώνει τη γρηγορότερη.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Ανοίγει τον Πίνακα ελέγχου πυροβολισμού, όπου μπορείτε να διαμορφώσετε τις ρυθμίσεις για Αυτόματο Κλείδωμα και άλλες επιλογές.
+						</br>
+						</br>
+						<span class="description_bold light_grey">• Κλείδωμα Στον Στόχο:</span> Όταν είναι ενεργό, το παιχνίδι θα στοχεύει αυτόματα τον επόμενο εχθρό στην οθόνη ανάλογα με τη Λειτουργία Στόχου που έχει επιλεγεί.</br>
+						</br>
+						<span class="description_bold light_grey">• Ταχύτητα πυροβολισμού [> >> >>>]:</span> Διαμορφώνει το ελάχιστο χρονικό διάστημα μεταξύ των βολών.</br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> υποδηλώνει τη βραδύτερη ταχύτητα. >>> υποδηλώνει τη γρηγορότερη.</br>
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/gun" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsTargetMode" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Target Mode
+									</source_meaning>
+									<translated_meaning>
+										Λειτουργία Στόχου
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Λειτουργία Στόχου
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsTargetModeText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Changes mode for Lock on Target
+									
+									• SAME: Will target the next available enemy with the closest amount of HP the previous target had.
+									
+									• LOW: Will target the next available enemy with the lowest HP.
+									
+									• HIGH: Will target the next available enemy with the highest HP.
+								</source_meaning>
+								<translated_meaning>
+									Αλλάζει τη λειτουργία για Κλείδωμα στον Στόχο
+									
+									• ΙΔΙΟ: Θα στοχεύσει στον επόμενο διαθέσιμο εχθρό με το πλησιέστερο πλήθος ΠΖ σε σχέση με τον προηγούμενο κλειδωμένο στόχο.
+									
+									• ΧΑΜΗΛΟ: Θα στοχεύσει στον επόμενο διαθέσιμο εχθρό με το χαμηλότερο πλήθος ΠΖ.
+									
+									• ΥΨΗΛΟ: Θα στοχεύσει στον επόμενο διαθέσιμο εχθρό με το υψηλότερο πλήθος ΠΖ.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Αλλάζει τη λειτουργία για Κλείδωμα στον Στόχο</br>
+						</br></br>
+						<span class="description_bold light_grey">• ΙΔΙΟ:</span> Θα στοχεύσει στον επόμενο διαθέσιμο εχθρό με το πλησιέστερο πλήθος ΠΖ σε σχέση με τον προηγούμενο κλειδωμένο στόχο.</br>
+						</br></br>
+						<span class="description_bold light_grey">• ΧΑΜΗΛΟ:</span> Θα στοχεύσει στον επόμενο διαθέσιμο εχθρό με το χαμηλότερο πλήθος ΠΖ.</br>
+						</br></br>
+						<span class="description_bold light_grey">• ΥΨΗΛΟ:</span> Θα στοχεύσει στον επόμενο διαθέσιμο εχθρό με το υψηλότερο πλήθος ΠΖ.
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class="row_content">
+					<div class="title" style="margin-top: 13px">
+						<span class="left" type="img" src="paytable/pages/controls/sound" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsSound" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Sound
+									</source_meaning>
+									<translated_meaning>
+										Ήχος
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Ήχος
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsSoundText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Turns all sounds off or on.
+								</source_meaning>
+								<translated_meaning>
+									Ενεργοποιεί και απενεργοποιεί όλους τους ήχους.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Ενεργοποιεί και απενεργοποιεί όλους τους ήχους.
+					</span>
+					<div class="title" style="margin-top: 13px">
+						<span class="left" type="img" src="paytable/pages/controls/back_icon" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsBack" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Back
+									</source_meaning>
+									<translated_meaning>
+										Πίσω
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Πίσω
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsBackText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Leaves the room and returns to the game lobby.
+								</source_meaning>
+								<translated_meaning>
+									Αφήνει το δωμάτιο και επιστρέφει στο λόμπι του παιχνιδιού.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Αφήνει το δωμάτιο και επιστρέφει στο λόμπι του παιχνιδιού.
+					</span>
+					<div class="title" id="setting">
+						<div class="title" style="margin-top: 13px;">
+						<span class="left" type="img" src="paytable/pages/controls/gear" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsSettings" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Settings
+									</source_meaning>
+									<translated_meaning>
+										Ρυθμίσεις
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							Ρυθμίσεις
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-left: -100px; margin-top: 50px;">
+						<!--tad id="TAPaytablePageControlsSettingsText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Settings Panel.
+									Note: Gameplay continues in background.
+								</source_meaning>
+								<translated_meaning>
+									Ανοίγει τον Πίνακα Ρυθμίσεων.
+									Σημείωση: Το παιχνίδι συνεχίζεται να παίζεται στο παρασκήνιο.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						Ανοίγει τον Πίνακα Ρυθμίσεων.</br>
+						<span class="description_italic light_grey">Σημείωση: Το παιχνίδι συνεχίζεται να παίζεται στο παρασκήνιο.</span>
+					</span>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_2-->
+</div>

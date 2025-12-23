@@ -1,0 +1,62 @@
+
+MummyWarrior90.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummyWarrior90_armL
+  rotate: false
+  xy: 1, 21
+  size: 103, 129
+  orig: 103, 129
+  offset: 0, 0
+  index: -1
+MummyWarrior90_armR
+  rotate: false
+  xy: 1, 151
+  size: 141, 100
+  orig: 141, 100
+  offset: 0, 0
+  index: -1
+MummyWarrior90_hair
+  rotate: false
+  xy: 209, 195
+  size: 42, 56
+  orig: 42, 56
+  offset: 0, 0
+  index: -1
+MummyWarrior90_head
+  rotate: true
+  xy: 191, 11
+  size: 36, 37
+  orig: 36, 37
+  offset: 0, 0
+  index: -1
+MummyWarrior90_hips
+  rotate: false
+  xy: 191, 48
+  size: 64, 120
+  orig: 64, 120
+  offset: 0, 0
+  index: -1
+MummyWarrior90_legL
+  rotate: false
+  xy: 105, 1
+  size: 51, 149
+  orig: 51, 149
+  offset: 0, 0
+  index: -1
+MummyWarrior90_legR
+  rotate: false
+  xy: 157, 11
+  size: 33, 157
+  orig: 33, 157
+  offset: 0, 0
+  index: -1
+MummyWarrior90_torso
+  rotate: false
+  xy: 143, 169
+  size: 65, 82
+  orig: 65, 82
+  offset: 0, 0
+  index: -1

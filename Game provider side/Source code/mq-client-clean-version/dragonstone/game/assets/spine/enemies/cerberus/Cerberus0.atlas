@@ -1,0 +1,263 @@
+
+Cerberus0.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/body
+  rotate: false
+  xy: 4, 522
+  size: 637, 496
+  orig: 637, 496
+  offset: 0, 0
+  index: -1
+0/chain_c
+  rotate: true
+  xy: 313, 131
+  size: 111, 327
+  orig: 111, 327
+  offset: 0, 0
+  index: -1
+0/foot_lf1
+  rotate: false
+  xy: 159, 407
+  size: 146, 111
+  orig: 146, 111
+  offset: 0, 0
+  index: -1
+0/foot_lf2
+  rotate: false
+  xy: 863, 181
+  size: 153, 140
+  orig: 153, 140
+  offset: 0, 0
+  index: -1
+0/foot_rt2
+  rotate: true
+  xy: 863, 4
+  size: 173, 139
+  orig: 173, 139
+  offset: 0, 0
+  index: -1
+0/forearm_lf
+  rotate: true
+  xy: 313, 12
+  size: 115, 324
+  orig: 115, 324
+  offset: 0, 0
+  index: -1
+0/head_a_top
+  rotate: true
+  xy: 645, 325
+  size: 272, 327
+  orig: 272, 327
+  offset: 0, 0
+  index: -1
+0/head_a_top2
+  rotate: true
+  xy: 313, 246
+  size: 272, 327
+  orig: 272, 327
+  offset: 0, 0
+  index: -1
+0/head_c_bot
+  rotate: true
+  xy: 4, 328
+  size: 190, 151
+  orig: 190, 151
+  offset: 0, 0
+  index: -1
+0/head_c_top
+  rotate: false
+  xy: 644, 4
+  size: 215, 317
+  orig: 215, 317
+  offset: 0, 0
+  index: -1
+0/leg_lf
+  rotate: false
+  xy: 4, 4
+  size: 305, 317
+  orig: 305, 317
+  offset: 0, 0
+  index: -1
+0/tail
+  rotate: true
+  xy: 645, 601
+  size: 417, 360
+  orig: 417, 360
+  offset: 0, 0
+  index: -1
+
+Cerberus02.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/arm_lf
+  rotate: false
+  xy: 832, 756
+  size: 188, 260
+  orig: 188, 260
+  offset: 0, 0
+  index: -1
+0/arm_rt
+  rotate: false
+  xy: 799, 16
+  size: 183, 267
+  orig: 183, 267
+  offset: 0, 0
+  index: -1
+0/calf_lf
+  rotate: true
+  xy: 600, 569
+  size: 146, 209
+  orig: 146, 209
+  offset: 0, 0
+  index: -1
+0/calf_rt
+  rotate: true
+  xy: 813, 459
+  size: 119, 205
+  orig: 119, 205
+  offset: 0, 0
+  index: -1
+0/chain_a
+  rotate: false
+  xy: 223, 394
+  size: 92, 309
+  orig: 92, 309
+  offset: 0, 0
+  index: -1
+0/chain_b
+  rotate: false
+  xy: 4, 630
+  size: 96, 386
+  orig: 96, 386
+  offset: 0, 0
+  index: -1
+0/foot_rt1
+  rotate: false
+  xy: 541, 4
+  size: 160, 114
+  orig: 160, 114
+  offset: 0, 0
+  index: -1
+0/forearm_rt
+  rotate: false
+  xy: 104, 707
+  size: 206, 309
+  orig: 206, 309
+  offset: 0, 0
+  index: -1
+0/head_a_bot
+  rotate: false
+  xy: 832, 582
+  size: 188, 170
+  orig: 188, 170
+  offset: 0, 0
+  index: -1
+0/head_b_bot
+  rotate: false
+  xy: 600, 397
+  size: 203, 168
+  orig: 203, 168
+  offset: 0, 0
+  index: -1
+0/head_b_bot2
+  rotate: false
+  xy: 807, 287
+  size: 203, 168
+  orig: 203, 168
+  offset: 0, 0
+  index: -1
+0/head_b_top
+  rotate: false
+  xy: 4, 4
+  size: 252, 301
+  orig: 252, 301
+  offset: 0, 0
+  index: -1
+0/head_b_top2
+  rotate: false
+  xy: 314, 715
+  size: 252, 301
+  orig: 252, 301
+  offset: 0, 0
+  index: -1
+0/head_c_top2
+  rotate: false
+  xy: 4, 309
+  size: 215, 317
+  orig: 215, 317
+  offset: 0, 0
+  index: -1
+0/leg_rt
+  rotate: false
+  xy: 570, 719
+  size: 258, 297
+  orig: 258, 297
+  offset: 0, 0
+  index: -1
+0/neck_a
+  rotate: false
+  xy: 541, 122
+  size: 254, 271
+  orig: 254, 271
+  offset: 0, 0
+  index: -1
+0/neck_b
+  rotate: false
+  xy: 260, 92
+  size: 277, 298
+  orig: 277, 298
+  offset: 0, 0
+  index: -1
+0/neck_b2
+  rotate: false
+  xy: 319, 413
+  size: 277, 298
+  orig: 277, 298
+  offset: 0, 0
+  index: -1
+
+Cerberus03.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/head_a_bot2
+  rotate: false
+  xy: 4, 4
+  size: 188, 170
+  orig: 188, 170
+  offset: 0, 0
+  index: -1
+0/head_c_bot2
+  rotate: false
+  xy: 756, 298
+  size: 190, 151
+  orig: 190, 151
+  offset: 0, 0
+  index: -1
+0/neck_a2
+  rotate: false
+  xy: 4, 178
+  size: 254, 271
+  orig: 254, 271
+  offset: 0, 0
+  index: -1
+0/neck_c
+  rotate: false
+  xy: 262, 206
+  size: 243, 243
+  orig: 243, 243
+  offset: 0, 0
+  index: -1
+0/neck_c2
+  rotate: false
+  xy: 509, 206
+  size: 243, 243
+  orig: 243, 243
+  offset: 0, 0
+  index: -1

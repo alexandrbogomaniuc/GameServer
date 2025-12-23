@@ -1,0 +1,122 @@
+import GUIndicatorView from '../../../../../../../common/PIXI/src/dgphoenix/gunified/view/ui/GUIndicatorView';
+import { APP } from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import NumberValueFormat from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/custom/values/NumberValueFormat';
+import TextField from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/TextField';
+import * as FEATURES from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/layout/features';
+
+class LobbyBulletCostIndicatorView extends GUIndicatorView
+{
+	getBounds()
+	{
+		return this._fValueContainer_sprt.getBounds();
+	}
+
+	//INIT...
+	_initIndicatorView()
+	{
+		this._fCurrencySymbol_tf = null;
+		this._fValueContainer_sprt.position.set(0, -4);
+
+		super._initIndicatorView();
+
+		if (FEATURES.IE)
+		{
+			this._fValueContainer_sprt.pivot.set(-4, -2);
+		}
+	}
+	//...INIT
+
+	//VALUE...
+	_initValueView()
+	{
+		super._initValueView();
+		this._fValueView_tf.anchor.set(0.5, 0.5);
+
+		this._initCurrencySymbolViewIfRequired();
+	}
+
+	_getValueTextFormat()
+	{
+		let format = {
+			fontFamily: "fnt_nm_barlow_bold",
+			fontSize: 18,
+			fill: 0x000000,
+			dropShadow: true,
+			dropShadowColor: 0xffffff,
+			dropShadowAngle: Math.PI / 2,
+			dropShadowDistance: 2,
+			dropShadowAlpha: 0.5
+		};
+		return format;
+	}
+
+	_getValueMaxWidth()
+	{
+		return 0;
+	}
+	
+	_formatValue(aValue_num)
+	{
+		return NumberValueFormat.formatMoney(aValue_num);
+	}
+
+	get _maxWidth()
+	{
+		return 55;
+	}
+
+	_onValueChanged()
+	{
+		if (this._fCurrencySymbol_tf)
+		{
+			let lValueWidth_num = this._fValueView_tf.width;
+			this._fCurrencySymbol_tf.position.x = -lValueWidth_num*0.5;
+		}
+
+		this._fValueContainer_sprt.scale.x = 1;
+		let lWidth_num = this._fValueContainer_sprt.getBounds().width;
+
+		if (lWidth_num > this._maxWidth)
+		{
+			this._fValueContainer_sprt.scale.x = this._maxWidth / lWidth_num;
+		}
+		super._onValueChanged();
+	}
+	//...VALUE
+
+	//CURRENCY SYMBOL...
+	_initCurrencySymbolViewIfRequired()
+	{
+		if (!APP.playerController.info.currencySymbol)
+		{
+			return;
+		}
+
+		let lIsFontIncludesCurrencySymbol_bl = APP.fonts.isGlyphsSupported(this._getValueTextFormat().fontFamily, APP.playerController.info.currencySymbol);
+		let l_tf = new TextField(lIsFontIncludesCurrencySymbol_bl ? this._getValueTextFormat() : this._getCurrencySymbolTextFormat());
+
+		l_tf.anchor.set(1, 0.5);
+		l_tf.text = APP.playerController.info.currencySymbol;
+		this._fCurrencySymbol_tf = this._fValueContainer_sprt.addChild(l_tf);
+		this._fValueContainer_sprt.pivot.set(-l_tf.width*0.5, 0);
+		return l_tf;
+	}
+
+	_getCurrencySymbolTextFormat()
+	{
+		let format = {
+			fontFamily: "fnt_nm_arial_currency",
+			fontSize: 18,
+			fill: 0X000000,
+			dropShadow: true,
+			dropShadowColor: 0xffffff,
+			dropShadowAngle: Math.PI / 2,
+			dropShadowDistance: 2,
+			dropShadowAlpha: 0.5
+		};
+		return format;
+	}
+	//...CURRENCY SYMBOL
+}
+
+export default LobbyBulletCostIndicatorView;

@@ -1,0 +1,34 @@
+
+SectorX_Big_Enemy6.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 4, 4
+  size: 813, 978
+  orig: 813, 978
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: true
+  xy: 821, 694
+  size: 288, 185
+  orig: 288, 185
+  offset: 0, 0
+  index: -1
+tail2
+  rotate: false
+  xy: 821, 458
+  size: 90, 232
+  orig: 90, 232
+  offset: 0, 0
+  index: -1
+wing_rt
+  rotate: false
+  xy: 1028, 4
+  size: 420, 260
+  orig: 420, 260
+  offset: 0, 0
+  index: -1

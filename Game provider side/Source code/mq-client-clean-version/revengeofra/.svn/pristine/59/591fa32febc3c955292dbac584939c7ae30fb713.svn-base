@@ -1,0 +1,96 @@
+import Sprite from '../../../../../../../../common/PIXI/src/display/Sprite';
+import { Utils } from '../../../../../../../../common/PIXI/src/Utils';
+import CommonEffectsManager from './../../../../../main/CommonEffectsManager';
+
+const SMOKES_SETTINGS = [
+	{
+		position: {x: 18, y: 31},
+		angle: 7,
+		scale: {x: 1.59, y: 1.226}
+	},
+	{
+		position: {x: 22, y: 2},
+		angle: 109,
+		scale: {x: 1.59, y: 1.226}
+	},
+	{
+		position: {x: 86, y: -102},
+		angle: 224,
+		scale: {x: 1.59, y: 1.226}
+	},
+	{
+		position: {x: 15, y: -24},
+		angle: 248,
+		scale: {x: 1.59, y: 1.226}
+	},
+	{
+		position: {x: 4, y: -44},
+		angle: 280,
+		scale: {x: 1.59, y: 1.226}
+	},
+	{
+		position: {x: -10, y: -136},
+		angle: 162,
+		scale: {x: 1.79, y: 1.226}
+	}
+];
+
+class CoinsExplosionSmokeAnimation extends Sprite
+{
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	constructor()
+	{
+		super();
+
+		this._fSmokes_arr = [];
+	}
+
+	_startAnimation()
+	{
+		for (let lSet_obj of SMOKES_SETTINGS)
+		{
+			this.addChild(this._getSmoke(lSet_obj.position, lSet_obj.angle, lSet_obj.scale));
+		}
+	}
+
+	_getSmoke(aPos_obj, aAngle_num, aScale_obj)
+	{
+		let lSmoke_sprt = new Sprite;
+		lSmoke_sprt.textures = CommonEffectsManager.getDieSmokeUnmultTextures();
+		lSmoke_sprt.scale.x = 2*aScale_obj.x;
+		lSmoke_sprt.scale.y = 2*aScale_obj.y;
+		lSmoke_sprt.anchor.set(0.57, 0.81);
+		lSmoke_sprt.position.set(aPos_obj.x, aPos_obj.y);
+		lSmoke_sprt.rotation = Utils.gradToRad(aAngle_num);
+		lSmoke_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		lSmoke_sprt.on('animationend', () => {
+			let lId_num = this._fSmokes_arr.indexOf(lSmoke_sprt);
+			if (~lId_num) this._fSmokes_arr.splice(lSmoke_sprt);
+
+			lSmoke_sprt.destroy();
+		});
+		lSmoke_sprt.play();
+
+		this._fSmokes_arr.push(lSmoke_sprt);
+
+		return lSmoke_sprt;
+	}
+
+	destroy()
+	{
+		for (let lSmoke_sprt of this._fSmokes_arr)
+		{
+			lSmoke_sprt && lSmoke_sprt.destroy();
+		}
+
+		super.destroy();
+
+		this._fSmokes_arr = null;
+	}
+}
+
+export default CoinsExplosionSmokeAnimation;

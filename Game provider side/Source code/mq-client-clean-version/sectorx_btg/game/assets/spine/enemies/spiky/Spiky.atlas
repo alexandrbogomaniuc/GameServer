@@ -1,0 +1,55 @@
+
+SectorX_Big_Enemy3.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+eye
+  rotate: false
+  xy: 4, 4
+  size: 20, 35
+  orig: 20, 35
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 4, 582
+  size: 418, 308
+  orig: 418, 308
+  offset: 0, 0
+  index: -1
+head_back
+  rotate: false
+  xy: 426, 525
+  size: 340, 187
+  orig: 340, 187
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: false
+  xy: 362, 311
+  size: 319, 210
+  orig: 319, 210
+  offset: 0, 0
+  index: -1
+tentacle_back
+  rotate: true
+  xy: 4, 43
+  size: 535, 105
+  orig: 535, 105
+  offset: 0, 0
+  index: -1
+tentacle_front
+  rotate: true
+  xy: 113, 221
+  size: 357, 245
+  orig: 357, 245
+  offset: 0, 0
+  index: -1
+tentacle_mid
+  rotate: false
+  xy: 426, 716
+  size: 453, 174
+  orig: 453, 174
+  offset: 0, 0
+  index: -1

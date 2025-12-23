@@ -1,0 +1,43 @@
+import Sprite from '../../../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../../../common/PIXI/src/globals';
+import Sequence from '../../../../../../common/PIXI/src/animation/Sequence';
+import KillStreakNumberView from './KillStreakNumberView';
+
+class KillStreakFirstNumberView extends KillStreakNumberView
+{
+	constructor(streakNumber)
+	{
+		super(streakNumber);
+	}
+
+	_showIntroAnimation()
+	{
+		this._container.scale.set(0, 0);
+		if (this._glowView) (this._glowView.alpha = 1);
+
+		let scaleSeq = [
+			{tweens: [], duration: 3*2*16.7},
+			{tweens: [{prop: "scale.x", to: 1.5}, {prop: "scale.y", to: 1.5}], duration: 5*2*16.7},
+			{tweens: [{prop: "scale.x", to: 1}, {prop: "scale.y", to: 1}], duration: 5*2*16.7},
+			{tweens: [{prop: "scale.x", to: 0.85}, {prop: "scale.y", to: 0.85}], duration: 2*2*16.7},
+			{tweens: [{prop: "scale.x", to: 1}, {prop: "scale.y", to: 1}], duration: 5*2*16.7, onfinish: this._onIntroAnimationCompleted.bind(this)}
+		];
+		
+		let glowSeq = [
+			{tweens: [], duration: 7*2*16.7},
+			{tweens: [{prop: "alpha", to: 0}], duration: 9*2*16.7}
+		];
+
+		Sequence.start(this._container, scaleSeq);
+		this._glowView && Sequence.start(this._glowView, glowSeq);
+	}
+
+	destroy()
+	{
+		super.destroy();
+
+		this._glowView && Sequence.destroy(Sequence.findByTarget(this._glowView));
+	}
+}
+
+export default KillStreakFirstNumberView;

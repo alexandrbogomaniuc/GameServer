@@ -1,0 +1,304 @@
+import SimpleUIView from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/SimpleUIView';
+import { ENEMIES, FRAME_RATE } from '../../../../../../shared/src/CommonConstants';
+import Timer from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer';
+import BossModeDisappearanceFxView from './death/BossModeDisappearanceFxView';
+import AppearanceViewAnubis from './appearance/AppearanceViewAnubis';
+import AppearanceViewFog from './appearance/AppearanceViewFog';
+import AppearanceView from './appearance/AppearanceView';
+import BossModeCaptionView from './appearance/BossModeCaptionView';
+
+class BossModeView extends SimpleUIView
+{
+	static get EVENT_APPEARING_STARTED()					{return AppearanceView.EVENT_APPEARING_STARTED;}
+	static get EVENT_APPEARING_PRESENTATION_STARTED()		{return AppearanceView.EVENT_APPEARING_PRESENTATION_STARTED;}
+	static get EVENT_APPEARING_PRESENTATION_CULMINATED()	{return AppearanceView.EVENT_APPEARING_PRESENTATION_CULMINATED;}
+	static get EVENT_APPEARING_PRESENTATION_COMPLETION()	{return AppearanceView.EVENT_APPEARING_PRESENTATION_COMPLETION;}
+	static get EVENT_APPEARING_PRESENTATION_COMPLETED()		{return AppearanceView.EVENT_APPEARING_PRESENTATION_COMPLETED;}
+	static get EVENT_HIDE_TINTED_VIEW()						{return AppearanceView.EVENT_HIDE_TINTED_VIEW;}
+	
+	static get EVENT_DISAPPEARING_PRESENTATION_STARTED()	{return "onDisappearingPresentationStarted";}
+	static get EVENT_DISAPPEARING_PRESENTATION_COMPLETION()	{return "onDisappearingPresentationCompleteon";}
+	static get EVENT_DISAPPEARING_PRESENTATION_COMPLETED()	{return "onDisappearingPresentationCompleted";}
+	static get EVENT_ON_CAPTION_ANIMATION_STARTED()			{return "onCaptionAnimationStarted";}
+	
+
+	addToContainerIfRequired(aViewContainerInfo_obj)
+	{
+		this._addToContainerIfRequired(aViewContainerInfo_obj);
+	}
+
+	startAppearing(aZombieView_e)
+	{
+		this._startAppearing(aZombieView_e);
+	}
+
+	startDisappearing()
+	{
+		this._startDisappearing();
+	}
+
+	completeDisappearing(aZombiePosition_pt)
+	{
+		this._completeDisappearing(aZombiePosition_pt);
+	}
+
+	interruptAnimation()
+	{
+		this._destroyAnimations();
+	}
+
+	updateBossType(aEnemyName_str)
+	{
+		this._updateBossType(aEnemyName_str);
+	}
+
+	onTimeToExplodeCoins(aZombiePosition_pt, aIsCoPlayerWin_bln)
+	{
+		this._onTimeToExplodeCoins(aZombiePosition_pt, aIsCoPlayerWin_bln);
+	}
+
+	get bossType()
+	{
+		return this._fBossType_str;
+	}
+
+	//INIT...
+	constructor()
+	{
+		super();
+
+		this._fViewContainerInfo_obj = null;
+		this._fBossType_str = null;
+		this._fCaptionView_bmcv = null;
+		this._fAppearanceView_av = null;
+		this._fDeathDisappearanceFxView_bmdfxv = null;
+	}
+
+	_initAppearing()
+	{
+		this._fAppearanceView_av && this._fAppearanceView_av.destroy();
+		this._fAppearanceView_av = this.addChild(this._appearanceView);
+
+		this._fAppearanceView_av.on(AppearanceView.EVENT_APPEARING_STARTED, this.emit, this);
+		this._fAppearanceView_av.on(AppearanceView.EVENT_APPEARING_PRESENTATION_STARTED, this.emit, this);
+		this._fAppearanceView_av.on(AppearanceView.EVENT_APPEARING_PRESENTATION_CULMINATED, this.emit, this);
+		this._fAppearanceView_av.on(AppearanceView.EVENT_APPEARING_PRESENTATION_COMPLETION, this.emit, this);
+		this._fAppearanceView_av.on(AppearanceView.EVENT_APPEARING_PRESENTATION_COMPLETED, this._onAppearingCompleted, this);
+		this._fAppearanceView_av.on(AppearanceView.EVENT_HIDE_TINTED_VIEW, this.emit, this);
+		this._fAppearanceView_av.once(AppearanceView.EVENT_ON_TIME_TO_START_CAPTION_ANIMATION, this._onTimeToStartCaptionAnimation, this);
+	}
+
+	get _appearanceView()
+	{
+		switch (this._fBossType_str)
+		{
+			case ENEMIES.Anubis:	return new AppearanceViewAnubis();
+			case ENEMIES.Osiris:	return new AppearanceViewFog();
+			case ENEMIES.Thoth:		return new AppearanceViewFog();
+		}
+	}
+	//...INIT
+
+	//APPEARING PRESENTATION...
+	_startAppearing(aZombieView_e)
+	{
+		aZombieView_e && this._updateBossType(aZombieView_e.name);
+
+		this._initAppearing();
+		this._fAppearanceView_av.startAppearing(aZombieView_e);
+
+		this.visible = true;
+	}
+
+	_onAppearingCompleted()
+	{
+		this.emit(BossModeView.EVENT_APPEARING_PRESENTATION_COMPLETED);
+
+		this._destroyAppearance();
+	}
+	//...APPEARING PRESENTATION
+
+	//CAPTION...
+	_onTimeToStartCaptionAnimation(aEvent_obj)
+	{
+		this._fCaptionView_bmcv && this._fCaptionView_bmcv.destroy();
+
+		let lCaptionPosition_obj = aEvent_obj.captionPosition;
+		let lStartDelay_num = aEvent_obj.startDelay;
+		let lFinishDelay_num = aEvent_obj.finishDelay;
+
+		this._fCaptionView_bmcv = new BossModeCaptionView();
+
+		let lViewContainer_sprt = this._fViewContainerInfo_obj.container;
+		lViewContainer_sprt.addChild(this._fCaptionView_bmcv);
+		this._fCaptionView_bmcv.zIndex = this._fViewContainerInfo_obj.captionZIndex;
+		this._fCaptionView_bmcv.position.set(this.position.x + lCaptionPosition_obj.x, this.position.y + lCaptionPosition_obj.y);
+		this._fCaptionView_bmcv.playAnimation(this.bossType, lStartDelay_num, lFinishDelay_num);
+
+		this._fCaptionView_bmcv.once(BossModeCaptionView.EVENT_ON_ANIMATION_STARTED, this._onCaptionAnimationStarted, this);
+	}
+
+	_onCaptionAnimationStarted()
+	{
+		this.emit(BossModeView.EVENT_ON_CAPTION_ANIMATION_STARTED);
+	}
+	//...CAPTION
+
+	//DISAPPEARING PRESENTATION...
+	_onTimeToExplodeCoins(aZombiePosition_pt, aIsCoPlayerWin_bln)
+	{
+		let lZombiePosition_pt = this.globalToLocal(aZombiePosition_pt.x, aZombiePosition_pt.y);
+
+		if (!this._fDeathDisappearanceFxView_bmdfxv)
+		{
+			this._fDeathDisappearanceFxView_bmdfxv = this.addChild(this._generateDisappearanceFxViewInstance(aIsCoPlayerWin_bln));
+		}
+
+		this._fDeathDisappearanceFxView_bmdfxv.position.set(lZombiePosition_pt.x, lZombiePosition_pt.y);
+		this._fDeathDisappearanceFxView_bmdfxv.startCoinsExplodeAnimation();
+
+		this.visible = true;
+	}
+	
+	_startDisappearing()
+	{
+		this.emit(BossModeView.EVENT_DISAPPEARING_PRESENTATION_STARTED);
+
+		this._fTimer_t && this._fTimer_t.destructor();
+		this._fTimer_t = new Timer(() => { this.emit(BossModeView.EVENT_DISAPPEARING_PRESENTATION_COMPLETION) }, 6*FRAME_RATE);
+	}
+
+	_completeDisappearing(aZombiePosition_pt)
+	{
+		let lZombiePosition_pt = this.globalToLocal(aZombiePosition_pt.x, aZombiePosition_pt.y);
+
+		if (!this._fDeathDisappearanceFxView_bmdfxv)
+		{
+			this._fDeathDisappearanceFxView_bmdfxv = this.addChild(this._generateDisappearanceFxViewInstance());
+			this._fDeathDisappearanceFxView_bmdfxv.position.set(lZombiePosition_pt.x, lZombiePosition_pt.y);
+		}
+
+		this._fDeathDisappearanceFxView_bmdfxv.once(BossModeDisappearanceFxView.EVENT_ANIMATION_COMPLETED, this._onDisappearingCompleted, this);
+		this._fDeathDisappearanceFxView_bmdfxv.startAnimation();
+
+		this.visible = true;
+	}
+
+	_generateDisappearanceFxViewInstance(aIsCoPlayerWin_bln)
+	{
+		return new BossModeDisappearanceFxView(aIsCoPlayerWin_bln);
+	}
+
+	_onDisappearingCompleted()
+	{
+		this.emit(BossModeView.EVENT_DISAPPEARING_PRESENTATION_COMPLETED);
+
+		this._destroyDisappearance();
+
+		if (!this._fAppearanceView_av)
+		{
+			this._destroyAnimations();
+			this.visible = false;
+		}
+	}
+	//...DISAPPEARING PRESENTATION
+
+	_updateBossType(aEnemyName_str)
+	{
+		switch (aEnemyName_str)
+		{
+			case ENEMIES.Anubis:
+				this._fBossType_str = ENEMIES.Anubis;
+			break;
+			case ENEMIES.Osiris:
+				this._fBossType_str = ENEMIES.Osiris;
+			break;
+			case ENEMIES.Thoth:
+				this._fBossType_str = ENEMIES.Thoth;
+			break;
+		}
+	}
+
+	_addToContainerIfRequired(aViewContainerInfo_obj)
+	{
+		if (this.parent)
+		{
+			let lViewZIndex_num = aViewContainerInfo_obj.zIndex;
+			this.zIndex = lViewZIndex_num;
+			this._fViewContainerInfo_obj = aViewContainerInfo_obj;
+			
+			return;
+		}
+
+		this._fViewContainerInfo_obj = aViewContainerInfo_obj;
+
+		let lViewContainer_sprt = aViewContainerInfo_obj.container;
+		let lViewZIndex_num = aViewContainerInfo_obj.zIndex;
+
+		lViewContainer_sprt.addChild(this);
+
+		this.position.set(-lViewContainer_sprt.position.x, -lViewContainer_sprt.position.y);
+		this.zIndex = lViewZIndex_num;
+	}
+
+	_destroyAppearance()
+	{
+		if (this._fAppearanceView_av)
+		{
+			this._fAppearanceView_av.off(AppearanceView.EVENT_APPEARING_STARTED, this.emit, this);
+			this._fAppearanceView_av.off(AppearanceView.EVENT_APPEARING_PRESENTATION_STARTED, this.emit, this);
+			this._fAppearanceView_av.off(AppearanceView.EVENT_APPEARING_PRESENTATION_CULMINATED, this.emit, this);
+			this._fAppearanceView_av.off(AppearanceView.EVENT_APPEARING_PRESENTATION_COMPLETION, this.emit, this);
+			this._fAppearanceView_av.off(AppearanceView.EVENT_APPEARING_PRESENTATION_COMPLETED, this._onAppearingCompleted, this);
+			this._fAppearanceView_av.off(AppearanceView.EVENT_HIDE_TINTED_VIEW, this.emit, this);
+			this._fAppearanceView_av.off(AppearanceView.EVENT_ON_TIME_TO_START_CAPTION_ANIMATION, this._onTimeToStartCaptionAnimation, this);
+
+			this._fAppearanceView_av.destroy();
+		}
+
+		this._fAppearanceView_av = null;
+	}
+
+	_destroyDisappearance()
+	{
+		if (this._fDeathDisappearanceFxView_bmdfxv)
+		{
+			this._fDeathDisappearanceFxView_bmdfxv.off(BossModeDisappearanceFxView.EVENT_ANIMATION_COMPLETED, this._onDisappearingCompleted, this);
+			this._fDeathDisappearanceFxView_bmdfxv.destroy();
+		}
+
+		this._fDeathDisappearanceFxView_bmdfxv = null;
+	}
+
+	_destroyCaption()
+	{
+		if (this._fCaptionView_bmcv)
+		{
+			this._fCaptionView_bmcv.off(BossModeCaptionView.EVENT_ON_ANIMATION_STARTED, this._onCaptionAnimationStarted, this);
+			this._fCaptionView_bmcv.destroy();
+		}
+
+		this._fCaptionView_bmcv = null;
+	}
+
+	_destroyAnimations()
+	{
+		this._destroyAppearance();
+		this._destroyDisappearance();
+		this._destroyCaption();
+
+		this.parent && this.parent.removeChild(this);
+	}
+
+	destroy()
+	{
+		this._destroyAnimations();
+
+		super.destroy();
+
+		this._fViewContainerInfo_obj = null;
+		this._fBossType_str = null;
+	}
+}
+
+export default BossModeView;

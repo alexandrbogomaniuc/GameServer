@@ -1,0 +1,62 @@
+
+Thoth270.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Thoth270_Apron
+  rotate: true
+  xy: 331, 152
+  size: 59, 203
+  orig: 59, 203
+  offset: 0, 0
+  index: -1
+Thoth270_ArmL
+  rotate: false
+  xy: 278, 12
+  size: 115, 114
+  orig: 115, 114
+  offset: 0, 0
+  index: -1
+Thoth270_ArmR
+  rotate: true
+  xy: 826, 119
+  size: 92, 141
+  orig: 92, 141
+  offset: 0, 0
+  index: -1
+Thoth270_Head
+  rotate: true
+  xy: 119, 14
+  size: 112, 157
+  orig: 112, 157
+  offset: 0, 0
+  index: -1
+Thoth270_Hips
+  rotate: false
+  xy: 2, 2
+  size: 115, 209
+  orig: 115, 209
+  offset: 0, 0
+  index: -1
+Thoth270_LegL
+  rotate: true
+  xy: 536, 108
+  size: 103, 147
+  orig: 103, 147
+  offset: 0, 0
+  index: -1
+Thoth270_LegR
+  rotate: true
+  xy: 119, 128
+  size: 83, 210
+  orig: 83, 210
+  offset: 0, 0
+  index: -1
+Thoth270_Torso
+  rotate: true
+  xy: 685, 80
+  size: 131, 139
+  orig: 131, 139
+  offset: 0, 0
+  index: -1

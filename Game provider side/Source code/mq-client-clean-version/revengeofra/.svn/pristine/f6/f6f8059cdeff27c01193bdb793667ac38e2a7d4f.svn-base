@@ -1,0 +1,148 @@
+{
+	"4": [
+		{
+			"name": "maps/4/back_4",
+			"src": "maps/4/back_4.jpg",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/4/wall_4_0",
+			"src": "maps/4/wall_4_0.png",
+			"width": 34.5,
+			"height": 173.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/4/wall_4_1",
+			"src": "maps/4/wall_4_1.png",
+			"width": 243,
+			"height": 190,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/4/wall_4_2",
+			"src": "maps/4/wall_4_2.png",
+			"width": 109,
+			"height": 130,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/4/wall_4_3",
+			"src": "maps/4/wall_4_3.png",
+			"width": 142.5,
+			"height": 49.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/4/wall_4_4",
+			"src": "maps/4/wall_4_4.png",
+			"width": 106.5,
+			"height": 204,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/4/wall_4_5",
+			"src": "maps/4/wall_4_5.png",
+			"width": 117,
+			"height": 145,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		}
+	],
+	"5": [
+		{
+			"name": "maps/5/back_5",
+			"src": "maps/5/back_5.jpg",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/5/wall_5_0",
+			"src": "maps/5/wall_5_0.png",
+			"width": 60,
+			"height": 249.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/5/wall_5_1",
+			"src": "maps/5/wall_5_1.png",
+			"width": 275,
+			"height": 246,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/5/wall_5_2",
+			"src": "maps/5/wall_5_2.png",
+			"width": 108.5,
+			"height": 191.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		}
+	],
+	"6": [
+		{
+			"name": "maps/6/back_6",
+			"src": "maps/6/back_6.jpg",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/6/wall_6_0",
+			"src": "maps/6/wall_6_0.png",
+			"width": 210,
+			"height": 401.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		},
+		{
+			"name": "maps/6/wall_6_1",
+			"src": "maps/6/wall_6_1.png",
+			"width": 84,
+			"height": 536,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		}
+	]
+}

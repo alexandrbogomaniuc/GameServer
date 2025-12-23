@@ -1,0 +1,201 @@
+import SettingsScreenSlider from './SettingsScreenSlider';
+import Button from '../../../../../ui/LobbyButton';
+
+import SimpleUIView from '../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/SimpleUIView';
+import I18 from '../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/translations/I18';
+import { APP } from '../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import SwitchButton from '../../../../../../src/components/tips/SwitchButton';
+import GameDialogButton from '../../../../../../src/view/uis/custom/dialogs/custom/game/GameDialogButton';
+
+class SettingsScreenView extends SimpleUIView
+{
+	static get EVENT_ON_CLOSE_BTN_CLICKED()						{ return "onCloseBtnClicked"; }
+	static get EVENT_ON_SOUND_VOLUME_CHANGED()					{ return "onSoundVolumeChanged"; }
+	static get EVENT_ON_MUSIC_VOLUME_CHANGED()					{ return "onMusicVolumeChanged"; }
+	static get EVENT_ON_OK_BUTTON_CLICKED()						{ return "onOkButtonClicked"; }
+	static get EVENT_ON_SETTINGS_TOOLTIPS_STATE_CHANGED()		{ return "onTooltipsStateChanged"; }
+	static get EVENT_ON_SETTINGS_HEALTH_BAR_STATE_CHANGED()		{ return "onHealthBarStateChanged"; }
+
+
+	setSettings(aSettings_obj)
+	{
+		this._setSettings(aSettings_obj);
+	}
+
+	updateTooltipsToggleState(aState_bln)
+	{
+		this._updateTooltipsToggleState(aState_bln);
+	}
+
+	updateHealthBarState(aState_bln)
+	{
+		this._updateHealthBarState(aState_bln);
+	}
+
+	constructor()
+	{
+		super();
+
+		this._fTooltipsCaption_ta = null;
+		this._fSoundSlider_sss = null;
+		this._fMusicSlider_sss = null;
+		this._fTooltipsToggle_tg = null;
+		this._fHealthBarToggle_hbg = null;
+
+		this._init();
+	}
+
+	_init()
+	{
+		this._addBack();
+		this._addTitleCaption();
+		this._addCaptions();
+		this._addButton();
+		this._addSliders();
+
+		this._initHealthBarToggle();
+		this._initTooltipToggle();
+	}
+
+	_addBack()
+	{
+		let lBack_sprt = this.addChild(APP.library.getSprite("settings/back"));
+
+		let lLine_sprt = this.addChild(APP.library.getSprite("dialogs/line"));
+		lLine_sprt.position.set(0, 94);
+		lLine_sprt.scale.x = 0.73;
+	}
+
+	_addTitleCaption()
+	{
+		let lTitleCaption_ta = this.addChild(I18.generateNewCTranslatableAsset("TASettingsScreenCaption"));
+		lTitleCaption_ta.position.set(-145.5, -168);
+
+		let lIcon_sprt = this.addChild(APP.library.getSprite("settings/icon"));
+		lIcon_sprt.position.set(-208, -168);
+	}
+
+	_addCaptions()
+	{
+		let lSoundVolumeCaption_ta = this.addChild(I18.generateNewCTranslatableAsset("TASettingsScreenSoundVolumeLabel"));
+		lSoundVolumeCaption_ta.position.set(-195, -110);
+
+		let lMusicVolumeCaption_ta = this.addChild(I18.generateNewCTranslatableAsset("TASettingsScreenMusicVolumeLabel"));
+		lMusicVolumeCaption_ta.position.set(-195, -55);
+
+		let lHealthBarCaption_ta = this.addChild(I18.generateNewCTranslatableAsset("TASettingsScreenHitPointsLabel"));
+		lHealthBarCaption_ta.position.set(-195, 0);
+
+		this._fTooltipsCaption_ta = this.addChild(I18.generateNewCTranslatableAsset("TASettingsScreenTooltipsLabel"));
+		this._fTooltipsCaption_ta.position.set(-195, 55);
+	}
+
+	_addSliders()
+	{
+		this._fSoundSlider_sss = this.addChild(new SettingsScreenSlider(0, 100, 100));
+		this._fSoundSlider_sss.position.set(100, -110);
+		this._fSoundSlider_sss.scale.x = 0.89;
+		this._fSoundSlider_sss.on(SettingsScreenSlider.EVENT_ON_SLIDER_VALUE_CHANGED, this._onSoundSliderValueChanged.bind(this));
+
+		this._fMusicSlider_sss = this.addChild(new SettingsScreenSlider(0, 100, 100));
+		this._fMusicSlider_sss.position.set(100, -55);
+		this._fMusicSlider_sss.scale.x = 0.89;
+		this._fMusicSlider_sss.on(SettingsScreenSlider.EVENT_ON_SLIDER_VALUE_CHANGED, this._onMusicSliderValueChanged.bind(this));
+	}
+
+	_addButton()
+	{
+		let lOkButton_btn = this.addChild(new GameDialogButton("dialogs/active_btn", "dialogs/deactive_btn", "TAEditProfileScreenButtonAcceptLabel", undefined, undefined, GameDialogButton.BUTTON_TYPE_ACCEPT));
+		lOkButton_btn.on("pointerclick", this._onOkBtnClicked.bind(this));
+		lOkButton_btn.position.set(0, 125);
+
+		let lCloseButton_btn = this.addChild(new Button("dialogs/exit_btn", null, true, undefined, undefined, Button.BUTTON_TYPE_CANCEL));
+		lCloseButton_btn.position.set(216.5, -168);
+		lCloseButton_btn.on("pointerclick", this._onCloseBtnClicked, this);
+	}
+
+	_initHealthBarToggle()
+	{
+		this._fHealthBarToggle_hbg = this.addChild(new SwitchButton());
+		this._fHealthBarToggle_hbg.on(SwitchButton.EVENT_ON_STATE_CHANGED, this._onHealthBarStateChanged, this);
+		this._fHealthBarToggle_hbg.position.set(100, 0);
+	}
+
+	_initTooltipToggle()
+	{
+		this._fTooltipsToggle_tg = this.addChild(new SwitchButton());
+		this._fTooltipsToggle_tg.on(SwitchButton.EVENT_ON_STATE_CHANGED, this._onTooltipsStateChanged, this);
+		this._fTooltipsToggle_tg.position.set(100, 55);
+	}
+
+	_onCloseBtnClicked()
+	{
+		this.emit(SettingsScreenView.EVENT_ON_CLOSE_BTN_CLICKED);
+	}
+
+	_setSettings(aSettings_obj)
+	{
+		if (aSettings_obj && aSettings_obj.soundVolumes)
+		{
+			this._fSoundSlider_sss.value = aSettings_obj.soundVolumes.fxVolume*100;
+			this._fMusicSlider_sss.value = aSettings_obj.soundVolumes.musicVolume*100;
+		}
+	}
+
+	_updateTooltipsToggleState(aState_bln)
+	{
+		this._fTooltipsToggle_tg.updateToggleState(aState_bln);
+
+		if (this._fTooltipsCaption_ta) this._fTooltipsCaption_ta.visible = true;
+		if (this._fTooltipsToggle_tg) this._fTooltipsToggle_tg.visible = true;
+	}
+
+	_updateHealthBarState(aState_bln)
+	{
+		this._fHealthBarToggle_hbg.updateToggleState(aState_bln);
+	}
+
+	//EVENT LISTENERS...
+	_onTooltipsStateChanged(aEvent_obj)
+	{
+		this.emit(SettingsScreenView.EVENT_ON_SETTINGS_TOOLTIPS_STATE_CHANGED, {value: aEvent_obj.state});
+	}
+
+	_onHealthBarStateChanged(aEvent_obj)
+	{
+		this.emit(SettingsScreenView.EVENT_ON_SETTINGS_HEALTH_BAR_STATE_CHANGED, {value: aEvent_obj.state});
+	}
+
+	_onOkBtnClicked()
+	{
+		this.emit(SettingsScreenView.EVENT_ON_OK_BUTTON_CLICKED);
+	}
+
+	_onSoundSliderValueChanged(aEvent_obj)
+	{
+		let lVal_num = aEvent_obj.value/100;
+
+		this.emit(SettingsScreenView.EVENT_ON_SOUND_VOLUME_CHANGED, {value: lVal_num});
+	}
+
+	_onMusicSliderValueChanged(aEvent_obj)
+	{
+		let lVal_num = aEvent_obj.value/100;
+
+		this.emit(SettingsScreenView.EVENT_ON_MUSIC_VOLUME_CHANGED, {value: lVal_num});
+	}
+	//...EVENT LISTENERS
+
+	destroy()
+	{
+		super.destroy();
+
+		this._fTooltipsCaption_ta = null;
+		this._fSoundSlider_sss = null;
+		this._fMusicSlider_sss = null;
+		this._fTooltipsToggle_tg = null;
+		this._fHealthBarToggle_hbg = null;
+	}
+}
+
+export default SettingsScreenView;

@@ -1,0 +1,48 @@
+
+Imp0.png
+size: 923,923
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/Tail
+  rotate: true
+  xy: 634, 276
+  size: 177, 202
+  orig: 177, 202
+  offset: 0, 0
+  index: -1
+0/arm_lf
+  rotate: false
+  xy: 774, 542
+  size: 143, 209
+  orig: 143, 209
+  offset: 0, 0
+  index: -1
+0/arm_rt
+  rotate: false
+  xy: 634, 105
+  size: 160, 169
+  orig: 160, 169
+  offset: 0, 0
+  index: -1
+0/body
+  rotate: false
+  xy: 2, 72
+  size: 630, 849
+  orig: 630, 849
+  offset: 0, 0
+  index: -1
+0/forearm_lf
+  rotate: true
+  xy: 634, 753
+  size: 168, 287
+  orig: 168, 287
+  offset: 0, 0
+  index: -1
+0/forearm_rt
+  rotate: false
+  xy: 634, 455
+  size: 138, 296
+  orig: 138, 296
+  offset: 0, 0
+  index: -1

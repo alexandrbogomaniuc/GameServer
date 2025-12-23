@@ -1,0 +1,48 @@
+
+SectorX_Med_Enemy9.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 546, 558
+  size: 242, 398
+  orig: 242, 398
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 546, 486
+  size: 71, 68
+  orig: 71, 68
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 4, 4
+  size: 274, 426
+  orig: 274, 426
+  offset: 0, 0
+  index: -1
+mouth_in
+  rotate: false
+  xy: 792, 815
+  size: 217, 141
+  orig: 217, 141
+  offset: 0, 0
+  index: -1
+mouth_out
+  rotate: true
+  xy: 282, 125
+  size: 305, 229
+  orig: 305, 229
+  offset: 0, 0
+  index: -1
+wing_lf
+  rotate: false
+  xy: 4, 434
+  size: 538, 522
+  orig: 538, 522
+  offset: 0, 0
+  index: -1

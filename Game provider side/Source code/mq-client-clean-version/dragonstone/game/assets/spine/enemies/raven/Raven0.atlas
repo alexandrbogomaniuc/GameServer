@@ -1,0 +1,48 @@
+
+Raven0.png
+size: 286,286
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Angle_0/raven_spine_v1.1_BODY.0001.exr
+  rotate: false
+  xy: 2, 6
+  size: 142, 87
+  orig: 142, 87
+  offset: 0, 0
+  index: -1
+Angle_0/raven_spine_v1.1_LEG_L.0001.exr
+  rotate: false
+  xy: 231, 199
+  size: 48, 85
+  orig: 48, 85
+  offset: 0, 0
+  index: -1
+Angle_0/raven_spine_v1.1_LEG_R.0001.exr
+  rotate: false
+  xy: 214, 98
+  size: 58, 86
+  orig: 58, 86
+  offset: 0, 0
+  index: -1
+Angle_0/raven_spine_v1.1_TAIL.0001.exr
+  rotate: false
+  xy: 146, 2
+  size: 127, 91
+  orig: 127, 91
+  offset: 0, 0
+  index: -1
+Angle_0/raven_spine_v1.1_WING_L.0001.exr
+  rotate: false
+  xy: 2, 95
+  size: 210, 89
+  orig: 210, 89
+  offset: 0, 0
+  index: -1
+Angle_0/raven_spine_v1.1_WING_R.0001.exr
+  rotate: false
+  xy: 2, 186
+  size: 227, 98
+  orig: 227, 98
+  offset: 0, 0
+  index: -1

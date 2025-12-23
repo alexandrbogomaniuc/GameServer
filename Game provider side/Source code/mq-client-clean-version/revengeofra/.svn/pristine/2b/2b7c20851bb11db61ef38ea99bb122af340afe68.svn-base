@@ -1,0 +1,385 @@
+import GameBaseDialogController from './GameBaseDialogController';
+import { APP } from '../../../../../../../../../common/PIXI/src/globals';
+import LobbyWebSocketInteractionController from '../../../../../interaction/server/LobbyWebSocketInteractionController';
+import LobbyExternalCommunicator from '../../../../../../external/LobbyExternalCommunicator';
+import {GAME_MESSAGES} from '../../../../../../../../../common/PIXI/src/external/betsoftgaming/ExternalCommunicator';
+import LobbyAPP from '../../../../../../LobbyAPP';
+import CommonPanelController from '../../../commonpanel/CommonPanelController';
+import {GAME_CLIENT_MESSAGES} from '../../../../../../model/interaction/server/LobbyWebSocketInteractionInfo';
+import LobbyPlayerController from '../../../../../custom/LobbyPlayerController';
+import PlayerInfo from '../../../../../../../../../common/PIXI/src/model/custom/PlayerInfo';
+
+class GameRebuyDialogController extends GameBaseDialogController
+{
+	static get EVENT_DIALOG_PRESENTED () { return GameBaseDialogController.EVENT_DIALOG_PRESENTED };
+	static get EVENT_PRESENTED_DIALOG_UPDATED () { return GameBaseDialogController.EVENT_PRESENTED_DIALOG_UPDATED };
+
+	static get EVENT_ON_REBUY_DENIED_WITH_NON_SPENT_BALANCE () { return "EVENT_ON_REBUY_DENIED_WITH_NON_SPENT_BALANCE" };
+
+	constructor(aOptInfo_usuii, parentController)
+	{
+		super(aOptInfo_usuii, parentController);
+
+		this._lootTypeReason = false;
+		this._fTournamentModeInfo_tni = null;
+		this._fGameBalance_num = 0;
+		this._fKeepDialog_bln = false;
+		
+		this._initGameRebuyDialogController();
+	}
+
+	_initGameRebuyDialogController()
+	{
+	}
+
+	__init ()
+	{
+		super.__init();
+	}
+
+	__getExternalViewForSelfInitialization()
+	{
+		return this.__getViewLevelSelfInitializationViewProvider().gameRebuyDialogView;
+	}
+
+	__initModelLevel ()
+	{
+		super.__initModelLevel();
+
+		this._fTournamentModeInfo_tni = APP.tournamentModeController.info;
+	}
+
+	__initControlLevel ()
+	{
+		super.__initControlLevel();
+
+		this._fPlayerInfo_pi = APP.playerController.info;
+		this._fLobbyWeaponsPanelInfo_lwpi = APP.commonPanelController.lobbyWeaponsPanelController.info;
+
+		if (APP.lobbyAppStarted)
+		{
+			this._startHandleEnvironmentMessages();
+		}
+		else
+		{
+			APP.once(LobbyAPP.EVENT_ON_LOBBY_STARTED, this._onLobbyStarted, this);
+		}
+
+		// DEBUG...
+		// window.addEventListener("keydown", this.keyDownHandler.bind(this), false);
+		// ...DEBUG
+	}
+
+	//DEBUG...
+	// keyDownHandler(keyCode)
+	// {
+	// 	if (keyCode.keyCode == 107) // +
+	// 	{
+	// 		this.__activateDialog();
+	// 	}
+	// }
+	//...DEBUG
+
+	_onLobbyStarted(event)
+	{
+		this._startHandleEnvironmentMessages();
+	}
+
+	_startHandleEnvironmentMessages()
+	{
+		let externalCommunicator = APP.externalCommunicator;
+		externalCommunicator.on(LobbyExternalCommunicator.GAME_MESSAGE_RECEIVED, this._onGameMessageReceived, this);
+
+		let webSocketInteractionController = APP.webSocketInteractionController;
+		webSocketInteractionController.on(LobbyWebSocketInteractionController.EVENT_ON_SERVER_BALANCE_UPDATED_MESSAGE, this._onLobbyServerBalanceUpdated, this);
+
+		let commonPanelController = APP.commonPanelController;
+		commonPanelController.on(CommonPanelController.EVENT_NOT_ENOUGH_MONEY_DIALOG_REQUIRED, this._onNotEnoughMoneyDialogRequired, this);
+
+		this._fPlayerController_pc = APP.playerController;
+		this._fPlayerInfo_pi = this._fPlayerController_pc.info;
+
+		this._fPlayerController_pc.on(LobbyPlayerController.EVENT_ON_PLAYER_INFO_UPDATED, this._onPlayerInfoUpdated, this);
+
+		this._fWeaponsScreenController_wssc = APP.secondaryScreenController.playerCollectionScreenController.weaponsScreenController;
+	}
+
+	//VALIDATION...
+	__validateModelLevel ()
+	{
+		super.__validateModelLevel();
+	}
+
+	__validateViewLevel ()
+	{
+		var info = this.info;
+		var view = this.__fView_uo;
+		var messageAssetId;
+
+		if (info.isActive)
+		{
+			let lHomeFuncNameDefined_bl = APP.appParamsInfo.homeFuncNameDefined;
+
+			if (this._fLobbyWeaponsPanelInfo_lwpi.isPaidSpecialWeaponSelected)
+			{
+				this._fKeepDialog_bln = true;
+				view.setMessage("TADialogMessageTournamentPayWeapon");
+				view.setOkMode();
+			}
+			else if
+				(
+					this._fPlayerInfo_pi.betLevel > 1 &&
+					this._checkEnoughMoneyForOneShot()
+				)
+			{
+				this._fKeepDialog_bln = true;
+				view.setMessage("TADialogMessageTournamentBetLevel");
+				view.setOkMode();
+			}
+			else if (this._fTournamentModeInfo_tni.rebuyAllowed)
+			{
+				if (this._fTournamentModeInfo_tni.isRebuyLimitExceeded)
+				{
+					view.setMessage("TADialogMessageTournamentRebuyLimitExceeded");
+					if (lHomeFuncNameDefined_bl)
+					{
+						view.setOkMode();
+					}
+					else
+					{
+						view.setEmptyMode();
+					}
+				}
+				else
+				{
+					view.setOkCancelMode();
+					
+					let messageId = this._fTournamentModeInfo_tni.isFreerollMode ? "TADialogMessageFreerollTournamentRebuy" : "TADialogMessagePaidTournamentRebuy";
+					
+					let lRechargeValue_num = this._fTournamentModeInfo_tni.rebuyAmount;
+					if (!this._fTournamentModeInfo_tni.resetBalanceAfterRebuy)
+					{
+						lRechargeValue_num += this._calcTotalBalance();
+					}
+					view.setMessage(messageId, this._fTournamentModeInfo_tni.rebuyPrice, lRechargeValue_num, this._fPlayerInfo_pi.realPlayerCurrencySymbol);
+					
+				}
+			}
+			else
+			{
+				view.setMessage("TADialogMessageTournamentRebuyNotAvailable");
+				if (lHomeFuncNameDefined_bl)
+				{
+					view.setOkMode();
+				}
+				else
+				{
+					view.setEmptyMode();
+				}
+			}
+		}
+
+		super.__validateViewLevel();
+	}
+	//...VALIDATION
+
+	__deactivateDialog()
+	{
+		this._lootTypeReason = false;
+		this._fKeepDialog_bln = false;
+
+		super.__deactivateDialog();
+	}
+
+	__onDialogOkButtonClicked(event)
+	{
+		//dialog pretends to be NEM if minimal stake is affordable  https://jira.dgphoenix.com/browse/MQRR-159
+		//rebuy action is prevented in this case  https://jira.dgphoenix.com/browse/MQRR-197
+		if(!this._checkEnoughMoneyForOneShot())
+		{
+			super.__onDialogOkButtonClicked(event);
+		}
+
+		this._fKeepDialog_bln = false;
+
+		this.__deactivateDialog();
+	}
+
+	_onGameMessageReceived(event)
+	{
+		let msgType = event.type;
+
+		switch (msgType)
+		{
+			case GAME_MESSAGES.SERVER_ERROR_MESSAGE_RECIEVED:
+				if (LobbyWebSocketInteractionController.isGeneralError(event.data.errorType))
+				{
+					this._handleGameGeneralError(event.data.errorCode, event.data.requestClass);
+				}
+				break;
+			case GAME_MESSAGES.NOT_ENOUGH_MONEY_DIALOG_REQUIRED:
+				if (this._fTournamentModeInfo_tni.isTournamentMode)
+				{
+					let specBalance = event.data.specBalance;
+					if (!this._checkEnoughMoneyForOneShot(specBalance))
+					{
+						this._lootTypeReason = !!(event.data.dialogType === "lootCrate");
+						this._activateOrDenyRebuy(specBalance);
+					}
+					else if (this._fPlayerInfo_pi.betLevel > 1 || this._fLobbyWeaponsPanelInfo_lwpi.isPaidSpecialWeaponSelected)
+					{
+						this.__activateDialog();
+					}
+				}
+				break;
+			case GAME_MESSAGES.SERVER_BALANCE_UPDATED_MESSAGE_RECIEVED:
+				if (this._lootTypeReason) return;
+				this._fGameBalance_num = event.data.specBalance;
+				this._balanceRefreshingHandler(event.data);
+				break;
+			case GAME_MESSAGES.SERVER_CONNECTION_OPENED:
+			case GAME_MESSAGES.SERVER_CONNECTION_CLOSED:
+			case GAME_MESSAGES.ROOM_CLOSED:
+			case GAME_MESSAGES.ROUND_RESULT_ACTIVATED:
+				this.__deactivateDialog();
+				break;
+		}
+	}
+
+	_onPlayerInfoUpdated(event)
+	{
+		if (
+				event.data[PlayerInfo.KEY_REAL_AMMO]
+				|| event.data[PlayerInfo.KEY_UNPRESENTED_WIN]
+			)
+		{
+			let lRealAmmo_num = this._fPlayerInfo_pi.realAmmo;
+			let lShotCost_num = this._fPlayerInfo_pi.currentStake;
+			let lRealAmmoCost_num = lRealAmmo_num*lShotCost_num;
+			let lUnpresentedWin_num = this._fPlayerInfo_pi.unpresentedWin || 0;
+			if (
+					~~(lRealAmmo_num) > 0
+					|| (lUnpresentedWin_num+lRealAmmoCost_num) >= lShotCost_num
+				)
+			{
+				this.__deactivateDialog();
+			}
+		}
+	}
+
+	_balanceRefreshingHandler(data)
+	{
+		if (this._checkEnoughMoneyForOneShot(data.specBalance) && !data.keepDialog && !this._fKeepDialog_bln)
+		{
+			this.__deactivateDialog();
+		}
+	}
+
+	_checkEnoughMoneyForOneShot(aSpecBalance_num)
+	{
+		let lIsEnoughMoney_bl = false;
+		if (!this._fPlayerInfo_pi)
+		{
+			return lIsEnoughMoney_bl;
+		}
+
+		// this._fPlayerInfo_pi.balance is wrong
+		let lBalance_num = aSpecBalance_num === undefined ? (this._fGameBalance_num !== undefined ? this._fGameBalance_num : this._fPlayerInfo_pi.balance) : aSpecBalance_num;
+
+		if(
+			!aSpecBalance_num &&
+			this._fGameBalance_num !== this._fPlayerInfo_pi.balance
+		)
+		{
+			return lIsEnoughMoney_bl;
+		}
+		
+		if (
+			!this._fLobbyWeaponsPanelInfo_lwpi.isPaidWeaponSelected
+			|| lBalance_num >= this._fPlayerInfo_pi.currentStake
+			)
+		{
+			lIsEnoughMoney_bl = true;
+		}
+
+		return lIsEnoughMoney_bl;
+	}
+
+	_onNotEnoughMoneyDialogRequired(event)
+	{
+		if (this._fTournamentModeInfo_tni.isTournamentMode)
+		{
+			this._activateOrDenyRebuy();
+		}
+	}
+
+	_handleGameGeneralError(errorCode, requestClass)
+	{
+		if (!this._fTournamentModeInfo_tni.isTournamentMode)
+		{
+			return;
+		}
+
+		let supported_codes = LobbyWebSocketInteractionController.ERROR_CODES;
+		switch(errorCode)
+		{
+			case supported_codes.NOT_ENOUGH_MONEY:
+				if (requestClass == GAME_CLIENT_MESSAGES.RE_BUY)
+				{
+					this.__deactivateDialog();
+				}
+				break;
+			case supported_codes.BUYIN_NOT_ALLOWED_AT_CURRENT_GAME_STATE:
+				this.__deactivateDialog();
+				break;
+		}
+	}
+
+	_onLobbyServerBalanceUpdated(event)
+	{
+	}
+
+	_activateOrDenyRebuy(aSpecBalance_num = undefined)
+	{
+		let lBalance_num = this._fPlayerInfo_pi.balance;
+		if (aSpecBalance_num !== undefined)
+		{
+			lBalance_num = aSpecBalance_num;
+		}
+		else
+		{
+			let lUnpresentedWin_num = this._fPlayerInfo_pi.unpresentedWin || 0;
+			let lRealAmmo_num = this._fPlayerInfo_pi.realAmmo;
+			let lRealAmmoCost_num = lRealAmmo_num === undefined ? 0 : lRealAmmo_num*this._fPlayerInfo_pi.currentStake;
+
+			lBalance_num += lUnpresentedWin_num + lRealAmmoCost_num;
+		}
+
+		if (
+				(lBalance_num >= this._fPlayerInfo_pi.minRoomsStake)
+				|| (APP.isKeepSWModeActive && this._fWeaponsScreenController_wssc.isAnySpecialWeaponExist)
+			)
+		{
+			this.emit(GameRebuyDialogController.EVENT_ON_REBUY_DENIED_WITH_NON_SPENT_BALANCE);
+		}
+		else
+		{
+			this.__activateDialog();
+		}		
+	}
+
+	_calcTotalBalance()
+	{
+		let lBalance_num = this._fPlayerInfo_pi.balance;
+		
+		let lUnpresentedWin_num = this._fPlayerInfo_pi.unpresentedWin || 0;
+		let lRealAmmo_num = this._fPlayerInfo_pi.realAmmo;
+		let lRealAmmoCost_num = lRealAmmo_num === undefined ? 0 : lRealAmmo_num*this._fPlayerInfo_pi.currentStake;	
+
+		lBalance_num += lUnpresentedWin_num + lRealAmmoCost_num;
+
+		return lBalance_num;
+	}
+}
+
+export default GameRebuyDialogController

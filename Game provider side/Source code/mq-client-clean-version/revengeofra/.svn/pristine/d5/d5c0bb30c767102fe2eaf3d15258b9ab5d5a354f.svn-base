@@ -1,0 +1,69 @@
+
+ScarabRight.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+right/body
+  rotate: false
+  xy: 2, 8
+  size: 128, 118
+  orig: 128, 118
+  offset: 0, 0
+  index: -1
+right/head
+  rotate: false
+  xy: 132, 14
+  size: 69, 112
+  orig: 69, 112
+  offset: 0, 0
+  index: -1
+right/horn
+  rotate: true
+  xy: 300, 77
+  size: 49, 107
+  orig: 49, 107
+  offset: 0, 0
+  index: -1
+right/leg_lf1
+  rotate: false
+  xy: 302, 2
+  size: 27, 33
+  orig: 27, 33
+  offset: 0, 0
+  index: -1
+right/leg_lf2
+  rotate: false
+  xy: 395, 40
+  size: 56, 35
+  orig: 56, 35
+  offset: 0, 0
+  index: -1
+right/leg_lf3
+  rotate: false
+  xy: 409, 77
+  size: 95, 49
+  orig: 95, 49
+  offset: 0, 0
+  index: -1
+right/leg_rt1
+  rotate: false
+  xy: 203, 48
+  size: 95, 78
+  orig: 95, 78
+  offset: 0, 0
+  index: -1
+right/leg_rt2
+  rotate: true
+  xy: 302, 37
+  size: 38, 91
+  orig: 38, 91
+  offset: 0, 0
+  index: -1
+right/leg_rt3
+  rotate: true
+  xy: 203, 17
+  size: 29, 97
+  orig: 29, 97
+  offset: 0, 0
+  index: -1

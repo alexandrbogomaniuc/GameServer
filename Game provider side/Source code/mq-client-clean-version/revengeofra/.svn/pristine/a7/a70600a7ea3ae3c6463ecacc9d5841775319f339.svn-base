@@ -1,0 +1,2475 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_calibri" url="[root_resources_path]translations/it/fonts/calibri_it.ttf"/>
+		<font name="fnt_nm_barlow" url="[root_resources_path]translations/it/fonts/barlow_medium_it.ttf"/>
+		<font name="fnt_nm_barlow_semibold" url="[root_resources_path]translations/it/fonts/barlow_semibold_it.ttf"/>
+		<font name="fnt_nm_barlow_bold" url="[root_resources_path]translations/it/fonts/barlow_bold_it.ttf"/>
+		<font name="fnt_nm_barlow_regular" url="[root_resources_path]translations/it/fonts/barlow_regular_it.ttf"/>
+		<font name="fnt_nm_barlow_italic" url="[root_resources_path]translations/it/fonts/barlow_italic_it.ttf"/>
+		<font name="fnt_nm_myriadpro_regular" url="[root_resources_path]translations/it/fonts/myriadpro_regular_it.ttf"/>
+	</fonts>
+
+	<tasds>
+		<tad id="TALobbyRoomsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CHOOSE ROOM TO PLAY</source_meaning>
+				<translated_meaning>SELEZIONA LA STANZA IN CUI GIOCARE</translated_meaning>
+			</meaning>
+			<area x="-500" y="-50" w="1000" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1.5" padding="5">
+				<font name="fnt_nm_barlow" size="15" color="0xffffff" bold="false">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>SELEZIONA LA STANZA IN CUI GIOCARE</content>
+			</txt>
+		</tad>
+
+		<!--LOBBY...-->
+		<tad id="TALobbyTournamentsPromoCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Tournament:</source_meaning>
+				<translated_meaning>Torneo:</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="190" h="16">
+				<scale x="no_scale" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0" padding="5">
+				<!--<font name="fnt_nm_barlow" size="11" color="0xe4d337" bold="false"/>-->
+				<font name="fnt_nm_barlow_semibold" size="11" color="0xe4d337" bold="false"></font>
+				<content>Torneo:</content>
+			</txt>
+		</tad>
+
+		<!--COMMON PANEL...-->
+
+		<tad id="TACommonPanelBalanceLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BALANCE</source_meaning>
+				<translated_meaning>SALDO</translated_meaning>
+			</meaning>
+			<area x="-9" y="0" w="70" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xa3a3a3"></font>
+				<content>SALDO</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelWinLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WIN</source_meaning>
+				<translated_meaning>VINCITA</translated_meaning>
+			</meaning>
+			<area x="-9" y="0" w="70" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xa3a3a3"></font>
+				<content>VINCITA</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelMenuLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Menu</source_meaning>
+				<translated_meaning>Menu</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="70" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="12" color="0xffffff"></font>
+				<content>Menu</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelLobbyCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Join one of the rooms above to explore Max Quest and win!</source_meaning>
+				<translated_meaning>Seleziona una delle stanze riportate sopra per esplorare Max Quest e vincere!</translated_meaning>
+			</meaning>
+			<area x="-300" y="-25" w="600" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="0.4">
+				<font name="fnt_nm_barlow_italic" size="11" color="0xffffff"></font>
+				<content>Seleziona una delle stanze riportate sopra per esplorare Max Quest e vincere!</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelFreeShotsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Shots: XX</source_meaning>
+				<translated_meaning>Cartucce gratis: XX</translated_meaning>
+			</meaning>
+			<area x="-150" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="12" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>Cartucce gratis: /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelFreeShotsLabelMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Shots: XX</source_meaning>
+				<translated_meaning>Cartucce gratis: XX</translated_meaning>
+			</meaning>
+			<area x="-150" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>Cartucce gratis: /VALUE/</content>
+			</txt>
+		</tad>
+		<!--...COMMON PANEL-->
+
+		<tad id="TALobbyTotalKillsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Total Kills</source_meaning>
+				<translated_meaning>Tot. nemici eliminati</translated_meaning>
+			</meaning>
+			<area x="-55" y="-12" w="110" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="0.4">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xffffff" bold="false"></font>
+				<content>Tot. nemici eliminati</content>
+			</txt>
+		</tad>
+
+		<tad id="TALobbyGameRoundsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Game Rounds</source_meaning>
+				<translated_meaning>Turni di gioco</translated_meaning>
+			</meaning>
+			<area x="-55" y="-12" w="110" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="0.4">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xffffff" bold="false"></font>
+				<content>Turni di gioco</content>
+			</txt>
+		</tad>
+
+		<tad id="TALobbyEditProfileBtnLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Edit Profile</source_meaning>
+				<translated_meaning>Modifica il profilo</translated_meaning>
+			</meaning>
+			<area x="-25" y="-7.5" w="50" h="14">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="6.7">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0x000000" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0xffffff" distance="0.5" angle="90" alpha="0.5"/>
+					</shadows>
+				</filters>
+				<content>Modifica&#10;il profilo</content>
+			</txt>
+		</tad>
+
+		<tad id="TALobbyNewPlayerEnterTip" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Enter username</source_meaning>
+				<translated_meaning>Inserire nome utente</translated_meaning>
+			</meaning>
+			<area x="-100" y="-13" w="200" h="26">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="15" color="0x8f8f8f" bold="false"></font>
+				<content>Inserire nome utente</content>
+			</txt>
+		</tad>
+
+		<tad id="TALobbyNewPlayerNotAvailableTip" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Name not available, please try again</source_meaning>
+				<translated_meaning>Nome non disponibile, riprova</translated_meaning>
+			</meaning>
+			<area x="-150" y="-13" w="300" h="26">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="15" color="0x8f8f8f" bold="false"></font>
+				<content>Nome non disponibile, riprova</content>
+			</txt>
+		</tad>
+
+		<!--LOBBY VIEW...-->
+
+		<tad id="TALobbyRoomBtnNotEnoughMoneyCapture" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient balance for this room</source_meaning>
+				<translated_meaning>Saldo insufficiente per questa stanza</translated_meaning>
+			</meaning>
+			<area x="-150" y="-50" w="300" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="0.6">
+				<font name="fnt_nm_barlow_semibold" size="12" color="0xffffff" bold="false">
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0x000000"/>
+					</fill>
+				</font>
+				<content>Saldo insufficiente&#10;per questa stanza</content>
+			</txt>
+		</tad>
+		<!--...LOBBY VIEW-->
+		<!--...LOBBY-->
+
+		<!--SETTINGS SCREEN...-->
+		<tad id="TASettingsScreenCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SETTINGS</source_meaning>
+				<translated_meaning>IMPOSTAZIONI</translated_meaning>
+			</meaning>
+			<area x="-40" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>IMPOSTAZIONI</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenSoundVolumeLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SOUND FX VOLUME</source_meaning>
+				<translated_meaning>VOLUME DEGLI EFFETTI SONORI</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<content>VOLUME DEGLI EFFETTI&#10;SONORI</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenMusicVolumeLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MUSIC VOLUME</source_meaning>
+				<translated_meaning>VOLUME MUSICA</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<content>VOLUME MUSICA</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenTooltipsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOOLTIPS</source_meaning>
+				<translated_meaning>TOOLTIP</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<content>TOOLTIP</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenHitPointsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SHOW ENEMY HIT POINTS</source_meaning>
+				<translated_meaning>MOSTRA PUNTI FERITA DEL NEMICO</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<content>MOSTRA PUNTI FERITA&#10;DEL NEMICO</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsTooltipsToggleLabelOn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ON</source_meaning>
+				<translated_meaning>ATTIVATO</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="11" color="0xFFFFFF" bold="false"></font>
+				<content>ATTIVATO</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsTooltipsToggleLabelOff" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OFF</source_meaning>
+				<translated_meaning>DISATTIVATO</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="11" color="0xFFFFFF" bold="false"></font>
+				<content>DISATTIVATO</content>
+			</txt>
+		</tad>
+		<!--...SETTINGS SCREEN-->
+
+		<!-- WEAPONS INVENTORY... -->
+		<tad id="TAPlayerCollectionScreenWeaponsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WEAPONS INVENTORY</source_meaning>
+				<translated_meaning>INVENTARIO DELLE ARMI</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="200" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>INVENTARIO DELLE ARMI</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenSwitchWeaponsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WEAPONS</source_meaning>
+				<translated_meaning>ARMI</translated_meaning>
+			</meaning>
+			<area x="-30" y="-10" w="60" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0x666666"></font>
+				<content>ARMI</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFrameArtilleryCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ARTILLERY STRIKE</source_meaning>
+				<translated_meaning>FUMOGENO</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>FUMOGENO</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFramePlasmaCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PLASMA RIFLE</source_meaning>
+				<translated_meaning>FUCILE AL PLASMA</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>FUCILE AL PLASMA</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFrameCryogunCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CRYOGUN</source_meaning>
+				<translated_meaning>PISTOLA CRIOGENICA</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>PISTOLA CRIOGENICA</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFrameMineCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MINE LAUNCHER</source_meaning>
+				<translated_meaning>LANCIAMINE</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>LANCIAMINE</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFrameFlameCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FLAMETHROWER</source_meaning>
+				<translated_meaning>LANCIAFIAMME</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>LANCIAFIAMME</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsNoteCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Only weapons earned in a room with the same bet denomination will be shown.</source_meaning>
+				<translated_meaning>Verranno visualizzate solo le armi ottenute nelle stanze aventi lo stesso importo della scommessa.</translated_meaning>
+			</meaning>
+			<area x="0" y="-15" w="520" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_italic" size="9" color="0x686868"></font>
+				<content>Verranno visualizzate solo le armi ottenute nelle stanze aventi lo stesso importo della scommessa.</content>
+			</txt>
+		</tad>
+		<!-- ...WEAPONS INVENTORY -->
+
+		<!-- EDIT PROFILE ...-->
+		<tad id="TAEditProfileTitle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PROFILE EDITOR</source_meaning>
+				<translated_meaning>EDITOR DEL PROFILO</translated_meaning>
+			</meaning>
+			<area x="-60" y="-50" w="300" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>EDITOR DEL PROFILO</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenButtonAcceptLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>OK</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenButtonCancelLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CANCEL</source_meaning>
+				<translated_meaning>CANCELLA</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>CANCELLA</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenBackgroundStyleCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Background Style</source_meaning>
+				<translated_meaning>Stile sfondo</translated_meaning>
+			</meaning>
+			<area x="-70" y="-20" w="140" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="12" color="0xffffff"></font>
+				<content>Stile sfondo</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenBorderStyleCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Border Style</source_meaning>
+				<translated_meaning>Stile bordo</translated_meaning>
+			</meaning>
+			<area x="-70" y="-20" w="140" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="12" color="0xffffff"></font>
+				<content>Stile bordo</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenHeroSelectionCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Hero Selection</source_meaning>
+				<translated_meaning>Scegli l’eroe</translated_meaning>
+			</meaning>
+			<area x="-70" y="-20" w="140" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="12" color="0xffffff"></font>
+				<content>Scegli l’eroe</content>
+			</txt>
+		</tad>
+		<!-- ... EDIT PROFILE  -->
+
+		<!-- PROMOTIONS SCREEN ... -->
+		<tad id="TAPromotionsScreenCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Tournament Info</source_meaning>
+				<translated_meaning>Informazioni sul torneo</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="300" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Informazioni sul torneo</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPromotionsScreenInfoButtonCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Tournament</source_meaning>
+				<translated_meaning>Torneo</translated_meaning>
+			</meaning>
+			<area x="-65" y="-18" w="130" h="36">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0x000000"></font>
+				<content>Torneo</content>
+			</txt>
+		</tad>
+		<!-- ... PROMOTIONS SCREEN -->
+
+		<!-- DIALOGS... -->
+
+		<tad id="TADialogButtonOK" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>OK</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonCancel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CANCEL</source_meaning>
+				<translated_meaning>CANCELLA</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>CANCELLA</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonRetry" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RETRY</source_meaning>
+				<translated_meaning>RIPROVA</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="true" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>RIPROVA</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonExit" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>EXIT</source_meaning>
+				<translated_meaning>ESCI</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="true" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>ESCI</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonBuyIn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BUY IN</source_meaning>
+				<translated_meaning>ACQUISTA</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="true" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>ACQUISTA</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonCopy" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>COPY</source_meaning>
+				<translated_meaning>COPIA</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>COPIA</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonYes" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>YES</source_meaning>
+				<translated_meaning>SÌ</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>SÌ</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonNo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>NO</source_meaning>
+				<translated_meaning>NO</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>NO</content>
+			</txt>
+		</tad>
+
+		<!-- TOURNAMENT MODE... -->
+		<tad id="TADialogMessageTournamentEnded" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The tournament has ended. Please head to the lobby for more Max Quest tournaments.</source_meaning>
+				<translated_meaning>Il torneo è terminato. Visita la lobby per avere accesso ad altri tornei di Max Quest.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il torneo è terminato.&#010;Visita la lobby per avere&#010;accesso ad altri tornei di Max Quest.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageTournamentCancelled" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The tournament has been cancelled. Please head to the lobby for more Max Quest tournaments.</source_meaning>
+				<translated_meaning>Il torneo è stato annullato. Visita la lobby per avere accesso ad altri tornei di Max Quest.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il torneo è stato annullato.&#010;Visita la lobby per avere accesso&#010;ad altri tornei di Max Quest.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageTournamentRebuyLimitExceeded" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Rebuys limit achieved. Thank you for playing.</source_meaning>
+				<translated_meaning>Limite della funzione nuovo acquisto raggiunto. Grazie per aver giocato con noi.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Limite della funzione nuovo&#010;acquisto raggiunto. Grazie&#010;per aver giocato con noi.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageTournamentRebuyNotAvailable" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Rebuy is not available. Thank you for playing.</source_meaning>
+				<translated_meaning>Funzione nuovo acquisto non disponibile. Grazie per aver giocato con noi.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Funzione nuovo acquisto non&#010;disponibile. Grazie per aver&#010;giocato con noi.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessagePaidTournamentRebuy" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient tournament balance. You can make a re-buy for $XX.XX. Your new balance will be YY.YY. Make re-buy?</source_meaning>
+				<translated_meaning>Saldo del torneo insufficiente. Puoi effettuare un nuovo acquisto al prezzo di $XX.XX. Il tuo nuovo saldo ammonta a YY.YY. Vuoi effettuare il nuovo acquisto?</translated_meaning>
+			</meaning>
+			<area x="-140" y="-55" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Saldo del torneo insufficiente.&#010;Puoi effettuare un nuovo acquisto&#010;al prezzo di /CURRENCY_SYMBOL//REBUY_VALUE/. Il tuo nuovo saldo&#010;ammonta a /RECHARGE_VALUE/. Vuoi effettuare&#010;il nuovo acquisto?</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageFreerollTournamentRebuy" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient tournament balance. You can make free re-buy. Your new balance will be YY.YY. Make re-buy?</source_meaning>
+				<translated_meaning>Saldo del torneo insufficiente. Puoi effettuare un nuovo acquisto gratuito. Il tuo nuovo saldo ammonta a YY.YY. Vuoi effettuare il nuovo acquisto?</translated_meaning>
+			</meaning>
+			<area x="-140" y="-55" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Saldo del torneo insufficiente.&#010;Puoi effettuare un nuovo acquisto gratuito.&#010;Il tuo nuovo saldo ammonta a /RECHARGE_VALUE/.&#010;Vuoi effettuare il nuovo acquisto?</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageTournamentBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient tournament balance to make a wager at this bet level. Please reduce your bet.</source_meaning>
+				<translated_meaning>Il saldo del torneo è insufficiente per piazzare una scommessa a questo livello di puntata. Diminuisci la puntata.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-55" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il saldo del torneo è insufficiente&#010;per piazzare una scommessa a questo&#010;livello di puntata. Diminuisci la puntata.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageTournamentPayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient tournament balance to make a wager with this special weapon. Please choose another weapon.</source_meaning>
+				<translated_meaning>Il saldo del torneo è insufficiente per piazzare una scommessa con quest’arma speciale. Seleziona un’altra arma.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-55" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il saldo del torneo è insufficiente&#010;per piazzare una scommessa con&#010;quest’arma speciale.&#010;Seleziona un’altra arma.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageTournamentLowBalanceForCurrentRoom" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient funds to play in this room.</source_meaning>
+				<translated_meaning>Fondi insufficienti. Non puoi giocare in questa stanza.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Fondi insufficienti. Non puoi giocare in questa stanza.</content>
+			</txt>
+		</tad>
+		<!-- ...TOURNAMENT MODE -->
+		
+		<tad id="TADialogMessageWebglContextLost" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WebGL context lost. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Connessione a WebGL interrotta. Riprovare e contattare il servizio clienti se l'errore persiste.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Connessione a WebGL interrotta.&#010;Riprovare e contattare il servizio&#010;clienti se l'errore persiste.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorInternal" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Unexpected error has occurred, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Si è verificato un errore imprevisto, non è possibile continuare a giocare. Riprova di nuovo e contatta il servizio clienti se l’errore dovesse persistere.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Si è verificato un errore imprevisto,&#10;non è possibile continuare a giocare.&#10;Riprova di nuovo e contatta il servizio&#10;clienti se l’errore dovesse persistere.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorOperationFailed" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Operation failed.</source_meaning>
+				<translated_meaning>Operazione non riuscita.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Operazione non riuscita.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorServerShutdown" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Server shutdown, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Server non disponibile, non è possibile continuare a giocare. Riprovare e contattare il servizio&#10;clienti se l'errore persiste.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Server non disponibile,&#010;non è possibile continuare a giocare.&#010;Riprovare e contattare il servizio&#10;clienti se l'errore persiste.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorInvalidSession" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your session has expired, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>La sessione è scaduta, non è possibile continuare a giocare. Riprova di nuovo e contatta il servizio clienti se l’errore dovesse persistere.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>La sessione è scaduta, non è possibile&#10;continuare a giocare. Riprova di nuovo&#10;e contatta il servizio clienti se&#10;l’errore dovesse persistere.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorDeprecatedRequest" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Game client is out of date, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Il client del gioco non è aggiornato, non è possibile continuare a giocare. Riprovare e contattare il servizio clienti se l'errore persiste.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il client del gioco non è aggiornato,&#010;non è possibile continuare a giocare.&#010;Riprovare e contattare il servizio&#10;clienti se l'errore persiste.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorPendingTransaction" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Sorry, an unfinished payment transaction was detected, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Siamo spiacenti, è stata rilevata una transazione di pagamento non terminata. Il gioco non può proseguire. Riprovare e contattare il servizio clienti se l'errore persiste.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Siamo spiacenti, è stata rilevata&#10;una transazione di pagamento non&#10;terminata. Il gioco non può proseguire.&#10;Riprovare e contattare il servizio&#10;clienti se l'errore persiste.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorConflictingLobbySession" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cannot enter lobby: Session already in progress. Please close the other session and try again.</source_meaning>
+				<translated_meaning>Impossibile accedere alla lobby: C’è già una sessione in corso. Chiudere l’altra sessione e riprovare.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Impossibile accedere alla lobby:&#10;C’è già una sessione in corso.&#10;Chiudere l’altra sessione&#10;e riprovare.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorSessionValueAsset" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SID:</source_meaning>
+				<translated_meaning>SID:</translated_meaning>
+			</meaning>
+			<area x="-30" y="-10" w="30" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="10" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>SID:</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorTimeValueAsset" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TIME:</source_meaning>
+				<translated_meaning>TIME:</translated_meaning>
+			</meaning>
+			<area x="-30" y="-10" w="30" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="10" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>TIME:</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorUnknownTransactionId" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Unknown transaction id.</source_meaning>
+				<translated_meaning>Unknown transaction id.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Unknown transaction id.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageErrorInsufficientFunds" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient Funds</source_meaning>
+				<translated_meaning>Insufficient Funds</translated_meaning>
+			</meaning>
+			<area x="-125" y="-74" w="250" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>
+					Insufficient Funds
+				</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonRefresh" type="img_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/dialogs/refresh_button_caption.png"/>
+		</tad>
+
+		<tad id="TADialogMessageReconnect" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Please wait...</source_meaning>
+				<translated_meaning>Attendere prego...</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Attendere prego...</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageRoomNotFound" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Room not found. Please, select another room.</source_meaning>
+				<translated_meaning>Stanza non trovata. Selezionane un’altra.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Stanza non trovata.&#10;Selezionane un’altra.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageRoomNotOpen" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>An error occurred while opening the room. Please, select another room.</source_meaning>
+				<translated_meaning>Si è verificato un errore durante l’apertura della stanza. Selezionane un’altra.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Si è verificato un errore durante l’apertura&#10;della stanza. Selezionane un’altra.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageTooManyPlayers" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Too many players in the room. Please, select another room.</source_meaning>
+				<translated_meaning>Troppi giocatori nella stanza. Selezionane un’altra.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Troppi giocatori nella stanza.&#10;Selezionane un’altra.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageBuyInFailedRetryPossible" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Failed to buy ammo. Please try again.</source_meaning>
+				<translated_meaning>Impossibile acquistare le munizioni. Si prega di riprovare.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Impossibile acquistare le munizioni.&#10;Si prega di riprovare.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageReBuyFailedRetryPossible" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Re-buy failed. Please try again.</source_meaning>
+				<translated_meaning>Impossibile completare il nuovo acquisto. Si prega di riprovare.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Impossibile completare il nuovo&#010;acquisto. Si prega di riprovare.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageTooManyObservers" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Too many observers in the room. Please, select another room.</source_meaning>
+				<translated_meaning>Troppi osservatori nella stanza. Selezionane un’altra.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Troppi osservatori nella stanza.&#10;Selezionane un’altra.</content>
+			</txt>
+		</tad>
+
+		<!--LOW BALANCE DIALOGS...-->
+		<tad id="TADialogMessageLowBalanceForFree" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Please exit and re-enter the game to reload your fun money account.</source_meaning>
+				<translated_meaning>Si prega di uscire dal gioco e rientrare per ricaricare il conto divertimento.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Si prega di uscire dal gioco e rientrare&#10;per ricaricare il conto divertimento.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForFreeBetLewel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager at this bet level. Please reduce your bet or exit and re-enter the game to reload your fun money account.</source_meaning>
+				<translated_meaning>Non hai fondi sufficienti sul saldo per scommettere a questo livello di puntata. Diminuisci la scommessa o, per ricaricare il conto divertimento del casinò, esci dal gioco e accedi di nuovo.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Non hai fondi sufficienti sul saldo per&#010;scommettere a questo livello di puntata.&#010;Diminuisci la scommessa o, per ricaricare&#010;il conto divertimento del casinò,&#010;esci dal gioco e accedi di nuovo.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForFreePayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager with this special weapon. Please choose another weapon or exit and re-enter the game to reload your fun money account.</source_meaning>
+				<translated_meaning>Non hai fondi sufficienti sul saldo per scommettere con questa arma speciale. Seleziona un’altra arma o, per ricaricare il conto divertimento del casinò, esci dal gioco e accedi di nuovo.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Non hai fondi sufficienti sul saldo per&#010;scommettere con questa arma speciale.&#010;Seleziona un’altra arma o, per ricaricare&#010;il conto divertimento del casinò,&#010;esci dal gioco e accedi di nuovo.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForReal" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money. Please visit the cashier.</source_meaning>
+				<translated_meaning>Fondi insufficienti. Si prega di visitare la Cassa.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Fondi insufficienti.&#010;Si prega di visitare la Cassa.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForRealBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager at this bet level. Please reduce your bet or visit the cashier.</source_meaning>
+				<translated_meaning>Non hai fondi sufficienti sul saldo per piazzare una scommessa a questo livello di puntata. Diminuisci la puntata o recati alla cassa.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Non hai fondi sufficienti sul saldo&#010;per piazzare una scommessa a questo&#010;livello di puntata. Diminuisci la&#010;puntata o recati alla cassa.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForRealPayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager with this special weapon. Please choose another weapon or visit the cashier.</source_meaning>
+				<translated_meaning>Non hai fondi sufficienti sul saldo per scommettere con questa arma speciale. Seleziona un’arma diversa o recati alla cassa.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Non hai fondi sufficienti sul saldo&#010;per scommettere con questa arma speciale.&#010;Seleziona un’arma diversa o recati&#010;alla cassa.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCashier" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient balance. Please deposit more.</source_meaning>
+				<translated_meaning>Saldo insufficiente. Versa un importo maggiore.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Saldo insufficiente.&#10;Versa un importo maggiore.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCashierBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager at this bet level. Please reduce your bet or deposit more into your balance to continue.</source_meaning>
+				<translated_meaning>Non hai fondi sufficienti sul saldo per piazzare una scommessa a questo livello di puntata. Diminuisci la puntata o deposita fondi sul saldo per continuare.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Non hai fondi sufficienti sul saldo&#010;per piazzare una scommessa a questo&#010;livello di puntata. Diminuisci la puntata&#010;o deposita fondi sul saldo per continuare.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCashierPayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager with this special weapon. Please choose another weapon or deposit more into your balance to continue.</source_meaning>
+				<translated_meaning>Non hai fondi sufficienti sul saldo per scommettere con questa arma speciale. Seleziona un’arma diversa o deposita fondi sul conto per continuare.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Non hai fondi sufficienti sul saldo&#010;per scommettere con questa arma speciale.&#010;Seleziona un’arma diversa o deposita&#010;fondi sul conto per continuare.</content>
+			</txt>
+		</tad>
+		<!--...LOW BALANCE DIALOGS-->
+
+		<!--SW EXCEEDED BET LIMIT DIALOG...-->
+		<tad id="TADialogMessageSWPurchaseLimitExceeded" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You have exceeded your bet amount limit.</source_meaning>
+				<translated_meaning>Hai superato il limite di scommessa.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Hai superato il limite di scommessa.</content>
+			</txt>
+		</tad>
+		<!--...SW EXCEEDED BET LIMIT DIALOG-->
+		
+		<!-- CASH BONUS... -->
+		<tad id="TADialogBonusLobbyIntro" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You are playing in Bonus Mode</source_meaning>
+				<translated_meaning>Stai giocando in Modalità Bonus</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Stai giocando in Modalità Bonus</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogBonusRoomIntro" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You are playing in Bonus Mode.</source_meaning>
+				<translated_meaning>Stai giocando in Modalità Bonus.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Stai giocando in Modalità Bonus.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusExpired" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has expired.</source_meaning>
+				<translated_meaning>Il Bonus è scaduto.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il Bonus è scaduto.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusExpiredRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has expired – You are now playing in Real Money mode.</source_meaning>
+				<translated_meaning>Il Bonus è scaduto - Ora sei nella modalità Denaro Vero.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il Bonus è scaduto - Ora sei nella&#10;modalità Denaro Vero.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusCancelled" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has been cancelled.</source_meaning>
+				<translated_meaning>Il Bonus è stato cancellato.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il Bonus è stato cancellato.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusCancelledRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has been cancelled – You are now playing in Real Money mode.</source_meaning>
+				<translated_meaning>Il tuo bonus è stato annullato. Ora stai giocando in modalità denaro vero.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il tuo bonus è stato annullato. Ora stai&#010;giocando in modalità denaro vero.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusReleased" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your bonus has been released! Thank you for being a loyal player, enjoy!</source_meaning>
+				<translated_meaning>Congratulazioni, il Bonus è stato emesso! Grazie per la continua fiducia e buon divertimento!</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Congratulazioni, il Bonus è stato&#10;emesso! Grazie per la continua&#10;fiducia e buon divertimento!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusFinishedLimitCap" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your max bonus of $XX.XX has been released! Thank you for being a loyal player, enjoy!</source_meaning>
+				<translated_meaning>Congratulazioni, il tuo bonus massimo di $XX.XX è stato approvato! Ti ringraziamo per la fedeltà dimostrata, divertiti!</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Congratulazioni, il tuo bonus&#10;massimo di /CURRENCY_SYMBOL//VALUE/ è stato approvato!&#10;Ti ringraziamo per la fedeltà&#10;dimostrata, divertiti!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusFinishedLimitCapRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your max bonus of $XX.XX has been released! Thank you for being a loyal player, enjoy! Would you like to continue playing in Real Money mode?</source_meaning>
+				<translated_meaning>Congratulazioni, il tuo bonus massimo di $XX.XX è stato approvato! Ti ringraziamo per la fedeltà dimostrata, divertiti! Vuoi continuare a giocare in modalità denaro vero?</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Congratulazioni, il tuo bonus&#10;massimo di /CURRENCY_SYMBOL//VALUE/ è stato approvato!&#10;Ti ringraziamo per la fedeltà&#10;dimostrata, divertiti!&#10;&#10;Vuoi continuare a giocare in&#10;modalità denaro vero?</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusReleasedRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your bonus has been released! Thank you for being a loyal player, enjoy! Would you like to continue playing in Real Money mode?</source_meaning>
+				<translated_meaning>Congratulazioni, il Bonus è stato emesso! Grazie per la continua fiducia e buon divertimento! Vuoi continuare a giocare in modalità denaro vero?</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Congratulazioni, il Bonus è stato&#010;emesso! Grazie per la continua&#010;fiducia e buon divertimento!&#010;&#010;Vuoi continuare a giocare&#010;in modalità denaro vero?</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusLost" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has been lost. Please, contact customer support if you feel this to be in error.</source_meaning>
+				<translated_meaning>Il tuo bonus è andato perso. Contatta l'assistenza clienti se pensi che si sia verificato un errore.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il tuo bonus è andato perso.&#010;Contatta l'assistenza clienti se&#010;pensi che si sia verificato&#010;un errore.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusLostRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has been lost - You are now playing in Real Money mode. Please, contact customer support if you feel this to be in error.</source_meaning>
+				<translated_meaning>Il tuo bonus è andato perso. Ora stai giocando in modalità denaro vero. Contatta l'assistenza clienti se pensi che si sia verificato un errore.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il tuo bonus è andato perso. Ora stai&#010;giocando in modalità denaro vero.&#010;Contatta l'assistenza clienti&#010;se pensi che si sia verificato&#010;un errore.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBonusBalance" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient bonus balance. Please contact customer support if you have any questions or issues.</source_meaning>
+				<translated_meaning>Saldo bonus insufficiente. Ti preghiamo di contattare il servizio clienti per eventuali domande o chiarimenti.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Saldo bonus insufficiente.&#10;Ti preghiamo di contattare il&#10;servizio clienti per eventuali&#10;domande o chiarimenti.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBonusBalanceBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient bonus balance to make a wager at this bet level. Please reduce your bet or contact customer support if you have any questions or issues.</source_meaning>
+				<translated_meaning>Il saldo bonus è insufficiente per piazzare una scommessa a questo livello di puntata. Diminuisci la puntata o contatta il servizio clienti per assistenza.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il saldo bonus è insufficiente per&#010;piazzare una scommessa a questo livello&#010;di puntata. Diminuisci la puntata&#010;o contatta il servizio clienti&#010;per assistenza.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBonusBalancePayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient bonus balance to make a wager with this special weapon. Please choose another weapon or contact customer support if you have any questions or issues.</source_meaning>
+				<translated_meaning>Il saldo bonus è insufficiente per piazzare una scommessa con quest’arma speciale. Scegli un’altra arma o contatta il servizio clienti per assistenza.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il saldo bonus è insufficiente per&#010;piazzare una scommessa con quest’arma&#010;speciale. Scegli un’altra arma o&#010;contatta il servizio clienti&#010;per assistenza.</content>
+			</txt>
+		</tad>
+
+		<!-- ...CASH BONUS -->
+
+		<!--ARE YOU SURE DIALOG...-->
+		<tad id="TADialogMRECaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ARE YOU SURE?</source_meaning>
+				<translated_meaning>SEI SICURO?</translated_meaning>
+			</meaning>
+			<area x="-50" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>SEI SICURO?</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMRELeavingRoom" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Leaving ROOM now!</source_meaning>
+				<translated_meaning>Stai uscendo dalla STANZA!</translated_meaning>
+			</meaning>
+			<area x="-215" y="-30" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="21" color="0xf6921e"/>
+				<content>Stai uscendo dalla STANZA!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMRENote" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Are you sure you wish to leave the room? You may not be able to return to the round in progress if you do.</source_meaning>
+				<translated_meaning>Sei sicuro di voler uscire dalla stanza? Potresti non poter più partecipare al turno in corso.</translated_meaning>
+			</meaning>
+			<area x="-215" y="-25" w="430" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="18">
+				<font name="fnt_nm_barlow" size="14.5" color="0xf6921e"></font>
+				<content>Sei sicuro di voler uscire dalla stanza?&#010;Potresti non poter più partecipare al turno in corso.</content>
+			</txt>
+		</tad>
+		<!--...ARE YOU SURE DIALOG-->
+
+		<!--MID ROUND COMPENSATE SW EXIT...-->
+		<tad id="TADialogCompensateSW" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You have left ROOM /ROOM_ID/.</source_meaning>
+				<translated_meaning>Sei uscito dalla STANZA /ROOM_ID/.</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" bold="false"/>
+				<content>Sei uscito dalla STANZA /ROOM_ID/.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogCompensateSWInfo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Returned Cash for Special Weapons:</source_meaning>
+				<translated_meaning>Denaro rimborsato per le armi speciali:</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="12" color="0xFFFFFF" bold="false"/>
+				<content>Denaro rimborsato per le armi speciali:</content>
+			</txt>
+		</tad>
+		<!--...MID ROUND COMPENSATE SW EXIT-->
+		
+		<!--RETURN SW ON ROUND RESULT-->
+		<tad id="TADialogReturnUnexplodedMinesInfo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Returned Cash for Unexploded Mines:</source_meaning>
+				<translated_meaning>Denaro rimborsato per le mine inesplose:</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="12" color="0xFFFFFF" bold="false"/>
+				<content>Denaro rimborsato per le mine inesplose:</content>
+			</txt>
+		</tad>
+		<!--...RETURN SW ON ROUND RESULT-->
+
+		<!--PICKS UP SPECIAL WEAPONS FIRST TIME...-->
+		<tad id="TADialogPicksUpSpecialWeaponsFirstTimeInfo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You got a special weapon! Do you want to
+								use them immediately?</source_meaning>
+				<translated_meaning>Hai ottenuto un’arma speciale! Vuoi utilizzarla immediatamente?</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="12" color="0xFFFFFF" bold="false"/>
+				<content>Hai ottenuto un’arma speciale! Vuoi&#010;utilizzarla immediatamente?</content>
+			</txt>
+		</tad>
+		<!--...PICKS UP SPECIAL WEAPONS FIRST TIME-->
+
+		<!--FORCE SIT OUT EXIT...-->
+		<tad id="TADialogForceSitOut" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You have been disconnected from the server due to the excessive delay</source_meaning>
+				<translated_meaning>Un ritardo eccessivo ha causato la tua disconnessione dal server</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow" size="15" color="0xFFFFFF" bold="false"/>
+				<content>Un ritardo eccessivo ha causato la&#10;tua disconnessione dal server</content>
+			</txt>
+		</tad>
+		<!--...FORCE SIT OUT EXIT EXIT-->
+
+		<!--RETURN TO GAME...-->
+		<tad id="TADialogRTGCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Rejoin Room?</source_meaning>
+				<translated_meaning>Rientrare nella stanza?</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>Rientrare nella stanza?</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogRTGResumeRoom" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You were previously playing in ROOM /ROOM_ID/ with cost of /CURRENCY_SYMBOL//MIN_VALUE/ - /CURRENCY_SYMBOL//MAX_VALUE/  per bullet. Would you like to resume your game?</source_meaning>
+				<translated_meaning>Prima stavi giocando nella STANZA /ROOM_ID/ con un costo per cartuccia di /CURRENCY_SYMBOL//MIN_VALUE/ - /CURRENCY_SYMBOL//MAX_VALUE/. Vuoi riprendere il gioco?</translated_meaning>
+			</meaning>
+			<area x="-215" y="-40" w="430" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="false"/>
+				<content>Prima stavi giocando nella STANZA /ROOM_ID/&#010;con un costo per cartuccia di /CURRENCY_SYMBOL//MIN_VALUE/ - /CURRENCY_SYMBOL//MAX_VALUE/.&#010;Vuoi riprendere il gioco?</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogRTGNote" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Please note that selecting NO will forfeit your spot in the game and may result in a loss of future room winnings</source_meaning>
+				<translated_meaning>Attenzione! Premendo NO abbandonerai il tuo posto nel gioco e potresti perdere le vincite</translated_meaning>
+			</meaning>
+			<area x="-215" y="-25" w="430" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="18">
+				<font name="fnt_nm_barlow" size="14.5" color="0xfc970b"></font>
+				<content>Attenzione! Premendo NO abbandonerai il tuo posto&#010;nel gioco e potresti perdere le vincite</content>
+			</txt>
+		</tad>
+		<!--...RETURN TO GAME-->
+
+		<!--FRB...-->
+		<tad id="TADialogFRBLobbyIntro" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You are now playing your Free Bonus Round! Enjoy and Good Luck!</source_meaning>
+				<translated_meaning>Stai giocando con il Bonus Turno Gratis! Buon divertimento e buona fortuna!</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Stai giocando con&#010;il Bonus Turno Gratis!&#010;Buon divertimento e buona fortuna!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogFRBRoomIntro" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You are now playing your Free Bonus Round! Enjoy and Good Luck! You have XX Free Shots Remaining.</source_meaning>
+				<translated_meaning>Stai giocando con il Bonus Turno Gratis! Buon divertimento e buona fortuna! Ti #shots:rimane,rimangono# /VALUE/ #shots:cartuccia,cartucce# gratis.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Stai giocando con&#010;il Bonus Turno Gratis!&#010;Buon divertimento e buona fortuna!&#010;Ti #shots:rimane,rimangono# /VALUE/ #shots:cartuccia,cartucce# gratis.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBFinished" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations! Your Free Bonus Round is complete. Total win for the Free Bonus Round was $XX.XX</source_meaning>
+				<translated_meaning>Complimenti! Il Bonus Turno Gratis è terminato. Vincita totale con il Bonus Turno Gratis: $XX.XX</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Complimenti!&#10;Il Bonus Turno Gratis è terminato.&#10;Vincita totale con il Bonus Turno&#10;Gratis: /CURRENCY_SYMBOL//VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBFinishedLimitCap" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your max bonus of $XX.XX has been released! Thank you for being a loyal player, enjoy!</source_meaning>
+				<translated_meaning>Congratulazioni, il tuo bonus massimo di $XX.XX è stato approvato! Ti ringraziamo per la fedeltà dimostrata, divertiti!</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Congratulazioni, il tuo bonus&#10;massimo di /CURRENCY_SYMBOL//VALUE/ è stato approvato!&#10;Ti ringraziamo per la fedeltà&#10;dimostrata, divertiti!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBFinishedLimitCapRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your max bonus of $XX.XX has been released! Thank you for being a loyal player, enjoy! Would you like to continue playing in Real Money mode?</source_meaning>
+				<translated_meaning>Congratulazioni, il tuo bonus massimo di $XX.XX è stato approvato! Ti ringraziamo per la fedeltà dimostrata, divertiti! Vuoi continuare a giocare in modalità denaro vero?</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Congratulazioni, il tuo bonus&#10;massimo di /CURRENCY_SYMBOL//VALUE/ è stato approvato!&#10;Ti ringraziamo per la fedeltà&#10;dimostrata, divertiti!&#10;&#10;Vuoi continuare a giocare in&#10;modalità denaro vero?</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogStandardFRBFinishedRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations! Your Free Bonus Round is complete. Total win for the Free Bonus Round was $XX.XX Would you like to continue playing in Real Money mode?</source_meaning>
+				<translated_meaning>Complimenti! Il Bonus Turno Gratis è terminato. Vincita totale con il Bonus Turno Gratis: $XX.XX Vuoi continuare a giocare in modalità denaro vero?</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Complimenti!&#010;Il Bonus Turno Gratis è terminato.&#010;Vincita totale con il Bonus Turno Gratis: /CURRENCY_SYMBOL//VALUE/&#010;&#010;Vuoi continuare a giocare&#010;in modalità denaro vero?</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBCancelled" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Bonus Round canceled - If you find this to be in error, please contact support.</source_meaning>
+				<translated_meaning>Il Bonus Turno Gratis è stato cancellato - Ti preghiamo di contattare il servizio clienti se pensi che questo sia un errore.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il Bonus Turno Gratis è stato&#10;cancellato - Ti preghiamo di&#10;contattare il servizio clienti&#10;se pensi che questo sia un errore.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogStandardFRBCancelledRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Bonus Round canceled - You are now playing in Real Money mode. If you find this to be in error, please contact support.</source_meaning>
+				<translated_meaning>Il Bonus Turno Gratis è stato cancellato - Ora sei nella modalità Denaro Vero. Ti preghiamo di contattare il servizio clienti se pensi che questo sia un errore.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il Bonus Turno Gratis è stato&#10;cancellato - Ora sei nella&#10;modalità Denaro Vero. Ti preghiamo&#10;di contattare il servizio clienti&#10;se pensi che questo sia un errore.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBExpired" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has expired. Please contact customer support if you feel this to be in error.</source_meaning>
+				<translated_meaning>Il Bonus è scaduto. Ti preghiamo di contattare il servizio clienti se pensi che questo sia un errore.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il Bonus è scaduto. Ti preghiamo&#10;di contattare il servizio clienti&#10;se pensi che questo sia un errore.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogStandardFRBExpiredRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has expired - You are now playing in Real Money mode. Please contact customer support if you feel this to be in error.</source_meaning>
+				<translated_meaning>Il Bonus è scaduto - Ora sei nella modalità Denaro Vero. Ti preghiamo di contattare il servizio clienti se pensi che questo sia un errore.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Il Bonus è scaduto - Ora sei nella&#10;modalità Denaro Vero. Ti preghiamo&#10;di contattare il servizio clienti&#10;se pensi che questo sia un errore.</content>
+			</txt>
+		</tad>
+		<!--...FRB-->
+		<!-- ...DIALOGS -->
+
+		<tad id="TATipsSelectRoom" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Select any ROOM to BEGIN</source_meaning>
+				<translated_meaning>Seleziona qualsiasi STANZA per INIZIARE</translated_meaning>
+			</meaning>
+			<area x="-200" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Seleziona qualsiasi STANZA per INIZIARE</content>
+			</txt>
+		</tad>
+
+		<!-- PAYTABLE... -->
+		<tad id="TAPaytableTitle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Help</source_meaning>
+				<translated_meaning>Aiuto</translated_meaning>
+			</meaning>
+			<area x="0" y="-30" w="400" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="18" color="0xffffff" bold="false"></font>
+				<content>Aiuto</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytablePrintableLable" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>DETAILED RULES</source_meaning>
+				<translated_meaning>REGOLE COMPLETE</translated_meaning>
+			</meaning>
+			<area x="-100" y="-28" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="9" color="0xffffff"></font>
+				<content>REGOLE COMPLETE</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytablePrewBtnLable" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>&#60;</source_meaning>
+				<translated_meaning>&#60;</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="9" color="0x000000"></font>
+				<content>&#60;</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemyPayoutsXLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>xNumber</source_meaning>
+				<translated_meaning>xXX</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>x/VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemyPayoutsHPLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>HP: XX</source_meaning>
+				<translated_meaning>PF: XX</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>PF: /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableSpecialWeaponCostLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Numberx</source_meaning>
+				<translated_meaning>XXx</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>/VALUE/x</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TAPaytableEnemyBossPayputsXLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>xNumber - xNumber</source_meaning>
+				<translated_meaning>xXX - xXX</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>x/MIN VALUE/ - x/MAX VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableLootboxPrizeXLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Numberx</source_meaning>
+				<translated_meaning>XXx</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>/VALUE/x</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsTurret" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Turret</source_meaning>
+				<translated_meaning>Torretta</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Torretta</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsMineLauncher" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Mine Launcher</source_meaning>
+				<translated_meaning>Lanciamine</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Lanciamine</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsPlasmaRifle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Plasma Rifle</source_meaning>
+				<translated_meaning>Fucile al Plasma</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Fucile al Plasma</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsFlamethrower" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Flamethrower</source_meaning>
+				<translated_meaning>Lanciafiamme</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Lanciafiamme</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsCryogun" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cryogun</source_meaning>
+				<translated_meaning>Pistola Criogenica</translated_meaning>
+			</meaning>
+			<area x="-100" y="-40" w="200" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Pistola&#10;Criogenica</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsArtilleryStrike" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Artillery Strike</source_meaning>
+				<translated_meaning>Fumogeno</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Fumogeno</content>
+			</txt>
+		</tad>
+		<!-- ...PAYTABLE -->
+	</tasds>
+</td>

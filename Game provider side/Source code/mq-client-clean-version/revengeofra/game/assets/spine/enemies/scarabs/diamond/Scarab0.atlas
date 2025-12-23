@@ -1,0 +1,69 @@
+
+Scarab0.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/body
+  rotate: false
+  xy: 2, 13
+  size: 141, 113
+  orig: 141, 113
+  offset: 0, 0
+  index: -1
+0/head
+  rotate: false
+  xy: 145, 19
+  size: 92, 107
+  orig: 92, 107
+  offset: 0, 0
+  index: -1
+0/horn
+  rotate: true
+  xy: 239, 2
+  size: 41, 102
+  orig: 41, 102
+  offset: 0, 0
+  index: -1
+0/leg_lf1
+  rotate: true
+  xy: 333, 50
+  size: 76, 87
+  orig: 76, 87
+  offset: 0, 0
+  index: -1
+0/leg_lf2
+  rotate: true
+  xy: 518, 79
+  size: 47, 91
+  orig: 47, 91
+  offset: 0, 0
+  index: -1
+0/leg_lf3
+  rotate: false
+  xy: 422, 78
+  size: 94, 48
+  orig: 94, 48
+  offset: 0, 0
+  index: -1
+0/leg_rt1
+  rotate: false
+  xy: 239, 45
+  size: 92, 81
+  orig: 92, 81
+  offset: 0, 0
+  index: -1
+0/leg_rt2
+  rotate: false
+  xy: 696, 90
+  size: 60, 36
+  orig: 60, 36
+  offset: 0, 0
+  index: -1
+0/leg_rt3
+  rotate: false
+  xy: 611, 82
+  size: 83, 44
+  orig: 83, 44
+  offset: 0, 0
+  index: -1

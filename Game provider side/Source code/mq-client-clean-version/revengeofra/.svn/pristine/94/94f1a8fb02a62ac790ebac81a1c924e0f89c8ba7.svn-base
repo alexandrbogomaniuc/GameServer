@@ -1,0 +1,44 @@
+import ExternalAssetsController from '../../../../../common/PIXI/src/controller/custom/ExternalAssetsController';
+import { APP } from '../../../../../common/PIXI/src/globals';
+import Game from '../../Game';
+import ExternalAssetsInfo from '../../../../../common/PIXI/src/model/custom/ExternalAssetsInfo';
+
+class GameExternalAssetsController extends ExternalAssetsController
+{
+	//INIT...
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		APP.on(Game.EVENT_ON_EXTERNAL_ASSETS_UPDATED, this._onExternalAssetsUpdated, this);
+	}
+	//...INIT
+
+	_onExternalAssetsUpdated(event)
+	{
+		let data = event.data;
+		if (Object.keys(data).length)
+		{
+			for (let key in data)
+			{
+				for (let i = 0, len =  data[key].length; i <len; i++) 
+				{
+					switch (key)
+					{
+						case ExternalAssetsInfo.ASSET_TYPE_FONT:
+							break;
+					}
+				}
+			}
+		}
+	}
+
+	destroy()
+	{
+		APP.off(Game.EVENT_ON_EXTERNAL_ASSETS_UPDATED, this._onExternalAssetsUpdated, this);
+
+		super.destroy();
+	}
+}
+
+export default GameExternalAssetsController;

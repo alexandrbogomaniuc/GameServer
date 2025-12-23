@@ -1,0 +1,159 @@
+{
+  "frames": {
+    "MQ_SX_ChainreactionContainer_example_00043.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 718,
+        "h": 643
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 99,
+        "w": 718,
+        "h": 643
+      },
+      "sourceSize": {
+        "w": 1407,
+        "h": 959
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionContainer_example_00044.png": {
+      "frame": {
+        "x": 721,
+        "y": 1,
+        "w": 740,
+        "h": 676
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 324,
+        "y": 67,
+        "w": 740,
+        "h": 676
+      },
+      "sourceSize": {
+        "w": 1407,
+        "h": 959
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionContainer_example_00045.png": {
+      "frame": {
+        "x": 1,
+        "y": 646,
+        "w": 735,
+        "h": 681
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 323,
+        "y": 80,
+        "w": 735,
+        "h": 681
+      },
+      "sourceSize": {
+        "w": 1407,
+        "h": 959
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionContainer_example_00046.png": {
+      "frame": {
+        "x": 1,
+        "y": 1383,
+        "w": 719,
+        "h": 659
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 333,
+        "y": 87,
+        "w": 719,
+        "h": 659
+      },
+      "sourceSize": {
+        "w": 1407,
+        "h": 959
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionContainer_example_00047.png": {
+      "frame": {
+        "x": 684,
+        "y": 679,
+        "w": 749,
+        "h": 676
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 323,
+        "y": 89,
+        "w": 749,
+        "h": 676
+      },
+      "sourceSize": {
+        "w": 1407,
+        "h": 959
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionContainer_example_00048.png": {
+      "frame": {
+        "x": 722,
+        "y": 1357,
+        "w": 728,
+        "h": 669
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 89,
+        "w": 728,
+        "h": 669
+      },
+      "sourceSize": {
+        "w": 1407,
+        "h": 959
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "texture-0.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 1462,
+      "h": 2043
+    },
+    "scale": 2
+  }
+}

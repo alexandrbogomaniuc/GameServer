@@ -1,0 +1,139 @@
+
+UndiscoveredMummy90.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90/arm_lf
+  rotate: false
+  xy: 191, 550
+  size: 105, 187
+  orig: 105, 187
+  offset: 0, 0
+  index: -1
+90/arm_rt
+  rotate: false
+  xy: 4, 4
+  size: 126, 193
+  orig: 126, 193
+  offset: 0, 0
+  index: -1
+90/body
+  rotate: false
+  xy: 4, 741
+  size: 260, 279
+  orig: 260, 279
+  offset: 0, 0
+  index: -1
+90/calf_lf
+  rotate: true
+  xy: 557, 781
+  size: 93, 138
+  orig: 93, 138
+  offset: 0, 0
+  index: -1
+90/calf_rt
+  rotate: false
+  xy: 191, 398
+  size: 110, 148
+  orig: 110, 148
+  offset: 0, 0
+  index: -1
+90/eyes_glow
+  rotate: false
+  xy: 300, 550
+  size: 88, 78
+  orig: 88, 78
+  offset: 0, 0
+  index: -1
+90/foot_lf
+  rotate: true
+  xy: 147, 231
+  size: 163, 136
+  orig: 163, 136
+  offset: 0, 0
+  index: -1
+90/foot_rt
+  rotate: false
+  xy: 557, 878
+  size: 159, 142
+  orig: 159, 142
+  offset: 0, 0
+  index: -1
+90/forearm_lf
+  rotate: true
+  xy: 720, 891
+  size: 129, 172
+  orig: 129, 172
+  offset: 0, 0
+  index: -1
+90/forearm_rt
+  rotate: false
+  xy: 896, 854
+  size: 112, 166
+  orig: 112, 166
+  offset: 0, 0
+  index: -1
+90/hand_lf
+  rotate: false
+  xy: 441, 656
+  size: 89, 169
+  orig: 89, 169
+  offset: 0, 0
+  index: -1
+90/hand_lf2
+  rotate: false
+  xy: 305, 449
+  size: 89, 97
+  orig: 89, 97
+  offset: 0, 0
+  index: -1
+90/hand_rt
+  rotate: false
+  xy: 300, 632
+  size: 137, 159
+  orig: 137, 159
+  offset: 0, 0
+  index: -1
+90/hand_rt2
+  rotate: false
+  xy: 534, 665
+  size: 112, 112
+  orig: 112, 112
+  offset: 0, 0
+  index: -1
+90/head
+  rotate: false
+  xy: 268, 795
+  size: 150, 225
+  orig: 150, 225
+  offset: 0, 0
+  index: -1
+90/hip
+  rotate: false
+  xy: 4, 410
+  size: 183, 327
+  orig: 183, 327
+  offset: 0, 0
+  index: -1
+90/leg_lf
+  rotate: false
+  xy: 422, 829
+  size: 131, 191
+  orig: 131, 191
+  offset: 0, 0
+  index: -1
+90/leg_rt
+  rotate: false
+  xy: 4, 201
+  size: 139, 205
+  orig: 139, 205
+  offset: 0, 0
+  index: -1
+90/snake
+  rotate: false
+  xy: 650, 710
+  size: 45, 67
+  orig: 45, 67
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,86 @@
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import HorusEffectsManager from './HorusEffectsManager';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import { FRAME_RATE } from '../../../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../../../common/PIXI/src/animation/Sequence';
+import * as Easing from '../../../../../../../common/PIXI/src/animation/easing';
+import { Utils } from '../../../../../../../common/PIXI/src/Utils';
+
+class EternalOrbAnimation extends Sprite
+{
+	constructor(aIsBlurred_bl = false)
+	{
+		super();
+
+		this._fIsBlurred_bl = aIsBlurred_bl;
+
+		this._gameScreen = APP.currentWindow;
+
+		this._orbContainer = null; //container for orb + circle
+		this._orb = null;
+		this._circle = null;
+
+		this._initOrbContainer();
+
+		this.startAnimation();
+	}
+
+	get blurred() {
+		return this._fIsBlurred_bl;
+	}
+
+	//ANIMATION...
+	startAnimation()
+	{
+		this._orb.play();
+
+		this.startCircleAnimation();
+	}
+
+	startCircleAnimation()
+	{
+		Sequence.start(this._circle, [
+			{tweens: [{prop: "scale.x", to: 0.3}, {prop: "scale.y", to: 0.3}, {prop: "alpha", to: 0.5}], duration:  4 * FRAME_RATE},
+			{tweens: [{prop: "scale.x", to: 0.7}, {prop: "scale.y", to: 0.7}, {prop: "alpha", to:   0}], duration: 10 * FRAME_RATE},
+			{tweens: [], duration: 15 * FRAME_RATE,
+				onfinish: (e) =>
+				{
+					this._circle.scale.set(0.13);
+					this.startCircleAnimation();
+				}
+			}
+		]);
+	}
+	//...ANIMATION
+
+	//ASSETS...
+	_initOrbContainer()
+	{
+		let container = this._orbContainer = this.addChild(new Sprite());
+		container.scale.set(0.7);
+
+		let orb = this._orb = container.addChild(new Sprite());
+		orb.textures = this.blurred ? HorusEffectsManager.getStaffOrbBlurredTextures() : HorusEffectsManager.getStaffOrbTextures();
+		orb.blendMode = PIXI.BLEND_MODES.ADD;
+		orb.animationSpeed = 0.2;
+
+		let lCircleAssetName_str = this.blurred ? "enemies/horus/fx/circle_blurred" : "enemies/horus/fx/circle";
+ 		let circle = this._circle = container.addChild(APP.library.getSprite(lCircleAssetName_str));
+		circle.blendMode = PIXI.BLEND_MODES.ADD;
+		circle.scale.set(0.13);
+		circle.alpha = 0;
+	}
+	//...ASSETS
+
+	destroy()
+	{
+		this._orb.stop();
+
+		Sequence.destroy(Sequence.findByTarget(this._orbContainer));
+		Sequence.destroy(Sequence.findByTarget(this._circle));
+
+		super.destroy();
+	}
+}
+
+export default EternalOrbAnimation;

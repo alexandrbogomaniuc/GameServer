@@ -1,0 +1,76 @@
+
+MummyWarrior180.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummyWarrior180_armL
+  rotate: false
+  xy: 302, 47
+  size: 132, 72
+  orig: 132, 72
+  offset: 0, 0
+  index: -1
+MummyWarrior180_armR
+  rotate: true
+  xy: 1, 1
+  size: 118, 170
+  orig: 118, 170
+  offset: 0, 0
+  index: -1
+MummyWarrior180_hair
+  rotate: true
+  xy: 738, 70
+  size: 49, 95
+  orig: 49, 95
+  offset: 0, 0
+  index: -1
+MummyWarrior180_head
+  rotate: true
+  xy: 969, 87
+  size: 32, 38
+  orig: 32, 38
+  offset: 0, 0
+  index: -1
+MummyWarrior180_hips
+  rotate: true
+  xy: 435, 35
+  size: 84, 97
+  orig: 84, 97
+  offset: 0, 0
+  index: -1
+MummyWarrior180_legL
+  rotate: true
+  xy: 533, 67
+  size: 52, 110
+  orig: 52, 110
+  offset: 0, 0
+  index: -1
+MummyWarrior180_legR
+  rotate: true
+  xy: 834, 81
+  size: 38, 97
+  orig: 38, 97
+  offset: 0, 0
+  index: -1
+MummyWarrior180_torso
+  rotate: true
+  xy: 644, 60
+  size: 59, 93
+  orig: 59, 93
+  offset: 0, 0
+  index: -1
+MummyWarrior90_armL
+  rotate: true
+  xy: 172, 16
+  size: 103, 129
+  orig: 103, 129
+  offset: 0, 0
+  index: -1
+MummyWarrior90_head
+  rotate: false
+  xy: 932, 82
+  size: 36, 37
+  orig: 36, 37
+  offset: 0, 0
+  index: -1

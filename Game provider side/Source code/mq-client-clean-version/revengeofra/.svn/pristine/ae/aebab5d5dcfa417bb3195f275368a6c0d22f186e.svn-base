@@ -1,0 +1,218 @@
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import WheelSectorView from './sector/WheelSectorView';
+import { SECTOR_STATES } from './sector/WheelSectorView';
+import { Utils } from '../../../../../../../common/PIXI/src/Utils';
+import * as Easing from '../../../../../../../common/PIXI/src/animation/easing';
+import { FRAME_RATE } from '../../../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../../../common/PIXI/src/animation/Sequence';
+
+export const WHEEL_SECTORS_AMOUNT = 18;
+
+const RADIUS = 130;
+
+class WheelSectorsView extends Sprite
+{
+	set data (aData_num_arr)
+	{
+		let sectorsData_num_arr = [];
+		if (aData_num_arr && aData_num_arr.length)
+		{
+			for (let i=0; i<WHEEL_SECTORS_AMOUNT; i++)
+			{
+				let sectorDataIndex_int = i%aData_num_arr.length;
+				sectorsData_num_arr[i] = aData_num_arr[sectorDataIndex_int];
+			}
+		}
+
+		this._updateSectorsData(sectorsData_num_arr);
+	}
+
+	rotateToValue(aTargetValue_num)
+	{
+		this._rotateToValue(aTargetValue_num);
+	}
+
+	setSelectedWinView()
+	{
+		let targetSector = this._sectors[this._targetSectorIndex_num];
+		targetSector && targetSector.updateState(SECTOR_STATES.WIN);
+	}
+
+	resetView()
+	{
+		this._resetView();
+	}
+
+	constructor(aData_num_arr)
+	{
+		super();
+
+		this._fContainer_sprt = this.addChild(new Sprite);
+		this._fSectorsContainer_sprt = null;
+		this._sectors = [];
+		this._rotationChangeObj = {angle: 0};
+		this._targetSectorIndex_num = undefined;
+		this._isRotationSoundPlaying_bl = false;
+
+		this._addBase();
+
+		this._addSectors();
+
+		this.data = aData_num_arr;
+	}
+
+	_addBase()
+	{
+		let base = this._fContainer_sprt.addChild(APP.library.getSprite("quests/wheel/wheel_sectors_base"));
+	}
+
+	_addSectors()
+	{
+		this._fSectorsContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+		
+		for (let i=0; i<WHEEL_SECTORS_AMOUNT; i++)
+		{
+			let sector = this._addSector();
+			let sectorRotation = Utils.gradToRad(this._getSectorAngle(i));
+			sector.x = RADIUS * Math.cos(sectorRotation);
+			sector.y = RADIUS * Math.sin(sectorRotation);
+			sector.rotation = sectorRotation;
+		}
+	}
+
+	_getSectorAngle(aSectorIndex_int)
+	{
+		return -20*aSectorIndex_int;
+	}
+
+	_addSector()
+	{
+		let lSectorsContainer_sprt = this._fSectorsContainer_sprt;
+		let sector = lSectorsContainer_sprt.addChild(new WheelSectorView());
+
+		this._sectors.push(sector);
+
+		return sector;
+	}
+
+	_updateSectorsData(aData_num_arr)
+	{
+		for (let i=0; i<this._sectors.length; i++)
+		{
+			let sector = this._sectors[i];
+			let sectorValue = aData_num_arr && aData_num_arr[i] ? aData_num_arr[i] : 0;
+			
+			sector.value = sectorValue;
+		}
+	}
+
+	_rotateToValue(aTargetValue_num)
+	{
+		let targetSectorIndex = this._targetSectorIndex_num = this._findTargetSectorIndex(aTargetValue_num);
+		if (targetSectorIndex < 0)
+		{
+			throw new Error(`Cannot find sector by target value: ${aTargetValue_num}`);
+		}
+
+		let targetSectorRotationAngle = this._getSectorAngle(targetSectorIndex);
+		let targetRotationAngle = (360*6-targetSectorRotationAngle);
+		
+		this._rotationChangeObj.angle = 0;
+
+		let lSeq_arr = [
+			{tweens: [{prop: 'angle', to: targetRotationAngle+7, onchange: () => {this._updateWheelRotation();} }], duration: (43+43)*FRAME_RATE,  ease: Easing.sine.easeIn},
+			{tweens: [{prop: 'angle', to: targetRotationAngle, onchange: () => {this._updateWheelRotation();} }], duration: 9*FRAME_RATE,  ease: Easing.sine.easeOut,
+				onfinish: ()=> {
+					this._onRotationCompleted();
+				}
+			}
+		];
+
+		Sequence.start(this._rotationChangeObj, lSeq_arr);
+
+		APP.soundsController.play("quests_wheel_turn", true);
+		this._isRotationSoundPlaying_bl = true;
+	}
+
+	_updateWheelRotation()
+	{
+		let wheelAngle = this._rotationChangeObj.angle%360;
+		this._fContainer_sprt.rotation = Utils.gradToRad(wheelAngle);
+	}
+
+	_onRotationCompleted()
+	{
+		this._rotationChangeObj.angle = 0;
+
+		if (this._isRotationSoundPlaying_bl)
+		{
+			this._isRotationSoundPlaying_bl = false;
+			APP.soundsController.stop("quests_wheel_turn");
+		}
+
+		APP.soundsController.play("quests_wheel_stop", false);
+	}
+
+	_findTargetSectorIndex(aTargetValue_num)
+	{
+		let targetSectorIndex = -1;
+		for (let i=0; i<this._sectors.length; i++)
+		{
+			let curSector = this._sectors[i];
+			if (curSector.value == aTargetValue_num)
+			{
+				targetSectorIndex = i;
+				break;
+			}
+		}
+
+		return targetSectorIndex;
+	}
+
+	_resetView()
+	{
+		this._interruptRotation();
+
+		if (this._targetSectorIndex_num !== undefined)
+		{
+			let targetSector = this._sectors[this._targetSectorIndex_num];
+			targetSector.updateState(SECTOR_STATES.NORMAL);
+		}
+
+		this._targetSectorIndex_num = undefined;
+	}
+
+	_interruptRotation()
+	{
+		if (this._isRotationSoundPlaying_bl)
+		{
+			this._isRotationSoundPlaying_bl = false;
+			APP.soundsController.stop("quests_wheel_turn");
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this._rotationChangeObj));
+		this._rotationChangeObj.angle = 0;
+
+		this._updateWheelRotation();
+	}
+
+	destroy()
+	{
+		this._fContainer_sprt = null;
+		this._fSectorsContainer_sprt = null;
+		this._sectors = null;
+		this._targetSectorIndex_num = undefined;
+		this._isRotationSoundPlaying_bl = false;
+
+		if (this._rotationChangeObj)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._rotationChangeObj));
+			this._rotationChangeObj = null;
+		}
+
+		super.destroy();
+	}
+}
+
+export default WheelSectorsView;

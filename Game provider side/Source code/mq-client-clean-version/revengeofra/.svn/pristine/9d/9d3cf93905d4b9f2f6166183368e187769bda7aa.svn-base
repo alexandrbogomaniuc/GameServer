@@ -1,0 +1,113 @@
+import SimpleUIController from '../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import BossModeView from '../../../../view/uis/custom/bossmode/BossModeView';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import GameScreen from '../../../../main/GameScreen';
+
+class BossModeController extends SimpleUIController
+{
+	static get EVENT_APPEARING_STARTED() 					{return BossModeView.EVENT_APPEARING_STARTED;}
+	static get EVENT_APPEARING_PRESENTATION_STARTED() 		{return BossModeView.EVENT_APPEARING_PRESENTATION_STARTED;}
+	static get EVENT_APPEARING_PRESENTATION_CULMINATED() 	{return BossModeView.EVENT_APPEARING_PRESENTATION_CULMINATED;}
+	static get EVENT_APPEARING_PRESENTATION_COMPLETION() 	{return BossModeView.EVENT_APPEARING_PRESENTATION_COMPLETION;}
+	static get EVENT_APPEARING_PRESENTATION_COMPLETED() 	{return BossModeView.EVENT_APPEARING_PRESENTATION_COMPLETED;}
+	static get EVENT_DISAPPEARING_PRESENTATION_STARTED() 	{return BossModeView.EVENT_DISAPPEARING_PRESENTATION_STARTED;}
+	static get EVENT_DISAPPEARING_PRESENTATION_COMPLETION() {return BossModeView.EVENT_DISAPPEARING_PRESENTATION_COMPLETION;}
+	static get EVENT_DISAPPEARING_PRESENTATION_COMPLETED() 	{return BossModeView.EVENT_DISAPPEARING_PRESENTATION_COMPLETED;}
+	static get EVENT_HIDE_TINTED_VIEW()						{return BossModeView.EVENT_HIDE_TINTED_VIEW;}
+	static get EVENT_ON_CAPTION_ANIMATION_STARTED()			{return BossModeView.EVENT_ON_CAPTION_ANIMATION_STARTED;}
+
+	//INIT...
+	__init()
+	{
+		super.__init();
+	}
+
+	//INIT...
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		this._gameScreen = APP.gameScreen;
+		this._gameScreen.on(GameScreen.EVENT_ON_NEW_BOSS_CREATED, this._onNewBossCreated, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_BOSS_DESTROYING, this._onBossDestroying, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_BOSS_DESTROYED, this._onBossDestroyed, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_GAME_FIELD_CLEARED, this._onGameFieldCleared, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_TIME_TO_EXPLODE_COINS, this._onTimeToExplodeCoins, this);
+	}
+	//...INIT
+
+	get bossType()
+	{
+		return this.view.bossType;
+	}
+
+	_onNewBossCreated(event)
+	{
+		let lView_bmv = this.view;
+		let zombie = this._gameScreen.gameField.getExistEnemy(event.enemyId);
+
+		if (!zombie)
+		{
+			throw new Error(`No Boss enemy with id = ${event.enemyId} found on the screen`);
+			return;
+		}
+
+		let isLasthandBossView = event.isLasthandBossView;
+		if (isLasthandBossView)
+		{
+			lView_bmv.updateBossType(zombie.name);
+			return;
+		}
+		
+		lView_bmv.on(BossModeView.EVENT_APPEARING_STARTED, this.emit, this);
+		lView_bmv.on(BossModeView.EVENT_APPEARING_PRESENTATION_STARTED, this.emit, this);
+		lView_bmv.on(BossModeView.EVENT_APPEARING_PRESENTATION_CULMINATED, this.emit, this);
+		lView_bmv.on(BossModeView.EVENT_APPEARING_PRESENTATION_COMPLETION, this.emit, this);
+		lView_bmv.on(BossModeView.EVENT_APPEARING_PRESENTATION_COMPLETED, this.emit, this);
+		lView_bmv.on(BossModeView.EVENT_HIDE_TINTED_VIEW, this.emit, this);
+		lView_bmv.on(BossModeView.EVENT_ON_CAPTION_ANIMATION_STARTED, this.emit, this);
+		lView_bmv.addToContainerIfRequired(this._gameScreen.gameField.bossModeAppearingContainerInfo);
+		lView_bmv.startAppearing(zombie);
+	}
+
+	_onBossDestroying(event)
+	{
+		let lView_bmv = this.view;
+		lView_bmv.on(BossModeView.EVENT_DISAPPEARING_PRESENTATION_STARTED, this.emit, this);
+		lView_bmv.on(BossModeView.EVENT_DISAPPEARING_PRESENTATION_COMPLETION, this.emit, this);
+		lView_bmv.on(BossModeView.EVENT_DISAPPEARING_PRESENTATION_COMPLETED, this.emit, this);
+		lView_bmv.addToContainerIfRequired(this._gameScreen.gameField.bossModeDisappearingContainerInfo);
+		lView_bmv.startDisappearing();
+	}
+
+	_onBossDestroyed(event)
+	{
+		this.view.completeDisappearing(event.enemyGlobalPoint);
+	}
+
+	_onTimeToExplodeCoins(event)
+	{
+		this.view.onTimeToExplodeCoins(event.enemyGlobalPoint, event.isCoPlayerWin);
+	}
+
+	_onGameFieldCleared(event)
+	{
+		this.view && this.view.interruptAnimation();
+	}
+
+	destroy()
+	{
+		if (this._gameScreen)
+		{
+			this._gameScreen.off(GameScreen.EVENT_ON_NEW_BOSS_CREATED, this._onNewBossCreated, this);
+			this._gameScreen.off(GameScreen.EVENT_ON_BOSS_DESTROYING, this._onBossDestroying, this);
+			this._gameScreen.off(GameScreen.EVENT_ON_BOSS_DESTROYED, this._onBossDestroyed, this);
+			this._gameScreen.off(GameScreen.EVENT_ON_GAME_FIELD_CLEARED, this._onGameFieldCleared, this);
+			this._gameScreen.off(GameScreen.EVENT_ON_TIME_TO_EXPLODE_COINS, this._onTimeToExplodeCoins, this);
+			this._gameScreen = null;
+		}
+		super.destroy();
+	}
+}
+
+export default BossModeController

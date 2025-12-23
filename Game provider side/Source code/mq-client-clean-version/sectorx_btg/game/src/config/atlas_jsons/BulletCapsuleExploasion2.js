@@ -1,0 +1,233 @@
+let BulletCapsuleExploasion2 = {
+	"frames": {
+		"MQ_SX_ChainreactionContainer_example_00049.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 735,
+				"h": 710
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 312,
+				"y": 75,
+				"w": 735,
+				"h": 710
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00050.png": {
+			"frame": {
+				"x": 738,
+				"y": 1,
+				"w": 727,
+				"h": 707
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 309,
+				"y": 80,
+				"w": 727,
+				"h": 707
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00051.png": {
+			"frame": {
+				"x": 738,
+				"y": 710,
+				"w": 697,
+				"h": 643
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 336,
+				"y": 107,
+				"w": 697,
+				"h": 643
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00052.png": {
+			"frame": {
+				"x": 1,
+				"y": 713,
+				"w": 697,
+				"h": 653
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 345,
+				"y": 82,
+				"w": 697,
+				"h": 653
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00053.png": {
+			"frame": {
+				"x": 1,
+				"y": 1368,
+				"w": 712,
+				"h": 642
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 324,
+				"y": 88,
+				"w": 712,
+				"h": 642
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00054.png": {
+			"frame": {
+				"x": 1437,
+				"y": 710,
+				"w": 643,
+				"h": 594
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 364,
+				"y": 113,
+				"w": 643,
+				"h": 594
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00055.png": {
+			"frame": {
+				"x": 1467,
+				"y": 1,
+				"w": 607,
+				"h": 545
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 377,
+				"y": 136,
+				"w": 607,
+				"h": 545
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00056.png": {
+			"frame": {
+				"x": 715,
+				"y": 1355,
+				"w": 595,
+				"h": 523
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 387,
+				"y": 155,
+				"w": 595,
+				"h": 523
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_SX_ChainreactionContainer_example_00057.png": {
+			"frame": {
+				"x": 1240,
+				"y": 1355,
+				"w": 559,
+				"h": 513
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 417,
+				"y": 159,
+				"w": 559,
+				"h": 513
+			},
+			"sourceSize": {
+				"w": 1407,
+				"h": 959
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		}
+	},
+	"meta": {
+		"app": "http://free-tex-packer.com/",
+		"version": "0.3.3",
+		"image": "texture-1.jpg",
+		"format": "RGB888",
+		"size": {
+			"w": 2032,
+			"h": 2011
+		},
+		"scale": 2
+	}
+}
+
+export default BulletCapsuleExploasion2;

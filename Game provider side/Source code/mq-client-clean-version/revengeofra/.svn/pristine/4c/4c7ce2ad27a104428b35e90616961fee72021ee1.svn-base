@@ -1,0 +1,215 @@
+import SimpleUIController from '../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import PromosPanelInfo from '../../../../model/uis/custom/promo/PromosPanelInfo';
+import PromosPanelView from '../../../../view/uis/custom/promo/PromosPanelView';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import PromoInfo from '../../../../../../../common/PIXI/src/model/uis/custom/PromoInfo';
+import PromoController from './PromoController';
+import ActivePromosList from '../../../../view/uis/custom/promo/ActivePromosList';
+import { GAME_MESSAGES } from '../../../../../../../common/PIXI/src/external/betsoftgaming/ExternalCommunicator';
+import LobbyExternalCommunicator from '../../../../external/LobbyExternalCommunicator';
+import { LOBBY_MESSAGES } from '../../../../external/LobbyExternalCommunicator';
+import LobbyApp from '../../../../LobbyAPP';
+import LobbyScreen from '../../../../main/LobbyScreen';
+import PromosController from './PromosController';
+
+class PromosPanelController extends SimpleUIController
+{
+	static get ON_PROMO_DETAILS_BTN_CLICKED()		{ return PromosPanelView.ON_PROMO_DETAILS_BTN_CLICKED }	
+
+	constructor(optInfo)
+	{
+		super(new PromosPanelInfo());
+
+		this._initPromosPanelController();
+	}
+
+	initView(viewContainer)
+	{
+		let view = new PromosPanelView();
+		viewContainer.addChild(view);
+
+		super.initView(view);
+
+		let activePromosInfos = this.info.promos;
+		if (activePromosInfos && activePromosInfos.length)
+		{
+			view.addActivePromos(activePromosInfos);
+			view.on(ActivePromosList.ON_PROMO_DETAILS_BTN_CLICKED, this._onPromoDetailsBtnClicked, this);
+		}
+
+		this._showPanelIfRequired();
+	}
+
+	destroy()
+	{
+		APP.off(LobbyApp.EVENT_ON_LOBBY_STARTED, this._onLobbyStarted, this, true);
+		APP.lobbyScreen.off(LobbyScreen.EVENT_ON_GAME_LAUNCH_INITIATED, this._onGameLaunchInitiated, this);
+
+		APP.promosController.off(PromosController.EVENT_ON_PROMOS_STATUS_UPDATED, this._onPromosStatusUpdated, this);
+		APP.promosController.off(PromosController.EVENT_ON_PROMO_REMOVED, this._onPromoRemoved, this);
+		APP.promosController.off(PromosController.EVENT_ON_PROMOS_PREVIEW_STATUS_UPDATED, this._onPromosPreviewStatusUpdated, this);
+
+		let externalCommunicator = APP.externalCommunicator;
+		externalCommunicator.off(LobbyExternalCommunicator.GAME_MESSAGE_RECEIVED, this._onGameMessageReceived, this);
+
+		super.destroy();
+	}
+
+	_initPromosPanelController()
+	{
+	}
+
+	__init ()
+	{
+		super.__init();
+	}
+
+	__initControlLevel ()
+	{
+		super.__initControlLevel();
+
+		if (APP.promosController.info.hasActivePromos && !APP.isMobile)
+		{
+			this._initActivePromos();
+
+			APP.promosController.on(PromosController.EVENT_ON_PROMOS_STATUS_UPDATED, this._onPromosStatusUpdated, this);
+			APP.promosController.on(PromosController.EVENT_ON_PROMO_REMOVED, this._onPromoRemoved, this);
+			APP.promosController.on(PromosController.EVENT_ON_PROMOS_PREVIEW_STATUS_UPDATED, this._onPromosPreviewStatusUpdated, this);
+
+			let externalCommunicator = APP.externalCommunicator;
+			externalCommunicator.on(LobbyExternalCommunicator.GAME_MESSAGE_RECEIVED, this._onGameMessageReceived, this);
+
+			APP.once(LobbyApp.EVENT_ON_LOBBY_STARTED, this._onLobbyStarted, this);			
+		}
+	}
+
+	__initViewLevel ()
+	{
+		super.__initViewLevel();
+
+		var view = this.__fView_uo;
+	}
+
+	_initActivePromos()
+	{
+		let activePromos = APP.promosController.promoControllers;
+		if (activePromos && activePromos.length > 0)
+		{
+			for (let i=0; i<activePromos.length; i++)
+			{
+				let promoController = activePromos[i];
+				
+				if (promoController.info.promoCompleted)
+				{
+					continue;
+				}
+				else
+				{
+					this.info.addPromoInfo(promoController.info.clone());
+				}
+			}
+		}
+	}
+
+	_onPromoDetailsBtnClicked(event)
+	{
+		if (APP.soundsController && APP.soundsController.play)
+		{
+			APP.soundsController.play("mq_gui_button_accept");
+		}
+
+		this.emit(event);
+	}
+
+	_onPromoRemoved(event)
+	{
+		let removedPromoId = event.promoId;
+		let promoInfo = this.info.getPromoById(removedPromoId);
+		
+		this._removePromo(promoInfo);
+	}
+
+	_removeAllPromos()
+	{
+		while (this.info.hasActivePromos)
+		{
+			let promoInfo = this.info.getPromoByIndex(0);
+			this._removePromo(promoInfo);
+		}
+		
+		this._onAllActivePromosRemoved();
+	}
+
+	_removePromo(promoInfo)
+	{
+		this.view && this.view.removePromo(promoInfo);
+		this.info.removePromo(promoInfo);
+	}
+
+	_onAllActivePromosRemoved()
+	{
+		this._hidePanel();
+	}
+
+	_showPanelIfRequired()
+	{
+		if (
+				this.info.hasActivePromos
+				&& APP.promosController.info.isPreviewAvailable
+			)
+		{
+			APP.layout.showPromoScreen();
+		}
+	}
+
+	_hidePanel()
+	{
+		APP.layout && APP.layout.hidePromoScreen();
+	}
+
+	_onLobbyStarted(event)
+	{
+		APP.lobbyScreen.on(LobbyScreen.EVENT_ON_GAME_LAUNCH_INITIATED, this._onGameLaunchInitiated, this);
+	}
+
+	_onPromosStatusUpdated(event)
+	{
+		let promosActive = event.isActive;
+		
+		if (!promosActive)
+		{
+			this._removeAllPromos();
+		}
+	}
+
+	_onGameMessageReceived(event)
+	{
+		let msgType = event.type;
+
+		switch (msgType)
+		{
+			case GAME_MESSAGES.GAME_STARTED:
+				this._showPanelIfRequired();
+				break;
+		}
+	}
+
+	_onGameLaunchInitiated(event)
+	{
+		this._hidePanel();
+	}
+
+	_onPromosPreviewStatusUpdated(event)
+	{
+		if (event.isPreviewAvailable)
+		{
+			this._showPanelIfRequired();
+		}
+		else
+		{
+			this._hidePanel();
+		}
+	}
+}
+
+export default PromosPanelController

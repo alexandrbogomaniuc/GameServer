@@ -1,0 +1,46 @@
+import PromoInfo from '../../../../../../../common/PIXI/src/model/uis/custom/PromoInfo';
+import SimpleInfo from '../../../../../../../common/PIXI/src/model/base/SimpleInfo';
+
+class PromosInfo extends SimpleInfo
+{
+	//INTEFACE...
+	//...INTEFACE
+
+	//INIT...
+	constructor()
+	{
+		super();
+
+		this._initPromosInfo();
+	}
+
+	set	hasActivePromos(val)
+	{
+		this._hasActivePromos_bl = val;
+	}
+
+	get	hasActivePromos()
+	{
+		return this._hasActivePromos_bl;
+	}
+
+	set	isPreviewAvailable(val)
+	{
+		this._isPreviewAvailable_bl = val;
+	}
+
+	get	isPreviewAvailable()
+	{
+		return this._isPreviewAvailable_bl;
+	}
+
+	_initPromosInfo()
+	{
+		this._hasActivePromos_bl = false;
+		this._isPreviewAvailable_bl = false;
+	}
+	//...IINIT
+	
+}
+
+export default PromosInfo;

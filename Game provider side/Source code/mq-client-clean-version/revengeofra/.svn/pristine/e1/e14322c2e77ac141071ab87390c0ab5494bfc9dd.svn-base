@@ -1,0 +1,85 @@
+import Sprite from '../../../../../../common/PIXI/src/display/Sprite';
+import InstantKillEffects from '../../InstantKillEffects';
+import EternalPlazmaSmoke from './EternalPlazmaSmoke';
+import Sequence from '../../../../../../common/PIXI/src/animation/Sequence';
+import { APP } from '../../../../../../common/PIXI/src/globals';
+
+class InstantKillSpinner extends Sprite
+{
+	constructor()
+	{
+		super();
+		
+		this.eternalPlazmaSmoke = null;
+		this.spinner = null;
+		this.flare = null;
+		this.flareSequence = null;
+
+		this.createView();
+	}
+
+	static get EVENT_SPINNER_ANIMATION_FINISHED()
+	{
+		return "onSpinnerAnimationFinished";
+	}
+
+	createView(){
+		this.eternalPlazmaSmoke = this.addChild(new EternalPlazmaSmoke(true /*indigoSmoke*/));
+		this.eternalPlazmaSmoke.scale.set(2);
+
+		this.spinner = this.addChild(new Sprite);
+		this.spinner.textures = InstantKillEffects['spinner'];
+		this.spinner.blendMode = PIXI.BLEND_MODES.ADD;
+		this.spinner.scale.set(2);
+		this.spinner.play();
+		this.spinner.on('animationend', (e) => {this.emit(InstantKillSpinner.EVENT_SPINNER_ANIMATION_FINISHED);});
+
+		this.flare = this.addChild(APP.library.getSprite("weapons/InstantKill/marker_flare"));
+		this.flare.blendMode = PIXI.BLEND_MODES.ADD;
+		this.flare.scale.set(2*1.86);
+		this.flareSequence = [
+				{
+					tweens: [
+						{prop: "scale.x", to: 0},
+						{prop: "scale.y", to: 0}
+					],
+					duration: 4*2*16.6					
+				},
+				{
+					tweens: [
+					],
+					duration: 8*2*16.6
+				},
+				{
+					tweens: [
+						{prop: "scale.x", to: 1.86*2},
+						{prop: "scale.y", to: 1.86*2}
+					],
+					duration: 4*2*16.6,
+					onfinish: () => {this.startFlareAnimation();}
+				}
+			]
+		this.startFlareAnimation();
+	}
+
+	startFlareAnimation(){
+		Sequence.start(this.flare, this.flareSequence);
+	}
+
+	destroy()
+	{
+		if (this.flare)
+		{
+			Sequence.destroy(Sequence.findByTarget(this.flare));
+		}
+		
+		this.eternalPlazmaSmoke = null;
+		this.spinner = null;
+		this.flare = null;
+		this.flareSequence = null;
+
+		super.destroy();
+	}
+}
+
+export default InstantKillSpinner;

@@ -1,0 +1,252 @@
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import Timer from '../../../../../../../common/PIXI/src/Timer';
+import ElectricityBodyFrontLightenArcView from './body_arcs/ElectricityBodyFrontLightenArcView';
+import Sequence from '../../../../../../../common/PIXI/src/animation/Sequence';
+import { Utils } from '../../../../../../../common/PIXI/src/Utils';
+import { DIRECTION } from '../../../../main/enemies/Enemy';
+import { ENEMIES } from '../../../../../../shared/src/CommonConstants';
+
+const ARC_DESCRIPTIONS = [
+	{x: 25, y: -50, rotation: 0, type: 0}, //0
+
+	{x: 10, y: -115, rotation: 0, type: 0}, //1
+	{x: 0, y: -25, rotation: 95, type: 1},
+
+	{x: 25, y: -115, rotation: 80, type: 0}, //2
+	{x: 25, y: -70, rotation: 5, type: 0},
+
+	{x: 15, y: -120, rotation: 85, type: 1}, //3
+	{x: 35, y: -25, rotation: 85, type: 0},
+
+	{x: 20, y: -130, rotation: 0, type: 0}, //4
+	{x: 10, y: -70, rotation: 80, type: 0},
+
+	{x: 20, y: -130, rotation: 0, type: 1}, //5
+	{x: 15, y: -60, rotation: 0, type: 0},
+
+	{x: 5, y: -115, rotation: 0, type: 0}, //6
+	{x: 15, y: -75, rotation: -90, type: 0},
+
+	{x: 20, y: -130, rotation: -90, type: 1}, //7
+	{x: 25, y: -50, rotation: 0, type: 0},
+
+	{x: 10, y: -115, rotation: 0, type: 0}, //8
+	{x: 0, y: -25, rotation: 95, type: 1},
+
+	{x: 15, y: -120, rotation: 85, type: 1}, //9
+	{x: 25, y: -70, rotation: 5, type: 0},
+
+	{x: 25, y: -115, rotation: 80, type: 0}, //10
+	{x: 35, y: -25, rotation: 85, type: 0},
+
+	{x: 20, y: -130, rotation: 0, type: 0}, //11
+	{x: 10, y: -70, rotation: 80, type: 0},
+
+	{x: 20, y: -130, rotation: 0, type: 1}, //12
+	{x: 15, y: -60, rotation: 0, type: 0},
+
+	{x: 5, y: -115, rotation: 0, type: 0}, //13
+	{x: 15, y: -75, rotation: -90, type: 0}
+];
+
+class ElectricityBodyLightenArcsBlockAnimation extends Sprite
+{
+	static get EVENT_ON_ANIMATION_COMPLETED()	{return "EVENT_ON_ANIMATION_COMPLETED"};
+	
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	//INIT...
+	constructor(targetEnemy)
+	{
+		super();
+
+		this._targetEnemy = targetEnemy;
+		this._arcAppearTimer = null;
+		this._currentArcsAmount = 0;
+		this._arcs_arr = [];	
+	}
+	//...INIT
+
+	//ANIMATION...
+	_startAnimation()
+	{
+		this._currentArcsAmount = 0;
+		this._addArc();
+
+		this._startArcAppearTimer();
+	}
+
+	get _arcDescriptions()
+	{
+		// override if required
+		return ARC_DESCRIPTIONS;
+	}
+
+	_addArc()
+	{
+		if (this._currentArcsAmount >= this._arcDescriptions.length)
+		{
+			return;
+		}
+
+		let arcDescr = this._arcDescriptions[this._currentArcsAmount];
+		let arc = this.addChild(new ElectricityBodyFrontLightenArcView(arcDescr.type));
+		arc.x = arcDescr.x;
+		arc.y = arcDescr.y;
+		arc.rotation = arcDescr.rotation + Utils.random(-5, 5, true);
+		arc.scale.set(Utils.random(0.8, 1, true), Utils.random(0.8, 1, true));
+
+		let enemyDirection = this._targetEnemy.direction;
+		if (enemyDirection === DIRECTION.LEFT_UP || enemyDirection === DIRECTION.LEFT_DOWN)
+		{
+			arc.x *= -1;
+		}
+
+		if (enemyDirection === DIRECTION.RIGHT_UP || enemyDirection === DIRECTION.RIGHT_DOWN)
+		{
+			arc.scale.x *= -1;
+		}
+
+		this._correctArcPosition(arc);
+		
+		this._arcs_arr.push(arc);
+
+		let positionDeltaProps = this._calcMovementProperties();
+		let newX = arc.x + positionDeltaProps.deltaX;
+		let newY = arc.y + positionDeltaProps.deltaY;
+		let seq = [
+					{ tweens:[{prop:"x", to:newX}, {prop:"y", to:newY}], duration:3*2*16.7 }
+				];
+
+		let sequence = Sequence.start(arc, seq);
+		sequence.once(Sequence.EVENT_ON_SEQUENCE_PLAYING_COMPLETED, this._onArcSequenceCompleted, this);
+
+		this._currentArcsAmount ++;
+	}
+
+	_correctArcPosition(arc)
+	{
+		let enemyName = this._targetEnemy.name;
+		let enemyDirection = this._targetEnemy.direction;
+
+		if (
+				(enemyDirection === DIRECTION.LEFT_UP || enemyDirection === DIRECTION.RIGHT_UP)
+				&& (arc.y < -90)
+			)
+		{
+			if (arc.y < -90)
+			{
+				arc.y -= 10;
+			}
+		}
+	}
+
+	_calcMovementProperties()
+	{
+		let deltaX = 0;
+		let deltaY = 0;
+
+		let enemyDirection = this._targetEnemy.direction;
+		switch (enemyDirection)
+		{
+			case DIRECTION.LEFT_DOWN:
+				deltaX = -1;
+				deltaY = 1;
+				break;
+			case DIRECTION.LEFT_UP:
+				deltaX = -1;
+				deltaY = -1;
+				break;
+			case DIRECTION.RIGHT_DOWN:
+				deltaX = 1;
+				deltaY = 1;
+				break;
+			case DIRECTION.RIGHT_UP:
+				deltaX = 1;
+				deltaY = -1;
+				break;
+		}
+
+		deltaX *= Utils.random(1, 4);
+		deltaY *= Utils.random(1, 4);
+		
+		return {deltaX: deltaX, deltaY: deltaY};
+	}
+
+	_onArcSequenceCompleted(event)
+	{
+		let seq = event.target;
+		let seqObj = seq.obj;
+		seq.destructor();
+		
+		let arcIndex = this._arcs_arr.indexOf(seqObj);
+		this._arcs_arr.splice(arcIndex, 1);
+		seqObj.destroy();
+
+		if (this._currentArcsAmount >= this._arcDescriptions.length)
+		{
+			this._onAnimationCompleted();
+		}
+	}
+
+	_onAnimationCompleted()
+	{
+		this.emit(ElectricityBodyLightenArcsBlockAnimation.EVENT_ON_ANIMATION_COMPLETED);		
+	}
+
+	//TIMER...
+	_startArcAppearTimer()
+	{
+		if (this._currentArcsAmount >=  this._arcDescriptions.length)
+		{
+			return;
+		}
+
+		this._arcAppearTimer = new Timer(this._onArcAppearTimerCompleted.bind(this), 1*2*16.7);
+	}
+
+	_clearArcAppearTimer()
+	{
+		this._arcAppearTimer && this._arcAppearTimer.destructor();
+		this._arcAppearTimer = null;
+	}
+
+	_onArcAppearTimerCompleted()
+	{
+		this._clearArcAppearTimer();
+
+		this._addArc();
+		this._addArc();
+
+		if (this._currentArcsAmount <  this._arcDescriptions.length)
+		{
+			this._startArcAppearTimer();
+		}
+	}
+	//...TIMER
+
+	//...ANIMATION
+	
+	destroy()
+	{
+		while (this._arcs_arr && this._arcs_arr.length)
+		{
+			let arc = this._arcs_arr.pop();
+			Sequence.destroy(Sequence.findByTarget(arc));
+		}
+		this._arcs_arr = null;
+
+		this._targetEnemy = null;
+		this._clearArcAppearTimer();
+
+		this._currentArcsAmount = undefined;
+
+		super.destroy();
+	}
+}
+
+export default ElectricityBodyLightenArcsBlockAnimation;

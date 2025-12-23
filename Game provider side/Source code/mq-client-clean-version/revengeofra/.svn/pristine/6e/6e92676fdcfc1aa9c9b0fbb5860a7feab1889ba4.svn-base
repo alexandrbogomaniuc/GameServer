@@ -1,0 +1,420 @@
+import { Sprite, AtlasSprite } from '../../../../../../../common/PIXI/src/display';
+import I18 from '../../../../../../../common/PIXI/src/I18';
+import AtlasConfig from './../../../../config/AtlasConfig';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import { Utils } from '../../../../../../../common/PIXI/src/Utils';
+import Sequence from '../../../../../../../common/PIXI/src/animation/Sequence';
+import { FRAME_RATE, ENEMIES } from './../../../../../../shared/src/CommonConstants';
+import CriticalHitMultiplierView from './CriticalHitMultiplierView';
+import PrizesController from './../../../../controller/uis/prizes/PrizesController';
+import { ENEMY_DIRECTION } from '../../../../config/Constants';
+import {GlowFilter} from '@pixi/filter-glow';
+
+let _criticalExplosionTextures = null;
+
+function _initExplosionTextures()
+{
+	if (_criticalExplosionTextures) return;
+
+	_criticalExplosionTextures = AtlasSprite.getFrames(APP.library.getAsset("critical_hit/critical_explosion"), AtlasConfig.CriticalExplosion, "");
+}
+
+const HIT_POSITIONS = {
+	[ENEMIES.ScarabGreen]:			{x: 25, y: -24},
+	[ENEMIES.ScarabBrown]:			{x: 25, y: -24},
+	[ENEMIES.ScarabGold]:			{x: 25, y: -24},
+	[ENEMIES.ScarabRuby]:			{x: 25, y: -24},
+	[ENEMIES.ScarabDiamond]:		{x: 25, y: -24},
+	[ENEMIES.WrappedYellow]:		{x: 25, y: -48},
+	[ENEMIES.WrappedBlack]:			{x: 25, y: -48},
+	[ENEMIES.WrappedWhite]:			{x: 25, y: -48},
+	[ENEMIES.MummyWarrior]:			{x: 25, y: -48},
+	[ENEMIES.MummyWarriorGreen]:	{x: 25, y: -48},
+	[ENEMIES.MummyGodRed]:			{x: 25, y: -48},
+	[ENEMIES.MummyGodGreen]:		{x: 25, y: -48},
+	[ENEMIES.WeaponCarrier]:		{x: 25, y: -48},
+	[ENEMIES.Locust]:				{x: 25, y: -30},
+	[ENEMIES.Scorpion]:				{x: 25, y: -30},
+	[ENEMIES.BombEnemy]:			{x: 25*1.15, y: -48*1.15},
+	[ENEMIES.Horus]:				{x: 25, y: -48},
+	[ENEMIES.LocustTeal]:			{x: 25, y: -30},
+	[ENEMIES.BrawlerBerserk]:		{x: 25, y: -48},
+	[ENEMIES.Anubis]:				{x: 25, y: -48},
+	[ENEMIES.Osiris]:				{x: 25, y: -48},
+	[ENEMIES.Thoth]:				{x: 25, y: -48},
+}
+
+class CriticalHitAnimation extends Sprite
+{
+	static get EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED()		{return "onCriticalHitAnimationEnded";}
+
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	getCaptionBounds()
+	{
+		let lBounds_obj = this._fCaption_ta ? this._fCaption_ta.getBounds() : {width: 0, height: 0, x: 0, y: 0};
+
+		lBounds_obj.x = 0;
+		lBounds_obj.y = 0;
+		if (this._fCaptionContainer_sprt)
+		{
+			lBounds_obj.x += this._fCaptionContainer_sprt.position.x;
+			lBounds_obj.y += this._fCaptionContainer_sprt.position.y;
+		}
+		if (this._fContainer_sprt)
+		{
+			lBounds_obj.x += this._fContainer_sprt.position.x;
+			lBounds_obj.y += this._fContainer_sprt.position.y;
+		}
+
+		return lBounds_obj;
+	}
+
+	getMaxMultiplierBounds()
+	{
+		let lPrevScale_num = this._fMultiplierContainer_sprt.scale.x;
+		this._fMultiplierContainer_sprt.scale.set(2.6);
+
+		let lBounds_obj = this._fMultiplierContainer_sprt ? this._fMultiplierContainer_sprt.getBounds() : {width: 0, height: 0, x: 0, y: 0};
+
+		lBounds_obj.x = 0;
+		lBounds_obj.y = 0;
+		if (this._fContainer_sprt)
+		{
+			lBounds_obj.x += this._fContainer_sprt.position.x;
+			lBounds_obj.y += this._fContainer_sprt.position.y;
+		}
+
+		this._fMultiplierContainer_sprt.scale.set(lPrevScale_num);
+
+		return lBounds_obj;
+	}
+
+	get rid()
+	{
+		return this._fRid_num;
+	}
+
+	get enemyId()
+	{
+		return this._fEnemyId_num;
+	}
+
+	constructor(aWin_num, aMult_num, aEnemyId_num, aEnemyName_str, aEnemyDirection_str, aRid_num)
+	{
+		super();
+
+		_initExplosionTextures();
+
+		this._fRid_num = aRid_num;
+		this._fWin_num = aWin_num;
+		this._fMult_num = aMult_num;
+		this._fEnemyId_num = aEnemyId_num;
+		this._fEnemyName_str = aEnemyName_str || ENEMIES.WrappedYellow;
+		this._fContainer_sprt = null;
+		this._fCaption_ta = null;
+		this._fCaptionContainer_sprt = null;
+		this._fExplosion_sprt = null;
+		this._fAwardPosition_obj = {x: 0, y: 0};
+		this._fMultiplierContainer_sprt = null;
+		this._fMultiplier_chmv = null;
+		this._fSweep_sprt = null;
+		this._fFlare_sprt = null;
+		this._fIsLeftDir_bln = !!(aEnemyDirection_str == ENEMY_DIRECTION.LEFT_UP || aEnemyDirection_str == ENEMY_DIRECTION.LEFT_DOWN);
+		this._fMultiplierInitiated_bln = false;
+		this._fCashAppeared_bln = false;
+
+		APP.gameScreen.prizesController.on(PrizesController.i_EVENT_ON_TIME_TO_SHOW_CASH_PRIZES, this._onTimeToShowCash, this);
+
+		this._init();
+	}
+
+	_init()
+	{
+		this._initContainer();
+		this._initExplosion();
+		this._initFlare();
+
+		this._fCaptionContainer_sprt = this._fContainer_sprt.addChild(new Sprite());
+		this._fCaptionContainer_sprt.position.set(0, -10);
+		this._fMultiplierContainer_sprt = this._fContainer_sprt.addChild(new Sprite());
+		this._fMultiplierContainer_sprt.position.set(0, -10);
+
+		this._initCaption();
+		this._initMultiplier();
+		this._initSweep();
+	}
+
+	_initCaption()
+	{
+		this._fCaption_ta = I18.generateNewCTranslatableAsset("TACriticalHitLabel");
+
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._fCaptionContainer_sprt.addChild(this._createGlowCopy(this._fCaption_ta, 6));
+		}
+
+		this._fCaptionContainer_sprt.addChild(this._fCaption_ta);
+	}
+
+	_initMultiplier()
+	{
+		this._fMultiplier_chmv = new CriticalHitMultiplierView();
+		this._fMultiplier_chmv.value = "x" + this._fMult_num;
+
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._fMultiplierContainer_sprt.addChild(this._createGlowCopy(this._fMultiplier_chmv, 8));
+		}
+
+		this._fMultiplierContainer_sprt.addChild(this._fMultiplier_chmv);
+		this._fMultiplierContainer_sprt.scale.set(0);
+	}
+
+	_createGlowCopy(aSprite_sprt, aExtraSize_num)
+	{
+		let lGlowFilter_cmf = new GlowFilter(8, 2.5, 2, 0xffffe6, 2);
+
+		aSprite_sprt.filters = [lGlowFilter_cmf];
+		let lGlowBounds_obj = aSprite_sprt.getBounds();
+		lGlowBounds_obj.height += aExtraSize_num;
+		lGlowBounds_obj.y -= aExtraSize_num/2;
+		lGlowBounds_obj.width += aExtraSize_num;
+		lGlowBounds_obj.x -= aExtraSize_num/2;
+		let lGlowTexture_txt = APP.stage.renderer.generateTexture(aSprite_sprt, PIXI.SCALE_MODES.LINEAR, 2, lGlowBounds_obj);
+		aSprite_sprt.filters = [];
+
+		let lGlowSprite_sprt = new Sprite();
+		lGlowSprite_sprt.texture = lGlowTexture_txt;
+		lGlowSprite_sprt.scale.set(1.04);
+		lGlowSprite_sprt.tint = 0xffffe6;
+		lGlowSprite_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lGlowSprite_sprt.alpha = 0.9;
+
+		return lGlowSprite_sprt;
+	}
+
+	_initContainer()
+	{
+		this._fContainer_sprt = this.addChild(new Sprite());
+
+		let lHitPosition_pt = HIT_POSITIONS[this._fEnemyName_str];
+		if (!lHitPosition_pt)
+		{
+			throw new Error("CriticalHitAnimation :: no HIT POSITION for enemy " + this._fEnemyName_str);
+		}
+		this._fContainer_sprt.position.x = lHitPosition_pt.x;
+		this._fContainer_sprt.position.y = lHitPosition_pt.y;
+		this._fContainer_sprt.visible = false;
+
+		if (this._fIsLeftDir_bln)
+		{
+			this._fContainer_sprt.position.x -= 16;
+		}
+	}
+
+	_initExplosion()
+	{
+		this._fExplosion_sprt = this._fContainer_sprt.addChild(new Sprite());
+		this._fExplosion_sprt.scale.set(2);
+		this._fExplosion_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		this._fExplosion_sprt.textures = _criticalExplosionTextures;
+		this._fExplosion_sprt.position.set(11, -70);
+		this._fExplosion_sprt.rotation = Utils.gradToRad(65);
+		this._fExplosion_sprt.animationSpeed = 0.5;
+		this._fExplosion_sprt.on('animationend', () => {
+			this._fExplosion_sprt && this._fExplosion_sprt.destroy();
+			this._fExplosion_sprt = null;
+		});
+	}
+
+	_initFlare()
+	{
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._fFlare_sprt = this._fContainer_sprt.addChild(APP.library.getSprite("critical_hit/flare"));
+			this._fFlare_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		}
+	}
+
+	_initSweep()
+	{
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._fTextWidth_num = this._fCaption_ta.assetContent.getBounds().width;
+			this._fSweep_sprt = this._fCaption_ta.addChild(APP.library.getSprite("critical_hit/light_sweep"));
+			this._fSweep_sprt.scale.set(0.5);
+			let lMask_ta = this._fCaption_ta.addChild(I18.generateNewCTranslatableAsset("TACriticalHitLabel"));
+			this._fSweep_sprt.mask = lMask_ta.assetContent;
+			this._fSweep_sprt.position.set(-this._fTextWidth_num/2, 0);
+		}
+	}
+
+	_onTimeToShowCash(aEvent_obj)
+	{
+		let lData_arr = aEvent_obj.data;
+
+		for (let lData_obj of lData_arr)
+		{
+			if (lData_obj.hitData.enemy && this._fEnemyId_num === lData_obj.hitData.enemy.id)
+			{
+				let lX_num = lData_obj.awardStartPosition.x;
+				let lY_num = lData_obj.awardStartPosition.y;
+				this._fAwardPosition_obj = {x: lX_num, y: lY_num};
+
+				if (this._fIsLeftDir_bln)
+				{
+					this._fAwardPosition_obj.x += 16;
+				}
+
+				if (APP.gameScreen.prizesController)
+				{
+					APP.gameScreen.prizesController.off(PrizesController.i_EVENT_ON_TIME_TO_SHOW_CASH_PRIZES, this._onTimeToShowCash, this);
+				}
+
+				this._fCashAppeared_bln = true;
+				this._tryStartMultiplier();
+				return;
+			}
+		}
+	}
+
+	_startAnimation()
+	{
+		this._fContainer_sprt.visible = true;
+
+		this._fExplosion_sprt.play();
+
+		this._startCaptionAnimation();
+		this._startFlareAnimation();
+	}
+
+	_startFlareAnimation()
+	{
+		if (!this._fFlare_sprt) return;
+
+		this._fFlare_sprt.scale.set(0);
+		let lFlareSeq_arr = [
+			{tweens: [{prop: 'scale.x', to: 0.4},	{prop: 'scale.y', to: 0.4}],	duration: 1*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 1},		{prop: 'scale.y', to: 1}],		duration: 1*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 0},		{prop: 'scale.y', to: 0}],		duration: 12*FRAME_RATE, onfinish: () => {
+				this._fFlare_sprt && this._fFlare_sprt.destroy();
+				this._fFlare_sprt = null;
+			}}
+		];
+
+		Sequence.start(this._fFlare_sprt, lFlareSeq_arr);
+	}
+
+	_startCaptionAnimation()
+	{
+		this._fCaptionContainer_sprt.scale.set(0);
+		let lCaptionSeq_arr = [
+			{tweens: [{prop: 'scale.x', to: 1.6},	{prop: 'scale.y', to: 1.6}],	duration: 5*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 1.4},	{prop: 'scale.y', to: 1.4}],	duration: 3*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 1.45},	{prop: 'scale.y', to: 1.45}],	duration: 2*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 1},		{prop: 'scale.y', to: 1}],		duration: 9*FRAME_RATE, onfinish: () => {
+				this._startSweep();
+				this._fMultiplierInitiated_bln = true;
+				this._tryStartMultiplier();
+			}},
+			{tweens: [],	duration: 5*FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}],	duration: 2*FRAME_RATE, onfinish: () => {
+				this._fCaptionContainer_sprt && this._fCaptionContainer_sprt.destroy();
+				this._fCaptionContainer_sprt = null;
+			}},
+		];
+
+		Sequence.start(this._fCaptionContainer_sprt, lCaptionSeq_arr);
+	}
+
+	_startSweep()
+	{
+		if (!this._fSweep_sprt) return;
+
+		let l_seq = [{tweens: [{prop: 'position.x', to: this._fTextWidth_num/2},],	duration: 8*FRAME_RATE}];
+
+		Sequence.start(this._fSweep_sprt, l_seq);
+	}
+
+	_tryStartMultiplier()
+	{
+		if (this._fMultiplierInitiated_bln && this._fCashAppeared_bln)
+		{
+			this._startMultiplier();
+		}
+	}
+
+	_startMultiplier()
+	{
+		let lAward_ca = APP.currentWindow.awardingController.getAwardByRid(this._fRid_num, this._fEnemyId_num);
+		if (lAward_ca)
+		{
+			let lOffset_obj = lAward_ca.offscreenOffset;
+			if (lOffset_obj)
+			{
+				this._fAwardPosition_obj.x += lOffset_obj.x;
+				this._fAwardPosition_obj.y += lOffset_obj.y;
+			}
+		}
+
+		let lFinalPos_obj = this.globalToLocal(this._fAwardPosition_obj.x, this._fAwardPosition_obj.y);
+		lFinalPos_obj.x -= 24;
+		lFinalPos_obj.y -= 61;
+
+		let lMultSeq_arr = [
+			{tweens: [{prop: 'scale.x', to: 2.6}, {prop: 'scale.y', to: 2.6}], duration: 4*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 1.17}, {prop: 'scale.y', to: 1.17},	{prop: 'position.y', to: -6}], duration: 8*FRAME_RATE},
+			{tweens: [{prop: 'position.x', to: lFinalPos_obj.x}, {prop: 'position.y', to: lFinalPos_obj.y}], duration: 5*FRAME_RATE},
+			{tweens: [],	duration: 1*FRAME_RATE, onfinish: () => {
+				this._fMultiplierContainer_sprt && this._fMultiplierContainer_sprt.destroy();
+				this._fMultiplierContainer_sprt = null;
+				this._onAnimationEnded();
+			}},
+		];
+
+		Sequence.start(this._fMultiplierContainer_sprt, lMultSeq_arr);
+	}
+
+	_onAnimationEnded()
+	{
+		this.emit(CriticalHitAnimation.EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED);
+	}
+
+	destroy()
+	{
+		if (APP.gameScreen.prizesController)
+		{
+			APP.gameScreen.prizesController.off(PrizesController.i_EVENT_ON_TIME_TO_SHOW_CASH_PRIZES, this._onTimeToShowCash, this);
+		}
+
+		this._fFlare_sprt && Sequence.destroy(Sequence.findByTarget(this._fFlare_sprt));
+		this._fCaptionContainer_sprt && Sequence.destroy(Sequence.findByTarget(this._fCaptionContainer_sprt));
+		this._fSweep_sprt && Sequence.destroy(Sequence.findByTarget(this._fSweep_sprt));
+		this._fMultiplierContainer_sprt && Sequence.destroy(Sequence.findByTarget(this._fMultiplierContainer_sprt));
+
+		super.destroy();
+
+		this._fWin_num = null;
+		this._fMult_num = null;
+		this._fEnemyId_num = null;
+		this._fEnemyName_str = null;
+		this._fContainer_sprt = null;
+		this._fCaption_ta = null;
+		this._fCaptionContainer_sprt = null;
+		this._fExplosion_sprt = null;
+		this._fAwardPosition_obj = null;
+		this._fMultiplierContainer_sprt = null;
+		this._fMultiplier_chmv = null;
+		this._fSweep_sprt = null;
+		this._fFlare_sprt = null;
+		this._fRid_num = null;
+		this._fMultiplierInitiated_bln = null;
+		this._fCashAppeared_bln = null;
+	}
+}
+
+export default CriticalHitAnimation;

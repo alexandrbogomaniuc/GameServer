@@ -1,0 +1,34 @@
+
+bullet_container.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 4, 4
+  size: 383, 380
+  orig: 383, 380
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 713, 204
+  size: 247, 180
+  orig: 247, 180
+  offset: 0, 0
+  index: -1
+fill
+  rotate: false
+  xy: 391, 75
+  size: 318, 309
+  orig: 318, 309
+  offset: 0, 0
+  index: -1
+tentacles
+  rotate: false
+  xy: 713, 30
+  size: 170, 170
+  orig: 170, 170
+  offset: 0, 0
+  index: -1

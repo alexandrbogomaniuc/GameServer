@@ -1,0 +1,48 @@
+
+SectorX_Med_Enemy3.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+eyes
+  rotate: false
+  xy: 589, 829
+  size: 365, 121
+  orig: 365, 121
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 4, 395
+  size: 581, 555
+  orig: 581, 555
+  offset: 0, 0
+  index: -1
+horn
+  rotate: false
+  xy: 378, 271
+  size: 150, 120
+  orig: 150, 120
+  offset: 0, 0
+  index: -1
+hornTentacle_front
+  rotate: false
+  xy: 4, 4
+  size: 187, 185
+  orig: 187, 185
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: false
+  xy: 4, 193
+  size: 370, 198
+  orig: 370, 198
+  offset: 0, 0
+  index: -1
+pupil
+  rotate: false
+  xy: 589, 774
+  size: 49, 51
+  orig: 49, 51
+  offset: 0, 0
+  index: -1

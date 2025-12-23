@@ -1,0 +1,65 @@
+import SimpleUIView from '../../../../../../common/PIXI/src/view/base/SimpleUIView';
+import Weapon from '../../../main/playerSpots/Weapon';
+
+class WeaponSpotView extends SimpleUIView {
+	constructor(aParentContainer_sprt, aIsBottom_bl = true)
+	{
+		super();
+		this._fParentContainer_sprt = aParentContainer_sprt;
+		this._fParentContainer_sprt.addChild(this);
+
+		this._fWeaponView_wpn = null;
+		this._fIsBottom_bl = aIsBottom_bl;
+	}
+
+	set pushSequence(value)
+	{
+		this._pushSequence = value;
+	}
+
+	get pushSequence()
+	{
+		return this._pushSequence;
+	}
+
+	destroy()
+	{
+		this._pushSequence && this._pushSequence.destructor();
+		this._pushSequence = null;
+		
+		this._fParentContainer_sprt = null;
+
+		if(this._fWeaponView_wpn)
+		{
+			this._fWeaponView_wpn.destroy();
+			this._fWeaponView_wpn = null;
+		}
+		
+		this._fIsBottom_bl = undefined;
+
+		super.destroy();
+	}
+
+	get gun()
+	{
+		return this._fWeaponView_wpn;
+	}
+
+	get isBottom()
+	{
+		return this._fIsBottom_bl;
+	}
+
+	i_updateWeapon()
+	{
+		if(this._fWeaponView_wpn)
+		{
+			this._fWeaponView_wpn.destroy();
+		}
+
+		let lInfo_wsi = this.uiInfo;
+		this._fWeaponView_wpn = this.addChild(new Weapon(lInfo_wsi.currentWeaponId, lInfo_wsi.isMaster, lInfo_wsi.currentDefaultWeaponId));
+	}
+}
+
+export default WeaponSpotView;

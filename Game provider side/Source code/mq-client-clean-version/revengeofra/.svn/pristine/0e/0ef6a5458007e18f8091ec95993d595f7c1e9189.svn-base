@@ -1,0 +1,69 @@
+
+Thoth180.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Thoth180_Apron
+  rotate: true
+  xy: 488, 165
+  size: 70, 204
+  orig: 70, 204
+  offset: 0, 0
+  index: -1
+Thoth180_ArmL
+  rotate: true
+  xy: 488, 78
+  size: 85, 97
+  orig: 85, 97
+  offset: 0, 0
+  index: -1
+Thoth180_ArmR
+  rotate: true
+  xy: 694, 165
+  size: 70, 162
+  orig: 70, 162
+  offset: 0, 0
+  index: -1
+Thoth180_Head
+  rotate: true
+  xy: 171, 2
+  size: 97, 147
+  orig: 97, 147
+  offset: 0, 0
+  index: -1
+Thoth180_Hips
+  rotate: false
+  xy: 2, 48
+  size: 167, 187
+  orig: 167, 187
+  offset: 0, 0
+  index: -1
+Thoth180_LegL
+  rotate: true
+  xy: 320, 44
+  size: 77, 141
+  orig: 77, 141
+  offset: 0, 0
+  index: -1
+Thoth180_LegR
+  rotate: true
+  xy: 858, 160
+  size: 75, 155
+  orig: 75, 155
+  offset: 0, 0
+  index: -1
+Thoth180_Torso
+  rotate: false
+  xy: 171, 101
+  size: 146, 134
+  orig: 146, 134
+  offset: 0, 0
+  index: -1
+Thoth90_Head
+  rotate: true
+  xy: 319, 123
+  size: 112, 167
+  orig: 112, 167
+  offset: 0, 0
+  index: -1

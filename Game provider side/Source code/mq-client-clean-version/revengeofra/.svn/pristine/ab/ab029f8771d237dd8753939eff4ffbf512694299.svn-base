@@ -1,0 +1,340 @@
+import Sprite from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import Sequence from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
+import { Utils } from '../../../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+import DeathFxAnimation from '../death/DeathFxAnimation';
+import TorchFxAnimation from '../TorchFxAnimation';
+import { ENEMIES } from '../../../../../shared/src/CommonConstants';
+import { ENEMY_DIRECTION } from '../../../config/Constants';
+
+const ENEMY_TORCHES_PARAMS = [
+	{x: 23.5, 	y:  -41, 	scale: 0.9, 	rotation:   0}, //1
+	{x:   16, 	y:-53.5, 	scale: 0.9, 	rotation:   0}, //2
+	{x: 29.5, 	y:  -13,	scale: 1.4, 	rotation:   0}, //3
+	{x:   20, 	y: 10.5, 	scale: 1.4, 	rotation: -16}, //4
+	{x:   51, 	y: -7.5, 	scale: 1.4, 	rotation:  26}, //5
+	{x: 36.5, 	y:   33,	scale: 1.4, 	rotation:   0}, //6
+	{x: 31.5, 	y:-51.5, 	scale: 1.4, 	rotation:   0} //7
+];
+
+const SCARAB_TORCHES_PARAMS = [
+	{x:   30, 	y: -115, 	scale: 3.5, 	rotation:   0}, //1
+	{x:  -15, 	y: -110, 	scale:   2, 	rotation: -16}, //2
+	{x:   75, 	y: -110,	scale:   2, 	rotation:  26} //3
+];
+
+const VIEW_POSITION = 
+{
+	[ENEMIES.WeaponCarrier] : {
+		[ENEMY_DIRECTION.LEFT_DOWN]	: {x: -5, y: 5},
+		[ENEMY_DIRECTION.LEFT_UP]		: {x: 5, y: 0},
+		[ENEMY_DIRECTION.RIGHT_DOWN]	: {x: 7, y: 0},
+		[ENEMY_DIRECTION.RIGHT_UP]	: {x: 7, y: 0}
+	}
+}
+
+class HvEffects 
+{
+	constructor(aEnemy_e)
+	{
+		this._fEnemy_e = aEnemy_e;
+
+		this._fTopContainer_sprt = aEnemy_e.hvTopContainer;
+		this._fBottomContainer_sprt = aEnemy_e.hvBottomContainer;
+
+		this._fRedEllipse_sprt = null;
+
+		this._smokesSequence = null;
+		this._torches = [];
+		this._smokes = [];
+
+		this._createView();
+	}
+
+	updatePositions()
+	{
+		this._correctContainersPositions();
+	}
+
+	freeze()
+	{
+		if (this._smokesSequence)
+		{
+			this._smokesSequence.pause();
+		}
+
+		for (let i=0; i < this._torches.length; i++)
+		{
+			let lTorch_sprt = this._torches[i];
+			lTorch_sprt.stop();
+		}
+
+		for (let i=0; i < this._smokes.length; i++)
+		{
+			let lSmoke_sprt = this._smokes[i];
+			lSmoke_sprt.stop();
+		}
+
+		this._fRedEllipse_sprt.visible = false;
+	}
+
+	unfreeze()
+	{
+		if (this._smokesSequence)
+		{
+			this._smokesSequence.resume();
+		}
+
+		for (let i=0; i < this._torches.length; i++)
+		{
+			let lTorch_sprt = this._torches[i];
+			lTorch_sprt.play();
+		}
+
+		for (let i=0; i < this._smokes.length; i++)
+		{
+			let lSmoke_sprt = this._smokes[i];
+			lSmoke_sprt.play();
+		}
+
+		this._fRedEllipse_sprt.visible = true;
+	}
+
+	get _enemyName()
+	{
+		return this._fEnemy_e.name;
+	}
+
+	get _enemyFootPosition()
+	{
+		return this._fEnemy_e.getCurrentFootPointPosition();
+	}
+
+	_createView()
+	{
+		DeathFxAnimation.initTextures();
+		TorchFxAnimation.initTextures();
+
+		let lTorchesContainer_sprt = this._fTorchesContainer_sprt = this._fBottomContainer_sprt.addChild(new Sprite);
+		let pos = this._getTorchContainerPosition();
+		lTorchesContainer_sprt.position.set(pos.x, pos.y);
+
+		//torches...
+		let lTorchesParams_arr = this._getTorchesParams();
+		for (let i=0; i < lTorchesParams_arr.length; i++)
+		{
+			let lParams_obj = lTorchesParams_arr[i];
+			let lTorch_sprt = lTorchesContainer_sprt.addChild(new Sprite);
+			lTorch_sprt.anchor.set(0.5, 0.37);
+			lTorch_sprt.textures = TorchFxAnimation.textures.torch;
+			lTorch_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+			lTorch_sprt.position.set(lParams_obj.x, lParams_obj.y);
+			lTorch_sprt.rotation = Utils.gradToRad(lParams_obj.rotation);
+			lTorch_sprt.scale.set(lParams_obj.scale);
+
+			lTorch_sprt.play();
+
+			this._torches.push(lTorch_sprt);
+		}
+
+		let lTorchContainerScale_num = this._getTorchContainerScale();
+		lTorchesContainer_sprt.scale.set(lTorchContainerScale_num);
+		let lBounds_obj = lTorchesContainer_sprt.getBounds();
+		lTorchesContainer_sprt.pivot.set(lBounds_obj.width/2 - this._enemyFootPosition.x + 10, lBounds_obj.height/2 - this._enemyFootPosition.y/2);
+		//...torches
+
+		let lRedEllipse_sprt = this._fRedEllipse_sprt = this._fTopContainer_sprt.addChild(APP.library.getSprite('enemies/hv/red_ellipse'));
+		lRedEllipse_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lRedEllipse_sprt.scale.set(this._getRedEllipseScale());
+		pos = this._getRedEllipsePosition();
+		lRedEllipse_sprt.position.set(pos.x, pos.y);
+
+		//smokes...
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			let lSmokesSequence_seq = [
+				{ 
+					tweens: [],
+					duration: 0,
+					onfinish: () => {
+						this._addAnotherDieSmoke(this._fTopContainer_sprt);
+					}
+				},
+				{
+					tweens: [],
+					duration: 20*2*16.7,
+					onfinish: () => {
+						this._addAnotherDieSmoke(this._fBottomContainer_sprt);
+					}
+				},
+				{ 
+					tweens: [],
+					duration: 12*2*16.7,
+					onfinish: () => {
+						this._addAnotherDieSmoke(this._fTopContainer_sprt);
+					}
+				}
+			];
+			let seq = this._smokesSequence = Sequence.start(this, lSmokesSequence_seq);
+			seq.once(Sequence.EVENT_ON_SEQUENCE_PLAYING_COMPLETED, this._onSmokesSequenceCompleted, this);
+		}
+		//...smokes
+
+		this._correctContainersPositions();
+	}
+
+	_onSmokesSequenceCompleted(event)
+	{
+		this._destroySmokesSequence();
+	}
+
+	_correctContainersPositions()
+	{
+		let containersPos = this._calculateContainersPositions();
+
+		this._fTopContainer_sprt.position.set(containersPos.x, containersPos.y);
+		this._fBottomContainer_sprt.position.set(containersPos.x, containersPos.y);
+	}
+
+	_calculateContainersPositions()
+	{
+		let pos = new PIXI.Point(0, 0);
+
+		let viewPositionDescr = VIEW_POSITION[this._enemyName];
+
+		if (viewPositionDescr)
+		{
+			let currentPositionDescr = viewPositionDescr[this._fEnemy_e.direction];
+			pos.x = currentPositionDescr.x;
+			pos.y = currentPositionDescr.y;
+		}
+
+		return pos;
+	}
+
+	_addAnotherDieSmoke(aContainer_sprt, xDelta_num = 0, yDelta_num = 0)
+	{
+		let dieSmoke = aContainer_sprt.addChild(new Sprite);
+		let smokePosition = this._getDieSmokePosition();
+		dieSmoke.textures = DeathFxAnimation.textures['smokeFx'];
+		dieSmoke.anchor.set(0.5, 0.62);
+		dieSmoke.scale.set(this._getDieSmokeScale());
+		dieSmoke.position.set(smokePosition.x+xDelta_num, smokePosition.y+yDelta_num);
+		dieSmoke.blendMode = PIXI.BLEND_MODES.SCREEN;
+		dieSmoke.play();
+
+		this._smokes.push(dieSmoke);
+	}
+
+	_getTorchContainerPosition()
+	{
+		let pos = {x: 28, y: 15};
+		switch (this._enemyName)
+		{
+			case ENEMIES.WeaponCarrier:
+				pos = {x: 38, y: 30};
+				break;
+		}
+		return pos;
+	}
+
+	_getTorchContainerScale()
+	{
+		let scale = 1;
+		return scale;
+	}
+
+	_getRedEllipsePosition()
+	{
+		let pos = {x: 0, y: -40};
+		switch (this._enemyName)
+		{
+			case ENEMIES.WeaponCarrier:
+				pos = {x: 0, y: -55};
+				break;
+		}
+		return pos;
+	}
+
+	_getRedEllipseScale()
+	{
+		let scale = 0.9;
+		switch (this._enemyName)
+		{
+			case ENEMIES.WeaponCarrier:
+				scale = 1.2;
+				break;
+		}
+		return scale;
+	}
+
+	_getDieSmokeScale()
+	{
+		let scale = 2;
+		switch (this._enemyName)
+		{
+			case ENEMIES.WeaponCarrier:
+				scale = 2.2;
+				break;
+		}
+		return scale;
+	}
+
+	_getDieSmokePosition()
+	{
+		let position = new PIXI.Point(0, -40);
+		
+		if (this._enemyName == ENEMIES.WeaponCarrier)
+		{
+			position.y = -75;
+		}
+
+		return position;
+	}
+
+	_getTorchesParams()
+	{
+		let params = ENEMY_TORCHES_PARAMS;
+		return params;
+	}
+
+	i_destroy()
+	{
+		this.destroy();
+	}
+
+	i_fadeOut()
+	{
+		this._fTopContainer_sprt.fadeTo(0, 200);
+		this._fBottomContainer_sprt.fadeTo(0, 200);
+	}
+
+	_destroySmokesSequence()
+	{
+		if (this._smokesSequence)
+		{
+			this._smokesSequence.off(Sequence.EVENT_ON_SEQUENCE_PLAYING_COMPLETED, this._onSmokesSequenceCompleted, this, true);
+			this._smokesSequence.destructor();
+			this._smokesSequence = null;
+		}
+	}
+
+	destroy()
+	{
+		this._destroySmokesSequence();
+		
+		this._fEnemy_e = null;
+		
+		this._fTopContainer_sprt = null;
+		this._fBottomContainer_sprt = null;
+		this._fRedEllipse_sprt = null;
+
+		this._torches = null;
+		this._smokes = null;
+
+		super.destroy();
+	}
+
+}
+
+export default HvEffects;

@@ -1,0 +1,446 @@
+<template>
+	<div class='paytable_frame' :style='{width: PAYTABLE_WIDTH + "px", height: PAYTABLE_HEIGHT + "px"}'>
+		<div class='paytable_content_container'>
+			<PaytableContent
+				ref='paytableContent'
+				:enemyPayouts='enemyPayouts'
+				:enemyHP='enemyHP'
+				:bossHP='bossHP'
+				:weaponCostMultiplier='weaponCostMultiplier'
+			/>
+		</div>
+		<div class='row top_row'>
+			<div style="width: 4%">
+				<div class='vertical_centered'>
+					<p id='icon'>?</p>
+				</div>
+			</div>
+
+			<div style="width: 46%">
+				<div class='vertical_centered help'>
+					<BaseTextField translatableAssetId='TAPaytableTitle'/>
+				</div>
+			</div>
+
+			<div style="width: 46%; text-align: right;">
+				<div class='vertical_centered'>
+					<PrintableRulesButton 	id='printableRulesButton'
+											@click='handlePrintableRulesButtonClick'
+					/>
+				</div>
+			</div>
+
+			<div style="width: 4%">
+				<div class='vertical_centered' style="text-align: right;">
+					<BaseButton
+									@click='handleCloseButtonClick'
+									id='closeButton'
+									bgAssetName='paytable/exit_btn'
+								/>
+				</div>
+			</div>
+		</div>
+		<div class='row bottom_centered'>
+			<div class='slider_btn' align="left">
+				<BaseButton
+										@click='handlePrewButtonClick'
+										id='prewBtn'
+										bgAssetName='paytable/slider_pre_btn'
+									/>
+			</div>
+			<div class='slider_dots' ref="sliderDots" align="center">
+				<div class="circle" id="page_1"></div>
+				<div class="circle" id="page_2"></div>
+				<div class="circle" id="page_3"></div>
+				<div class="circle" id="page_4"></div>
+				<div class="circle" id="page_5"></div>
+				<div class="circle" id="page_6"></div>
+				<div class="circle" id="page_7"></div>
+				<div class="circle" id="page_8"></div>
+				<div class="circle" id="page_9"></div>
+				<div class="circle" id="page_10"></div>
+				<div class="circle" id="page_11"></div>
+				<div class="circle" id="page_12"></div>
+			</div>
+			<div class='slider_btn' align="right">
+				<BaseButton
+										@click='handleNextButtonClick'
+										id='nextBtn'
+										bgAssetName='paytable/slider_next_btn'
+									/>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script type="text/javascript">
+
+	import { APP } from '../../../../../../common/PIXI/src/globals';
+	import PaytableScreenController from '../../../controller/uis/custom/secondary/paytable/PaytableScreenController';
+	import I18 from '../../../../../../common/PIXI/src/I18';
+	import {ENEMY_TYPES, WEAPONS} from '../../../../../shared/src/CommonConstants';
+	import PlayerCollectionScreenController from '../../../controller/uis/custom/secondary/player_collection/PlayerCollectionScreenController';
+	import Tween from "../../../../../../common/PIXI/src/animation/Tween";
+	import * as Easing from '../../../../../../common/PIXI/src/animation/easing';
+
+	const PAYTABLE_WIDTH = 922;
+	const PAYTABLE_HEIGHT = 467;
+
+	const TOTAL_PAGES = 12;
+
+	const ENEMY_ID = [
+		ENEMY_TYPES.SCARAB_GREEN,
+		ENEMY_TYPES.SCARAB_BROWN,
+		ENEMY_TYPES.SCARAB_GOLD,
+		ENEMY_TYPES.SCARAB_RUBY,
+		ENEMY_TYPES.SCARAB_DIAMOND,
+		ENEMY_TYPES.LOCUST_TEAL,
+		ENEMY_TYPES.LOCUST,
+		ENEMY_TYPES.SCORPION,
+		ENEMY_TYPES.MUMMY_WRAPPED_YELLOW,
+		ENEMY_TYPES.MUMMY_WRAPPED_BLACK,
+		ENEMY_TYPES.MUMMY_WRAPPED_WHITE,
+		ENEMY_TYPES.MUMMY_WARRIOR,
+		ENEMY_TYPES.MUMMY_WARRIOR_GREEN,
+		ENEMY_TYPES.MUMMY_GOD_RED,
+		ENEMY_TYPES.MUMMY_GOD_GREEN,
+		ENEMY_TYPES.BRAWLER_BERSERK,
+		ENEMY_TYPES.HORUS,
+		ENEMY_TYPES.WEAPON_CARRIER,
+		ENEMY_TYPES.BOSS,
+	];
+
+	const SPECIAL_WEAPON_ID = [
+		WEAPONS.MINELAUNCHER,
+		WEAPONS.INSTAKILL,
+		WEAPONS.FLAMETHROWER,
+		WEAPONS.CRYOGUN,
+		WEAPONS.ARTILLERYSTRIKE
+	];
+
+	export default {
+		name: 'paytable',
+
+		data() {
+			return {
+				paytableData: null,
+				currentPage: 1,
+			}
+		},
+
+		methods: {
+
+			init() {
+				if (APP.secondaryScreenController.paytableScreenController.paytableData)
+				{
+					this._onPaytableDataReady();
+				}
+				else
+				{
+					APP.secondaryScreenController.paytableScreenController.once(PaytableScreenController.EVENT_ON_PAYTABLE_DATA_READY, this._onPaytableDataReady, this);
+				}
+
+				this.updatePagesIndicator();
+			},
+
+			updatePagesIndicator()
+			{
+				let lCirclesList_arr = this.$refs.sliderDots.querySelectorAll('div.circle');
+				for (let lCircle_htmlel of lCirclesList_arr)
+				{
+					let lCircleId_str = lCircle_htmlel.getAttribute('id');
+					Object.assign(lCircle_htmlel.style, {
+							"background": "#000000"
+						});
+
+					if(this.currentPage == Number(lCircleId_str.split('_')[1]))
+					{
+						Object.assign(lCircle_htmlel.style, {
+							"background": "#fc980d"
+						});
+					}
+				}
+
+				this.$refs.paytableContent.updateContent(this.currentPage);
+			},
+
+			_onPaytableDataReady(event)
+			{
+				this.initData();
+			},
+
+			initData() {
+				this.paytableData = APP.secondaryScreenController.paytableScreenController.paytableData;
+			},
+
+			handleCloseButtonClick() {
+				this.$emit('close');
+			},
+
+			handlePrewButtonClick()
+			{
+				this.currentPage--;
+				if(this.currentPage < 1)
+				{
+					this.currentPage = TOTAL_PAGES
+				}
+				this.updatePagesIndicator();
+			},
+
+			handleNextButtonClick()
+			{
+				this.currentPage++;
+				if(this.currentPage > TOTAL_PAGES)
+				{
+					this.currentPage = 1;
+				}
+				this.updatePagesIndicator();
+			},
+
+			handlePrintableRulesButtonClick() {
+				this.$emit('printable-rules-click');
+			},
+
+			_getHPByEnemyID(aEnemyId_int)
+			{
+				return this.paytableData.healthByLevels[aEnemyId_int];;
+			},
+
+			_getPayoutByEnemyID(aEnemyId_int)
+			{
+				let lResult_obj = {minPayout: 0, maxPayout: 0};
+				if (!this.paytableData) return lResult_obj;
+
+				for (let i = 0; i < this.paytableData.enemyPayouts.length; i++)
+				{
+					if(this.paytableData.enemyPayouts[i].idEnemy == aEnemyId_int)
+					{
+						return this.paytableData.enemyPayouts[i].prize;
+					}
+				}
+
+				return lResult_obj;
+			}
+		},
+
+		mounted() {
+			this.init();
+		},
+
+		computed: {
+			playerCollectionScreenController: {
+				get() {
+					return APP.secondaryScreenController.playerCollectionScreenController;
+				}
+			},
+			enemyPayouts: {
+				get() {
+					if (!this.paytableData) return [];
+					let lResultPayouts_arr_arr = [];
+					let lEnemyPayouts_obj_obj = this.paytableData.enemyPayoutsByWeapon;
+					for (let i = 0; i<ENEMY_ID.length; i++)
+					{
+						let lEnemyId_int = ENEMY_ID[i]
+						let lEnemyPayoutsByWeapons_obj = [];
+
+						//[Y]TODO...
+						try
+						{
+							lEnemyPayoutsByWeapons_obj = lEnemyPayouts_obj_obj[lEnemyId_int]
+						}
+						catch (e)
+						{
+							console.warn(e);
+							lEnemyPayoutsByWeapons_obj = [];
+						}
+						//...[Y]TODO
+
+						lResultPayouts_arr_arr.push(lEnemyPayoutsByWeapons_obj);
+					}
+
+					return lResultPayouts_arr_arr;
+				}
+			},
+			bossHP: {
+				get() {
+					if (!this.paytableData) return ["", "", ""];
+
+					let lResultEnemyHP_str_arr = ["", "", ""];
+					let lBossHP_arr = this._getHPByEnemyID(ENEMY_TYPES.BOSS);
+
+					let lAssetDescriptor_tad = I18.getTranslatableAssetDescriptor("TAPaytableEnemyPayoutsHPLabel");
+					let l_str = lAssetDescriptor_tad.textDescriptor.content.text;
+
+					for (let i=0; i < lBossHP_arr.length; i++)
+					{
+						lResultEnemyHP_str_arr[i] = l_str.replace("/VALUE/", lBossHP_arr[i]);
+					}
+					
+					return lResultEnemyHP_str_arr;
+				}
+			},
+			enemyHP: {
+				get() {
+					if (!this.paytableData) return [];
+					let lResultEnemyHP_arr_arr = [];
+					let lEnemyHP_obj_obj = this.paytableData.healthByLevels;
+					for (let i=0; i<ENEMY_ID.length; i++)
+					{
+						let lEnemyId_int = ENEMY_ID[i]
+						let lEnemyHP_arr = [];
+
+						//[Y]TODO...
+						try
+						{
+							lEnemyHP_arr = lEnemyHP_obj_obj[lEnemyId_int]
+						}
+						catch (e)
+						{
+							console.warn(e);
+							lEnemyHP_arr = [0, 0, 0];
+						}
+						//...[Y]TODO
+
+						lResultEnemyHP_arr_arr.push(lEnemyHP_arr);
+					}
+
+					return lResultEnemyHP_arr_arr;
+				}
+			},
+			weaponCostMultiplier: {
+				get() {
+					if (!this.paytableData) return [];
+
+					let lResultweaponPainMultiplier_str_arr = [];
+					let lWeaponPaid_obj_arr = this.paytableData.weaponPaidMultiplier;
+
+					for (let i=0; i < SPECIAL_WEAPON_ID.length; i++)
+					{
+						let lWeaponId_int = SPECIAL_WEAPON_ID[i];
+						let lWeapon_obj = {};
+
+						for(let i=0; i < lWeaponPaid_obj_arr.length; i++)
+						{
+							if(lWeaponPaid_obj_arr[i].id == lWeaponId_int)
+							{
+								//[Y]TODO...
+								try
+								{
+									lWeapon_obj = lWeaponPaid_obj_arr[i];
+								}
+								catch (e)
+								{
+									console.warn(e);
+									lWeapon_obj = {costMultiplier: 0};
+								}
+								//...[Y]TODO
+							}
+						}
+
+						let lPaid_num = lWeapon_obj.costMultiplier;
+
+						let lAssetDescriptor_tad = I18.getTranslatableAssetDescriptor("TAPaytableSpecialWeaponCostLabel");
+						let l_str = lAssetDescriptor_tad.textDescriptor.content.text;
+						let lPaid_str = l_str.replace("/VALUE/", lPaid_num);
+
+						lResultweaponPainMultiplier_str_arr.push(lPaid_str);
+					}
+
+					return lResultweaponPainMultiplier_str_arr;				
+				}
+			},
+			PAYTABLE_WIDTH: function() {
+				return PAYTABLE_WIDTH;
+			},
+			PAYTABLE_HEIGHT: function() {
+				return PAYTABLE_HEIGHT;
+			},
+			TOTAL_PAGES: function() {
+				return TOTAL_PAGES;
+			}
+		}
+	}
+</script>
+
+<style>
+</style>
+
+<style scoped>
+	* {
+		-webkit-transform-origin: top left;
+		-ms-transform-origin: top left;
+		transform-origin: top left;
+		position: relative;
+		font-family: "fnt_nm_barlow";
+	}
+
+	.paytable_frame {
+		color: 				#ffffff;
+		background-color: 	rgba(0, 0, 0, 0.75);
+		border-radius: 		5px;
+		top:				6%;
+		left: 				2%;
+		display: 			inline-block;
+	}
+
+	.top_row {
+		height: 61px;
+		padding-right: 30px;
+		padding-left: 30px;
+	}
+
+	.row {
+		width: 100%;
+		display: flex;
+		flex-wrap: nowrap;
+		position: relative;
+	}
+
+	.vertical_centered {
+		top: 50%;
+		transform: translate(0, -50%);
+		position: absolute;
+		width: 100%;
+	}
+
+	.slider_btn {
+		width: 25%;
+	}
+
+	.slider_dots {
+		width: 50%;
+	}
+
+	.bottom_centered {
+		top: 94%;
+		transform: translate(0, -50%);
+		position: absolute;
+		width: 100%;
+		padding-right: 30px;
+		padding-left: 30px;
+	}
+
+	.paytable_content_container {
+		position: relative;
+	}
+
+	.circle {
+		width: 9px;
+		height: 9px;
+		-webkit-border-radius: 4.5px;
+		-moz-border-radius: 4.5px;
+		border-radius: 4.5px;
+		background: black;
+		border-color: #fc980d;
+		border-style: solid;
+		border-width: 1px;
+		display: inline-block;
+		margin: 3px;
+	}
+
+	#icon {
+		font-size: 26px;
+		font-family: "fnt_nm_barlow";
+	}
+
+</style>

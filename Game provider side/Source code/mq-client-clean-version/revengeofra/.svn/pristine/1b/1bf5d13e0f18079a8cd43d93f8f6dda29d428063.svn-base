@@ -1,0 +1,62 @@
+
+MummyWarrior0.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummyWarrior_armL
+  rotate: false
+  xy: 1, 86
+  size: 133, 146
+  orig: 133, 146
+  offset: 0, 0
+  index: -1
+MummyWarrior_armR
+  rotate: false
+  xy: 1, 1
+  size: 118, 84
+  orig: 118, 84
+  offset: 0, 0
+  index: -1
+MummyWarrior_hair
+  rotate: false
+  xy: 442, 160
+  size: 49, 72
+  orig: 49, 72
+  offset: 0, 0
+  index: -1
+MummyWarrior_head
+  rotate: true
+  xy: 135, 85
+  size: 33, 44
+  orig: 33, 44
+  offset: 0, 0
+  index: -1
+MummyWarrior_hips
+  rotate: false
+  xy: 135, 119
+  size: 84, 113
+  orig: 84, 113
+  offset: 0, 0
+  index: -1
+MummyWarrior_legL
+  rotate: true
+  xy: 220, 137
+  size: 56, 116
+  orig: 56, 116
+  offset: 0, 0
+  index: -1
+MummyWarrior_legR
+  rotate: true
+  xy: 220, 194
+  size: 38, 136
+  orig: 38, 136
+  offset: 0, 0
+  index: -1
+MummyWarrior_torso
+  rotate: true
+  xy: 357, 174
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1

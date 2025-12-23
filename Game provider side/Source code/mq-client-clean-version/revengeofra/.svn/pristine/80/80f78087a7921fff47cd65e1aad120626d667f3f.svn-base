@@ -1,0 +1,107 @@
+import SimpleUIView from '../../../../../../common/PIXI/src/view/base/SimpleUIView';
+import Sprite from '../../../../../../common/PIXI/src/display/Sprite';
+import ElectricityFootStepAnimation from './electricity/ElectricityFootStepAnimation';
+import ElectricityBodyBackAnimation from './electricity/ElectricityBodyBackAnimation';
+import ElectricityBodyFrontAnimation from './electricity/ElectricityBodyFrontAnimation';
+import { DIRECTION } from '../../../main/enemies/Enemy';
+import { ENEMIES } from '../../../../../shared/src/CommonConstants';
+
+class ElectricityEffectsView extends SimpleUIView
+{
+	static get EVENT_ON_ANIMATION_CYCLE_COMPLETED()				{return ElectricityBodyFrontAnimation.EVENT_ON_ANIMATION_CYCLE_COMPLETED};	
+
+	constructor(footElectricityContainerInfo, electricityBackContainer, electricityFrontContainer)
+	{
+		super();
+
+		this._footStepsElectricityContainer = footElectricityContainerInfo.container;
+		this._bodyBackElectricityContainer = electricityBackContainer;
+		this._electricityFrontContainer = electricityFrontContainer;
+
+		this._footElectricityZIndex = footElectricityContainerInfo.zIndex;
+
+		this._electricityFootStepAnimation = null;
+		this._electricityBodyBackAnimation = null;
+		this._electricityBodyFrontAnimation = null;
+	}
+
+	showFootStepElectricity(footPoint, enemy)
+	{
+		let electricityFootStepAnimation = this._electricityFootStepAnimation = this._footStepsElectricityContainer.addChild(new ElectricityFootStepAnimation());
+		electricityFootStepAnimation.zIndex = this._footElectricityZIndex;
+		electricityFootStepAnimation.position.set(footPoint.x, footPoint.y);
+		electricityFootStepAnimation.startAnimation(enemy);
+	}
+
+	showBodyElectricity(enemy)
+	{
+		let electricityBodyBackAnimation = this._electricityBodyBackAnimation = this._bodyBackElectricityContainer.addChild(new ElectricityBodyBackAnimation());
+		electricityBodyBackAnimation.startAnimation(enemy);
+
+		let electricityBodyFrontAnimation = this._electricityBodyFrontAnimation = this._electricityFrontContainer.addChild(new ElectricityBodyFrontAnimation());
+		electricityBodyFrontAnimation.on(ElectricityBodyFrontAnimation.EVENT_ON_ANIMATION_CYCLE_COMPLETED, this.emit, this);
+		electricityBodyFrontAnimation.startAnimation(enemy);
+	}
+
+	pauseAnimationCycling()
+	{
+		if (this._electricityBodyBackAnimation)
+		{
+			this._electricityBodyBackAnimation.pauseAnimationCycling();
+		}
+
+		if (this._electricityBodyFrontAnimation)
+		{
+			this._electricityBodyFrontAnimation.pauseAnimationCycling();
+		}
+	}
+
+	resumeAnimationCycling()
+	{
+		if (this._electricityBodyBackAnimation)
+		{
+			this._electricityBodyBackAnimation.resumeAnimationCycling();
+		}
+
+		if (this._electricityBodyFrontAnimation)
+		{
+			this._electricityBodyFrontAnimation.resumeAnimationCycling();
+		}
+	}
+
+	removeAnimation()
+	{
+		if (this._electricityFootStepAnimation)
+		{
+			this._electricityFootStepAnimation.destroy();
+			this._electricityFootStepAnimation = null;
+		}
+
+		if (this._electricityBodyBackAnimation)
+		{
+			this._electricityBodyBackAnimation.destroy();
+			this._electricityBodyBackAnimation = null;
+		}
+
+		if (this._electricityBodyFrontAnimation)
+		{
+			this._electricityBodyFrontAnimation.destroy();
+			this._electricityBodyFrontAnimation = null;
+		}
+	}
+
+	destroy()
+	{
+		this.removeAnimation();
+
+		this._footStepsElectricityContainer = null;
+		this._bodyBackElectricityContainer = null;
+		this._electricityFrontContainer = null;
+		
+		this._footElectricityZIndex = undefined;
+
+		super.destroy();
+	}
+}
+
+export default ElectricityEffectsView;

@@ -1,0 +1,50 @@
+import Sprite from '../../../../../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../../../../../common/PIXI/src/globals';
+import { FRAME_RATE } from '../../../../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../../../../common/PIXI/src/animation/Sequence';
+import { Utils } from '../../../../../../../../common/PIXI/src/Utils';
+
+class WheelBottomFlare extends Sprite
+{
+	constructor()
+	{
+		super();
+
+		this._flareSeq = null;
+		
+		this._initAnimation();
+	}
+
+	_initAnimation()
+	{
+		let flare = this.addChild(APP.library.getSprite("quests/wheel/wheel_bottom_flare"));
+		flare.blendMode = PIXI.BLEND_MODES.ADD;
+		flare.scale.set(this._wiggleScale, this._wiggleScale);
+
+		let seq = [
+			{tweens: [], duration: 3*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: this._wiggleScale}, {prop: 'scale.y', to: this._wiggleScale}], duration: 30*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: this._wiggleScale}, {prop: 'scale.y', to: this._wiggleScale}], duration: 30*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: this._wiggleScale}, {prop: 'scale.y', to: this._wiggleScale}], duration: 30*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: this._wiggleScale}, {prop: 'scale.y', to: this._wiggleScale}], duration: 30*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: this._wiggleScale}, {prop: 'scale.y', to: this._wiggleScale}], duration: 13*FRAME_RATE, onfinish: () => { this.destroy(); }}
+		];
+
+		this._flareSeq = Sequence.start(flare, seq);
+	}
+
+	get _wiggleScale()
+	{
+		return 2*Utils.getRandomWiggledValue(142, 2)/100;
+	}
+
+	destroy()
+	{
+		this._flareSeq && this._flareSeq.destructor();
+		this._flareSeq = null;
+
+		super.destroy();
+	}
+}
+
+export default WheelBottomFlare;

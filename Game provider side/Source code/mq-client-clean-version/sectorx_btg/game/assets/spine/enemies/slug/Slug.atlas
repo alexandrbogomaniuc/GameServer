@@ -1,0 +1,48 @@
+
+SectorX_Big_Enemy5.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 4, 448
+  size: 351, 409
+  orig: 351, 409
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 4, 4
+  size: 10, 21
+  orig: 10, 21
+  offset: 0, 0
+  index: -1
+face
+  rotate: false
+  xy: 316, 116
+  size: 316, 328
+  orig: 316, 328
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: false
+  xy: 359, 486
+  size: 379, 371
+  orig: 379, 371
+  offset: 0, 0
+  index: -1
+tail
+  rotate: false
+  xy: 4, 29
+  size: 308, 415
+  orig: 308, 415
+  offset: 0, 0
+  index: -1
+tongue
+  rotate: true
+  xy: 742, 471
+  size: 386, 85
+  orig: 386, 85
+  offset: 0, 0
+  index: -1

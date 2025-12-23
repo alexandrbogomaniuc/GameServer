@@ -1,0 +1,122 @@
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import TextField from '../../../../../../../common/PIXI/src/display/TextField';
+import NumberValueFormat from '../../../../../../../common/PIXI/src/view/custom/values/NumberValueFormat';
+
+class BigWinPayoutView extends Sprite
+{
+	constructor(aPayoutValue_num, aCurrencySymbol_str = null)
+	{
+		super();
+
+		this._fPayoutValue_str = aPayoutValue_num;
+		this._fDecimalValue_str = null;
+		this._fCurrencySymbol_str = aCurrencySymbol_str;
+		this._fCurrencyText_tf = null;
+		this._fMainText_tf = null;
+		this._fDecimicalText_tf = null;
+		this._fContainer_sprt = null;
+
+		this._formatValues();
+		this._initField();
+	}
+
+	_formatValues()
+	{
+		this._fPayoutValue_str = NumberValueFormat.formatMoney(this._fPayoutValue_str);
+		let lDelimIndex_int = this._fPayoutValue_str.indexOf('.');
+		this._fDecimalValue_str = this._fPayoutValue_str.substring(lDelimIndex_int).substr(0, 3);
+		this._fPayoutValue_str = this._fPayoutValue_str.substring(0, lDelimIndex_int);
+	}
+
+	_initField()
+	{
+		this._fContainer_sprt = this.addChild(new Sprite());
+
+		if (this._fCurrencySymbol_str)
+		{
+			this._generateCurrencyField();
+		}
+
+		this._generateMainField();
+		this._generateDecimicalField();
+
+		let lMainWidth_num = this._fMainText_tf.getBounds().width;
+
+		this._fDecimicalText_tf.position.set(lMainWidth_num, -10);
+
+		if (this._fCurrencySymbol_str)
+		{
+			let lCurrencyWidth_num = this._fCurrencyText_tf.getBounds().width;
+
+			this._fMainText_tf.position.x += lCurrencyWidth_num + 27;
+			this._fDecimicalText_tf.position.x += lCurrencyWidth_num + 24;
+		}
+
+		let lContainerWidth_num = this._fContainer_sprt.getBounds().width;
+		this._fContainer_sprt.position.x -= lContainerWidth_num/2;
+	}
+
+	_generateCurrencyField()
+	{
+		this._fCurrencyText_tf = this._fContainer_sprt.addChild(new TextField(this._getStyle(70)));
+		this._fCurrencyText_tf.text = this._fCurrencySymbol_str;
+		this._fCurrencyText_tf.anchor.set(0, 0.5);
+	}
+
+	_generateMainField()
+	{
+		this._fMainText_tf = this._fContainer_sprt.addChild(new TextField(this._getStyle(84)));
+		this._fMainText_tf.text = this._fPayoutValue_str;
+		this._fMainText_tf.anchor.set(0, 0.5);
+	}
+
+	_generateDecimicalField()
+	{
+		this._fDecimicalText_tf = this._fContainer_sprt.addChild(new TextField(this._getStyle(57)));
+		this._fDecimicalText_tf.text = this._fDecimalValue_str;
+		this._fDecimicalText_tf.anchor.set(0, 0.5);
+	}
+
+	_getStyle(aFontSize_num)
+	{
+		let lFontFamily_str = "fnt_nm_arial_currency";
+		if (!this._fCurrencySymbol_str || (this._fCurrencySymbol_str && APP.fonts.isGlyphsSupported("fnt_nm_amerika", this._fCurrencySymbol_str)))
+		{
+			lFontFamily_str = "fnt_nm_amerika";
+		}
+
+		return {
+			fontFamily: lFontFamily_str,
+			fontSize: aFontSize_num,
+			align: "left",
+			fill: [0xffffff, 0xfdfdfd, 0xb5b5b5, 0x949494],
+			fillGradientType: PIXI.TEXT_GRADIENT.LINEAR_VERTICAL,
+			fillGradientStops: [0.04, 0.43, 0.6, 0.96],
+			stroke: 0x5b5b5b,
+			strokeThickness: 2,
+			dropShadow: true,
+			dropShadowColor: 0x242323,
+			dropShadowAngle: 0.78,
+			dropShadowDistance: 2,
+			dropShadowBlur: 2,
+			letterSpacing: 1.7,
+			padding: 8
+		};
+	}
+
+	destroy()
+	{
+		super.destroy();
+
+		this._fPayoutValue_str = null;
+		this._fDecimalValue_str = null;
+		this._fCurrencySymbol_str = null;
+		this._fCurrencyText_tf = null;
+		this._fMainText_tf = null;
+		this._fDecimicalText_tf = null;
+		this._fContainer_sprt = null;
+	}
+}
+
+export default BigWinPayoutView;

@@ -1,0 +1,166 @@
+
+Ogre270.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+07_Ogre_Walk_L Palm
+  rotate: false
+  xy: 836, 768
+  size: 121, 252
+  orig: 121, 252
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_L shoulder
+  rotate: true
+  xy: 4, 49
+  size: 296, 422
+  orig: 296, 422
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_L shoulder_2
+  rotate: true
+  xy: 437, 255
+  size: 296, 422
+  orig: 296, 422
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_L teo
+  rotate: true
+  xy: 836, 557
+  size: 207, 128
+  orig: 207, 128
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_L teo_2
+  rotate: true
+  xy: 877, 123
+  size: 207, 128
+  orig: 207, 128
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_L thai
+  rotate: false
+  xy: 665, 11
+  size: 208, 240
+  orig: 208, 240
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R cub
+  rotate: false
+  xy: 4, 349
+  size: 429, 671
+  orig: 429, 671
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R finger
+  rotate: true
+  xy: 877, 23
+  size: 96, 134
+  orig: 96, 134
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R knee
+  rotate: false
+  xy: 863, 334
+  size: 124, 219
+  orig: 124, 219
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R thai
+  rotate: false
+  xy: 430, 4
+  size: 231, 247
+  orig: 231, 247
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_body
+  rotate: false
+  xy: 437, 555
+  size: 395, 465
+  orig: 395, 465
+  offset: 0, 0
+  index: -1
+
+Ogre2702.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+07_Ogre_Walk_L elbow
+  rotate: false
+  xy: 357, 730
+  size: 209, 272
+  orig: 209, 272
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_L knee
+  rotate: false
+  xy: 769, 804
+  size: 149, 198
+  orig: 149, 198
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R elbow
+  rotate: false
+  xy: 570, 797
+  size: 195, 205
+  orig: 195, 205
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R palm
+  rotate: false
+  xy: 228, 293
+  size: 170, 151
+  orig: 170, 151
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R palm2
+  rotate: false
+  xy: 922, 901
+  size: 83, 101
+  orig: 83, 101
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R shoulder
+  rotate: false
+  xy: 4, 46
+  size: 188, 283
+  orig: 188, 283
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_R teo
+  rotate: false
+  xy: 196, 4
+  size: 150, 131
+  orig: 150, 131
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_armor
+  rotate: false
+  xy: 4, 333
+  size: 220, 287
+  orig: 220, 287
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_cloth
+  rotate: false
+  xy: 4, 624
+  size: 349, 378
+  orig: 349, 378
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_head
+  rotate: true
+  xy: 228, 448
+  size: 172, 161
+  orig: 172, 161
+  offset: 0, 0
+  index: -1
+07_Ogre_Walk_helmet
+  rotate: false
+  xy: 196, 139
+  size: 163, 150
+  orig: 163, 150
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,159 @@
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import Timer from '../../../../../../../common/PIXI/src/Timer';
+import { Utils } from '../../../../../../../common/PIXI/src/Utils';
+import ElectricityBodyLightenArcsBlockAnimation from './ElectricityBodyLightenArcsBlockAnimation';
+import { ENEMIES } from '../../../../../../shared/src/CommonConstants';
+
+const START_DELAY_IN_FRAMES = 16;
+const BLOCK_START_DELAYS = [16, 14, 28, 14];
+
+const BLOCK_PROPS = 
+{
+	[ENEMIES.Anubis] : [
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}, 
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}, 
+						{x: 0, y:-190, scaleX: 1 * 1.25, scaleY: -1 * 1.25}, 
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}
+					],
+	[ENEMIES.Osiris] : [
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}, 
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}, 
+						{x: 0, y:-190, scaleX: 1 * 1.25, scaleY: -1 * 1.25}, 
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}
+					],
+	[ENEMIES.Thoth] : [
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}, 
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}, 
+						{x: 0, y:-190, scaleX: 1 * 1.25, scaleY: -1 * 1.25}, 
+						{x: 0, y:-40, scaleX: 1 * 1.25, scaleY: 1 * 1.25}
+					],
+	[ENEMIES.MummyGodGreen] : [
+						{x: 0, y:-15, scaleX: 0.45, scaleY: 0.45}, 
+						{x: 0, y:-15, scaleX: 0.45, scaleY: 0.45}, 
+						{x: 0, y:-85, scaleX: 0.45, scaleY: -0.45}, 
+						{x: 0, y:-15, scaleX: 0.45, scaleY: 0.45}
+					],
+	[ENEMIES.MummySmallWhite] : [
+						{x: 0, y:-10, scaleX: 0.4, scaleY: 0.4}, 
+						{x: 0, y:-10, scaleX: 0.4, scaleY: 0.4}, 
+						{x: 0, y:-80, scaleX: 0.4, scaleY: -0.4}, 
+						{x: 0, y:-10, scaleX: 0.4, scaleY: 0.4}
+					]
+}
+
+class ElectricityBodyLightenArcsAnimation extends Sprite
+{
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	//INIT...
+	constructor(targetEnemy)
+	{
+		super();
+
+		this._targetEnemy = targetEnemy;
+		this._arcsBlockAppearTimer = null;
+		this._triggeredArcBlocksAmount = 0;
+	}
+	//...INIT
+
+	//ANIMATION...
+	_startAnimation()
+	{
+		//debug...
+		// this._drawDebugGrid();
+		//...debug
+
+		this._triggeredArcBlocksAmount = 0;
+		this._startArcsBlockAppearTimer()
+	}
+
+	_drawDebugGrid()
+	{
+		let gr = this.addChild(new PIXI.Graphics());
+		gr.lineStyle(2, 0xff0000);
+		gr.moveTo(-60, 0).lineTo(-60, -200);
+		gr.moveTo(0, 0).lineTo(0, -200);
+		gr.moveTo(60, 0).lineTo(60, -200);
+		gr.moveTo(-60, 0).lineTo(60, 0);
+		gr.moveTo(-60, -50).lineTo(60, -50);
+		gr.moveTo(-60, -100).lineTo(60, -100);
+		gr.moveTo(-60, -150).lineTo(60, -150);
+		gr.moveTo(-60, -200).lineTo(60, -200);
+	}
+
+	_addArcsBlock()
+	{
+		let arcsBlock = this.addChild(this._generateLightenArcsBlockAnimationInstance());
+		if (this._triggeredArcBlocksAmount == BLOCK_START_DELAYS.length-1)
+		{
+			arcsBlock.once(ElectricityBodyLightenArcsBlockAnimation.EVENT_ON_ANIMATION_COMPLETED, this._onBlocksAnimationCompleted, this);
+		}
+
+		let blockProperties = BLOCK_PROPS[this._targetEnemy.name][this._triggeredArcBlocksAmount];
+		arcsBlock.scale.set(blockProperties.scaleX, blockProperties.scaleY);
+		arcsBlock.position.set(blockProperties.x, blockProperties.y);
+		
+		arcsBlock.startAnimation();
+
+		this._triggeredArcBlocksAmount ++;
+	}
+
+	_generateLightenArcsBlockAnimationInstance()
+	{
+		return new ElectricityBodyLightenArcsBlockAnimation(this._targetEnemy);
+	}
+
+	_onBlocksAnimationCompleted(event)
+	{
+	}
+
+	//TIMER...
+	_startArcsBlockAppearTimer()
+	{
+		if (this._triggeredArcBlocksAmount >= BLOCK_START_DELAYS.length)
+		{
+			return;
+		}
+
+		let delayFramesAmount_num = BLOCK_START_DELAYS[this._triggeredArcBlocksAmount];
+		
+		this._arcsBlockAppearTimer = new Timer(this._onArcsBlockAppearTimerCompleted.bind(this), delayFramesAmount_num*2*16.7);
+	}
+
+	_clearArcsBlockAppearTimer()
+	{
+		this._arcsBlockAppearTimer && this._arcsBlockAppearTimer.destructor();
+		this._arcsBlockAppearTimer = null;
+	}
+
+	_onArcsBlockAppearTimerCompleted()
+	{
+		this._clearArcsBlockAppearTimer();
+
+		this._addArcsBlock();
+
+		if (this._triggeredArcBlocksAmount < BLOCK_START_DELAYS.length)
+		{
+			this._startArcsBlockAppearTimer();
+		}		
+	}
+	//...TIMER
+
+	//...ANIMATION
+	
+	destroy()
+	{
+		this._targetEnemy = null;
+		this._clearArcsBlockAppearTimer();
+
+		this._triggeredArcBlocksAmount = undefined;
+
+		super.destroy();
+	}
+}
+
+export default ElectricityBodyLightenArcsAnimation;

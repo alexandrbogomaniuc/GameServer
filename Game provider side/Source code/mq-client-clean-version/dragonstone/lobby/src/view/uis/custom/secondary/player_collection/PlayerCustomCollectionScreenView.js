@@ -1,0 +1,86 @@
+import SimpleUIView from '../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/SimpleUIView';
+import PlayerCollectionWaitScreenView from './PlayerCollectionWaitScreenView';
+
+class PlayerCustomCollectionScreenView extends SimpleUIView
+{
+	show()
+	{
+		if (this._fCollectionWaitScreen_cwsv)
+		{
+			this._fCollectionWaitScreen_cwsv.startAnimation();
+		}
+
+		super.show();
+	}
+
+	hide()
+	{
+		if (this._fCollectionWaitScreen_cwsv)
+		{
+			this._fCollectionWaitScreen_cwsv.stopAnimation();
+		}
+
+		super.hide();
+	}
+
+	showWaitScreen()
+	{
+		this._showWaitScreen();
+	}
+
+	hideWaitScreen()
+	{
+		this._hideWaitScreen();
+	}
+
+	changeStake(aStake_num)
+	{
+		this._changeStake(aStake_num);
+	}
+
+	constructor()
+	{
+		super();
+
+		this._fCollectionWaitScreen_cwsv = null;
+		this._fCurrentStake_num = null;
+	}
+
+	_changeStake(aStake_num)
+	{
+		this._fCurrentStake_num = aStake_num;
+	}
+
+	_showWaitScreen()
+	{
+		if (this._fCollectionWaitScreen_cwsv) return;
+
+		this._fCollectionWaitScreen_cwsv = this.addChild(new PlayerCollectionWaitScreenView());
+		let waitScreenPosition = this._waitScreenPosition;
+		this._fCollectionWaitScreen_cwsv.position.set(waitScreenPosition.x, waitScreenPosition.y);
+		this._fCollectionWaitScreen_cwsv.startAnimation();
+	}
+
+	get _waitScreenPosition()
+	{
+		return new PIXI.Point(0, 0);
+	}
+
+	_hideWaitScreen()
+	{
+		this._fCollectionWaitScreen_cwsv && this._fCollectionWaitScreen_cwsv.destroy();
+		this._fCollectionWaitScreen_cwsv = null;
+	}
+
+	destroy()
+	{
+		this._fCollectionWaitScreen_cwsv && this._fCollectionWaitScreen_cwsv.destroy();
+		this._fCollectionWaitScreen_cwsv = null;
+
+		this._fCurrentStake_num = undefined;
+
+		super.destroy();
+	}
+}
+
+export default PlayerCustomCollectionScreenView;

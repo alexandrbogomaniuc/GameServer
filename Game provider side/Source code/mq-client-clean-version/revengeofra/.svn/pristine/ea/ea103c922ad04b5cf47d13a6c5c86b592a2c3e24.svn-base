@@ -1,0 +1,199 @@
+import SimpleUIController from '../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import MapsInfo from '../../../model/uis/maps/MapsInfo';
+import MapsView from '../../../view/uis/maps/MapsView';
+import GameScreen from '../../../main/GameScreen';
+import SubloadingController from '../../subloading/SubloadingController';
+import BossModeController from '../custom/bossmode/BossModeController';
+import { ENEMIES } from '../../../../../shared/src/CommonConstants';
+import { APP } from '../../../../../../common/PIXI/src/globals';
+import { SUBROUND_STATE } from '../../../model/state/GameStateInfo';
+
+class MapsController extends SimpleUIController {
+
+	static get EVENT_LOAD_MAP() 					{return "eventLoadMap"};
+	static get EVENT_LOAD_MAP_IN_BACKGROUND() 		{return "eventLoadMapInBackground"};
+	static get EVENT_CURRENT_MAP_ID_UPDATED()		{return "eventCurrentMapIdUpdated"};
+
+	constructor()
+	{
+		super(new MapsInfo(), new MapsView());
+
+		this._gameScreen = null;
+	}
+
+	__init()
+	{
+		super.__init();
+
+		this._gameScreen = APP.currentWindow;
+
+		this._fSubloadingController_sc = this._gameScreen.subloadingController;
+		this._fSubloadingInfo_si = this._fSubloadingController_sc.i_getInfo();
+
+		this._fBossModeController_bmc = this._gameScreen.bossModeController;
+		this._fBossModeController_bmc.on(BossModeController.EVENT_APPEARING_PRESENTATION_STARTED, this._onBossModeAppearingPresentationStarted, this);
+		this._fBossModeController_bmc.on(BossModeController.EVENT_APPEARING_PRESENTATION_CULMINATED, this._onBossModeAppearingPresentationCulminated, this);
+		this._fBossModeController_bmc.on(BossModeController.EVENT_APPEARING_PRESENTATION_COMPLETION, this._onBossModeAppearingPresentationCompletion, this);
+		this._fBossModeController_bmc.on(BossModeController.EVENT_HIDE_TINTED_VIEW, this._onBossModeHideTintedView, this);
+		this._fBossModeController_bmc.on(BossModeController.EVENT_DISAPPEARING_PRESENTATION_STARTED, this._onBossModeDisappearingPresentationStarted, this);
+		this._fBossModeController_bmc.on(BossModeController.EVENT_DISAPPEARING_PRESENTATION_COMPLETION, this._onBossModeDisappearingPresentationCompletion, this);
+
+		this._gameScreen.on(GameScreen.EVENT_ON_GAME_FIELD_CLEARED, this._onGameFieldCleared, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_ROOM_INFO_UPDATED, this._onRoomInfoUpdated, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_NEXT_MAP_UPDATED, this._onNextMapUpdated, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_DRAW_MAP, this._onTimeToDrawMap, this);
+	}
+
+	_onRoomInfoUpdated(aRoom_obj)
+	{
+		let lInfo_msi = this.i_getInfo();
+
+		if (lInfo_msi.mapId !== aRoom_obj.mapId)
+		{
+			lInfo_msi.mapId = aRoom_obj.mapId;
+			this.emit(MapsController.EVENT_CURRENT_MAP_ID_UPDATED);
+		}
+	}
+
+	_onNextMapUpdated(aValue_obj)
+	{
+		let lInfo_msi = this.i_getInfo();
+
+		lInfo_msi.nextMapId = aValue_obj.nextMapId || lInfo_msi.mapId;
+
+		if (!this._fSubloadingInfo_si.i_isMapLoaded(lInfo_msi.nextMapId)
+			&& !this._fSubloadingInfo_si.i_isMapLoading(lInfo_msi.nextMapId))
+		{
+			this.emit(MapsController.EVENT_LOAD_MAP_IN_BACKGROUND, {mapId: lInfo_msi.nextMapId});
+		}	
+	}
+
+	_onTimeToDrawMap()
+	{
+		this._fSubloadingController_sc.off(SubloadingController.EVENT_ON_MAP_LOADING_COMPLETED, this._onMapSubloadingCompleted, this);
+
+		let lInfo_msi = this.i_getInfo();
+		if (this._fSubloadingInfo_si.i_isMapLoaded(lInfo_msi.mapId))
+		{
+			this._drawMap();
+		}
+		else
+		{
+			this.emit(MapsController.EVENT_LOAD_MAP, {mapId: lInfo_msi.mapId});
+			this._fSubloadingController_sc.on(SubloadingController.EVENT_ON_MAP_LOADING_COMPLETED, this._onMapSubloadingCompleted, this);
+		}
+	}
+
+	_onMapSubloadingCompleted(aEvent_obj)
+	{
+		let lInfo_msi = this.i_getInfo();
+		if (aEvent_obj.mapId === lInfo_msi.mapId)
+		{
+			this._fSubloadingController_sc.off(SubloadingController.EVENT_ON_MAP_LOADING_COMPLETED, this._onMapSubloadingCompleted, this);
+			this._drawMap();
+		}
+	}
+
+	_drawMap()
+	{
+		let lInfo_msi = this.i_getInfo();
+		let currentMapId = lInfo_msi.mapId;
+
+		this.view.i_drawMap(currentMapId);
+		this._drawBossLasthandEffectsIfRequired();
+	}
+
+	_drawBossLasthandEffectsIfRequired()
+	{
+		let lInfo_msi = this.i_getInfo();
+		let currentMapId = lInfo_msi.mapId;
+
+		let gameStateInfo = APP.currentWindow.gameStateController.info;
+		if (
+				gameStateInfo.subroundState == SUBROUND_STATE.BOSS
+				&& gameStateInfo.subroundLasthand
+			)
+		{
+			let bossType = this._fBossModeController_bmc.bossType;
+			if (!!bossType)
+			{
+			}
+			else 
+			{
+				this._gameScreen.once(GameScreen.EVENT_ON_NEW_BOSS_CREATED, this._onNewBossCreated, this);
+			}			
+		}
+	}
+
+	_onNewBossCreated(event)
+	{
+		this._gameScreen.off(GameScreen.EVENT_ON_NEW_BOSS_CREATED, this._onNewBossCreated, this, true);
+
+		this._drawBossLasthandEffectsIfRequired();
+	}
+
+	_onBossModeAppearingPresentationStarted(aEvent_obj)
+	{
+		if (aEvent_obj.noTint) return;
+		this.view.setTintedView(true, aEvent_obj.duration);
+	}
+
+	_onBossModeAppearingPresentationCulminated(aEvent_obj)
+	{
+		if (aEvent_obj.noTint) return;
+		this.view.setTintedView(true, aEvent_obj.duration);
+	}
+
+	_onBossModeAppearingPresentationCompletion(aEvent_obj)
+	{
+		if (!aEvent_obj.hideTint) return;
+		this.view.setTintedView(false, aEvent_obj.duration);
+	}
+
+	_onBossModeHideTintedView(aEvent_obj)
+	{
+		if (!aEvent_obj.hideTint) return;
+		this.view.setTintedView(false, aEvent_obj.duration);
+	}
+
+	_onBossModeDisappearingPresentationStarted(aEvent_obj)
+	{
+		this.view.setTintedView(true, 4*2*16.7);
+	}
+
+	_onBossModeDisappearingPresentationCompletion(aEvent_obj)
+	{
+		this.view.setTintedView(false, 70*2*16.7);
+	}
+
+	_onGameFieldCleared(aEvent_obj)
+	{
+		this.view.setTintedView(false, 0);
+	}
+
+	destroy()
+	{
+		if (this._gameScreen)
+		{
+			this._gameScreen.off(GameScreen.EVENT_ON_ROOM_INFO_UPDATED, this._onRoomInfoUpdated, this);
+			this._gameScreen.off(GameScreen.EVENT_ON_NEXT_MAP_UPDATED, this._onNextMapUpdated, this);
+			this._gameScreen.off(GameScreen.EVENT_ON_DRAW_MAP, this._onTimeToDrawMap, this);
+			this._gameScreen.off(GameScreen.EVENT_ON_NEW_BOSS_CREATED, this._onNewBossCreated, this, true);
+			this._gameScreen = null;
+		}
+
+		this._fSubloadingController_sc = null;
+		this._fSubloadingInfo_si = null;
+
+		if (this._fBossModeController_bmc)
+		{
+			this._fBossModeController_bmc.off(BossModeController.EVENT_APPEARING_PRESENTATION_STARTED, this._onBossModeAppearingPresentationStarted, this);
+			this._fBossModeController_bmc.off(BossModeController.EVENT_APPEARING_PRESENTATION_COMPLETION, this._onBossModeAppearingPresentationCompletion, this);
+			this._fBossModeController_bmc = null;
+		}
+
+		super.destroy();
+	}
+}
+
+export default MapsController;

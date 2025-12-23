@@ -1,0 +1,400 @@
+import { APP } from '../../../../common/PIXI/src/globals';
+import Sprite from '../../../../common/PIXI/src/display/Sprite';
+import I18 from '../../../../common/PIXI/src/I18';
+import Button from '../ui/LobbyButton';
+import TextField from '../../../../common/PIXI/src/display/TextField';
+import * as FEATURES from '../../../../common/PIXI/src/layout/features';
+
+import EditProfileScreenController from '../controller/uis/custom/secondary/edit_profile/EditProfileScreenController';
+import LobbyPlayerController from '../controller/custom/LobbyPlayerController';
+import PlayerInfo from '../../../../common/PIXI/src/model/custom/PlayerInfo';
+import LobbyLogoView from '../view/uis/custom/LobbyLogoView';
+import LobbyPlayerNameView from '../view/uis/custom/LobbyPlayerNameView';
+import LobbyRoomButtons from '../components/lobby_room_buttons/LobbyRoomButtons';
+import LobbyTooltipsView from '../view/uis/custom/tooltips/LobbyTooltipsView';
+import ProfileAvatar from '../components/profile/ProfileAvatar';
+
+class LobbyView extends Sprite
+{
+	static get EVENT_ON_LAUNCH_GAME_CLICKED()						{return "onLaunchGameBtnClicked";}
+	static get EVENT_ON_LOBBY_PROFILE_CLICKED()						{return "onLobbyViewProfileButtonClicked";}
+	static get EVENT_ON_PLAYER_STATS_UPDATED()						{return "EVENT_ON_PLAYER_STATS_UPDATED";}
+	
+	static get EVENT_LOBBY_ROOM_WEAPONS_INDICATOR_CLICK() 			{return LobbyRoomButtons.EVENT_LOBBY_ROOM_WEAPONS_INDICATOR_CLICK};
+	static get EVENT_LOBBY_ROOM_STAKE_SELECTED()					{return LobbyRoomButtons.EVENT_LOBBY_ROOM_STAKE_SELECTED};
+
+	get profileController()
+	{
+		return APP.secondaryScreenController.editProfileScreenController;
+	}
+
+	static get AVATAR_TEXTURES()
+	{
+		initTexturesIfRequired();
+		return avatar_textures;
+	}
+
+	updateLobbyData()
+	{
+		this._updateLobbyData();
+	}
+
+	show()
+	{
+		super.show()
+	}
+
+	refreshIndicatorsView()
+	{
+		this._updateStats();
+	}
+
+	onWeaponsUpdated(aData_arr)
+	{
+		this._onWeaponsUpdated(aData_arr);
+	}
+
+	constructor (aPlayer_obj)
+	{
+		super();
+
+		this._fPlayer_obj = aPlayer_obj;
+		this._fUserDetailsContainer_spr = null;
+		this._fPlayerInfo_pi = APP.playerController.info;
+		this._fLobbyRoomButtons_lrb = null;
+		this._fRoomButtonsContainer_sprt = null;
+		this._fTooltipsContainer_sprt = null;
+	}
+
+	init()
+	{
+		this._addback();
+		this._addCaptions();
+		this._addUserDetails();
+		this._addBrand();
+
+		this._fRoomButtonsContainer_sprt = this.addChild(new Sprite());
+		this._fTooltipsContainer_sprt = this.addChild(new Sprite());
+
+		APP.tooltipsController.initView(this._tooltipsView);
+
+		APP.playerController.on(LobbyPlayerController.EVENT_ON_PLAYER_INFO_UPDATED, this._onPlayerInfoUpdated, this);
+		APP.playerController.on(LobbyPlayerController.EVENT_ON_TOLL_TIP_STATE_CHANGE, this._onPlayerInfoUpdated, this);
+	}
+
+	_addback()
+	{
+		let lUserDetailsBack = new PIXI.Graphics();
+		lUserDetailsBack.beginFill(0x000000, 0.6);
+		lUserDetailsBack.drawRect(-480, -40, 960, 80);
+		lUserDetailsBack.endFill();
+		lUserDetailsBack.position.set(0, 162)
+		this.addChild(lUserDetailsBack);
+	}
+
+	_addCaptions()
+	{
+		let logo = this.addChild(new LobbyLogoView());
+		logo.position.set(17, -185);
+
+		let lLobbyRoomsCaption = this.addChild(I18.generateNewCTranslatableAsset('TALobbyRoomsCaption'));
+		lLobbyRoomsCaption.position.set(-1, -120);
+
+		if (APP.isMobile)
+		{
+			logo.y -= 10;
+			lLobbyRoomsCaption.y -= 6;
+		}
+	}
+
+	_addBrand()
+	{	
+		let lBrand = this.addChild(I18.generateNewCTranslatableAsset('TAPreloaderBrand'));
+		lBrand.position.set(478, -212);
+	}
+
+	_updateLobbyData()
+	{
+		this._fStakes_num_arr = this._fPlayerInfo_pi.stakes;
+
+		this._updateStats();
+		this._updateNickName();
+		this._updateLobbyRoomButtons();
+	}
+
+	//TOOLTIPS...
+	get _tooltipsView()
+	{
+		return this._fTooltipsView_ltv || (this._fTooltipsView_ltv = this._initTooltipsView());
+	}
+
+	_initTooltipsView()
+	{
+		let l_ltv = new LobbyTooltipsView();
+		this._fTooltipsContainer_sprt.addChild(l_ltv);
+
+		l_ltv.on(LobbyTooltipsView.EVENT_ON_TIP_SHOWN, this._onTooltipShown, this);
+		l_ltv.on(LobbyTooltipsView.EVENT_ON_TIP_HIDED, this._onTooltipHided, this);
+
+		return l_ltv;
+	}
+
+	_onTooltipShown(aEvent_obj)
+	{
+	}
+
+	_onTooltipHided(aEvent_obj)
+	{
+	}
+	//...TOOLTIPS
+
+	//ROOM_BUTTONS...
+
+	_onWeaponsUpdated(aData_arr)
+	{
+		this._lobbyRoomButtons.updateWeapons(aData_arr);
+	}
+
+	get _lobbyRoomButtons()
+	{
+		return this._fLobbyRoomButtons_lrb || (this._fLobbyRoomButtons_lrb = this._initLobbyRoomButtons());
+	}
+
+	_initLobbyRoomButtons()
+	{
+		let l_lrb = this._fRoomButtonsContainer_sprt.addChild(new LobbyRoomButtons());
+		l_lrb.position.set(0, -15.5);
+		l_lrb.on(LobbyRoomButtons.EVENT_LOBBY_ROOM_STAKE_SELECTED, this._onLobbyRoomSelected, this);
+		l_lrb.on(LobbyRoomButtons.EVENT_LOBBY_ROOM_WEAPONS_INDICATOR_CLICK, this._onLobbyRoomWeaponsIndicatorClick, this)
+		return l_lrb;
+	}
+
+	_updateLobbyRoomButtons()
+	{
+		this._fStakes_num_arr && this._lobbyRoomButtons.update(this._fStakes_num_arr);
+	}
+
+	_onLobbyRoomSelected(event)
+	{
+		APP.soundsController.play("mq_gui_launch");
+		this.emit(LobbyView.EVENT_ON_LAUNCH_GAME_CLICKED, {stake:event.value}); //Взятие ставки из LobbyRoomButtons
+	}
+
+	_onLobbyRoomWeaponsIndicatorClick(event)
+	{
+		this.emit(LobbyView.EVENT_LOBBY_ROOM_WEAPONS_INDICATOR_CLICK, {stake:event.value});
+	}
+	//...ROOM_BUTTONS
+
+	//USER_DETAILS...
+
+	_addUserDetails()
+	{
+		this._fUserDetailsContainer_spr = this.addChild(new Sprite());
+		this._fUserDetailsContainer_spr.position.set(0, 162);
+
+		this._addUserDetailsLines();
+		this._addUserDetailsCaptions();
+		this._addUserDetailsAvatar();
+		this._addUserDetailsStat();
+		this._addUserDetailsButtons();
+	}
+
+	_addLine(aX, aY)
+	{
+		let lLine_grphc = this._fUserDetailsContainer_spr.addChild(new PIXI.Graphics());
+		lLine_grphc.beginFill(0x4e4e4e).drawRect(-1, -22, 1, 44).endFill();
+		lLine_grphc.position.set(aX, aY);
+	}
+
+	_addUserDetailsLines()
+	{
+		this._addLine(245.5, 1.5);
+		this._addLine(364.5, 1.5);
+	}
+
+	_addUserDetailsCaptions()
+	{
+		this._fUserDetailsCaptionsContainer = this._fUserDetailsContainer_spr.addChild(new Sprite());
+		this._fUserDetailsCaptionsContainer.position.set(0, 0);
+
+		let lTotalKillsLabel_cta = this._fUserDetailsCaptionsContainer.addChild(I18.generateNewCTranslatableAsset("TALobbyTotalKillsLabel"));
+		lTotalKillsLabel_cta.position.set(306.5, -24);
+
+		let lGameRoundsLabel_cta = this._fUserDetailsCaptionsContainer.addChild(I18.generateNewCTranslatableAsset("TALobbyGameRoundsLabel"));
+		lGameRoundsLabel_cta.position.set(425.5, -24);
+
+		let lPlayerNameView_lpv = this._fPlayerNameView_lpv = this._fUserDetailsCaptionsContainer.addChild(new LobbyPlayerNameView());
+		lPlayerNameView_lpv.init(this._fPlayer_obj.nickname, new PIXI.Point(0, 0.5));
+		lPlayerNameView_lpv.position.set(-461, -2.5);
+	}
+
+	_addUserDetailsAvatar()
+	{
+		this._fAvatar_sprt = this._fUserDetailsContainer_spr.addChild(new Sprite());
+		this._fAvatar_sprt.anchor.set(0.5);
+		this._fAvatar_sprt.position.set(-289, 1.5);
+
+		this._updateAvatarAtFirstTime();
+
+		this.profileController.on(EditProfileScreenController.EVENT_ON_AVATAR_CHANGED, this._updateAvatar, this);
+	}
+
+	_updateAvatarAtFirstTime()
+	{
+		let lAvatarRenderTexture = APP.secondaryScreenController.editProfileScreenController.getAvatarRenderTexture();
+		if (lAvatarRenderTexture)
+		{
+			this._updateAvatar();
+			return;
+		}
+
+		var avatar = APP.lobbyScreen.playerInfo.avatar;
+
+		let container = new Sprite();
+		container.addChild(this._getAvatarSprite("backs_avatar/back_" + avatar.back));
+		container.addChild(this._getAvatarSprite("heroes_avatar/hero_" + avatar.hero));
+		container.addChild(this._getAvatarSprite("rims_avatar/rim_" + avatar.border));
+
+		let bounds = container.getBounds();
+		
+		let brt = new PIXI.BaseRenderTexture(bounds.width, bounds.height, PIXI.SCALE_MODES.NEAREST, 2);
+		var renderTexture = new PIXI.RenderTexture(brt);
+		container.position.set(bounds.width/2, bounds.height/2);
+		APP.stage.renderer.render(container, renderTexture);
+
+		container.destroy();
+
+		this._fAvatar_sprt.texture = renderTexture;
+	}
+
+	_getAvatarSprite(aSrc_str)
+	{
+		let lTexture_t = this._getAvatarTexture(aSrc_str);
+		if (lTexture_t)
+		{
+			let l_spr = new Sprite();
+			l_spr.texture = lTexture_t;
+
+			return l_spr;
+		}
+		else
+		{
+			throw new Error (`Cannot find texture for avatar ${aSrc_str}`);
+		}
+	}
+
+	_getAvatarTexture(aName_str)
+	{
+		for (let i = 0; i < ProfileAvatar.AVATAR_TEXTURES.length; i++)
+		{
+			if(ProfileAvatar.AVATAR_TEXTURES[i]._atlasName == aName_str)
+			{
+				return ProfileAvatar.AVATAR_TEXTURES[i];
+			}
+		}
+
+		return null;
+	}
+
+	_updateAvatar()
+	{
+		this._fAvatar_sprt.scale.set(0.3);
+		this._fAvatar_sprt.texture = this.profileController.getAvatarRenderTexture();
+	}
+
+	_addUserDetailsStat()
+	{
+		this._fUserDetailsStatContainer_spr = this._fUserDetailsContainer_spr.addChild(new Sprite());
+		this._fUserDetailsStatContainer_spr.position.set(0, 0);
+
+		let lStyle_obj = {
+			fontFamily: "fnt_nm_barlow_semibold",
+			fontSize: 25,
+			fill: 0xffffff,
+			align: "center",
+			letterSpacing: 1.3,
+			padding: 5
+		};
+
+		this._fTotalKill_tf = this._fUserDetailsStatContainer_spr.addChild(new TextField(lStyle_obj));
+		this._fTotalKill_tf.maxWidth = 80;
+		this._fTotalKill_tf.anchor.set(0.5, 0.5);
+		this._fTotalKill_tf.position.set(306.5, 7);
+
+		this._fRounds_tf = this._fUserDetailsStatContainer_spr.addChild(new TextField(lStyle_obj));
+		this._fRounds_tf.maxWidth = 80;
+		this._fRounds_tf.anchor.set(0.5, 0.5);
+		this._fRounds_tf.position.set(425.5, 7);
+
+		this._updateStats();
+	}
+
+	_updateStats()
+	{
+		if(this._fTotalKill_tf)								this._fTotalKill_tf.text = 			new String(this._fPlayer_obj.kills).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+		if(this._fRounds_tf) 								this._fRounds_tf.text =				new String(this._fPlayer_obj.rounds).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+
+		this.emit(LobbyView.EVENT_ON_PLAYER_STATS_UPDATED);
+	}
+
+	_addUserDetailsButtons()
+	{
+		this._fEdit_btn = this._fUserDetailsContainer_spr.addChild(new Button("lobby/edit_btn", "TALobbyEditProfileBtnLabel", true));
+		this._fEdit_btn.on("pointerclick", this._onProfileBtnClicked, this);
+		this._fEdit_btn.position.set(-421.5, 20);
+		this._fEdit_btn.caption.position.set(-8, 0);
+
+		if (FEATURES.IE)
+		{
+			this._fEdit_btn.caption.pivot.set(-1, -1);
+		}
+	}
+
+	_onProfileBtnClicked()
+	{
+		this.emit(LobbyView.EVENT_ON_LOBBY_PROFILE_CLICKED);
+	}
+
+	_updateNickName(aNickname_str)
+	{
+		if (this._fPlayerNameView_lpv)
+		{
+			this._fPlayerNameView_lpv.updateName(aNickname_str || APP.lobbyScreen.playerInfo.nickname);
+		}
+	}
+
+	//...USER_DETAILS
+
+	destroy()
+	{
+		this._fPlayer_obj = null;
+		this._fUserDetailsContainer_spr = null;
+		this._fPlayerInfo_pi = null;
+		this._fLobbyRoomButtons_lrb = null;
+		this._fStakes_num_arr = null;
+		this._lobbyRoomButtons = null;
+		this._fUserDetailsCaptionsContainer = null;
+		this._fAvatar_sprt = null;
+		this._fUserDetailsStatContainer_spr = null;
+		this._fEdit_btn = null;
+		this._fPlayerNameView_lpv= null;
+		this._fRoomButtonsContainer_sprt = null;
+		this._fTooltipsContainer_sprt = null;
+		this._fIntervalTimer_tmr = null;
+		this._fTotalKill_tf = null;
+		this._fRounds_tf = null;
+
+		super.destroy();
+	}
+
+	_onPlayerInfoUpdated(event)
+	{
+		if (event.data[PlayerInfo.KEY_NICKNAME])
+		{
+			this._updateNickName(event.data[PlayerInfo.KEY_NICKNAME].value);
+		}
+	}
+}
+
+export default LobbyView;

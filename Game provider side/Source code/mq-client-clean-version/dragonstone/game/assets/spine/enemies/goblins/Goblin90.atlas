@@ -1,0 +1,223 @@
+
+Goblin90.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90_Goblin_BODY
+  rotate: false
+  xy: 283, 734
+  size: 203, 286
+  orig: 203, 286
+  offset: 0, 0
+  index: -1
+90_Goblin_EYE_CLOSE
+  rotate: false
+  xy: 42, 25
+  size: 23, 16
+  orig: 23, 16
+  offset: 0, 0
+  index: -1
+90_Goblin_HEAD
+  rotate: false
+  xy: 4, 764
+  size: 275, 256
+  orig: 275, 256
+  offset: 0, 0
+  index: -1
+90_Goblin_HEAD_2
+  rotate: false
+  xy: 4, 504
+  size: 275, 256
+  orig: 275, 256
+  offset: 0, 0
+  index: -1
+90_Goblin_HIP
+  rotate: true
+  xy: 283, 513
+  size: 217, 135
+  orig: 217, 135
+  offset: 0, 0
+  index: -1
+90_Goblin_HIP_BOX
+  rotate: true
+  xy: 804, 515
+  size: 87, 116
+  orig: 87, 116
+  offset: 0, 0
+  index: -1
+90_Goblin_HIP_CLOTH1
+  rotate: false
+  xy: 4, 250
+  size: 129, 250
+  orig: 129, 250
+  offset: 0, 0
+  index: -1
+90_Goblin_HIP_CLOTH2
+  rotate: false
+  xy: 941, 900
+  size: 72, 120
+  orig: 72, 120
+  offset: 0, 0
+  index: -1
+90_Goblin_HIP_CLOTH3
+  rotate: false
+  xy: 137, 298
+  size: 130, 202
+  orig: 130, 202
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_ARM
+  rotate: true
+  xy: 924, 489
+  size: 112, 90
+  orig: 112, 90
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_EAR
+  rotate: false
+  xy: 527, 486
+  size: 66, 49
+  orig: 66, 49
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_ELBOW
+  rotate: true
+  xy: 804, 606
+  size: 128, 119
+  orig: 128, 119
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_FINGER1
+  rotate: true
+  xy: 137, 267
+  size: 27, 58
+  orig: 27, 58
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_FINGER2
+  rotate: true
+  xy: 941, 875
+  size: 21, 55
+  orig: 21, 55
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_FINGER3
+  rotate: true
+  xy: 527, 451
+  size: 31, 46
+  orig: 31, 46
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_FOOT
+  rotate: true
+  xy: 4, 45
+  size: 201, 98
+  orig: 201, 98
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_KNEE
+  rotate: false
+  xy: 565, 856
+  size: 177, 164
+  orig: 177, 164
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_SHOULDER
+  rotate: false
+  xy: 927, 605
+  size: 86, 129
+  orig: 86, 129
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_SHOULDER_ARMOR
+  rotate: true
+  xy: 896, 738
+  size: 128, 103
+  orig: 128, 103
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_THAI
+  rotate: false
+  xy: 565, 710
+  size: 168, 142
+  orig: 168, 142
+  offset: 0, 0
+  index: -1
+90_Goblin_LEFT_THUMP
+  rotate: true
+  xy: 4, 4
+  size: 37, 34
+  orig: 37, 34
+  offset: 0, 0
+  index: -1
+90_Goblin_RIGHT_ARM
+  rotate: false
+  xy: 106, 92
+  size: 105, 154
+  orig: 105, 154
+  offset: 0, 0
+  index: -1
+90_Goblin_RIGHT_EAR
+  rotate: false
+  xy: 106, 14
+  size: 94, 74
+  orig: 94, 74
+  offset: 0, 0
+  index: -1
+90_Goblin_RIGHT_ELBOW
+  rotate: false
+  xy: 673, 549
+  size: 127, 157
+  orig: 127, 157
+  offset: 0, 0
+  index: -1
+90_Goblin_RIGHT_FOOT
+  rotate: false
+  xy: 746, 738
+  size: 146, 128
+  orig: 146, 128
+  offset: 0, 0
+  index: -1
+90_Goblin_RIGHT_KNEE
+  rotate: false
+  xy: 422, 535
+  size: 97, 195
+  orig: 97, 195
+  offset: 0, 0
+  index: -1
+90_Goblin_RIGHT_SHOULDER
+  rotate: true
+  xy: 746, 870
+  size: 150, 191
+  orig: 150, 191
+  offset: 0, 0
+  index: -1
+90_Goblin_RIGHT_THAI
+  rotate: false
+  xy: 523, 539
+  size: 146, 167
+  orig: 146, 167
+  offset: 0, 0
+  index: -1
+90_Goblin_WEAPON
+  rotate: false
+  xy: 490, 746
+  size: 71, 274
+  orig: 71, 274
+  offset: 0, 0
+  index: -1
+90_Goblin_WEAPON_ROPE1
+  rotate: false
+  xy: 422, 444
+  size: 101, 87
+  orig: 101, 87
+  offset: 0, 0
+  index: -1
+90_Goblin_WEAPON_ROPE2
+  rotate: true
+  xy: 597, 505
+  size: 30, 54
+  orig: 30, 54
+  offset: 0, 0
+  index: -1

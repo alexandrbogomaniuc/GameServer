@@ -1,0 +1,17 @@
+import ExternalAPI from '../../../../common/PIXI/src/external/betsoftgaming';
+import LoaderUI from './GameLoaderUI';
+
+/** @ignore */
+class GameAPI extends ExternalAPI {
+
+	constructor(config) {
+		super(config);
+	}
+
+	get LoaderUI() {
+		return LoaderUI;
+	}
+
+}
+
+export default GameAPI;

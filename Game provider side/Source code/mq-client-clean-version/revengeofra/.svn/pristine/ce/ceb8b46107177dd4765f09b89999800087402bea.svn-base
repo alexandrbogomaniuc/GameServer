@@ -1,0 +1,42 @@
+import SimpleUIInfo from '../../../../../../common/PIXI/src/dgphoenix/unified/model/uis/SimpleUIInfo';
+
+class ElectricityEffectsInfo extends SimpleUIInfo
+{
+	constructor()
+	{
+		super();
+
+		this._electricityTurtenOn_bl = false;
+		this._isCyclePaused_bl = false;
+	}
+
+	set turned(value)
+	{
+		this._electricityTurtenOn_bl = value;
+	}
+
+	get turned()
+	{
+		return this._electricityTurtenOn_bl;
+	}
+
+	set isCyclePaused(value)
+	{
+		this._isCyclePaused_bl = value;
+	}
+
+	get isCyclePaused()
+	{
+		return this._isCyclePaused_bl;
+	}
+
+	destroy()
+	{
+		this._electricityTurtenOn_bl = false;
+		this._isCyclePaused_bl = false;
+		
+		super.destroy();
+	}
+}
+
+export default ElectricityEffectsInfo;

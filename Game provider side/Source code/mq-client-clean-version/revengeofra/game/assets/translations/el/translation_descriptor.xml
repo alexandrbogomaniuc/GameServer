@@ -1,0 +1,1882 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_barlow_italic_medium" url="[root_resources_path]translations/el/fonts/barlow_mediumitalic_el.ttf"/>
+		<font name="fnt_nm_barlow" url="[root_resources_path]translations/el/fonts/barlow_medium_el.ttf"/>
+		<font name="fnt_nm_barlow_bold" url="[root_resources_path]translations/el/fonts/barlow_bold_el.ttf"/>
+	</fonts>
+
+	<tasds>
+		<!--HP DAMAGE...-->
+		<tad id="TAEnemyHPCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>HP</source_meaning>
+				<translated_meaning>ΠΖ</translated_meaning>
+			</meaning>
+			<area x="-32" y="-16" w="64" h="32">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/hp/hp_caption.png"/>
+		</tad>
+
+		<tad id="TAEnemyHPValuePosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-11" y="0" w="0" h="0"> <!-- x<0 - значение будет слева от TAEnemyHPCaption, x>=0 - значение справа от TAEnemyHPCaption -->
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		<!--...HP DAMAGE-->
+
+		<!--BIG WIN...-->
+		<tad id="TABigWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BIG WIN!</source_meaning>
+				<translated_meaning>ΜΕΓΑΛΟ ΚΕΡΔΟΣ!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/big_win_caption.png"/>
+		</tad>
+
+		<tad id="TABigWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BIG WIN!</source_meaning>
+				<translated_meaning>ΜΕΓΑΛΟ ΚΕΡΔΟΣ!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/big_win_glow_caption.png"/>
+		</tad>
+
+		<tad id="TAHugeWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>HUGE WIN!</source_meaning>
+				<translated_meaning>ΤΕΡΑΣΤΙΟ ΚΕΡΔΟΣ!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/huge_win_caption.png"/>
+		</tad>
+
+		<tad id="TAHugeWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>HUGE WIN!</source_meaning>
+				<translated_meaning>ΤΕΡΑΣΤΙΟ ΚΕΡΔΟΣ!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/huge_win_glow_caption.png"/>
+		</tad>
+
+		<tad id="TAMegaWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MEGA WIN!</source_meaning>
+				<translated_meaning>ΣΟΥΠΕΡ ΚΕΡΔΟΣ!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/mega_win_caption.png"/>
+		</tad>
+
+		<tad id="TAMegaWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MEGA WIN!</source_meaning>
+				<translated_meaning>ΣΟΥΠΕΡ ΚΕΡΔΟΣ!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/mega_win_glow_caption.png"/>
+		</tad>
+		<!--...BIG WIN-->
+
+		<!--CRITICAL HIT...-->
+		<tad id="TACriticalHitLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>CRITICAL HIT</source_meaning>
+				<translated_meaning>ΚΡΙΣΙΜΟ ΧΤΥΠΗΜΑ</translated_meaning>
+			</meaning>
+			<area x="-128" y="-16" w="256" h="32">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/critical_hit/critical_hit.png"/>
+		</tad>
+		<!--...CRITICAL HIT-->
+
+		<!--INSTANT KILL...-->
+		<tad id="TAInstantWinLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>INSTANT WIN!!!</source_meaning>
+				<translated_meaning>ΑΜΕΣΟ ΚΕΡΔΟΣ!!!</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/instant_win/instant_win.png"/>
+		</tad>
+
+		<tad id="TAInstantWinSilverLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>INSTANT WIN!!!</source_meaning>
+				<translated_meaning>ΑΜΕΣΟ ΚΕΡΔΟΣ!!!</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/instant_win/instant_win_silver.png"/>
+		</tad>
+
+		<tad id="TAInstantWinWhiteLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>INSTANT WIN!!!</source_meaning>
+				<translated_meaning>ΑΜΕΣΟ ΚΕΡΔΟΣ!!!</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/instant_win/instant_win_white.png"/>
+		</tad>
+		<!--...INSTANT KILL-->
+
+		<!--BONUS WIN...-->
+		<tad id="TABonusLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BONUS</source_meaning>
+				<translated_meaning>ΜΠΟΝΟΥΣ</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/bonus_win/bonus.png"/>
+		</tad>
+
+		<tad id="TAWinLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>WIN</source_meaning>
+				<translated_meaning>ΚΕΡΔΟΣ</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/bonus_win/win.png"/>
+		</tad>
+		<!--...BONUS WIN-->
+
+		<!--FIRE_SETTINGS...-->
+		<tad id="TAFireSettingsOptions" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OPTIONS</source_meaning>
+				<translated_meaning>ΕΠΙΛΟΓΕΣ</translated_meaning>
+			</meaning>
+			<area x="-19" y="-11" w="38" h="22">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="7" color="0xffffff">
+				</font>
+				<content>ΕΠΙΛΟΓΕΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetHigh" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target HIGH</source_meaning>
+				<translated_meaning>Στόχος ΥΨΗΛΟ</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Στόχος ΥΨΗΛΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetLow" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target LOW</source_meaning>
+				<translated_meaning>Στόχος ΧΑΜΗΛΟ</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Στόχος ΧΑΜΗΛΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetSame" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target SAME</source_meaning>
+				<translated_meaning>Στόχος ΙΔΙΟ</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Στόχος ΙΔΙΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingslockOnTarget" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Lock on Target</source_meaning>
+				<translated_meaning>Κλείδωμα στον Στόχο</translated_meaning>
+			</meaning>
+			<area x="0" y="-10" w="76" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="8" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Κλείδωμα&#10;στον Στόχο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsAutoFire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto Fire</source_meaning>
+				<translated_meaning>Αυτόματη βολή</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Αυτόματη βολή</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsFireSpeed" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Fire Speed</source_meaning>
+				<translated_meaning>Ταχύτητα πυροβολισμού</translated_meaning>
+			</meaning>
+			<area x="0" y="-10" w="76" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="8" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Ταχύτητα&#10;πυροβολισμού</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsOkMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>ΟΚ</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="24" color="0x000000">
+				</font>
+				<content>ΟΚ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsOptionsMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OPTIONS</source_meaning>
+				<translated_meaning>ΕΠΙΛΟΓΕΣ</translated_meaning>
+			</meaning>
+			<area x="0" y="-23" w="220" h="46">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="24" color="0xffffff">
+				</font>
+				<content>ΕΠΙΛΟΓΕΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetHighMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target HIGH</source_meaning>
+				<translated_meaning>Στόχος ΥΨΗΛΟ</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Στόχος ΥΨΗΛΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetLowMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target LOW</source_meaning>
+				<translated_meaning>Στόχος ΧΑΜΗΛΟ</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Στόχος ΧΑΜΗΛΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetSameMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target SAME</source_meaning>
+				<translated_meaning>Στόχος ΙΔΙΟ</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Στόχος ΙΔΙΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingslockOnTargetMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Lock on Target</source_meaning>
+				<translated_meaning>Κλείδωμα στον Στόχο</translated_meaning>
+			</meaning>
+			<area x="0" y="-30" w="216" h="60">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="22" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Κλείδωμα&#10;στον Στόχο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsAutoFireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto Fire</source_meaning>
+				<translated_meaning>Αυτόματη βολή</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Αυτόματη βολή</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsFireSpeedMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Fire Speed</source_meaning>
+				<translated_meaning>Ταχύτητα πυροβολισμού</translated_meaning>
+			</meaning>
+			<area x="0" y="-30" w="216" h="60">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="22" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Ταχύτητα&#10;πυροβολισμού</content>
+			</txt>
+		</tad>
+		<!--...FIRE_SETTINGS-->
+
+		<!--BOSS MODE...-->
+		<tad id="TABossModeOsirisLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>OSIRIS HAS RISEN</source_meaning>
+				<translated_meaning>Ο ΟΣΙΡΙΣ ΑΝΑΣΤΗΘΗΚΕ</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_osiris.png"/>
+		</tad>
+
+		<tad id="TABossModeOsirisSmokeLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>OSIRIS HAS RISEN</source_meaning>
+				<translated_meaning>Ο ΟΣΙΡΙΣ ΑΝΑΣΤΗΘΗΚΕ</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_osiris_smoke.jpg"/>
+		</tad>
+
+		<tad id="TABossModeAnubisLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>ANUBIS HAS RISEN</source_meaning>
+				<translated_meaning>Ο ΑΝΟΥΒΙΣ ΑΝΑΣΤΗΘΗΚΕ</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_anubis.png"/>
+		</tad>
+
+		<tad id="TABossModeAnubisSmokeLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>ANUBIS HAS RISEN</source_meaning>
+				<translated_meaning>Ο ΑΝΟΥΒΙΣ ΑΝΑΣΤΗΘΗΚΕ</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_anubis_smoke.jpg"/>
+		</tad>
+
+		<tad id="TABossModeThothLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>RA HAS RISEN</source_meaning>
+				<translated_meaning>Ο ΡΑ ΑΝΑΣΤΗΘΗΚΕ</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_ra.png"/>
+		</tad>
+
+		<tad id="TABossModeThothSmokeLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>RA HAS RISEN</source_meaning>
+				<translated_meaning>Ο ΡΑ ΑΝΑΣΤΗΘΗΚΕ</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_ra_smoke.jpg"/>
+		</tad>
+
+		<tad id="TABossModeAnubisCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Anubis Strength</source_meaning>
+				<translated_meaning>Δύναμη Άννουβη</translated_meaning>
+			</meaning>
+			<area x="-30" y="-20" w="60" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Δύναμη&#010;Άννουβη</content>
+			</txt>
+		</tad>
+
+		<tad id="TABossModeOsirisCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Osiris Strength</source_meaning>
+				<translated_meaning>Δύναμη Όσιρη</translated_meaning>
+			</meaning>
+			<area x="-30" y="-20" w="60" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Δύναμη&#010;Όσιρη</content>
+			</txt>
+		</tad>
+
+		<tad id="TABossModeThothCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Ra Strength</source_meaning>
+				<translated_meaning>Δύναμη Ρα</translated_meaning>
+			</meaning>
+			<area x="-30" y="-20" w="60" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Δύναμη&#010;Ρα</content>
+			</txt>
+		</tad>
+		<!--...BOSS MODE-->
+
+		<!--INFO PANEL...-->
+		<tad id="TAInfoPanelRoomLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Room XX</source_meaning>
+				<translated_meaning>Δωμάτιο XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Δωμάτιο /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelRoundIdLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning> / Round ID XX</source_meaning>
+				<translated_meaning> / Ταυτότητα Γύρου XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content> / Ταυτότητα Γύρου /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelKillsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX killed YY</source_meaning>
+				<translated_meaning>XX σκότωσε YY</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>/PLAYER_NAME/ σκότωσε /ENEMY_NAME/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelKilledBossLabelTemplate" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX has killed YY</source_meaning>
+				<translated_meaning>XX σκότωσε YY</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>/PLAYER_NAME/ σκότωσε /ENEMY_NAME/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelCPBLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cost per bullet</source_meaning>
+				<translated_meaning>Κόστος ανά σφαίρα</translated_meaning>
+			</meaning>
+			<area x="-200" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Κόστος ανά σφαίρα</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelGameNameLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MAX DUEL: RISE OF THE MUMMY</source_meaning>
+				<translated_meaning>MAX DUEL: RISE OF THE MUMMY</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>MAX DUEL: RISE OF THE MUMMY</content>
+			</txt>
+		</tad>
+
+		<!--ENEMIES...-->
+		<tad id="TAInfoPanelEnemyDevouringLocust" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Devouring Locust</source_meaning>
+				<translated_meaning>μία Αδηφάγα Ακρίδα</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>μία Αδηφάγα Ακρίδα</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemySwarmingLocust" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Swarming Locust</source_meaning>
+				<translated_meaning>μία Ακρίδα Επιδρομέα</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>μία Ακρίδα Επιδρομέα</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabGreen" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Scarab Hatchling</source_meaning>
+				<translated_meaning>έναν Μικρό Σκαραβαίο</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Μικρό Σκαραβαίο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabBrown" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Shadow Scarab</source_meaning>
+				<translated_meaning>έναν Σκοτεινό Σκαραβαίο</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Σκοτεινό Σκαραβαίο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabGold" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Golden Scarab</source_meaning>
+				<translated_meaning>έναν Χρυσό Σκαραβαίο</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Χρυσό Σκαραβαίο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabRuby" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Ruby Scarab</source_meaning>
+				<translated_meaning>έναν Ρουμπινένιο Σκαραβαίο</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Ρουμπινένιο Σκαραβαίο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabDiamond" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Bejeweled Scarab</source_meaning>
+				<translated_meaning>έναν Κοσμημένο Σκαραβαίο</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Κοσμημένο Σκαραβαίο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyWrappedMinion" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Wrapped Minion</source_meaning>
+				<translated_meaning>έναν Τυλιγμένο Ακόλουθο</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Τυλιγμένο Ακόλουθο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyWrappedShadowguard" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Wrapped Shadowguard</source_meaning>
+				<translated_meaning>έναν Τυλιγμένο Υπό την Σκιά Σου Φύλακα</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Τυλιγμένο Υπό την Σκιά Σου Φύλακα</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyWrappedSpiritguard" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Wrapped Spiritguard</source_meaning>
+				<translated_meaning>έναν Τυλιγμένο Πνευματικό Φύλακα</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Τυλιγμένο Πνευματικό Φύλακα</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyTahawyWarrior" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Tahawy Warrior</source_meaning>
+				<translated_meaning>έναν Πολεμιστή Ταχάγουι</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Πολεμιστή Ταχάγουι</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyTahawyCommander" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Tahawy Commander</source_meaning>
+				<translated_meaning>έναν Διοικητή Ταχάγουι</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Διοικητή Ταχάγουι</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyCrimsonBataana" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Crimson Bataanta</source_meaning>
+				<translated_meaning>μία Πορφυρή Bataanta</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>μία Πορφυρή Bataanta</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyEmeraldBataana" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>an Emerald Bataanta</source_meaning>
+				<translated_meaning>μία Σμαραγδένια Bataanta</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>μία Σμαραγδένια Bataanta</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyInfernalForgemaster" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>an Infernal Forgemaster</source_meaning>
+				<translated_meaning>έναν Καταχθόνιο Σιδηρουργό</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Καταχθόνιο Σιδηρουργό</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyUnstableAvatar" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>an Unstable Avatar</source_meaning>
+				<translated_meaning>ένα Ασταθές Είδωλο</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>ένα Ασταθές Είδωλο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyGiantScorpion" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Giant Scorpion</source_meaning>
+				<translated_meaning>έναν Γιγάντιο Σκορπιό</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Γιγάντιο Σκορπιό</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyHorus" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Horus</source_meaning>
+				<translated_meaning>Ώρο</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Ώρο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyBrawlerBerserk" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Cursed Brawler</source_meaning>
+				<translated_meaning>έναν Kαταραμένο Μαχητή</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>έναν Kαταραμένο Μαχητή</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyAnubis" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Anubis</source_meaning>
+				<translated_meaning>τον Ανούβη</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>τον Ανούβη</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyOsiris" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Osiris</source_meaning>
+				<translated_meaning>τον Όσιρις</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>τον Όσιρις</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyThoth" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Ra</source_meaning>
+				<translated_meaning>τον Ρα</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>τον Ρα</content>
+			</txt>
+		</tad>
+		<!--...ENEMIES-->
+		<!--...INFO PANEL-->
+
+		<!--PLAYER SPOT...-->
+		<tad id="TAPlayerSpotFree" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FREE</source_meaning>
+				<translated_meaning>ΔΩΡΕΑΝ</translated_meaning>
+			</meaning>
+			<area x="-25" y="-10" w="50" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xffffff"></font>
+				<content>ΔΩΡΕΑΝ</content>
+			</txt>
+		</tad>
+		<!--...PLAYER SPOT-->
+
+		<!-- SIDEBAR... -->
+		<tad id="TAWeaponsSidebarIconFreeShotsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Shots: XX</source_meaning>
+				<translated_meaning>Δωρεάν Βολές: XX</translated_meaning>
+			</meaning>
+			<area x="-150" y="-46" w="300" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="10" alpha="1">
+				<font name="fnt_nm_barlow_bold" size="11" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>Δωρεάν&#010;Βολές: /VALUE/</content>
+			</txt>
+		</tad>
+		<!-- ...SIDEBAR -->
+
+		<!-- AWARDED FREE SHOTS COUNTER... -->
+		<!--Для дополнительной части ассета добавить копию дескриптора с id "TAAwardedFreeShotsCounterLabelEndingOpt"-->
+		<tad id="TAAwardedFreeShotsCounterLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>#freeshot:FREESHOT,FREESHOTS#</source_meaning>
+				<translated_meaning>#freeshot:ΔΩΡΕΑΝ ΒΟΛΗ,ΔΩΡΕΑΝ ΒΟΛΕΣ#</translated_meaning>
+			</meaning>
+			<area x="0" y="-75" w="500" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="1">
+				<font name="fnt_nm_barlow_bold" size="63" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>#freeshot:ΔΩΡΕΑΝ ΒΟΛΗ,ΔΩΡΕΑΝ ΒΟΛΕΣ#</content>
+			</txt>
+		</tad>
+		
+		<tad id="TARoundResultSWBonusCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SPECIAL WEAPON BONUS</source_meaning>
+				<translated_meaning>ΜΠΟΝΟΥΣ ΕΙΔΙΚΟΥ ΟΠΛΟΥ</translated_meaning>
+			</meaning>
+			<area x="-40" y="-12" w="80" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>ΜΠΟΝΟΥΣ&#10;ΕΙΔΙΚΟΥ ΟΠΛΟΥ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAAwardedFreeShotsCounterValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>/VALUE/</source_meaning>
+				<translated_meaning>/VALUE/</translated_meaning>
+			</meaning>
+			<area x="-110" y="-75" w="100" h="150"> <!-- x<0 - значение будет слева от TAAwardedFreeShotsCounterLabel, x>=0 - значение справа от TAAwardedFreeShotsCounterLabel -->
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="1">
+				<font name="fnt_nm_barlow_bold" size="74" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="3" angle="90" alpha="1" blur="5"/>
+					</shadows>
+				</filters>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+		<!-- ...AWARDED FREE SHOTS COUNTER -->
+
+		<!--ROUND RESULTS...-->
+		<tad id="TARoundResultsTitle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ROUND RESULTS</source_meaning>
+				<translated_meaning>ΑΠΟΤΕΛΕΣΜΑΤΑ ΓΥΡΟΥ</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="200" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0xffffff" bold="false">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>ΑΠΟΤΕΛΕΣΜΑΤΑ ΓΥΡΟΥ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultTotalDamageCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOTAL DAMAGE DEALT</source_meaning>
+				<translated_meaning>ΠΡΟΚΛΗΘΕΙΣΑ ΣΥΝΟΛΙΚΗ ΖΗΜΙΑ</translated_meaning>
+			</meaning>
+			<area x="-70" y="-20" w="140" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>ΠΡΟΚΛΗΘΕΙΣΑ ΣΥΝΟΛΙΚΗ ΖΗΜΙΑ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultMoneyWheelWinsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MONEY WHEELS COMPLETED</source_meaning>
+				<translated_meaning>ΤΡΟΧΟΙ ΤΟΥ ΧΡΗΜΑΤΟΣ ΠΟΥ ΟΛΟΚΛΗΡΩΘΗΚΑΝ</translated_meaning>
+			</meaning>
+			<area x="-40" y="-10" w="80" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>ΤΡΟΧΟΙ ΤΟΥ ΧΡΗΜΑΤΟΣ&#010;ΠΟΥ ΟΛΟΚΛΗΡΩΘΗΚΑΝ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultMoneyWheelPayoutsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MONEY WHEEL PAYOUTS</source_meaning>
+				<translated_meaning>ΠΛΗΡΩΜΕΣ ΤΡΟΧΟΥ ΤΟΥ ΧΡΗΜΑΤΟΣ</translated_meaning>
+			</meaning>
+			<area x="-40" y="-10" w="80" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>ΠΛΗΡΩΜΕΣ ΤΡΟΧΟΥ&#010;ΤΟΥ ΧΡΗΜΑΤΟΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultUnusedBonusCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>UNUSED SPECIAL WEAPON BONUS</source_meaning>
+				<translated_meaning>ΜΠΟΝΟΥΣ ΜΗ ΧΡΗΣΙΜΟΠΟΙΗΜΕΝΩΝ ΕΙΔΙΚΩΝ ΟΠΛΩΝ</translated_meaning>
+			</meaning>
+			<area x="-44" y="-22" w="88" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="9">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>ΜΠΟΝΟΥΣ ΜΗ&#010;ΧΡΗΣΙΜΟΠΟΙΗΜΕΝΩΝ&#010;ΕΙΔΙΚΩΝ ΟΠΛΩΝ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultPlusMoneyCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>+</source_meaning>
+				<translated_meaning>+</translated_meaning>
+			</meaning>
+			<area x="-70" y="-14" w="140" h="28">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xf6921e"></font>
+				<content>+</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultTotalKillsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>KILLS</source_meaning>
+				<translated_meaning>ΣΚΟΤΩΜΟΙ</translated_meaning>
+			</meaning>
+			<area x="-45" y="-22" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>ΣΚΟΤΩΜΟΙ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultTotalFreeShotsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FREE SHOTS WON</source_meaning>
+				<translated_meaning>ΔΩΡΕΑΝ ΒΟΛΕΣ ΚΕΡΔΗΘΗΚΑΝ</translated_meaning>
+			</meaning>
+			<area x="-45" y="-22" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>ΔΩΡΕΑΝ ΒΟΛΕΣ&#010;ΚΕΡΔΗΘΗΚΑΝ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultBulletsFiredCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BULLETS FIRED</source_meaning>
+				<translated_meaning>ΠΥΡΟΔΟΤΗΜΕΝΕΣ ΣΦΑΙΡΕΣ</translated_meaning>
+			</meaning>
+			<area x="-45" y="-22" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>ΠΥΡΟΔΟΤΗΜΕΝΕΣ&#010;ΣΦΑΙΡΕΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultNextRoundBtnCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>NEXT ROUND</source_meaning>
+				<translated_meaning>ΕΠΟΜΕΝΟΣ ΓΥΡΟΣ</translated_meaning>
+			</meaning>
+			<area x="-100" y="-50" w="200" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="12" color="0xFFFFFF" bold="false"></font>
+				<content>ΕΠΟΜΕΝΟΣ ΓΥΡΟΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultWaitingForNewRoundCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Waiting for new round</source_meaning>
+				<translated_meaning>Περιμένετε για νέο γύρο</translated_meaning>
+			</meaning>
+			<area x="-115" y="-100" w="230" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="21" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Περιμένετε για νέο γύρο</content>
+			</txt>
+		</tad>
+		<!--...ROUND RESULTS-->
+
+		<tad id="TAWaitingForNewRoundCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Waiting for new round</source_meaning>
+				<translated_meaning>Περιμένετε για νέο γύρο</translated_meaning>
+			</meaning>
+			<area x="-230" y="-100" w="460" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="36" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Περιμένετε για νέο γύρο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAWaitScreenGameInProgressCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Game in progress, please wait...</source_meaning>
+				<translated_meaning>Παιχνίδι σε εξέλιξη, παρακαλώ περιμένετε...</translated_meaning>
+			</meaning>
+			<area x="-230" y="-100" w="460" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="36" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Παιχνίδι σε εξέλιξη,&#010;παρακαλώ περιμένετε...</content>
+			</txt>
+		</tad>
+
+		<!-- MAPS... -->
+		<tad id="TAWaitWhileMapIsLoadingCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The map is loading, please wait...</source_meaning>
+				<translated_meaning>Ο χάρτης φορτώνει, παρακαλώ περιμένετε...</translated_meaning>
+			</meaning>
+			<area x="-190" y="-100" w="380" h="200">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="38" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Ο χάρτης φορτώνει,&#010;παρακαλώ περιμένετε...</content>
+			</txt>
+		</tad>
+		<!-- ...MAPS -->
+
+		<!--
+
+		To change position of a tip, add correspondent descriptor as following:
+
+		<tad id="[TIP_TA_ID]Position" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		DEFAULT DESKTOP POSITIONS:
+		TATipsSwitchToBaseWeaponPosition:		x: 0		y: -50
+		TATipsSpecialWeaponNewPlayerPosition:	x: -290		y: 0
+		TATipsAutofirePosition:					x: -180		y: -60
+		TATipsRightClickAutofirePosition:		x: 203		y: -68
+
+		DEFAULT MOBILE POSITIONS:
+		TATipsAutofireMobilePosition			x: -180		y: -60
+		TATipsRightClickAutofireMobilePosition	x: 258		y: -55
+		
+		-->
+
+		<tad id="TATipsSpecialWeaponNewPlayer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use SPECIAL WEAPONS to do MASSIVE DAMAGE</source_meaning>
+				<translated_meaning>Χρησιμοποιήστε ΕΙΔΙΚΑ ΟΠΛΑ για να προκαλέσετε ΜΑΖΙΚΗ ΖΗΜΙΑ</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Χρησιμοποιήστε ΕΙΔΙΚΑ ΟΠΛΑ&#010;για να προκαλέσετε ΜΑΖΙΚΗ ΖΗΜΙΑ</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsSpecialWeaponNewPlayerPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-235" y="0" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		<!--
+		To change position of a base weapon tip, add correspondent descriptor as following:
+
+		<tad id="TATipsSwitchToBaseWeaponPosition0|1|2|3|4|5" type="void_based" translated="true"> \\TATipsSwitchToBaseWeaponMobilePosition for mobile
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		DEFAULT DESKTOP POSITIONS:
+		Player5 x: 349.5 	y: -145 (top right)
+		Player4 x: 250 		y: -215
+		Player3 x: -82 	y: -215 (top left)
+		Player2 x: 349.5 	y: 155	(bottom right)
+		Player1 x: 250 		y: 225
+		Player0 x: -82	y: 225	(bottom left)
+
+		DEFAULT MOBILE POSITIONS:
+		Player5 x: 349.5 	y: -125 (top right)
+		Player4 x: 250 		y: -194
+		Player3 x: -82 	y: -194 (top left)
+		Player2 x: 349.5 	y: 135	(bottom right)
+		Player1 x: 250		y: 204
+		Player0 x: -82	y: 204	(bottom left)
+		-->
+		
+		<tad id="TATipsSwitchToBaseWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use this button to switch to BASE WEAPON</source_meaning>
+				<translated_meaning>Χρησιμοποιήστε αυτό το κουμπί για να αλλάξετε σε ΒΑΣΙΚΟ ΟΠΛΟ</translated_meaning>
+			</meaning>
+			<area x="0" y="-48" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Χρησιμοποιήστε αυτό&#10;το κουμπί για να αλλάξετε&#10;σε ΒΑΣΙΚΟ ΟΠΛΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponPosition0" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-77" y="210" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition0" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-77" y="194" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponPosition1" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="255" y="210" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition1" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="255" y="194" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponPosition2" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="345.5" y="155" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition2" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="345.5" y="135" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		<tad id="TATipsSwitchToBaseWeaponPosition3" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-77" y="-215" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition3" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-77" y="-210" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponPosition4" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="255" y="-215" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition4" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="255" y="-210" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponPosition5" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="340.5" y="-145" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition5" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="340.5" y="-125" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Hold CLICK for AUTOFIRE</source_meaning>
+				<translated_meaning>Πατήστε ΚΛΙΚ για ΑΥΤΟΜΑΤΗ ΒΟΛΗ</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Πατήστε ΚΛΙΚ για&#010;ΑΥΤΟΜΑΤΗ ΒΟΛΗ</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsAutofireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP and hold to AUTOFIRE</source_meaning>
+				<translated_meaning>ΠΑΤΗΣΤΕ και ΚΡΑΤΗΣΤΕ για ΑΥΤΟΜΑΤΗ ΒΟΛΗ</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>ΠΑΤΗΣΤΕ και ΚΡΑΤΗΣΤΕ&#010;για ΑΥΤΟΜΑΤΗ ΒΟΛΗ</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RIGHT-CLICK to lock target and AUTO-FIRE</source_meaning>
+				<translated_meaning>ΔΕΞΙ ΚΛΙΚ για να κλειδώσετε στόχο και να ρίξετε ΑΥΤΟΜΑΤΗ ΒΟΛΗ</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>ΔΕΞΙ ΚΛΙΚ για να κλειδώσετε στόχο&#010;και να ρίξετε ΑΥΤΟΜΑΤΗ ΒΟΛΗ</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireDisableAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RIGHT-CLICK to lock target</source_meaning>
+				<translated_meaning>ΔΕΞΙ ΚΛΙΚ για να κλειδώσετε στόχο</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>ΔΕΞΙ ΚΛΙΚ για να&#010;κλειδώσετε στόχο</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP on right icon to lock target and AUTO-FIRE</source_meaning>
+				<translated_meaning>ΠΑΤΗΣΤΕ στο εικονίδιο δεξιά για να κλειδώσετε τον στόχο και να ρίξετε ΑΥΤΟΜΑΤΗ ΒΟΛΗ</translated_meaning>
+			</meaning>
+			<area x="0" y="-47" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>ΠΑΤΗΣΤΕ στο εικονίδιο&#10;δεξιά για να κλειδώσετε&#10;τον στόχο και να ρίξετε&#10;ΑΥΤΟΜΑΤΗ ΒΟΛΗ</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireMobilePosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="228" y="-55" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		<tad id="TATipsRightClickAutofireMobileDisableAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP on right icon to lock target</source_meaning>
+				<translated_meaning>ΠΑΤΗΣΤΕ στο εικονίδιο δεξιά για να κλειδώσετε τον στόχο</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>ΠΑΤΗΣΤΕ στο εικονίδιο δεξιά&#010;για να κλειδώσετε τον στόχο</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireMobileDisableAutofirePosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="223" y="-55" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		<!--
+		To change position of a bet level tip, add correspondent descriptor as following:
+
+		<tad id="TATipsBetLevelPositionPlayer0|1|2|3|4|5" type="void_based" translated="true"> \\TATipsBetLevelMobilePositionPlayer for mobile
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		DEFAULT DESKTOP POSITIONS:
+		Player5 x: 349.5 	y: -145 (top right)
+		Player4 x: 0 		y: -145
+		Player3 x: -349.5 	y: -145 (top left)
+		Player2 x: 349.5 	y: 155	(bottom right)
+		Player1 x: 0 		y: 155
+		Player0 x: -349.5	y: 155	(bottom left)
+
+		DEFAULT MOBILE POSITIONS:
+		Player5 x: 349.5 	y: -125 (top right)
+		Player4 x: 0 		y: -125
+		Player3 x: -349.5 	y: -125 (top left)
+		Player2 x: 349.5 	y: 135	(bottom right)
+		Player1 x: 0		y: 135
+		Player0 x: -349.5	y: 135	(bottom left)
+		-->
+
+		<tad id="TATipsBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Change BET LEVEL by using (–) and (+)</source_meaning>
+				<translated_meaning>Αλλάξτε το ΕΠΙΠΕΔΟ ΠΟΝΤΑΡΙΣΜΑΤΟΣ χρησιμοποιώντας (–) και (+)</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Αλλάξτε το ΕΠΙΠΕΔΟ ΠΟΝΤΑΡΙΣΜΑΤΟΣ&#010;χρησιμοποιώντας /MINUS_IMG/ και /PLUS_IMG/</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsBetLevelPlusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="209" y="10" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMinusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="148" y="10" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelPositionPlayer5" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="309.5" y="-145" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelPositionPlayer3" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-309.5" y="-145" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelPositionPlayer2" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="309.5" y="155" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelPositionPlayer0" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-309.5" y="155" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePlusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="209" y="11" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobileMinusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="148" y="11" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePositionPlayer5" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="309.5" y="-125" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePositionPlayer3" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-309.5" y="-125" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePositionPlayer2" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="309.5" y="135" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePositionPlayer0" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-309.5" y="135" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<!--WIN STREAK COUNTER...-->
+		<tad id="TAWinStreakLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Win Streak!</source_meaning>
+				<translated_meaning>Σερί Κερδών!</translated_meaning>
+			</meaning>
+			<area x="-128" y="-32" w="256" h="64">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/win_streak_counter/win_streak_caption.png"/>
+		</tad>
+		<!--...WIN STREAK COUNTER-->
+	</tasds>
+</td>

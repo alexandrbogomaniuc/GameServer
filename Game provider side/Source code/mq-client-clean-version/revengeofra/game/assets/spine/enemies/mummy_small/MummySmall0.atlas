@@ -1,0 +1,69 @@
+
+MummySmall0.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummySmall270_Hips
+  rotate: true
+  xy: 128, 2
+  size: 56, 47
+  orig: 56, 47
+  offset: 0, 0
+  index: -1
+MummySmall270_Torso
+  rotate: true
+  xy: 147, 60
+  size: 66, 103
+  orig: 66, 103
+  offset: 0, 0
+  index: -1
+MummySmall_ArmL
+  rotate: true
+  xy: 252, 83
+  size: 43, 100
+  orig: 43, 100
+  offset: 0, 0
+  index: -1
+MummySmall_ArmR
+  rotate: true
+  xy: 2, 8
+  size: 29, 89
+  orig: 29, 89
+  offset: 0, 0
+  index: -1
+MummySmall_Head
+  rotate: false
+  xy: 177, 3
+  size: 38, 55
+  orig: 38, 55
+  offset: 0, 0
+  index: -1
+MummySmall_Hips
+  rotate: true
+  xy: 432, 72
+  size: 54, 74
+  orig: 54, 74
+  offset: 0, 0
+  index: -1
+MummySmall_LegL
+  rotate: true
+  xy: 2, 39
+  size: 49, 124
+  orig: 49, 124
+  offset: 0, 0
+  index: -1
+MummySmall_LegR
+  rotate: true
+  xy: 2, 90
+  size: 36, 143
+  orig: 36, 143
+  offset: 0, 0
+  index: -1
+MummySmall_Torso
+  rotate: true
+  xy: 354, 55
+  size: 71, 76
+  orig: 71, 76
+  offset: 0, 0
+  index: -1

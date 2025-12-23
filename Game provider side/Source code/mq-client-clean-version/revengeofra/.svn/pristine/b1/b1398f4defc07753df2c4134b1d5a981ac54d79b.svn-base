@@ -1,0 +1,161 @@
+
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import GameScreen from '../../../../main/GameScreen';
+import SimpleUIController from '../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import MineInfo from '../../../../model/uis/weapons/minelauncher/MineInfo';
+import MineController from './MineController';
+import MinesInfo from '../../../../model/uis/weapons/minelauncher/MinesInfo';
+import { Utils } from '../../../../../../../common/PIXI/src/Utils';
+
+class MinesController extends SimpleUIController {
+
+	static get EVENT_ON_ANOTHER_MINE_LAUNCH_ANIMATION_REQUIRED()	{ return 'EVENT_ON_ANOTHER_MINE_LAUNCH_ANIMATION_REQUIRED'};
+	static get EVENT_ON_PLACED_MINES_AMOUNT_CHANGED()				{ return 'EVENT_ON_PLACED_MINES_AMOUNT_CHANGED'};
+
+	get masterMinesOnFieldLen()
+	{
+		if (this._fMinesControllers_mc_arr)
+		{
+			let lMasterMinesAmount_int = 0;
+			for (let i=0; i<this._fMinesControllers_mc_arr.length; i++)
+			{
+				let lMineController_mc = this._fMinesControllers_mc_arr[i];
+				if (lMineController_mc.info.isMaster)
+				{
+					lMasterMinesAmount_int++;
+				}
+			}
+			
+			return lMasterMinesAmount_int;
+		}
+
+		return 0;
+	}
+
+	constructor()
+	{
+		super(new MinesInfo());
+
+		this._gameScreen = null;
+
+		this._fMinesControllers_mc_arr = [];
+	}
+
+	__init()
+	{
+		super.__init();
+
+		this._gameScreen = APP.currentWindow;
+
+		this._gameScreen.on(GameScreen.EVENT_ON_ROOM_UNPAUSED, this._onRoomUnpaused, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_ROOM_PAUSED, this._onRoomPaused, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_MINE_PLACED, this._onMinePlaced, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_ROOM_FIELD_CLEARED, this._onRoomFieldCleared, this);
+	}
+
+	_onRoomPaused(aEvent_obj)
+	{
+		this._clearAll();
+
+		this.emit(MinesController.EVENT_ON_PLACED_MINES_AMOUNT_CHANGED);
+	}
+
+	_onRoomUnpaused(aEvent_obj)
+	{
+
+	}
+
+	_onMinePlaced(aEvent_obj)
+	{
+		let messageData = aEvent_obj.messageData;
+		let requestData = aEvent_obj.requestData;
+		let animated = aEvent_obj.animated;
+
+		let lMineInfo_mi = new MineInfo();
+		lMineInfo_mi.rid = messageData.rid;
+		lMineInfo_mi.seatId = messageData.seatId;
+		lMineInfo_mi.coords = {x: messageData.x, y: messageData.y};
+		lMineInfo_mi.mineId = messageData.mineId;
+
+		if (messageData.rid >= 0 && animated)
+		{
+			// possible rebound
+			if (requestData !== null)
+			{
+				let x1 = requestData.x;
+				let x2 = messageData.x;
+				let y1 = requestData.y;
+				let y2 = messageData.y;
+				let pt1 = new PIXI.Point(x1, y1);
+				let pt2 = new PIXI.Point(x2, y2);
+				let dist = Utils.getDistance(pt1, pt2);
+				if (dist > 10)
+				{
+					//rebound
+					lMineInfo_mi.origPoint = pt1;
+				}
+			}
+		}
+		this._addNewMine(lMineInfo_mi, animated);
+	}
+
+	_addNewMine(aMineInfo_mi, aAnimatedLaunch_bl = true)
+	{
+		this.info.i_addMine(aMineInfo_mi);
+
+		let lMineController_mc = new MineController(aMineInfo_mi, aAnimatedLaunch_bl);
+		lMineController_mc.once(MineController.EVENT_ON_DETONATED, this._onMineDetonated, this);
+		this._fMinesControllers_mc_arr.push(lMineController_mc);
+		lMineController_mc.i_init();
+
+		if (aAnimatedLaunch_bl)
+		{
+			this.emit(MinesController.EVENT_ON_ANOTHER_MINE_LAUNCH_ANIMATION_REQUIRED, {mineInfo: aMineInfo_mi});
+		}
+
+		this.emit(MinesController.EVENT_ON_PLACED_MINES_AMOUNT_CHANGED);
+	}
+
+	_onRoomFieldCleared()
+	{
+		this._clearAll();
+	}
+
+	_onMineDetonated(e)
+	{
+		let lMineController_mc = e.target;
+		let lIndex_int = this._fMinesControllers_mc_arr.indexOf(lMineController_mc);
+		if (~lIndex_int)
+		{
+			lMineController_mc.removeAllListeners();
+			lMineController_mc.destroy();
+			this._fMinesControllers_mc_arr.splice(lIndex_int, 1);
+		}
+		else
+		{
+			throw new Error ('MineController was not found in array', e);
+		}
+
+		this.emit(MinesController.EVENT_ON_PLACED_MINES_AMOUNT_CHANGED);
+	}
+
+	_clearAll()
+	{
+		for (let lMineController_mc of this._fMinesControllers_mc_arr)
+		{
+			lMineController_mc && lMineController_mc.off(MineController.EVENT_ON_DETONATED, this._onMineDetonated, this, true /*once*/);
+			lMineController_mc && lMineController_mc.destroy();
+		}
+		this._fMinesControllers_mc_arr = [];
+		this.info.i_clear();
+
+		this.emit(MinesController.EVENT_ON_PLACED_MINES_AMOUNT_CHANGED);
+	}
+
+	destroy()
+	{
+		super.destroy();
+	}
+}
+
+export default MinesController

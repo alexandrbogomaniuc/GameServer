@@ -1,0 +1,378 @@
+{
+    "images":  [
+                   {
+                       "name":  "lobby/back",
+                       "src":  "lobby/back.jpg",
+                       "width":  960,
+                       "height":  540,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/player_info_background",
+                       "src":  "lobby/player_info_background.png",
+                       "width":  503,
+                       "height":  89,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                    "name":  "lobby/button_incons/lobby_room_level_0",
+                    "src":  "lobby/button_incons/lobby_room_level_0.png",
+                    "width":  183.5,
+                    "height":  159.5,
+                    "frames":  1,
+                    "layers":  1,
+                    "totalFrames":  1
+                },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_1",
+                       "src":  "lobby/button_incons/lobby_room_level_1.png",
+                       "width":  183.5,
+                       "height":  159.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_2",
+                       "src":  "lobby/button_incons/lobby_room_level_2.png",
+                       "width":  182.5,
+                       "height":  183.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_3",
+                       "src":  "lobby/button_incons/lobby_room_level_3.png",
+                       "width":  305,
+                       "height":  240.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_4",
+                       "src":  "lobby/button_incons/lobby_room_level_4.png",
+                       "width":  276,
+                       "height":  240,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/button_incons/lobby_room_level_5",
+                       "src":  "lobby/button_incons/lobby_room_level_5.png",
+                       "width":  350,
+                       "height":  283,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/rooms_arrow",
+                       "src":  "lobby/rooms_arrow.png",
+                       "width":  28,
+                       "height":  48,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/rooms_arrow_glow",
+                       "src":  "lobby/rooms_arrow_glow.jpg",
+                       "width":  64,
+                       "height":  64,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "lobby/edit_btn",
+                       "src":  "lobby/edit_btn.png",
+                       "width":  86.5,
+                       "height":  24.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "common_btn_group",
+                       "src":  "common_panel/btn_group.png",
+                       "width":  16,
+                       "height":  16,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "common_btn_home",
+                       "src":  "common_panel/btn_home.png",
+                       "width":  15,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_history",
+                       "src":  "common_panel/btn_history.png",
+                       "width":  12,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_info",
+                       "src":  "common_panel/btn_info.png",
+                       "width":  9,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_quests",
+                       "src":  "common_panel/btn_achievements.png",
+                       "width":  14,
+                       "height":  13,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_back",
+                       "src":  "common_panel/btn_back.png",
+                       "width":  13,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_settings",
+                       "src":  "common_panel/btn_settings.png",
+                       "width":  11,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_btn_fire_settings",
+                       "src":  "common_panel/btn_fire_settings.png",
+                       "width":  15,
+                       "height":  11,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_balance_icon",
+                       "src":  "common_panel/balance_icon.png",
+                       "width":  19,
+                       "height":  15,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "common_win_icon",
+                       "src":  "common_panel/win_icon.png",
+                       "width":  26,
+                       "height":  26,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_time_icon",
+                       "src":  "common_panel/time_icon.png",
+                       "width":  12,
+                       "height":  12,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1,
+                       "quality":  2
+                   },
+                   {
+                       "name":  "common_panel/flare",
+                       "src":  "common_panel/flare.jpg",
+                       "width":  69,
+                       "height":  55.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/back",
+                       "src":  "settings/back.png",
+                       "width":  512,
+                       "height":  389,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/icon",
+                       "src":  "settings/icon.png",
+                       "width":  21,
+                       "height":  22.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/toggle_button/on_btn",
+                       "src":  "settings/toggle_button/on_btn.png",
+                       "width":  93.5,
+                       "height":  21,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1188
+                   },
+                   {
+                       "name":  "settings/toggle_button/off_btn",
+                       "src":  "settings/toggle_button/off_btn.png",
+                       "width":  94,
+                       "height":  20,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/bar",
+                       "src":  "settings/bar.png",
+                       "width":  220,
+                       "height":  15.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "settings/slider_back",
+                       "src":  "settings/slider_back.png",
+                       "width":  220,
+                       "height":  15.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "profile/icon",
+                       "src":  "profile/icon.png",
+                       "width":  19,
+                       "height":  17.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                        "name":  "profile/avatar",
+                        "src":  "profile/avatar.png",
+                        "width":  806.5,
+                        "height":  802,
+                        "frames":  1,
+                        "layers":  1,
+                        "totalFrames":  1
+                    },
+                   {
+                       "name":  "dialogs/back",
+                       "src":  "dialogs/back.png",
+                       "width":  677,
+                       "height":  399.5,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "dialogs/force_sit_out/back",
+                       "src":  "dialogs/force_sit_out/back.png",
+                       "width":  357,
+                       "height":  255,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   },
+                   {
+                       "name":  "tutorial/spot_example",
+                       "src":  "tutorial/spot_example.png",
+                       "width":  276,
+                       "height":  152,
+                       "frames":  1,
+                       "layers":  1,
+                       "totalFrames":  1
+                   }
+               ],
+    "sounds":  [
+                   {
+                       "name":  "mq_gui_button_generic_ui",
+                       "src":  [
+                                   "mq_gui_button_generic_ui_high.mp3",
+                                   "mq_gui_button_generic_ui_high.mp4",
+                                   "mq_gui_button_generic_ui_high.ogg",
+                                   "mq_gui_button_generic_ui_low.mp3",
+                                   "mq_gui_button_generic_ui_low.mp4",
+                                   "mq_gui_button_generic_ui_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  261,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_gui_slider",
+                       "src":  [
+                                   "mq_gui_slider_high.mp3",
+                                   "mq_gui_slider_high.mp4",
+                                   "mq_gui_slider_high.ogg",
+                                   "mq_gui_slider_low.mp3",
+                                   "mq_gui_slider_low.mp4",
+                                   "mq_gui_slider_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  287,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  50
+                                 }
+                   },
+                   {
+                       "name":  "mq_gui_launch",
+                       "src":  [
+                                   "mq_gui_launch_high.mp3",
+                                   "mq_gui_launch_high.mp4",
+                                   "mq_gui_launch_high.ogg",
+                                   "mq_gui_launch_low.mp3",
+                                   "mq_gui_launch_low.mp4",
+                                   "mq_gui_launch_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1045,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   }
+               ],
+    "fonts":  [
+                  {
+                      "name":  "fnt_nm_arial_currency",
+                      "src":  "currency.ttf"
+                  }
+              ]
+}

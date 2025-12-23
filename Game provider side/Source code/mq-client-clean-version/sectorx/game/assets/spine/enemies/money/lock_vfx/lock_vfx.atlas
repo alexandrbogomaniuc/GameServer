@@ -1,0 +1,62 @@
+
+lock_vfx.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+chain01
+  rotate: false
+  xy: 504, 736
+  size: 151, 280
+  orig: 151, 280
+  offset: 0, 0
+  index: -1
+chain02
+  rotate: false
+  xy: 659, 898
+  size: 246, 118
+  orig: 246, 118
+  offset: 0, 0
+  index: -1
+flash
+  rotate: false
+  xy: 4, 88
+  size: 391, 428
+  orig: 391, 428
+  offset: 0, 0
+  index: -1
+glow
+  rotate: false
+  xy: 4, 520
+  size: 496, 496
+  orig: 496, 496
+  offset: 0, 0
+  index: -1
+lock01
+  rotate: false
+  xy: 504, 607
+  size: 117, 125
+  orig: 117, 125
+  offset: 0, 0
+  index: -1
+lock02
+  rotate: false
+  xy: 659, 772
+  size: 107, 122
+  orig: 107, 122
+  offset: 0, 0
+  index: -1
+particle1
+  rotate: false
+  xy: 399, 472
+  size: 41, 44
+  orig: 41, 44
+  offset: 0, 0
+  index: -1
+particle2
+  rotate: false
+  xy: 4, 4
+  size: 39, 80
+  orig: 39, 80
+  offset: 0, 0
+  index: -1

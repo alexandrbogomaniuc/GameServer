@@ -1,0 +1,567 @@
+{
+  "frames": {
+    "orb_0000_Слой 23.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0001_Слой 22.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 266,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0002_Слой 21.jpg": {
+      "frame": {
+        "x": 289,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0003_Слой 20.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 532,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0004_Слой 19.jpg": {
+      "frame": {
+        "x": 289,
+        "y": 266,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0005_Слой 18.jpg": {
+      "frame": {
+        "x": 578,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0006_Слой 17.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 798,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0007_Слой 16.jpg": {
+      "frame": {
+        "x": 289,
+        "y": 532,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0008_Слой 15.jpg": {
+      "frame": {
+        "x": 578,
+        "y": 266,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0009_Слой 14.jpg": {
+      "frame": {
+        "x": 867,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0010_Слой 13.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 1064,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0011_Слой 12.jpg": {
+      "frame": {
+        "x": 289,
+        "y": 798,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0012_Слой 11.jpg": {
+      "frame": {
+        "x": 578,
+        "y": 532,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0013_Слой 10.jpg": {
+      "frame": {
+        "x": 867,
+        "y": 266,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0014_Слой 9.jpg": {
+      "frame": {
+        "x": 1156,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0015_Слой 8.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 1330,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0016_Слой 7.jpg": {
+      "frame": {
+        "x": 289,
+        "y": 1064,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0017_Слой 6.jpg": {
+      "frame": {
+        "x": 578,
+        "y": 798,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0018_Слой 5.jpg": {
+      "frame": {
+        "x": 867,
+        "y": 532,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0019_Слой 4.jpg": {
+      "frame": {
+        "x": 1156,
+        "y": 266,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0020_Слой 3.jpg": {
+      "frame": {
+        "x": 1445,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0021_Слой 2.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 1596,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orb_0022_Слой 1.jpg": {
+      "frame": {
+        "x": 289,
+        "y": 1330,
+        "w": 289,
+        "h": 266
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 289,
+        "h": 266
+      },
+      "sourceSize": {
+        "w": 289,
+        "h": 266
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "texture.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 2048,
+      "h": 2048
+    },
+    "scale": 2
+  }
+}

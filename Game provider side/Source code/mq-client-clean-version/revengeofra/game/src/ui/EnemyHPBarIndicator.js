@@ -1,0 +1,135 @@
+import { APP } from '../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import Sprite from '../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import HPValue from './HPValue';
+
+class EnemyHPBarIndicator extends Sprite
+{
+	showValue()
+	{
+		this._fHPValue_hpv.visible = true;
+	}
+
+	hideValue()
+	{
+		this._fHPValue_hpv.visible = false;
+	}
+
+	updateHp(aDamage_num)
+	{
+		this._updateHp(aDamage_num);
+	}
+
+	updateHpBar()
+	{
+		this._updateHpBar();
+	}
+
+	constructor(aFullEnergy_num, aEnergy_num)
+	{
+		super();
+
+		this._fHPBarCountainer_spr = this.addChild(new Sprite());
+		this._fHPBar_spr = null;
+
+		this._fEnergy_num = aFullEnergy_num;
+		this._fCurrentEnergy_num = aEnergy_num;
+		this._fCurrentHPInPercent_num = 1;
+
+		this._initBar();
+		this._initHPValue();
+
+		this._updateHp();
+		this._updateHpBar();
+
+		this._fHPBarCountainer_spr.scale.set(1, 1);
+	}
+
+	_initHPValue()
+	{
+		let lNumScale_num = APP.isMobile ? 0.4 : 0.2;
+		this._fHPValue_hpv = this.addChild(new HPValue(lNumScale_num));
+		this._fHPValue_hpv.value = 100;
+		this._fHPValue_hpv.position.y = -10;
+	}
+
+	_initBar()
+	{
+		this._addBarBack();
+		this._updateBar("enemies/hp_bar/HP_bar_green");
+	}
+
+	_addBarBack()
+	{
+		let lBack_spr = this._fHPBarCountainer_spr.addChild(APP.library.getSprite("enemies/hp_bar/HP_bar_back"));
+	}
+
+	_updateBar(aBarAsset_str)
+	{
+		if(this._fHPBar_spr)
+		{
+			this._removeHPBar();
+		}
+
+		this._fCurrentHPBarColorAsset_str = aBarAsset_str;
+		this._fHPBar_spr = this._fHPBarCountainer_spr.addChild(APP.library.getSprite(aBarAsset_str));
+		this._fHPBar_spr.anchor.set(0, 0.5);
+
+		this._fHPBar_spr.position.x = - 26 / 2;
+	}
+
+	_removeHPBar()
+	{
+		this._fHPBarCountainer_spr.removeChild(this._fHPBar_spr);
+		this._fHPBar_spr.destroy();
+		this._fHPBar_spr = null;
+	}
+
+	_updateHp(aDamage_num = 0)
+	{
+		if (aDamage_num < 0)
+		{
+			aDamage_num = 0;
+		}
+
+		this._fCurrentEnergy_num = Math.max(0, this._fCurrentEnergy_num - aDamage_num);
+		this._fCurrentHPInPercent_num = this._fCurrentEnergy_num / this._fEnergy_num;
+		if(this._fCurrentHPInPercent_num < 0)
+		{
+			this._fCurrentHPInPercent_num = 0;
+		}
+	}
+
+	_updateHpBar()
+	{
+		if(	this._fCurrentHPInPercent_num < 0.74 &&
+			this._fCurrentHPInPercent_num > 0.26 &&
+			this._fCurrentHPBarColorAsset_str != "enemies/hp_bar/HP_bar_yellow")
+		{
+			this._updateBar("enemies/hp_bar/HP_bar_yellow")
+		}
+		else if(this._fCurrentHPInPercent_num < 0.26 &&
+				this._fCurrentHPBarColorAsset_str != "enemies/hp_bar/HP_bar_red")
+		{
+			this._updateBar("enemies/hp_bar/HP_bar_red")
+		}
+		this._fHPValue_hpv.i_updateValue(this._fCurrentEnergy_num);
+		this._fHPBar_spr.scale.x = this._fCurrentHPInPercent_num;
+	}
+
+	destroy()
+	{
+		super.destroy();
+
+		this._fHPBarCountainer_spr && this._fHPBarCountainer_spr.destroy()
+		this._fHPBarCountainer_spr = null;
+
+		this._fHPBar_spr && this._fHPBar_spr.destroy()
+		this._fHPBar_spr = null;
+
+		this._fEnergy_num = null;
+		this._fCurrentHPInPercent_num = null;
+		this._fCurrentEnergy_num = null;
+	}
+}
+
+export default EnemyHPBarIndicator;

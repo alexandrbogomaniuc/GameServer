@@ -1,0 +1,91 @@
+import SimpleUIInfo from '../../../../../../common/PIXI/src/dgphoenix/unified/model/uis/SimpleUIInfo';
+
+class TransitionViewInfo extends SimpleUIInfo
+{
+	static get TRANSITION_VIEW_STATE_ID_INVALID() { return -1; }
+	static get TRANSITION_VIEW_STATE_ID_INTRO() { return 0; }
+	static get TRANSITION_VIEW_STATE_ID_THICKEN() { return 1; }
+	static get TRANSITION_VIEW_STATE_ID_LOOP() 	{ return 2; }
+	static get TRANSITION_VIEW_STATE_ID_OUTRO() { return 3; }
+	static get TRANSITION_VIEW_STATE_ID_INTRO_NEW_FOG() { return 4; }
+	static get TRANSITION_VIEW_STATE_ID_LOOP_NEW_FOG() { return 5; }
+	static get TRANSITION_VIEW_STATE_ID_OUTRO_NEW_FOG() { return 6; }
+
+	constructor()
+	{
+		super();
+
+		this._fStateId_int = null;
+		this._fIsPlayStateAlreadyWas_bl = null;
+	}
+
+	set stateId(aStateId_int)
+	{
+		this._fStateId_int = aStateId_int;
+	}
+	
+	get stateId()
+	{
+		return this._fStateId_int;
+	}
+
+	set isPlayStateWas(aIs_bl)
+	{
+		this._fIsPlayStateAlreadyWas_bl = aIs_bl;
+	}
+	
+	get isPlayStateWas()
+	{
+		return this._fIsPlayStateAlreadyWas_bl;
+	}
+
+	get isInvalidState()
+	{
+		return this._fStateId_int === TransitionViewInfo.TRANSITION_VIEW_STATE_ID_INVALID;
+	}
+
+	get isIntroState()
+	{
+		return this._fStateId_int === TransitionViewInfo.TRANSITION_VIEW_STATE_ID_INTRO;
+	}
+
+	get isThickenState()
+	{
+		return this._fStateId_int === TransitionViewInfo.TRANSITION_VIEW_STATE_ID_THICKEN;
+	}
+
+	get isLoopState()
+	{
+		return this._fStateId_int === TransitionViewInfo.TRANSITION_VIEW_STATE_ID_LOOP;
+	}
+
+	get isOutroState()
+	{
+		return this._fStateId_int === TransitionViewInfo.TRANSITION_VIEW_STATE_ID_OUTRO;
+	}
+
+	get isIntroNewFogState()
+	{
+		return this._fStateId_int === TransitionViewInfo.TRANSITION_VIEW_STATE_ID_INTRO_NEW_FOG;
+	}
+
+	get isLoopNewFogState()
+	{
+		return this._fStateId_int === TransitionViewInfo.TRANSITION_VIEW_STATE_ID_LOOP_NEW_FOG;
+	}
+
+	get isFeatureActive()
+	{
+		return true;
+	}
+
+	destroy()
+	{
+		this._fStateId_int = null;
+		this._fIsPlayStateAlreadyWas_bl = null;
+
+		super.destroy();
+	}
+}
+
+export default TransitionViewInfo;

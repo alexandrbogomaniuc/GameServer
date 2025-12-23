@@ -1,0 +1,103 @@
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import TextField from '../../../../../../../common/PIXI/src/display/TextField';
+import I18 from '../../../../../../../common/PIXI/src/I18';
+
+class PromoTitleView extends Sprite
+{
+	constructor(promoTitle)
+	{
+		super();
+
+		this._fCollectedItemsText_tf = null;
+		this._caption = null;
+
+		this._init(promoTitle);
+	}
+
+	_init(promoTitle)
+	{
+		//debug...
+		// let gr = new PIXI.Graphics();
+		// this.addChild(gr);
+
+		// gr.beginFill(0xff0000).drawRect(0, 0, 190, 10).endFill();
+		//...debug
+
+		let lPromoCaption = this._caption = this.addChild(I18.generateNewCTranslatableAsset('TALobbyTournamentsPromoCaption'));
+		lPromoCaption.position.set(0, 0);
+		
+		this._fCollectedItemsText_tf = this.addChild(new TextField(this._collectedValueTextStyle));
+		
+		let lIsFontIncludesCurrencySymbol_bl = APP.fonts.isGlyphsSupported(this._fCollectedItemsText_tf.style.fontFamily, promoTitle);
+		if (!lIsFontIncludesCurrencySymbol_bl)
+		{
+			Object.assign(this._fCollectedItemsText_tf.style, {fontFamily: "sans-serif"});
+		}		
+
+		this._fCollectedItemsText_tf.text = promoTitle;
+
+		this._writeCollectedTextIntoArea();
+	}
+
+	get _collectedValueTextStyle()
+	{
+		return {
+			align: "left",
+			fontFamily: "fnt_nm_barlow_semibold",
+			fontSize: 11,
+			letterSpacing: 0.5,
+			padding: 5,
+			fill: 0xffffff
+		}
+	}
+
+	_writeCollectedTextIntoArea()
+	{
+		let lTextArea_obj = this._titleArea;
+		let l_tf = this._fCollectedItemsText_tf;
+
+		let levelTfBounds = l_tf.getLocalBounds();
+		l_tf.pivot.set(levelTfBounds.x, levelTfBounds.y);
+
+		let scaleX = l_tf.scale.x;
+		if (!isNaN(lTextArea_obj.width) && lTextArea_obj.width < levelTfBounds.width*scaleX)
+		{
+			scaleX *= lTextArea_obj.width / (levelTfBounds.width*scaleX);
+		}
+
+		let scaleY = l_tf.scale.y;
+		if (lTextArea_obj.height < levelTfBounds.height*scaleY)
+		{
+			scaleY *= lTextArea_obj.height / (levelTfBounds.height*scaleY);
+		}
+		
+		l_tf.scale.set(scaleX, scaleY);
+
+		let lScaledObjectWidth_num = levelTfBounds.width * scaleX;
+		let lScaledObjectHeight_num = levelTfBounds.height * scaleY;
+		let lX_num = lTextArea_obj.x;
+		let lY_num = lTextArea_obj.y + (lTextArea_obj.height - lScaledObjectHeight_num) / 2;
+
+		l_tf.x = lX_num;
+		l_tf.y = lY_num;
+	}
+
+	get _titleArea()
+	{
+		let captionBounds = this._caption.getBounds();
+		let area_x = captionBounds.x + captionBounds.width + 4;
+
+		return {x: area_x, y: -8, width: undefined, height: 16};
+	}
+
+	destroy()
+	{
+		super.destroy();
+
+		this._fCollectedItemsText_tf = null;
+		this._caption = null;
+	}
+}
+
+export default PromoTitleView

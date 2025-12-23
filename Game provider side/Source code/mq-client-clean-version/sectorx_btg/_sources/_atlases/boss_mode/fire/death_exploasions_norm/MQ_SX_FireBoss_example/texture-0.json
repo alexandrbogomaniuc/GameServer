@@ -1,0 +1,591 @@
+{
+  "frames": {
+    "MQ_SX_FireBoss_example_00009.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 300,
+        "h": 313
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 396,
+        "y": 127,
+        "w": 300,
+        "h": 313
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00010.png": {
+      "frame": {
+        "x": 1,
+        "y": 316,
+        "w": 298,
+        "h": 318
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 398,
+        "y": 126,
+        "w": 298,
+        "h": 318
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00011.png": {
+      "frame": {
+        "x": 303,
+        "y": 1,
+        "w": 312,
+        "h": 321
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 391,
+        "y": 126,
+        "w": 312,
+        "h": 321
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00012.png": {
+      "frame": {
+        "x": 1,
+        "y": 636,
+        "w": 310,
+        "h": 322
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 392,
+        "y": 125,
+        "w": 310,
+        "h": 322
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00013.png": {
+      "frame": {
+        "x": 617,
+        "y": 1,
+        "w": 312,
+        "h": 320
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 391,
+        "y": 125,
+        "w": 312,
+        "h": 320
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00014.png": {
+      "frame": {
+        "x": 1,
+        "y": 960,
+        "w": 312,
+        "h": 377
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 391,
+        "y": 126,
+        "w": 312,
+        "h": 377
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00015.png": {
+      "frame": {
+        "x": 301,
+        "y": 324,
+        "w": 306,
+        "h": 374
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 393,
+        "y": 129,
+        "w": 306,
+        "h": 374
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00016.png": {
+      "frame": {
+        "x": 931,
+        "y": 1,
+        "w": 304,
+        "h": 378
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 395,
+        "y": 127,
+        "w": 304,
+        "h": 378
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00017.png": {
+      "frame": {
+        "x": 1,
+        "y": 1339,
+        "w": 282,
+        "h": 308
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 412,
+        "y": 198,
+        "w": 282,
+        "h": 308
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00018.png": {
+      "frame": {
+        "x": 313,
+        "y": 632,
+        "w": 281,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 412,
+        "y": 198,
+        "w": 281,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00019.png": {
+      "frame": {
+        "x": 1237,
+        "y": 1,
+        "w": 280,
+        "h": 306
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 413,
+        "y": 199,
+        "w": 280,
+        "h": 306
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00020.png": {
+      "frame": {
+        "x": 677,
+        "y": 381,
+        "w": 281,
+        "h": 306
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 412,
+        "y": 199,
+        "w": 281,
+        "h": 306
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00021.png": {
+      "frame": {
+        "x": 1,
+        "y": 1649,
+        "w": 331,
+        "h": 389
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 371,
+        "y": 116,
+        "w": 331,
+        "h": 389
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00022.png": {
+      "frame": {
+        "x": 1237,
+        "y": 309,
+        "w": 330,
+        "h": 341
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 373,
+        "y": 116,
+        "w": 330,
+        "h": 341
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00023.png": {
+      "frame": {
+        "x": 596,
+        "y": 689,
+        "w": 341,
+        "h": 348
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 367,
+        "y": 112,
+        "w": 341,
+        "h": 348
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00024.png": {
+      "frame": {
+        "x": 1569,
+        "y": 1,
+        "w": 341,
+        "h": 348
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 367,
+        "y": 112,
+        "w": 341,
+        "h": 348
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00025.png": {
+      "frame": {
+        "x": 960,
+        "y": 652,
+        "w": 386,
+        "h": 415
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 320,
+        "y": 114,
+        "w": 386,
+        "h": 415
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00026.png": {
+      "frame": {
+        "x": 1569,
+        "y": 351,
+        "w": 386,
+        "h": 416
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 322,
+        "y": 112,
+        "w": 386,
+        "h": 416
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00027.png": {
+      "frame": {
+        "x": 315,
+        "y": 1069,
+        "w": 391,
+        "h": 420
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 316,
+        "y": 112,
+        "w": 391,
+        "h": 420
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00028.png": {
+      "frame": {
+        "x": 1348,
+        "y": 769,
+        "w": 521,
+        "h": 409
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 317,
+        "y": 146,
+        "w": 521,
+        "h": 409
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00029.png": {
+      "frame": {
+        "x": 334,
+        "y": 1491,
+        "w": 518,
+        "h": 405
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 318,
+        "y": 148,
+        "w": 518,
+        "h": 405
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00030.png": {
+      "frame": {
+        "x": 854,
+        "y": 1069,
+        "w": 521,
+        "h": 421
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 318,
+        "y": 139,
+        "w": 521,
+        "h": 421
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00031.png": {
+      "frame": {
+        "x": 854,
+        "y": 1592,
+        "w": 520,
+        "h": 423
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 318,
+        "y": 137,
+        "w": 520,
+        "h": 423
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00032.png": {
+      "frame": {
+        "x": 1376,
+        "y": 1592,
+        "w": 429,
+        "h": 421
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 411,
+        "y": 138,
+        "w": 429,
+        "h": 421
+      },
+      "sourceSize": {
+        "w": 1109,
+        "h": 795
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "texture-0.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1956,
+      "h": 2039
+    },
+    "scale": 2
+  }
+}

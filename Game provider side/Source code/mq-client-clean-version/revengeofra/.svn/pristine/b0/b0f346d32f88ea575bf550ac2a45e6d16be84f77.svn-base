@@ -1,0 +1,188 @@
+import SimpleUIController from '../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import NotificationController from './NotificationController';
+import NotificationsInfo from '../../../../model/uis/custom/notifications/NotificationsInfo';
+import NotificationsView from '../../../../view/uis/custom/notifications/NotificationsView';
+
+class NotificationsController extends SimpleUIController
+{
+	static get EVENT_NOTIFICATION_ACTIVATED() 		{return NotificationController.EVENT_NOTIFICATION_ACTIVATED};
+	static get EVENT_NOTIFICATION_DEACTIVATED() 	{return NotificationController.EVENT_NOTIFICATION_DEACTIVATED};
+	static get EVENT_NOTIFICATION_CLOSE_CLICKED() 	{return NotificationController.EVENT_NOTIFICATION_CLOSE_CLICKED};
+
+	static _sortNotificationsByPresentationPriority (notification1, notification2)
+	{
+		var firstNotificationInfo = notification1.info;
+		var secondNotificationInfo = notification2.info;
+
+		var firstNotificationPriority = firstNotificationInfo.priority;
+		var secondNotificationPriority = secondNotificationInfo.priority;
+		var lRet_num = secondNotificationPriority - firstNotificationPriority;
+		if (!lRet_num)
+		{
+			var firstNotificationActivationTime = firstNotificationInfo.activationTime;
+			var secondNotificationActivationTime = secondNotificationInfo.activationTime;
+			
+			lRet_num = firstNotificationActivationTime - secondNotificationActivationTime;
+		}
+		return lRet_num;
+	}
+
+	constructor(optInfo)
+	{
+		super(new NotificationsInfo());
+
+		this._notificationsControllers = null;
+
+		this._initNotificationsController();
+	}
+
+	initView(viewContainer)
+	{
+		let view = new NotificationsView();
+		viewContainer.addChild(view);
+
+		super.initView(view);
+	}
+
+	destroy()
+	{
+		this._notificationsControllers = null;
+
+		super.destroy();
+	}
+
+	_initNotificationsController()
+	{
+		this._notificationsControllers = [];
+	}
+
+	__init ()
+	{
+		super.__init();
+	}
+
+	__initControlLevel ()
+	{
+		super.__initControlLevel();
+
+		var info = this.info;
+		var notificationsAmount = info.notificationsCount;
+		for (var i = 0; i < notificationsAmount; i++)
+		{
+			var notificaionController = this.__getNotificationController(i);
+			notificaionController.init();
+		}
+	}
+
+	__initViewLevel ()
+	{
+		super.__initViewLevel();
+
+		var view = this.__fView_uo;
+		var notificationsAmount = this.info.notificationsCount;
+		for (var i = 0; i < notificationsAmount; i++)
+		{
+			var notificationController = this.__getNotificationController(i);
+			if (notificationController.isViewLevelSelfInitializationMode)
+			{
+				if (!notificationController.hasView)
+				{
+					notificationController.initViewLevelSelfInitializationViewProvider(view);
+				}
+			}
+			else
+			{
+				notificationController.initView(view.getNotificationView(i));
+			}
+		}
+	}
+
+	__getNotificationController (notificationId)
+	{
+		return this._notificationsControllers[notificationId] || this._initNotificationController(notificationId);
+	}
+
+	_initNotificationController (notificationId)
+	{
+		var notificationController = this.__generateNotificationController(this.info.getNotificationInfo(notificationId));
+		this._notificationsControllers[notificationId] = notificationController;
+
+		notificationController.on(NotificationController.EVENT_NOTIFICATION_ACTIVATED, this._onNotificationActivated, this);
+		notificationController.on(NotificationController.EVENT_NOTIFICATION_DEACTIVATED, this._onNotificationDeactivated, this);
+		notificationController.on(NotificationController.EVENT_NOTIFICATION_CLOSE_CLICKED, this.emit, this);
+
+		return notificationController;
+	}
+
+	__generateNotificationController (notificationInfo)
+	{
+		var notificationController;
+		var notificationId = notificationInfo.notificationId;
+		var notificationInfo = notificationInfo;
+
+		switch (notificationId)
+		{
+			default:
+				throw new Error(`Unsupported notification id: ${notificationId}`);
+		}
+
+		return notificationController;
+	}
+
+	_onNotificationActivated (aEvent_ue)
+	{
+		this._updateNotificationForPresentationSettings();
+		this.emit(NotificationsController.EVENT_NOTIFICATION_ACTIVATED);
+	}
+
+	_onNotificationDeactivated (aEvent_ue)
+	{
+		this._updateNotificationForPresentationSettings();
+		this.emit(NotificationsController.EVENT_NOTIFICATION_DEACTIVATED);
+	}
+
+	_updateNotificationForPresentationSettings ()
+	{
+		var sortedActiveNotifications = this._getActiveNotificationsWithPresentationPrioritySorting();
+		console.log("sortedActiveNotifications", sortedActiveNotifications);
+		var info = this.info;
+
+		if (!sortedActiveNotifications)
+		{
+			info.notificationIdForPresentation = undefined;
+		}
+		else
+		{
+			info.notificationIdForPresentation = sortedActiveNotifications[0].info.notificationId;
+		}
+	}
+
+	_getActiveNotificationsWithPresentationPrioritySorting ()
+	{
+		var activeNotifications = null;
+		var notificationsAmount = this.info.notificationsCount;
+		for (var i = 0; i < notificationsAmount; i++)
+		{
+			var notificationController = this.__getNotificationController(i);
+			if (notificationController.info.isActive)
+			{
+				activeNotifications = activeNotifications || [];
+				activeNotifications.push(notificationController);
+			}
+		}
+
+		if (activeNotifications)
+		{
+			activeNotifications.sort(NotificationsController._sortNotificationsByPresentationPriority);
+		}
+
+		return activeNotifications;
+	}
+
+	get _levelUpNotificationController()
+	{
+		return this.__getNotificationController(NotificationsInfo.NOTIFICATION_ID_LEVEL_UP);
+	}
+}
+
+export default NotificationsController

@@ -1,0 +1,159 @@
+{
+  "frames": {
+    "MQ_SX_FireBoss_example_00065.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 526,
+        "h": 444
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 78,
+        "w": 526,
+        "h": 444
+      },
+      "sourceSize": {
+        "w": 1135,
+        "h": 701
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00066.png": {
+      "frame": {
+        "x": 1,
+        "y": 447,
+        "w": 526,
+        "h": 444
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 78,
+        "w": 526,
+        "h": 444
+      },
+      "sourceSize": {
+        "w": 1135,
+        "h": 701
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00067.png": {
+      "frame": {
+        "x": 529,
+        "y": 1,
+        "w": 526,
+        "h": 444
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 78,
+        "w": 526,
+        "h": 444
+      },
+      "sourceSize": {
+        "w": 1135,
+        "h": 701
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00068.png": {
+      "frame": {
+        "x": 1,
+        "y": 893,
+        "w": 526,
+        "h": 444
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 78,
+        "w": 526,
+        "h": 444
+      },
+      "sourceSize": {
+        "w": 1135,
+        "h": 701
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00069.png": {
+      "frame": {
+        "x": 529,
+        "y": 447,
+        "w": 526,
+        "h": 443
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 79,
+        "w": 526,
+        "h": 443
+      },
+      "sourceSize": {
+        "w": 1135,
+        "h": 701
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_FireBoss_example_00070.png": {
+      "frame": {
+        "x": 1057,
+        "y": 1,
+        "w": 526,
+        "h": 443
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 79,
+        "w": 526,
+        "h": 443
+      },
+      "sourceSize": {
+        "w": 1135,
+        "h": 701
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "texture-1.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 1584,
+      "h": 1338
+    },
+    "scale": 2
+  }
+}

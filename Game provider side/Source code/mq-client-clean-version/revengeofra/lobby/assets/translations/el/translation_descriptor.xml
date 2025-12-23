@@ -1,0 +1,2475 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_calibri" url="[root_resources_path]translations/el/fonts/calibri_el.ttf"/>
+		<font name="fnt_nm_barlow" url="[root_resources_path]translations/el/fonts/barlow_medium_el.ttf"/>
+		<font name="fnt_nm_barlow_semibold" url="[root_resources_path]translations/el/fonts/barlow_semibold_el.ttf"/>
+		<font name="fnt_nm_barlow_bold" url="[root_resources_path]translations/el/fonts/barlow_bold_el.ttf"/>
+		<font name="fnt_nm_barlow_regular" url="[root_resources_path]translations/el/fonts/barlow_regular_el.ttf"/>
+		<font name="fnt_nm_barlow_italic" url="[root_resources_path]translations/el/fonts/barlow_italic_el.ttf"/>
+		<font name="fnt_nm_myriadpro_regular" url="[root_resources_path]translations/el/fonts/myriadpro_regular_el.ttf"/>
+	</fonts>
+
+	<tasds>
+		<tad id="TALobbyRoomsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CHOOSE ROOM TO PLAY</source_meaning>
+				<translated_meaning>ΕΠΙΛΕΞΤΕ ΔΩΜΑΤΙΟ ΓΙΑ ΝΑ ΠΑΙΞΕΤΕ</translated_meaning>
+			</meaning>
+			<area x="-500" y="-50" w="1000" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1.5" padding="5">
+				<font name="fnt_nm_barlow" size="15" color="0xffffff" bold="false">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="4" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>ΕΠΙΛΕΞΤΕ ΔΩΜΑΤΙΟ ΓΙΑ ΝΑ ΠΑΙΞΕΤΕ</content>
+			</txt>
+		</tad>
+
+		<!--LOBBY...-->
+		<tad id="TALobbyTournamentsPromoCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Tournament:</source_meaning>
+				<translated_meaning>Τουρνουά:</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="190" h="16">
+				<scale x="no_scale" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0" padding="5">
+				<!--<font name="fnt_nm_barlow" size="11" color="0xe4d337" bold="false"/>-->
+				<font name="fnt_nm_barlow_semibold" size="11" color="0xe4d337" bold="false"></font>
+				<content>Τουρνουά:</content>
+			</txt>
+		</tad>
+
+		<!--COMMON PANEL...-->
+
+		<tad id="TACommonPanelBalanceLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BALANCE</source_meaning>
+				<translated_meaning>ΥΠΟΛΟΙΠΟ</translated_meaning>
+			</meaning>
+			<area x="-9" y="0" w="70" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xa3a3a3"></font>
+				<content>ΥΠΟΛΟΙΠΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelWinLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WIN</source_meaning>
+				<translated_meaning>ΚΕΡΔΗ</translated_meaning>
+			</meaning>
+			<area x="-9" y="0" w="70" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xa3a3a3"></font>
+				<content>ΚΕΡΔΗ</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelMenuLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Menu</source_meaning>
+				<translated_meaning>Μενού</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="70" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="12" color="0xffffff"></font>
+				<content>Μενού</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelLobbyCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Join one of the rooms above to explore MAX DUEL and win!</source_meaning>
+				<translated_meaning>Μπείτε σε ένα από τα παραπάνω δωμάτια για να εξερευνήσετε το MAX DUEL και κερδίστε!</translated_meaning>
+			</meaning>
+			<area x="-300" y="-25" w="600" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="0.4">
+				<font name="fnt_nm_barlow_italic" size="11" color="0xffffff"></font>
+				<content>Μπείτε σε ένα από τα παραπάνω δωμάτια για να εξερευνήσετε το MAX DUEL και κερδίστε!</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelFreeShotsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Shots: XX</source_meaning>
+				<translated_meaning>Δωρεάν Βολές: XX</translated_meaning>
+			</meaning>
+			<area x="-150" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="12" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>Δωρεάν Βολές: /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TACommonPanelFreeShotsLabelMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Shots: XX</source_meaning>
+				<translated_meaning>Δωρεάν Βολές: XX</translated_meaning>
+			</meaning>
+			<area x="-150" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>Δωρεάν Βολές: /VALUE/</content>
+			</txt>
+		</tad>
+		<!--...COMMON PANEL-->
+
+		<tad id="TALobbyTotalKillsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Total Kills</source_meaning>
+				<translated_meaning>Συνολικοί Σκοτωμοί</translated_meaning>
+			</meaning>
+			<area x="-55" y="-12" w="110" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="0.4">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xffffff" bold="false"></font>
+				<content>Συνολικοί Σκοτωμοί</content>
+			</txt>
+		</tad>
+
+		<tad id="TALobbyGameRoundsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Game Rounds</source_meaning>
+				<translated_meaning>Γύροι Παιχνιδιού</translated_meaning>
+			</meaning>
+			<area x="-55" y="-12" w="110" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="0.4">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xffffff" bold="false"></font>
+				<content>Γύροι Παιχνιδιού</content>
+			</txt>
+		</tad>
+
+		<tad id="TALobbyEditProfileBtnLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Edit Profile</source_meaning>
+				<translated_meaning>Επεξεργασία Προφίλ</translated_meaning>
+			</meaning>
+			<area x="-25" y="-7.5" w="50" h="14">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="bottom"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="7">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0x000000" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0xffffff" distance="0.5" angle="90" alpha="0.5"/>
+					</shadows>
+				</filters>
+				<content>Επεξεργασία&#10;Προφίλ</content>
+			</txt>
+		</tad>
+
+		<tad id="TALobbyNewPlayerEnterTip" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Enter username</source_meaning>
+				<translated_meaning>Εισάγετε όνομα χρήστη</translated_meaning>
+			</meaning>
+			<area x="-85" y="-13" w="170" h="26">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="15" color="0x8f8f8f" bold="false"></font>
+				<content>Εισάγετε όνομα χρήστη</content>
+			</txt>
+		</tad>
+
+		<tad id="TALobbyNewPlayerNotAvailableTip" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Name not available, please try again</source_meaning>
+				<translated_meaning>Το όνομα δεν είναι διαθέσιμο, παρακαλούμε προσπαθήστε ξανά</translated_meaning>
+			</meaning>
+			<area x="-150" y="-20" w="300" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="14">
+				<font name="fnt_nm_barlow" size="15" color="0x8f8f8f" bold="false"></font>
+				<content>Το όνομα δεν είναι διαθέσιμο,&#10;παρακαλούμε προσπαθήστε ξανά</content>
+			</txt>
+		</tad>
+
+		<!--LOBBY VIEW...-->
+
+		<tad id="TALobbyRoomBtnNotEnoughMoneyCapture" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient balance for this room</source_meaning>
+				<translated_meaning>Ανεπαρκές υπόλοιπο για αυτό το δωμάτιο</translated_meaning>
+			</meaning>
+			<area x="-150" y="-50" w="300" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="0.6">
+				<font name="fnt_nm_barlow_semibold" size="12" color="0xffffff" bold="false">
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0x000000"/>
+					</fill>
+				</font>
+				<content>Ανεπαρκές υπόλοιπο&#010;για αυτό το δωμάτιο</content>
+			</txt>
+		</tad>
+		<!--...LOBBY VIEW-->
+		<!--...LOBBY-->
+
+		<!--SETTINGS SCREEN...-->
+		<tad id="TASettingsScreenCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SETTINGS</source_meaning>
+				<translated_meaning>ΡΥΘΜΙΣΕΙΣ</translated_meaning>
+			</meaning>
+			<area x="-40" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>ΡΥΘΜΙΣΕΙΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenSoundVolumeLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SOUND FX VOLUME</source_meaning>
+				<translated_meaning>ΕΝΤΑΣΗ ΗΧΗΤΙΚΩΝ ΕΦΕ</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<content>ΕΝΤΑΣΗ ΗΧΗΤΙΚΩΝ ΕΦΕ</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenMusicVolumeLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MUSIC VOLUME</source_meaning>
+				<translated_meaning>ΕΝΤΑΣΗ ΜΟΥΣΙΚΗΣ</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<content>ΕΝΤΑΣΗ ΜΟΥΣΙΚΗΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenTooltipsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOOLTIPS</source_meaning>
+				<translated_meaning>TOOLTIPS</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<content>TOOLTIPS</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsScreenHitPointsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SHOW ENEMY HIT POINTS</source_meaning>
+				<translated_meaning>ΠΡΟΒΟΛΗ ΠΟΝΤΩΝ ΖΩΗΣ ΤΟΥ ΕΧΘΡΟΥ</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="192" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="17">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<content>ΠΡΟΒΟΛΗ ΠΟΝΤΩΝ ΖΩΗΣ&#10;ΤΟΥ ΕΧΘΡΟΥ</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsTooltipsToggleLabelOn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ON</source_meaning>
+				<translated_meaning>ΕΝΕΡΓΟ</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="12" color="0xFFFFFF" bold="false"></font>
+				<content>ΕΝΕΡΓΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TASettingsTooltipsToggleLabelOff" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OFF</source_meaning>
+				<translated_meaning>ΑΝΕΝΕΡΓΟ</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="12" color="0xFFFFFF" bold="false"></font>
+				<content>ΑΝΕΝΕΡΓΟ</content>
+			</txt>
+		</tad>
+		<!--...SETTINGS SCREEN-->
+
+		<!-- WEAPONS INVENTORY... -->
+		<tad id="TAPlayerCollectionScreenWeaponsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WEAPONS INVENTORY</source_meaning>
+				<translated_meaning>ΑΠΟΓΡΑΦΗ ΟΠΛΩΝ</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="200" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>ΑΠΟΓΡΑΦΗ ΟΠΛΩΝ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenSwitchWeaponsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WEAPONS</source_meaning>
+				<translated_meaning>ΟΠΛΑ</translated_meaning>
+			</meaning>
+			<area x="-30" y="-10" w="60" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0x666666"></font>
+				<content>ΟΠΛΑ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFrameArtilleryCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ARTILLERY STRIKE</source_meaning>
+				<translated_meaning>ΧΤΥΠΗΜΑ ΠΥΡΟΒΟΛΙΚΟΥ</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>ΧΤΥΠΗΜΑ ΠΥΡΟΒΟΛΙΚΟΥ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFramePlasmaCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PLASMA RIFLE</source_meaning>
+				<translated_meaning>ΠΥΡΟΒΟΛΟ ΟΠΛΟ ΠΛΑΣΜΑΤΟΣ</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="120" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>ΠΥΡΟΒΟΛΟ ΟΠΛΟ&#010;ΠΛΑΣΜΑΤΟΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFrameCryogunCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CRYOGUN</source_meaning>
+				<translated_meaning>ΟΠΛΟ ΚΡΥΟΥ</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>ΟΠΛΟ ΚΡΥΟΥ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFrameMineCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MINE LAUNCHER</source_meaning>
+				<translated_meaning>ΕΚΤΟΞΕΥΤΗΣ ΝΑΡΚΩΝ</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>ΕΚΤΟΞΕΥΤΗΣ ΝΑΡΚΩΝ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsFrameFlameCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FLAMETHROWER</source_meaning>
+				<translated_meaning>ΦΛΟΓΟΒΟΛΟ</translated_meaning>
+			</meaning>
+			<area x="0" y="0" w="90" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="8" color="0xffffff"></font>
+				<content>ΦΛΟΓΟΒΟΛΟ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPlayerCollectionScreenWeaponsNoteCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Only weapons earned in a room with the same bet denomination will be shown.</source_meaning>
+				<translated_meaning>Μόνο τα όπλα που κερδήθηκαν σε ένα δωμάτιο με την ίδια αξία στοιχήματος θα εμφανιστούν.</translated_meaning>
+			</meaning>
+			<area x="0" y="-15" w="800" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_italic" size="9" color="0x686868"></font>
+				<content>Μόνο τα όπλα που κερδήθηκαν σε ένα δωμάτιο με την ίδια αξία στοιχήματος θα εμφανιστούν.</content>
+			</txt>
+		</tad>
+		<!-- ...WEAPONS INVENTORY -->
+
+		<!-- EDIT PROFILE ...-->
+		<tad id="TAEditProfileTitle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>PROFILE EDITOR</source_meaning>
+				<translated_meaning>ΠΡΟΓΡΑΜΜΑ ΕΠΕΞΕΡΓΑΣΙΑΣ ΠΡΟΦΙΛ</translated_meaning>
+			</meaning>
+			<area x="-60" y="-50" w="300" h="100">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>ΠΡΟΓΡΑΜΜΑ ΕΠΕΞΕΡΓΑΣΙΑΣ ΠΡΟΦΙΛ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenButtonAcceptLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>OK</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenButtonCancelLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CANCEL</source_meaning>
+				<translated_meaning>ΑΚΥΡΩΣΗ</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>ΑΚΥΡΩΣΗ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenBackgroundStyleCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Background Style</source_meaning>
+				<translated_meaning>Στυλ φόντου</translated_meaning>
+			</meaning>
+			<area x="-70.8" y="-20" w="140" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="12" color="0xffffff"></font>
+				<content>Στυλ φόντου</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenBorderStyleCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Border Style</source_meaning>
+				<translated_meaning>Στυλ περιγράμματος</translated_meaning>
+			</meaning>
+			<area x="-70" y="-20.5" w="140" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="12" color="0xffffff"></font>
+				<content>Στυλ περιγράμματος</content>
+			</txt>
+		</tad>
+
+		<tad id="TAEditProfileScreenHeroSelectionCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Hero Selection</source_meaning>
+				<translated_meaning>Επιλογή Ήρωα</translated_meaning>
+			</meaning>
+			<area x="-68.8" y="-20" w="140" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="12" color="0xffffff"></font>
+				<content>Επιλογή Ήρωα</content>
+			</txt>
+		</tad>
+		<!-- ... EDIT PROFILE  -->
+
+		<!-- PROMOTIONS SCREEN ... -->
+		<tad id="TAPromotionsScreenCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Tournament Info</source_meaning>
+				<translated_meaning>Πληροφορίες Τουρνουά</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="300" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Πληροφορίες Τουρνουά</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPromotionsScreenInfoButtonCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Tournament</source_meaning>
+				<translated_meaning>Τουρνουά</translated_meaning>
+			</meaning>
+			<area x="-65" y="-18" w="130" h="36">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0x000000"></font>
+				<content>Τουρνουά</content>
+			</txt>
+		</tad>
+		<!-- ... PROMOTIONS SCREEN -->
+
+		<!-- DIALOGS... -->
+
+		<tad id="TADialogButtonOK" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>OK</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonCancel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CANCEL</source_meaning>
+				<translated_meaning>ΑΚΥΡΩΣΗ</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="true" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>ΑΚΥΡΩΣΗ</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonRetry" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RETRY</source_meaning>
+				<translated_meaning>ΞΑΝΑΠΡΟΣΠΑΘΗΣΤΕ</translated_meaning>
+			</meaning>
+			<area x="-36" y="-15" w="72" h="50">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="12">
+				<font name="fnt_nm_calibri" size="14" color="0xFFFFFF" bold="true"/>
+				<content>ΞΑΝΑΠΡΟΣ-&#10;ΠΑΘΗΣΤΕ</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonExit" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>EXIT</source_meaning>
+				<translated_meaning>ΕΞΟΔΟΣ</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="true" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>ΕΞΟΔΟΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonBuyIn" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BUY IN</source_meaning>
+				<translated_meaning>ΑΓΟΡΑ ΠΙΣΤΩΣΗΣ</translated_meaning>
+			</meaning>
+			<area x="-36" y="-16" w="72" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="12">
+				<font name="fnt_nm_calibri" size="12" color="0xFFFFFF" bold="true"/>
+				<content>ΑΓΟΡΑ&#10;ΠΙΣΤΩΣΗΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonCopy" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>COPY</source_meaning>
+				<translated_meaning>ΑΝΤΙΓΡΑΦΗ</translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="true" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>ΑΝΤΙΓΡΑΦΗ</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonYes" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>YES</source_meaning>
+				<translated_meaning>ΝΑΙ</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>ΝΑΙ</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonNo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>NO</source_meaning>
+				<translated_meaning>ΌΧΙ</translated_meaning>
+			</meaning>
+			<area x="-25" y="-15" w="50" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_bold" size="14" color="0xFFFFFF" bold="false"></font>
+				<content>ΌΧΙ</content>
+			</txt>
+		</tad>
+
+		<!-- TOURNAMENT MODE... -->
+		<tad id="TADialogMessageTournamentEnded" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The tournament has ended. Please head to the lobby for more MAX DUEL tournaments.</source_meaning>
+				<translated_meaning>Το τουρνουά ολοκληρώθηκε. Παρακαλούμε επισκεφθείτε το λόμπι για περισσότερα τουρνουά MAX DUEL.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το τουρνουά ολοκληρώθηκε.&#010;Παρακαλούμε επισκεφθείτε το&#010;λόμπι για περισσότερα&#010;τουρνουά MAX DUEL.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageTournamentCancelled" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The tournament has been cancelled. Please head to the lobby for more MAX DUEL tournaments.</source_meaning>
+				<translated_meaning>Το τουρνουά ακυρώθηκε. Παρακαλούμε επισκεφθείτε το λόμπι για περισσότερα τουρνουά MAX DUEL.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το τουρνουά ακυρώθηκε. Παρακαλούμε&#010;επισκεφθείτε το λόμπι για&#010;περισσότερα τουρνουά MAX DUEL.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageTournamentRebuyLimitExceeded" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Rebuys limit achieved. Thank you for playing.</source_meaning>
+				<translated_meaning>Συμπληρώθηκε το όριο επαναγορών. Ευχαριστούμε που συμμετέχετε στο παιχνίδι.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συμπληρώθηκε το όριο&#010;επαναγορών. Ευχαριστούμε&#010;που συμμετέχετε στο παιχνίδι.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageTournamentRebuyNotAvailable" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Rebuy is not available. Thank you for playing.</source_meaning>
+				<translated_meaning>Η επαναγορά δεν είναι διαθέσιμη. Ευχαριστούμε που συμμετέχετε στο παιχνίδι.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Η επαναγορά δεν είναι&#010;διαθέσιμη. Ευχαριστούμε&#010;που συμμετέχετε στο&#010;παιχνίδι.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessagePaidTournamentRebuy" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient tournament balance. You can make a re-buy for $XX.XX. Your new balance will be YY.YY. Make re-buy?</source_meaning>
+				<translated_meaning>Μη επαρκές υπόλοιπο για το τουρνουά. Μπορείτε να κάνετε επαναγορά για $XX.XX. Το νέο σας υπόλοιπο θα είναι YY.YY. Θα κάνετε επαναγορά;</translated_meaning>
+			</meaning>
+			<area x="-140" y="-55" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Μη επαρκές υπόλοιπο για το&#010;τουρνουά. Μπορείτε να κάνετε&#010;επαναγορά για /CURRENCY_SYMBOL//REBUY_VALUE/. Το νέο σας υπόλοιπο&#010;θα είναι /RECHARGE_VALUE/. Θα κάνετε επαναγορά;</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageFreerollTournamentRebuy" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient tournament balance. You can make free re-buy. Your new balance will be YY.YY. Make re-buy?</source_meaning>
+				<translated_meaning>Μη επαρκές υπόλοιπο για το τουρνουά. Μπορείτε να κάνετε δωρεάν επαναγορά. Το νέο σας υπόλοιπο θα είναι YY.YY. Θα κάνετε επαναγορά;</translated_meaning>
+			</meaning>
+			<area x="-140" y="-55" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Μη επαρκές υπόλοιπο για το&#010;τουρνουά. Μπορείτε να κάνετε&#010;δωρεάν επαναγορά. Το νέο σας υπόλοιπο&#010;θα είναι /RECHARGE_VALUE/. Θα κάνετε επαναγορά;</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageTournamentBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient tournament balance to make a wager at this bet level. Please reduce your bet.</source_meaning>
+				<translated_meaning>Ανεπαρκές υπόλοιπο τουρνουά για να τοποθετήσετε ποντάρισμα σε αυτό το επίπεδο. Παρακαλούμε μειώστε το ποντάρισμά σας.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-55" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Ανεπαρκές υπόλοιπο τουρνουά για να&#010;τοποθετήσετε ποντάρισμα σε αυτό το επίπεδο.&#010;Παρακαλούμε μειώστε το ποντάρισμά σας.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageTournamentPayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient tournament balance to make a wager with this special weapon. Please choose another weapon.</source_meaning>
+				<translated_meaning>Ανεπαρκές υπόλοιπο τουρνουά για να τοποθετήσετε ποντάρισμα με αυτό το ειδικό όπλο. Παρακαλούμε διαλέξτε διαφορετικό όπλο.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-55" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Ανεπαρκές υπόλοιπο τουρνουά για&#010;να τοποθετήσετε ποντάρισμα με&#010;αυτό το ειδικό όπλο. Παρακαλούμε&#010;διαλέξτε διαφορετικό όπλο.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageTournamentLowBalanceForCurrentRoom" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient funds to play in this room.</source_meaning>
+				<translated_meaning>Μη επαρκές υπόλοιπο για να παίξετε σε αυτό το δωμάτιο.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Μη επαρκές υπόλοιπο για να παίξετε σε αυτό το δωμάτιο.</content>
+			</txt>
+		</tad>
+		<!-- ...TOURNAMENT MODE -->
+		
+		<tad id="TADialogMessageWebglContextLost" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>WebGL context lost. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Απώλεια πλαισίου WebGL. Παρακαλούμε προσπαθήστε ξανά και επικοινωνήστε με την υποστήριξη πελατών εάν το σφάλμα συνεχιστεί.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Απώλεια πλαισίου WebGL.&#010;Παρακαλούμε προσπαθήστε&#010;ξανά και επικοινωνήστε με&#010;την υποστήριξη πελατών&#010;εάν το σφάλμα συνεχιστεί.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorInternal" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Unexpected error has occurred, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Παρουσιάστηκε μη αναμενόμενο σφάλμα, το παιχνίδι δεν μπορεί να συνεχιστεί. Παρακαλούμε προσπαθήστε ξανά και επικοινωνήστε με την υποστήριξη πελατών εάν το σφάλμα συνεχιστεί.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Παρουσιάστηκε μη αναμενόμενο σφάλμα,&#10;το παιχνίδι δεν μπορεί να συνεχιστεί.&#10;Παρακαλούμε προσπαθήστε ξανά και&#10;επικοινωνήστε με την υποστήριξη πελατών&#10;εάν το σφάλμα συνεχιστεί.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorOperationFailed" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Operation failed.</source_meaning>
+				<translated_meaning>Η λειτουργία απέτυχε.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Η λειτουργία απέτυχε.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorServerShutdown" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Server shutdown, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Τερματισμός λειτουργίας του διακομιστή, το παιχνίδι δεν μπορεί να συνεχιστεί. Παρακαλούμε δοκιμάστε ξανά και επικοινωνήστε με την υποστήριξη πελατών, αν το σφάλμα εξακολουθεί να υφίσταται.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Τερματισμός λειτουργίας του διακομιστή,&#10;το παιχνίδι δεν μπορεί να συνεχιστεί.&#010;Παρακαλούμε δοκιμάστε ξανά και&#10;επικοινωνήστε με την υποστήριξη πελατών,&#10;αν το σφάλμα εξακολουθεί να υφίσταται.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorInvalidSession" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your session has expired, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Η περίοδος λειτουργίας έληξε, το παιχνίδι δεν μπορεί να συνεχιστεί. Παρακαλούμε προσπαθήστε ξανά και επικοινωνήστε με την υποστήριξη πελατών εάν το σφάλμα συνεχιστεί.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Η περίοδος λειτουργίας έληξε,&#10;το παιχνίδι δεν μπορεί να συνεχιστεί.&#10;Παρακαλούμε προσπαθήστε ξανά και&#10;επικοινωνήστε με την υποστήριξη πελατών&#10;εάν το σφάλμα συνεχιστεί.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorDeprecatedRequest" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Game client is out of date, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Ο πελάτης παιχνιδιού δεν είναι ενημερωμένος, το παιχνίδι δεν μπορεί να συνεχιστεί. Παρακαλούμε δοκιμάστε ξανά και επικοινωνήστε με την υποστήριξη πελατών, αν το σφάλμα εξακολουθεί να υφίσταται.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Ο πελάτης παιχνιδιού δεν είναι ενημερωμένος,&#10;το παιχνίδι δεν μπορεί να συνεχιστεί.&#010;Παρακαλούμε δοκιμάστε ξανά και&#10;επικοινωνήστε με την υποστήριξη πελατών,&#10;αν το σφάλμα εξακολουθεί να υφίσταται.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorPendingTransaction" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Sorry, an unfinished payment transaction was detected, the game cannot be continued. Please try again and contact customer support if the error persists.</source_meaning>
+				<translated_meaning>Λυπούμαστε, εντοπίστηκε μια ημιτελής συναλλαγή πληρωμής, το παιχνίδι δεν μπορεί να συνεχιστεί. Παρακαλούμε δοκιμάστε ξανά και επικοινωνήστε με την υποστήριξη πελατών, αν το σφάλμα παραμένει.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Λυπούμαστε, εντοπίστηκε μια ημιτελής&#10;συναλλαγή πληρωμής, το παιχνίδι δεν μπορεί&#10;να συνεχιστεί. Παρακαλούμε δοκιμάστε ξανά&#10;και επικοινωνήστε με την υποστήριξη πελατών,&#10;αν το σφάλμα παραμένει.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorConflictingLobbySession" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cannot enter lobby: Session already in progress. Please close the other session and try again.</source_meaning>
+				<translated_meaning>Μη δυνατή η είσοδος στο λόμπι: Συνεδρία ήδη σε εξέλιξη. Παρακαλούμε κλείστε την άλλη συνεδρία και προσπαθήστε ξανά.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Μη δυνατή η είσοδος στο λόμπι:&#10;Συνεδρία ήδη σε εξέλιξη.&#10;Παρακαλούμε κλείστε την άλλη&#10;συνεδρία και προσπαθήστε ξανά.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorSessionValueAsset" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SID:</source_meaning>
+				<translated_meaning>SID:</translated_meaning>
+			</meaning>
+			<area x="-30" y="-10" w="30" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="10" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>SID:</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorTimeValueAsset" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TIME:</source_meaning>
+				<translated_meaning>TIME:</translated_meaning>
+			</meaning>
+			<area x="-30" y="-10" w="30" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="10" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>TIME:</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCriticalErrorUnknownTransactionId" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Unknown transaction id.</source_meaning>
+				<translated_meaning>Unknown transaction id.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-40" w="280" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Unknown transaction id.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageErrorInsufficientFunds" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient Funds</source_meaning>
+				<translated_meaning>Insufficient Funds</translated_meaning>
+			</meaning>
+			<area x="-125" y="-74" w="250" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<content>
+					Insufficient Funds
+				</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogButtonRefresh" type="img_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-36" y="-12" w="72" h="24">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/dialogs/refresh_button_caption.png"/>
+		</tad>
+
+		<tad id="TADialogMessageReconnect" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Please wait...</source_meaning>
+				<translated_meaning>Παρακαλώ περιμένετε...</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Παρακαλώ περιμένετε...</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageRoomNotFound" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Room not found. Please, select another room.</source_meaning>
+				<translated_meaning>Το δωμάτιο δεν βρέθηκε. Παρακαλώ, επιλέξτε άλλο δωμάτιο.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το δωμάτιο δεν βρέθηκε.&#010;Παρακαλώ, επιλέξτε άλλο δωμάτιο.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageRoomNotOpen" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>An error occurred while opening the room. Please, select another room.</source_meaning>
+				<translated_meaning>Παρουσιάστηκε σφάλμα κατά το άνοιγμα του δωματίου. Παρακαλώ, επιλέξτε άλλο δωμάτιο.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Παρουσιάστηκε σφάλμα κατά το&#10;άνοιγμα του δωματίου. Παρακαλώ,&#10;επιλέξτε άλλο δωμάτιο.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageTooManyPlayers" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Too many players in the room. Please, select another room.</source_meaning>
+				<translated_meaning>Πολλοί παίκτες στο δωμάτιο. Παρακαλώ, επιλέξτε άλλο δωμάτιο.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Πολλοί παίκτες στο δωμάτιο.&#10;Παρακαλώ, επιλέξτε άλλο δωμάτιο.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageBuyInFailedRetryPossible" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Failed to buy ammo. Please try again.</source_meaning>
+				<translated_meaning>Αποτυχία αγοράς πυρομαχικών. Παρακαλούμε προσπαθήστε ξανά.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Αποτυχία αγοράς πυρομαχικών.&#10;Παρακαλούμε προσπαθήστε ξανά.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogMessageReBuyFailedRetryPossible" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Re-buy failed. Please try again.</source_meaning>
+				<translated_meaning>Η επαναγορά απέτυχε. Παρακαλούμε δοκιμάστε ξανά.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Η επαναγορά απέτυχε. Παρακαλούμε δοκιμάστε ξανά.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageTooManyObservers" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Too many observers in the room. Please, select another room.</source_meaning>
+				<translated_meaning>Πολλοί παρατηρητές στο δωμάτιο.Παρακαλώ, επιλέξτε άλλο δωμάτιο.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Πολλοί παρατηρητές στο δωμάτιο.&#10;Παρακαλώ, επιλέξτε άλλο δωμάτιο.</content>
+			</txt>
+		</tad>
+
+		<!--LOW BALANCE DIALOGS...-->
+		<tad id="TADialogMessageLowBalanceForFree" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Please exit and re-enter the game to reload your fun money account.</source_meaning>
+				<translated_meaning>Παρακαλώ εξέλθετε και εισέλθετε ξανά στο παιχνίδι για να φορτώσετε ξανά τα εικονικά χρήματα στον λογαριασμό σας.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Παρακαλώ εξέλθετε και εισέλθετε ξανά&#10;στο παιχνίδι για να φορτώσετε ξανά τα&#10;εικονικά χρήματα στον λογαριασμό σας.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForFreeBetLewel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager at this bet level. Please reduce your bet or exit and re-enter the game to reload your fun money account.</source_meaning>
+				<translated_meaning>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας για να τοποθετήσετε ποντάρισμα σε αυτό το επίπεδο. Παρακαλούμε μειώστε το ποντάρισμά σας ή βγείτε από το παιχνίδι και ξαναμπείτε για να επαναφορτώσετε τον εικονικό σας λογαριασμό.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας&#010;για να τοποθετήσετε ποντάρισμα σε αυτό το&#010;επίπεδο. Παρακαλούμε μειώστε το ποντάρισμά&#010;σας ή βγείτε από το παιχνίδι και ξαναμπείτε&#010;για να επαναφορτώσετε τον&#010;εικονικό σας λογαριασμό.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForFreePayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager with this special weapon. Please choose another weapon or exit and re-enter the game to reload your fun money account.</source_meaning>
+				<translated_meaning>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας για να τοποθετήσετε ποντάρισμα με αυτό το ειδικό όπλο. Παρακαλούμε διαλέξτε διαφορετικό όπλο ή βγείτε από το παιχνίδι και ξαναμπείτε για να επαναφορτώσετε τον εικονικό σας λογαριασμό.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δεν έχετε αρκετά χρήματα στο υπόλοιπό&#010;σας για να τοποθετήσετε ποντάρισμα με αυτό&#010;το ειδικό όπλο. Παρακαλούμε διαλέξτε&#010;διαφορετικό όπλο ή βγείτε από το παιχνίδι&#010;και ξαναμπείτε για να επαναφορτώσετε τον&#010;εικονικό σας λογαριασμό.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForReal" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money. Please visit the cashier.</source_meaning>
+				<translated_meaning>Δεν έχετε αρκετά χρήματα. Παρακαλώ, επισκεφθείτε τον ταμεία.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δεν έχετε αρκετά χρήματα.&#010;Παρακαλώ, επισκεφθείτε τον ταμεία.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForRealBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager at this bet level. Please reduce your bet or visit the cashier.</source_meaning>
+				<translated_meaning>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας για να τοποθετήσετε ποντάρισμα σε αυτό το επίπεδο. Παρακαλούμε μειώστε το ποντάρισμά σας ή επισκεφθείτε το ταμείο.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δεν έχετε αρκετά χρήματα στο υπόλοιπό&#010;σας για να τοποθετήσετε ποντάρισμα σε&#010;αυτό το επίπεδο. Παρακαλούμε μειώστε το&#010;ποντάρισμά σας ή επισκεφθείτε το ταμείο.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBalanceForRealPayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager with this special weapon. Please choose another weapon or visit the cashier.</source_meaning>
+				<translated_meaning>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας για να τοποθετήσετε ποντάρισμα με αυτό το ειδικό όπλο. Παρακαλούμε διαλέξτε διαφορετικό όπλο ή επισκεφθείτε το ταμείο.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας&#010;για να τοποθετήσετε ποντάρισμα με αυτό&#010;το ειδικό όπλο. Παρακαλούμε διαλέξτε&#010;διαφορετικό όπλο ή επισκεφθείτε το ταμείο.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCashier" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient balance. Please deposit more.</source_meaning>
+				<translated_meaning>Ανεπαρκές υπόλοιπο. Παρακαλούμε να καταθέσετε περισσότερα.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Ανεπαρκές υπόλοιπο. Παρακαλούμε&#010;να καταθέσετε περισσότερα.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCashierBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager at this bet level. Please reduce your bet or deposit more into your balance to continue.</source_meaning>
+				<translated_meaning>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας για να τοποθετήσετε ποντάρισμα σε αυτό το επίπεδο. Παρακαλούμε μειώστε το ποντάρισμά σας ή καταθέστε περισσότερα για να συνεχίσετε.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δεν έχετε αρκετά χρήματα στο υπόλοιπό&#010;σας για να τοποθετήσετε ποντάρισμα σε&#010;αυτό το επίπεδο. Παρακαλούμε μειώστε το&#010;ποντάρισμά σας ή καταθέστε περισσότερα&#010;για να συνεχίσετε.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageCashierPayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You do not have enough money in your balance to make a wager with this special weapon. Please choose another weapon or deposit more into your balance to continue.</source_meaning>
+				<translated_meaning>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας για να τοποθετήσετε ποντάρισμα με αυτό το ειδικό όπλο. Παρακαλούμε διαλέξτε διαφορετικό όπλο ή καταθέστε περισσότερα για να συνεχίσετε.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δεν έχετε αρκετά χρήματα στο υπόλοιπό σας&#010;για να τοποθετήσετε ποντάρισμα με αυτό το&#010;ειδικό όπλο. Παρακαλούμε διαλέξτε διαφορετικό&#010;όπλο ή καταθέστε περισσότερα για&#010;να συνεχίσετε.</content>
+			</txt>
+		</tad>
+		<!--...LOW BALANCE DIALOGS-->
+
+		<!--SW EXCEEDED BET LIMIT DIALOG...-->
+		<tad id="TADialogMessageSWPurchaseLimitExceeded" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You have exceeded your bet amount limit.</source_meaning>
+				<translated_meaning>Έχετε υπερβεί το όριο πονταρίσματός σας.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Έχετε υπερβεί το όριο πονταρίσματός σας.</content>
+			</txt>
+		</tad>
+		<!--...SW EXCEEDED BET LIMIT DIALOG-->
+		
+		<!-- CASH BONUS... -->
+		<tad id="TADialogBonusLobbyIntro" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You are playing in Bonus Mode</source_meaning>
+				<translated_meaning>Παίζετε στην Λειτουργία Μπόνους</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Παίζετε στην Λειτουργία Μπόνους</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogBonusRoomIntro" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You are playing in Bonus Mode.</source_meaning>
+				<translated_meaning>Παίζετε στην Λειτουργία Μπόνους.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Παίζετε στην Λειτουργία Μπόνους.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusExpired" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has expired.</source_meaning>
+				<translated_meaning>Το Μπόνους σας έχει λήξει.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το Μπόνους σας έχει λήξει.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusExpiredRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has expired – You are now playing in Real Money mode.</source_meaning>
+				<translated_meaning>Το Μπόνους σας έληξε - Τώρα παίζετε σε λειτουργία με Πραγματικά Χρήματα.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το Μπόνους σας έληξε - Τώρα παίζετε&#10;σε λειτουργία με Πραγματικά Χρήματα.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusCancelled" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has been cancelled.</source_meaning>
+				<translated_meaning>Το Μπόνους σας έχει ακυρωθεί.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το Μπόνους σας έχει ακυρωθεί.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusCancelledRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has been cancelled – You are now playing in Real Money mode.</source_meaning>
+				<translated_meaning>Το Μπόνους σας έχει ακυρωθεί - Τώρα παίζετε με Αληθινά Χρήματα.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το Μπόνους σας έχει ακυρωθεί -&#010;Τώρα παίζετε με Αληθινά Χρήματα.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusReleased" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your bonus has been released! Thank you for being a loyal player, enjoy!</source_meaning>
+				<translated_meaning>Συγχαρητήρια, το μπόνους σας έχει δοθεί! Σας ευχαριστούμε που είστε ένας πιστός παίκτης, απολαύστε το!</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συγχαρητήρια, το μπόνους σας&#10;έχει δοθεί! Σας ευχαριστούμε&#10;που είστε ένας πιστός παίκτης,&#10;απολαύστε το!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusFinishedLimitCap" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your max bonus of $XX.XX has been released! Thank you for being a loyal player, enjoy!</source_meaning>
+				<translated_meaning>Συγχαρητήρια, το μέγιστο μπόνους σας των $XX.XX έχει αποδεσμευτεί! Ευχαριστούμε που παραμένετε πιστός παίκτης, καλή διασκέδαση!</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συγχαρητήρια, το μέγιστο μπόνους&#10;σας των /CURRENCY_SYMBOL//VALUE/ έχει αποδεσμευτεί!&#10;Ευχαριστούμε που παραμένετε πιστός&#10;παίκτης, καλή διασκέδαση!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusFinishedLimitCapRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your max bonus of $XX.XX has been released! Thank you for being a loyal player, enjoy! Would you like to continue playing in Real Money mode?</source_meaning>
+				<translated_meaning>Συγχαρητήρια, το μέγιστο μπόνους σας των $XX.XX έχει αποδεσμευτεί! Ευχαριστούμε που παραμένετε πιστός παίκτης, καλή διασκέδαση! Θα θέλατε να συνεχίσετε να παίζετε με Αληθινά Χρήματα;</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συγχαρητήρια, το μέγιστο μπόνους&#10;σας των /CURRENCY_SYMBOL//VALUE/ έχει αποδεσμευτεί!&#10;Ευχαριστούμε που παραμένετε πιστός&#10;παίκτης, καλή διασκέδαση!&#10;&#10;Θα θέλατε να συνεχίσετε να παίζετε&#10;με Αληθινά Χρήματα;</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusReleasedRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your bonus has been released! Thank you for being a loyal player, enjoy! Would you like to continue playing in Real Money mode?</source_meaning>
+				<translated_meaning>Συγχαρητήρια, το μπόνους σας έχει δοθεί! Σας ευχαριστούμε που είστε ένας πιστός παίκτης, απολαύστε το! Θα θέλατε να συνεχίσετε να παίζετε με Αληθινά Χρήματα;</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συγχαρητήρια, το μπόνους σας έχει&#010;δοθεί! Σας ευχαριστούμε που είστε&#010;ένας πιστός παίκτης, απολαύστε&#010;το! Θα θέλατε να συνεχίσετε να&#010;παίζετε με Αληθινά Χρήματα;</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusLost" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has been lost. Please, contact customer support if you feel this to be in error.</source_meaning>
+				<translated_meaning>Το Μπόνους σας έχει χαθεί. Παρακαλούμε επικοινωνήστε με την εξυπηρέτηση πελατών αν πιστεύετε ότι πρόκειται για λάθος.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το Μπόνους σας έχει χαθεί. Παρακαλούμε&#010;επικοινωνήστε με την εξυπηρέτηση&#010;πελατών αν πιστεύετε ότι&#010;πρόκειται για λάθος.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardBonusLostRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has been lost - You are now playing in Real Money mode. Please, contact customer support if you feel this to be in error.</source_meaning>
+				<translated_meaning>Το Μπόνους σας έχει χαθεί - Τώρα παίζετε με Αληθινά Χρήματα. Παρακαλούμε επικοινωνήστε με την εξυπηρέτηση πελατών αν πιστεύετε ότι πρόκειται για λάθος.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το Μπόνους σας έχει χαθεί - Τώρα παίζετε&#010;με Αληθινά Χρήματα. Παρακαλούμε&#010;επικοινωνήστε με την εξυπηρέτηση&#010;πελατών αν πιστεύετε ότι&#010;πρόκειται για λάθος.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBonusBalance" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient bonus balance. Please contact customer support if you have any questions or issues.</source_meaning>
+				<translated_meaning>Ανεπαρκές υπόλοιπο μπόνους. Παρακαλούμε επικοινωνήστε με την υποστήριξη πελατών, αν έχετε απορίες ή προβλήματα.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Ανεπαρκές υπόλοιπο μπόνους.&#10;Παρακαλούμε επικοινωνήστε με&#10;την υποστήριξη πελατών, αν&#10;έχετε απορίες ή προβλήματα.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBonusBalanceBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient bonus balance to make a wager at this bet level. Please reduce your bet or contact customer support if you have any questions or issues.</source_meaning>
+				<translated_meaning>Ανεπαρκές υπόλοιπο μπόνους για να τοποθετήσετε ποντάρισμα σε αυτό το επίπεδο. Παρακαλούμε μειώστε το ποντάρισμά σας ή επικοινωνήστε με την υποστήριξη πελατών, αν έχετε απορίες ή προβλήματα.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Ανεπαρκές υπόλοιπο μπόνους για να&#010;τοποθετήσετε ποντάρισμα σε αυτό το επίπεδο.&#010;Παρακαλούμε μειώστε το ποντάρισμά σας&#010;ή επικοινωνήστε με την υποστήριξη&#010;πελατών, αν έχετε απορίες ή προβλήματα.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMessageLowBonusBalancePayWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Insufficient bonus balance to make a wager with this special weapon. Please choose another weapon or contact customer support if you have any questions or issues.</source_meaning>
+				<translated_meaning>Ανεπαρκές υπόλοιπο μπόνους για να τοποθετήσετε ποντάρισμα με αυτό το ειδικό όπλο. Παρακαλούμε διαλέξτε διαφορετικό όπλο ή επικοινωνήστε με την υποστήριξη πελατών, αν έχετε απορίες ή προβλήματα.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Ανεπαρκές υπόλοιπο μπόνους για να&#010;τοποθετήσετε ποντάρισμα με αυτό το ειδικό όπλο.&#010;Παρακαλούμε διαλέξτε διαφορετικό όπλο&#010;ή επικοινωνήστε με την υποστήριξη&#010;πελατών, αν έχετε απορίες ή προβλήματα.</content>
+			</txt>
+		</tad>
+
+		<!-- ...CASH BONUS -->
+
+		<!--ARE YOU SURE DIALOG...-->
+		<tad id="TADialogMRECaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ARE YOU SURE?</source_meaning>
+				<translated_meaning>ΕΙΣΤΕ ΣΙΓΟΥΡΟΙ;</translated_meaning>
+			</meaning>
+			<area x="-50" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>ΕΙΣΤΕ ΣΙΓΟΥΡΟΙ;</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMRELeavingRoom" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Leaving ROOM now!</source_meaning>
+				<translated_meaning>Έξοδος από το ΔΩΜΑΤΙΟ τώρα!</translated_meaning>
+			</meaning>
+			<area x="-215" y="-30" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="21" color="0xf6921e"/>
+				<content>Έξοδος από το ΔΩΜΑΤΙΟ τώρα!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogMRENote" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Are you sure you wish to leave the room? You may not be able to return to the round in progress if you do.</source_meaning>
+				<translated_meaning>Είστε σίγουροι ότι θέλετε να φύγετε από το δωμάτιο; Αν το κάνετε μπορεί να μην μπορέσετε να επιστρέψετε στον γύρο που βρίσκεται σε εξέλιξη.</translated_meaning>
+			</meaning>
+			<area x="-300" y="-25" w="600" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="18">
+				<font name="fnt_nm_barlow" size="14.5" color="0xf6921e"></font>
+				<content>Είστε σίγουροι ότι θέλετε να φύγετε από το δωμάτιο;&#010;Αν το κάνετε μπορεί να μην μπορέσετε να επιστρέψετε στον γύρο που βρίσκεται σε εξέλιξη.</content>
+			</txt>
+		</tad>
+		<!--...ARE YOU SURE DIALOG-->
+
+		<!--MID ROUND COMPENSATE SW EXIT...-->
+		<tad id="TADialogCompensateSW" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You have left ROOM /ROOM_ID/.</source_meaning>
+				<translated_meaning>Φύγατε από το ΔΩΜΑΤΙΟ /ROOM_ID/.</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="16" color="0xFFFFFF" bold="false"/>
+				<content>Φύγατε από το ΔΩΜΑΤΙΟ /ROOM_ID/.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogCompensateSWInfo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Returned Cash for Special Weapons:</source_meaning>
+				<translated_meaning>Επιστρεφόμενα χρήματα για Ειδικά Όπλα:</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="12" color="0xFFFFFF" bold="false"/>
+				<content>Επιστρεφόμενα χρήματα για Ειδικά Όπλα:</content>
+			</txt>
+		</tad>
+		<!--...MID ROUND COMPENSATE SW EXIT-->
+
+		<!--RETURN SW ON ROUND RESULT-->
+		<tad id="TADialogReturnUnexplodedMinesInfo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Returned Cash for Unexploded Mines:</source_meaning>
+				<translated_meaning>Επιστροφή Μετρητών για Νάρκες που δεν Εξερράγησαν:</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="12" color="0xFFFFFF" bold="false"/>
+				<content>Επιστροφή Μετρητών για Νάρκες που δεν Εξερράγησαν:</content>
+			</txt>
+		</tad>
+		<!--...RETURN SW ON ROUND RESULT-->
+
+		<!--PICKS UP SPECIAL WEAPONS FIRST TIME...-->
+		<tad id="TADialogPicksUpSpecialWeaponsFirstTimeInfo" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You got a special weapon! Do you want to
+								use them immediately?</source_meaning>
+				<translated_meaning>Αποκτήσατε ένα ειδικό όπλο! Θέλετε να το χρησιμοποιήσετε άμεσα;</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="25">
+				<font name="fnt_nm_barlow" size="12" color="0xFFFFFF" bold="false"/>
+				<content>Αποκτήσατε ένα ειδικό όπλο! Θέλετε να το&#10;χρησιμοποιήσετε άμεσα;</content>
+			</txt>
+		</tad>
+		<!--...PICKS UP SPECIAL WEAPONS FIRST TIME-->
+
+		<!--FORCE SIT OUT EXIT...-->
+		<tad id="TADialogForceSitOut" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You have been disconnected from the server due to the excessive delay</source_meaning>
+				<translated_meaning>Έχετε αποσυνδεθεί από τον διακομιστή εξαιτίας της πολύ μεγάλης καθυστέρησης</translated_meaning>
+			</meaning>
+			<area x="-215" y="0" w="430" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="top"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow" size="15" color="0xFFFFFF" bold="false"/>
+				<content>Έχετε αποσυνδεθεί από τον διακομιστή&#10;εξαιτίας της πολύ μεγάλης καθυστέρησης</content>
+			</txt>
+		</tad>
+		<!--...FORCE SIT OUT EXIT EXIT-->
+
+		<!--RETURN TO GAME...-->
+		<tad id="TADialogRTGCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Rejoin Room?</source_meaning>
+				<translated_meaning>Συμμετοχή ξανά στο δωμάτιο;</translated_meaning>
+			</meaning>
+			<area x="0" y="-25" w="300" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="14" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>Συμμετοχή ξανά στο δωμάτιο;</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogRTGResumeRoom" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You were previously playing in ROOM /ROOM_ID/ with cost of /CURRENCY_SYMBOL//MIN_VALUE/ - /CURRENCY_SYMBOL//MAX_VALUE/  per bullet. Would you like to resume your game?</source_meaning>
+				<translated_meaning>Παίζατε πριν στο ΔΩΜΑΤΙΟ /ROOM_ID/ με κόστος ανά σφαίρα /CURRENCY_SYMBOL//MIN_VALUE/ - /CURRENCY_SYMBOL//MAX_VALUE/. Θέλετε να συνεχίσετε το παιχνίδι σας;</translated_meaning>
+			</meaning>
+			<area x="-215" y="-40" w="430" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="20">
+				<font name="fnt_nm_barlow_semibold" size="16" color="0xFFFFFF" bold="false"/>
+				<content>Παίζατε πριν στο ΔΩΜΑΤΙΟ /ROOM_ID/ με κόστος ανά&#010;σφαίρα /CURRENCY_SYMBOL//MIN_VALUE/ - /CURRENCY_SYMBOL//MAX_VALUE/.&#010;Θέλετε να συνεχίσετε το παιχνίδι σας;</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogRTGNote" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Please note that selecting NO will forfeit your spot in the game and may result in a loss of future room winnings</source_meaning>
+				<translated_meaning>Σημειώνεται ότι εάν επιλέξετε ΟΧΙ, θα χάσετε το σημείο σας στο παιχνίδι και μπορεί να οδηγήσει σε απώλεια μελλοντικών κερδών δωματίων</translated_meaning>
+			</meaning>
+			<area x="-215" y="-25" w="430" h="50">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="18">
+				<font name="fnt_nm_barlow" size="14.5" color="0xfc970b"></font>
+				<content>Σημειώνεται ότι εάν επιλέξετε ΟΧΙ, θα χάσετε το σημείο σας στο παιχνίδι&#010;και μπορεί να οδηγήσει σε απώλεια μελλοντικών κερδών δωματίων</content>
+			</txt>
+		</tad>
+		<!--...RETURN TO GAME-->
+
+		<!--FRB...-->
+		<tad id="TADialogFRBLobbyIntro" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You are now playing your Free Bonus Round! Enjoy and Good Luck!</source_meaning>
+				<translated_meaning>Τώρα παίζετε τον Δωρεάν Γύρο Μπόνους! Απολαύστε και Καλή Τύχη!</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Τώρα παίζετε τον&#10;Δωρεάν Γύρο Μπόνους!&#10;Απολαύστε και Καλή Τύχη!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogFRBRoomIntro" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>You are now playing your Free Bonus Round! Enjoy and Good Luck! You have XX Free Shots Remaining.</source_meaning>
+				<translated_meaning>Τώρα παίζετε τον Δωρεάν Γύρο Μπόνους! Απολαύστε και Καλή Τύχη! Σας #shots:απομένει,απομένουν# /VALUE/ Δωρεάν #shots:Βολή,Βολές#.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Τώρα παίζετε τον&#10;Δωρεάν Γύρο Μπόνους!&#10;Απολαύστε και Καλή Τύχη!&#10;Σας #shots:απομένει,απομένουν# /VALUE/ Δωρεάν #shots:Βολή,Βολές#.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBFinished" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations! Your Free Bonus Round is complete. Total win for the Free Bonus Round was $XX.XX</source_meaning>
+				<translated_meaning>Συγχαρητήρια! Ο Δωρεάν Γύρος Μπόνους σας ολοκληρώθηκε. Το συνολικό κέρδος του Δωρεάν Γύρου Μπόνους ήταν $XX.XX</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συγχαρητήρια!&#010;Ο Δωρεάν Γύρος Μπόνους σας&#010;ολοκληρώθηκε. Το συνολικό κέρδος&#010;του Δωρεάν Γύρου Μπόνους ήταν /CURRENCY_SYMBOL//VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBFinishedLimitCap" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your max bonus of $XX.XX has been released! Thank you for being a loyal player, enjoy!</source_meaning>
+				<translated_meaning>Συγχαρητήρια, το μέγιστο μπόνους σας των $XX.XX έχει αποδεσμευτεί! Ευχαριστούμε που παραμένετε πιστός παίκτης, καλή διασκέδαση!</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συγχαρητήρια, το μέγιστο μπόνους&#10;σας των /CURRENCY_SYMBOL//VALUE/ έχει αποδεσμευτεί!&#10;Ευχαριστούμε που παραμένετε πιστός&#10;παίκτης, καλή διασκέδαση!</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBFinishedLimitCapRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations, your max bonus of $XX.XX has been released! Thank you for being a loyal player, enjoy! Would you like to continue playing in Real Money mode?</source_meaning>
+				<translated_meaning>Συγχαρητήρια, το μέγιστο μπόνους σας των $XX.XX έχει αποδεσμευτεί! Ευχαριστούμε που παραμένετε πιστός παίκτης, καλή διασκέδαση! Θα θέλατε να συνεχίσετε να παίζετε με Αληθινά Χρήματα;</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συγχαρητήρια, το μέγιστο μπόνους&#10;σας των /CURRENCY_SYMBOL//VALUE/ έχει αποδεσμευτεί!&#10;Ευχαριστούμε που παραμένετε πιστός&#10;παίκτης, καλή διασκέδαση!&#10;&#10;Θα θέλατε να συνεχίσετε να παίζετε&#10;με Αληθινά Χρήματα;</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogStandardFRBFinishedRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Congratulations! Your Free Bonus Round is complete. Total win for the Free Bonus Round was $XX.XX Would you like to continue playing in Real Money mode?</source_meaning>
+				<translated_meaning>Συγχαρητήρια! Ο Δωρεάν Γύρος Μπόνους σας ολοκληρώθηκε. Το συνολικό κέρδος του Δωρεάν Γύρου Μπόνους ήταν $XX.XX Θα θέλατε να συνεχίσετε να παίζετε με Αληθινά Χρήματα;</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Συγχαρητήρια!&#010;Ο Δωρεάν Γύρος Μπόνους σας ολοκληρώθηκε.&#010;Το συνολικό κέρδος του Δωρεάν Γύρου&#010;Μπόνους ήταν /CURRENCY_SYMBOL//VALUE/&#010;&#010;Θα θέλατε να συνεχίσετε να&#010;παίζετε με Αληθινά Χρήματα;</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBCancelled" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Bonus Round canceled - If you find this to be in error, please contact support.</source_meaning>
+				<translated_meaning>Δωρεάν Γύρος Μπόνους ακυρώθηκε - Εάν νομίζετε ότι προκλήθηκε σφάλμα, παρακαλούμε επικοινωνήστε με την υποστήριξη.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δωρεάν Γύρος Μπόνους ακυρώθηκε -&#10;Εάν νομίζετε ότι προκλήθηκε σφάλμα,&#10;παρακαλούμε επικοινωνήστε με την&#10;υποστήριξη.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogStandardFRBCancelledRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Bonus Round canceled - You are now playing in Real Money mode. If you find this to be in error, please contact support.</source_meaning>
+				<translated_meaning>Δωρεάν Γύρος Μπόνους ακυρώθηκε - Τώρα παίζετε σε λειτουργία με Πραγματικά Χρήματα. Εάν νομίζετε ότι προκλήθηκε σφάλμα, παρακαλούμε επικοινωνήστε με την υποστήριξη.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Δωρεάν Γύρος Μπόνους ακυρώθηκε -&#10;Τώρα παίζετε σε λειτουργία με&#10;Πραγματικά Χρήματα. Εάν νομίζετε&#10;ότι προκλήθηκε σφάλμα, παρακαλούμε&#10;επικοινωνήστε με την υποστήριξη.</content>
+			</txt>
+		</tad>
+
+		<tad id="TADialogStandardFRBExpired" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has expired. Please contact customer support if you feel this to be in error.</source_meaning>
+				<translated_meaning>Το Μπόνους σας έχει λήξει. Παρακαλούμε επικοινωνήστε με την υποστήριξη πελατών αν νομίζετε ότι αυτό είναι λάθος.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το Μπόνους σας έχει λήξει.&#10;Παρακαλούμε επικοινωνήστε με&#10;την υποστήριξη πελατών αν&#10;νομίζετε ότι αυτό είναι λάθος.</content>
+			</txt>
+		</tad>
+		
+		<tad id="TADialogStandardFRBExpiredRealMode" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Your Bonus has expired - You are now playing in Real Money mode. Please contact customer support if you feel this to be in error.</source_meaning>
+				<translated_meaning>Το Μπόνους σας έληξε - Τώρα παίζετε σε λειτουργία με Πραγματικά Χρήματα. Παρακαλούμε επικοινωνήστε με την υποστήριξη πελατών, εάν νομίζετε ότι προκλήθηκε σφάλμα.</translated_meaning>
+			</meaning>
+			<area x="-140" y="-75" w="280" h="118">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_calibri" size="16" color="0xFFFFFF" bold="true"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1.5" angle="90" alpha="0.51"/>
+					</shadows>
+				</filters>
+				<content>Το Μπόνους σας έληξε - Τώρα παίζετε&#10;σε λειτουργία με Πραγματικά Χρήματα.&#10;Παρακαλούμε επικοινωνήστε με την&#10;υποστήριξη πελατών, εάν νομίζετε&#10;ότι προκλήθηκε σφάλμα.</content>
+			</txt>
+		</tad>
+		<!--...FRB-->
+		<!-- ...DIALOGS -->
+
+		<tad id="TATipsSelectRoom" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Select any ROOM to BEGIN</source_meaning>
+				<translated_meaning>Επιλέξτε οποιοδήποτε ΔΩΜΑΤΙΟ για να ΞΕΚΙΝΗΣΕΤΕ</translated_meaning>
+			</meaning>
+			<area x="-200" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Επιλέξτε οποιοδήποτε ΔΩΜΑΤΙΟ για να ΞΕΚΙΝΗΣΕΤΕ</content>
+			</txt>
+		</tad>
+
+		<!-- PAYTABLE... -->
+		<tad id="TAPaytableTitle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Help</source_meaning>
+				<translated_meaning>Βοήθεια</translated_meaning>
+			</meaning>
+			<area x="0" y="-30" w="400" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="18" color="0xffffff" bold="false"></font>
+				<content>Βοήθεια</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytablePrintableLable" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>DETAILED RULES</source_meaning>
+				<translated_meaning>ΛΕΠΤΟΜΕΡΕΙΣ ΚΑΝΟΝΕΣ</translated_meaning>
+			</meaning>
+			<area x="-99" y="-28" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="9" color="0xffffff"></font>
+				<content>ΛΕΠΤΟΜΕΡΕΙΣ ΚΑΝΟΝΕΣ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytablePrewBtnLable" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>&#60;</source_meaning>
+				<translated_meaning>&#60;</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="9" color="0x000000"></font>
+				<content>&#60;</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemyPayoutsXLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>xNumber</source_meaning>
+				<translated_meaning>xXX</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>x/VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemyPayoutsHPLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>HP: XX</source_meaning>
+				<translated_meaning>ΠΖ: XX</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>ΠΖ: /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableSpecialWeaponCostLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Numberx</source_meaning>
+				<translated_meaning>XXx</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>/VALUE/x</content>
+			</txt>
+		</tad>
+
+
+		<tad id="TAPaytableEnemyBossPayputsXLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>xNumber - xNumber</source_meaning>
+				<translated_meaning>xXX - xXX</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>x/MIN VALUE/ - x/MAX VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableLootboxPrizeXLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Numberx</source_meaning>
+				<translated_meaning>XXx</translated_meaning>
+			</meaning>
+			<area x="-40" y="-20" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="15" color="0xffffff" bold="false">
+				</font>
+				<content>/VALUE/x</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsTurret" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Turret</source_meaning>
+				<translated_meaning>Πυροβόλο Πυργίσκου</translated_meaning>
+			</meaning>
+			<area x="-100" y="-40" w="200" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Πυροβόλο&#010;Πυργίσκου</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsMineLauncher" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Mine Launcher</source_meaning>
+				<translated_meaning>Εκτοξευτής Ναρκών</translated_meaning>
+			</meaning>
+			<area x="-100" y="-40" w="200" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Εκτοξευτής&#010;Ναρκών</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsPlasmaRifle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Plasma Rifle</source_meaning>
+				<translated_meaning>Πυροβόλο όπλο πλάσματος</translated_meaning>
+			</meaning>
+			<area x="-100" y="-40" w="200" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Πυροβόλο όπλο&#010;πλάσματος</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsFlamethrower" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Flamethrower</source_meaning>
+				<translated_meaning>Φλογοβόλο</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Φλογοβόλο</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsCryogun" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cryogun</source_meaning>
+				<translated_meaning>Όπλο Κρύου</translated_meaning>
+			</meaning>
+			<area x="-100" y="-30" w="200" h="60">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Όπλο Κρύου</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPaytableEnemiesWeaponsArtilleryStrike" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Artillery Strike</source_meaning>
+				<translated_meaning>Χτύπημα Πυροβολικού</translated_meaning>
+			</meaning>
+			<area x="-100" y="-40" w="200" h="80">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_bold" size="12" color="0x818180"></font>
+				<content>Χτύπημα&#010;Πυροβολικού</content>
+			</txt>
+		</tad>
+		<!-- ...PAYTABLE -->
+	</tasds>
+</td>

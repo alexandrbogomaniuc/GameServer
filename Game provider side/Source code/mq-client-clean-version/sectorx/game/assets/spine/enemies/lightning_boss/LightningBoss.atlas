@@ -1,0 +1,111 @@
+
+Lightning_Boss.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_lf_glow
+  rotate: false
+  xy: 769, 791
+  size: 163, 223
+  orig: 163, 223
+  offset: 0, 0
+  index: -1
+arm_rt_glow
+  rotate: false
+  xy: 633, 754
+  size: 132, 260
+  orig: 132, 260
+  offset: 0, 0
+  index: -1
+armor_lf
+  rotate: false
+  xy: 733, 542
+  size: 108, 208
+  orig: 108, 208
+  offset: 0, 0
+  index: -1
+armor_rt
+  rotate: false
+  xy: 508, 463
+  size: 112, 256
+  orig: 112, 256
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 4, 382
+  size: 500, 632
+  orig: 500, 632
+  offset: 0, 0
+  index: -1
+face_glow
+  rotate: false
+  xy: 301, 24
+  size: 185, 147
+  orig: 185, 147
+  offset: 0, 0
+  index: -1
+finger_lf
+  rotate: true
+  xy: 845, 572
+  size: 40, 83
+  orig: 40, 83
+  offset: 0, 0
+  index: -1
+finger_rt
+  rotate: true
+  xy: 733, 469
+  size: 69, 77
+  orig: 69, 77
+  offset: 0, 0
+  index: -1
+head_armor
+  rotate: false
+  xy: 4, 4
+  size: 293, 374
+  orig: 293, 374
+  offset: 0, 0
+  index: -1
+head_glow
+  rotate: false
+  xy: 301, 175
+  size: 196, 203
+  orig: 196, 203
+  offset: 0, 0
+  index: -1
+lightning01
+  rotate: false
+  xy: 936, 886
+  size: 63, 128
+  orig: 63, 128
+  offset: 0, 0
+  index: -1
+lightning02
+  rotate: false
+  xy: 624, 465
+  size: 105, 254
+  orig: 105, 254
+  offset: 0, 0
+  index: -1
+lightning03
+  rotate: false
+  xy: 508, 723
+  size: 121, 291
+  orig: 121, 291
+  offset: 0, 0
+  index: -1
+lightning04
+  rotate: false
+  xy: 845, 616
+  size: 101, 171
+  orig: 101, 171
+  offset: 0, 0
+  index: -1
+tail_glow
+  rotate: false
+  xy: 508, 321
+  size: 118, 138
+  orig: 118, 138
+  offset: 0, 0
+  index: -1

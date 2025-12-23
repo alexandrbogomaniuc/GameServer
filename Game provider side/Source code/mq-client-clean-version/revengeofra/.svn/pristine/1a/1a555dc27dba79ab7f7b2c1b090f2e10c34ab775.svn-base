@@ -1,0 +1,60 @@
+import SimpleUIView from '../../../../../../../common/PIXI/src/view/base/SimpleUIView';
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import NotificationsInfo from '../../../../model/uis/custom/notifications/NotificationsInfo';
+
+class NotificationsView extends SimpleUIView
+{
+	constructor()
+	{
+		super();
+
+		this.notificationsViews = null;
+
+		this._initNotificationsView();
+	}
+
+	destroy()
+	{
+		this.notificationsViews = null;
+
+		super.destroy();
+	}
+
+	getNotificationView (notificationId)
+	{
+		return this.__getNotificationView(notificationId);
+	}
+
+	_initNotificationsView()
+	{
+		this.notificationsViews = [];
+	}
+
+	__getNotificationView (notificationId)
+	{
+		return this.notificationsViews[notificationId] || this._initNotificationView(notificationId);
+	}
+
+	_initNotificationView (notificationId)
+	{
+		var notificationView = this.__generateNotificationView(notificationId);
+
+		this.notificationsViews[notificationId] = notificationView;
+		this.addChild(notificationView);
+
+		return notificationView;
+	}
+
+	__generateNotificationView (notificationId)
+	{
+		var notificationView;
+		switch (notificationId)
+		{
+			default:
+				throw new Error (`Unsupported dialog id: ${notificationId}`);
+		}
+		return notificationView;
+	}
+}
+
+export default NotificationsView;

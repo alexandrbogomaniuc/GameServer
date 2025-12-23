@@ -1,0 +1,76 @@
+
+Anubis90.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Anubis90_ArmL
+  rotate: false
+  xy: 424, 258
+  size: 271, 223
+  orig: 271, 223
+  offset: 0, 0
+  index: -1
+Anubis90_ArmR
+  rotate: true
+  xy: 216, 58
+  size: 102, 188
+  orig: 102, 188
+  offset: 0, 0
+  index: -1
+Anubis90_Head
+  rotate: true
+  xy: 406, 2
+  size: 97, 133
+  orig: 97, 133
+  offset: 0, 0
+  index: -1
+Anubis90_Hips
+  rotate: false
+  xy: 697, 279
+  size: 137, 202
+  orig: 137, 202
+  offset: 0, 0
+  index: -1
+Anubis90_LegL
+  rotate: false
+  xy: 836, 305
+  size: 97, 176
+  orig: 97, 176
+  offset: 0, 0
+  index: -1
+Anubis90_LegR
+  rotate: true
+  xy: 424, 199
+  size: 57, 219
+  orig: 57, 219
+  offset: 0, 0
+  index: -1
+Anubis90_Torso
+  rotate: true
+  xy: 424, 101
+  size: 96, 162
+  orig: 96, 162
+  offset: 0, 0
+  index: -1
+Anubis_ArmL
+  rotate: false
+  xy: 2, 162
+  size: 420, 319
+  orig: 420, 319
+  offset: 0, 0
+  index: -1
+Anubis_ArmR
+  rotate: false
+  xy: 935, 325
+  size: 79, 156
+  orig: 79, 156
+  offset: 0, 0
+  index: -1
+Anubis_Hips
+  rotate: true
+  xy: 2, 12
+  size: 148, 212
+  orig: 148, 212
+  offset: 0, 0
+  index: -1

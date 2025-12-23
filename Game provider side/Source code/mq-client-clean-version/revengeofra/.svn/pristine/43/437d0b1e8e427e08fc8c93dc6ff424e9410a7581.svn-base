@@ -1,0 +1,89 @@
+import SimpleUIView from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/SimpleUIView';
+import HPDamageAnimation from './HPDamageAnimation';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+
+class EnemiesHPDamageView extends SimpleUIView
+{
+	addToContainerIfRequired(aContainerInfo_obj)
+	{
+		this._addToContainerIfRequired(aContainerInfo_obj);
+	}
+
+	showHPDamageAnimation(aDamageValue_num, aPosition_p)
+	{
+		this._showHPDamageAnimation(aDamageValue_num, aPosition_p);
+	}
+
+	interruptAnimations()
+	{
+		this._interruptAnimations();
+	}
+
+	constructor()
+	{
+		super();		
+	}
+
+	_addToContainerIfRequired(aContainerInfo_obj)
+	{
+		if (this.parent)
+		{
+			return;
+		}
+
+		aContainerInfo_obj.container.addChild(this);
+
+		this.zIndex = aContainerInfo_obj.zIndex;
+	}
+
+	_showHPDamageAnimation(aDamageValue_num, aPosition_p)
+	{
+		if (!APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			return;
+		}
+
+		let hpDamageAnim = this.addChild(new HPDamageAnimation(aDamageValue_num));
+		hpDamageAnim.position.set(aPosition_p.x, aPosition_p.y);
+
+		this._writeAnimToArea(hpDamageAnim);
+
+		hpDamageAnim.startAnimation();
+	}
+
+	_writeAnimToArea(aTargetDamageAnim_hpda)
+	{
+		let hpDamageAnim = aTargetDamageAnim_hpda;
+		let animBounds = hpDamageAnim.getBounds();
+		
+		if (animBounds.x < 0)
+		{
+			hpDamageAnim.x += 0-animBounds.x;
+		}
+		else if (animBounds.x+animBounds.width > 960)
+		{
+			hpDamageAnim.x -= (animBounds.x+animBounds.width) - 960;
+		}
+
+		if (animBounds.y < 10)
+		{
+			hpDamageAnim.y += 10-animBounds.y;
+		}
+		else if (animBounds.y+animBounds.height > 540)
+		{
+			hpDamageAnim.y -= (animBounds.y+animBounds.height) - 540;
+		}
+	}
+
+	_interruptAnimations()
+	{
+		this.destroyChildren();
+	}
+
+	destroy()
+	{
+		super.destroy();
+	}
+}
+
+export default EnemiesHPDamageView;

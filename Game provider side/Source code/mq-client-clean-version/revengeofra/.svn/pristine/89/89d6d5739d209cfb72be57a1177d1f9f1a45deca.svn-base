@@ -1,0 +1,37 @@
+import SimpleInfo from '../../../../../../../common/PIXI/src/model/base/SimpleInfo';
+
+class BigWinsInfo extends SimpleInfo {
+
+	i_clear()
+	{
+		this._clear();
+	}
+
+	constructor()
+	{
+		super();
+		this._fCurrentBigWinsInProgress_int = 0;
+	}
+
+	_clear()
+	{
+		this._fCurrentBigWinsInProgress_int = 0;
+	}
+
+	set currentBigWinsInProgress(aValue_int)
+	{
+		this._fCurrentBigWinsInProgress_int = aValue_int;
+	}
+
+	get currentBigWinsInProgress()
+	{
+		return this._fCurrentBigWinsInProgress_int;
+	}
+
+	get isAnyBigWinInProgress()
+	{
+		return this.currentBigWinsInProgress > 0;
+	}
+}
+
+export default BigWinsInfo;

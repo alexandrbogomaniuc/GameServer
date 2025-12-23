@@ -1,0 +1,132 @@
+
+UndiscoveredMummy270.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270/arm_lf
+  rotate: false
+  xy: 158, 18
+  size: 105, 201
+  orig: 105, 201
+  offset: 0, 0
+  index: -1
+270/arm_rt
+  rotate: true
+  xy: 268, 164
+  size: 126, 190
+  orig: 126, 190
+  offset: 0, 0
+  index: -1
+270/body
+  rotate: false
+  xy: 4, 223
+  size: 260, 263
+  orig: 260, 263
+  offset: 0, 0
+  index: -1
+270/calf_lf
+  rotate: false
+  xy: 904, 70
+  size: 93, 164
+  orig: 93, 164
+  offset: 0, 0
+  index: -1
+270/calf_rt
+  rotate: true
+  xy: 425, 47
+  size: 110, 161
+  orig: 110, 161
+  offset: 0, 0
+  index: -1
+270/foot_lf
+  rotate: false
+  xy: 741, 247
+  size: 163, 96
+  orig: 163, 96
+  offset: 0, 0
+  index: -1
+270/foot_rt
+  rotate: false
+  xy: 741, 145
+  size: 159, 98
+  orig: 159, 98
+  offset: 0, 0
+  index: -1
+270/forearm_lf
+  rotate: true
+  xy: 462, 161
+  size: 129, 159
+  orig: 129, 159
+  offset: 0, 0
+  index: -1
+270/forearm_rt
+  rotate: false
+  xy: 625, 201
+  size: 112, 150
+  orig: 112, 150
+  offset: 0, 0
+  index: -1
+270/hand_lf
+  rotate: false
+  xy: 590, 4
+  size: 89, 153
+  orig: 89, 153
+  offset: 0, 0
+  index: -1
+270/hand_lf2
+  rotate: false
+  xy: 683, 22
+  size: 89, 119
+  orig: 89, 119
+  offset: 0, 0
+  index: -1
+270/hand_rt
+  rotate: true
+  xy: 267, 23
+  size: 137, 154
+  orig: 137, 154
+  offset: 0, 0
+  index: -1
+270/hand_rt2
+  rotate: false
+  xy: 908, 238
+  size: 112, 105
+  orig: 112, 105
+  offset: 0, 0
+  index: -1
+270/head
+  rotate: false
+  xy: 4, 21
+  size: 150, 198
+  orig: 150, 198
+  offset: 0, 0
+  index: -1
+270/hip
+  rotate: true
+  xy: 268, 294
+  size: 192, 327
+  orig: 192, 327
+  offset: 0, 0
+  index: -1
+270/leg_lf
+  rotate: true
+  xy: 599, 355
+  size: 131, 217
+  orig: 131, 217
+  offset: 0, 0
+  index: -1
+270/leg_rt
+  rotate: true
+  xy: 820, 347
+  size: 139, 197
+  orig: 139, 197
+  offset: 0, 0
+  index: -1
+270/snake
+  rotate: false
+  xy: 776, 57
+  size: 45, 84
+  orig: 45, 84
+  offset: 0, 0
+  index: -1

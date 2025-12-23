@@ -1,0 +1,279 @@
+import { APP } from '../../../../../common/PIXI/src/globals';
+import Sprite from '../../../../../common/PIXI/src/display/Sprite';
+import { WEAPONS } from '../../../../shared/src/CommonConstants';
+import * as Easing from '../../../../../common/PIXI/src/animation/easing';
+import Sequence from '../../../../../common/PIXI/src/animation/Sequence';
+import InstantKillGunFlare from '../animation/instant_kill/InstantKillGunFlare';
+import TextField from '../../../../../common/PIXI/src/display/TextField';
+import MineLauncherGun from '../animation/mine_launcher/MineLauncherGun';
+import Cryogun from '../animation/cryogun/Cryogun';
+import FlameThrowerGun from '../animation/flamethrower/FlameThrowerGun';
+import Gun from '../animation/Gun';
+
+class Weapon extends Sprite 
+{
+	static get EVENT_ON_GUN_SHOT_COMPLETED() { return Gun.EVENT_ON_SHOT_COMPLETED }
+	static get EVENT_ON_GUN_RESET() { return Gun.EVENT_ON_RESET }
+
+	get gun()
+	{
+		return this.weaponSprite;
+	}
+
+	constructor(id, aIsMaster_bl, aCurrentDefaultWeaponId)
+	{
+		super();
+
+		this.id = id;
+		this.isMaster = aIsMaster_bl;
+		this.weaponSprite = null;
+		this.alternateSprite = null;
+		this.shotlight = null;
+		this._fSpecColorAmmo_sprt = null;
+
+		this._fDefaultWeaponId_int = aCurrentDefaultWeaponId ? aCurrentDefaultWeaponId: 1;
+
+		this.once('added', () => {
+			this.createView();
+		});
+	}
+
+	createView()
+	{
+		this.weaponSprite = this.addChild(this.getWeaponSprite());
+		this.weaponSprite.scale.set(this.i_getWeaponScale(this.id));
+		let anchor = this.getWeaponAnchor();
+		this.weaponSprite.anchor.set(anchor.x, anchor.y);
+	}
+
+	destroy()
+	{
+		this.id = undefined;
+		
+		this.weaponSprite && this.weaponSprite.off(Gun.EVENT_ON_RELOADED, this.emit, this);
+		this.weaponSprite = null;
+		if (this.alternateSprite)
+		{
+			this.alternateSprite.destroy();
+		}
+		this.alternateSprite = null;
+		this.shotlight = null;
+
+		this._fSpecColorAmmo_sprt = null;
+		this._fDefaultWeaponId_int = null;
+		Sequence.destroy(Sequence.findByTarget(this));
+		this.removeAllListeners();
+
+		super.destroy();
+	}
+
+	shot()
+	{
+		switch (this.id)
+		{
+			case WEAPONS.MINELAUNCHER:
+			case WEAPONS.CRYOGUN:
+			case WEAPONS.FLAMETHROWER:
+				this.weaponSprite.on(Gun.EVENT_ON_SHOT_COMPLETED, this.emit, this);
+				this.weaponSprite.shot();
+				break;
+		}
+	}
+
+	reload()
+	{
+	}
+
+	resetGun()
+	{
+		if (this.weaponSprite && this.weaponSprite instanceof Gun)
+		{
+			this.weaponSprite.once(Gun.EVENT_ON_RESET, this.emit, this);
+			this.weaponSprite.reset();
+		}
+	}
+
+	showAlternate()
+	{
+		if (this.getAlternateSprite())
+		{
+			if (this.id == WEAPONS.INSTAKILL)
+			{
+				this.alternateSprite.fadeTo(1, 20*2*16.6);
+				this.weaponSprite.fadeTo(0, 20*2*16.6);
+			}
+			else
+			{
+				this.alternateSprite.alpha = 1;
+				this.weaponSprite.alpha = 0;
+			}
+		}
+	}
+
+	hideAlternate()
+	{
+		if(this.alternateSprite)
+		{
+			if (this.id == WEAPONS.INSTAKILL)
+			{
+				this.alternateSprite.fadeTo(0, 50, null, ()=> {
+					this.alternateSprite.destroy();
+					this.alternateSprite = null;
+				});
+				this.weaponSprite.fadeTo(1, 50);
+			}
+			else
+			{
+				this.alternateSprite.alpha = 0;
+				this.weaponSprite.alpha = 1;
+			}
+		}
+	}
+
+	showShotlight()
+	{
+		if (this.shotlight)
+		{
+			return;
+		}
+		let lShotlightAsset_str, lAnchor_obj;
+
+		if (lShotlightAsset_str)
+		{
+			this.shotlight = this.addChild(APP.library.getSprite(lShotlightAsset_str));
+			if (lAnchor_obj)
+			{
+				this.shotlight.anchor.set(lAnchor_obj.x, lAnchor_obj.y);
+			}
+		}
+	}
+
+	hideShotlight()
+	{
+		if (this.shotlight)
+		{
+			this.shotlight.destroy();
+			this.shotlight = null;
+		}
+	}
+
+	getShootPoint()
+	{
+		let shootPoint = {x: 0, y: -54};
+		return shootPoint;
+	}
+
+	i_getWeaponScale(aWeaponId)
+	{
+		let lWeaponId = aWeaponId ? aWeaponId : this.id;
+		let lScaleValue = 1;
+		switch (lWeaponId)
+		{
+			case WEAPONS.DEFAULT:
+				lScaleValue = 1;
+				break;
+			case WEAPONS.MINELAUNCHER:
+				lScaleValue = 1.15;
+				break;
+			case WEAPONS.FLAMETHROWER:
+				lScaleValue = 1.15;
+				break;
+			case WEAPONS.ARTILLERYSTRIKE:
+				lScaleValue = 1.15;
+				break;
+			case WEAPONS.CRYOGUN:
+				lScaleValue = 1.15;
+				break;
+			case WEAPONS.INSTAKILL:
+				lScaleValue = 1.15;
+				break;
+			default:
+				lScaleValue = 1;
+				break;
+		}
+		return lScaleValue;
+	}
+
+	getWeaponAnchor()
+	{
+		let anchor = {x: 0.5, y: 0.585};
+		switch (this.id)
+		{
+			case WEAPONS.INSTAKILL:
+				anchor = {x: 0.428571, y: 0.474048};
+				break;
+			case WEAPONS.MINELAUNCHER:
+				anchor = {x: 0.5, y: 174/325};
+				break;
+			case WEAPONS.ARTILLERYSTRIKE:
+				anchor = {x: 29/79, y: 0.45 };
+				break;
+		}
+		return anchor;
+	}
+
+	getAlternateSprite() 
+	{
+		if (this.alternateSprite)
+		{
+			return this.alternateSprite;
+		}
+
+		let alternate;
+		switch (this.id)
+		{
+			case WEAPONS.INSTAKILL:
+				alternate = APP.library.getSprite('weapons/InstantKill/gun_on');
+				//gun flares...
+				for (let i=0; i<3; i++)
+				{
+					alternate.addChild(new InstantKillGunFlare(i));
+				}
+				//...gun flares
+				let anchor = this.getWeaponAnchor();
+				alternate.anchor.set(anchor.x, anchor.y);
+				alternate.scale.set(this.i_getWeaponScale(this.id));
+				break;
+			default:
+				return null;
+		}
+
+		this.alternateSprite = this.addChild(alternate);
+		this.alternateSprite.alpha = 0;
+		return this.alternateSprite;
+	}
+
+	get isAlternateView()
+	{
+		return this.alternateSprite;
+	}
+
+	getWeaponSprite()
+	{
+		let lAssetName_str = "weapons/DefaultGun/turret_1";
+		switch (this.id)
+		{
+			case WEAPONS.DEFAULT:
+				lAssetName_str = "weapons/DefaultGun/turret_"+this._fDefaultWeaponId_int;
+				break;
+			case WEAPONS.INSTAKILL:
+				lAssetName_str = "weapons/InstantKill/gun_off";
+				break;
+			case WEAPONS.MINELAUNCHER:
+				return new MineLauncherGun();
+				break;
+			case WEAPONS.CRYOGUN:
+				return new Cryogun(this.isMaster);
+				break;
+			case WEAPONS.FLAMETHROWER:
+				return new FlameThrowerGun();
+				break;
+			case WEAPONS.ARTILLERYSTRIKE:
+				lAssetName_str = "weapons/ArtilleryStrike/artillery_grenade";
+				break;
+		}
+		return APP.library.getSprite(lAssetName_str);
+	}
+}
+
+export default Weapon;

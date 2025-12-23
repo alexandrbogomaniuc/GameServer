@@ -1,0 +1,76 @@
+
+Anubis180.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Anubis180_ArmL
+  rotate: false
+  xy: 2, 2
+  size: 421, 496
+  orig: 421, 496
+  offset: 0, 0
+  index: -1
+Anubis180_ArmR
+  rotate: true
+  xy: 714, 306
+  size: 79, 209
+  orig: 79, 209
+  offset: 0, 0
+  index: -1
+Anubis180_Head
+  rotate: false
+  xy: 747, 159
+  size: 95, 145
+  orig: 95, 145
+  offset: 0, 0
+  index: -1
+Anubis180_Hips
+  rotate: false
+  xy: 425, 292
+  size: 148, 206
+  orig: 148, 206
+  offset: 0, 0
+  index: -1
+Anubis180_LegL
+  rotate: false
+  xy: 425, 60
+  size: 122, 230
+  orig: 122, 230
+  offset: 0, 0
+  index: -1
+Anubis180_LegR
+  rotate: true
+  xy: 714, 387
+  size: 111, 207
+  orig: 111, 207
+  offset: 0, 0
+  index: -1
+Anubis180_Torso
+  rotate: false
+  xy: 549, 122
+  size: 98, 168
+  orig: 98, 168
+  offset: 0, 0
+  index: -1
+Anubis90_Head
+  rotate: false
+  xy: 925, 365
+  size: 97, 133
+  orig: 97, 133
+  offset: 0, 0
+  index: -1
+Anubis90_Hips
+  rotate: false
+  xy: 575, 296
+  size: 137, 202
+  orig: 137, 202
+  offset: 0, 0
+  index: -1
+Anubis90_Torso
+  rotate: false
+  xy: 649, 132
+  size: 96, 162
+  orig: 96, 162
+  offset: 0, 0
+  index: -1

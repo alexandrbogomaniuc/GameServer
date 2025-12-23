@@ -1,0 +1,4696 @@
+{
+    "images": [
+        {
+            "name": "battleground/crown",
+            "src": "battleground/crown.png",
+            "width": 19,
+            "height": 19,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/powerup/background",
+            "src": "battleground/powerup/background.png",
+            "width": 94,
+            "height": 95,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/powerup/badge_glow",
+            "src": "battleground/powerup/badge_glow.jpg",
+            "width": 47,
+            "height": 47.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1,
+            "vfx": "medium"
+        },
+        {
+            "name": "battleground/powerup/stripe_normal",
+            "src": "battleground/powerup/stripe_normal.png",
+            "width": 28,
+            "height": 16,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/powerup/stripe_add",
+            "src": "battleground/powerup/stripe_add.png",
+            "width": 28,
+            "height": 16,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/powerup/grey_smoke",
+            "src": "battleground/powerup/grey_smoke.jpg",
+            "width": 114.5,
+            "height": 114.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/scoreboard/sweep",
+            "src": "battleground/scoreboard/sweep.png",
+            "width": 50,
+            "height": 49,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/scoreboard/win_coin",
+            "src": "battleground/scoreboard/win_coin.png",
+            "width": 32,
+            "height": 16,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/scoreboard/scoreboard_item_arrow",
+            "src": "battleground/scoreboard/scoreboard_item_arrow.png",
+            "width": 14.5,
+            "height": 19.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/scoreboard/master_player_item_bg",
+            "src": "battleground/scoreboard/master_player_item_bg.png",
+            "width": 122,
+            "height": 22.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/scoreboard/scoreboard_prize_bg",
+            "src": "battleground/scoreboard/scoreboard_prize_bg.png",
+            "width": 122.5,
+            "height": 22.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "battleground/scoreboard/scoreboard_time_bg",
+            "src": "battleground/scoreboard/scoreboard_time_bg.png",
+            "width": 122.5,
+            "height": 22.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+        "name": "maps/frozen_add",
+        "src": "maps/frozen_add.jpg",
+        "width": 480,
+        "height": 270,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "maps/1/frozen",
+        "src": "maps/1/frozen.jpg",
+        "width": 960,
+        "height": 540,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "maps/2/frozen",
+        "src": "maps/2/frozen.jpg",
+        "width": 960,
+        "height": 540,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name":  "weapons/DefaultGun/default_turret_5/bullet",
+        "src":  "weapons/DefaultGun/default_turret_5/bullet.png",
+        "width":  67,
+        "height":  114.5,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name": "maps/3/frozen",
+        "src": "maps/3/frozen.jpg",
+        "width": 960,
+        "height": 540,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "maps/4/frozen",
+        "src": "maps/4/frozen.jpg",
+        "width": 960,
+        "height": 540,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "transition/fog",
+        "src": "transition/fog.png",
+        "width": 97,
+        "height": 84,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "transition/round_end_fog",
+        "src": "transition/round_end_fog.png",
+        "width": 350,
+        "height": 306,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "transition/loading_bar_bg",
+        "src": "transition/loading_bar_bg.png",
+        "width": 161,
+        "height": 12,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "transition/loading_bar_fill",
+        "src": "transition/loading_bar_fill.png",
+        "width": 79.5,
+        "height": 11.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "transition/loading_bar_frame",
+        "src": "transition/loading_bar_frame.png",
+        "width": 167.5,
+        "height": 17.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "big_win/particles/particles_bubble",
+        "src": "big_win/particles/particles_bubble.jpg",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "big_win/particles/particles_huge_win_bubble",
+        "src": "big_win/particles/particles_huge_win_bubble.jpg",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "big_win/particles/streak_fx",
+        "src": "big_win/particles/streak_fx.jpg",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name":  "money_wheel/circle_light",
+        "src":  "money_wheel/circle_light.jpg",
+        "width":  1024,
+        "height":  1024,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1,
+        "vfx":  "medium"
+        },
+        {
+            "name":  "money_wheel/glow_part",
+            "src":  "money_wheel/glow_part.png",
+            "width":  475,
+            "height":  500.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "money_wheel/center",
+            "src":  "money_wheel/center.png",
+            "width":  137,
+            "height":  137,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "money_wheel/circle",
+            "src":  "money_wheel/circle.png",
+            "width":  436.5,
+            "height":  437,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "money_wheel/circle_ring",
+            "src":  "money_wheel/circle_ring.png",
+            "width":  501.5,
+            "height":  502,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "money_wheel/pointer",
+            "src":  "money_wheel/pointer.png",
+            "width":  66,
+            "height":  54,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "money_wheel/wheel_particles",
+            "src":  "money_wheel/wheel_particles.jpg",
+            "width":  1024,
+            "height":  512,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1,
+            "vfx":  "medium"
+        },
+        {
+            "name":  "money_wheel/flare",
+            "src":  "money_wheel/flare.jpg",
+            "width":  120,
+            "height":  110,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1,
+            "vfx":  "medium"
+        },
+        {
+            "name":  "money_wheel/circle_ring_glow",
+            "src":  "money_wheel/circle_ring_glow.jpg",
+            "width":  388,
+            "height":  387.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1,
+            "vfx":  "medium"
+        },
+        {
+            "name":  "money_wheel/orb_glow",
+            "src":  "money_wheel/orb_glow.jpg",
+            "width":  422,
+            "height":  409,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1,
+            "vfx":  "medium"
+        },
+        {
+            "name":  "money_wheel/circle_blast",
+            "src":  "money_wheel/circle_blast.jpg",
+            "width":  400.5,
+            "height":  400,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "money_wheel/you_win_lightsweep",
+            "src":  "money_wheel/you_win_lightsweep.png",
+            "width":  61,
+            "height":  26,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+        "name": "bomb/bomb_value",
+        "src": "bomb/bomb_value.png",
+        "width": 404,
+        "height": 188.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "fire_settings/fire_settings_mobile",
+        "src": "fire_settings/fire_settings_mobile.png",
+        "width": 64,
+        "height": 64,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "isMobile": true
+        },
+        {
+        "name": "fire_settings/header",
+        "src": "fire_settings/header.jpg",
+        "width": 325,
+        "height": 58,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "isMobile": true
+        },
+        {
+        "name": "fire_settings/fire_settings",
+        "src": "fire_settings/fire_settings.png",
+        "width": 20,
+        "height": 11,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "isMobile": false
+        },
+        {
+        "name": "round_result/coin_atlas",
+        "src": "round_result/coin_atlas.jpg",
+        "width": 128,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "round_result/flare",
+        "src": "round_result/flare.png",
+        "width": 52.5,
+        "height": 64.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+            "name":  "round_result/battleground/gradient",
+            "src":  "round_result/battleground/gradient.png",
+            "width":  74,
+            "height":  1,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/top_frame",
+              "src":  "round_result/battleground/top_frame.png",
+              "width":  455,
+              "height":  160.5,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/win_frame",
+              "src":  "round_result/battleground/win_frame.png",
+              "width":  455,
+              "height":  156.5,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/win_frame_glow",
+              "src":  "round_result/battleground/win_frame_glow.png",
+              "width":  455,
+              "height":  156.5,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/blend_star_top_frame",
+              "src":  "round_result/battleground/blend_star_top_frame.jpg",
+              "width":  480,
+              "height":  270,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/blend_top_frame",
+              "src":  "round_result/battleground/blend_top_frame.jpg",
+              "width":  480,
+              "height":  270,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/blend_lose_top_frame",
+              "src":  "round_result/battleground/blend_lose_top_frame.jpg",
+              "width":  960,
+              "height":  540,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/light_sweep",
+              "src":  "round_result/battleground/light_sweep.png",
+              "width":  128,
+              "height":  128,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/top_frame_glow",
+              "src":  "round_result/battleground/top_frame_glow.png",
+              "width":  455,
+              "height":  157,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/bottom_frame",
+              "src":  "round_result/battleground/bottom_frame.png",
+              "width":  460,
+              "height":  345.5,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/bottom_frame_glow",
+              "src":  "round_result/battleground/bottom_frame_glow.png",
+              "width":  455,
+              "height":  323.5,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/score_stroke",
+              "src":  "round_result/battleground/score_stroke.png",
+              "width":  284.5,
+              "height":  216.5,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/line_hr_black",
+              "src":  "round_result/battleground/line_hr_black.png",
+              "width":  1,
+              "height":  19,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/line_hr_white",
+              "src":  "round_result/battleground/line_hr_white.png",
+              "width":  1,
+              "height":  21,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/button_yellow",
+              "src":  "round_result/battleground/button_yellow.png",
+              "width":  147,
+              "height":  45,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/button_yellow_glow",
+              "src":  "round_result/battleground/button_yellow_glow.png",
+              "width":  147,
+              "height":  45,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/button_gray",
+              "src":  "round_result/battleground/button_gray.png",
+              "width":  147,
+              "height":  45,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/button_gray_glow",
+              "src":  "round_result/battleground/button_gray_glow.png",
+              "width":  147,
+              "height":  45,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+          {
+              "name":  "round_result/battleground/separate_line",
+              "src":  "round_result/battleground/separate_line.png",
+              "width":  106,
+              "height":  1,
+              "frames":  1,
+              "layers":  1,
+              "totalFrames":  1
+          },
+        {
+        "name": "blend/smoke_fx/u_smoke_screenmode",
+        "src": "blend/smoke_fx/u_smoke_screenmode.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "callouts/callout_panel",
+        "src": "callouts/callout_panel.png",
+        "width": 256,
+        "height": 92,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/lightning/circle_blast_compressed",
+        "src": "boss_mode/lightning/circle_blast_compressed.png",
+        "width": 438.5,
+        "height": 150,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/lightning/lightning_0",
+        "src": "boss_mode/lightning/lightning_0.jpg",
+        "width": 1003,
+        "height": 1003,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/lightning/1lightning_1",
+        "src": "boss_mode/lightning/1lightning_1.jpg",
+        "width": 250,
+        "height": 501,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name":  "boss_mode/lightning/lightning_1",
+        "src":  "boss_mode/lightning/lightning_1.jpg",
+        "width":  200,
+        "height":  163,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name": "common/u_groundsmoke_unmult",
+        "src": "common/u_groundsmoke_unmult.png",
+        "width": 1024,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/coin_spin",
+        "src": "common/coin_spin.png",
+        "width": 128,
+        "height": 64,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/silver_coin_spin",
+        "src": "common/silver_coin_spin.png",
+        "width": 64,
+        "height": 64,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/die_smoke_unmult",
+        "src": "common/die_smoke_unmult.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/ice_parts",
+        "src": "common/ice_parts.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/freeze_cover_explode",
+        "src": "common/freeze_cover_explode.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/enemy_ice_explosion",
+        "src": "common/enemy_ice_explosion.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/particles",
+        "src": "common/particles.jpg",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/fire_circle",
+        "src": "common/fire_circle.jpg",
+        "width": 906,
+        "height": 906,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "common/puff_animation",
+        "src": "common/puff_animation.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "critical_hit/critical_explosion",
+        "src": "critical_hit/critical_explosion.jpg",
+        "width": 1024,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "critical_hit/critical_numbers",
+        "src": "critical_hit/critical_numbers.png",
+        "width": 128,
+        "height": 64,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "critical_hit/flare",
+        "src": "critical_hit/flare.jpg",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 1
+        },
+        {
+        "name": "awards/gold_numbers",
+        "src": "awards/gold_numbers.png",
+        "width": 128,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "awards/silver_numbers",
+        "src": "awards/silver_numbers.png",
+        "width": 128,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "awards/white_numbers",
+        "src": "awards/white_numbers.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "awards/circle_blast",
+        "src": "awards/circle_blast.jpg",
+        "width": 328,
+        "height": 328,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "awards/freeze_award_final_blue_flare",
+        "src": "awards/freeze_award_final_blue_flare.jpg",
+        "width": 252,
+        "height": 244,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+            "name":  "final_count/1",
+            "src":  "final_count/1.png",
+            "width":  128,
+            "height":  238.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "final_count/2",
+            "src":  "final_count/2.png",
+            "width":  202,
+            "height":  240.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "final_count/3",
+            "src":  "final_count/3.png",
+            "width":  204.5,
+            "height":  240.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "final_count/1_glow",
+            "src":  "final_count/1_glow.png",
+            "width":  135.5,
+            "height":  238.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "final_count/2_glow",
+            "src":  "final_count/2_glow.png",
+            "width":  202,
+            "height":  240.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "final_count/3_glow",
+            "src":  "final_count/3_glow.png",
+            "width":  204.5,
+            "height":  240.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+        "name": "enemies/all_enemies_avatars",
+        "src": "enemies/all_enemies_avatars.png",
+        "width": 868.5,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/fire_boss/fire_boss",
+        "src": "enemies/fire_boss/fire_boss.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+            "name":  "gameplay_dialogs/battleground/count_down/count_down_frame",
+            "src":  "gameplay_dialogs/battleground/count_down/count_down_frame.png",
+            "width":  275,
+            "height":  179,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "gameplay_dialogs/battleground/count_down/back_to_lobby_button",
+            "src":  "gameplay_dialogs/battleground/count_down/back_to_lobby_button.png",
+            "width":  147,
+            "height":  40,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+         "name":  "gameplay_dialogs/battleground/count_down/active_btn",
+         "src":  "gameplay_dialogs/battleground/count_down/active_btn.png",
+         "width":  182,
+         "height":  54,
+         "frames":  1,
+         "layers":  1,
+         "totalFrames":  1
+         },
+        {
+            "name":  "gameplay_dialogs/battleground/caf_room_manager/frame",
+            "src":  "gameplay_dialogs/battleground/caf_room_manager/frame.png",
+            "width":  487,
+            "height":  347,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "gameplay_dialogs/battleground/caf_room_manager/copy_button",
+            "src":  "gameplay_dialogs/battleground/caf_room_manager/copy_button.png",
+            "width":  91.5,
+            "height":  30,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "gameplay_dialogs/battleground/caf_room_manager/start_round_button",
+            "src":  "gameplay_dialogs/battleground/caf_room_manager/start_round_button.png",
+            "width":  170,
+            "height":  40,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "gameplay_dialogs/battleground/caf_room_manager/back_to_lobby_button",
+            "src":  "gameplay_dialogs/battleground/caf_room_manager/back_to_lobby_button.png",
+            "width":  170,
+            "height":  40,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "gameplay_dialogs/battleground/caf_room_manager/crown",
+            "src":  "gameplay_dialogs/battleground/caf_room_manager/crown.png",
+            "width":  26.5,
+            "height":  18.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "gameplay_dialogs/battleground/close_button",
+            "src":  "gameplay_dialogs/battleground/close_button.png",
+            "width":  13,
+            "height":  13,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+         "name":  "gameplay_dialogs/battleground/count_down/count_down_frame_dialog",
+         "src":  "gameplay_dialogs/battleground/count_down/count_down_frame_dialog.png",
+         "width":  275,
+         "height":  179,
+         "frames":  1,
+         "layers":  1,
+         "totalFrames":  1
+     },
+     {
+         "name":  "gameplay_dialogs/battleground/count_down/count_down_frame",
+         "src":  "gameplay_dialogs/battleground/count_down/count_down_frame.png",
+         "width":  491,
+         "height":  212,
+         "frames":  1,
+         "layers":  1,
+         "totalFrames":  1
+     },
+     {
+        "name":  "player_spot/battleground/back",
+        "src":  "player_spot/battleground/back.png",
+        "width":  199,
+        "height":  74.5,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+    },
+    {
+        "name":  "player_spot/battleground/autofire_button_on",
+        "src":  "player_spot/battleground/autofire_button_on.png",
+        "width":  31,
+        "height":  31,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+    },
+    {
+        "name":  "player_spot/battleground/autofire_button_off",
+        "src":  "player_spot/battleground/autofire_button_off.png",
+        "width":  31,
+        "height":  31,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+    },
+    {
+        "name":  "player_spot/battleground/gun_level_0",
+        "src":  "player_spot/battleground/gun_level_0.png",
+        "width":  20,
+        "height":  25,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+    },
+    {
+        "name":  "player_spot/battleground/gun_level_1",
+        "src":  "player_spot/battleground/gun_level_1.png",
+        "width":  20,
+        "height":  25,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+    },
+    {
+        "name":  "player_spot/battleground/gun_level_2",
+        "src":  "player_spot/battleground/gun_level_2.png",
+        "width":  20,
+        "height":  25,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+    },
+    {
+        "name":  "player_spot/battleground/arrow",
+        "src":  "player_spot/battleground/arrow.png",
+        "width":  21,
+        "height":  15,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+    },
+    {
+        "name":  "player_spot/battleground/star",
+        "src":  "player_spot/battleground/star.png",
+        "width":  21,
+        "height":  21,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+    },
+     {
+        "name":  "critical_hit/critical_particles",
+        "src":  "critical_hit/critical_particles.jpg",
+        "width":  1024,
+        "height":  1024,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1,
+        "vfx":  "medium"
+    },
+    {
+        "name":  "enemies/money/hit/light_particle_purple",
+        "src":  "enemies/money/hit/light_particle_purple.png",
+        "width":  51,
+        "height":  50,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1,
+        "vfx":  "medium"
+    },
+        {
+        "name": "enemies/ice_boss/ice_boss",
+        "src": "enemies/ice_boss/ice_boss.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/appearance_small_smoke",
+        "src": "enemies/ice_boss/appearance_small_smoke.png",
+        "width": 64,
+        "height": 50,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/ice_blast_circle",
+        "src": "enemies/ice_boss/ice_blast_circle.jpg",
+        "width": 181,
+        "height": 140,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/blue_add_flare",
+        "src": "enemies/ice_boss/blue_add_flare.jpg",
+        "width": 128,
+        "height": 117,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/ice_boss_appearance_flare",
+        "src": "enemies/ice_boss/ice_boss_appearance_flare.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/ice_boss_ice_explosion",
+        "src": "enemies/ice_boss/ice_boss_ice_explosion.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/ice_boss_spawn_explosion",
+        "src": "enemies/ice_boss/ice_boss_spawn_explosion.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/ice_land_animation",
+        "src": "enemies/ice_boss/ice_land_animation.png",
+        "width": 1024,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/ice_mist",
+        "src": "enemies/ice_boss/ice_mist.png",
+        "width": 1024,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name":  "common/misty_flare",
+        "src":  "common/misty_flare.png",
+        "width":  250,
+        "height":  250,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name": "enemies/ice_boss/death/final_ray",
+        "src": "enemies/ice_boss/death/final_ray.jpg",
+        "width": 256,
+        "height": 95,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/death/death_explosion",
+        "src": "enemies/ice_boss/death/death_explosion.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/ice_boss/death/final_ice_fx_explosion",
+        "src": "enemies/ice_boss/death/final_ice_fx_explosion.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/rocky/rocky",
+        "src": "enemies/rocky/rocky.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/laser_capsule/mask",
+        "src": "enemies/laser_capsule/mask.jpg",
+        "width": 219.5,
+        "height": 122,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/laser_capsule/laser_net",
+        "src": "enemies/laser_capsule/laser_net.png",
+        "width": 303,
+        "height": 265.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/laser_capsule/laser_capsule",
+        "src": "enemies/laser_capsule/laser_capsule.png",
+        "width": 256,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/laser_capsule/explode_1",
+        "src": "enemies/laser_capsule/explode_1.jpg",
+        "width": 1009.5,
+        "height": 1019.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/laser_capsule/explode_2",
+        "src": "enemies/laser_capsule/explode_2.jpg",
+        "width": 1018,
+        "height": 997.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/laser_capsule/laser_net_exploasion",
+        "src": "enemies/laser_capsule/laser_net_exploasion.jpg",
+        "width": 144,
+        "height": 160,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/bullet_capsule",
+        "src": "enemies/bullet_capsule/bullet_capsule.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/spark",
+        "src": "enemies/bullet_capsule/spark.png",
+        "width": 30,
+        "height": 27,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/blue_cover",
+        "src": "enemies/bullet_capsule/blue_cover.png",
+        "width": 480,
+        "height": 270,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/blue_smoke_1",
+        "src": "enemies/bullet_capsule/blue_smoke_1.jpg",
+        "width": 1025,
+        "height": 1023,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/blue_smoke_2",
+        "src": "enemies/bullet_capsule/blue_smoke_2.jpg",
+        "width": 619,
+        "height": 950.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/puff_1",
+        "src": "enemies/bullet_capsule/puff_1.jpg",
+        "width": 1024,
+        "height": 900,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/exploasion_1",
+        "src": "enemies/bullet_capsule/exploasion_1.jpg",
+        "width": 731,
+        "height": 1021.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/exploasion_2",
+        "src": "enemies/bullet_capsule/exploasion_2.jpg",
+        "width": 1016,
+        "height": 1005.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/exploasion_3",
+        "src": "enemies/bullet_capsule/exploasion_3.jpg",
+        "width": 260.5,
+        "height": 252,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/circle",
+        "src": "enemies/bullet_capsule/circle.png",
+        "width": 359,
+        "height": 358,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/small_bullet",
+        "src": "enemies/bullet_capsule/small_bullet.png",
+        "width": 104,
+        "height": 59.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/bullet",
+        "src": "enemies/bullet_capsule/bullet.png",
+        "width": 1003.5,
+        "height": 1003.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/bullet_glow",
+        "src": "enemies/bullet_capsule/bullet_glow.png",
+        "width": 42.5,
+        "height": 29,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bullet_capsule/mask",
+        "src": "enemies/bullet_capsule/mask.png",
+        "width": 255,
+        "height": 255,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/killer_capsule",
+        "src": "enemies/killer_capsule/killer_capsule.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/blow_lines",
+        "src": "enemies/killer_capsule/blow_lines.jpg",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/card_background",
+        "src": "enemies/killer_capsule/card_background.png",
+        "width": 128,
+        "height": 191,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/frame",
+        "src": "enemies/killer_capsule/frame.png",
+        "width": 128,
+        "height": 191,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/glow_card",
+        "src": "enemies/killer_capsule/glow_card.png",
+        "width": 240,
+        "height": 305,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/grey_smoke",
+        "src": "enemies/killer_capsule/grey_smoke.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/red_smoke",
+        "src": "enemies/killer_capsule/red_smoke.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/red_circle_blast",
+        "src": "enemies/killer_capsule/red_circle_blast.jpg",
+        "width": 164,
+        "height": 164,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/xsymbol",
+        "src": "enemies/killer_capsule/Xsymbol.png",
+        "width": 90,
+        "height": 90,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/killer_capsule/lineorbs",
+        "src": "enemies/killer_capsule/lineorbs.jpg",
+        "width": 64,
+        "height": 64,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/freeze_capsule",
+        "src": "enemies/freeze_capsule/freeze_capsule.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/freeze_timer",
+        "src": "enemies/freeze_capsule/freeze_timer.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/freeze_spin",
+        "src": "enemies/freeze_capsule/freeze_spin.jpg",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/snowflake",
+        "src": "enemies/freeze_capsule/snowflake.png",
+        "width": 63.5,
+        "height": 75,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/blue_freeze_smokes",
+        "src": "enemies/freeze_capsule/blue_freeze_smokes.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/blue_circle_blast",
+        "src": "enemies/freeze_capsule/blue_circle_blast.jpg",
+        "width": 328,
+        "height": 328,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/vertical_freeze_timer_progress_bar",
+        "src": "enemies/freeze_capsule/vertical_freeze_timer_progress_bar.png",
+        "width": 23.5,
+        "height": 165,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/vertical_freeze_timer_frozen_frame",
+        "src": "enemies/freeze_capsule/vertical_freeze_timer_frozen_frame.png",
+        "width": 55.5,
+        "height": 218,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/freeze_capsule/freeze_feature_ice_melting_background",
+        "src": "enemies/freeze_capsule/freeze_feature_ice_melting_background.jpg",
+        "width": 41,
+        "height": 27,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+            "name":  "tutorial/scoreboard_example",
+            "src":  "tutorial/scoreboard_example.png",
+            "width":  124.5,
+            "height":  189.5,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "tutorial/spot_example_battleround_bottom",
+            "src":  "tutorial/spot_example_battleround_bottom.png",
+            "width":  256,
+            "height":  128,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "tutorial/spot_example_battleround",
+            "src":  "tutorial/spot_example_battleground.png",
+            "width":  256,
+            "height":  116,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name":  "tutorial/pro_tip",
+            "src":  "tutorial/pro_tip.png",
+            "width":  388.5,
+            "height":  111,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+        "name": "enemies/freeze_capsule/freeze_feature_ice_melting",
+        "src": "enemies/freeze_capsule/freeze_feature_ice_melting.jpg",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/lightning_capsule",
+        "src": "enemies/lightning_capsule/lightning_capsule.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bomb_capsule/bomb_capsule",
+        "src": "enemies/bomb_capsule/bomb_capsule.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/capsule_lightning_blue_glow",
+        "src": "enemies/lightning_capsule/death/capsule_lightning_blue_glow.png",
+        "width": 200,
+        "height": 200,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/electricity_ring/electricity_ring_0",
+        "src": "enemies/lightning_capsule/death/electricity_ring/electricity_ring_0.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/electricity_ring/electricity_ring_1",
+        "src": "enemies/lightning_capsule/death/electricity_ring/electricity_ring_1.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/lightning_burst",
+        "src": "enemies/lightning_capsule/death/lightning_burst.jpg",
+        "width": 420,
+        "height": 310,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/lightning_glow_indigo",
+        "src": "enemies/lightning_capsule/death/lightning_glow_indigo.png",
+        "width": 250,
+        "height": 250,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/capsule_lightning",
+        "src": "enemies/lightning_capsule/death/capsule_lightning.jpg",
+        "width": 206.5,
+        "height": 280,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/capsule_lightning_icon_outside",
+        "src": "enemies/lightning_capsule/death/capsule_lightning_icon_outside.png",
+        "width": 381.5,
+        "height": 378.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/capsule_lightning_icon_darken",
+        "src": "enemies/lightning_capsule/death/capsule_lightning_icon_darken.png",
+        "width": 317,
+        "height": 307.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/capsule_lightning_icon_bulb",
+        "src": "enemies/lightning_capsule/death/capsule_lightning_icon_bulb.png",
+        "width": 317,
+        "height": 307.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/lightning_explode/lightning_explode_0",
+        "src": "enemies/lightning_capsule/death/lightning_explode/lightning_explode_0.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/lightning_explode/lightning_explode_1",
+        "src": "enemies/lightning_capsule/death/lightning_explode/lightning_explode_1.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/lightning_orb/lightning_orb_0",
+        "src": "enemies/lightning_capsule/death/lightning_orb/lightning_orb_0.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/lightning_orb/lightning_orb_1",
+        "src": "enemies/lightning_capsule/death/lightning_orb/lightning_orb_1.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/death/lighting_optical_flare_cyan",
+        "src": "enemies/lightning_capsule/death/lighting_optical_flare_cyan.jpg",
+        "width": 460,
+        "height": 259,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_a",
+        "src": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_a.png",
+        "width": 280,
+        "height": 125,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_b",
+        "src": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_b.png",
+        "width": 150,
+        "height": 145,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_c",
+        "src": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_c.png",
+        "width": 190,
+        "height": 210,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_d",
+        "src": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_d.png",
+        "width": 75,
+        "height": 150,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_e",
+        "src": "enemies/lightning_capsule/death/extra_eletricity/extra_electricity_e.png",
+        "width": 50,
+        "height": 115,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/enemy_lightning/enemy_lightning_0",
+        "src": "enemies/lightning_capsule/hit/enemy_lightning/enemy_lightning_0.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/enemy_lightning/enemy_lightning_1",
+        "src": "enemies/lightning_capsule/hit/enemy_lightning/enemy_lightning_1.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/lightning_capsule_enemy_hit_circle_inner",
+        "src": "enemies/lightning_capsule/hit/lightning_capsule_enemy_hit_circle_inner.jpg",
+        "width": 300,
+        "height": 300,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/lightning_capsule_enemy_hit_circle_outer",
+        "src": "enemies/lightning_capsule/hit/lightning_capsule_enemy_hit_circle_outer.jpg",
+        "width": 450,
+        "height": 588,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/extra_enemy_electric",
+        "src": "enemies/lightning_capsule/hit/extra_enemy_electric.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/splat/lightning_splat_a",
+        "src": "enemies/lightning_capsule/hit/splat/lightning_splat_a.png",
+        "width": 114,
+        "height": 103,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/splat/lightning_splat_b",
+        "src": "enemies/lightning_capsule/hit/splat/lightning_splat_b.png",
+        "width": 103,
+        "height": 101,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/splat/lightning_splat_c",
+        "src": "enemies/lightning_capsule/hit/splat/lightning_splat_c.png",
+        "width": 109,
+        "height": 105,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/sparks/lightning_spark_0",
+        "src": "enemies/lightning_capsule/hit/sparks/lightning_spark_0.jpg",
+        "width": 170,
+        "height": 222.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/sparks/lightning_spark_1",
+        "src": "enemies/lightning_capsule/hit/sparks/lightning_spark_1.jpg",
+        "width": 133.5,
+        "height": 166,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_capsule/hit/sparks/lightning_spark_2",
+        "src": "enemies/lightning_capsule/hit/sparks/lightning_spark_2.jpg",
+        "width": 95,
+        "height": 129.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/trex/trex",
+        "src": "enemies/trex/trex.png",
+        "width": 512,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/slug/slug",
+        "src": "enemies/slug/slug.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/flyer_mutalisk/flyer_mutalisk",
+        "src": "enemies/flyer_mutalisk/flyer_mutalisk.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/eye_flyer/eye_flyer_green",
+        "src": "enemies/eye_flyer/eye_flyer_green.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/eye_flyer/eye_flyer_purple",
+        "src": "enemies/eye_flyer/eye_flyer_purple.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/eye_flyer/eye_flyer_red",
+        "src": "enemies/eye_flyer/eye_flyer_red.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/eye_flyer/eye_flyer_yellow",
+        "src": "enemies/eye_flyer/eye_flyer_yellow.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/mothy/mothy_blue",
+        "src": "enemies/mothy/mothy_blue.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/mothy/mothy_red",
+        "src": "enemies/mothy/mothy_red.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/mothy/mothy_white",
+        "src": "enemies/mothy/mothy_white.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+            "name":  "bomb/bomb_light",
+            "src":  "bomb/bomb_light.png",
+            "width":  448,
+            "height":  438,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1,
+            "vfx":  "medium"
+        },
+        {
+        "name": "enemies/mothy/mothy_yellow",
+        "src": "enemies/mothy/mothy_yellow.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/gold_capsule/gold_capsule",
+        "src": "enemies/gold_capsule/gold_capsule.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/bioraptor/bioraptor",
+        "src": "enemies/bioraptor/bioraptor.png",
+        "width": 512,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/jellyfish/jellyfish",
+        "src": "enemies/jellyfish/jellyfish.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/pink_flyer/pink_flyer",
+        "src": "enemies/pink_flyer/pink_flyer.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/krang/krang",
+        "src": "enemies/krang/krang.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/one_eye/one_eye",
+        "src": "enemies/one_eye/one_eye.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/kang/kang",
+        "src": "enemies/kang/kang.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/yellow_alien/yellow_alien",
+        "src": "enemies/yellow_alien/yellow_alien.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/small_flyer/small_flyer",
+        "src": "enemies/small_flyer/small_flyer.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/jump/jumper_blue",
+        "src": "enemies/jump/jumper_blue.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/jump/jumper_green",
+        "src": "enemies/jump/jumper_green.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/jump/jumper_white",
+        "src": "enemies/jump/jumper_white.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/green_hopper/green_hopper",
+        "src": "enemies/green_hopper/green_hopper.png",
+        "width": 512,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/pointy/pointy",
+        "src": "enemies/pointy/pointy.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/spiky/spiky",
+        "src": "enemies/spiky/spiky.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/mflyer/mflyer",
+        "src": "enemies/mflyer/mflyer.png",
+        "width": 512,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/red_head_flyer/red_head_flyer",
+        "src": "enemies/red_head_flyer/red_head_flyer.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/froggy/froggy",
+        "src": "enemies/froggy/froggy.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/crawler/crawler",
+        "src": "enemies/crawler/crawler.png",
+        "width": 512,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/flyer/flyer",
+        "src": "enemies/flyer/flyer.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/lightning_boss/lightning_boss",
+        "src": "enemies/lightning_boss/lightning_boss.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/earth/earth",
+        "src": "enemies/earth/earth.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/money",
+        "src": "enemies/money/money.png",
+        "width": 212,
+        "height": 211.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/ring_bottom",
+        "src": "enemies/money/ring_bottom.png",
+        "width": 323.5,
+        "height": 320.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/ring_glow",
+        "src": "enemies/money/ring_glow.png",
+        "width": 160,
+        "height": 159,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/ring_top",
+        "src": "enemies/money/ring_top.png",
+        "width": 323.5,
+        "height": 320.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_1",
+        "src": "enemies/money/crack_1.png",
+        "width": 102,
+        "height": 90.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_2",
+        "src": "enemies/money/crack_2.png",
+        "width": 74,
+        "height": 126,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_3",
+        "src": "enemies/money/crack_3.png",
+        "width": 157.5,
+        "height": 185,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_4",
+        "src": "enemies/money/crack_4.png",
+        "width": 109,
+        "height": 131,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_final",
+        "src": "enemies/money/crack_final.png",
+        "width": 245,
+        "height": 226,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_1_glow",
+        "src": "enemies/money/crack_1_glow.png",
+        "width": 119,
+        "height": 106.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_2_glow",
+        "src": "enemies/money/crack_2_glow.png",
+        "width": 87.5,
+        "height": 144,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_3_glow",
+        "src": "enemies/money/crack_3_glow.png",
+        "width": 178,
+        "height": 203,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_4_glow",
+        "src": "enemies/money/crack_4_glow.png",
+        "width": 121,
+        "height": 144.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/crack_final_glow",
+        "src": "enemies/money/crack_final_glow.png",
+        "width": 264,
+        "height": 240.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/hit/light_circle_4",
+        "src": "enemies/money/hit/light_circle_4.png",
+        "width": 150,
+        "height": 150,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/hit/light_circle_5",
+        "src": "enemies/money/hit/light_circle_5.png",
+        "width": 150,
+        "height": 150,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/hit/light_circle_purple",
+        "src": "enemies/money/hit/light_circle_purple.png",
+        "width": 319,
+        "height": 331.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/hit/light_particle_blue",
+        "src": "enemies/money/hit/light_particle_blue.png",
+        "width": 51,
+        "height": 50,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "common/light_particle_purple",
+        "src": "common/light_particle_purple.png",
+        "width": 51,
+        "height": 50,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "common/light_particle",
+        "src": "common/light_particle.png",
+        "width": 51,
+        "height": 50,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/shockwave/arc_glow",
+        "src": "enemies/money/shockwave/arc_glow.png",
+        "width": 120,
+        "height": 110,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/shockwave/arc_glow",
+        "src": "enemies/money/shockwave/arc_glow.png",
+        "width": 120,
+        "height": 110,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/shockwave/fire_smoke",
+        "src": "enemies/money/shockwave/fire_smoke.png",
+        "width": 171,
+        "height": 127,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/shockwave/particles_blue",
+        "src": "enemies/money/shockwave/particles_blue.png",
+        "width": 91.5,
+        "height": 97,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/death/light_blue",
+        "src": "enemies/money/death/light_blue.png",
+        "width": 250,
+        "height": 250,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/death/light_rays_1",
+        "src": "enemies/money/death/light_rays_1.png",
+        "width": 30.5,
+        "height": 249,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/death/light_rays_2",
+        "src": "enemies/money/death/light_rays_2.png",
+        "width": 36,
+        "height": 262,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/death/light_rays_3",
+        "src": "enemies/money/death/light_rays_3.png",
+        "width": 39,
+        "height": 102,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/mistery/fire_smoke",
+        "src": "enemies/money/mistery/fire_smoke.png",
+        "width": 342,
+        "height": 254,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name":  "bomb/bomb_rays",
+        "src":  "bomb/bomb_rays.png",
+        "width":  512,
+        "height":  512,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "bomb/smoke",
+        "src":  "bomb/smoke.jpg",
+        "width":  256,
+        "height":  128,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "bomb/explosion",
+        "src":  "bomb/explosion.jpg",
+        "width":  762,
+        "height":  540,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "bomb/gun_blast",
+        "src":  "bomb/gun_blast.jpg",
+        "width":  102,
+        "height":  80,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "bomb/circle_blast_floor",
+        "src":  "bomb/circle_blast_floor.jpg",
+        "width":  471,
+        "height":  251,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name": "enemies/money/mistery/metal_explosion",
+        "src": "enemies/money/mistery/metal_explosion.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/mistery/smoke_blue",
+        "src": "enemies/money/mistery/smoke_blue.png",
+        "width": 117.5,
+        "height": 130,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/mistery/flame/flame_explosion_1",
+        "src": "enemies/money/mistery/flame/flame_explosion_1.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/mistery/flame/flame_explosion_2",
+        "src": "enemies/money/mistery/flame/flame_explosion_2.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/mistery/fx_explosion",
+        "src": "enemies/money/mistery/fx_explosion.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/mistery/particles_yellow",
+        "src": "enemies/money/mistery/particles_yellow.png",
+        "width": 182.5,
+        "height": 193.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/mistery/light_particle_t1",
+        "src": "enemies/money/mistery/light_particle_t1.png",
+        "width": 51,
+        "height": 50,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/mistery/light_particle_2",
+        "src": "enemies/money/mistery/light_particle_2.png",
+        "width": 51,
+        "height": 50,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/mistery/streak_flare",
+        "src": "enemies/money/mistery/streak_flare.png",
+        "width": 278.5,
+        "height": 88.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/death/fx_light_2",
+        "src": "enemies/money/death/fx_light_2.png",
+        "width": 250,
+        "height": 250,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "enemies/money/lock_vfx/lock_vfx",
+        "src": "enemies/money/lock_vfx/lock_vfx.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemies/money/gold_container",
+        "src": "enemies/money/gold_container.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/death_orb",
+        "src": "death/death_orb.png",
+        "width": 314.5,
+        "height": 305,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/killer_capsule_enemy_death_smoke",
+        "src": "death/killer_capsule_enemy_death_smoke.png",
+        "width": 512,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/killer_capsule_enemy_death_sparkles",
+        "src": "death/killer_capsule_enemy_death_sparkles.jpg",
+        "width": 128,
+        "height": 104,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/energy_burst",
+        "src": "death/energy_burst.jpg",
+        "width": 1024,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/smoke_circle",
+        "src": "death/smoke_circle.jpg",
+        "width": 160.5,
+        "height": 112,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/flare",
+        "src": "death/flare.jpg",
+        "width": 498.5,
+        "height": 190.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/bonus_capsula_death/small_flare",
+        "src": "death/bonus_capsula_death/small_flare.jpg",
+        "width": 203.5,
+        "height": 159.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/bonus_capsula_death/glow",
+        "src": "death/bonus_capsula_death/glow.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "death/bonus_capsula_death/circle",
+        "src": "death/bonus_capsula_death/circle.jpg",
+        "width": 197,
+        "height": 197,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/common/flame_explosion_1",
+        "src": "boss_mode/common/flame_explosion_1.jpg",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/common/flame_explosion_2",
+        "src": "boss_mode/common/flame_explosion_2.jpg",
+        "width": 1024,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/common/tall_fire_explosion",
+        "src": "boss_mode/common/tall_fire_explosion.jpg",
+        "width": 1024,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+            "name": "round_result/battleground/fire_explosion/fire_explosion_texture",
+            "src": "round_result/battleground/fire_explosion/fire_explosion_texture.png",
+            "width": 1024,
+            "height": 1024,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "round_result/battleground/fire_win/fire_win_animation",
+            "src": "round_result/battleground/fire_win/fire_win_animation.png",
+            "width": 1024,
+            "height": 1024,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/common/particles_yellow",
+        "src": "boss_mode/common/particles_yellow.png",
+        "width": 182.5,
+        "height": 193.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/common/optical_flare_yellow",
+        "src": "boss_mode/common/optical_flare_yellow.jpg",
+        "width": 460,
+        "height": 259,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/common/light_circle_1",
+        "src": "boss_mode/common/light_circle_1.png",
+        "width": 136,
+        "height": 136,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/common/light_circle_2",
+        "src": "boss_mode/common/light_circle_2.png",
+        "width": 146,
+        "height": 150,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/common/fx_light_2",
+        "src": "boss_mode/common/fx_light_2.png",
+        "width": 250,
+        "height": 250,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/common/circle_blast",
+        "src": "boss_mode/common/circle_blast.png",
+        "width": 438.5,
+        "height": 268.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/common/gradient_orange",
+        "src": "boss_mode/common/gradient_orange.jpg",
+        "width": 240,
+        "height": 116,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/hole/fire",
+        "src": "boss_mode/fire/hole/fire.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name":  "boss_mode/earth/energy_burst",
+        "src":  "boss_mode/earth/energy_burst.jpg",
+        "width":  1024,
+        "height":  1024,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1,
+        "vfx":  "medium"
+        },
+        {
+        "name":  "boss_mode/earth/explosion_trail",
+        "src":  "boss_mode/earth/explosion_trail.png",
+        "width":  256,
+        "height":  256,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1,
+        "vfx":  "medium"
+        },
+        {
+        "name":  "boss_mode/earth/crack_1",
+        "src":  "boss_mode/earth/crack_1.png",
+        "width":  307,
+        "height":  350,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "boss_mode/earth/crack_0",
+        "src":  "boss_mode/earth/crack_0.png",
+        "width":  525,
+        "height":  278,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "boss_mode/earth/caption_background_smoke_screen",
+        "src":  "boss_mode/earth/caption_background_smoke_screen.jpg",
+        "width":  128,
+        "height":  128,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "boss_mode/earth/black_solid",
+        "src":  "boss_mode/earth/black_solid.png",
+        "width":  135,
+        "height":  76.5,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1,
+        "vfx":  "medium"
+        },
+        {
+        "name":  "boss_mode/fire/hole/glow",
+        "src":  "boss_mode/fire/hole/glow.jpg",
+        "width":  261,
+        "height":  134.5,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name": "boss_mode/fire/fire_streak/fire_streak",
+        "src": "boss_mode/fire/fire_streak/fire_streak.png",
+        "width": 597.5,
+        "height": 509,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/appearing_smoke/smoke",
+        "src": "boss_mode/fire/appearing_smoke/smoke.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/fire_element/fire_element_1",
+        "src": "boss_mode/fire/fire_element/fire_element_1.png",
+        "width": 1023.5,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/fire_element/fire_element_2",
+        "src": "boss_mode/fire/fire_element/fire_element_2.png",
+        "width": 921,
+        "height": 1007,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/top_fire/top_flame",
+        "src": "boss_mode/fire/top_fire/top_flame.png",
+        "width": 913,
+        "height": 968.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/top_fire/top_smoke",
+        "src": "boss_mode/fire/top_fire/top_smoke.png",
+        "width": 1002,
+        "height": 1014.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/top_dust/top_dust",
+        "src": "boss_mode/fire/top_dust/top_dust.png",
+        "width": 1021,
+        "height": 1005,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/top_boss_fire/top_boss_fire",
+        "src": "boss_mode/fire/top_boss_fire/top_boss_fire.png",
+        "width": 927,
+        "height": 909,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/big_explosion/big_explosion_1",
+        "src": "boss_mode/fire/big_explosion/big_explosion_1.jpg",
+        "width": 1004.5,
+        "height": 888.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 2,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/fire/big_explosion/big_explosion_2",
+        "src": "boss_mode/fire/big_explosion/big_explosion_2.jpg",
+        "width": 923,
+        "height": 949,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 2,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/coins_explode/shockwave",
+        "src": "boss_mode/coins_explode/shockwave.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/coins_explode/flare",
+        "src": "boss_mode/coins_explode/flare.jpg",
+        "width": 500,
+        "height": 375,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/coins_explode/boss_death_coin",
+        "src": "boss_mode/coins_explode/boss_death_coin.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/coins_explode/boss_death_coin_silver",
+        "src": "boss_mode/coins_explode/boss_death_coin_silver.png",
+        "width": 256,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/hp_bars",
+        "src": "boss_mode/hp_bars.png",
+        "width": 254,
+        "height": 324,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/death_flash",
+        "src": "boss_mode/death_flash.jpg",
+        "width": 500,
+        "height": 375,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+            "name": "boss_mode/dragon_mult",
+            "src": "boss_mode/dragon_mult.png",
+            "width": 127,
+            "height": 97.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name":  "player_spot/battleground/autofire_button_back",
+            "src":  "player_spot/battleground/autofire_button_back.png",
+            "width":  46,
+            "height":  46,
+            "frames":  1,
+            "layers":  1,
+            "totalFrames":  1
+        },
+        {
+            "name": "boss_mode/dragon_mult_silver",
+            "src": "boss_mode/dragon_mult_silver.png",
+            "width": 127,
+            "height": 97.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "boss_mode/dragon_mult_glow",
+            "src": "boss_mode/dragon_mult_glow.jpg",
+            "width": 63.5,
+            "height": 48.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1
+        },
+        {
+            "name": "boss_mode/dragon_mult_flare",
+            "src": "boss_mode/dragon_mult_flare.jpg",
+            "width": 196,
+            "height": 161.5,
+            "frames": 1,
+            "layers": 1,
+            "totalFrames": 1,
+            "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/death_splat",
+        "src": "boss_mode/death_splat.jpg",
+        "width": 59,
+        "height": 45,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/lightning/main_smoke/lightning_ring",
+        "src": "boss_mode/lightning/main_smoke/lightning_ring.jpg",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/caption/stones_explosion",
+        "src": "boss_mode/caption/stones_explosion.png",
+        "width": 128,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "light_sweep",
+        "src": "light_sweep.png",
+        "width": 128,
+        "height": 128,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "gradient",
+        "src": "gradient.png",
+        "width": 960,
+        "height": 112,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 1
+        },
+        {
+        "name": "enemy_impact/lightning_boom/lightning_boom1",
+        "src": "enemy_impact/lightning_boom/lightning_boom1.png",
+        "width": 125.5,
+        "height": 50,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemy_impact/lightning_boom/lightning_boom2",
+        "src": "enemy_impact/lightning_boom/lightning_boom2.png",
+        "width": 217.5,
+        "height": 110,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemy_impact/lightning_boom/lightning_boom3",
+        "src": "enemy_impact/lightning_boom/lightning_boom3.png",
+        "width": 216,
+        "height": 176,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "enemy_impact/default_impact_smoke",
+        "src": "enemy_impact/default_impact_smoke.jpg",
+        "width": 418,
+        "height": 341.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name":  "boss_mode/earth/smoke_6",
+        "src":  "boss_mode/earth/smoke_6.png",
+        "width":  118,
+        "height":  130,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1,
+        "vfx":  "medium"
+        },
+        {
+        "name":  "boss_mode/earth/smoke_explosion",
+        "src":  "boss_mode/earth/smoke_explosion.jpg",
+        "width":  1024,
+        "height":  1024,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "boss_mode/earth/smoke_orange",
+        "src":  "boss_mode/earth/smoke_orange.png",
+        "width":  231,
+        "height":  256,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1,
+        "vfx":  "medium"
+        },
+        {
+        "name":  "boss_mode/earth/smoke_7",
+        "src":  "boss_mode/earth/smoke_7.png",
+        "width":  118,
+        "height":  130,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name":  "boss_mode/earth/fast_smoke",
+        "src":  "boss_mode/earth/fast_smoke.png",
+        "width":  512,
+        "height":  512,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name": "enemy_impact/smoke_frames",
+        "src": "enemy_impact/smoke.jpg",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 1
+        },
+        {
+        "name": "enemy_impact/smoke",
+        "src": "enemy_impact/smoke.png",
+        "width": 45,
+        "height": 64,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 1
+        },
+        {
+        "name": "level_ui/wait",
+        "src": "level_ui/wait.png",
+        "width": 960,
+        "height": 540,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "shadow",
+        "src": "shadow.png",
+        "width": 91,
+        "height": 92,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 1
+        },
+        {
+        "name": "shadow_2",
+        "src": "shadow_2.png",
+        "width": 120,
+        "height": 120,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 1
+        },
+        {
+        "name": "TargetCrosshair_RED",
+        "src": "TargetCrosshair_RED.png",
+        "width": 44.5,
+        "height": 44.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "weapons/circle_blast",
+        "src": "weapons/circle_blast.png",
+        "width": 71,
+        "height": 71,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_1/liquid",
+        "src": "weapons/DefaultGun/default_turret_1/liquid.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+
+        {
+        "name": "weapons/DefaultGun/default_turret_2/liquid",
+        "src": "weapons/DefaultGun/default_turret_2/liquid.png",
+        "width": 62,
+        "height": 51.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_3/liquid",
+        "src": "weapons/DefaultGun/default_turret_3/liquid.png",
+        "width": 98,
+        "height": 42,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_4/liquid",
+        "src": "weapons/DefaultGun/default_turret_4/liquid.png",
+        "width": 91,
+        "height": 78.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_5/liquid",
+        "src": "weapons/DefaultGun/default_turret_5/liquid.png",
+        "width": 51,
+        "height": 196,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "weapons/DefaultGun/liquid_map",
+        "src": "weapons/DefaultGun/liquid_map.jpg",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "weapons/DefaultGun/hitboom",
+        "src": "weapons/DefaultGun/hitboom.jpg",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "weapons/ammo_left_back",
+        "src": "weapons/ammo_left_back.png",
+        "width": 45,
+        "height": 45.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "weapons/ammo_left_back_glow",
+        "src": "weapons/ammo_left_back_glow.jpg",
+        "width": 45.5,
+        "height": 44.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "quality": 1
+        },
+        {
+        "name": "preloader/loading_back",
+        "src": "preloader/loading_back.png",
+        "width": 428,
+        "height": 228,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "player_spot/ps_player_spot/player_spot_atlas",
+        "src": "player_spot/ps_player_spot/player_spot_atlas.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "player_spot/ps_player_spot/weapon_spot_back",
+        "src": "player_spot/ps_player_spot/weapon_spot_back.png",
+        "width": 55,
+        "height": 55,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "player_spot/bet_level/bet_level_atlas",
+        "src": "player_spot/bet_level/bet_level_atlas.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "big_win/big_win_atlas",
+        "src": "big_win/big_win_atlas.png",
+        "width": 4096,
+        "height": 4096,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "blend/blend_atlas",
+        "src": "blend/blend_atlas.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "bomb/bomb_atlas",
+        "src": "bomb/bomb_atlas.png",
+        "width": 4096,
+        "height": 4096,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "bomb/bomb_part",
+        "src": "bomb/bomb_part.png",
+        "width": 208.5,
+        "height": 185.5,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "bomb/wick_poof",
+        "src": "bomb/wick_poof.png",
+        "width": 1024,
+        "height": 467,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name": "boss_mode/earth/stone_explosion_0",
+        "src": "boss_mode/earth/stone_explosion_0.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/earth/stone_explosion_1",
+        "src": "boss_mode/earth/stone_explosion_1.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "vfx": "medium"
+        },
+        {
+        "name":  "boss_mode/earth/stone_fall",
+        "src":  "boss_mode/earth/stone_fall.png",
+        "width":  1024,
+        "height":  512,
+        "frames":  1,
+        "layers":  1,
+        "totalFrames":  1
+        },
+        {
+        "name": "bomb/bomb_poof",
+        "src": "bomb/bomb_poof.jpg",
+        "width": 1024,
+        "height": 300,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1
+        },
+        {
+        "name": "boss_mode/earth/earth_atlas",
+        "src": "boss_mode/earth/earth_atlas.png",
+        "width": 8192,
+        "height": 8192,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "boss_mode/fire/fire_atlas",
+        "src": "boss_mode/fire/fire_atlas.png",
+        "width": 4096,
+        "height": 4096,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "boss_mode/lightning/lightning_atlas",
+        "src": "boss_mode/lightning/lightning_atlas.png",
+        "width": 4096,
+        "height": 4096,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "common/common_atlas",
+        "src": "common/common_atlas.png",
+        "width": 2048,
+        "height": 2048,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "cursor/cursor_atlas",
+        "src": "cursor/cursor_atlas.png",
+        "width": 256,
+        "height": 256,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "isMobile":  false,
+        "scriptGenerated": true
+        },
+        {
+        "name": "enemy_impact/turret_1/turret_1_atlas",
+        "src": "enemy_impact/turret_1/turret_1_atlas.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "enemy_impact/turret_2/turret_2_atlas",
+        "src": "enemy_impact/turret_2/turret_2_atlas.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "enemy_impact/turret_3/turret_3_atlas",
+        "src": "enemy_impact/turret_3/turret_3_atlas.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "enemy_impact/turret_4/turret_4_atlas",
+        "src": "enemy_impact/turret_4/turret_4_atlas.png",
+        "width": 512,
+        "height": 512,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "enemy_impact/turret_5/turret_5_atlas",
+        "src": "enemy_impact/turret_5/turret_5_atlas.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "money_wheel/money_wheel_atlas",
+        "src": "money_wheel/money_wheel_atlas.png",
+        "width": 4096,
+        "height": 4096,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_1/default_turret_1_atlas",
+        "src": "weapons/DefaultGun/default_turret_1/default_turret_1_atlas.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_2/default_turret_2_atlas",
+        "src": "weapons/DefaultGun/default_turret_2/default_turret_2_atlas.png",
+        "width": 512,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_3/default_turret_3_atlas",
+        "src": "weapons/DefaultGun/default_turret_3/default_turret_3_atlas.png",
+        "width": 512,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_4/default_turret_4_atlas",
+        "src": "weapons/DefaultGun/default_turret_4/default_turret_4_atlas.png",
+        "width": 2048,
+        "height": 2048,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        },
+        {
+        "name": "weapons/DefaultGun/default_turret_5/default_turret_5_atlas",
+        "src": "weapons/DefaultGun/default_turret_5/default_turret_5_atlas.png",
+        "width": 1024,
+        "height": 1024,
+        "frames": 1,
+        "layers": 1,
+        "totalFrames": 1,
+        "scriptGenerated": true
+        }
+    ],
+    "sounds":  [
+                   {
+                       "name":  "mq_mus_game_bg_main_1",
+                       "src":  [
+                                   "bg_music/mq_mus_game_bg_main_1_high.mp3",
+                                   "bg_music/mq_mus_game_bg_main_1_high.mp4",
+                                   "bg_music/mq_mus_game_bg_main_1_high.ogg",
+                                   "bg_music/mq_mus_game_bg_main_1_low.mp3",
+                                   "bg_music/mq_mus_game_bg_main_1_low.mp4",
+                                   "bg_music/mq_mus_game_bg_main_1_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  36075,
+                                     "type":  "bg",
+                                     "volume":  0.96,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_mus_game_bg_main_2",
+                       "src":  [
+                                   "bg_music/mq_mus_game_bg_main_2_high.mp3",
+                                   "bg_music/mq_mus_game_bg_main_2_high.mp4",
+                                   "bg_music/mq_mus_game_bg_main_2_high.ogg",
+                                   "bg_music/mq_mus_game_bg_main_2_low.mp3",
+                                   "bg_music/mq_mus_game_bg_main_2_low.mp4",
+                                   "bg_music/mq_mus_game_bg_main_2_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  38452,
+                                     "type":  "bg",
+                                     "volume":  0.96,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_mus_game_bg_main_3",
+                       "src":  [
+                                   "bg_music/mq_mus_game_bg_main_3_high.mp3",
+                                   "bg_music/mq_mus_game_bg_main_3_high.mp4",
+                                   "bg_music/mq_mus_game_bg_main_3_high.ogg",
+                                   "bg_music/mq_mus_game_bg_main_3_low.mp3",
+                                   "bg_music/mq_mus_game_bg_main_3_low.mp4",
+                                   "bg_music/mq_mus_game_bg_main_3_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  39340,
+                                     "type":  "bg",
+                                     "volume":  0.96,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_mus_game_bg_boss",
+                       "src":  [
+                                   "bg_music/mq_mus_game_bg_boss_high.mp3",
+                                   "bg_music/mq_mus_game_bg_boss_high.mp4",
+                                   "bg_music/mq_mus_game_bg_boss_high.ogg",
+                                   "bg_music/mq_mus_game_bg_boss_low.mp3",
+                                   "bg_music/mq_mus_game_bg_boss_low.mp4",
+                                   "bg_music/mq_mus_game_bg_boss_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  32078,
+                                     "type":  "bg",
+                                     "volume":  0.96,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_mus_game_bg_summary_screen",
+                       "src":  [
+                                   "bg_music/mq_mus_game_bg_summary_screen_high.mp3",
+                                   "bg_music/mq_mus_game_bg_summary_screen_high.mp4",
+                                   "bg_music/mq_mus_game_bg_summary_screen_high.ogg",
+                                   "bg_music/mq_mus_game_bg_summary_screen_low.mp3",
+                                   "bg_music/mq_mus_game_bg_summary_screen_low.mp4",
+                                   "bg_music/mq_mus_game_bg_summary_screen_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  14767,
+                                     "type":  "bg",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "capsules_notification_banner",
+                       "src":  [
+                                   "callouts/capsules_notification_banner_high.mp3",
+                                   "callouts/capsules_notification_banner_high.mp4",
+                                   "callouts/capsules_notification_banner_high.ogg",
+                                   "callouts/capsules_notification_banner_low.mp3",
+                                   "callouts/capsules_notification_banner_low.mp4",
+                                   "callouts/capsules_notification_banner_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1205,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "free_shot",
+                       "src":  [
+                                   "wins/free_shot_high.mp3",
+                                   "wins/free_shot_high.mp4",
+                                   "wins/free_shot_high.ogg",
+                                   "wins/free_shot_low.mp3",
+                                   "wins/free_shot_low.mp4",
+                                   "wins/free_shot_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1498,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "weapon_drop",
+                       "src":  [
+                                   "wins/weapon_drop_high.mp3",
+                                   "wins/weapon_drop_high.mp4",
+                                   "wins/weapon_drop_high.ogg",
+                                   "wins/weapon_drop_low.mp3",
+                                   "wins/weapon_drop_low.mp4",
+                                   "wins/weapon_drop_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1954,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  118
+                                 }
+                   },
+                   {
+                       "name":  "summary_win",
+                       "src":  [
+                                   "wins/summary_win_high.mp3",
+                                   "wins/summary_win_high.mp4",
+                                   "wins/summary_win_high.ogg",
+                                   "wins/summary_win_low.mp3",
+                                   "wins/summary_win_low.mp4",
+                                   "wins/summary_win_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  8052,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "boss_coins_explode",
+                       "src":  [
+                                   "wins/boss_coins_explode_high.mp3",
+                                   "wins/boss_coins_explode_high.mp4",
+                                   "wins/boss_coins_explode_high.ogg",
+                                   "wins/boss_coins_explode_low.mp3",
+                                   "wins/boss_coins_explode_low.mp4",
+                                   "wins/boss_coins_explode_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  6792,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  70
+                                 }
+                   },
+                   {
+                       "name":  "critical_hit",
+                       "src":  [
+                                   "wins/critical_hit_high.mp3",
+                                   "wins/critical_hit_high.mp4",
+                                   "wins/critical_hit_high.ogg",
+                                   "wins/critical_hit_low.mp3",
+                                   "wins/critical_hit_low.mp4",
+                                   "wins/critical_hit_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  854,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  75
+                                 }
+                   },
+                   {
+                       "name":  "wins_large",
+                       "src":  [
+                                   "wins/wins_large_high.mp3",
+                                   "wins/wins_large_high.mp4",
+                                   "wins/wins_large_high.ogg",
+                                   "wins/wins_large_low.mp3",
+                                   "wins/wins_large_low.mp4",
+                                   "wins/wins_large_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1410,
+                                     "type":  "fx",
+                                     "volume":  0.35,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "wins_medium",
+                       "src":  [
+                                   "wins/wins_medium_high.mp3",
+                                   "wins/wins_medium_high.mp4",
+                                   "wins/wins_medium_high.ogg",
+                                   "wins/wins_medium_low.mp3",
+                                   "wins/wins_medium_low.mp4",
+                                   "wins/wins_medium_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1463,
+                                     "type":  "fx",
+                                     "volume":  0.38,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "wins_small",
+                       "src":  [
+                                   "wins/wins_small_high.mp3",
+                                   "wins/wins_small_high.mp4",
+                                   "wins/wins_small_high.ogg",
+                                   "wins/wins_small_low.mp3",
+                                   "wins/wins_small_low.mp4",
+                                   "wins/wins_small_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1289,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "wins_coinappear",
+                       "src":  [
+                                   "wins/wins_coinappear_high.mp3",
+                                   "wins/wins_coinappear_high.mp4",
+                                   "wins/wins_coinappear_high.ogg",
+                                   "wins/wins_coinappear_low.mp3",
+                                   "wins/wins_coinappear_low.mp4",
+                                   "wins/wins_coinappear_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  575,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "wins_coincollect",
+                       "src":  [
+                                   "wins/wins_coincollect_high.mp3",
+                                   "wins/wins_coincollect_high.mp4",
+                                   "wins/wins_coincollect_high.ogg",
+                                   "wins/wins_coincollect_low.mp3",
+                                   "wins/wins_coincollect_low.mp4",
+                                   "wins/wins_coincollect_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  784,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_gui_button_generic_ui",
+                       "src":  [
+                                   "mq_gui_button_generic_ui_high.mp3",
+                                   "mq_gui_button_generic_ui_high.mp4",
+                                   "mq_gui_button_generic_ui_high.ogg",
+                                   "mq_gui_button_generic_ui_low.mp3",
+                                   "mq_gui_button_generic_ui_low.mp4",
+                                   "mq_gui_button_generic_ui_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  168,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  50
+                                 }
+                   },
+                   {
+                       "name":  "10secleft",
+                       "src":  [
+                                   "10secleft_high.mp3",
+                                   "10secleft_high.mp4",
+                                   "10secleft_high.ogg",
+                                   "10secleft_low.mp3",
+                                   "10secleft_low.mp4",
+                                   "10secleft_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1625,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  51
+                                 }
+                   },
+                   {
+                       "name":  "ice_breaking",
+                       "src":  [
+                                   "ice_breaking_high.mp3",
+                                   "ice_breaking_high.mp4",
+                                   "ice_breaking_high.ogg",
+                                   "ice_breaking_low.mp3",
+                                   "ice_breaking_low.mp4",
+                                   "ice_breaking_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  810,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  47
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst1",
+                       "src":  [
+                                   "weapons/default/mq_turret_burst1_high.mp3",
+                                   "weapons/default/mq_turret_burst1_high.mp4",
+                                   "weapons/default/mq_turret_burst1_high.ogg",
+                                   "weapons/default/mq_turret_burst1_low.mp3",
+                                   "weapons/default/mq_turret_burst1_low.mp4",
+                                   "weapons/default/mq_turret_burst1_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  464,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  48
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst2",
+                       "src":  [
+                                   "weapons/default/mq_turret_burst2_high.mp3",
+                                   "weapons/default/mq_turret_burst2_high.mp4",
+                                   "weapons/default/mq_turret_burst2_high.ogg",
+                                   "weapons/default/mq_turret_burst2_low.mp3",
+                                   "weapons/default/mq_turret_burst2_low.mp4",
+                                   "weapons/default/mq_turret_burst2_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  563,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  31
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst3",
+                       "src":  [
+                                   "weapons/default/mq_turret_burst3_high.mp3",
+                                   "weapons/default/mq_turret_burst3_high.mp4",
+                                   "weapons/default/mq_turret_burst3_high.ogg",
+                                   "weapons/default/mq_turret_burst3_low.mp3",
+                                   "weapons/default/mq_turret_burst3_low.mp4",
+                                   "weapons/default/mq_turret_burst3_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  529,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  30
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst4",
+                       "src":  [
+                                   "weapons/default/mq_turret_burst4_high.mp3",
+                                   "weapons/default/mq_turret_burst4_high.mp4",
+                                   "weapons/default/mq_turret_burst4_high.ogg",
+                                   "weapons/default/mq_turret_burst4_low.mp3",
+                                   "weapons/default/mq_turret_burst4_low.mp4",
+                                   "weapons/default/mq_turret_burst4_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  550,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  31
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst5",
+                       "src":  [
+                                   "weapons/default/mq_turret_burst5_high.mp3",
+                                   "weapons/default/mq_turret_burst5_high.mp4",
+                                   "weapons/default/mq_turret_burst5_high.ogg",
+                                   "weapons/default/mq_turret_burst5_low.mp3",
+                                   "weapons/default/mq_turret_burst5_low.mp4",
+                                   "weapons/default/mq_turret_burst5_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  563,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  31
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst1_coop",
+                       "src":  "mq_turret_burst1",
+                       "descr":  {
+                                     "length":  464,
+                                     "type":  "fx",
+                                     "volume":  0.67,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst2_coop",
+                       "src":  "mq_turret_burst2",
+                       "descr":  {
+                                     "length":  563,
+                                     "type":  "fx",
+                                     "volume":  0.67,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst3_coop",
+                       "src":  "mq_turret_burst3",
+                       "descr":  {
+                                     "length":  529,
+                                     "type":  "fx",
+                                     "volume":  0.67,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst4_coop",
+                       "src":  "mq_turret_burst4",
+                       "descr":  {
+                                     "length":  550,
+                                     "type":  "fx",
+                                     "volume":  0.67,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_turret_burst5_coop",
+                       "src":  "mq_turret_burst5",
+                       "descr":  {
+                                     "length":  563,
+                                     "type":  "fx",
+                                     "volume":  0.67,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "big_win_sound",
+                       "src":  [
+                                   "wins/big_win/big_win_sound_high.mp3",
+                                   "wins/big_win/big_win_sound_high.mp4",
+                                   "wins/big_win/big_win_sound_high.ogg",
+                                   "wins/big_win/big_win_sound_low.mp3",
+                                   "wins/big_win/big_win_sound_low.mp4",
+                                   "wins/big_win/big_win_sound_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  3901,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "huge_win_sound",
+                       "src":  [
+                                   "wins/big_win/huge_win_sound_high.mp3",
+                                   "wins/big_win/huge_win_sound_high.mp4",
+                                   "wins/big_win/huge_win_sound_high.ogg",
+                                   "wins/big_win/huge_win_sound_low.mp3",
+                                   "wins/big_win/huge_win_sound_low.mp4",
+                                   "wins/big_win/huge_win_sound_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  3901,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mega_win_sound",
+                       "src":  [
+                                   "wins/big_win/mega_win_sound_high.mp3",
+                                   "wins/big_win/mega_win_sound_high.mp4",
+                                   "wins/big_win/mega_win_sound_high.ogg",
+                                   "wins/big_win/mega_win_sound_low.mp3",
+                                   "wins/big_win/mega_win_sound_low.mp4",
+                                   "wins/big_win/mega_win_sound_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  4154,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "turret_change",
+                       "src":  [
+                                   "bet_change/turret_change_high.mp3",
+                                   "bet_change/turret_change_high.mp4",
+                                   "bet_change/turret_change_high.ogg",
+                                   "bet_change/turret_change_low.mp3",
+                                   "bet_change/turret_change_low.mp4",
+                                   "bet_change/turret_change_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  548,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "turret_battleground_change",
+                       "src":  [
+                                   "bet_change/turret_battleground_change_high.mp3",
+                                   "bet_change/turret_battleground_change_high.mp4",
+                                   "bet_change/turret_battleground_change_high.ogg",
+                                   "bet_change/turret_battleground_change_low.mp3",
+                                   "bet_change/turret_battleground_change_low.mp4",
+                                   "bet_change/turret_battleground_change_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  993,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "mq_dragonstone_round_countdown",
+                       "src":  [
+                                   "mq_dragonstone_round_countdown_high.mp3",
+                                   "mq_dragonstone_round_countdown_high.mp4",
+                                   "mq_dragonstone_round_countdown_high.ogg",
+                                   "mq_dragonstone_round_countdown_low.mp3",
+                                   "mq_dragonstone_round_countdown_low.mp4",
+                                   "mq_dragonstone_round_countdown_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  918,
+                                     "type":  "fx",
+                                     "volume":  1,
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "bomb_container_explosion",
+                       "src":  [
+                                   "capsules/bomb/bomb_container_explosion_high.mp3",
+                                   "capsules/bomb/bomb_container_explosion_high.mp4",
+                                   "capsules/bomb/bomb_container_explosion_high.ogg",
+                                   "capsules/bomb/bomb_container_explosion_low.mp3",
+                                   "capsules/bomb/bomb_container_explosion_low.mp4",
+                                   "capsules/bomb/bomb_container_explosion_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  940,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "bomb_bounce_explosion",
+                       "src":  [
+                                   "capsules/bomb/bomb_bounce_explosion_high.mp3",
+                                   "capsules/bomb/bomb_bounce_explosion_high.mp4",
+                                   "capsules/bomb/bomb_bounce_explosion_high.ogg",
+                                   "capsules/bomb/bomb_bounce_explosion_low.mp3",
+                                   "capsules/bomb/bomb_bounce_explosion_low.mp4",
+                                   "capsules/bomb/bomb_bounce_explosion_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  4362,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "freeze_ground",
+                       "src":  [
+                                   "capsules/freeze/freeze_ground_high.mp3",
+                                   "capsules/freeze/freeze_ground_high.mp4",
+                                   "capsules/freeze/freeze_ground_high.ogg",
+                                   "capsules/freeze/freeze_ground_low.mp3",
+                                   "capsules/freeze/freeze_ground_low.mp4",
+                                   "capsules/freeze/freeze_ground_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1536,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "freeze_container_explosion",
+                       "src":  [
+                                   "capsules/freeze/freeze_container_explosion_high.mp3",
+                                   "capsules/freeze/freeze_container_explosion_high.mp4",
+                                   "capsules/freeze/freeze_container_explosion_high.ogg",
+                                   "capsules/freeze/freeze_container_explosion_low.mp3",
+                                   "capsules/freeze/freeze_container_explosion_low.mp4",
+                                   "capsules/freeze/freeze_container_explosion_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1058,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "instakill_triggered",
+                       "src":  [
+                                   "capsules/instakill/instakill_triggered_high.mp3",
+                                   "capsules/instakill/instakill_triggered_high.mp4",
+                                   "capsules/instakill/instakill_triggered_high.ogg",
+                                   "capsules/instakill/instakill_triggered_low.mp3",
+                                   "capsules/instakill/instakill_triggered_low.mp4",
+                                   "capsules/instakill/instakill_triggered_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  2873,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "instakill_beam",
+                       "src":  [
+                                   "capsules/instakill/instakill_beam_high.mp3",
+                                   "capsules/instakill/instakill_beam_high.mp4",
+                                   "capsules/instakill/instakill_beam_high.ogg",
+                                   "capsules/instakill/instakill_beam_low.mp3",
+                                   "capsules/instakill/instakill_beam_low.mp4",
+                                   "capsules/instakill/instakill_beam_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  888,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "instakill_outro",
+                       "src":  [
+                                   "capsules/instakill/instakill_outro_high.mp3",
+                                   "capsules/instakill/instakill_outro_high.mp4",
+                                   "capsules/instakill/instakill_outro_high.ogg",
+                                   "capsules/instakill/instakill_outro_low.mp3",
+                                   "capsules/instakill/instakill_outro_low.mp4",
+                                   "capsules/instakill/instakill_outro_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  966,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "lasernet",
+                       "src":  [
+                                   "capsules/lasernet/lasernet_high.mp3",
+                                   "capsules/lasernet/lasernet_high.mp4",
+                                   "capsules/lasernet/lasernet_high.ogg",
+                                   "capsules/lasernet/lasernet_low.mp3",
+                                   "capsules/lasernet/lasernet_low.mp4",
+                                   "capsules/lasernet/lasernet_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  4415,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "lightning",
+                       "src":  [
+                                   "capsules/lightning/lightning_high.mp3",
+                                   "capsules/lightning/lightning_high.mp4",
+                                   "capsules/lightning/lightning_high.ogg",
+                                   "capsules/lightning/lightning_low.mp3",
+                                   "capsules/lightning/lightning_low.mp4",
+                                   "capsules/lightning/lightning_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  3735,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "moneywheel_container_explosion",
+                       "src":  [
+                                   "capsules/moneywheel/moneywheel_container_explosion_high.mp3",
+                                   "capsules/moneywheel/moneywheel_container_explosion_high.mp4",
+                                   "capsules/moneywheel/moneywheel_container_explosion_high.ogg",
+                                   "capsules/moneywheel/moneywheel_container_explosion_low.mp3",
+                                   "capsules/moneywheel/moneywheel_container_explosion_low.mp4",
+                                   "capsules/moneywheel/moneywheel_container_explosion_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1410,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "moneywheel_popup",
+                       "src":  [
+                                   "capsules/moneywheel/moneywheel_popup_high.mp3",
+                                   "capsules/moneywheel/moneywheel_popup_high.mp4",
+                                   "capsules/moneywheel/moneywheel_popup_high.ogg",
+                                   "capsules/moneywheel/moneywheel_popup_low.mp3",
+                                   "capsules/moneywheel/moneywheel_popup_low.mp4",
+                                   "capsules/moneywheel/moneywheel_popup_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  940,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "moneywheel_highlight",
+                       "src":  [
+                                   "capsules/moneywheel/moneywheel_highlight_high.mp3",
+                                   "capsules/moneywheel/moneywheel_highlight_high.mp4",
+                                   "capsules/moneywheel/moneywheel_highlight_high.ogg",
+                                   "capsules/moneywheel/moneywheel_highlight_low.mp3",
+                                   "capsules/moneywheel/moneywheel_highlight_low.mp4",
+                                   "capsules/moneywheel/moneywheel_highlight_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  993,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "moneywheel_tension_loop",
+                       "src":  [
+                                   "capsules/moneywheel/moneywheel_tension_loop_high.mp3",
+                                   "capsules/moneywheel/moneywheel_tension_loop_high.mp4",
+                                   "capsules/moneywheel/moneywheel_tension_loop_high.ogg",
+                                   "capsules/moneywheel/moneywheel_tension_loop_low.mp3",
+                                   "capsules/moneywheel/moneywheel_tension_loop_low.mp4",
+                                   "capsules/moneywheel/moneywheel_tension_loop_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  3683,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "moneywheel_win",
+                       "src":  [
+                                   "capsules/moneywheel/moneywheel_win_high.mp3",
+                                   "capsules/moneywheel/moneywheel_win_high.mp4",
+                                   "capsules/moneywheel/moneywheel_win_high.ogg",
+                                   "capsules/moneywheel/moneywheel_win_low.mp3",
+                                   "capsules/moneywheel/moneywheel_win_low.mp4",
+                                   "capsules/moneywheel/moneywheel_win_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1593,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "rocket_container_explosion",
+                       "src":  [
+                                   "capsules/rocket/rocket_container_explosion_high.mp3",
+                                   "capsules/rocket/rocket_container_explosion_high.mp4",
+                                   "capsules/rocket/rocket_container_explosion_high.ogg",
+                                   "capsules/rocket/rocket_container_explosion_low.mp3",
+                                   "capsules/rocket/rocket_container_explosion_low.mp4",
+                                   "capsules/rocket/rocket_container_explosion_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1358,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "rocket_whoosh",
+                       "src":  [
+                                   "capsules/rocket/rocket_whoosh_high.mp3",
+                                   "capsules/rocket/rocket_whoosh_high.mp4",
+                                   "capsules/rocket/rocket_whoosh_high.ogg",
+                                   "capsules/rocket/rocket_whoosh_low.mp3",
+                                   "capsules/rocket/rocket_whoosh_low.mp4",
+                                   "capsules/rocket/rocket_whoosh_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  627,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "rocket_explosion",
+                       "src":  [
+                                   "capsules/rocket/rocket_explosion_high.mp3",
+                                   "capsules/rocket/rocket_explosion_high.mp4",
+                                   "capsules/rocket/rocket_explosion_high.ogg",
+                                   "capsules/rocket/rocket_explosion_low.mp3",
+                                   "capsules/rocket/rocket_explosion_low.mp4",
+                                   "capsules/rocket/rocket_explosion_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1672,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "fire_ice_boss_death",
+                       "src":  [
+                                   "enemies/bosses/fire_ice_boss_death_high.mp3",
+                                   "enemies/bosses/fire_ice_boss_death_high.mp4",
+                                   "enemies/bosses/fire_ice_boss_death_high.ogg",
+                                   "enemies/bosses/fire_ice_boss_death_low.mp3",
+                                   "enemies/bosses/fire_ice_boss_death_low.mp4",
+                                   "enemies/bosses/fire_ice_boss_death_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  4643,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "fire_boss_spawn",
+                       "src":  [
+                                   "enemies/bosses/fire_boss_spawn_high.mp3",
+                                   "enemies/bosses/fire_boss_spawn_high.mp4",
+                                   "enemies/bosses/fire_boss_spawn_high.ogg",
+                                   "enemies/bosses/fire_boss_spawn_low.mp3",
+                                   "enemies/bosses/fire_boss_spawn_low.mp4",
+                                   "enemies/bosses/fire_boss_spawn_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  3814,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "earth_boss_spawn",
+                       "src":  [
+                                   "enemies/bosses/earth_boss_spawn_high.mp3",
+                                   "enemies/bosses/earth_boss_spawn_high.mp4",
+                                   "enemies/bosses/earth_boss_spawn_high.ogg",
+                                   "enemies/bosses/earth_boss_spawn_low.mp3",
+                                   "enemies/bosses/earth_boss_spawn_low.mp4",
+                                   "enemies/bosses/earth_boss_spawn_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  4859,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "earth_boss_death",
+                       "src":  [
+                                   "enemies/bosses/earth_boss_death_high.mp3",
+                                   "enemies/bosses/earth_boss_death_high.mp4",
+                                   "enemies/bosses/earth_boss_death_high.ogg",
+                                   "enemies/bosses/earth_boss_death_low.mp3",
+                                   "enemies/bosses/earth_boss_death_low.mp4",
+                                   "enemies/bosses/earth_boss_death_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  4726,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "lightning_boss_spawn",
+                       "src":  [
+                                   "enemies/bosses/lightning_boss_spawn_high.mp3",
+                                   "enemies/bosses/lightning_boss_spawn_high.mp4",
+                                   "enemies/bosses/lightning_boss_spawn_high.ogg",
+                                   "enemies/bosses/lightning_boss_spawn_low.mp3",
+                                   "enemies/bosses/lightning_boss_spawn_low.mp4",
+                                   "enemies/bosses/lightning_boss_spawn_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  6792,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "lightning_boss_death",
+                       "src":  [
+                                   "enemies/bosses/lightning_boss_death_high.mp3",
+                                   "enemies/bosses/lightning_boss_death_high.mp4",
+                                   "enemies/bosses/lightning_boss_death_high.ogg",
+                                   "enemies/bosses/lightning_boss_death_low.mp3",
+                                   "enemies/bosses/lightning_boss_death_low.mp4",
+                                   "enemies/bosses/lightning_boss_death_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  6028,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "ice_boss_spawn",
+                       "src":  [
+                                   "enemies/bosses/ice_boss_spawn_high.mp3",
+                                   "enemies/bosses/ice_boss_spawn_high.mp4",
+                                   "enemies/bosses/ice_boss_spawn_high.ogg",
+                                   "enemies/bosses/ice_boss_spawn_low.mp3",
+                                   "enemies/bosses/ice_boss_spawn_low.mp4",
+                                   "enemies/bosses/ice_boss_spawn_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  5224,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "boss_laugh",
+                       "src":  [
+                                   "enemies/bosses/boss_laugh_high.mp3",
+                                   "enemies/bosses/boss_laugh_high.mp4",
+                                   "enemies/bosses/boss_laugh_high.ogg",
+                                   "enemies/bosses/boss_laugh_low.mp3",
+                                   "enemies/bosses/boss_laugh_low.mp4",
+                                   "enemies/bosses/boss_laugh_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  4101,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "fire_boss_spawn_caption",
+                       "src":  [
+                                   "enemies/bosses/captions/fire_boss_spawn_caption_high.mp3",
+                                   "enemies/bosses/captions/fire_boss_spawn_caption_high.mp4",
+                                   "enemies/bosses/captions/fire_boss_spawn_caption_high.ogg",
+                                   "enemies/bosses/captions/fire_boss_spawn_caption_low.mp3",
+                                   "enemies/bosses/captions/fire_boss_spawn_caption_low.mp4",
+                                   "enemies/bosses/captions/fire_boss_spawn_caption_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1965,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "earth_boss_spawn_caption",
+                       "src":  [
+                                   "enemies/bosses/captions/earth_boss_spawn_caption_high.mp3",
+                                   "enemies/bosses/captions/earth_boss_spawn_caption_high.mp4",
+                                   "enemies/bosses/captions/earth_boss_spawn_caption_high.ogg",
+                                   "enemies/bosses/captions/earth_boss_spawn_caption_low.mp3",
+                                   "enemies/bosses/captions/earth_boss_spawn_caption_low.mp4",
+                                   "enemies/bosses/captions/earth_boss_spawn_caption_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1367,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "lightning_boss_spawn_caption",
+                       "src":  [
+                                   "enemies/bosses/captions/lightning_boss_spawn_caption_high.mp3",
+                                   "enemies/bosses/captions/lightning_boss_spawn_caption_high.mp4",
+                                   "enemies/bosses/captions/lightning_boss_spawn_caption_high.ogg",
+                                   "enemies/bosses/captions/lightning_boss_spawn_caption_low.mp3",
+                                   "enemies/bosses/captions/lightning_boss_spawn_caption_low.mp4",
+                                   "enemies/bosses/captions/lightning_boss_spawn_caption_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1984,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   },
+                   {
+                       "name":  "ice_boss_spawn_caption",
+                       "src":  [
+                                   "enemies/bosses/captions/ice_boss_spawn_caption_high.mp3",
+                                   "enemies/bosses/captions/ice_boss_spawn_caption_high.mp4",
+                                   "enemies/bosses/captions/ice_boss_spawn_caption_high.ogg",
+                                   "enemies/bosses/captions/ice_boss_spawn_caption_low.mp3",
+                                   "enemies/bosses/captions/ice_boss_spawn_caption_low.mp4",
+                                   "enemies/bosses/captions/ice_boss_spawn_caption_low.ogg"
+                               ],
+                       "descr":  {
+                                     "length":  1608,
+                                     "type":  "fx",
+                                     "offset":  0
+                                 }
+                   }
+               ],
+    "fonts":  [
+                  {
+                      "name":  "fnt_nm_arial_currency",
+                      "src":  "currency.ttf"
+                  },
+                  {
+                      "name":  "fnt_nm_amerika",
+                      "src":  "amerika_en.ttf"
+                  },
+                  {
+                      "name":  "fnt_nm_barlow_bold_digits",
+                      "src":  "fnt_nm_barlow_bold_digits.ttf"
+                  }
+              ]
+}

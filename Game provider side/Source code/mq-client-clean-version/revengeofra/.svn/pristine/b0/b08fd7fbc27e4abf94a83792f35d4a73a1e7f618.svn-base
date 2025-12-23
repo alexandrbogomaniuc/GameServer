@@ -1,0 +1,74 @@
+import SimpleUIView from '../../../../../../../common/PIXI/src/view/base/SimpleUIView';
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import ActivePromosCarousel from './ActivePromosCarousel';
+import ActivePromosList from './ActivePromosList';
+
+const PANEL_WIDTH = 260;
+const PANEL_HEIGHT = 16;
+const PROMOS_PANEL_SIZE = { width: PANEL_WIDTH, height: PANEL_HEIGHT };
+
+class PromosPanelView extends SimpleUIView 
+{
+	static get ON_PROMO_DETAILS_BTN_CLICKED()		{ return ActivePromosList.ON_PROMO_DETAILS_BTN_CLICKED }
+
+	//INTERFACE...
+	addActivePromos(activePromosInfos)
+	{
+		this._addActivePromos(activePromosInfos);
+	}
+
+	removePromo(promoInfo)
+	{
+		let list = this._activePromosList;
+		if (list)
+		{
+			if (list.hasItem(promoInfo))
+			{
+				list.removeItem(promoInfo);
+			}
+		}
+	}
+	//...INTERFACE
+
+	//INIT...
+	constructor() 
+	{
+		super();
+
+		this._contentContainer = this.addChild(new Sprite());
+		this._activePromosList = null;
+		this._activePromosCarousel = null;
+
+		this._initPromoPanelView();
+	}
+
+	_initPromoPanelView()
+	{
+		let container = this._contentContainer;
+		container.position.set(-PANEL_WIDTH/2, -PANEL_HEIGHT/2);
+	}
+	//...INIT
+
+	_addActivePromos(activePromosInfos)
+	{
+		let activePromosList = this._activePromosList = new ActivePromosList();
+		activePromosList.data = activePromosInfos;
+		activePromosList.on(ActivePromosList.ON_PROMO_DETAILS_BTN_CLICKED, this.emit, this);
+
+		let lCarousel_apsc = this._activePromosCarousel = new ActivePromosCarousel(activePromosList);
+		lCarousel_apsc.position.set(35, 0);
+
+		this._contentContainer.addChild(lCarousel_apsc);
+	}
+
+	destroy()
+	{
+		super.destroy();
+
+		this._activePromosList = null;
+		this._activePromosCarousel = null;
+	}
+}
+
+export default PromosPanelView;
+export {PROMOS_PANEL_SIZE};

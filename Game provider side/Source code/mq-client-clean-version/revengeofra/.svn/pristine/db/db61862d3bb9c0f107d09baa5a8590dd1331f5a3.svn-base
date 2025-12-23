@@ -1,0 +1,118 @@
+import Sprite from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import HorusEffectsManager from './HorusEffectsManager';
+import { APP } from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import { FRAME_RATE } from '../../../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
+import * as Easing from '../../../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import { Utils } from '../../../../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+
+class StaffOrbAnimation extends Sprite
+{
+	constructor()
+	{
+		super();
+
+		this._gameScreen = APP.currentWindow;
+		this._vfxProfleMediumOrGreater = APP.profilingController.info.isVfxProfileValueMediumOrGreater;
+		
+		this._orbContainer = null;
+		this._orb = null;
+		this._circle = null;
+
+		this._initOrbContainer();
+
+		this.startAnimation();
+	}
+
+	//ANIMATION...
+	startAnimation()
+	{
+		this._orb.play();
+
+		this.startCircleAnimation();
+		this.startContainerScaleAndRotationAnimation();
+		this.startContainerPositionAnimation();
+	}
+
+	startContainerScaleAndRotationAnimation()
+	{
+		var rotation = this._orbContainer.rotation;
+
+		Sequence.start(this._orbContainer, [
+			{
+				tweens:
+					[
+						{prop: "scale.x", to: Utils.getRandomWiggledValue(0.7, 0.04)},
+						{prop: "scale.y", to: Utils.getRandomWiggledValue(0.7, 0.04)},
+						{prop: "rotation", to: rotation + 0.2}
+					],
+				duration: 7 * FRAME_RATE,
+				onfinish: (e) =>
+				{
+					this.startContainerScaleAndRotationAnimation();
+				}
+			}
+		]);
+	}
+
+	startContainerPositionAnimation()
+	{
+		Sequence.start(this._orbContainer, [
+			{tweens:[{prop: "position.y", to: -10},], duration: 45 * FRAME_RATE, ease: Easing.sine.easeInOut},
+			{tweens:[{prop: "position.y", to:  10},], duration: 45 * FRAME_RATE, ease: Easing.sine.easeInOut,
+				onfinish: (e) =>
+				{
+					this.startContainerPositionAnimation();
+				}
+			},
+		]);
+	}
+
+	startCircleAnimation()
+	{
+		Sequence.start(this._circle, [
+			{tweens: [{prop: "scale.x", to: 0.3}, {prop: "scale.y", to: 0.3}, {prop: "alpha", to: 0.5}], duration:  4 * FRAME_RATE},
+			{tweens: [{prop: "scale.x", to: 0.7}, {prop: "scale.y", to: 0.7}, {prop: "alpha", to:   0}], duration: 10 * FRAME_RATE},
+			{tweens: [], duration: 15 * FRAME_RATE,
+				onfinish: (e) =>
+				{
+					this._circle.scale.set(0.13);
+					this.startCircleAnimation();
+				}
+			}
+		]);
+	}
+	//...ANIMATION
+
+	//ASSETS...
+	_initOrbContainer()
+	{
+		let container = this._orbContainer = this.addChild(new Sprite());
+		container.scale.set(0.7);
+		container.position.y = 15;;
+
+		let orb = this._orb = container.addChild(new Sprite());
+		orb.textures = HorusEffectsManager.getStaffOrbTextures();
+		orb.blendMode = PIXI.BLEND_MODES.ADD;
+		orb.animationSpeed = 0.2;
+
+ 		let circle = this._circle = container.addChild(APP.library.getSprite("enemies/horus/fx/circle"));
+		circle.blendMode = PIXI.BLEND_MODES.ADD;
+		circle.scale.set(0.13);
+		circle.alpha = 0;
+	}
+	//...ASSETS
+
+	destroy()
+	{
+		this._orb.stop();
+
+		Sequence.destroy(Sequence.findByTarget(this._orbContainer));
+		Sequence.destroy(Sequence.findByTarget(this._circle));
+		Sequence.destroy(Sequence.findByTarget(this._orb));
+
+		super.destroy();
+	}
+}
+
+export default StaffOrbAnimation;

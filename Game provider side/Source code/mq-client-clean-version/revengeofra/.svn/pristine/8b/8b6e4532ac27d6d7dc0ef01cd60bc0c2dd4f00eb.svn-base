@@ -1,0 +1,139 @@
+
+UndiscoveredMummy0.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/arm_lf
+  rotate: false
+  xy: 202, 29
+  size: 113, 201
+  orig: 113, 201
+  offset: 0, 0
+  index: -1
+0/arm_rt
+  rotate: true
+  xy: 638, 259
+  size: 105, 183
+  orig: 105, 183
+  offset: 0, 0
+  index: -1
+0/body
+  rotate: false
+  xy: 4, 234
+  size: 298, 273
+  orig: 298, 273
+  offset: 0, 0
+  index: -1
+0/calf_lf
+  rotate: false
+  xy: 782, 10
+  size: 105, 142
+  orig: 105, 142
+  offset: 0, 0
+  index: -1
+0/calf_rt
+  rotate: false
+  xy: 891, 19
+  size: 90, 133
+  orig: 90, 133
+  offset: 0, 0
+  index: -1
+0/eyes_glow
+  rotate: false
+  xy: 906, 300
+  size: 102, 77
+  orig: 102, 77
+  offset: 0, 0
+  index: -1
+0/foot_lf
+  rotate: true
+  xy: 487, 190
+  size: 134, 147
+  orig: 134, 147
+  offset: 0, 0
+  index: -1
+0/foot_rt
+  rotate: true
+  xy: 631, 7
+  size: 145, 147
+  orig: 145, 147
+  offset: 0, 0
+  index: -1
+0/forearm_lf
+  rotate: true
+  xy: 638, 156
+  size: 99, 177
+  orig: 99, 177
+  offset: 0, 0
+  index: -1
+0/forearm_rt
+  rotate: true
+  xy: 457, 72
+  size: 114, 170
+  orig: 114, 170
+  offset: 0, 0
+  index: -1
+0/hand_lf
+  rotate: true
+  xy: 847, 381
+  size: 126, 163
+  orig: 126, 163
+  offset: 0, 0
+  index: -1
+0/hand_lf2
+  rotate: true
+  xy: 819, 156
+  size: 99, 108
+  orig: 99, 108
+  offset: 0, 0
+  index: -1
+0/hand_rt
+  rotate: true
+  xy: 306, 252
+  size: 72, 177
+  orig: 72, 177
+  offset: 0, 0
+  index: -1
+0/hand_rt2
+  rotate: false
+  xy: 825, 261
+  size: 77, 103
+  orig: 77, 103
+  offset: 0, 0
+  index: -1
+0/head
+  rotate: false
+  xy: 4, 4
+  size: 194, 226
+  orig: 194, 226
+  offset: 0, 0
+  index: -1
+0/hip
+  rotate: true
+  xy: 306, 328
+  size: 179, 328
+  orig: 179, 328
+  offset: 0, 0
+  index: -1
+0/leg_lf
+  rotate: true
+  xy: 638, 368
+  size: 139, 205
+  orig: 139, 205
+  offset: 0, 0
+  index: -1
+0/leg_rt
+  rotate: false
+  xy: 319, 54
+  size: 134, 194
+  orig: 134, 194
+  offset: 0, 0
+  index: -1
+0/snake
+  rotate: true
+  xy: 319, 8
+  size: 42, 64
+  orig: 42, 64
+  offset: 0, 0
+  index: -1

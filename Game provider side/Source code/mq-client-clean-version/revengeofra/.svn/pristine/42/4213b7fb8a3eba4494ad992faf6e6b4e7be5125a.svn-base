@@ -1,0 +1,375 @@
+import { APP } from '../../../../../../common/PIXI/src/globals';
+import Sprite from '../../../../../../common/PIXI/src/display/Sprite';
+import * as Easing from '../../../../../../common/PIXI/src/animation/easing';
+import Sequence from '../../../../../../common/PIXI/src/animation/Sequence';
+import Timer from '../../../../../../common/PIXI/src/Timer';
+import { FRAME_RATE } from '../../../../../shared/src/CommonConstants';
+
+const TREASURE_ASSETS = [
+	{ id: 1, asset: "round_result/chest/stack_1" },
+	{ id: 2, asset: "round_result/chest/stack_2" },
+	{ id: 3, asset: "round_result/chest/stack_3" },
+	{ id: 4, asset: "round_result/chest/stack_4" },
+	{ id: 5, asset: "round_result/chest/stack_5" },
+	{ id: 6, asset: "round_result/chest/stack_6" },
+	{ id: 7, asset: "round_result/chest/chest" },
+	{ id: 8, asset: "round_result/chest/effect/glow_1" },
+	{ id: 9, asset: "round_result/chest/effect/glow_2" },
+	{ id: 10, asset: "round_result/chest/effect/glow_3" },
+	{ id: 11, asset: "round_result/chest/effect/glow_4" },
+	{ id: 12, asset: "round_result/chest/effect/glow_5" },
+	{ id: 13, asset: "round_result/chest/effect/sperkles" },
+	{ id: 14, asset: "round_result/chest/back" }
+];
+
+const TREASURE_LAYER = [
+	{ layer: 0, id: 14, position: { x: 0, y: 10.5 }, addMode: false, delay: 0 * FRAME_RATE, duration: 107 * FRAME_RATE },
+	{ layer: 1, id: 1, position: { x: -1.5, y: 17.5 }, addMode: false, delay: 24 * FRAME_RATE, duration: 23 * FRAME_RATE },
+	{ layer: 2, id: 2, position: { x: 31.5, y: 17.5 }, addMode: false, delay: 59 * FRAME_RATE, duration: 23 * FRAME_RATE },
+	{ layer: 3, id: 3, position: { x: -22.5, y: -3 }, addMode: false, delay: 52 * FRAME_RATE, duration: 23 * FRAME_RATE },
+	{ layer: 4, id: 7, position: { x: 4, y: 0.5 }, },
+	{ layer: 5, id: 8, position: { x: -5.5, y: -13.5 }, addMode: true, delay: 32 * FRAME_RATE, duration: 61 * FRAME_RATE },
+	{ layer: 6, id: 9, position: { x: -5.5, y: -13.5 }, addMode: true, delay: 39 * FRAME_RATE, duration: 73 * FRAME_RATE },
+	{ layer: 7, id: 10, position: { x: -5.5, y: -11 }, addMode: true, delay: 48 * FRAME_RATE, duration: 70 * FRAME_RATE },
+	{ layer: 8, id: 13, position: { x: -5.5, y: -20 }, addMode: true, delay: 54 * FRAME_RATE, duration: 74 * FRAME_RATE },
+	{ layer: 9, id: 11, position: { x: -5.5, y: -6 }, addMode: true, delay: 58 * FRAME_RATE, duration: 81 * FRAME_RATE },
+	{ layer: 10, id: 4, position: { x: 31.5, y: 25.5 }, addMode: false, delay: 59 * FRAME_RATE, duration: 23 * FRAME_RATE },
+	{ layer: 11, id: 5, position: { x: 41.5, y: 17 }, addMode: false, delay: 60 * FRAME_RATE, duration: 23 * FRAME_RATE },
+	{ layer: 12, id: 4, position: { x: 34.5, y: 29.5 }, addMode: false, delay: 34 * FRAME_RATE, duration: 23 * FRAME_RATE },
+	{ layer: 13, id: 6, position: { x: -24, y: 25 }, addMode: true, delay: 34 * FRAME_RATE, duration: 23 * FRAME_RATE },
+	{ layer: 14, id: 4, position: { x: -44, y: 26.5 }, addMode: false, delay: 51 * FRAME_RATE, duration: 23 * FRAME_RATE },
+	{ layer: 15, id: 12, position: { x: -19.5, y: -8.5 }, addMode: false, delay: 52 * FRAME_RATE, duration: 23 * FRAME_RATE }
+];
+
+const TREASURE_FLARE_SEQUENCE = [
+	{ id: 0, position: { x: -5, y: -10 }, delay: 30 * FRAME_RATE },
+	{ id: 1, position: { x: 32, y: -20 }, delay: 25 * FRAME_RATE },
+	{ id: 2, position: { x: -52, y: 25 }, delay: 10 * FRAME_RATE },
+	{ id: 3, position: { x: 3, y: -28 }, delay: 20 * FRAME_RATE },
+	{ id: 4, position: { x: -34, y: -18 }, delay: 20 * FRAME_RATE },
+	{ id: 5, position: { x: -24, y: -11 }, delay: 20 * FRAME_RATE },
+	{ id: 6, position: { x: -4, y: 5 }, delay: 20 * FRAME_RATE },
+	{ id: 7, position: { x: 42, y: 6 }, delay: 20 * FRAME_RATE }
+];
+
+const SPERCLES = 8;
+const CHEST = 4;
+
+class RoundResultChestView extends Sprite
+{
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	show()
+	{
+		this._show();
+	}
+
+	cleareAnimation()
+	{
+		this._cleareAnimation();
+	}
+
+	constructor()
+	{
+		super();
+
+		this._fChestCountainer_sprt = null;
+		this._fTreasure_spr_arr = [];
+		this._fFlare_arr = [];
+		this._fSequences_arr = [];
+		this._fFlareSequences_arr = [];
+		this._fIsFlaringEvailable_bl = null;
+		this._fFlareTurn_num = 0;
+
+		this._init();
+	}
+
+	_init()
+	{
+		this._fChestCountainer_sprt = this.addChild(new Sprite());
+
+		for (let i = 0; i < TREASURE_LAYER.length; i++)
+		{
+			let lTreasure_sprt = this._fChestCountainer_sprt.addChild(APP.library.getSprite(TREASURE_ASSETS[TREASURE_LAYER[i].id - 1].asset));
+			lTreasure_sprt.position.set(TREASURE_LAYER[i].position.x, TREASURE_LAYER[i].position.y);
+			lTreasure_sprt.alpha = 0;
+			if (TREASURE_LAYER[i].addMode) lTreasure_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+			this._fTreasure_spr_arr.push(lTreasure_sprt);
+		}
+
+		for (let i = 0; i < TREASURE_FLARE_SEQUENCE.length; i++)
+		{
+			let lFlare_sprt = this._fChestCountainer_sprt.addChild(APP.library.getSprite("round_result/chest/flare"));
+			lFlare_sprt.position.set(TREASURE_FLARE_SEQUENCE[i].position.x, TREASURE_FLARE_SEQUENCE[i].position.y);
+			lFlare_sprt.scale.set(0);
+			this._fFlare_arr.push(lFlare_sprt);
+		}
+
+		this._showChest();
+	}
+
+	_showChest()
+	{
+		this._fTreasure_spr_arr[CHEST].alpha = 1;
+	}
+
+	_show()
+	{
+		if (this._fTreasure_spr_arr)
+		{
+			for (let i = 0; i < this._fTreasure_spr_arr.length; i++)
+			{
+				this._fTreasure_spr_arr[i].alpha = 1;
+			}
+
+			for (let i = 0; i < this._fFlare_arr.length; i++)
+			{
+				this._fFlare_arr[i].scale.set(0);
+			}
+
+			this._cleareAnimation();
+		}
+	}
+
+	_hideTreasure()
+	{
+		for (let i = 0; i < this._fTreasure_spr_arr.length; i++)
+		{
+			if (i == CHEST) continue;
+			this._fTreasure_spr_arr[i].alpha = 0;
+		}
+
+		for (let i = 0; i < this._fFlare_arr.length; i++)
+		{
+			this._fFlare_arr[i].scale.set(0);
+		}
+
+		this._fFlareAnimationDelay_ts && this._fFlareAnimationDelay_ts.destructor();
+		this._fFlareAnimationDelay_ts = null;
+
+		this._fFlareTurn_num = 0;
+
+		this._removeSequences(this._fSequences_arr);
+		this._removeSequences(this._fFlareSequences_arr);
+	}
+
+	_startAnimation()
+	{
+		this._fIsFlaringEvailable_bl = true;
+
+		this._resetDelay();
+		this._hideTreasure();
+		this._startFlares();
+		this._startTresureAnimation();
+		this._startSparklesAnimation();
+	}
+
+	_startTresureAnimation()
+	{
+		let lIsLast_bl = false;
+		for (let i = 0; i < this._fTreasure_spr_arr.length; i++)
+		{
+			if (i == CHEST) continue;
+			if (i == this._fTreasure_spr_arr.length - 1) lIsLast_bl = true;
+
+			this._animate(this._fTreasure_spr_arr[i], TREASURE_LAYER[i].delay, TREASURE_LAYER[i].duration, lIsLast_bl)
+		}
+	}
+
+	_startSparklesAnimation()
+	{
+		this._fTreasure_spr_arr[SPERCLES].rotation = -3 * Math.PI / 180;
+		this._fTreasure_spr_arr[SPERCLES].scale.set(0.7);
+
+		let sequenceRotatin = [
+			{
+				tweens: [],
+				duration: 40 * FRAME_RATE,
+			},
+			{
+				tweens: [
+					{ prop: "rotation", to: 0 }
+				],
+				duration: 247 * FRAME_RATE,
+				ease: Easing.sine.easeOut
+			}
+		];
+
+		Sequence.start(this._fTreasure_spr_arr[SPERCLES], sequenceRotatin);
+
+		let sequenceScale = [
+			{
+				tweens: [],
+				duration: 46 * FRAME_RATE,
+			},
+			{
+				tweens: [
+					{ prop: "scale.x", to: 1 },
+					{ prop: "scale.y", to: 1 }
+				],
+				duration: 228 * FRAME_RATE,
+				ease: Easing.sine.easeOut
+			}
+		];
+
+		Sequence.start(this._fTreasure_spr_arr[SPERCLES], sequenceScale);
+	}
+
+	_animate(aTreasure_sprt, aDelay_num, aDuration_num, aIsLast_bl)
+	{
+		let sequenceVisible = [
+			{
+				tweens: [],
+				duration: aDelay_num,
+			},
+			{
+				tweens: [
+					{ prop: "alpha", to: 1 }
+				],
+				duration: aDuration_num,
+				onfinish: () => { if (aIsLast_bl) this._removeSequences(this._fSequences_arr); },
+				ease: Easing.sine.easeOut
+			}
+		];
+
+		let seq = Sequence.start(aTreasure_sprt, sequenceVisible);
+		this._addSequence(this._fSequences_arr, seq);
+	}
+
+	_startFlares()
+	{
+		if (this._fIsFlaringEvailable_bl)
+		{
+			this._fFlareAnimationDelay_t = new Timer(this._flareAnimate(this._fFlare_arr[this._fFlareTurn_num], TREASURE_FLARE_SEQUENCE[this._fFlareTurn_num].delay), 150);
+
+			this._fFlareTurn_num++;
+			if (this._fFlareTurn_num > this._fFlare_arr.length - 1) this._fFlareTurn_num = 0;
+		}
+	}
+
+	_stopFlares()
+	{
+		this._fIsFlaringEvailable_bl = false;
+
+		for (let i = 0; i < this._fFlare_arr.length; i++)
+		{
+			this._fFlare_arr[i].scale.set(0);
+		}
+	}
+
+	_flareAnimate(aFlare_sprt, aDuration)
+	{
+		let sequenceVisible = [
+			{
+				tweens: [],
+				duration: aDuration,
+				onfinish: () => this._startFlares(),
+				ease: Easing.sine.easeOut
+			},
+			{
+				tweens: [
+					{ prop: "scale.x", to: 1 },
+					{ prop: "scale.y", to: 1 },
+				],
+				duration: 10 * FRAME_RATE,
+				ease: Easing.sine.easeOut
+			},
+			{
+				tweens: [],
+				duration: 10 * FRAME_RATE,
+			},
+			{
+				tweens: [
+					{ prop: "scale.x", to: 0 },
+					{ prop: "scale.y", to: 0 },
+				],
+				duration: 13 * FRAME_RATE,
+				ease: Easing.sine.easeOut
+			}
+		];
+
+		let seq = Sequence.start(aFlare_sprt, sequenceVisible);
+
+		this._addSequence(this._fFlareSequences_arr, seq);
+	}
+
+	_addSequence(arr, aSeq)
+	{
+		arr.push(aSeq);
+	}
+
+	_removeSequences(arr)
+	{
+		if (!arr)
+		{
+			return;
+		}
+
+		while (arr.length)
+		{
+			arr.pop().destructor();
+		}
+	}
+
+	_resetDelay()
+	{
+		this._fAnimationDelay_t && this._fAnimationDelay_t.destructor();
+		this._fAnimationDelay_t = null;
+	}
+
+	_cleareAnimation()
+	{
+		this._removeSequences(this._fSequences_arr);
+		this._removeSequences(this._fFlareSequences_arr);
+		this._stopFlares();
+
+		this._fFlareAnimationDelay_ts && this._fFlareAnimationDelay_ts.destructor();
+		this._fFlareAnimationDelay_ts = null;
+	}
+
+	destroy()
+	{
+		this._fChestCountainer_sprt = null;
+
+		if (this._fTreasure_spr_arr)
+		{
+			while (this._fTreasure_spr_arr.length)
+			{
+				this._fTreasure_spr_arr.pop().destroy();
+			}
+			this._fTreasure_spr_arr = null;
+		}
+
+		if (this._fTreasureSequence_arr)
+		{
+			while (this._fTreasureSequence_arr.length)
+			{
+				this._fTreasureSequence_arr.pop().destroy();
+			}
+			this._fTreasureSequence_arr = null;
+		}
+
+		if (this._fFlare_arr)
+		{
+			while (this._fFlare_arr.length)
+			{
+				this._fFlare_arr.pop().destroy();
+			}
+			this._fFlare_arr = null;
+		}
+
+		this._removeSequences(this._fSequences_arr);
+		this._removeSequences(this._fFlareSequences_arr);
+		this._fSequences_arr = null;
+		this._fFlareTurn_num = null;
+
+		this._resetDelay();
+
+		super.destroy();
+	}
+}
+
+export default RoundResultChestView;

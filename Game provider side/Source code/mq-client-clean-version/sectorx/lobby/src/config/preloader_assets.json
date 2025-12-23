@@ -1,0 +1,113 @@
+{
+	"images": [
+		{
+			"name": "preloader/back",
+			"src": "preloader/back.png",
+			"width": 960,
+			"height": 565,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/loading_bar/back",
+			"src": "preloader/loading_bar/back.png",
+			"width": 427,
+			"height": 29,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/loading_bar/fill",
+			"src": "preloader/loading_bar/fill.png",
+			"width": 408,
+			"height": 14,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/teasers/teaser_0",
+			"src": "preloader/teasers/teaser_0.png",
+			"width": 256.5,
+			"height": 202,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/teasers/teaser_1",
+			"src": "preloader/teasers/teaser_1.png",
+			"width": 309.5,
+			"height": 291,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips_base_0",
+			"src": "preloader/tips_base_0.png",
+			"width": 316,
+			"height": 274,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips_base_1",
+			"src": "preloader/tips_base_1.png",
+			"width": 316,
+			"height": 274,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/play_now_button_base_disabled",
+			"src": "preloader/play_now_button_base_disabled.png",
+			"width": 198,
+			"height": 80,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/play_now_button_base_enabled",
+			"src": "preloader/play_now_button_base_enabled.png",
+			"width": 198,
+			"height": 80,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/play_now_button_base_selected",
+			"src": "preloader/play_now_button_base_selected.png",
+			"width": 198,
+			"height": 80,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		}
+	],
+	"sounds": [
+		{
+			"name": "mq_mus_lobby_bg",
+			"src":  [
+						"mq_mus_lobby_bg_high.mp3",
+						"mq_mus_lobby_bg_high.mp4",
+						"mq_mus_lobby_bg_high.ogg",
+						"mq_mus_lobby_bg_low.mp3",
+						"mq_mus_lobby_bg_low.mp4",
+						"mq_mus_lobby_bg_low.ogg"
+					],
+			"descr": {
+				"length": 33332,
+				"type": "bg",
+				"volume": 1,
+				"offset": 0
+			}
+		}
+	]
+}

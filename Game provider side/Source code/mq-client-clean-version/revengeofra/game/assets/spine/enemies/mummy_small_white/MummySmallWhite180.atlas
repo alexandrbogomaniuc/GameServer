@@ -1,0 +1,76 @@
+
+MummySmallWhite180.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummySmallWhite180_ArmL
+  rotate: true
+  xy: 173, 47
+  size: 43, 98
+  orig: 43, 98
+  offset: 0, 0
+  index: -1
+MummySmallWhite180_ArmR
+  rotate: true
+  xy: 286, 99
+  size: 27, 111
+  orig: 27, 111
+  offset: 0, 0
+  index: -1
+MummySmallWhite180_Head
+  rotate: true
+  xy: 222, 7
+  size: 38, 42
+  orig: 38, 42
+  offset: 0, 0
+  index: -1
+MummySmallWhite180_Hips
+  rotate: true
+  xy: 286, 43
+  size: 54, 63
+  orig: 54, 63
+  offset: 0, 0
+  index: -1
+MummySmallWhite180_LegL
+  rotate: true
+  xy: 2, 76
+  size: 50, 147
+  orig: 50, 147
+  offset: 0, 0
+  index: -1
+MummySmallWhite180_LegR
+  rotate: true
+  xy: 151, 92
+  size: 34, 133
+  orig: 34, 133
+  offset: 0, 0
+  index: -1
+MummySmallWhite180_Torso
+  rotate: true
+  xy: 2, 2
+  size: 72, 100
+  orig: 72, 100
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_Head
+  rotate: true
+  xy: 173, 10
+  size: 35, 47
+  orig: 35, 47
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_Hips
+  rotate: true
+  xy: 399, 70
+  size: 56, 75
+  orig: 56, 75
+  offset: 0, 0
+  index: -1
+MummySmallWhite90_Torso
+  rotate: false
+  xy: 104, 2
+  size: 67, 72
+  orig: 67, 72
+  offset: 0, 0
+  index: -1

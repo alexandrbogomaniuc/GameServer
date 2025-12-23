@@ -1,0 +1,664 @@
+import SoundsController from '../../../../../common/PIXI/src/dgphoenix/unified/controller/sounds/SoundsController';
+import SimpleSoundController from '../../../../../common/PIXI/src/dgphoenix/unified/controller/sounds/SimpleSoundController';
+import GameSoundsInfo from '../../model/sounds/GameSoundsInfo';
+import GameStateController from '../../controller/state/GameStateController';
+import RoundResultScreenController from '../../controller/uis/roundresult/RoundResultScreenController';
+import GameScreen from '../../main/GameScreen';
+import Timer from '../../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer';
+import {SUBROUND_STATE, ROUND_STATE} from '../../model/state/GameStateInfo';
+import GameWebSocketInteractionController from '../interaction/server/GameWebSocketInteractionController';
+import { SERVER_MESSAGES } from '../../model/interaction/server/GameWebSocketInteractionInfo';
+import { ENEMIES , BACKGROUND_SOUNDS_FADING_TIME } from '../../../../shared/src/CommonConstants';
+import {GAME_MESSAGES} from '../../../../../common/PIXI/src/dgphoenix/gunified/controller/external/GUSGameExternalCommunicator';
+import Enemy from '../../main/enemies/Enemy';
+
+import ASSETS from '../../config/assets.json';
+import Game from '../../Game';
+import { APP } from '../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import KillStreakCounterController from '../uis/kill_streak/KillStreakCounterController';
+import ProfilingInfo from '../../../../../common/PIXI/src/dgphoenix/unified/model/profiling/ProfilingInfo';
+import GameProfilingController from '../profiling/GameProfilingController';
+
+const BG_MAIN_SOUND_NAME = "mq_mus_game_bg_main_";
+
+const BG_MAIN_USUAL_SOUNDS = [
+	BG_MAIN_SOUND_NAME + "1",
+	BG_MAIN_SOUND_NAME + "2",
+	BG_MAIN_SOUND_NAME + "3"
+];
+
+const BG_MAIN_MOBILE_SOUNDS = BG_MAIN_USUAL_SOUNDS;//locked on demand https://jira.dgphoenix.com/browse/DRAG-520
+
+let BG_MAIN_SOUNDS = BG_MAIN_MOBILE_SOUNDS;
+
+// redefine BG_SOUNDS below in _initBgSoundNames
+let BG_SOUNDS = [
+	...BG_MAIN_SOUNDS,
+	"mq_mus_game_bg_boss",
+	"mq_mus_game_bg_summary_screen"
+];
+
+const CROSS_FADE_DURATION = 3000;
+
+const FADE_EXEPTIONS = [
+	"weapon_drop_dublacate_of_same_asset_for_fading_backround_music",
+	"mq_gui_button_accept",
+	"mq_gui_button_cancel"
+];
+
+class GameSoundsController extends SoundsController
+{
+	static get MAIN_PLAYER_VOLUME() 	{ return 1; }
+	static get OPPONENT_VOLUME() 		{ return 0.15; }
+	static get OPPONENT_WEAPON_VOLUME()	{ return 0.5; }
+
+	//IL CONSTRUCTION...
+	constructor()
+	{
+		super(new GameSoundsInfo());
+		this._initGSoundsController();
+
+		this._fIsFaded_bl = false;
+		this._fMusicBg_uscc = null;
+		this._fCrossFadeOutBg_uscc = null; // to keep fading out bg music for a while
+
+		this._curFadeMult = 1;
+		this._fMainBgMusicChangeTimer_tmr = null;
+		this._fOnNeedFadeBackFlag_bl = null;
+	}
+	//...IL CONSTRUCTION
+
+	//IL INTERFACE...
+	initListeners(aGameScreen_gs)
+	{
+		aGameScreen_gs.on(GameScreen.EVENT_ON_NEW_BOSS_CREATED, this._onBossEnemyRising, this);
+		aGameScreen_gs.on(GameScreen.EVENT_ON_BOSS_DESTROYING, this._onBossEnemyDestroying, this);
+		aGameScreen_gs.on(GameScreen.EVENT_ON_BOSS_DEATH_FLARE, this._onBossEnemyDeathFlare, this);
+		aGameScreen_gs.on(GameScreen.EVENT_ON_BOSS_DEATH_CRACK, this._onBossEnemyDeathCrack, this);
+		aGameScreen_gs.on(GameScreen.EVENT_ON_LOBBY_BACKGROUND_FADE_START, this._onLobbyBackgroundFadeStart, this);
+		aGameScreen_gs.on(GameScreen.EVENT_ON_ROOM_PAUSED, this._onRoomPaused, this);
+		aGameScreen_gs.on(GameScreen.EVENT_ON_ROOM_UNPAUSED, this._onRoomUnpaused, this);
+
+		this._fGameStateController_gsc = aGameScreen_gs.gameStateController;
+		this._fGameStateInfo_gsi = this._fGameStateController_gsc.i_getInfo();
+		this._fGameStateController_gsc.on(GameStateController.EVENT_ON_SUBROUND_STATE_CHANGED, this._onGameSubRoundStateChanged, this);
+		this._fGameStateController_gsc.on(GameStateController.EVENT_ON_GAME_STATE_CHANGED, this._onGameStateChanged, this);
+		APP.webSocketInteractionController.on(GameWebSocketInteractionController.EVENT_ON_SERVER_MESSAGE, this._onServerMessage, this);
+
+		this._fRoundResultScreenController_tsc = APP.gameScreen.gameField.roundResultScreenController;
+		this._fRoundResultScreenController_tsc.on(RoundResultScreenController.ON_COINS_ANIMATION_STARTED, this._onTreasuresCoinsAnimationStarted, this);
+		this._fRoundResultScreenController_tsc.on(RoundResultScreenController.ON_COINS_ANIMATION_COMPLETED, this._onTreasuresCoinsAnimationCompleted, this);
+
+		APP.gameScreen.gameField.on(Enemy.EVENT_ON_DEATH_ANIMATION_CRACK, this._onBossCoinsExplodeStart, this);
+
+		this._fRoundResultScreenController_tsc.on(RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATED, this._onRoundResultScreenActivated, this);
+		this._fRoundResultScreenController_tsc.on(RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_DEACTIVATED, this._onRoundResultScreenDeactivated, this);
+
+		aGameScreen_gs.killStreakCounterController.on(KillStreakCounterController.EVENT_ON_STREAK_ANIMATION_STARTED, this._onKillStreakAnimationStarted, this);
+		aGameScreen_gs.killStreakCounterController.on(KillStreakCounterController.EVENT_ON_STREAK_NUMBER_APPEARING_STARTED, this._onKillStreakNumberAnimationStarted, this);
+		aGameScreen_gs.killStreakCounterController.on(KillStreakCounterController.EVENT_ON_STREAK_ANIMATION_COMPLETION, this._onKillStreakAnimationCompletion, this);
+	}
+
+	muteBgMusic()
+	{
+		let lMusicBgInfo_ussi = this._fMusicBg_uscc ? this._fMusicBg_uscc.i_getInfo() : null;
+		let lCurrentPlayingBgSoundName_str = lMusicBgInfo_ussi ? lMusicBgInfo_ussi.i_getSoundName() : null;
+
+		this.setVolumeSmoothly(lCurrentPlayingBgSoundName_str, 0, 10, null);
+	}
+
+	fadeBackBgMusic()
+	{
+		if (this._fIsFaded_bl)
+		{
+			this._fOnNeedFadeBackFlag_bl = true;
+			return;
+		}
+
+		let lMusicBgInfo_ussi = this._fMusicBg_uscc ? this._fMusicBg_uscc.i_getInfo() : null;
+		let lCurrentPlayingBgSoundName_str = lMusicBgInfo_ussi ? lMusicBgInfo_ussi.i_getSoundName() : null;
+
+		if (lCurrentPlayingBgSoundName_str !== null)
+		{
+			this.setVolumeSmoothly(lCurrentPlayingBgSoundName_str, 1 * this._curFadeMult, CROSS_FADE_DURATION, null);
+		}
+		this._fOnNeedFadeBackFlag_bl = false;
+	}
+	//...IL INTERFACE
+
+	//ILI INIT...
+	_initGSoundsController()
+	{
+		this._initSoundsMetrics();
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		APP.on(Game.EVENT_ON_SOUND_SETTINGS_CHANGED, this.__updateSoundSettings, this);
+		APP.on(Game.EVENT_ON_CLOSE_ROOM, this._onCloseRoom, this);
+
+		this._fAwaitingBossModeMusicTimer_t = null;
+
+		if (APP.profilingController.info.isProfilesDefined)
+		{
+			this._initBgSoundNames();
+		}
+		else
+		{
+			APP.profilingController.once(GameProfilingController.EVENT_ON_PROFILES_READY, this._onGameProfilesReady, this);
+		}
+	}
+
+	_onGameProfilesReady(event)
+	{
+		this._initBgSoundNames();
+	}
+
+	_initBgSoundNames()
+	{
+		if (APP.isMobile || APP.profilingController.info.isVfxProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE_VALUES.MEDIUM))
+		{
+			BG_MAIN_SOUNDS = BG_MAIN_MOBILE_SOUNDS;
+		}
+		else
+		{
+			BG_MAIN_SOUNDS = BG_MAIN_USUAL_SOUNDS;
+		}
+
+		BG_SOUNDS = [
+			...BG_MAIN_SOUNDS,
+			"mq_mus_game_bg_boss",
+			"mq_mus_game_bg_summary_screen"
+		];
+	}
+
+	_initSoundsMetrics()
+	{
+		this.__getInfo().i_initSoundsMetrics(ASSETS.sounds);
+	}
+	//...ILI INIT
+
+	__updateSoundSettings(event)
+	{
+		super.__updateSoundSettings(event);
+
+		if (event.lobbySoundsLoadingOccurred !== undefined)
+		{
+			this.__getInfo().lobbySoundsLoadingOccurred = Boolean(event.lobbySoundsLoadingOccurred);
+		}
+
+		if (this._fIsFaded_bl)
+		{
+			this._muteFxSounds();
+		}
+	}
+
+	_resetCrossFadeOutMusic()
+	{
+		this._fCrossFadeOutBg_uscc && this._fCrossFadeOutBg_uscc.i_stopPlaying();
+		this._fCrossFadeOutBg_uscc = null;
+	}
+
+	_onCloseRoom()
+	{
+		this._clearMainBgMusicChangeTimer();
+
+		this._fMusicBg_uscc && this._fMusicBg_uscc.i_stopPlaying();
+		this._fMusicBg_uscc = null;
+
+		this._resetCrossFadeOutMusic();
+
+		this._fIsFaded_bl = false;
+		this.__stopAllFxSounds();
+	}
+
+	__disableAllSounds(event)
+	{
+		if (this._fMusicBg_uscc)
+		{
+			this._fMusicBg_uscc.i_startPlaying();
+		}
+		this._resetCrossFadeOutMusic();
+		super.__disableAllSounds.call(this, event);
+	}
+
+	__enableAllSounds(event)
+	{
+		super.__enableAllSounds.call(this, event);
+	}
+
+	__playSound(aSoundName_str, aOptLoop_bl, aOptVolumeMultiplier_num = 1)
+	{
+		let lSound_ussc = super.__playSound(aSoundName_str, aOptLoop_bl);
+
+		if (lSound_ussc)
+		{
+			if(!this._fIsFaded_bl)
+			{
+				switch (aSoundName_str)
+				{
+					case "god_rise":
+					case "god_death_bg":
+					case "god_death_burst":
+					case "god_death_cracks":
+					case "mq_booster_crate_landing":
+					case "mq_booster_end":
+					case "wins_small_3":
+					case "wins_small_2":
+					case "wins_small_1":
+					case "wins_medium_3":
+					case "wins_medium_2":
+					case "wins_medium_1":
+					case "wins_large_3":
+					case "wins_large_2":
+					case "wins_large_1":
+					case "boss_coins_explode":
+						let lSoundNames_arr =	[
+													...BG_MAIN_SOUNDS
+												];
+						this._multiplySoundVolume(lSoundNames_arr, 0.75);
+						lSound_ussc.once(SimpleSoundController.i_EVENT_SOUND_PLAYING_COMPLETED, () => {!this._fIsFaded_bl && this._multiplySoundVolume(lSoundNames_arr, 1)});
+						break;
+				}
+
+				if (aOptVolumeMultiplier_num !== lSound_ussc.i_getInfo().i_getIndependentVolumeFactor())
+				{
+					this._multiplySoundVolume([aSoundName_str], aOptVolumeMultiplier_num);
+					if (aOptVolumeMultiplier_num !== 1)
+					{
+						lSound_ussc.once(SimpleSoundController.i_EVENT_SOUND_PLAYING_COMPLETED, () => {!this._fIsFaded_bl && this._multiplySoundVolume([aSoundName_str], 1)});
+					}
+				}
+
+				if(this._fIsBuyScreeenActive_bl)
+				{
+					!this._isFadeExeprion(aSoundName_str) && this._multiplySoundVolume([aSoundName_str], 0.8);
+				}
+			}
+			else
+			{
+				!this._isFadeExeprion(aSoundName_str) && this._multiplySoundVolume([aSoundName_str], 0);
+			}
+		}
+
+		return lSound_ussc;
+	}
+
+	_onServerMessage(event)
+	{
+		let data = event.messageData;
+		switch(data.class)
+		{
+			case SERVER_MESSAGES.GET_ROOM_INFO_RESPONSE:
+				this._onGameStateChanged({mapId: data.mapId});
+			break;
+		}
+	}
+
+	_onGameSubRoundStateChanged(aEvent_evnt)
+	{
+		this._fCurrentMap_num = aEvent_evnt.mapId;
+		this._validateMusic();
+	}
+
+	_onGameStateChanged(aEvent_evnt)
+	{
+		this._validateMusic();
+	}
+
+	_validateMusic()
+	{
+		if ( (this._fRoundResultScreenController_tsc.isActive && !this._fGameStateInfo_gsi.isPlayState && !this._fIsFaded_bl) )
+		{
+			this._clearMainBgMusicChangeTimer();
+			this._playBgMusic("mq_mus_game_bg_summary_screen");
+			return;
+		}
+
+		if (this._fGameStateInfo_gsi.subroundState === SUBROUND_STATE.BOSS && !this._fIsFaded_bl )
+		{
+			if (this._fGameStateInfo_gsi.subroundLasthand || APP.currentWindow.isPaused)
+			{
+				this._clearMainBgMusicChangeTimer();
+				this._playBgMusic("mq_mus_game_bg_boss");
+			}
+		}
+		else if (this._fGameStateInfo_gsi.isQualifyState)
+		{
+			this._stopBgMusic();
+		}
+		else if (!this._fGameStateInfo_gsi.isWaitState && !this._fIsFaded_bl)
+		{
+			this._tryToPlayMainBgMusic();
+		}
+	}
+
+	_tryToPlayMainBgMusic()
+	{
+		let lMusicBgInfo_ussi = this._fMusicBg_uscc ? this._fMusicBg_uscc.i_getInfo() : null;
+		let lCurrentPlayingBgSoundName_str = lMusicBgInfo_ussi ? lMusicBgInfo_ussi.i_getSoundName() : null;
+		if (
+				lMusicBgInfo_ussi
+				&& lCurrentPlayingBgSoundName_str
+				&& ~lCurrentPlayingBgSoundName_str.indexOf(BG_MAIN_SOUND_NAME)
+				&& lMusicBgInfo_ussi.i_isPlayingStatePlaying()
+			) //already playing
+		{
+			return;
+		}
+		this._playMainBgMusic(false);
+	}
+
+	_playMainBgMusic(aOptSmoothly_bl = true)
+	{
+		this._clearMainBgMusicChangeTimer();
+		
+		this._fCurrentBgMusicInd_int = this._generateNextBgMusicInd();
+		let lStopPreviousBgMusic_bl = !aOptSmoothly_bl;
+		this._playBgMusic(BG_MAIN_SOUND_NAME + this._fCurrentBgMusicInd_int, true, aOptSmoothly_bl, lStopPreviousBgMusic_bl);
+	}
+
+	_generateNextBgMusicInd()
+	{
+		if (this._fCurrentBgMusicInd_int != null)
+		{
+			return this._fCurrentBgMusicInd_int % BG_MAIN_SOUNDS.length + 1;
+		}
+
+		return Math.floor(Math.random() * BG_MAIN_SOUNDS.length) + 1;
+	}
+
+	_onTimeToChangeMainBgMusicWithinRound(event)
+	{
+		this._changeMainBgMusic();
+	}
+
+	_clearMainBgMusicChangeTimer()
+	{
+		this._fMainBgMusicChangeTimer_tmr && this._fMainBgMusicChangeTimer_tmr.destructor();
+		this._fMainBgMusicChangeTimer_tmr = null;
+	}
+
+	_changeMainBgMusic()
+	{
+		this._clearMainBgMusicChangeTimer();
+
+		let lCurrentBgMusicSoundName_str = BG_MAIN_SOUND_NAME + this._fCurrentBgMusicInd_int;
+
+		this._fCrossFadeOutBg_uscc = this._fMusicBg_uscc;
+		this.setVolumeSmoothly(lCurrentBgMusicSoundName_str, 0, CROSS_FADE_DURATION, null, () => {
+			this._resetCrossFadeOutMusic();
+		});
+
+		this._playMainBgMusic(true);
+	}
+
+	_playBgMusic(aSoundName_str, aOptAutoplay_bl = true, aOptSmoothly_bl = false, aOptStopPreviousBgSound_bl = true)
+	{
+		if (!this.__getInfo().soundsAllowedToPlay)
+		{
+			return;
+		}
+
+		if (this._fMusicBg_uscc)
+		{
+			let lMusicBgInfo_ussi = this._fMusicBg_uscc.i_getInfo();
+
+			if (lMusicBgInfo_ussi.i_getSoundName() === aSoundName_str)
+			{
+				return;
+			}
+
+			if (lMusicBgInfo_ussi.i_isPlayingStatePlaying() || lMusicBgInfo_ussi.i_isPlayingStatePaused())
+			{
+				if (aOptStopPreviousBgSound_bl)
+				{
+					this._fMusicBg_uscc.i_stopPlaying();
+				}
+			}
+		}
+
+		this._clearMainBgMusicChangeTimer();
+
+		this._fMusicBg_uscc = this.i_getSoundController(aSoundName_str);
+		if (this._fMusicBg_uscc && aOptAutoplay_bl)
+		{
+			this._fMusicBg_uscc.i_startPlaying();
+			let duration = this._fMusicBg_uscc.i_getInfo().i_getSoundDescriptor().i_getLength() - CROSS_FADE_DURATION;
+			if (duration < 0) {
+				duration = 0;
+			}
+			this._fMainBgMusicChangeTimer_tmr = new Timer(this._onTimeToChangeMainBgMusicWithinRound.bind(this), duration);
+		}
+
+		if (aOptSmoothly_bl)
+		{
+			let lSoundName_str = aSoundName_str;
+			this.setFadeMultiplier(lSoundName_str, 0);
+			this.setVolumeSmoothly(lSoundName_str, 1*this._curFadeMult, CROSS_FADE_DURATION);
+		}
+	}
+
+	_stopBgMusic()
+	{
+		if (this._fMusicBg_uscc)
+		{
+			let lMusicBgInfo_ussi = this._fMusicBg_uscc.i_getInfo();
+			if (lMusicBgInfo_ussi.i_isPlayingStatePlaying() || lMusicBgInfo_ussi.i_isPlayingStatePaused())
+			{
+				this._fMusicBg_uscc.i_stopPlaying();
+			}
+		}
+		this._resetCrossFadeOutMusic();
+	}
+
+	_onBossEnemyRising(aEvent_evnt)
+	{
+		let isLasthandBossView = aEvent_evnt.isLasthandBossView;
+
+		if (this._fMusicBg_uscc && !isLasthandBossView)
+		{
+			this._clearMainBgMusicChangeTimer();
+			this._resetCrossFadeOutMusic();
+			this._playBgMusic("mq_mus_game_bg_boss");
+			this.__playSound("god_rise");
+		}
+	}
+
+	_onBossEnemyDestroying(aEvent_evnt)
+	{
+		this.__playSound("god_death_bg");
+	}
+
+	_onBossEnemyDeathFlare(aEvent_evnt)
+	{
+		this.__playSound("god_death_burst");
+	}
+
+	_onBossEnemyDeathCrack(aEvent_evnt)
+	{
+		this.__playSound("god_death_cracks");
+	}
+
+	_destroyAwaitingTimer()
+	{
+		this._fAwaitingBossModeMusicTimer_t && this._fAwaitingBossModeMusicTimer_t.destructor();
+		this._fAwaitingBossModeMusicTimer_t = null;
+	}
+
+	_onLobbyBackgroundFadeStart(event)
+	{
+		let lIsUIVisible_bl = Boolean(event.endVolume);
+		this._fIsFaded_bl = lIsUIVisible_bl;
+
+		if (lIsUIVisible_bl)
+		{
+			this._muteFxSounds();
+			this._fadeBGSounds(0);
+			this._fMainBgMusicChangeTimer_tmr && this._fMainBgMusicChangeTimer_tmr.pause();
+		}
+		else
+		{
+			this._validateMusic();
+			this._fMainBgMusicChangeTimer_tmr && this._fMainBgMusicChangeTimer_tmr.resume();
+			this._unmuteFxSounds();
+			this._fadeBGSounds(1 * this._curFadeMult);
+			if (this._fOnNeedFadeBackFlag_bl) this.fadeBackBgMusic();
+		}
+	}
+
+	_fadeBGSounds(aEndVolume)
+	{
+		for (let i = 0; i < BG_SOUNDS.length; i++)
+		{
+			let lBgSoundName_str = BG_SOUNDS[i];
+			if (this._fCrossFadeOutBg_uscc && this._fCrossFadeOutBg_uscc.i_getInfo().i_getSoundName() === lBgSoundName_str)
+			{
+				// this sound is already fading out, don't apply additional fading
+				continue;
+			}
+			this.setVolumeSmoothly(lBgSoundName_str, aEndVolume, BACKGROUND_SOUNDS_FADING_TIME);
+		}
+	}
+
+	_muteFxSounds()
+	{
+		for (let lSoundName_str in this._fFxSounds_ussc_obj)
+		{
+			!this._isFadeExeprion(lSoundName_str) && this._multiplySoundVolume([lSoundName_str], 0);
+		}
+	}
+
+	_unmuteFxSounds()
+	{
+		for (let lSoundName_str in this._fFxSounds_ussc_obj)
+		{
+			this._multiplySoundVolume([lSoundName_str], 1);
+		}
+	}
+
+	_isFadeExeprion(aSoundName_str)
+	{
+		for (let i = 0; i < FADE_EXEPTIONS.length; i++)
+		{
+			if(aSoundName_str == FADE_EXEPTIONS[i])
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	_onRoomPaused()
+	{
+		this._validateMusic();
+	}
+
+	_onRoomUnpaused()
+	{
+		this._validateMusic();
+	}
+
+	_onTreasuresCoinsAnimationStarted(aEvent_evnt)
+	{
+		this.__playSound("coin_jingle", true);
+	}
+
+	_onTreasuresCoinsAnimationCompleted(aEvent_evnt)
+	{
+		this.__stopSound("coin_jingle");
+	}
+
+	_onBossCoinsExplodeStart(aEvent_evnt)
+	{
+		if (aEvent_evnt.playSound)
+		{
+			this.__playSound("boss_coins_explode");
+		}
+	}
+
+	_onRoundResultScreenActivated(aEvent_evnt)
+	{
+		this._validateMusic();
+	}
+
+	_onRoundResultScreenDeactivated(aEvent_evnt)
+	{
+		if (this._fGameStateInfo_gsi.isPlayState)
+		{
+			this._validateMusic();
+		}
+	}
+
+	_onKillStreakAnimationStarted(event)
+	{
+		this._killStreaksCounter = 0;
+	}
+
+	_onKillStreakNumberAnimationStarted(event)
+	{
+		this._killStreaksCounter++;
+		if (this._killStreaksCounter > 4)
+		{
+			this._killStreaksCounter = 4;
+		}
+		if (APP.isMobile || APP.profilingController.info.isVfxProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE_VALUES.MEDIUM))
+		{
+			this._killStreaksCounter = 1;
+		}
+
+		let killStreakHitName = "kill_streak_hit_" + this._killStreaksCounter;
+		this.__playSound(killStreakHitName);
+	}
+
+	_onKillStreakAnimationCompletion(event)
+	{
+		this.__playSound("kill_streak_end");
+	}
+
+	destroy()
+	{
+		this._fAwaitingBossModeMusicTimer_t && this._fAwaitingBossModeMusicTimer_t.destructor();
+
+		APP.off(Game.EVENT_ON_SOUND_SETTINGS_CHANGED, this.__updateSoundSettings, this);
+		APP.off(Game.EVENT_ON_CLOSE_ROOM, this._onCloseRoom, this);
+
+		if (APP.webSocketInteractionController)
+		{
+			APP.webSocketInteractionController.off(GameWebSocketInteractionController.EVENT_ON_SERVER_MESSAGE, this._onServerMessage, this);
+		}
+
+		if (APP.currentWindow)
+		{
+			APP.currentWindow.off(GameScreen.EVENT_ON_NEW_BOSS_CREATED, this._onBossEnemyRising, this);
+			APP.currentWindow.off(GameScreen.EVENT_ON_BOSS_DESTROYING, this._onBossEnemyDestroying, this);
+			APP.currentWindow.off(GameScreen.EVENT_ON_ROOM_PAUSED, this._onRoomPaused, this);
+			APP.currentWindow.off(GameScreen.EVENT_ON_ROOM_UNPAUSED, this._onRoomUnpaused, this);
+		}
+
+		if (this._fGameStateController_gsc)
+		{
+			this._fGameStateController_gsc.off(GameStateController.EVENT_ON_SUBROUND_STATE_CHANGED, this._onGameSubRoundStateChanged, this);
+		}
+
+		if (this._fRoundResultScreenController_tsc)
+		{
+			this._fRoundResultScreenController_tsc.off(RoundResultScreenController.ON_COINS_ANIMATION_STARTED, this._onTreasuresCoinsAnimationStarted, this);
+			this._fRoundResultScreenController_tsc.off(RoundResultScreenController.ON_COINS_ANIMATION_COMPLETED, this._onTreasuresCoinsAnimationCompleted, this);
+		}
+
+		this._fGameStateController_gsc = null;
+		this._fGameStateInfo_gsi = null;
+		this._fAwaitingBossModeMusicTimer_t = null;
+		this._fOnNeedFadeBackFlag_bl = null;
+
+		this._fMusicBg_uscc = null;
+		this._fIsFaded_bl = null;
+
+		super.destroy();
+	}
+}
+
+export default GameSoundsController;

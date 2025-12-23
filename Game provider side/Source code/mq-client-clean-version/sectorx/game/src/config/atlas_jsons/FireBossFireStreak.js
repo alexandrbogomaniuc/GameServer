@@ -1,0 +1,473 @@
+let FireBossFireStreak = {
+	"frames": {
+		"Fire Streak Anim_00000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 12,
+				"h": 39
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 667,
+				"y": 476,
+				"w": 12,
+				"h": 39
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00001.png": {
+			"frame": {
+				"x": 1,
+				"y": 42,
+				"w": 28,
+				"h": 49
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 651,
+				"y": 468,
+				"w": 28,
+				"h": 49
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00002.png": {
+			"frame": {
+				"x": 1,
+				"y": 93,
+				"w": 48,
+				"h": 69
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 633,
+				"y": 450,
+				"w": 48,
+				"h": 69
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00003.png": {
+			"frame": {
+				"x": 1,
+				"y": 164,
+				"w": 70,
+				"h": 77
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 611,
+				"y": 447,
+				"w": 70,
+				"h": 77
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00004.png": {
+			"frame": {
+				"x": 31,
+				"y": 1,
+				"w": 97,
+				"h": 82
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 584,
+				"y": 445,
+				"w": 97,
+				"h": 82
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00005.png": {
+			"frame": {
+				"x": 1,
+				"y": 243,
+				"w": 130,
+				"h": 86
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 551,
+				"y": 444,
+				"w": 130,
+				"h": 86
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00006.png": {
+			"frame": {
+				"x": 1,
+				"y": 331,
+				"w": 172,
+				"h": 91
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 509,
+				"y": 443,
+				"w": 172,
+				"h": 91
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00007.png": {
+			"frame": {
+				"x": 73,
+				"y": 85,
+				"w": 226,
+				"h": 98
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 455,
+				"y": 441,
+				"w": 226,
+				"h": 98
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00008.png": {
+			"frame": {
+				"x": 1,
+				"y": 424,
+				"w": 298,
+				"h": 107
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 383,
+				"y": 439,
+				"w": 298,
+				"h": 107
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00009.png": {
+			"frame": {
+				"x": 133,
+				"y": 185,
+				"w": 395,
+				"h": 119
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 285,
+				"y": 436,
+				"w": 395,
+				"h": 119
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00010.png": {
+			"frame": {
+				"x": 1,
+				"y": 533,
+				"w": 532,
+				"h": 138
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 146,
+				"y": 432,
+				"w": 532,
+				"h": 138
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00011.png": {
+			"frame": {
+				"x": 301,
+				"y": 1,
+				"w": 532,
+				"h": 158
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 115,
+				"y": 426,
+				"w": 532,
+				"h": 158
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00012.png": {
+			"frame": {
+				"x": 1,
+				"y": 673,
+				"w": 487,
+				"h": 172
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 114,
+				"y": 423,
+				"w": 487,
+				"h": 172
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00013.png": {
+			"frame": {
+				"x": 301,
+				"y": 306,
+				"w": 429,
+				"h": 174
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 114,
+				"y": 422,
+				"w": 429,
+				"h": 174
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00014.png": {
+			"frame": {
+				"x": 835,
+				"y": 1,
+				"w": 359,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 114,
+				"y": 427,
+				"w": 359,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00015.png": {
+			"frame": {
+				"x": 1,
+				"y": 847,
+				"w": 278,
+				"h": 170
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 114,
+				"y": 428,
+				"w": 278,
+				"h": 170
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00016.png": {
+			"frame": {
+				"x": 490,
+				"y": 673,
+				"w": 189,
+				"h": 151
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 114,
+				"y": 438,
+				"w": 189,
+				"h": 151
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00017.png": {
+			"frame": {
+				"x": 130,
+				"y": 1,
+				"w": 98,
+				"h": 68
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 117,
+				"y": 483,
+				"w": 98,
+				"h": 68
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Fire Streak Anim_00018.png": {
+			"frame": {
+				"x": 73,
+				"y": 185,
+				"w": 22,
+				"h": 46
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 118,
+				"y": 484,
+				"w": 22,
+				"h": 46
+			},
+			"sourceSize": {
+				"w": 1321,
+				"h": 961
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		}
+	},
+	"meta": {
+		"app": "http://free-tex-packer.com/",
+		"version": "0.3.3",
+		"image": "texture.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1195,
+			"h": 1018
+		},
+		"scale": 2
+	}
+}
+
+export default FireBossFireStreak;

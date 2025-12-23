@@ -1,0 +1,1121 @@
+let BlueSmoke = {
+	"frames": {
+		"MQ_Portal_example BLUE_00100.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 1,
+				"h": 1
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 1,
+				"h": 1
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00101.png": {
+			"frame": {
+				"x": 1,
+				"y": 4,
+				"w": 75,
+				"h": 164
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 483,
+				"y": 154,
+				"w": 75,
+				"h": 164
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00102.png": {
+			"frame": {
+				"x": 1,
+				"y": 170,
+				"w": 104,
+				"h": 225
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 462,
+				"y": 125,
+				"w": 104,
+				"h": 225
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00103.png": {
+			"frame": {
+				"x": 78,
+				"y": 1,
+				"w": 124,
+				"h": 269
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 445,
+				"y": 109,
+				"w": 124,
+				"h": 269
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00104.png": {
+			"frame": {
+				"x": 1,
+				"y": 397,
+				"w": 135,
+				"h": 289
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 433,
+				"y": 103,
+				"w": 135,
+				"h": 289
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00105.png": {
+			"frame": {
+				"x": 107,
+				"y": 127,
+				"w": 144,
+				"h": 309
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 425,
+				"y": 98,
+				"w": 144,
+				"h": 309
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00106.png": {
+			"frame": {
+				"x": 1,
+				"y": 688,
+				"w": 151,
+				"h": 305
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 417,
+				"y": 107,
+				"w": 151,
+				"h": 305
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00107.png": {
+			"frame": {
+				"x": 138,
+				"y": 273,
+				"w": 153,
+				"h": 318
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 413,
+				"y": 103,
+				"w": 153,
+				"h": 318
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00108.png": {
+			"frame": {
+				"x": 1,
+				"y": 995,
+				"w": 147,
+				"h": 322
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 408,
+				"y": 102,
+				"w": 147,
+				"h": 322
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00109.png": {
+			"frame": {
+				"x": 1,
+				"y": 1319,
+				"w": 148,
+				"h": 329
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 405,
+				"y": 99,
+				"w": 148,
+				"h": 329
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00110.png": {
+			"frame": {
+				"x": 1,
+				"y": 1650,
+				"w": 146,
+				"h": 329
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 403,
+				"y": 98,
+				"w": 146,
+				"h": 329
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00111.png": {
+			"frame": {
+				"x": 149,
+				"y": 1650,
+				"w": 142,
+				"h": 331
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 401,
+				"y": 94,
+				"w": 142,
+				"h": 331
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00112.png": {
+			"frame": {
+				"x": 150,
+				"y": 995,
+				"w": 140,
+				"h": 333
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 399,
+				"y": 96,
+				"w": 140,
+				"h": 333
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00113.png": {
+			"frame": {
+				"x": 150,
+				"y": 1137,
+				"w": 137,
+				"h": 334
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 398,
+				"y": 95,
+				"w": 137,
+				"h": 334
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00114.png": {
+			"frame": {
+				"x": 151,
+				"y": 1276,
+				"w": 137,
+				"h": 321
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 395,
+				"y": 115,
+				"w": 137,
+				"h": 321
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00115.png": {
+			"frame": {
+				"x": 290,
+				"y": 1276,
+				"w": 136,
+				"h": 281
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 393,
+				"y": 152,
+				"w": 136,
+				"h": 281
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00116.png": {
+			"frame": {
+				"x": 154,
+				"y": 593,
+				"w": 136,
+				"h": 281
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 392,
+				"y": 155,
+				"w": 136,
+				"h": 281
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00117.png": {
+			"frame": {
+				"x": 292,
+				"y": 593,
+				"w": 133,
+				"h": 278
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 393,
+				"y": 161,
+				"w": 133,
+				"h": 278
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00118.png": {
+			"frame": {
+				"x": 293,
+				"y": 273,
+				"w": 134,
+				"h": 275
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 390,
+				"y": 164,
+				"w": 134,
+				"h": 275
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00119.png": {
+			"frame": {
+				"x": 427,
+				"y": 1,
+				"w": 135,
+				"h": 268
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 388,
+				"y": 171,
+				"w": 135,
+				"h": 268
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00120.png": {
+			"frame": {
+				"x": 427,
+				"y": 550,
+				"w": 134,
+				"h": 259
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 386,
+				"y": 178,
+				"w": 134,
+				"h": 259
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00121.png": {
+			"frame": {
+				"x": 486,
+				"y": 271,
+				"w": 134,
+				"h": 259
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 384,
+				"y": 181,
+				"w": 134,
+				"h": 259
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00122.png": {
+			"frame": {
+				"x": 564,
+				"y": 1,
+				"w": 133,
+				"h": 254
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 382,
+				"y": 186,
+				"w": 133,
+				"h": 254
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00123.png": {
+			"frame": {
+				"x": 622,
+				"y": 271,
+				"w": 132,
+				"h": 252
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 382,
+				"y": 190,
+				"w": 132,
+				"h": 252
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00124.png": {
+			"frame": {
+				"x": 699,
+				"y": 1,
+				"w": 130,
+				"h": 245
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 381,
+				"y": 198,
+				"w": 130,
+				"h": 245
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00125.png": {
+			"frame": {
+				"x": 427,
+				"y": 811,
+				"w": 129,
+				"h": 235
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 380,
+				"y": 207,
+				"w": 129,
+				"h": 235
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00126.png": {
+			"frame": {
+				"x": 563,
+				"y": 532,
+				"w": 128,
+				"h": 232
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 378,
+				"y": 210,
+				"w": 128,
+				"h": 232
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00127.png": {
+			"frame": {
+				"x": 485,
+				"y": 942,
+				"w": 126,
+				"h": 227
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 377,
+				"y": 214,
+				"w": 126,
+				"h": 227
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00128.png": {
+			"frame": {
+				"x": 664,
+				"y": 766,
+				"w": 123,
+				"h": 221
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 378,
+				"y": 220,
+				"w": 123,
+				"h": 221
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00129.png": {
+			"frame": {
+				"x": 693,
+				"y": 525,
+				"w": 120,
+				"h": 223
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 378,
+				"y": 221,
+				"w": 120,
+				"h": 223
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00130.png": {
+			"frame": {
+				"x": 154,
+				"y": 876,
+				"w": 117,
+				"h": 212
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 376,
+				"y": 229,
+				"w": 117,
+				"h": 212
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00131.png": {
+			"frame": {
+				"x": 756,
+				"y": 248,
+				"w": 113,
+				"h": 208
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 378,
+				"y": 233,
+				"w": 113,
+				"h": 208
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00132.png": {
+			"frame": {
+				"x": 831,
+				"y": 1,
+				"w": 112,
+				"h": 207
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 377,
+				"y": 237,
+				"w": 112,
+				"h": 207
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00133.png": {
+			"frame": {
+				"x": 815,
+				"y": 458,
+				"w": 107,
+				"h": 192
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 377,
+				"y": 247,
+				"w": 107,
+				"h": 192
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00134.png": {
+			"frame": {
+				"x": 871,
+				"y": 652,
+				"w": 107,
+				"h": 191
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 374,
+				"y": 251,
+				"w": 107,
+				"h": 191
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00135.png": {
+			"frame": {
+				"x": 871,
+				"y": 210,
+				"w": 98,
+				"h": 177
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 373,
+				"y": 259,
+				"w": 98,
+				"h": 177
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00136.png": {
+			"frame": {
+				"x": 945,
+				"y": 1,
+				"w": 96,
+				"h": 175
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 373,
+				"y": 264,
+				"w": 96,
+				"h": 175
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00137.png": {
+			"frame": {
+				"x": 924,
+				"y": 389,
+				"w": 95,
+				"h": 174
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 371,
+				"y": 268,
+				"w": 95,
+				"h": 174
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00138.png": {
+			"frame": {
+				"x": 971,
+				"y": 178,
+				"w": 93,
+				"h": 171
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 370,
+				"y": 271,
+				"w": 93,
+				"h": 171
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00139.png": {
+			"frame": {
+				"x": 1043,
+				"y": 1,
+				"w": 92,
+				"h": 167
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 368,
+				"y": 278,
+				"w": 92,
+				"h": 167
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00140.png": {
+			"frame": {
+				"x": 1021,
+				"y": 351,
+				"w": 90,
+				"h": 168
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 367,
+				"y": 281,
+				"w": 90,
+				"h": 168
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00141.png": {
+			"frame": {
+				"x": 290,
+				"y": 1559,
+				"w": 88,
+				"h": 162
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 366,
+				"y": 287,
+				"w": 88,
+				"h": 162
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00142.png": {
+			"frame": {
+				"x": 1066,
+				"y": 170,
+				"w": 87,
+				"h": 159
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 365,
+				"y": 292,
+				"w": 87,
+				"h": 159
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00143.png": {
+			"frame": {
+				"x": 924,
+				"y": 565,
+				"w": 84,
+				"h": 156
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 364,
+				"y": 296,
+				"w": 84,
+				"h": 156
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00144.png": {
+			"frame": {
+				"x": 1137,
+				"y": 1,
+				"w": 84,
+				"h": 154
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 362,
+				"y": 300,
+				"w": 84,
+				"h": 154
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"MQ_Portal_example BLUE_00145.png": {
+			"frame": {
+				"x": 428,
+				"y": 1276,
+				"w": 81,
+				"h": 151
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 361,
+				"y": 305,
+				"w": 81,
+				"h": 151
+			},
+			"sourceSize": {
+				"w": 960,
+				"h": 541
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		}
+	},
+	"meta": {
+		"app": "http://free-tex-packer.com/",
+		"version": "0.3.3",
+		"image": "texture.jpg",
+		"format": "RGB888",
+		"size": {
+			"w": 1222,
+			"h": 1982
+		},
+		"scale": 2
+	}
+}
+
+export default BlueSmoke;

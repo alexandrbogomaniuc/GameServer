@@ -1,0 +1,62 @@
+
+Thoth90.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Thoth90_Apron
+  rotate: false
+  xy: 119, 3
+  size: 69, 211
+  orig: 69, 211
+  offset: 0, 0
+  index: -1
+Thoth90_ArmL
+  rotate: true
+  xy: 870, 119
+  size: 95, 148
+  orig: 95, 148
+  offset: 0, 0
+  index: -1
+Thoth90_ArmR
+  rotate: true
+  xy: 664, 42
+  size: 106, 144
+  orig: 106, 144
+  offset: 0, 0
+  index: -1
+Thoth90_Head
+  rotate: true
+  xy: 322, 102
+  size: 112, 167
+  orig: 112, 167
+  offset: 0, 0
+  index: -1
+Thoth90_Hips
+  rotate: false
+  xy: 2, 2
+  size: 115, 212
+  orig: 115, 212
+  offset: 0, 0
+  index: -1
+Thoth90_LegL
+  rotate: true
+  xy: 491, 110
+  size: 104, 171
+  orig: 104, 171
+  offset: 0, 0
+  index: -1
+Thoth90_LegR
+  rotate: true
+  xy: 664, 150
+  size: 64, 204
+  orig: 64, 204
+  offset: 0, 0
+  index: -1
+Thoth90_Torso
+  rotate: false
+  xy: 190, 64
+  size: 130, 150
+  orig: 130, 150
+  offset: 0, 0
+  index: -1

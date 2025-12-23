@@ -1,0 +1,349 @@
+import { Sprite, AtlasSprite } from '../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display';
+import I18 from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/translations/I18';
+import AtlasConfig from './../../../../config/AtlasConfig';
+import { APP } from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import { Utils } from '../../../../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+import Sequence from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
+import { FRAME_RATE, ENEMIES } from './../../../../../../shared/src/CommonConstants';
+import { ENEMY_DIRECTION } from '../../../../config/Constants';
+import Timer from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer';
+import * as Easing from '../../../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+
+let _criticalExplosionTextures = null;
+let _fOverkillSoundDelay_t = null;
+
+function _initExplosionTextures()
+{
+	if (_criticalExplosionTextures) return;
+
+	_criticalExplosionTextures = AtlasSprite.getFrames(APP.library.getAsset("critical_hit/critical_explosion"), AtlasConfig.CriticalExplosion, "");
+}
+
+const HIT_POSITIONS = {
+	[ENEMIES.ScarabGreen]:			{x: 25, y: -24},
+	[ENEMIES.ScarabBrown]:			{x: 25, y: -24},
+	[ENEMIES.ScarabGold]:			{x: 25, y: -24},
+	[ENEMIES.ScarabRuby]:			{x: 25, y: -24},
+	[ENEMIES.ScarabDiamond]:		{x: 25, y: -24},
+	[ENEMIES.WrappedYellow]:		{x: 25, y: -48},
+	[ENEMIES.WrappedBlack]:			{x: 25, y: -48},
+	[ENEMIES.WrappedWhite]:			{x: 25, y: -48},
+	[ENEMIES.MummyWarrior]:			{x: 25, y: -48},
+	[ENEMIES.MummyWarriorGreen]:	{x: 25, y: -48},
+	[ENEMIES.MummyGodRed]:			{x: 25, y: -48},
+	[ENEMIES.MummyGodGreen]:		{x: 25, y: -48},
+	[ENEMIES.WeaponCarrier]:		{x: 25, y: -48},
+	[ENEMIES.Locust]:				{x: 25, y: -30},
+	[ENEMIES.Scorpion]:				{x: 25, y: -30},
+	[ENEMIES.BombEnemy]:			{x: 25*1.15, y: -48*1.15},
+	[ENEMIES.Horus]:				{x: 25, y: -48},
+	[ENEMIES.LocustTeal]:			{x: 25, y: -30},
+	[ENEMIES.BrawlerBerserk]:		{x: 25, y: -48},
+	[ENEMIES.Anubis]:				{x: 25, y: -48},
+	[ENEMIES.Osiris]:				{x: 25, y: -48},
+	[ENEMIES.Thoth]:				{x: 25, y: -48},
+}
+
+class OverkillHitAnimation extends Sprite
+{
+	static get OVERKILL_ANIMATION_ENDED()		{return "OVERKILL_ANIMATION_ENDED";}
+
+	setSourcePayout(aSourcePayout_sprt)
+	{
+		this._fSourcePayout_sprt = aSourcePayout_sprt;
+	}
+
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	get enemyId()
+	{
+		return this._fEnemyId_num;
+	}
+
+	constructor(aEnemyName_str, aEnemyDirection_str, aEnemyId_num, aExplosionOffset_obj, aSeatId_num)
+	{
+		super();
+
+		_initExplosionTextures();
+
+		this._fEnemyId_num = aEnemyId_num;
+		this._fContainer_sprt = null;
+		this._fExplosion_sprt = null;
+		this._fCaptionContainer_spr = null;
+		this._fFlare_sprt = null;
+		this._fEnemyName_str = aEnemyName_str || ENEMIES.ScarabGreen;
+		this._fIsLeftDir_bln = !!(aEnemyDirection_str == ENEMY_DIRECTION.LEFT_UP || aEnemyDirection_str == ENEMY_DIRECTION.LEFT_DOWN);
+		this._fCaptionBonus_ta = null;
+		this._fCaptionBonusContainer_sprt = null;
+		this._fCaptionWinContainer_sprt = null;
+		this._fExplosionOffset_obj = aExplosionOffset_obj;
+		this._fSeatId_num = aSeatId_num;
+		this._fSourcePayout_sprt = null;
+
+		this._init();
+	}
+
+	_init()
+	{
+		this._initContainer();
+		this._initExplosion();
+		this._initFlare();
+
+		this._fCaptionBonusContainer_sprt = this._fContainer_sprt.addChild(new Sprite());
+		this._fCaptionBonusContainer_sprt.position.set(0, -10);
+
+		this._fCaptionWinContainer_sprt = this._fContainer_sprt.addChild(new Sprite());
+		this._fCaptionWinContainer_sprt.position.set(0, 30);
+
+		this._initCaption();
+	}
+
+	_initContainer()
+	{
+		this._fContainer_sprt = this.addChild(new Sprite());
+		let lHitPosition_pt = HIT_POSITIONS[this._fEnemyName_str];
+		if (!lHitPosition_pt)
+		{
+			throw new Error("OverkillHitAnimation :: no HIT POSITION for enemy " + this._fEnemyName_str);
+		}
+		this._fContainer_sprt.position.x = lHitPosition_pt.x;
+		this._fContainer_sprt.position.y = lHitPosition_pt.y;
+		this._fContainer_sprt.visible = false;
+
+		if (this._fIsLeftDir_bln)
+		{
+			this._fContainer_sprt.position.x -= 16;
+		}
+	}
+
+	_initExplosion()
+	{
+		this._fExplosion_sprt = this._fContainer_sprt.addChild(new Sprite());
+		this._fExplosion_sprt.scale.set(2);
+		this._fExplosion_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		this._fExplosion_sprt.textures = _criticalExplosionTextures;
+		this._fExplosion_sprt.position.set(11 + this._fExplosionOffset_obj.x, -70 + this._fExplosionOffset_obj.y);
+		this._fExplosion_sprt.rotation = Utils.gradToRad(65);
+		this._fExplosion_sprt.animationSpeed = 0.5;
+		this._fExplosion_sprt.on('animationend', () => {
+			this._fExplosion_sprt && this._fExplosion_sprt.destroy();
+			this._fExplosion_sprt = null;
+		});
+	}
+
+	_initFlare()
+	{
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._fFlare_sprt = this._fContainer_sprt.addChild(APP.library.getSprite("critical_hit/flare"));
+			this._fFlare_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		}
+	}
+
+	_initCaption()
+	{
+		this._fCaptionBonus_ta = I18.generateNewCTranslatableAsset(this._captionBonusAssetId);
+		this._fCaptionBonusContainer_sprt.addChild(this._fCaptionBonus_ta);
+
+		this._fCaptionWin_ta = I18.generateNewCTranslatableAsset(this._captionWinAssetId);
+		this._fCaptionWinContainer_sprt.addChild(this._fCaptionWin_ta);
+	}
+
+	get _captionBonusAssetId()
+	{
+		return "TABonusLabel";
+	}
+
+	get _captionWinAssetId()
+	{
+		return "TAWinLabel";
+	}
+
+	_startAnimation()
+	{
+		this._fContainer_sprt.visible = true;
+
+		this._fExplosion_sprt.play();
+
+		this._startFlareAnimation();
+		this._startCaptionAnimation();
+	}
+
+	get isMasterSeat()
+	{
+		return (this._fSeatId_num === APP.playerController.info.seatId);
+	}
+
+	_startFlareAnimation()
+	{
+		if (!this._fFlare_sprt) return;
+
+		this._fFlare_sprt.scale.set(0);
+		let lFlareSeq_arr = [
+			{tweens: [],	duration: 31*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 0.4},	{prop: 'scale.y', to: 0.4}],	duration: 1*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 2},		{prop: 'scale.y', to: 2}],		duration: 1*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 0},		{prop: 'scale.y', to: 0}],		duration: 12*FRAME_RATE}
+		];
+		Sequence.start(this._fFlare_sprt, lFlareSeq_arr);
+
+		let lAngle_seq = [
+			{tweens: [],	duration: 31*FRAME_RATE},
+			{tweens: [{prop: 'rotation', to: Utils.gradToRad(32)}],		duration: 16*FRAME_RATE, onfinish: () => {
+				Sequence.destroy(Sequence.findByTarget(this._fFlare_sprt));
+				this._fFlare_sprt && this._fFlare_sprt.destroy();
+				this._fFlare_sprt = null;
+			}},
+		];
+
+		Sequence.start(this._fFlare_sprt, lAngle_seq);
+	}
+
+	_startCaptionAnimation()
+	{
+		let ORIGINAL_TOTAL_FRAMES = 21;
+		let lTotalFrames_int = ORIGINAL_TOTAL_FRAMES + Utils.random(0, 10); // small randomization
+		let lMult_num = lTotalFrames_int / ORIGINAL_TOTAL_FRAMES;
+
+		this._fCaptionBonusContainer_sprt.scale.set(0);
+		let lCaptionSeq_arr = [
+			{tweens: [],	duration: 31*FRAME_RATE, onfinish: () => {this._updateStartPosition()} },
+			{tweens: [{prop: 'scale.x', to: 1.3},	{prop: 'scale.y', to: 1.3}],	duration: 3 * FRAME_RATE * lMult_num},
+			{tweens: [{prop: 'scale.x', to: 1.74},	{prop: 'scale.y', to: 1.74}],	duration: 2 * FRAME_RATE * lMult_num, ease: Easing.back.easeOut},
+			{tweens: [{prop: 'scale.x', to: 1.42},	{prop: 'scale.y', to: 1.42}],	duration: 5 * FRAME_RATE * lMult_num},
+			{tweens: [{prop: 'scale.x', to: 1.84},	{prop: 'scale.y', to: 1.84}],	duration: 11 * FRAME_RATE * lMult_num, onfinish: () => {
+
+				let lCaptionFinishPosition_v = this._fCaptionBonusContainer_sprt.localToGlobal();
+
+				this._fCaptionBonusContainer_sprt && this._fCaptionBonusContainer_sprt.destroy();
+				this._fCaptionBonusContainer_sprt = null;
+
+				this._onAnimationEnded(lCaptionFinishPosition_v);
+			}},
+		];
+
+		Sequence.start(this._fCaptionBonusContainer_sprt, lCaptionSeq_arr);
+
+		let lSeq_arr = [
+			{tweens: [],	duration: 31*FRAME_RATE},
+			{tweens: [{prop: 'position.x', to: 0.3},	{prop: 'position.y', to: -10 - 0.5}],	duration: 5 * FRAME_RATE * lMult_num},
+			{tweens: [{prop: 'position.x', to: 1},		{prop: 'position.y', to: -10 + 9}],		duration: 11 * FRAME_RATE * lMult_num},
+			{tweens: [{prop: 'position.x', to: 1},		{prop: 'position.y', to: -10 + 5.5}],	duration: 5 * FRAME_RATE * lMult_num},
+		];
+
+		Sequence.start(this._fCaptionBonusContainer_sprt, lSeq_arr);
+
+		this._fCaptionWinContainer_sprt.scale.set(0);
+		lCaptionSeq_arr = [
+			{tweens: [],	duration: 31*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 1.3},	{prop: 'scale.y', to: 1.3}],	duration: 3 * FRAME_RATE * lMult_num},
+			{tweens: [{prop: 'scale.x', to: 1.74},	{prop: 'scale.y', to: 1.74}],	duration: 2 * FRAME_RATE * lMult_num, ease: Easing.back.easeOut},
+			{tweens: [{prop: 'scale.x', to: 1},		{prop: 'scale.y', to: 1}],		duration: 9 * FRAME_RATE * lMult_num},
+			{tweens: [{prop: 'scale.x', to: 1.84},	{prop: 'scale.y', to: 1.84}],	duration: 7 * FRAME_RATE * lMult_num, onfinish: () => {
+
+				this._fCaptionWinContainer_sprt && this._fCaptionWinContainer_sprt.destroy();
+				this._fCaptionWinContainer_sprt = null;
+			}},
+		];
+
+		Sequence.start(this._fCaptionWinContainer_sprt, lCaptionSeq_arr);
+
+		lSeq_arr = [
+			{tweens: [],	duration: 31*FRAME_RATE},
+			{tweens: [{prop: 'position.x', to: 0.3},	{prop: 'position.y', to: 30 - 0.5}],	duration: 5 * FRAME_RATE * lMult_num},
+			{tweens: [{prop: 'position.x', to: 1},		{prop: 'position.y', to: 30 + 9}],		duration: 11 * FRAME_RATE * lMult_num},
+			{tweens: [{prop: 'position.x', to: 1},		{prop: 'position.y', to: 30 + 5.5}],	duration: 5 * FRAME_RATE * lMult_num},
+		];
+
+		Sequence.start(this._fCaptionWinContainer_sprt, lSeq_arr);
+	}
+
+	_updateStartPosition()
+	{
+		let lSourcePayout_sprt = this._fSourcePayout_sprt;
+
+		if (!lSourcePayout_sprt || !lSourcePayout_sprt.parent)
+		{
+			return;
+		}
+
+		let payGlobalPos = lSourcePayout_sprt.parent.localToGlobal(lSourcePayout_sprt.x, lSourcePayout_sprt.y);
+		let payBounds = lSourcePayout_sprt.getBounds();
+		let payTopBorder = payGlobalPos.y - payBounds.height/2;
+		let payBottomBorder = payGlobalPos.y + payBounds.height/2;
+
+		let distance = 50;
+
+		let lCaptionBounds = I18.generateNewCTranslatableAsset(this._captionAssetId).getBounds();
+		let lCaptionWidth = 150;
+
+		let lPotentialCaptipnBottomBorder = payBottomBorder + distance + lCaptionBounds.height;
+		if (lPotentialCaptipnBottomBorder > 540)
+		{
+			if (lPotentialCaptipnBottomBorder - 540 < distance)
+			{
+				distance -= (lPotentialCaptipnBottomBorder - 540);
+			}
+			else
+			{
+				distance *= -1;
+			}
+		}
+
+		let dir = distance >= 0 ? 1 : -1;
+
+		let lNewGlobalPosY_num = payGlobalPos.y + dir*payBounds.height/2 + distance + dir*lCaptionBounds.height/2;
+		let lNewGlobalPosX_num = payGlobalPos.x;
+		
+		if (lNewGlobalPosX_num + lCaptionWidth/2 > 960)
+		{
+			lNewGlobalPosX_num -= lNewGlobalPosX_num + lCaptionWidth/2 - 960;
+		}
+		else if (lNewGlobalPosX_num - lCaptionWidth/2 < 0)
+		{
+			lNewGlobalPosX_num += 0 - (lNewGlobalPosX_num - lCaptionWidth/2);
+		}
+
+		let newLocalPos = this.parent.globalToLocal(lNewGlobalPosX_num, lNewGlobalPosY_num);
+
+		this.position.set(newLocalPos.x, newLocalPos.y);
+	}
+
+	_onAnimationEnded(aCaptionFinishPosition_v)
+	{
+		this.emit(OverkillHitAnimation.OVERKILL_ANIMATION_ENDED, {data: aCaptionFinishPosition_v});
+	}
+
+	destroy()
+	{
+		this._fFlare_sprt && Sequence.destroy(Sequence.findByTarget(this._fFlare_sprt));
+		this._fCaptionBonusContainer_sprt && Sequence.destroy(Sequence.findByTarget(this._fCaptionBonusContainer_sprt));
+
+		this._fFlare_sprt && Sequence.destroy(Sequence.findByTarget(this._fFlare_sprt));
+		this._fCaptionWinContainer_sprt && Sequence.destroy(Sequence.findByTarget(this._fCaptionWinContainer_sprt));
+
+		this._fFlare_sprt && this._fFlare_sprt.destroy();
+		this._fFlare_sprt = null;
+
+		_fOverkillSoundDelay_t && _fOverkillSoundDelay_t.destructor();
+		_fOverkillSoundDelay_t = null;
+
+		super.destroy();
+
+		this._fContainer_sprt = null;
+		this._fExplosion_sprt = null;
+		this._fCaptionContainer_spr = null;
+		this._fEnemyName_str = null;
+		this._fIsLeftDir_bln = null;
+		this._fCaptionBonus_ta = null;
+		this._fCaptionBonusContainer_sprt = null;
+		this._fCaptionWinContainer_sprt = null;
+		this._fEnemyId_num = null;
+		this._fSourcePayout_sprt = null;
+	}
+}
+
+export default OverkillHitAnimation;

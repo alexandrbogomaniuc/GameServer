@@ -1,0 +1,32 @@
+Revision: 258414
+Date: 11 Jul 2023 17:17:09
+----
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/src/controller/uis/awarding/big_win/BigWinsController.js
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/src/controller/uis/game_field/GameFieldController.js
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/src/controller/uis/scoreboard/ScoreboardController.js
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/src/view/uis/scoreboard/ScoreboardItem.js
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/src/view/uis/scoreboard/ScoreboardView.js
+
+
+Revision: 258416
+Date: 11 Jul 2023 18:29:42
+----
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/src/controller/uis/scoreboard/ScoreboardController.js
+
+
+Revision: 258426
+Date: 12 Jul 2023 16:03:19
+----
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/src/controller/uis/scoreboard/ScoreboardController.js
+
+
+Revision: 258428
+Date: 12 Jul 2023 16:57:17
+----
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/src/controller/uis/scoreboard/ScoreboardController.js
+
+
+Revision: 258429
+Date: 12 Jul 2023 16:57:52
+----
+Modified : /Common/web_technologies/actiongames/sectorx_btg/game/version.json

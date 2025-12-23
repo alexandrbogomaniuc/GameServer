@@ -1,0 +1,159 @@
+import { APP } from '../../../../../../../../../common/PIXI/src/globals';
+import Sprite from '../../../../../../../../../common/PIXI/src/display/Sprite';
+import Sequence from '../../../../../../../../../common/PIXI/src/animation/Sequence';
+import { Utils } from '../../../../../../../../../common/PIXI/src/Utils';
+import Timer from '../../../../../../../../../common/PIXI/src/Timer';
+import { FRAME_RATE } from '../../../../../../../../shared/src/CommonConstants';
+
+class AppearanceAuraView extends Sprite
+{
+	play(disappearDelay)
+	{
+		this._playAurasAnimations(disappearDelay);
+	}
+
+	//INIT...
+	constructor(aAuraName_str) 
+	{
+		super();
+
+		this._fAuraName_str = aAuraName_str;
+
+		let lAurasContainer_sprt = this.addChild(new PIXI.Sprite());
+
+		this._fAura1_sprt = lAurasContainer_sprt.addChild(this._generateAura(0));
+		this._fAura2_sprt = lAurasContainer_sprt.addChild(this._generateAura(Utils.gradToRad(53)));
+		this._fAura3_sprt = lAurasContainer_sprt.addChild(this._generateAura(0));
+
+		this._fLastSequence_s = null;
+
+		this._fTimer_t = null;
+	}
+
+	_generateAura(aRotation_num)
+	{
+		let l_sprt = APP.library.getSprite(this._fAuraName_str);
+		l_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		l_sprt.rotation = aRotation_num;
+		return l_sprt;
+	}
+	//...INIT
+
+	_playAurasAnimations(disappearDelay)
+	{
+		this._destroyTimer();
+		this._fTimer_t = new Timer(this._onDisappearDelayTimerCompleted.bind(this), disappearDelay);
+
+		this._startSequences();
+	}
+
+	_startSequences()
+	{
+		if (this._fLastSequence_s)
+		{
+			this._fLastSequence_s.off(Sequence.EVENT_ON_SEQUENCE_PLAYING_COMPLETED, this._startSequences, this);
+		}
+
+		this._fAura1_sprt.alpha = 0.74;
+		this._fAura1_sprt.scale.set(0.61);
+		this._fAura2_sprt.alpha = 1;
+		this._fAura2_sprt.scale.set(0);
+		this._fAura3_sprt.alpha = 1;
+		this._fAura3_sprt.scale.set(0);
+
+		let lSeq_arr = [
+			{ tweens:[{prop:"scale.x", to:0.41}, {prop:"scale.y", to:0.41}], duration:12*FRAME_RATE },
+			{ tweens:[{prop:"scale.x", to:1.19}, {prop:"scale.y", to:1.19}, {prop:"alpha", to:0}], duration:23*FRAME_RATE }
+		];
+
+		Sequence.start(this._fAura1_sprt, lSeq_arr);
+		Sequence.start(this._fAura2_sprt, lSeq_arr, 19*FRAME_RATE);
+		this._fLastSequence_s = Sequence.start(this._fAura3_sprt, lSeq_arr, 38*FRAME_RATE);
+		this._fLastSequence_s.once(Sequence.EVENT_ON_SEQUENCE_PLAYING_COMPLETED, this._startSequences, this);
+
+		Sequence.start(this, this._wiggleSequence);
+	}
+
+	get _wiggleSequence()
+	{
+		return [
+			{ tweens:[{prop:"scale.x", to:this._wigglesScaleValue}, {prop:"scale.y", to:this._wigglesScaleValue}], duration:10*FRAME_RATE },
+			{ tweens:[{prop:"scale.x", to:this._wigglesScaleValue}, {prop:"scale.y", to:this._wigglesScaleValue}], duration:10*FRAME_RATE },
+			{ tweens:[{prop:"scale.x", to:this._wigglesScaleValue}, {prop:"scale.y", to:this._wigglesScaleValue}], duration:10*FRAME_RATE }
+		];
+	}
+
+	get _wigglesScaleValue()
+	{
+		return Utils.getRandomWiggledValue(100, 30)/100;
+	}
+
+	_onDisappearDelayTimerCompleted()
+	{
+		this._destroyTimer();
+
+		if (this._fLastSequence_s)
+		{
+			this._fLastSequence_s.off(Sequence.EVENT_ON_SEQUENCE_PLAYING_COMPLETED, this._startSequences, this);
+		}
+
+		this._playDisappearingAnimation();
+	}
+
+	_playDisappearingAnimation()
+	{
+		let seq = [{ tweens: [{prop: "alpha", to: 0}], duration: 9*FRAME_RATE, onfinish: () => this._onDisappeared() }];
+		Sequence.start(this, seq);
+	}
+
+	_onDisappeared()
+	{
+		this.destroy();
+	}
+
+	_destroyTimer()
+	{
+		this._fTimer_t && this._fTimer_t.destructor();
+		this._fTimer_t = null;
+	}
+
+	destroy()
+	{
+		this._destroyTimer();
+
+		if (this._fLastSequence_s)
+		{
+			this._fLastSequence_s.off(Sequence.EVENT_ON_SEQUENCE_PLAYING_COMPLETED, this._startSequences, this);
+			this._fLastSequence_s = null;
+		}
+
+		if (this._fAura1_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fAura1_sprt));
+			this._fAura1_sprt.destroy();
+			this._fAura1_sprt = null;
+		}
+		
+		if (this._fAura2_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fAura2_sprt));
+			this._fAura2_sprt.destroy();
+			this._fAura2_sprt = null;
+		}
+
+		if (this._fAura3_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fAura3_sprt));
+			this._fAura3_sprt.destroy();
+			this._fAura3_sprt = null;
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this));
+
+		super.destroy.call(this);
+
+		this._fAuraName_str = null;
+	}
+}
+
+export default AppearanceAuraView;

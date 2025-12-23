@@ -1,0 +1,132 @@
+
+UndiscoveredMummy180.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/arm_lf
+  rotate: false
+  xy: 202, 51
+  size: 113, 193
+  orig: 113, 193
+  offset: 0, 0
+  index: -1
+180/arm_rt
+  rotate: false
+  xy: 463, 108
+  size: 105, 207
+  orig: 105, 207
+  offset: 0, 0
+  index: -1
+180/body
+  rotate: false
+  xy: 4, 248
+  size: 298, 250
+  orig: 298, 250
+  offset: 0, 0
+  index: -1
+180/calf_lf
+  rotate: false
+  xy: 796, 196
+  size: 105, 164
+  orig: 105, 164
+  offset: 0, 0
+  index: -1
+180/calf_rt
+  rotate: false
+  xy: 572, 148
+  size: 90, 167
+  orig: 90, 167
+  offset: 0, 0
+  index: -1
+180/foot_lf
+  rotate: false
+  xy: 319, 9
+  size: 134, 101
+  orig: 134, 101
+  offset: 0, 0
+  index: -1
+180/foot_rt
+  rotate: false
+  xy: 457, 4
+  size: 145, 100
+  orig: 145, 100
+  offset: 0, 0
+  index: -1
+180/forearm_lf
+  rotate: false
+  xy: 905, 232
+  size: 99, 148
+  orig: 99, 148
+  offset: 0, 0
+  index: -1
+180/forearm_rt
+  rotate: true
+  xy: 867, 384
+  size: 114, 153
+  orig: 114, 153
+  offset: 0, 0
+  index: -1
+180/hand_lf
+  rotate: false
+  xy: 666, 211
+  size: 126, 149
+  orig: 126, 149
+  offset: 0, 0
+  index: -1
+180/hand_lf2
+  rotate: false
+  xy: 606, 20
+  size: 99, 105
+  orig: 99, 105
+  offset: 0, 0
+  index: -1
+180/hand_rt
+  rotate: true
+  xy: 790, 120
+  size: 72, 156
+  orig: 72, 156
+  offset: 0, 0
+  index: -1
+180/hand_rt2
+  rotate: true
+  xy: 666, 129
+  size: 78, 120
+  orig: 78, 120
+  offset: 0, 0
+  index: -1
+180/head
+  rotate: false
+  xy: 4, 54
+  size: 194, 190
+  orig: 194, 190
+  offset: 0, 0
+  index: -1
+180/hip
+  rotate: true
+  xy: 306, 319
+  size: 179, 335
+  orig: 179, 335
+  offset: 0, 0
+  index: -1
+180/leg_lf
+  rotate: false
+  xy: 319, 114
+  size: 140, 201
+  orig: 140, 201
+  offset: 0, 0
+  index: -1
+180/leg_rt
+  rotate: true
+  xy: 645, 364
+  size: 134, 218
+  orig: 134, 218
+  offset: 0, 0
+  index: -1
+180/snake
+  rotate: true
+  xy: 4, 8
+  size: 42, 87
+  orig: 42, 87
+  offset: 0, 0
+  index: -1

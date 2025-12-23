@@ -1,0 +1,30 @@
+﻿import IndicatorInfo from '../../../../../../../common/PIXI/src/model/uis/IndicatorInfo';
+
+class LobbyBalanceIndicatorInfo extends IndicatorInfo
+{
+	set waitForBalanceUpdate(aValue_bl)
+	{
+		this._fWaitingForBalanceUpdate_bl = !!aValue_bl;
+	}
+
+	get waitForBalanceUpdate()
+	{
+		return this._fWaitingForBalanceUpdate_bl;
+	}
+
+	//INIT...
+	constructor()
+	{
+		super();
+
+		this._initLobbyBalanceIndicatorInfo();
+	}
+
+	_initLobbyBalanceIndicatorInfo()
+	{
+		this._fWaitingForBalanceUpdate_bl = false;
+	}
+	//...INIT
+}
+
+export default LobbyBalanceIndicatorInfo;

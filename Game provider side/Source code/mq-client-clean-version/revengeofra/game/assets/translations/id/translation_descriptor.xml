@@ -1,0 +1,1872 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+		<font name="fnt_nm_barlow_italic_medium" url="[root_resources_path]translations/id/fonts/barlow_mediumitalic_id.ttf"/>
+		<font name="fnt_nm_barlow" url="[root_resources_path]translations/id/fonts/barlow_medium_id.ttf"/>
+		<font name="fnt_nm_barlow_bold" url="[root_resources_path]translations/id/fonts/barlow_bold_id.ttf"/>
+	</fonts>
+
+	<tasds>
+		<!--HP DAMAGE...-->
+		<tad id="TAEnemyHPCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>HP</source_meaning>
+				<translated_meaning>HP</translated_meaning>
+			</meaning>
+			<area x="-32" y="-16" w="64" h="32">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/hp/hp_caption.png"/>
+		</tad>
+
+		<tad id="TAEnemyHPValuePosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-11" y="0" w="0" h="0"> <!-- x<0 - значение будет слева от TAEnemyHPCaption, x>=0 - значение справа от TAEnemyHPCaption -->
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		<!--...HP DAMAGE-->
+
+		<!--BIG WIN...-->
+		<tad id="TABigWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BIG WIN!</source_meaning>
+				<translated_meaning>KEMENANGAN BESAR!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/big_win_caption.png"/>
+		</tad>
+
+		<tad id="TABigWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BIG WIN!</source_meaning>
+				<translated_meaning>KEMENANGAN BESAR!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/big_win_glow_caption.png"/>
+		</tad>
+
+		<tad id="TAHugeWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>HUGE WIN!</source_meaning>
+				<translated_meaning>KEMENANGAN AKBAR!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/huge_win_caption.png"/>
+		</tad>
+
+		<tad id="TAHugeWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>HUGE WIN!</source_meaning>
+				<translated_meaning>KEMENANGAN AKBAR!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/huge_win_glow_caption.png"/>
+		</tad>
+
+		<tad id="TAMegaWinCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MEGA WIN!</source_meaning>
+				<translated_meaning>KEMENANGAN MEGA!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/mega_win_caption.png"/>
+		</tad>
+
+		<tad id="TAMegaWinGlowCaption" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MEGA WIN!</source_meaning>
+				<translated_meaning>KEMENANGAN MEGA!</translated_meaning>
+			</meaning>
+			<area x="-1024" y="-128" w="2048" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/big_win/mega_win_glow_caption.png"/>
+		</tad>
+		<!--...BIG WIN-->
+
+		<!--CRITICAL HIT...-->
+		<tad id="TACriticalHitLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>CRITICAL WIN</source_meaning>
+				<translated_meaning>TEMBAKAN KRITIS</translated_meaning>
+			</meaning>
+			<area x="-128" y="-16" w="256" h="32">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/critical_hit/critical_hit.png"/>
+		</tad>
+		<!--...CRITICAL HIT-->
+
+		<!--INSTANT KILL...-->
+		<tad id="TAInstantWinLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>INSTANT WIN!!!</source_meaning>
+				<translated_meaning>KEMENANGAN INSTAN!!!</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/instant_win/instant_win.png"/>
+		</tad>
+
+		<tad id="TAInstantWinSilverLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>INSTANT WIN!!!</source_meaning>
+				<translated_meaning>KEMENANGAN INSTAN!!!</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/instant_win/instant_win_silver.png"/>
+		</tad>
+
+		<tad id="TAInstantWinWhiteLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>INSTANT WIN!!!</source_meaning>
+				<translated_meaning>KEMENANGAN INSTAN!!!</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/instant_win/instant_win_white.png"/>
+		</tad>
+		<!--...INSTANT KILL-->
+
+		<!--BONUS WIN...-->
+		<tad id="TABonusLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BONUS</source_meaning>
+				<translated_meaning>KEMENANGAN</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="512" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/bonus_win/bonus.png"/>
+		</tad>
+
+		<tad id="TAWinLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>WIN</source_meaning>
+				<translated_meaning>BONUS</translated_meaning>
+			</meaning>
+			<area x="-128" y="-64" w="256" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/bonus_win/win.png"/>
+		</tad>
+		<!--...BONUS WIN-->
+
+		<!--FIRE_SETTINGS...-->
+		<tad id="TAFireSettingsOptions" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OPTIONS</source_meaning>
+				<translated_meaning>OPSI</translated_meaning>
+			</meaning>
+			<area x="-19" y="-11" w="38" h="22">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="7" color="0xffffff">
+				</font>
+				<content>OPSI</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetHigh" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target HIGH</source_meaning>
+				<translated_meaning>Target TINGGI</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Target TINGGI</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetLow" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target LOW</source_meaning>
+				<translated_meaning>Target RENDAH</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Target RENDAH</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetSame" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target SAME</source_meaning>
+				<translated_meaning>Target SAMA</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Target SAMA</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingslockOnTarget" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Lock on Target</source_meaning>
+				<translated_meaning>Kunci pada Target</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Kunci pada Target</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsAutoFire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto Fire</source_meaning>
+				<translated_meaning>Tembak Otomatis</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="3">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Tembak Otomatis</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsFireSpeed" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Fire Speed</source_meaning>
+				<translated_meaning>Kecepatan Tembak</translated_meaning>
+			</meaning>
+			<area x="0" y="-8" w="76" h="16">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="3">
+				<font name="fnt_nm_barlow" size="9" color="0xffffff">
+				</font>
+				<content>Kecepatan Tembak</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsOkMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OK</source_meaning>
+				<translated_meaning>OK</translated_meaning>
+			</meaning>
+			<area x="-50" y="-15" w="100" h="30">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="24" color="0x000000">
+				</font>
+				<content>OK</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsOptionsMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>OPTIONS</source_meaning>
+				<translated_meaning>OPSI</translated_meaning>
+			</meaning>
+			<area x="0" y="-23" w="220" h="46">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow_semibold" size="24" color="0xffffff">
+				</font>
+				<content>OPSI</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetHighMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target HIGH</source_meaning>
+				<translated_meaning>Target TINGGI</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Target TINGGI</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetLowMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target LOW</source_meaning>
+				<translated_meaning>Target RENDAH</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Target RENDAH</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsTargetSameMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Target SAME</source_meaning>
+				<translated_meaning>Target SAMA</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Target SAMA</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingslockOnTargetMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Lock on Target</source_meaning>
+				<translated_meaning>Kunci pada Target</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Kunci pada Target</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsAutoFireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Auto Fire</source_meaning>
+				<translated_meaning>Tembak Otomatis</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Tembak Otomatis</content>
+			</txt>
+		</tad>
+
+		<tad id="TAFireSettingsFireSpeedMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Fire Speed</source_meaning>
+				<translated_meaning>Kecepatan Tembak</translated_meaning>
+			</meaning>
+			<area x="0" y="-14" w="216" h="28">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="0.5" padding="5">
+				<font name="fnt_nm_barlow" size="22" color="0xffffff">
+				</font>
+				<content>Kecepatan Tembak</content>
+			</txt>
+		</tad>
+		<!--...FIRE_SETTINGS-->
+
+		<!--BOSS MODE...-->
+		<tad id="TABossModeOsirisLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>OSIRIS HAS RISEN</source_meaning>
+				<translated_meaning>OSIRIS TELAH BANGKIT</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_osiris.png"/>
+		</tad>
+
+		<tad id="TABossModeOsirisSmokeLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>OSIRIS HAS RISEN</source_meaning>
+				<translated_meaning>OSIRIS TELAH BANGKIT</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_osiris_smoke.jpg"/>
+		</tad>
+
+		<tad id="TABossModeAnubisLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>ANUBIS HAS RISEN</source_meaning>
+				<translated_meaning>ANUBIS TELAH BANGKIT</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_anubis.png"/>
+		</tad>
+
+		<tad id="TABossModeAnubisSmokeLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>ANUBIS HAS RISEN</source_meaning>
+				<translated_meaning>ANUBIS TELAH BANGKIT</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_anubis_smoke.jpg"/>
+		</tad>
+
+		<tad id="TABossModeThothLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>RA HAS RISEN</source_meaning>
+				<translated_meaning>RA TELAH BANGKIT</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_ra.png"/>
+		</tad>
+
+		<tad id="TABossModeThothSmokeLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>RA HAS RISEN</source_meaning>
+				<translated_meaning>RA TELAH BANGKIT</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/boss_mode/caption_ra_smoke.jpg"/>
+		</tad>
+
+		<tad id="TABossModeAnubisCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Anubis Strength</source_meaning>
+				<translated_meaning>Kekuatan Anubis</translated_meaning>
+			</meaning>
+			<area x="-30" y="-20" w="60" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Kekuatan&#010;Anubis</content>
+			</txt>
+		</tad>
+
+		<tad id="TABossModeOsirisCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Osiris Strength</source_meaning>
+				<translated_meaning>Kekuatan Osiris</translated_meaning>
+			</meaning>
+			<area x="-30" y="-20" w="60" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Kekuatan&#010;Osiris</content>
+			</txt>
+		</tad>
+
+		<tad id="TABossModeThothCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Ra Strength</source_meaning>
+				<translated_meaning>Kekuatan Ra</translated_meaning>
+			</meaning>
+			<area x="-30" y="-20" w="60" h="40">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Kekuatan&#010;Ra</content>
+			</txt>
+		</tad>
+		<!--...BOSS MODE-->
+
+		<!--INFO PANEL...-->
+		<tad id="TAInfoPanelRoomLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Room XX</source_meaning>
+				<translated_meaning>Ruang XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Ruang /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelRoundIdLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning> / Round ID XX</source_meaning>
+				<translated_meaning> / ID Ronde XX</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content> / ID Ronde /VALUE/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelKillsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX killed YY</source_meaning>
+				<translated_meaning>XX membunuh satu YY</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>/PLAYER_NAME/ membunuh satu /ENEMY_NAME/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelKilledBossLabelTemplate" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>XX has killed YY</source_meaning>
+				<translated_meaning>XX telah membunuh YY</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>/PLAYER_NAME/ telah membunuh /ENEMY_NAME/</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelCPBLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Cost per bullet</source_meaning>
+				<translated_meaning>Harga Per Bullet</translated_meaning>
+			</meaning>
+			<area x="-200" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Harga Per Bullet</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelGameNameLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MAX DUEL: RISE OF THE MUMMY</source_meaning>
+				<translated_meaning>MAX DUEL: KEBANGKITAN MUMI</translated_meaning>
+			</meaning>
+			<area x="0" y="-9" w="200" h="18">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>MAX DUEL: KEBANGKITAN MUMI</content>
+			</txt>
+		</tad>
+
+		<!--ENEMIES...-->
+		<tad id="TAInfoPanelEnemyDevouringLocust" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Devouring Locust</source_meaning>
+				<translated_meaning>Belalang Pelahap</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Belalang Pelahap</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemySwarmingLocust" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Swarming Locust</source_meaning>
+				<translated_meaning>Kerumunan Belalang</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Kerumunan Belalang</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabGreen" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Scarab Hatchling</source_meaning>
+				<translated_meaning>Anakan Scarab</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Anakan Scarab</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabBrown" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Shadow Scarab</source_meaning>
+				<translated_meaning>Scarab Bayangan</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Scarab Bayangan</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabGold" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Golden Scarab</source_meaning>
+				<translated_meaning>Scarab Emas</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Scarab Emas</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabRuby" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Ruby Scarab</source_meaning>
+				<translated_meaning>Scarab Delima</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Scarab Delima</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyScarabDiamond" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Bejeweled Scarab</source_meaning>
+				<translated_meaning>Scarab Batu Permata</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Scarab Batu Permata</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyWrappedMinion" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Wrapped Minion</source_meaning>
+				<translated_meaning>Minion Terbalut</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Minion Terbalut</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyWrappedShadowguard" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Wrapped Shadowguard</source_meaning>
+				<translated_meaning>Shadowguard Terbalut</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Shadowguard Terbalut</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyWrappedSpiritguard" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Wrapped Spiritguard</source_meaning>
+				<translated_meaning>Spiritguard Terbalut</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Spiritguard Terbalut</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyTahawyWarrior" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Tahawy Warrior</source_meaning>
+				<translated_meaning>Prajurit Tahawy</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Prajurit Tahawy</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyTahawyCommander" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Tahawy Commander</source_meaning>
+				<translated_meaning>Komandan Tahawy</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Komandan Tahawy</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyCrimsonBataana" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Crimson Bataanta</source_meaning>
+				<translated_meaning>Bataanta Merah Tua</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Bataanta Merah Tua</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyEmeraldBataana" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>an Emerald Bataanta</source_meaning>
+				<translated_meaning>Bataanta Zamrud</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Bataanta Zamrud</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyInfernalForgemaster" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>an Infernal Forgemaster</source_meaning>
+				<translated_meaning>Penempa Neraka</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Penempa Neraka</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyUnstableAvatar" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>an Unstable Avatar</source_meaning>
+				<translated_meaning>Avatar Tidak Stabil</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Avatar Tidak Stabil</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyGiantScorpion" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Giant Scorpion</source_meaning>
+				<translated_meaning>Kalajengking Raksasa</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Kalajengking Raksasa</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyHorus" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Horus</source_meaning>
+				<translated_meaning>Horus</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Horus</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyBrawlerBerserk" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>a Cursed Brawler</source_meaning>
+				<translated_meaning>Berandal Terkutuk</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Berandal Terkutuk</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyAnubis" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Anubis</source_meaning>
+				<translated_meaning>Anubis</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Anubis</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyOsiris" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Osiris</source_meaning>
+				<translated_meaning>Osiris</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Osiris</content>
+			</txt>
+		</tad>
+
+		<tad id="TAInfoPanelEnemyThoth" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Ra</source_meaning>
+				<translated_meaning>Ra</translated_meaning>
+			</meaning>
+			<area x="-200" y="-10" w="400" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="10" color="0x838383"></font>
+				<content>Ra</content>
+			</txt>
+		</tad>
+		<!--...ENEMIES-->
+		<!--...INFO PANEL-->
+
+		<!--PLAYER SPOT...-->
+		<tad id="TAPlayerSpotFree" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FREE</source_meaning>
+				<translated_meaning>GRATIS</translated_meaning>
+			</meaning>
+			<area x="-25" y="-10" w="50" h="20">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="10" color="0xffffff"></font>
+				<content>GRATIS</content>
+			</txt>
+		</tad>
+		<!--...PLAYER SPOT-->
+
+		<!-- SIDEBAR... -->
+		<tad id="TAWeaponsSidebarIconFreeShotsLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Free Shots: XX</source_meaning>
+				<translated_meaning>Tembakan Gratis: XX</translated_meaning>
+			</meaning>
+			<area x="-150" y="-46" w="300" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="10" alpha="1">
+				<font name="fnt_nm_barlow_bold" size="11" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>Tembakan&#010;Gratis: /VALUE/</content>
+			</txt>
+		</tad>
+		<!-- ...SIDEBAR -->
+
+		<!-- AWARDED FREE SHOTS COUNTER... -->
+		<!--Для дополнительной части ассета добавить копию дескриптора с id "TAAwardedFreeShotsCounterLabelEndingOpt"-->
+		<tad id="TAAwardedFreeShotsCounterLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>#freeshot:FREESHOT,FREESHOTS#</source_meaning>
+				<translated_meaning>#freeshot:TEMBAKAN GRATIS,TEMBAKAN GRATIS#</translated_meaning>
+			</meaning>
+			<area x="0" y="-75" w="500" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="65" alpha="1">
+				<font name="fnt_nm_barlow_bold" size="63" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" angle="90" alpha="1" blur="3"/>
+					</shadows>
+				</filters>
+				<content>#freeshot:TEMBAKAN&#10;GRATIS,TEMBAKAN&#10;GRATIS#</content>
+			</txt>
+		</tad>
+		
+		<tad id="TARoundResultSWBonusCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>SPECIAL WEAPON BONUS</source_meaning>
+				<translated_meaning>BONUS SENJATA SPESIAL</translated_meaning>
+			</meaning>
+			<area x="-40" y="-12" w="80" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>BONUS&#10;SENJATA SPESIAL</content>
+			</txt>
+		</tad>
+
+		<tad id="TAAwardedFreeShotsCounterValue" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>/VALUE/</source_meaning>
+				<translated_meaning>/VALUE/</translated_meaning>
+			</meaning>
+			<area x="-110" y="-75" w="100" h="150"> <!-- x<0 - значение будет слева от TAAwardedFreeShotsCounterLabel, x>=0 - значение справа от TAAwardedFreeShotsCounterLabel -->
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="right" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" alpha="1">
+				<font name="fnt_nm_barlow_bold" size="74" color="non-uniform">
+					<stroke color="0x373737" thickness="2"/>
+					<fill type="linear_gradient" repeat="lines">
+						<from x="0" y="0"/>
+						<to x="0" y="0"/>
+						<key position="0" color="0xffffff"/>
+						<key position="1" color="0xd7d7d7"/>
+					</fill>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="3" angle="90" alpha="1" blur="5"/>
+					</shadows>
+				</filters>
+				<content>/VALUE/</content>
+			</txt>
+		</tad>
+		<!-- ...AWARDED FREE SHOTS COUNTER -->
+
+		<!--ROUND RESULTS...-->
+		<tad id="TARoundResultsTitle" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>ROUND RESULTS</source_meaning>
+				<translated_meaning>HASIL RONDE</translated_meaning>
+			</meaning>
+			<area x="0" y="-20" w="200" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="14" color="0xffffff" bold="false">
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>HASIL RONDE</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultTotalDamageCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TOTAL DAMAGE DEALT</source_meaning>
+				<translated_meaning>TOTAL DAMAGE DIBERIKAN</translated_meaning>
+			</meaning>
+			<area x="-70" y="-20" w="140" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>TOTAL DAMAGE DIBERIKAN</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultMoneyWheelWinsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MONEY WHEELS COMPLETED</source_meaning>
+				<translated_meaning>RODA UANG DISELESAIKAN</translated_meaning>
+			</meaning>
+			<area x="-40" y="-12" w="80" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>RODA UANG&#010;DISELESAIKAN</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultMoneyWheelPayoutsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>MONEY WHEEL PAYOUTS</source_meaning>
+				<translated_meaning>PEMBAYARAN RODA UANG</translated_meaning>
+			</meaning>
+			<area x="-40" y="-12" w="80" h="20">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>PEMBAYARAN&#010;RODA UANG</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultUnusedBonusCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>UNUSED SPECIAL WEAPON BONUS</source_meaning>
+				<translated_meaning>BONUS SENJATA SPESIAL YANG TIDAK TERPAKAI</translated_meaning>
+			</meaning>
+			<area x="-40" y="-22" w="80" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="8">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>BONUS SENJATA&#010;SPESIAL YANG&#010;TIDAK TERPAKAI</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultPlusMoneyCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>+</source_meaning>
+				<translated_meaning>+</translated_meaning>
+			</meaning>
+			<area x="-70" y="-14" w="140" h="28">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xf6921e"></font>
+				<content>+</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultTotalKillsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>KILLS</source_meaning>
+				<translated_meaning>TERBUNUH</translated_meaning>
+			</meaning>
+			<area x="-45" y="-20" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>TERBUNUH</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultTotalFreeShotsCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>FREE SHOTS WON</source_meaning>
+				<translated_meaning>TEMBAKAN GRATIS DIMENANGKAN</translated_meaning>
+			</meaning>
+			<area x="-45" y="-22" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>TEMBAKAN GRATIS&#010;DIMENANGKAN</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultBulletsFiredCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>BULLETS FIRED</source_meaning>
+				<translated_meaning>BULLET DITEMBAKKAN</translated_meaning>
+			</meaning>
+			<area x="-45" y="-20" w="90" h="40">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow" size="8" color="0xffffff"></font>
+				<content>BULLET DITEMBAKKAN</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultNextRoundBtnCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>NEXT ROUND</source_meaning>
+				<translated_meaning>RONDE BERIKUTNYA</translated_meaning>
+			</meaning>
+			<area x="-100" y="-50" w="200" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="12" color="0xFFFFFF" bold="false"></font>
+				<content>RONDE BERIKUTNYA</content>
+			</txt>
+		</tad>
+
+		<tad id="TARoundResultWaitingForNewRoundCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Waiting for new round</source_meaning>
+				<translated_meaning>Menunggu ronde baru</translated_meaning>
+			</meaning>
+			<area x="-115" y="-100" w="230" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="21" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Menunggu ronde baru</content>
+			</txt>
+		</tad>
+		<!--...ROUND RESULTS-->
+
+		<tad id="TAWaitingForNewRoundCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Waiting for new round</source_meaning>
+				<translated_meaning>Menunggu ronde baru</translated_meaning>
+			</meaning>
+			<area x="-230" y="-100" w="460" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="36" color="0xffffff" bold="false"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Menunggu ronde baru</content>
+			</txt>
+		</tad>
+
+		<tad id="TAWaitScreenGameInProgressCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Game in progress, please wait...</source_meaning>
+				<translated_meaning>Permainan sedang berlangsung, mohon tunggu...</translated_meaning>
+			</meaning>
+			<area x="-190" y="-95" w="380" h="200">
+				<scale x="auto" y="auto" distortion="true"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="36" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Permainan sedang&#010;berlangsung,&#010;mohon tunggu...</content>
+			</txt>
+		</tad>
+
+		<!-- MAPS... -->
+		<tad id="TAWaitWhileMapIsLoadingCaption" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>The map is loading, please wait...</source_meaning>
+				<translated_meaning>Peta sedang dimuat, harap tunggu...</translated_meaning>
+			</meaning>
+			<area x="-230" y="-100" w="460" h="200">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto" letterspacing="1" padding="5">
+				<font name="fnt_nm_barlow_italic_medium" size="38" color="0xffffff"></font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="1" angle="90"/>
+					</shadows>
+				</filters>
+				<content>Peta sedang dimuat,&#010;harap tunggu...</content>
+			</txt>
+		</tad>
+		<!-- ...MAPS -->
+
+		<!--
+
+		To change position of a tip, add correspondent descriptor as following:
+
+		<tad id="[TIP_TA_ID]Position" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		DEFAULT DESKTOP POSITIONS:
+		TATipsSwitchToBaseWeaponPosition:		x: 0		y: -50
+		TATipsSpecialWeaponNewPlayerPosition:	x: -290		y: 0
+		TATipsAutofirePosition:					x: -180		y: -60
+		TATipsRightClickAutofirePosition:		x: 203		y: -68
+
+		DEFAULT MOBILE POSITIONS:
+		TATipsAutofireMobilePosition			x: -180		y: -60
+		TATipsRightClickAutofireMobilePosition	x: 258		y: -55
+		
+		-->
+
+		<tad id="TATipsSpecialWeaponNewPlayer" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use SPECIAL WEAPONS to do MASSIVE DAMAGE</source_meaning>
+				<translated_meaning>Gunakan SENJATA SPESIAL untuk melakukan DAMAGE LUAR BIASA</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Gunakan SENJATA SPESIAL untuk&#010;melakukan DAMAGE LUAR BIASA</content>
+			</txt>
+		</tad>
+		
+		<tad id="TATipsSpecialWeaponNewPlayerPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-235" y="0" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		<!--
+		To change position of a base weapon tip, add correspondent descriptor as following:
+
+		<tad id="TATipsSwitchToBaseWeaponPosition0|1|2|3|4|5" type="void_based" translated="true"> \\TATipsSwitchToBaseWeaponMobilePosition for mobile
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		DEFAULT DESKTOP POSITIONS:
+		Player5 x: 349.5 	y: -145 (top right)
+		Player4 x: 250 		y: -215
+		Player3 x: -82 	y: -215 (top left)
+		Player2 x: 349.5 	y: 155	(bottom right)
+		Player1 x: 250 		y: 225
+		Player0 x: -82	y: 225	(bottom left)
+
+		DEFAULT MOBILE POSITIONS:
+		Player5 x: 349.5 	y: -125 (top right)
+		Player4 x: 250 		y: -194
+		Player3 x: -82 	y: -194 (top left)
+		Player2 x: 349.5 	y: 135	(bottom right)
+		Player1 x: 250		y: 204
+		Player0 x: -82	y: 204	(bottom left)
+		-->
+		
+		<tad id="TATipsSwitchToBaseWeapon" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use this button to switch to BASE WEAPON</source_meaning>
+				<translated_meaning>Gunakan tombol ini untuk beralih ke SENJATA DASAR</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Gunakan tombol ini untuk&#010;beralih ke SENJATA DASAR</content>
+			</txt>
+		</tad>
+		
+		<tad id="TATipsSwitchToBaseWeaponPosition0" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-62" y="225" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition0" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-62" y="204" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+				
+		<tad id="TATipsSwitchToBaseWeaponPosition1" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="270" y="225" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition1" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="270" y="204" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		<tad id="TATipsSwitchToBaseWeaponPosition2" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="329.5" y="155" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition2" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="329.5" y="135" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponPosition3" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-62" y="-215" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition3" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-62" y="-204" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponPosition4" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="270" y="-215" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition4" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="270" y="-204" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponPosition5" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="329.5" y="-145" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsSwitchToBaseWeaponMobilePosition5" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="329.5" y="-135" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Hold CLICK for AUTOFIRE</source_meaning>
+				<translated_meaning>Tahan KLIK untuk TEMBAK OTOMATIS</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Tahan KLIK untuk&#010;TEMBAK OTOMATIS</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsAutofireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP and hold to AUTOFIRE</source_meaning>
+				<translated_meaning>KETUK dan tahan untuk TEMBAK OTOMATIS</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>KETUK dan tahan untuk&#010;TEMBAK OTOMATIS</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RIGHT-CLICK to lock target and AUTO-FIRE</source_meaning>
+				<translated_meaning>KLIK KANAN untuk mengunci target dan TEMBAK OTOMATIS</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>KLIK KANAN untuk mengunci&#010;target dan TEMBAK OTOMATIS</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireDisableAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RIGHT-CLICK to lock target</source_meaning>
+				<translated_meaning>KLIK KANAN untuk mengunci target</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>KLIK KANAN untuk&#010;mengunci target</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP on right icon to lock target and AUTO-FIRE</source_meaning>
+				<translated_meaning>KETUK ikon kanan untuk mengunci target dan TEMBAK OTOMATIS</translated_meaning>
+			</meaning>
+			<area x="0" y="-48" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>KETUK ikon kanan&#10;untuk mengunci target&#10;dan TEMBAK OTOMATIS</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireMobilePosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="228" y="-55" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsRightClickAutofireMobileDisableAutofire" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP on right icon to lock target</source_meaning>
+				<translated_meaning>Ketuk ikon kanan untuk mengunci target</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Ketuk ikon kanan&#010;untuk mengunci target</content>
+			</txt>
+		</tad>
+
+		<!--
+		To change position of a bet level tip, add correspondent descriptor as following:
+
+		<tad id="TATipsBetLevelPositionPlayer0|1|2|3|4|5" type="void_based" translated="true"> \\TATipsBetLevelMobilePositionPlayer for mobile
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="12345" y="12345" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+		
+		DEFAULT DESKTOP POSITIONS:
+		Player5 x: 349.5 	y: -145 (top right)
+		Player4 x: 0 		y: -145
+		Player3 x: -349.5 	y: -145 (top left)
+		Player2 x: 349.5 	y: 155	(bottom right)
+		Player1 x: 0 		y: 155
+		Player0 x: -349.5	y: 155	(bottom left)
+
+		DEFAULT MOBILE POSITIONS:
+		Player5 x: 349.5 	y: -125 (top right)
+		Player4 x: 0 		y: -125
+		Player3 x: -349.5 	y: -125 (top left)
+		Player2 x: 349.5 	y: 135	(bottom right)
+		Player1 x: 0		y: 135
+		Player0 x: -349.5	y: 135	(bottom left)
+		-->
+
+		<tad id="TATipsBetLevel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Change BET LEVEL by using (–) and (+)</source_meaning>
+				<translated_meaning>Ubah LEVEL TARUHAN dengan menggunakan (-) dan (+)</translated_meaning>
+			</meaning>
+			<area x="0" y="-50" w="400" h="100">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="left" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="17" color="0xffffff" bold="false"/>
+				<content>Ubah LEVEL TARUHAN dengan&#010;menggunakan /MINUS_IMG/ dan /PLUS_IMG/</content>
+			</txt>
+		</tad>
+
+		<tad id="TATipsBetLevelPlusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="185" y="10" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMinusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="122" y="10" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelPositionPlayer5" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="339.5" y="-145" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelPositionPlayer3" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-339.5" y="-145" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelPositionPlayer2" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="339.5" y="155" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelPositionPlayer0" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-339.5" y="155" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePlusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="185" y="11" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobileMinusPosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="122" y="11" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePositionPlayer5" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="339.5" y="-125" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePositionPlayer3" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-339.5" y="-125" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePositionPlayer2" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="339.5" y="135" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TATipsBetLevelMobilePositionPlayer0" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-339.5" y="135" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<!--WIN STREAK COUNTER...-->
+		<tad id="TAWinStreakLabel" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>Win Streak!</source_meaning>
+				<translated_meaning>Kemenangan Beruntun!</translated_meaning>
+			</meaning>
+			<area x="-128" y="-32" w="256" h="64">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]/win_streak_counter/win_streak_caption.png"/>
+		</tad>
+		<!--...WIN STREAK COUNTER-->
+	</tasds>
+</td>

@@ -1,0 +1,55 @@
+
+top_down_walk.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Shadow
+  rotate: false
+  xy: 4, 711
+  size: 702, 302
+  orig: 702, 302
+  offset: 0, 0
+  index: -1
+arm_lf
+  rotate: true
+  xy: 4, 4
+  size: 399, 394
+  orig: 399, 394
+  offset: 0, 0
+  index: -1
+arms
+  rotate: false
+  xy: 402, 53
+  size: 502, 350
+  orig: 502, 350
+  offset: 0, 0
+  index: -1
+calf_lf
+  rotate: false
+  xy: 319, 461
+  size: 195, 246
+  orig: 195, 246
+  offset: 0, 0
+  index: -1
+foot_lf
+  rotate: true
+  xy: 4, 418
+  size: 289, 311
+  orig: 289, 311
+  offset: 0, 0
+  index: -1
+jaw
+  rotate: true
+  xy: 710, 407
+  size: 606, 301
+  orig: 606, 301
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 1028, 4
+  size: 555, 447
+  orig: 555, 447
+  offset: 0, 0
+  index: -1

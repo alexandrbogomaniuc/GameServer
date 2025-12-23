@@ -1,0 +1,23 @@
+import ErrorHandlingController from '../../../../../common/PIXI/src/controller/error/ErrorHandlingController';
+import { APP } from '../../../../../common/PIXI/src/globals';
+import { GAME_MESSAGES } from '../../../../../common/PIXI/src/external/betsoftgaming/ExternalCommunicator';
+
+class GameErrorHandlingController extends ErrorHandlingController {
+
+	//override
+	_onError(aErrorMsg_str, aUrl_str, aLineNumber_int, aColumnNumber_int, aErrorObject_obj) {
+		let lData_obj = {
+			errorMessage: 	aErrorMsg_str,
+			url: 			aUrl_str,
+			lineNumber: 	aLineNumber_int,
+			columnNumber: 	aColumnNumber_int,
+			errorObject: 	aErrorObject_obj,
+			errorStack: 	aErrorObject_obj.stack
+		};
+		APP.externalCommunicator.sendExternalMessage(GAME_MESSAGES.RUNTIME_ERROR, lData_obj);
+		return false;
+	}
+
+}
+
+export default GameErrorHandlingController;

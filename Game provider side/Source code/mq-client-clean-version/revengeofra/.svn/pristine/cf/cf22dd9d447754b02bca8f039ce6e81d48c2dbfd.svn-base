@@ -1,0 +1,158 @@
+import SimpleController from '../../../../../../../common/PIXI/src/controller/base/SimpleController';
+import LobbyWebSocketInteractionController from '../../../interaction/server/LobbyWebSocketInteractionController';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+
+class PromoController extends SimpleController
+{
+	static get EVENT_PROMO_COMPLETED() 	{return "EVENT_PROMO_COMPLETED"};
+
+	constructor(promoInfo)
+	{
+		super(promoInfo);
+
+		this._serverTime = undefined;
+		this._promoCompleteTimer = undefined;
+
+		this._initPromoController();
+	}
+
+	destroy()
+	{
+		this._stopListeningPromoCompletion();
+
+		let wsInteractionController = APP.webSocketInteractionController;
+		wsInteractionController.off(LobbyWebSocketInteractionController.EVENT_ON_SERVER_LOBBY_TIME_UPDATED_MESSAGE, this._onLobbyTimeUpdatedMessage, this);
+
+		this._serverTime = undefined;
+		this._promoCompleteTimer = undefined;
+
+		super.destroy();
+	}
+
+	_initPromoController()
+	{
+	}
+
+	__init ()
+	{
+		super.__init();
+	}
+
+	__initModelLevel ()
+	{
+		super.__initModelLevel();
+
+		let actualCompleteTime = new Date();
+		actualCompleteTime.setTime(this.info.endTime + this._timeZoneOffset);
+
+		this.info.actualCompleteTime = actualCompleteTime.getTime();
+	}
+
+	__initControlLevel ()
+	{
+		super.__initControlLevel();
+
+		if (APP.commonPanelController && APP.commonPanelController.info.timeFromServer !== undefined)
+		{
+			this._serverTime = APP.commonPanelController.info.timeFromServer;
+		}
+
+		let curTime = this._currentTime;
+		if (curTime >= this.info.actualCompleteTime)
+		{
+			this._onPromoCompleted();
+			return;
+		}
+		
+		this._startListeningPromoCompletion();
+
+		let wsInteractionController = APP.webSocketInteractionController;
+		wsInteractionController.on(LobbyWebSocketInteractionController.EVENT_ON_SERVER_LOBBY_TIME_UPDATED_MESSAGE, this._onLobbyTimeUpdatedMessage, this);
+	}
+
+	get _currentTime()
+	{
+		let curTime = new Date();
+		let timeFromServer = this._serverTime;
+
+		if (!isNaN(timeFromServer))
+		{
+			curTime.setTime(timeFromServer);
+		}
+		curTime.setTime(curTime.getTime() + this._timeZoneOffset);
+
+		return curTime.getTime();
+	}
+
+	get _timeZoneOffset()
+	{
+		let timeOffset = APP.appParamsInfo.timerOffset;
+		let timeZoneOffset = (timeOffset !== undefined ? timeOffset : -(new Date()).getTimezoneOffset()) * 60000;
+
+		return timeZoneOffset;
+	}
+
+	_onLobbyTimeUpdatedMessage(event)
+	{
+		let newServerTime = +event.messageData.date;
+		if (!isNaN(newServerTime))
+		{
+			this._serverTime = newServerTime;
+			this._syncServerTime();
+		}		
+	}
+
+	_syncServerTime()
+	{
+		this._stopListeningPromoCompletion();
+
+		let curTime = this._currentTime;
+		if (curTime >= this.info.actualCompleteTime)
+		{
+			this._onPromoCompleted();
+			return;
+		}
+
+		this._startListeningPromoCompletion();
+	}
+
+	_onPromoCompleted()
+	{
+		this._stopListeningPromoCompletion();
+
+		this.info.promoCompleted = true;
+		
+		this._notifyPromoCompleted();
+	}
+
+	_notifyPromoCompleted()
+	{
+		this.emit(PromoController.EVENT_PROMO_COMPLETED);
+	}
+
+	_startListeningPromoCompletion()
+	{
+		let duration = this.info.actualCompleteTime - this._currentTime;
+		if (duration <= 0)
+		{
+			this._onPromoCompleted();
+			return;
+		}
+
+		this._promoCompleteTimer = setTimeout(this._onPromoCompleted.bind(this), duration);
+
+	}
+
+	_stopListeningPromoCompletion()
+	{
+		if (this._promoCompleteTimer === undefined)
+		{
+			return;
+		}
+
+		clearTimeout(this._promoCompleteTimer);
+		this._promoCompleteTimer = undefined;
+	}
+}
+
+export default PromoController

@@ -1,0 +1,95 @@
+import SimpleUIView from '../../../../../../../common/PIXI/src/view/base/SimpleUIView';
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+
+class NotificationView extends SimpleUIView
+{
+	static get EVENT_ON_CLOSE_BTN_CLICKED () { return "onCloseButtonClicked" };
+
+	constructor()
+	{
+		super();
+
+		this._fBgContainer_sprt = null;
+		this._closeButton = null;
+		this._fExitButton_b = null;
+	}
+
+	__init()
+	{
+		this._initNotificationView();
+
+		super.__init();
+	}
+
+	updateView()
+	{
+		this._updateViewData();
+	}
+
+	_initNotificationView()
+	{
+		this._addGameLockView();
+		this._addNotificationViewContent();
+		this._addCloseButtonView();
+
+		this._updateViewData();
+	}
+
+	_addGameLockView()
+	{
+		this._fBgContainer_sprt = this.addChild(new Sprite());
+
+		let transparentBack = new PIXI.Graphics();
+		transparentBack.beginFill(0x000000, 0.45).drawRect(-480, -270, 960, 540).endFill();
+
+		this._fBgContainer_sprt.addChild(transparentBack);
+		this._fBgContainer_sprt.interactive = true;
+		this._fBgContainer_sprt.buttonMode = false;
+	}
+
+	_addNotificationViewContent()
+	{
+	}
+
+	_addCloseButtonView()
+	{
+		let closeButton = this._closeButton = this._generateCloseButtonInstance();
+		closeButton.on("pointerclick", this._onCloseBtnClicked, this);
+		this.addChild(closeButton);
+
+		let lExitButton = this._fExitButton_b = this._generateExitButtonInstance();
+		lExitButton.on("pointerclick", this._onCloseBtnClicked, this);
+		this.addChild(lExitButton);
+	}
+
+	get __closeButton()
+	{
+		return this._closeButton;
+	}
+
+	_generateCloseButtonInstance()
+	{
+		let closeButton = new Sprite();
+
+		return closeButton;
+	}
+
+	_generateExitButtonInstance()
+	{
+		let lExitButton_spr = new Sprite();
+
+		return lExitButton_spr;
+	}
+
+	_onCloseBtnClicked()
+	{
+		this.emit(NotificationView.EVENT_ON_CLOSE_BTN_CLICKED);
+	}
+
+	_updateViewData()
+	{
+
+	}
+}
+
+export default NotificationView;

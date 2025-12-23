@@ -1,0 +1,464 @@
+import SimpleUIController from '../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import KillStreakCounterView from '../../../view/uis/kill_streak/KillStreakCounterView';
+import KillStreakCounterInfo from '../../../model/uis/kill_streak/KillStreakCounterInfo';
+import { APP } from '../../../../../../common/PIXI/src/globals';
+import GameField from '../../../main/GameField';
+import GameWebSocketInteractionController from '../../interaction/server/GameWebSocketInteractionController';
+import Enemy from '../../../main/enemies/Enemy';
+import { WEAPONS } from '../../../../../shared/src/CommonConstants';
+import GameStateController from '../../state/GameStateController';
+import { ROUND_STATE } from '../../../model/state/GameStateInfo';
+import GameScreen from '../../../main/GameScreen';
+import ArtilleryStrikesController from './../weapons/artillerystrike/ArtilleryStrikesController';
+import ShotResponsesController from '../../custom/ShotResponsesController';
+
+const STREAK_TRIGGER_INTERVAL = 3000;
+const STREAK_TRIGGER_KILLS_AMOUNT = 3;
+const STREAK_DURATION = 3000;
+
+class KillStreakCounterController extends SimpleUIController
+{
+	static get EVENT_ON_STREAK_ANIMATION_STARTED() 			{ return "EVENT_ON_STREAK_ANIMATION_STARTED"; }
+	static get EVENT_ON_STREAK_ANIMATION_COMPLETION() 		{ return "EVENT_ON_STREAK_ANIMATION_COMPLETION"; }
+	static get EVENT_ON_STREAK_ANIMATION_COMPLETED() 		{ return "EVENT_ON_STREAK_ANIMATION_COMPLETED"; }
+	static get EVENT_ON_STREAK_NUMBER_APPEARING_STARTED() 	{ return KillStreakCounterView.ON_NUMBER_APPEARING_STARTED; }
+
+	constructor()
+	{
+		super (new KillStreakCounterInfo(), new KillStreakCounterView());
+
+		this._curStreakNumber = undefined;
+		this._fRememberedEnemies_obj = null;
+		this._fDelayedData_arr = [];
+	}
+
+	__init()
+	{
+		super.__init();
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		APP.currentWindow.gameField.on(GameField.EVENT_ON_GAME_FIELD_SCREEN_CREATED, this._onGameFieldScreenCreated, this);
+		APP.currentWindow.gameStateController.on(GameStateController.EVENT_ON_GAME_STATE_CHANGED, this._onGameStateChanged, this);
+
+		APP.currentWindow.on(GameScreen.EVENT_ON_CLOSE_ROOM, this._onCloseRoom, this);
+		APP.currentWindow.on(GameScreen.EVENT_ON_GAME_FIELD_CLEARED, this._onGameFieldCleared, this);
+	}
+
+	__initViewLevel()
+	{
+		super.__initViewLevel();
+
+		let lView_kscv = this.view;
+		lView_kscv.on(KillStreakCounterView.ON_NUMBER_APPEARING_STARTED, this.emit, this);
+		lView_kscv.on(KillStreakCounterView.ON_ANIMATION_CYCLE_COMPLETION, this._onAnimationCycleCompletion, this);
+		lView_kscv.on(KillStreakCounterView.ON_ANIMATION_CYCLE_COMPLETED, this._onAnimationCycleCompleted, this);
+	}
+
+	_onGameFieldScreenCreated(event)
+	{
+		let killStreakCounterContainerInfo = APP.currentWindow.gameField.killStreakCounterContainerInfo;
+		this.view.initOnScreen(killStreakCounterContainerInfo);
+
+		this._startHandleFeatureTriggering();
+	}
+
+	_onGameStateChanged(event)
+	{
+		let lGameState_str = APP.currentWindow.gameStateController.info.gameState;
+		if (lGameState_str === ROUND_STATE.QUALIFY)
+		{
+			this._clearStreakTimer();
+		}
+	}
+
+	_onGameServerConnectionClosed(event)
+	{
+		if (event.wasClean)
+		{
+			return;
+		}
+
+		this._interrupt();
+	}
+
+	_onCloseRoom(event)
+	{
+		this._interrupt();
+	}
+
+	_onGameFieldCleared(event)
+	{
+		this._interrupt();
+	}
+
+	//feature triggering...
+	_startHandleFeatureTriggering()
+	{
+		let wsInteractionController = APP.webSocketInteractionController;
+		wsInteractionController.on(GameWebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, this._onGameServerConnectionClosed, this);
+
+		APP.gameScreen.artilleryStrikesController.on(ArtilleryStrikesController.EVENT_ON_ALL_MAIN_MISSILES_HIT, this._onArtilleryStrike, this);
+
+		let shotResponsesController = APP.gameScreen.shotResponsesController;
+		shotResponsesController.on(ShotResponsesController.EVENT_ON_SERVER_SHOT_RESPONSE, this._onServerShotResponse, this);
+	}
+
+	_stopHandleFeatureTriggering()
+	{
+		this.info.resetTriggerShotTimes();
+	}
+
+	_onServerShotResponse(event)
+	{
+		let lShotResponseInfo_sri = event.info;
+		if (lShotResponseInfo_sri.isHit) {
+			this._onServerHitMessage({messageData: lShotResponseInfo_sri.data});
+		}
+	}
+
+	_onServerHitMessage(event)
+	{
+		let lInfo_ksci = this.info;
+
+		let hitData = event.messageData;
+		let isMasterKillHit = hitData.killed
+							&& (
+									   hitData.rid !== -1
+									|| (hitData.usedSpecialWeapon == WEAPONS.MINELAUNCHER && hitData.seatId === APP.currentWindow.player.seatId)
+								);
+
+		if (!isMasterKillHit || APP.currentWindow.isPaused)
+		{
+			return; // no need to count unkilled shots
+		}
+
+		let artilleryStrikeRid = null;
+		if (hitData.usedSpecialWeapon == WEAPONS.ARTILLERYSTRIKE)
+		{
+			artilleryStrikeRid = hitData.rid;
+		}
+		let enemyId = hitData.enemy.id;
+
+		if (lInfo_ksci.featureInProgress)
+		{
+			if (this._isStreakCycleTimerInProgress)
+			{
+				this._tryToShowNextKillNumber(enemyId, artilleryStrikeRid);
+			}
+			else
+			{
+				this._fDelayedData_arr.push(event.messageData);
+			}
+		}
+		else
+		{
+			let killTime = hitData.date;
+
+			if (lInfo_ksci.triggerShotTimes.length < (STREAK_TRIGGER_KILLS_AMOUNT-1))
+			{
+				lInfo_ksci.addTriggerShotTime(killTime);
+			}
+			else
+			{
+				this._tryToStartFeature(killTime, enemyId, artilleryStrikeRid);
+			}
+		}
+	}
+
+	_tryToStartFeature(killTime, enemyId, artilleryStrikeRid)
+	{
+		let lInfo_ksci = this.info;
+
+		let curHitTime = killTime;
+		let featureRequired = true;
+
+		for (let i=0; i<(STREAK_TRIGGER_KILLS_AMOUNT-1); i++)
+		{
+			let prevHitTime = lInfo_ksci.getTriggerShotTime(i);
+			if ((curHitTime - prevHitTime) > STREAK_TRIGGER_INTERVAL)
+			{
+				featureRequired = false;
+			}
+		}
+
+		if (featureRequired)
+		{
+			this._stopHandleFeatureTriggering();
+			this._startFeature(enemyId, artilleryStrikeRid);
+		}
+		else
+		{
+			lInfo_ksci.removeTriggerShotTime(0);
+			lInfo_ksci.addTriggerShotTime(killTime);
+		}
+	}
+	//...feature triggering
+
+	//feature animation...
+	_startFeature(enemyId, artilleryStrikeRid)
+	{
+		this.info.featureInProgress = true;
+		this._curStreakNumber = STREAK_TRIGGER_KILLS_AMOUNT;
+
+		this._startStreakTimer();
+
+		this.emit(KillStreakCounterController.EVENT_ON_STREAK_ANIMATION_STARTED);
+
+		this._tryToShowNextKillNumber(enemyId, artilleryStrikeRid);
+	}
+
+	_tryToShowNextKillNumber(enemyId, artilleryStrikeRid = null)
+	{
+		let enemyView = APP.currentWindow.gameField.getEnemyById(enemyId);
+
+		this._fRememberedEnemies_obj = this._fRememberedEnemies_obj || {};
+
+		if (artilleryStrikeRid)
+		{
+			this._artilleryStrikesRid = this._artilleryStrikesRid || [];
+			this._artilleryStrikesRid.push({strikeRid: artilleryStrikeRid, enemyId: enemyId, enemy: enemyView});
+		}
+
+		if (!!enemyView)
+		{
+			this._fRememberedEnemies_obj[enemyId] = enemyView;
+			if (enemyView.isBoss)
+			{
+				enemyView.once(Enemy.EVENT_ON_DEATH_ANIMATION_OUTRO_STARTED, this._onEnemyDeathAnimationStarted, this);
+			}
+			else
+			{
+				enemyView.once(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED, this._onEnemyDeathAnimationStarted, this);
+			}
+
+			if (!artilleryStrikeRid)
+			{
+				enemyView.once(Enemy.EVENT_ON_ENEMY_VIEW_REMOVING, this._onEnemyViewRemoving, this);
+			}
+		}
+		else
+		{
+			if (artilleryStrikeRid)
+			{
+				this._fRememberedEnemies_obj[enemyId] = enemyView;
+			}
+			else
+			{
+				this._showNextKillNumber();
+			}
+		}
+	}
+
+	_onArtilleryStrike(event)
+	{
+		if (!this._artilleryStrikesRid) return;
+
+		let artilleryStrikeId = event.target.info.rid;
+		for (let i = 0; i < this._artilleryStrikesRid.length; ++i)
+		{
+			if (this._artilleryStrikesRid[i].strikeRid == artilleryStrikeId)
+			{
+				this._handleArtilleryStrikeHit(this._artilleryStrikesRid[i].enemyId);
+				this._artilleryStrikesRid.splice(i, 1);
+				--i;
+			}
+		}
+	}
+
+	_handleArtilleryStrikeHit(enemyId)
+	{
+		this._removeRememberedEnemy(enemyId);
+
+		this._showNextKillNumber();
+		this._tryToCompleteStreakAnimation();
+	}
+
+	_removeArtilleryStrikeByEnemyIfRequired(enemyId)
+	{
+		if (!this._artilleryStrikesRid) return;
+
+		for (let i = 0; i < this._artilleryStrikesRid.length; ++i)
+		{
+			if (this._artilleryStrikesRid[i].enemyId == enemyId)
+			{
+				this._artilleryStrikesRid.splice(i, 1);
+				return;
+			}
+		}
+	}
+
+	_onEnemyDeathAnimationStarted(event)
+	{
+		let targetEnemyView = event.target;
+
+		this._removeRememberedEnemy(targetEnemyView.id);
+		this._removeArtilleryStrikeByEnemyIfRequired(targetEnemyView.id);
+
+		this._showNextKillNumber();
+
+		this._tryToCompleteStreakAnimation();
+	}
+
+	_onEnemyViewRemoving(event)
+	{
+		let targetEnemyView = event.target;
+
+		this._removeRememberedEnemy(targetEnemyView.id);
+
+		this._showNextKillNumber();
+
+		this._tryToCompleteStreakAnimation();
+	}
+
+	_removeRememberedEnemy(enemyId)
+	{
+		let enemyView = this._fRememberedEnemies_obj[enemyId];
+		if (enemyView)
+		{
+			enemyView.off(Enemy.EVENT_ON_ENEMY_VIEW_REMOVING, this._onEnemyViewRemoving, this, true);
+			enemyView.off(Enemy.EVENT_ON_DEATH_ANIMATION_OUTRO_STARTED, this._onEnemyDeathAnimationStarted, this, true);
+			enemyView.off(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED, this._onEnemyDeathAnimationStarted, this, true);
+		}
+
+		delete this._fRememberedEnemies_obj[enemyId];
+	}
+
+	_showNextKillNumber()
+	{
+		let lView_kscv = this.view;
+		if (lView_kscv.isAnimationCycleStarted)
+		{
+			this._curStreakNumber++;
+			lView_kscv.addStreakKill(this._curStreakNumber);
+		}
+		else
+		{
+			lView_kscv.startStreakAnimation(this._curStreakNumber);
+		}
+	}
+
+	_onAnimationCycleCompletion(event)
+	{
+		this.emit(KillStreakCounterController.EVENT_ON_STREAK_ANIMATION_COMPLETION);
+	}
+
+	_onAnimationCycleCompleted(event)
+	{
+		this.emit(KillStreakCounterController.EVENT_ON_STREAK_ANIMATION_COMPLETED);
+
+		this._completeFeature();
+	}
+
+	_startStreakTimer()
+	{
+		this._clearStreakTimer();
+
+		this._streakCycleTimer = setTimeout(this._onStreakCycleTimerCompleted.bind(this), STREAK_DURATION);
+	}
+
+	_onStreakCycleTimerCompleted()
+	{
+		this._clearStreakTimer();
+
+		this._tryToCompleteStreakAnimation();
+	}
+
+	_tryToCompleteStreakAnimation()
+	{
+		if (
+				(Object.keys(this._fRememberedEnemies_obj).length > 0)
+				|| this._streakCycleTimer !== undefined
+			)
+		{
+			return;
+		}
+
+		this.view.completeStreakAnimation();
+	}
+
+	_clearStreakTimer()
+	{
+		clearTimeout(this._streakCycleTimer);
+
+		this._streakCycleTimer = undefined;
+	}
+
+	get _isStreakCycleTimerInProgress()
+	{
+		return this._streakCycleTimer != undefined;
+	}
+
+	_completeFeature()
+	{
+		this._clearStreakTimer();
+		this.view.interrupt();
+
+		this.info.featureInProgress = false;
+		this._setUpDelayedHits();
+	}
+
+	_setUpDelayedHits()
+	{
+		if (!this._fDelayedData_arr.length) return;
+
+		let lReturnHits_arr = [];
+		while (this._fDelayedData_arr.length)
+		{
+			lReturnHits_arr.push(this._fDelayedData_arr.pop());
+		}
+
+		while (lReturnHits_arr.length)
+		{
+			let lData_obj = lReturnHits_arr.pop();
+			let lEnemy_e = APP.currentWindow.gameField.getEnemyById(lData_obj.enemy.id);
+			if (lEnemy_e && lEnemy_e.id)
+			{
+				this._onServerHitMessage({messageData: lData_obj});
+			}
+		}
+	}
+	//...feature animation
+
+	_interrupt()
+	{
+		this._curStreakNumber = undefined;
+		this._clearStreakTimer();
+		this.info.featureInProgress = false;
+
+		for (let enemyId in this._fRememberedEnemies_obj)
+		{
+			this._removeRememberedEnemy(enemyId);
+		}
+		this._fRememberedEnemies_obj = null;
+
+		this.view && this.view.interrupt();
+	}
+
+	destroy()
+	{
+		super.destroy();
+
+		this._curStreakNumber = undefined;
+		this._clearStreakTimer();
+
+		for (let enemyId in this._fRememberedEnemies_obj)
+		{
+			this._removeRememberedEnemy(enemyId);
+		}
+		this._fRememberedEnemies_obj = null;
+
+		this._artilleryStrikesRid = null;
+		this._fDelayedData_arr = null;
+
+		APP.currentWindow.gameField.off(GameField.EVENT_ON_GAME_FIELD_SCREEN_CREATED, this._onGameFieldScreenCreated, this);
+		APP.webSocketInteractionController.off(GameWebSocketInteractionController.EVENT_ON_SERVER_HIT_MESSAGE, this._onServerHitMessage, this);
+
+		APP.gameScreen.artilleryStrikesController.off(ArtilleryStrikesController.EVENT_ON_ALL_MAIN_MISSILES_HIT, this._onArtilleryStrike, this);
+	}
+}
+
+export default KillStreakCounterController;

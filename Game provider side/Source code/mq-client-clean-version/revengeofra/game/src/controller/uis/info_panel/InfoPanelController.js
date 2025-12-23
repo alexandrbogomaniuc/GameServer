@@ -1,0 +1,145 @@
+import SimpleUIController from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/uis/base/SimpleUIController';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import InfoPanelInfo from '../../../model/uis/info_panel/InfoPanelInfo';
+import GamePlayerController from '../../custom/GamePlayerController';
+import GameScreen from '../../../main/GameScreen';
+import GameField from '../../../main/GameField';
+import { LOBBY_MESSAGES } from '../../../external/GameExternalCommunicator';
+import GameExternalCommunicator from '../../../external/GameExternalCommunicator';
+import Game from '../../../Game';
+import GameFRBController from '../custom/frb/GameFRBController';
+import GameBonusController from '../custom/bonus/GameBonusController';
+
+class InfoPanelController extends SimpleUIController
+{
+	constructor()
+	{
+		super (new InfoPanelInfo());
+	}
+
+	__init()
+	{
+		super.__init();
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+	}
+
+	__initViewLevel()
+	{
+		super.__initViewLevel();
+
+		let l_rrsv = this.view;
+
+		this._initInfoValues();
+		l_rrsv.update();
+
+		this._gameScreen.on(GameScreen.EVENT_ON_ROOM_ID_CHANGED, this._onRoomIdUpdated, this);
+		this._gameScreen.on(GameScreen.EVENT_ON_ROUND_ID_UPDATED, this._onRoundIdUpdated, this);
+		this._playerController.on(GamePlayerController.EVENT_ON_PLAYER_INFO_UPDATED, this._onPlayerInfoUpdated, this);
+		this._gameField.on(GameField.EVENT_ON_ENEMY_KILLED_BY_PLAYER, this._onEnemyKilled, this);
+		this._gameField.on(GameField.EVENT_ON_ROOM_FIELD_CLEARED, this._onGameFieldCleared, this);
+		this._gameScreen.gameFrbController.on(GameFRBController.EVENT_ON_FRB_MODE_CHANGED, this._onFRBModeChanged, this);
+	}
+
+	get _gameScreen()
+	{
+		return APP.currentWindow;
+	}
+
+	get _gameField()
+	{
+		return APP.currentWindow.gameField;
+	}
+
+	get _playerController()
+	{
+		return APP.playerController;
+	}
+
+	get _playerInfo()
+	{
+		return APP.playerController.info;
+	}
+
+	get _weaponsInfo()
+	{
+		return this._gameScreen.weaponsController.info;
+	}
+
+	get _gameStateController()
+	{
+		return this._gameScreen.gameStateController;
+	}
+
+	_initInfoValues()
+	{
+		this.info.roomId = "-";
+		this.info.roundId = "-";
+
+		if (this._gameScreen.room)
+		{
+			this.info.roomId = this._gameScreen.room.id;
+			this.info.roundId = this._gameScreen.room.roundId;
+		}
+
+		this.info.cpb = this._playerInfo.currentStake;
+
+		this.info.messageNickname = "";
+		this.info.messageEnemy = "";
+	}
+
+	_onFRBModeChanged()
+	{
+		let l_rrsv = this.view;
+
+		l_rrsv.update();
+	}
+
+	_onRoundIdUpdated(aEvent_obj)
+	{
+		this.info.roundId = aEvent_obj.roundId;
+		let l_rrsv = this.view;
+
+		l_rrsv.update();
+	}
+
+	_onRoomIdUpdated(aEvent_obj)
+	{
+		this.info.roomId = aEvent_obj.id;
+		let l_rrsv = this.view;
+
+		l_rrsv.update();
+	}
+
+	_onPlayerInfoUpdated()
+	{
+		this.info.cpb = this._playerInfo.currentStake;
+		let l_rrsv = this.view;
+
+		l_rrsv.update();
+	}
+
+	_onEnemyKilled(aEvent_obj)
+	{
+		this.info.messageNickname = aEvent_obj.playerName;
+		this.info.messageEnemy = aEvent_obj.enemyName;
+		let l_rrsv = this.view;
+
+		l_rrsv.updateKills();
+	}
+
+	_onGameFieldCleared()
+	{
+		
+	}
+
+	destroy()
+	{
+		super.destroy();
+	}
+}
+
+export default InfoPanelController;

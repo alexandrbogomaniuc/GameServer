@@ -1,0 +1,571 @@
+import { APP } from '../../../../../../../../common/PIXI/src/globals';
+import { Utils } from '../../../../../../../../common/PIXI/src/Utils';
+import { FRAME_RATE } from '../../../../../../../shared/src/CommonConstants';
+import Sprite from '../../../../../../../../common/PIXI/src/display/Sprite';
+import Timer from '../../../../../../../../common/PIXI/src/Timer';
+import BossModeUtils from '../BossModeUtils';
+import * as Easing from '../../../../../../../../common/PIXI/src/animation/easing';
+import Sequence from '../../../../../../../../common/PIXI/src/animation/Sequence';
+
+const FOG_POSITIONS = [
+	{ x:-444,	y:290},
+	{ x:485,	y:283},
+	{ x:-6,		y:335},
+	{ x:-501,	y:-333},
+	{ x:531,	y:-308}
+];
+
+const FOG_DESTINATIONS = [
+	{ x:-272,	y:315},
+	{ x:285,	y:296},
+	{ x:-6,		y:262},
+	{ x:-394,	y:-330},
+	{ x:453,	y:-298}
+];
+
+class AppearanceView extends Sprite
+{
+	static get EVENT_APPEARING_STARTED()					{return "onBossModeAppearingStarted";}
+	static get EVENT_APPEARING_PRESENTATION_STARTED()		{return "onBossModeAppearingPresentationStarted";}
+	static get EVENT_APPEARING_PRESENTATION_CULMINATED()	{return "onBossModeAppearingPresentationCulminated";}
+	static get EVENT_APPEARING_PRESENTATION_COMPLETION()	{return "onBossModeAppearingPresentationCompletion";}
+	static get EVENT_APPEARING_PRESENTATION_COMPLETED()		{return "onBossModeAppearingPresentationCompleted";}
+	static get EVENT_ON_TIME_TO_START_CAPTION_ANIMATION() 	{return "onTimeToStartCaptionAnimation";}
+	static get EVENT_HIDE_TINTED_VIEW()						{return "onHideTintedView";}
+
+	startAppearing(aZombieView_e)
+	{
+		this._startAppearing(aZombieView_e);
+	}
+
+	interruptAnimation()
+	{
+		this._destroyAnimation();
+	}
+
+	//INIT...
+	constructor() 
+	{
+		super();
+
+		this._fBossZombie_e = null;
+
+		this._fTimer_t = null;
+
+		this._fFogContainer_sprt = null;
+		this._fSealContainer_sprt = null;
+		this._fFxContainer_sprt = null;
+		this._fFogs_sprt_arr = null;
+		this._fSeal_sprt = null;
+		this._fSealShadow_sprt = null;
+		this._fCenterSmoke_sprt = null;
+		this._fBlueRay_sprt = null;
+		this._fWorms_sprt = null;
+		this._fMagicCircleView_bmamcv = null;
+		this._fColoredCover_sprt = null;
+	}
+
+	_initAppearing()
+	{
+		this._fFxContainer_sprt = this.addChild(new Sprite());
+		this._fFogContainer_sprt = this.addChild(new Sprite());
+		this._fSealContainer_sprt = this.addChild(new Sprite());
+
+		if(APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._initFogsView();
+			this._initColoredCoverView();
+			this._initSealView();
+			this._initWormsView();
+			this._initSmokeView();
+		}
+
+		this._initMagicCircleView();
+		
+		this.visible = false;
+	}
+
+	_initFogsView()
+	{
+		this._fFogs_sprt_arr = [];
+		for (let i = 0; i < FOG_POSITIONS.length; i++)
+		{
+			let lFog_sprt = this._fFogContainer_sprt.addChild(APP.library.getSprite('boss_mode/environment_fog'));
+			lFog_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+			lFog_sprt.scale.set(2);
+			lFog_sprt.alpha = 0;
+			lFog_sprt.position.set(FOG_POSITIONS[i].x, FOG_POSITIONS[i].y);
+			this._fFogs_sprt_arr.push(lFog_sprt);
+		}
+	}
+
+	_initColoredCoverView()
+	{
+		this._fColoredCover_sprt = this._fFogContainer_sprt.addChild(new Sprite());
+		this._fColoredCover_sprt.alpha = 0;
+
+		let lCover_grphc = this._fColoredCover_sprt.addChild(new PIXI.Graphics());
+		lCover_grphc.beginFill(this._coverColor).drawRect(-500, -290, 1000, 580).endFill();
+	}
+
+	_initSealView()
+	{
+		this._fSealContainer_sprt.visible = false;
+
+		this._fSeal_sprt = this._fSealContainer_sprt.addChild(APP.library.getSprite(this._sealTextureName));
+		this._fSeal_sprt.scale.set(0.9);
+		this._fSeal_sprt.alpha = 0;
+		this._fSeal_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+
+		this._fSealShadow_sprt = this._fSealContainer_sprt.addChild(APP.library.getSprite(this._sealTextureName));
+		this._fSealShadow_sprt.scale.set(0.9);
+		this._fSealShadow_sprt.alpha = 0;
+		this._fSealShadow_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+	}
+
+	_initSmokeView()
+	{
+		this._fCenterSmoke_sprt = this._fFxContainer_sprt.addChild(APP.library.getSprite(this._blueCenterSmokeTextureName));
+		this._fCenterSmoke_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		this._fCenterSmoke_sprt.scale.set(4);
+		this._fCenterSmoke_sprt.alpha = 0;
+		this._fCenterSmoke_sprt.visible = false;
+
+		this._fBlueRay_sprt = this._fFxContainer_sprt.addChild(APP.library.getSprite(this._blueRayTextureName));
+		this._fBlueRay_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		this._fBlueRay_sprt.visible = false;
+		this._fBlueRay_sprt.position.set(0, -270);
+		this._fBlueRay_sprt.scale.set(4);
+		this._fBlueRay_sprt.alpha = 0;
+	}
+
+	_initWormsView()
+	{
+		this._fWorms_sprt = this._fFxContainer_sprt.addChild(APP.library.getSprite(this._redWormsTextureName));
+		this._fWorms_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		this._fWorms_sprt.scale.set(0);
+		this._fWorms_sprt.visible = false;
+	}
+
+	_initMagicCircleView()
+	{
+		this._fMagicCircleView_bmamcv = this._appearanceMagicCircleViewInstance;
+		this._fFxContainer_sprt.addChild(this._fMagicCircleView_bmamcv);
+	}
+
+	
+	get _appearanceMagicCircleViewInstance()
+	{
+		return new Sprite();
+	}
+
+	get _coverColor()
+	{
+		return 0x3374E0;
+	}
+
+	get _sealTextureName()
+	{
+		return 'boss_mode/seal';
+	}
+
+	get _blueCenterSmokeTextureName()
+	{
+		return 'boss_mode/blue_center_smoke';
+	}
+
+	get _blueRayTextureName()
+	{
+		return 'boss_mode/blue_ray';
+	}
+
+	get _redWormsTextureName()
+	{
+		return 'boss_mode/blue_worms';
+	}
+
+	get _bossType()
+	{
+		throw new Error('AppearanceView :: _bossType >> abstract method called!');
+	}
+	//...INIT
+
+	//APPEARING PRESENTATION...
+	_startAppearing(aZombieView_e)
+	{
+		this._fBossZombie_e = aZombieView_e;
+
+		this._initAppearing();
+
+		this._fTimer_t && this._fTimer_t.destructor();
+		this._fTimer_t = new Timer(this._onAppearingIntroTime.bind(this), this._appearingIntroDelay);
+
+		this.emit(AppearanceView.EVENT_APPEARING_STARTED);
+	}
+
+	get _appearingIntroDelay()
+	{
+		return 1*FRAME_RATE;
+	}
+
+	_onAppearingIntroTime()
+	{
+		this._fTimer_t && this._fTimer_t.destructor();
+		this._fTimer_t = null;
+
+		this._playAppearingAnimation();
+	}
+
+	_playAppearingAnimation()
+	{
+		if(APP.profilingController.info.isVfxDynamicProfileValueMediumOrGreater)
+		{
+			this._playFogAnimation();
+			this._playColoredCoverSplash();
+			this._playRayAnimation();
+			this._playCenterSmokeAnimation();
+
+			this._startWormsAnimation();
+			this._startSealAnimation();
+
+			this._startLightningAnimation(this._lightningAppearOffset, 0.7);
+			this._startLightningAnimation(this._lightningAppearOffset + 24, 0.66);
+		}
+
+		this._startMagicCircleAnimation();
+		this._onTimeToStartCaptionAnimation();
+
+		this._fTimer_t = new Timer(this._onAppearingCulminated.bind(this), this._appearingCulminationTime);
+
+		this.visible = true;
+	}
+
+	get _lightningAppearOffset()
+	{
+		return 2;
+	}
+
+	_startLightningAnimation(aTimeOffset_num, aScaleY_num)
+	{
+		let lBoltSequence_seq = [
+			{tweens: [{prop: "alpha", to: 1}], duration: 1*FRAME_RATE, ease: Easing.linear.easeIn},
+			{tweens: [], duration: 2*FRAME_RATE},
+			{tweens: [{prop: "alpha", to: 0}], duration: 1*FRAME_RATE, ease: Easing.linear.easeIn}
+		];
+
+		let lBolt1_sprt = this._getBoltView({x: 1, y: aScaleY_num});
+		let lBolt2_sprt = this._getBoltView({x: -1, y: aScaleY_num});
+		let lBolt3_sprt = this._getBoltView({x: 1, y: aScaleY_num});
+
+		Sequence.start(lBolt1_sprt, lBoltSequence_seq, (48+aTimeOffset_num)*FRAME_RATE);
+		Sequence.start(lBolt2_sprt, lBoltSequence_seq, (59+aTimeOffset_num)*FRAME_RATE);
+		Sequence.start(lBolt3_sprt, lBoltSequence_seq, (63+aTimeOffset_num)*FRAME_RATE);
+	}
+
+	_getBoltView(aScale_obj)
+	{
+		let lBolt_sprt = this.addChild(APP.library.getSprite('hv_bolt'));
+		lBolt_sprt.anchor.set(0.5, 0.82);
+		lBolt_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		lBolt_sprt.scale.set(aScale_obj.x, aScale_obj.y);
+		lBolt_sprt.alpha = 0;
+
+		return lBolt_sprt;
+	}
+
+	_onTimeToStartCaptionAnimation()
+	{
+		throw new Error("AppearanceView :: _onTimeToStartCaptionAnimation >> abstract method called! ");
+	}
+
+	get _appearingCulminationTime()
+	{
+		return 53*FRAME_RATE;
+	}
+
+	_playFogAnimation()
+	{
+		let lFogAlphaSequence_arr = [
+			{ tweens:[],							duration: 13*FRAME_RATE },
+			{ tweens:[{prop: "alpha", to: 0.22}],	duration: 13*FRAME_RATE },
+			{ tweens:[],							duration: 196*FRAME_RATE },
+			{ tweens:[{prop: "alpha", to: 0}],		duration: 15*FRAME_RATE }
+		];
+
+		let lFogsLen_num = this._fFogs_sprt_arr.length;
+		for (let i = 0; i < lFogsLen_num; i++)
+		{
+			let lFog_sprt = this._fFogs_sprt_arr[i];
+
+			let lFogMoveSequence_arr = [
+				{ tweens:[], duration: 31*FRAME_RATE },
+				{ tweens:[{prop: "x", to: FOG_DESTINATIONS[i].x}, {prop: "y", to: FOG_DESTINATIONS[i].y}], duration: this._fogMovementDuration }
+			];
+
+			Sequence.start(lFog_sprt, lFogMoveSequence_arr);
+			let l_s = Sequence.start(lFog_sprt, lFogAlphaSequence_arr);
+
+			if (i == lFogsLen_num-1)
+			{
+				l_s.on("finish", this._onAppearingCompleted.bind(this)); //???
+			}
+		}
+	}
+
+	get _fogMovementDuration()
+	{
+		return 174*FRAME_RATE;
+	}
+
+	_playColoredCoverSplash()
+	{
+		let lCoverSequence_arr = [
+			{ tweens:[], duration: 51*FRAME_RATE },
+			{ tweens:[{prop: "alpha", from: 0, to: 0.22}], duration: 1*FRAME_RATE },
+			{ tweens:[{prop: "alpha", to: 0}], duration: 15*FRAME_RATE }
+		];
+
+		Sequence.start(this._fColoredCover_sprt, lCoverSequence_arr);
+	}
+
+	_playRayAnimation()
+	{
+		let lRaySeq_arr = [
+			{ tweens:[{prop:"y", to:-40}, {prop:"alpha", to:1}], duration:3*FRAME_RATE },
+			{ tweens:[], duration:this._rayDuration },
+			{ tweens:[{prop:"alpha", to:0}], duration:33*FRAME_RATE }
+		];
+
+		this._fBlueRay_sprt.visible = true;
+		Sequence.start(this._fBlueRay_sprt, lRaySeq_arr, this._rayStartDelay);
+	}
+
+	get _rayStartDelay()
+	{
+		return 16*FRAME_RATE;
+	}
+
+	get _rayDuration()
+	{
+		return 200*FRAME_RATE;
+	}
+
+	_playCenterSmokeAnimation()
+	{
+		this._fCenterSmoke_sprt.visible = true;
+		Sequence.start(this._fCenterSmoke_sprt, this._blueCenterSequence);
+	}
+
+	get _blueCenterSequence()
+	{
+		return [
+			{ tweens:[], duration:17*FRAME_RATE },
+			{ tweens:[{prop:"alpha", to:0.86}], duration:14*FRAME_RATE },
+			{ tweens:[], duration:166*FRAME_RATE },
+			{ tweens:[{prop:"alpha", to:0}], duration:13*FRAME_RATE }
+		];
+	}
+
+	_startMagicCircleAnimation()
+	{
+		if (this._fMagicCircleView_bmamcv.startAnimation)
+		{
+			this._fMagicCircleView_bmamcv.startAnimation();
+		}
+	}
+
+	_startWormsAnimation()
+	{
+		let lWiggleSeq_arr = BossModeUtils.generateWiggleSequence({ x:5, y:5, period:10*FRAME_RATE, duration:this._blueCenterDuration });
+
+		this._fWorms_sprt.visible = true;
+
+		Sequence.start(this._fWorms_sprt, this._wormsSequence, 50*FRAME_RATE);
+		Sequence.start(this._fWorms_sprt, lWiggleSeq_arr, 50*FRAME_RATE);
+	}
+
+	get _wormsSequence()
+	{
+		return [
+			{ tweens:[{prop:"scale.x", to:2.3}, {prop:"scale.y", to:2.3}], duration:2*FRAME_RATE },
+			{ tweens:[{prop:"alpha", to:0}], duration:16*FRAME_RATE },
+			{ tweens:[{prop:"alpha", to:0.24}], duration:47*FRAME_RATE },
+			{ tweens:[], duration:68*FRAME_RATE },
+			{ tweens:[{prop:"alpha", to:0}], duration:32*FRAME_RATE }
+		];
+	}
+
+	get _blueCenterDuration()
+	{
+		return 165*FRAME_RATE;
+	}
+
+	_startSealAnimation()
+	{
+		this._fSealContainer_sprt.visible = true;
+
+		Sequence.start(this._fSeal_sprt, this._sealSequence, this._sealDelay);
+	}
+
+	get _sealSequence()
+	{
+		return [
+			{ tweens:[{prop:"alpha", from:1, to:0}, {prop:"y", to:-48}], duration:34*FRAME_RATE },
+			{ tweens:[{prop:"alpha", to:1}, {prop:"y", to:0}], duration:106*FRAME_RATE },
+			{ tweens:[{prop:"alpha", to:0}, {prop:"y", to:-48}], duration:34*FRAME_RATE }
+		];
+	}
+
+	get _sealDelay()
+	{
+		return 58*FRAME_RATE;
+	}
+
+	_onAppearingCulminated()
+	{
+		this._fBossZombie_e.showBossAppearance(this._bossAppearanceSequences, this._bossAppearanceInit);
+
+		this._fTimer_t && this._fTimer_t.destructor();
+		this._fTimer_t = new Timer(this._onAppearingCompletionTime.bind(this), this._completionDelay);
+	}
+
+	get _completionDelay()
+	{
+		return 185*FRAME_RATE;
+	}
+
+	get _bossAppearanceSequences()
+	{
+		return [
+					[
+						{ tweens:[{prop:"y",		to:0}],						duration:132*FRAME_RATE,	ease:Easing.sine.easeInOut }
+					],
+					[
+						{ tweens:[{prop:"rotation", to:Utils.gradToRad(9)}],	duration:20*FRAME_RATE,		ease:Easing.sine.easeInOut },
+						{ tweens:[{prop:"rotation", to:Utils.gradToRad(18)}],	duration:20*FRAME_RATE,		ease:Easing.sine.easeInOut },
+						{ tweens:[{prop:"rotation", to:Utils.gradToRad(0)}],	duration:92*FRAME_RATE,		ease:Easing.sine.easeInOut }
+					]
+				];
+	}
+
+	get _bossAppearanceInit()
+	{
+		return {x: 0, y: 220, rotation: 0};
+	}
+
+	_onAppearingCompletionTime()
+	{
+		this._fTimer_t && this._fTimer_t.destructor();
+		this._fTimer_t = null;
+		
+		this._fBossZombie_e.resetBossAppearance();
+	}
+
+	_onAppearingCompleted()
+	{
+		this._fTimer_t && this._fTimer_t.destructor();
+		this._fTimer_t = null;
+
+		this.visible = false;
+		this.emit(AppearanceView.EVENT_APPEARING_PRESENTATION_COMPLETED);
+
+		this.interruptAnimation();
+	}
+	//...APPEARING PRESENTATION
+
+	_destroyAnimation()
+	{
+		this._fTimer_t && this._fTimer_t.destructor();
+		this._fTimer_t = null;
+
+		if (this._fCenterSmoke_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fCenterSmoke_sprt));
+			this._fCenterSmoke_sprt.destroy();
+			this._fCenterSmoke_sprt = null;
+		}
+
+		if (this._fBlueRay_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fBlueRay_sprt));
+			this._fBlueRay_sprt.destroy();
+			this._fBlueRay_sprt = null;
+		}
+
+		if (this._fSeal_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fSeal_sprt));
+			this._fSeal_sprt.destroy();
+			this._fSeal_sprt = null;
+		}
+
+		if (this._fSealShadow_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fSealShadow_sprt));
+			this._fSealShadow_sprt.destroy();
+			this._fSealShadow_sprt = null;
+		}
+
+		if (this._fWorms_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fWorms_sprt));
+			this._fWorms_sprt.destroy();
+			this._fWorms_sprt = null;
+		}
+
+		if (this._fFogs_sprt_arr && this._fFogs_sprt_arr.length)
+		{
+			for (let i = 0; i < this._fFogs_sprt_arr.length; i++)
+			{
+				Sequence.destroy(Sequence.findByTarget(this._fFogs_sprt_arr[i]));
+				this._fFogs_sprt_arr[i].destroy();
+			}
+			this._fFogs_sprt_arr = null;
+		}
+
+		if (this._fColoredCover_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fColoredCover_sprt));
+			this._fColoredCover_sprt.destroy();
+			this._fColoredCover_sprt = null;
+		}
+
+		this._fFogContainer_sprt && this._fFogContainer_sprt.destroy();
+		this._fFogContainer_sprt = null;
+
+		this._fSealContainer_sprt && this._fSealContainer_sprt.destroy();
+		this._fSealContainer_sprt = null;
+
+		this._fFxContainer_sprt && this._fFxContainer_sprt.destroy();
+		this._fFxContainer_sprt = null;
+
+		this._fMagicCircleView_bmamcv && this._fMagicCircleView_bmamcv.destroy();
+		this._fMagicCircleView_bmamcv = null;
+
+		this._fBossZombie_e = null;
+	}
+
+	destroy()
+	{
+		this._destroyAnimation();
+		super.destroy();
+
+		this._fBossZombie_e = null;
+
+		this._fTimer_t = null;
+
+		this._fFogContainer_sprt = null;
+		this._fSealContainer_sprt = null;
+		this._fFxContainer_sprt = null;
+		this._fFogs_sprt_arr = null;
+		this._fSeal_sprt = null;
+		this._fSealShadow_sprt = null;
+		this._fCenterSmoke_sprt = null;
+		this._fBlueRay_sprt = null;
+		this._fWorms_sprt = null;
+		this._fMagicCircleView_bmamcv = null;
+		this._fColoredCover_sprt = null;
+	}
+}
+
+export default AppearanceView;

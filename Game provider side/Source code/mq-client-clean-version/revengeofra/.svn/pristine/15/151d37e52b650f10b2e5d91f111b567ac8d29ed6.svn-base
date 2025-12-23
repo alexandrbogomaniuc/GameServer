@@ -1,0 +1,230 @@
+import SimpleUIController from '../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import ElectricityEffectsInfo from '../../../model/uis/enemies/ElectricityEffectsInfo';
+import ElectricityEffectsView from '../../../view/uis/enemies/ElectricityEffectsView';
+import Enemy from '../../../main/enemies/Enemy';
+import { STATE_WALK } from '../../../main/enemies/Enemy';
+import SpineEnemy from '../../../main/enemies/SpineEnemy';
+import { APP } from '../../../../../../common/PIXI/src/globals';
+import GameScreen from '../../../main/GameScreen';
+import GameWebSocketInteractionController from '../../interaction/server/GameWebSocketInteractionController';
+import Timer from '../../../../../../common/PIXI/src/Timer';
+
+class ElectricityEffectsController extends SimpleUIController
+{
+	constructor(targetEnemy)
+	{
+		super(new ElectricityEffectsInfo(), new ElectricityEffectsView(APP.currentWindow.gameField.footElectricityContainer, targetEnemy.electricityBackContainer, targetEnemy.electricityFrontContainer));
+		
+		this._targetEnemy = targetEnemy;
+	}
+
+	__init()
+	{
+		super.__init();
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		let targetEnemy = this._targetEnemy;
+		targetEnemy.on(SpineEnemy.EVENT_STATE_CHANGED, this._onEnemyStateChanged, this);
+		targetEnemy.on(Enemy.EVENT_ON_ENEMY_START_DYING, this._onEnemyStartDying, this);
+		targetEnemy.on(Enemy.EVENT_ON_ENEMY_FREEZE, this._onEnemyFreeze, this);
+		targetEnemy.on(Enemy.EVENT_ON_ENEMY_UNFREEZE, this._onEnemyUnfreeze, this);
+		targetEnemy.on(Enemy.EVENT_ON_ENEMY_DESTROY, this._onEnemyDestroy, this);
+
+		let gameScreen = APP.gameScreen;
+		gameScreen.on(GameScreen.EVENT_ON_CLOSE_ROOM, this._onCloseRoom, this);
+		gameScreen.on(GameScreen.EVENT_ON_GAME_FIELD_CLEARED, this._onGameFieldCleared, this);
+
+		let wsInteractionController = APP.webSocketInteractionController;
+		wsInteractionController.on(GameWebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, this._onGameServerConnectionClosed, this);
+	}
+
+	_onCloseRoom(event)
+	{
+		this._interruptElectricity();
+	}
+
+	_onGameFieldCleared(event)
+	{
+		this._interruptElectricity();
+	}
+
+	_onGameServerConnectionClosed(event)
+	{
+		if (event.wasClean)
+		{
+			return;
+		}
+		
+		this._interruptElectricity();
+	}
+
+	_onEnemyStartDying(event)
+	{
+		this._removeEnemyListeners();
+		this._interruptElectricity();
+	}
+
+	_onEnemyFreeze(event)
+	{
+		this._interruptElectricity();
+	}
+
+	_onEnemyUnfreeze(event)
+	{
+		let targetEnemy = this._targetEnemy;
+		if (targetEnemy.isWalkState || targetEnemy.isUndefinedState)
+		{
+			this._triggerElectricityIfRequired();
+		}
+	}
+
+	_onEnemyDestroy(event)
+	{
+		this._removeEnemyListeners();
+		this._interruptElectricity();
+	}
+
+	_onEnemyStateChanged(event)
+	{
+		let prevState = event.prevState;
+		let newState = event.newState;
+		
+		if (newState === STATE_WALK || newState === undefined)
+		{
+			this._triggerElectricityIfRequired();
+		}
+	}
+
+	_triggerElectricityIfRequired()
+	{
+		let targetEnemy = this._targetEnemy;
+		if (
+				!this.info.turned
+				&& (targetEnemy.isWalkState || targetEnemy.isUndefinedState)
+			)
+		{
+			this._triggerElectricity();
+		}
+	}
+
+	_triggerElectricity()
+	{
+		this.info.turned = true;
+
+		this._targetEnemy.on(SpineEnemy.EVENT_ON_FOOT_STEP_OCCURRED, this._onEnemyStepOccured, this);
+
+		this.view.on(ElectricityEffectsView.EVENT_ON_ANIMATION_CYCLE_COMPLETED, this._onBodyElectricityCycleCompleted, this);
+		this.view.showBodyElectricity(this._targetEnemy);
+	}
+
+	_interruptElectricity()
+	{
+		if (this.info)
+		{
+			this.info.turned = false;
+		}
+
+		this._clearCyclePauseTimer();
+
+		this._targetEnemy && this._targetEnemy.off(SpineEnemy.EVENT_ON_FOOT_STEP_OCCURRED, this._onEnemyStepOccured, this);
+
+		if (this.view)
+		{
+			this.view.off(ElectricityEffectsView.EVENT_ON_ANIMATION_CYCLE_COMPLETED, this._onBodyElectricityCycleCompleted, this);
+			this.view.removeAnimation();
+		}
+	}
+
+	_onEnemyStepOccured(event)
+	{
+		if (this.info.isCyclePaused || !APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			return;
+		}
+
+		let stepIndex = event.stepId;
+		let targetEnemyFootStepPos = this._targetEnemy.getFootStepPosition(stepIndex);
+		let targetEnemyGlobalFootStepPos = this._targetEnemy.localToGlobal(targetEnemyFootStepPos.x, targetEnemyFootStepPos.y);
+		this.view.showFootStepElectricity(targetEnemyGlobalFootStepPos, this._targetEnemy);
+	}
+
+	_onBodyElectricityCycleCompleted(event)
+	{
+	}
+
+	_pauseAnimationCycling(aPauseDurationInFrames_num)
+	{
+		this.info.isCyclePaused = true;
+		this.view && this.view.pauseAnimationCycling();
+
+		this._startCyclePauseTimer(aPauseDurationInFrames_num);
+	}
+
+	_resumeAnimationCycling()
+	{
+		this.info.isCyclePaused = false;
+		this.view && this.view.resumeAnimationCycling();
+	}
+
+	_startCyclePauseTimer(aPauseDurationInFrames_num)
+	{
+		this._clearCyclePauseTimer();
+		this._nextCycleTimer = new Timer(this._onCyclePauseTimerCompleted.bind(this), aPauseDurationInFrames_num*2*16.7);
+	}
+
+	_clearCyclePauseTimer()
+	{
+		this._nextCycleTimer && this._nextCycleTimer.destructor();
+		this._nextCycleTimer = null;
+	}
+
+	_onCyclePauseTimerCompleted()
+	{
+		this._clearCyclePauseTimer();
+
+		this._resumeAnimationCycling();
+	}
+
+	_removeEnemyListeners()
+	{
+		let targetEnemy = this._targetEnemy;
+		if (!targetEnemy)
+		{
+			return;
+		}
+
+		targetEnemy.off(SpineEnemy.EVENT_STATE_CHANGED, this._onEnemyStateChanged, this);
+		targetEnemy.off(Enemy.EVENT_ON_ENEMY_START_DYING, this._onEnemyStartDying, this);
+		targetEnemy.off(Enemy.EVENT_ON_ENEMY_FREEZE, this._onEnemyFreeze, this);
+		targetEnemy.off(Enemy.EVENT_ON_ENEMY_UNFREEZE, this._onEnemyUnfreeze, this);
+	}
+
+	destroy()
+	{
+		this._clearCyclePauseTimer();
+		this._removeEnemyListeners();
+		this._targetEnemy = null;
+
+		let gameScreen = APP.gameScreen;
+		if (gameScreen)
+		{
+			gameScreen.off(GameScreen.EVENT_ON_CLOSE_ROOM, this._onCloseRoom, this);
+			gameScreen.off(GameScreen.EVENT_ON_GAME_FIELD_CLEARED, this._onGameFieldCleared, this);
+		}
+		
+
+		let wsInteractionController = APP.webSocketInteractionController;
+		if (wsInteractionController)
+		{
+			wsInteractionController.off(GameWebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, this._onGameServerConnectionClosed, this);
+		}
+		
+		super.destroy();
+	}
+}
+
+export default ElectricityEffectsController;

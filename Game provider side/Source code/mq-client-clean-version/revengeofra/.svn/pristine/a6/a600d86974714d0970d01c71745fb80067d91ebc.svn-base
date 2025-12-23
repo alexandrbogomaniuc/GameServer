@@ -1,0 +1,427 @@
+import { APP } from '../../../../common/PIXI/src/globals';
+import Sprite from '../../../../common/PIXI/src/display/Sprite';
+import { Utils } from '../../../../common/PIXI/src/Utils';
+import AtlasSprite from '../../../../common/PIXI/src/display/AtlasSprite';
+import AtlasConfig from '../config/AtlasConfig';
+import Sequence from '../../../../common/PIXI/src/animation/Sequence';
+import * as Easing from '../../../../common/PIXI/src/animation/easing';
+import Timer from "../../../../common/PIXI/src/Timer";
+import { WEAPONS } from '../../../shared/src/CommonConstants';
+
+class MissEffect extends Sprite{
+	constructor(x, y, weaponId, optTargetEnemy, aCurrentDefaultWeaponId_int){
+		super();
+
+		this.noFlash = weaponId == undefined; /*noFlash*/
+		this.showSplat = false;
+		this.weaponId = weaponId;
+		this.targetScale = optTargetEnemy ? optTargetEnemy.getViewScale() : 1;
+		this.targetScale = Math.min(this.targetScale, 1);
+
+		this.currentDefaultWeaponId_int = aCurrentDefaultWeaponId_int;
+
+		this.smoke = null;
+		this.hitFlash = null;
+		this._hitFlashTimer = null;
+
+		this.winFlare_arr = [];
+		this.winFlareSequence_arr = [];
+
+		this.explosion_arr = [];
+		this.explosionSequence_arr = [];
+
+		this.circleBlast = null;
+		this.circleBlastSequence = null;
+		
+		this.createView(x, y);
+	}
+
+	createView(x, y){
+		this.smoke = this.addChild(new Sprite);
+		this.smoke.textures = MissEffect.getSmokeTextures();
+		this.smoke.blendMode = PIXI.BLEND_MODES.SCREEN;
+		this.smoke.position.set(x - 14, y - 68);
+		this.smoke.animationSpeed = 1;
+		this.zIndex = 9000;
+
+		this.smoke.play();
+		this.smoke.once('animationend', (e) => {
+			this.emit("animationFinish");
+			this.destroy();
+		});
+
+		if(!this.noFlash){
+			this.hitFlash = this.addChild(APP.library.getSprite('hitflash'));
+			this.hitFlash.scale.set(0.2);
+			this.hitFlash.position.set(x, y);
+			this.hitFlash.rotation = Utils.random(0, Math.PI*2, true);
+			this.hitFlash.blendMode = PIXI.BLEND_MODES.SCREEN;
+			
+			this._hitFlashTimer = new Timer(this.removeHitFlash.bind(this), 75);
+
+			this._addHitSmoke(x, y);
+			this._addWinFlare(x, y);
+			this._addExplosion(x, y);
+			this._addCircleBlast(x, y);
+		}
+	}
+
+	_addHitSmoke(x, y)
+	{
+		this.hitSmoke = this.addChild(APP.library.getSprite('blend/smoke'));
+		this.hitSmoke.position.set(x, y);
+		this.hitSmoke.scale.set(0.163);
+		this.hitSmoke.alpha = 1;
+		this.hitSmoke.blendMode = PIXI.BLEND_MODES.SCREEN;
+			
+		let lHitSmokeSequenceData = [{
+			tweens:[
+				{prop:"scale.x", to: 0.65},
+				{prop:"scale.y", to: 0.65},
+				{prop:"alpha", to: 0},
+			], duration: 80, onfinish: () => {
+				this.hitSmokeSequence_arr && this.hitSmokeSequence_arr.destructor();
+				this.hitSmoke = null;
+			}
+		}];
+			
+		this.hitSmokeSequence_arr = Sequence.start(this.hitSmoke, lHitSmokeSequenceData);
+	}
+
+	_addWinFlare(x, y)
+	{
+		switch(this.currentDefaultWeaponId_int) {
+			case 1:
+				break;
+			case 2:
+				this.addCustomWinFlare(x - 15, y + 15.5, 20, 15.4);
+				break;
+			case 3:
+				this.addCustomWinFlare(x - 26, y + 28.5, 20, 15.4);
+				this.addCustomWinFlare(x - 41.5, y - 5.5, 110, 15.4);
+				break;
+			case 4:
+				this.addCustomWinFlare(x - 26, y + 28, 20, 15.4);
+				this.addCustomWinFlare(x - 41.5, y - 6, 100, 15.4);
+				break;
+			case 5:
+				this.addCustomWinFlare(x - 26, y + 28, 20, 15.4);
+				this.addCustomWinFlare(x - 52, y + 8.5, 60, -15.4);
+				this.addCustomWinFlare(x - 41.5, y - 6, 110, 15.4);
+				break;
+			default: 
+				break;
+		}
+	}
+
+	addCustomWinFlare(x, y, delay, rotation)
+	{
+		let elementId = this.winFlare_arr.push(this.addChild(APP.library.getSprite(this.getWinFlareAsset(this.currentDefaultWeaponId_int)))) - 1;
+		this.winFlare_arr[elementId].position.set(x, y);
+		this.winFlare_arr[elementId].scale.x = 0;
+		this.winFlare_arr[elementId].scale.y = 0;
+
+		this.winFlare_arr[elementId].blendMode = PIXI.BLEND_MODES.SCREEN;
+
+		let lWinFlareSequenceData = this.getWinFlareSequenceData(delay, rotation);
+		lWinFlareSequenceData.push(
+			{tweens:[], duration: 0, onfinish: () => {this.onWinFlareSequenceDataCompleted(elementId);}}
+		);
+
+		this.winFlareSequence_arr[elementId] = Sequence.start(this.winFlare_arr[elementId], lWinFlareSequenceData);
+	}
+
+	getWinFlareAsset(aId_int)
+	{
+		switch(aId_int)
+		{
+			case 2:	return 'enemy_impact/win_flare/win_flare_2';
+			case 3:	return 'enemy_impact/win_flare/win_flare_3';
+			case 4:	return 'enemy_impact/win_flare/win_flare_4_5';
+			case 5:	return 'enemy_impact/win_flare/win_flare_4_5';
+			default: return 'enemy_impact/win_flare/win_flare_2';
+		}
+	}
+
+	getWinFlareSequenceData(delay, rotation)
+	{
+		let seq = [];
+		let fullRotation = rotation * Math.PI / 180;
+		let halfRotation = fullRotation * 2 / 3;
+
+		seq.push({tweens:[], duration: delay});
+
+		seq.push({tweens:[
+			{prop:"scale.x", to: 0.74},
+			{prop:"scale.y", to: 0.74},
+			{prop:"rotation", to: halfRotation},
+		], duration: 140, ease: Easing.sine.easeIn});
+
+		seq.push({tweens:[
+			{prop:"scale.x", to: 0},
+			{prop:"scale.y", to: 0},
+			{prop:"rotation", to: fullRotation},
+		], duration: 70, ease: Easing.sine.easeIn});
+
+		return seq;
+	}
+
+	onWinFlareSequenceDataCompleted(aElementId)
+	{
+		this.winFlareSequence_arr[aElementId] && this.winFlareSequence_arr[aElementId].destructor();
+		this.winFlareSequence_arr[aElementId] = null;
+	}
+
+	_addExplosion(x, y)
+	{
+		switch(this.currentDefaultWeaponId_int) {
+			case 1:
+				this.addCustomExplosion(x - 8, y + 3.5, 20, 13.3);
+				
+				break;
+			case 2:
+				this.addCustomExplosion(x - 23.5, y + 27.5, 20, 13.3);
+				this.addCustomExplosion(x  - 61, y + 29.5, 60, -13.3);
+				this.addCustomExplosion(x + 9.5, y - 11, 70, -13.3);
+				this.addCustomExplosion(x - 69, y - 21, 110, -13.3);
+				break;
+			case 3:
+				this.addCustomExplosion(x - 17, y + 30, 20, 13.3);
+				this.addCustomExplosion(x - 3, y - 8.5, 70, -13.3);
+				break;
+			case 4:
+				this.addCustomExplosion(x - 24, y + 28.5, 20, 13.3);
+				this.addCustomExplosion(x - 56.5, y + 30.5, 60, -13.3);
+				this.addCustomExplosion(x - 10, y - 10, 70, -13.3);
+				this.addCustomExplosion(x - 6, y - 7.5, 80, -13.3);
+				break;
+			case 5:
+				this.addCustomExplosion(x - 15, y + 25.5, 20, 13.3);
+				this.addCustomExplosion(x - 50, y - 9.5, 40, 13.3);
+				this.addCustomExplosion(x - 48.5, y + 27.5, 60, -13.3);
+				this.addCustomExplosion(x - 2, y - 13, 70, -13.3);
+				this.addCustomExplosion(x + 2, y + 4.5, 80, 13.3);
+				this.addCustomExplosion(x - 8.5, y + 32.5, 110, -13.3);
+				break;
+			default: 
+				break;
+		}
+	}
+
+	addCustomExplosion(x, y, delay, rotation)
+	{
+		let elementId = this.explosion_arr.push(this.addChild(APP.library.getSprite(this.getExplosionAsset(this.currentDefaultWeaponId_int)))) - 1;
+		this.explosion_arr[elementId].alpha = 1;
+		this.explosion_arr[elementId].position.set(x, y);
+		this.explosion_arr[elementId].scale.x = 0;
+		this.explosion_arr[elementId].scale.y = 0;
+			
+		this.explosion_arr[elementId].blendMode = PIXI.BLEND_MODES.SCREEN;
+
+		let lExplosionSequenceData = this.getExplosionSequenceData(delay, rotation);
+		lExplosionSequenceData.push(
+			{tweens:[], duration: 0, onfinish: () => {this.onExplosionSequenceDataCompleted(elementId);}}
+		);
+
+		this.explosionSequence_arr[elementId] = Sequence.start(this.explosion_arr[elementId], lExplosionSequenceData);		
+	}
+
+	getExplosionAsset(aId_int)
+	{
+		switch(aId_int)
+		{
+			case 1:	return 'enemy_impact/explosion/explosion_1';
+			case 2:	return 'enemy_impact/explosion/explosion_2';
+			case 3:	return 'enemy_impact/explosion/explosion_3';
+			case 4:	return 'enemy_impact/explosion/explosion_4_5';
+			case 5:	return 'enemy_impact/explosion/explosion_4_5';
+			default: return 'enemy_impact/explosion/explosion_1';
+		}
+	}
+
+	getExplosionSequenceData(delay, rotation)
+	{
+		let seq = [];
+		let fullRotation = rotation * Math.PI / 180;
+		let halfRotation = fullRotation / 2;
+
+		seq.push({tweens:[], duration: delay});
+
+		seq.push({tweens:[
+			{prop:"scale.x", to: 0.48},
+			{prop:"scale.y", to: 0.48},
+			{prop:"rotation", to: halfRotation},
+		], duration: 200});
+
+		seq.push({tweens:[
+			{prop:"alpha", to: 0},
+			{prop:"scale.x", to: 0.96},
+			{prop:"scale.y", to: 0.96},
+			{prop:"rotation", to: fullRotation},
+		], duration: 200, ease: Easing.sine.easeOut});
+
+		return seq;
+	}
+
+	onExplosionSequenceDataCompleted(aElementId)
+	{
+		this.explosionSequence_arr[aElementId] && this.explosionSequence_arr[aElementId].destructor();
+		this.explosion_arr[aElementId] = null;
+	}
+
+	
+	_addCircleBlast(x, y)
+	{
+		this.circleBlast = this.addChild(APP.library.getSprite('enemy_impact/circle_blast/circle_blast_'+this.currentDefaultWeaponId_int));
+		this.circleBlast.blendMode = PIXI.BLEND_MODES.SCREEN;
+		this.circleBlast.alpha = 0.8;
+		this.circleBlast.position.set(x -11, y - 11);
+		this.circleBlast.scale.x = 0;
+		this.circleBlast.scale.y = 0;
+		this.circleBlastSequence = Sequence.start(this.circleBlast, this.circleBlastSequenceData);
+
+	}
+
+	get circleBlastSequenceData()
+	{
+		let seq = [];
+		let lFirstScale_num = 0;
+		let lSecondScale_num = 0;
+		let lThirdScale_num = 0;
+		let lFirstAlpha_num = 0;
+		let lSecondAlpha_num = 0;
+		
+
+		switch(this.currentDefaultWeaponId_int)
+		{
+			case 1:
+				lFirstScale_num = 0.23;
+				lFirstAlpha_num = 0.57;
+				lSecondScale_num = 0.38;
+				lThirdScale_num = 0.45;
+				lSecondAlpha_num = 0;
+				break;
+			case 2:
+				lFirstScale_num = 0.24;
+				lFirstAlpha_num = 0.57;
+				lSecondScale_num = 0.42;
+				lThirdScale_num = 0.6;
+				lSecondAlpha_num = 0;
+				break;
+			case 3:
+				lFirstScale_num = 0.35;
+				lFirstAlpha_num = 0.57;
+				lSecondScale_num = 0.62;
+				lThirdScale_num = 0.95;
+				lSecondAlpha_num = 0;
+				break;
+			case 4: 
+				lFirstScale_num = 0.25;
+				lFirstAlpha_num = 0.57;
+				lSecondScale_num = 0.46;
+				lThirdScale_num = 0.76;
+				lSecondAlpha_num = 0;
+				break;
+
+			case 5:
+				lFirstScale_num = 0.37;
+				lFirstAlpha_num = 1;
+				lSecondScale_num = 0.69;
+				lThirdScale_num = 1.18;
+				lSecondAlpha_num = 0;
+				break;
+			default:
+				break;
+		}
+
+		seq.push({tweens:[
+			{prop:"scale.x", to: lFirstScale_num},
+			{prop:"scale.y", to: lFirstScale_num},
+			{prop:"alpha", to: lFirstAlpha_num},
+		], duration: 20});
+
+		seq.push({tweens:[
+			{prop:"scale.x", to: lSecondScale_num},
+			{prop:"scale.y", to: lSecondScale_num},
+		], duration: 20});
+
+		seq.push({tweens:[
+			{prop:"scale.x", to: lThirdScale_num},
+			{prop:"scale.y", to: lThirdScale_num},
+			{prop:"alpha", to: lSecondAlpha_num},
+		], duration: 60,
+		onfinish: () => {this._oncircleBlastSequenceCompleted();}
+		});
+
+		return seq;
+	}
+
+	_oncircleBlastSequenceCompleted()
+	{
+		this.circleBlastSequence && this.circleBlastSequence.destructor();
+		this.circleBlast = null;
+	}
+
+	removeHitFlash()
+	{
+		this.hitFlash.destroy();
+	}
+
+	destroy()
+	{
+		Sequence.destroy(Sequence.findByTarget(this));
+
+		this.smoke = null;
+		this.hitFlash = null;
+
+		this._hitFlashTimer && this._hitFlashTimer.destructor();
+		this._hitFlashTimer = null;
+
+		this.targetScale = undefined;
+
+		this.winFlare_arr = [];
+
+		for (let i = 0; i< this.winFlareSequence_arr.length; i++)
+		{
+			this.winFlareSequence_arr[i] && this.winFlareSequence_arr[i].destructor();
+		}
+
+		this.winFlareSequence_arr = [];
+
+		this.explosion_arr = [];
+
+		for (let i = 0; i< this.explosionSequence_arr.length; i++)
+		{
+			this.explosionSequence_arr[i] && this.explosionSequence_arr[i].destructor();
+		}
+
+		this.explosionSequence_arr = [];
+
+		this.circleBlast = null;
+		this.circleBlastSequence && this.circleBlastSequence.destructor();
+		this.circleBlastSequence = null;
+
+		this.hitSmokeSequence_arr && this.hitSmokeSequence_arr.destructor();
+		this.hitSmokeSequence_arr = null;
+
+		super.destroy();
+	}
+}
+
+MissEffect.getSmokeTextures = function(){
+	if(!MissEffect.smokeTextures){
+		MissEffect.setSmokeTextures();
+	}
+	return MissEffect.smokeTextures;
+}
+
+MissEffect.setSmokeTextures = function (){
+	var asset = APP.library.getAsset("enemy_impact/smoke");
+	var config = AtlasConfig.SmokeImpactEnemy[0];
+	var pathName = "SmokeImpactEnemy";
+
+	MissEffect.smokeTextures = AtlasSprite.getFrames([asset], [config], pathName);
+	MissEffect.smokeTextures.sort(function(a, b){if(a._atlasName > b._atlasName) return 1; else return -1});
+}
+
+export default MissEffect;

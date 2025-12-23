@@ -1,0 +1,34 @@
+
+Bat180.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/body
+  rotate: false
+  xy: 4, 4
+  size: 337, 378
+  orig: 337, 378
+  offset: 0, 0
+  index: -1
+180/head
+  rotate: false
+  xy: 1803, 595
+  size: 166, 188
+  orig: 166, 188
+  offset: 0, 0
+  index: -1
+180/wing_lf
+  rotate: false
+  xy: 1080, 110
+  size: 719, 673
+  orig: 719, 673
+  offset: 0, 0
+  index: -1
+180/wing_rt
+  rotate: false
+  xy: 4, 386
+  size: 1072, 397
+  orig: 1072, 397
+  offset: 0, 0
+  index: -1

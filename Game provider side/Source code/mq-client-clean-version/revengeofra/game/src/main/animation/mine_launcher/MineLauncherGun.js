@@ -1,0 +1,443 @@
+import Gun from '../Gun';
+import Sprite from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import AtlasSprite from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/AtlasSprite';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+
+class MineLauncherGun extends Gun {
+
+	constructor()
+	{
+		super();
+
+		MineLauncherGun.initTextures();
+		this._createView();
+
+		this.reload();
+	}
+
+	//override
+	reset()
+	{
+		super.reset();
+		
+		if (this.isIdleState)
+		{
+			return;
+		}
+		else if (this.isReloadState)
+		{
+			this.stop();
+			this.gotoAndStop(MineLauncherGun.textures.reload.length - 1);
+		}
+		else
+		{
+			this.stop();
+			this.idle();
+		}		
+	}
+
+	_createView() {
+		this.anchor.set(0.5, 150/325);
+		this.on('animationend', this._onAnimationEnd, this);
+	}
+
+	//override
+	_initIdleState()
+	{
+		this.textures = [MineLauncherGun.textures.reload[MineLauncherGun.textures.reload.length - 1]];
+	}
+
+	//override
+	_initReloadState()
+	{
+		this.textures = MineLauncherGun.textures.reload;
+		this.play();
+	}
+
+	//override
+	_initShotState()
+	{
+		this.textures = MineLauncherGun.textures.shot;
+		this.play();
+	}
+
+	_onAnimationEnd(e)
+	{
+		this.stop();
+		if (this.isShotState)
+		{
+			this.reload();
+		}
+		else if (this.isReloadState)
+		{
+			this.gotoAndStop(MineLauncherGun.textures.reload.length - 1);
+		}		
+	}
+
+	destroy()
+	{
+		this.off('animationend', this._onAnimationEnd, this);
+		super.destroy();
+	}
+
+}
+
+const MineLauncherGunConfig = {
+	"frames": {
+		"mine_launcher_reload/mine_launcher_reload_01.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 92,
+				"h": 324
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 1,
+				"w": 92,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 92,
+				"h": 325
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_reload/mine_launcher_reload_02.png": {
+			"frame": {
+				"x": 1,
+				"y": 327,
+				"w": 92,
+				"h": 324
+			},
+			"rotated": true,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 92,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 92,
+				"h": 324
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_reload/mine_launcher_reload_03.png": {
+			"frame": {
+				"x": 95,
+				"y": 1,
+				"w": 91,
+				"h": 324
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 91,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 91,
+				"h": 324
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_reload/mine_launcher_reload_04.png": {
+			"frame": {
+				"x": 188,
+				"y": 1,
+				"w": 91,
+				"h": 324
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 91,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 91,
+				"h": 324
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_reload/mine_launcher_reload_05.png": {
+			"frame": {
+				"x": 281,
+				"y": 1,
+				"w": 90,
+				"h": 324
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 1,
+				"w": 90,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 91,
+				"h": 325
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_reload/mine_launcher_reload_06.png": {
+			"frame": {
+				"x": 1,
+				"y": 421,
+				"w": 90,
+				"h": 324
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 91,
+				"h": 324
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_reload/mine_launcher_reload_07.png": {
+			"frame": {
+				"x": 327,
+				"y": 327,
+				"w": 90,
+				"h": 324
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 91,
+				"h": 324
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_reload/mine_launcher_reload_08.png": {
+			"frame": {
+				"x": 373,
+				"y": 1,
+				"w": 90,
+				"h": 324
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 90,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 91,
+				"h": 324
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_reload/mine_launcher_reload_09.png": {
+			"frame": {
+				"x": 465,
+				"y": 1,
+				"w": 91,
+				"h": 324
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 1,
+				"w": 91,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 91,
+				"h": 325
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_shot/mine_launcher_shot_01.png": {
+			"frame": {
+				"x": 327,
+				"y": 419,
+				"w": 92,
+				"h": 324
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 1,
+				"w": 92,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 92,
+				"h": 325
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_shot/mine_launcher_shot_02.png": {
+			"frame": {
+				"x": 558,
+				"y": 1,
+				"w": 92,
+				"h": 324
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 1,
+				"w": 92,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 92,
+				"h": 325
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_shot/mine_launcher_shot_03.png": {
+			"frame": {
+				"x": 652,
+				"y": 1,
+				"w": 92,
+				"h": 324
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 1,
+				"w": 92,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 92,
+				"h": 325
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"mine_launcher_shot/mine_launcher_shot_04.png": {
+			"frame": {
+				"x": 653,
+				"y": 327,
+				"w": 92,
+				"h": 324
+			},
+			"rotated": true,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 92,
+				"h": 324
+			},
+			"sourceSize": {
+				"w": 92,
+				"h": 324
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		}
+	},
+	"meta": {
+		"app": "http://free-tex-packer.com/",
+		"version": "0.3.3",
+		"image": "mine_launcher_gun.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1024,
+			"h": 512
+		},
+		"scale": 2
+	}
+}
+
+MineLauncherGun.textures = {
+	reload: null,
+	shot: null  
+};
+
+
+MineLauncherGun.setTexture = function(name, imageNames, configs, path) {
+	if(!MineLauncherGun.textures[name]){
+		MineLauncherGun.textures[name] = [];
+
+		if(!Array.isArray(imageNames)) imageNames = [imageNames];
+		if(!Array.isArray(configs)) configs = [configs];
+
+		let assets = [];
+		imageNames.forEach(function(item){assets.push(APP.library.getAsset(item))});
+
+		MineLauncherGun.textures[name] = AtlasSprite.getFrames(assets, configs, path);
+		MineLauncherGun.textures[name].sort(function(a, b){if(a._atlasName > b._atlasName) return 1; else return -1});
+	}
+};
+
+MineLauncherGun.initTextures = function(){
+
+	let imageNames  = ['weapons/MineLauncher/mine_launcher_gun'],
+		configs   = [MineLauncherGunConfig];
+	MineLauncherGun.setTexture('reload', imageNames, configs, 'mine_launcher_reload');
+	MineLauncherGun.setTexture('shot', imageNames, configs, 'mine_launcher_shot');  
+
+}
+
+export default MineLauncherGun;

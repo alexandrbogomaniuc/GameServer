@@ -1,0 +1,566 @@
+{
+	"images": [
+		{
+			"name": "lobby/back",
+			"src": "lobby/back.jpg",
+			"width": 960,
+			"height": 565,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/logo_shadow",
+			"src": "lobby/logo_shadow.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/button_incons/lobby_room_icon_1",
+			"src": "lobby/button_incons/lobby_room_icon_1.jpg",
+			"width": 160,
+			"height": 160,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/button_incons/lobby_room_icon_2",
+			"src": "lobby/button_incons/lobby_room_icon_2.jpg",
+			"width": 160,
+			"height": 160,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/button_incons/lobby_room_icon_3",
+			"src": "lobby/button_incons/lobby_room_icon_3.jpg",
+			"width": 160,
+			"height": 160,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/button_incons/lobby_room_icon_4",
+			"src": "lobby/button_incons/lobby_room_icon_4.jpg",
+			"width": 160,
+			"height": 160,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/button_incons/lobby_room_icon_5",
+			"src": "lobby/button_incons/lobby_room_icon_5.jpg",
+			"width": 160,
+			"height": 160,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/button_incons/shadow",
+			"src": "lobby/button_incons/shadow.png",
+			"width": 179,
+			"height": 178.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/button_incons/stake_back",
+			"src": "lobby/button_incons/stake_back.png",
+			"width": 142,
+			"height": 39.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/button_incons/glow",
+			"src": "lobby/button_incons/glow.png",
+			"width": 190,
+			"height": 190,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/rooms_arrow",
+			"src": "lobby/rooms_arrow.png",
+			"width": 29.5,
+			"height": 48,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/rooms_arrow_glow",
+			"src": "lobby/rooms_arrow_glow.jpg",
+			"width": 64,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "lobby/edit_btn",
+			"src": "lobby/edit_btn.png",
+			"width": 77.5,
+			"height": 15,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "common_btn_group",
+			"src": "common_panel/btn_group.png",
+			"width": 16,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "common_btn_home",
+			"src": "common_panel/btn_home.png",
+			"width": 15,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_history",
+			"src": "common_panel/btn_history.png",
+			"width": 12,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_info",
+			"src": "common_panel/btn_info.png",
+			"width": 9,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_quests",
+			"src": "common_panel/btn_achievements.png",
+			"width": 14,
+			"height": 13,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_back",
+			"src": "common_panel/btn_back.png",
+			"width": 13,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_settings",
+			"src": "common_panel/btn_settings.png",
+			"width": 11,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_fire_settings",
+			"src": "common_panel/btn_fire_settings.png",
+			"width": 15,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_promo",
+			"src": "common_panel/btn_history.png",
+			"width": 12,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_balance_icon",
+			"src": "common_panel/balance_icon.png",
+			"width": 19,
+			"height": 15,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "common_win_icon",
+			"src": "common_panel/win_icon.png",
+			"width": 26,
+			"height": 26,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_time_icon",
+			"src": "common_panel/time_icon.png",
+			"width": 12,
+			"height": 12,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_panel/flare",
+			"src": "common_panel/flare.jpg",
+			"width": 69,
+			"height": 55.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "promo/promos_list_btn",
+			"src": "promo/promos_list_btn.png",
+			"width": 19,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "promo/promo_info_btn",
+			"src": "promo/promo_info_btn.png",
+			"width": 10,
+			"height": 10,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "promo/screen/back",
+			"src": "promo/screen/back.png",
+			"width": 433,
+			"height": 344.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "promo/screen/icon",
+			"src": "promo/screen/icon.png",
+			"width": 21,
+			"height": 22,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "promo/screen/btn_left",
+			"src": "promo/screen/btn_left.png",
+			"width": 80,
+			"height": 44,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "promo/screen/btn_info",
+			"src": "promo/screen/btn_info.png",
+			"width": 192,
+			"height": 42,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "quests/back",
+			"src": "quests/back.png",
+			"width": 802,
+			"height": 400,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "quests/icon_gun",
+			"src": "quests/icon_gun.png",
+			"width": 16,
+			"height": 13,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "quests/weapons/artillery",
+			"src": "quests/weapons/artillery.png",
+			"width": 38,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "quests/weapons/cryo_gun",
+			"src": "quests/weapons/cryo_gun.png",
+			"width": 93.5,
+			"height": 50,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "quests/weapons/flamethrower",
+			"src": "quests/weapons/flamethrower.png",
+			"width": 73.5,
+			"height": 46.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "quests/weapons/mine_launcher",
+			"src": "quests/weapons/mine_launcher.png",
+			"width": 92,
+			"height": 54,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "quests/weapons/plasma_gun",
+			"src": "quests/weapons/plasma_gun.png",
+			"width": 101,
+			"height": 58,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/back",
+			"src": "settings/back.png",
+			"width": 512,
+			"height": 389,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/icon",
+			"src": "settings/icon.png",
+			"width": 21,
+			"height": 22.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/tooltip_toggle/on_btn",
+			"src": "settings/tooltip_toggle/on_btn.png",
+			"width": 93.5,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1188
+		},
+		{
+			"name": "settings/tooltip_toggle/off_btn",
+			"src": "settings/tooltip_toggle/off_btn.png",
+			"width": 94,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/bar",
+			"src": "settings/bar.png",
+			"width": 220,
+			"height": 15.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "settings/slider_back",
+			"src": "settings/slider_back.png",
+			"width": 220,
+			"height": 15.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "profile/icon",
+			"src": "profile/icon.png",
+			"width": 19,
+			"height": 17.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/back",
+			"src": "dialogs/back.png",
+			"width": 677,
+			"height": 399.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/mid_round_exit_icon",
+			"src": "dialogs/mid_round_exit_icon.png",
+			"width": 24,
+			"height": 21.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/force_sit_out/back",
+			"src": "dialogs/force_sit_out/back.png",
+			"width": 357,
+			"height": 255,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/force_sit_out/icon",
+			"src": "dialogs/force_sit_out/icon.png",
+			"width": 26,
+			"height": 23,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/active_btn",
+			"src": "dialogs/active_btn.png",
+			"width": 100,
+			"height": 30,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/deactive_btn",
+			"src": "dialogs/deactive_btn.png",
+			"width": 100,
+			"height": 30,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/line",
+			"src": "dialogs/line.png",
+			"width": 592,
+			"height": 1.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dialogs/exit_btn",
+			"src": "dialogs/exit_btn.png",
+			"width": 16,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "tips/back",
+			"src": "tips/back.png",
+			"width": 229,
+			"height": 61,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "profile/avatar",
+			"src": "profile/avatar.png",
+			"width": 806.5,
+			"height": 802,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		}		
+	],
+	"sounds": [
+		{
+			"name": "mq_gui_button_accept",
+			"src": "mq_gui_button_accept.mp3",
+			"descr": {
+				"length": 422,
+				"type": "fx",
+				"volume": 1,
+				"offset": 112
+			}
+		},
+		{
+			"name": "mq_gui_button_cancel",
+			"src": "mq_gui_button_cancel.mp3",
+			"descr": {
+				"length": 590,
+				"type": "fx",
+				"volume": 1,
+				"offset": 120
+			}
+		},
+		{
+			"name": "mq_gui_slider",
+			"src": "mq_gui_slider.mp3",
+			"descr": {
+				"length": 287,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "mq_gui_launch",
+			"src": "mq_gui_launch.mp3",
+			"descr": {
+				"length": 2137,
+				"type": "fx",
+				"volume": 1,
+				"offset": 73
+			}
+		}
+	],
+	"fonts": [
+		{
+			"name": "fnt_nm_arial_currency",
+			"src": "currency.ttf"
+		}
+	]
+}

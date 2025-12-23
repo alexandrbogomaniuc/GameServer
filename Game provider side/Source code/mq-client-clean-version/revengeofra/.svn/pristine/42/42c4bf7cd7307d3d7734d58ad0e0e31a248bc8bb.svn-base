@@ -1,0 +1,217 @@
+import SpineEnemy from './SpineEnemy';
+import { DIRECTION } from './Enemy';
+import { ENEMY_DIRECTION } from '../../config/Constants';
+import Sprite from '../../../../../common/PIXI/src/display/Sprite';
+import { FRAME_RATE } from '../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../common/PIXI/src/animation/Sequence';
+import { APP } from '../../../../../common/PIXI/src/globals';
+import { Utils } from '../../../../../common/PIXI/src/Utils';
+
+const SMOKE_SCALES = {
+	[ENEMY_DIRECTION.LEFT_DOWN]:	{x: 1, y: 1},
+	[ENEMY_DIRECTION.LEFT_UP]:		{x: 1, y: -1},
+	[ENEMY_DIRECTION.RIGHT_DOWN]:	{x: -1, y: 1},
+	[ENEMY_DIRECTION.RIGHT_UP]:		{x: -1, y: -1}
+}
+
+const SMOKE_OFFSET = {
+	[ENEMY_DIRECTION.LEFT_DOWN]:	{x: 0, y: 5},
+	[ENEMY_DIRECTION.LEFT_UP]:		{x: -20, y: -30},
+	[ENEMY_DIRECTION.RIGHT_DOWN]:	{x: 0, y: 10},
+	[ENEMY_DIRECTION.RIGHT_UP]:		{x: 20, y: -30}
+}
+
+const FOOT_STEP_TIMES = [{time: 0.03}, {time: 0.38}];
+
+class BrawlerBerserkEnemy extends SpineEnemy {
+
+	constructor(params)
+	{
+		super(params);
+		this._fSmokes_arr = [];
+	}
+
+	//override
+	_calcWalkAnimationName(aDirection_str)
+	{
+		return super._calcWalkAnimationName(aDirection_str, "charge");
+	}
+
+	//override
+	getScaleCoefficient()
+	{
+		return 0.45;
+	}
+
+	//override
+	get turnPostfix()
+	{
+		return "";
+	}
+
+	//override
+	getSpineSpeed()
+	{
+		if (this.isTurnState)
+		{
+			return 2;
+		}
+		let lBaseSpeed_num = 0.08;
+		return this.speed * this.getScaleCoefficient() * lBaseSpeed_num;
+	}
+
+	//override
+	getLocalCenterOffset() {
+		let pos = {x: 0, y: -70}
+		switch (this.direction)
+		{
+			case DIRECTION.LEFT_DOWN:  pos = {x: -15, 	y: -70}; 	break;
+			case DIRECTION.LEFT_UP:	   pos = {x: -20, 	y: -70}; 	break;
+			case DIRECTION.RIGHT_DOWN: pos = {x: 15, 	y: -55};	break;
+			case DIRECTION.RIGHT_UP:   pos = {x: 15, 	y: -65};	break;
+		}
+		return pos;
+	}
+
+	//override
+	_getHitRectHeight() {
+		return 100;
+	}
+
+	//override
+	_getHitRectWidth() {
+		return 60;
+	}
+
+	//override
+	_getExplodeIceScaleCoefficient()
+	{
+		return 1;
+	}
+
+	//override
+	changeShadowPosition()
+	{
+		let x = 0, y = -14, scale = 1.7, alpha = 1;
+
+		this.shadow.position.set(x, y);
+		this.shadow.scale.set(scale);
+		this.shadow.alpha = alpha;
+	}
+
+	get _smokeContainerInfo()
+	{
+		return APP.gameScreen.gameField.smokeTrailContainerInfo;
+	}
+
+	get _smokeScale()
+	{
+		return this.direction ? SMOKE_SCALES[this.direction] : {x: 1, y: 1};
+	}
+
+	get _smokeOffset()
+	{
+		return this.direction ? SMOKE_OFFSET[this.direction] : {x: 0, y: 0};
+	}
+
+	getStepTimers()
+	{
+		let lTimers_arr = [];
+		for (let time of FOOT_STEP_TIMES)
+		{
+			lTimers_arr.push({time: time.time});
+		}
+
+		this._stepsAmount = lTimers_arr.length;
+
+		return lTimers_arr;
+	}
+
+	_onFootStepOccured(aCurStepId_num)
+	{
+		super._onFootStepOccured(aCurStepId_num);
+
+		if(APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			let lSmoke_ss = this._generateSmoke(this._smokeScale, this._smokeOffset);
+			this._smokeContainerInfo.container.addChild(lSmoke_ss);
+			lSmoke_ss.zIndex = this._smokeContainerInfo.zIndex;
+			lSmoke_ss.startAnimation();
+		}
+	}
+
+	_generateSmoke(aScale_obj, aOffset_pt)
+	{
+		let lSmoke_ss = new StepSmoke();
+		lSmoke_ss.position.set(this.position.x + aOffset_pt.x, this.position.y + aOffset_pt.y);
+		lSmoke_ss.scale.x = aScale_obj.x;
+		lSmoke_ss.scale.y = aScale_obj.y;
+
+		this._fSmokes_arr.push(lSmoke_ss);
+		return lSmoke_ss;
+	}
+
+	destroy() {
+		for (let lSmoke_ss of this._fSmokes_arr) {
+			lSmoke_ss && lSmoke_ss.destroy();
+		}
+		this._fSmokes_arr = null;
+		super.destroy();
+	}
+}
+
+export default BrawlerBerserkEnemy;
+
+class StepSmoke extends Sprite {
+
+	startAnimation() {
+		let alphaSeq = [
+			{
+				tweens:
+				[
+					{ prop: 'alpha', to: 1 }
+				],
+				duration: 6*FRAME_RATE
+			},
+			{
+				tweens: [],
+				duration: 7*FRAME_RATE
+			},
+			{
+				tweens:
+				[
+					{ prop: 'alpha', to: 0}
+				],
+				duration: 11*FRAME_RATE,
+				onfinish: () => this.destroy()
+			}
+		];
+		Sequence.start(this._fBaseSprite_sprt, alphaSeq);
+
+		this._fBaseSprite_sprt.scaleTo(2*0.27, 24 * FRAME_RATE);
+		this._fBaseSprite_sprt.moveTo(24/2, -24/2, 24 * FRAME_RATE);
+	}
+
+	constructor() {
+		super();
+
+		this._fBaseSprite_sprt = null;
+
+		this._initView();
+	}
+
+	_initView() {
+		this._fBaseSprite_sprt = this.addChild(APP.library.getSprite("enemies/brawler_berserk/fx/step_smoke"));
+		this._fBaseSprite_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		this._fBaseSprite_sprt.anchor.set(0.5, 0.8);
+
+		this._fBaseSprite_sprt.alpha = 0;
+		this._fBaseSprite_sprt.scale.set(0.07);
+
+	}
+
+	destroy() {
+		Sequence.destroy(Sequence.findByTarget(this._fBaseSprite_sprt));
+		super.destroy();
+	}
+}

@@ -1,0 +1,2695 @@
+import { APP } from '../../../../../common/PIXI/src/globals';
+import Sprite from '../../../../../common/PIXI/src/display/Sprite';
+import Sequence from '../../../../../common/PIXI/src/animation/Sequence';
+import * as Easing from '../../../../../common/PIXI/src/animation/easing';
+import { Utils } from '../../../../../common/PIXI/src/Utils';
+import DeathFxAnimation from '../animation/death/DeathFxAnimation';
+import BossDeathFxAnimation from '../../view/uis/custom/bossmode/death/BossDeathFxAnimation';
+import { BOMB_RADIUS, WHITE_FILTER, ENEMY_DIRECTION } from '../../config/Constants';
+import { WEAPONS, ENEMIES, ENEMY_TYPES, ENEMY_BOSS_SKINS, FRAME_RATE } from '../../../../shared/src/CommonConstants';
+import HvAppearingEffects from '../animation/hv/HvAppearingEffects';
+import Timer from '../../../../../common/PIXI/src/Timer';
+import CryogunsController from '../../controller/uis/weapons/cryogun/CryogunsController';
+import CommonEffectsManager from '../CommonEffectsManager';
+import CryogunsEffectsManager from '../../view/uis/weapons/cryogun/CryogunsEffectsManager';
+import EnemyIndicatorsController from '../../controller/uis/enemies/EnemyIndicatorsController';
+import GameDebuggingController from '../../controller/debug/GameDebuggingController';
+import BossModeController from '../../controller/uis/custom/bossmode/BossModeController';
+import GameScreen from '../GameScreen';
+import HvEffects from '../animation/hv/HvEffects';
+import ProfilingInfo from '../../../../../common/PIXI/src/model/profiling/ProfilingInfo';
+import PortalAnimation from '../../view/uis/enemies/portal/PortalAnimation';
+
+const HIT_BOUNCE_TIME = 70;
+const BOMB_BOUNCE_TIME = 50;
+const TINT_COLOR = 0x405883;
+const TINT_INTENCITY = 0.1;
+
+const DIRECTION_LEFT = 'turnLeft';
+const DIRECTION_RIGHT = 'turnRight';
+
+const Y_INDICATOR_OFFSET = 5;
+const Y_HV_VALUE_OFFSET = 12;
+
+export const SPINE_SCALE = 0.4;
+export const TURN_ANIM_TIME = 1000;
+
+export const STATE_STAY 	= 'stay';
+export const STATE_WALK 	= 'walk';
+export const STATE_IMPACT 	= 'impact';
+export const STATE_DEATH 	= 'death';
+export const STATE_TURN 	= 'turn';
+
+export const DIRECTION = ENEMY_DIRECTION;
+
+export const TURN_DIRECTION = {
+	CCW: DIRECTION_LEFT,
+	CW: DIRECTION_RIGHT
+}
+
+class Enemy extends Sprite
+{
+	static get EVENT_ON_ENEMY_START_DYING()					{ return "onEnemyStartDying"; }
+	static get EVENT_ON_DEATH_ANIMATION_STARTED() 			{ return "deathAnimationStarted"; }
+	static get EVENT_ON_DEATH_ANIMATION_BONES_FELL_DOWN() 	{ return "deathAnimationBonesFellDown"; }
+	static get EVENT_ON_DEATH_ANIMATION_FLARE()		 		{ return "deathAnimationFlare"; }
+	static get EVENT_ON_DEATH_ANIMATION_CRACK()		 		{ return "deathAnimationCrack"; }
+	static get EVENT_ON_DEATH_ANIMATION_OUTRO_STARTED() 	{ return "deathAnimationOutroStarted"; }
+	static get EVENT_ON_DEATH_ANIMATION_COMPLETED() 		{ return "deathAnimationCompleted";}
+	static get EVENT_ON_ENEMY_VIEW_REMOVING() 				{ return "onEnemyViewRemoving"; }
+	static get EVENT_ON_HV_ENEMY_READY_TO_GO() 				{ return "onHvEnemyReadyToGo"; }
+	static get EVENT_ON_ENEMY_RIGHT_CLICK()					{ return "onEnemyRightClick"; }
+	static get EVENT_ON_ENEMY_CLICK()						{ return "onEnemyClick"; }
+	static get EVENT_ON_ENEMY_ADD_TRAJECTORY_POINT()		{ return "onEnemyAddTrajectoryPoint"; }
+	static get EVENT_ON_ENEMY_PAUSE_WALKING() 				{ return "onEnemyPauseWalking"; }
+	static get EVENT_ON_ENEMY_RESUME_WALKING() 				{ return "onEnemyResumeWalking"; }
+	static get EVENT_ON_ENEMY_FREEZE() 						{ return "onEnemyFreeze";}
+	static get EVENT_ON_ENEMY_UNFREEZE() 					{ return "onEnemyUnfreeze";}
+	static get EVENT_ON_ENEMY_DESTROY()						{ return "onEnemyDestroy"; }
+	static get EVENT_ON_GROUNDSHAKE()						{ return "onBossGroundshake"; }
+
+	static get EVENT_ON_TIME_TO_EXPLODE_COINS()				{ return BossDeathFxAnimation.EVENT_ON_TIME_TO_EXPLODE_COINS; }
+	static get EVENT_ON_ENEMY_ENERGY_UPDATED()				{ return EnemyIndicatorsController.EVENT_ON_ENERGY_UPDATED; }
+
+	set energy(aValue_num)
+	{
+		this._fEnergy_num = aValue_num;
+	}
+
+	get energy()
+	{
+		if (this._fEnergy_num > this.fullEnergy)
+		{
+			return this.fullEnergy;
+		}
+		return this._fEnergy_num;
+	}
+
+	set fullEnergy(aValue_num)
+	{
+		this._fFullEnergy_num = aValue_num;
+	}
+
+	get fullEnergy()
+	{
+		return this._fFullEnergy_num;
+	}
+
+	set lastPointTimeInterval(durationValue)
+	{
+		this._lastPointTimeInterval = durationValue;
+	}
+
+	get lastPointTimeInterval()
+	{
+		return this._lastPointTimeInterval;
+	}
+
+	set childHvEnemyId(aEnemyId_num)
+	{
+		this._fChildHvEnemyId_num = aEnemyId_num;
+	}
+
+	get childHvEnemyId()
+	{
+		return this._fChildHvEnemyId_num;
+	}
+
+	get hasChildHvEnemy()
+	{
+		return !isNaN(this.childHvEnemyId) && this.childHvEnemyId > -1;
+	}
+
+	get isDeathInProgress()
+	{
+		return this._deathInProgress;
+	}
+
+	get isDeathOutroAnimationStarted()
+	{
+		return this._deathOutroAnimationStarted;
+	}
+
+	get isStayState()
+	{
+		return this.state == STATE_STAY;
+	}
+
+	get isWalkState()
+	{
+		return this.state == STATE_WALK;
+	}
+
+	get isTurnState()
+	{
+		return this.state == STATE_TURN;
+	}
+
+	get isImpactState()
+	{
+		return this.state == STATE_IMPACT;
+	}
+
+	get isUndefinedState()
+	{
+		return this.state == undefined;
+	}
+
+	get isFireDenied()
+	{
+		return this._fIsFireDenied_bl;
+	}
+
+	set isFireDenied(aValue_bl)
+	{
+		this._fIsFireDenied_bl = aValue_bl;
+	}
+
+	get trajectoryPositionChangeInitiated()
+	{
+		return this._fIsTrajectoryPositionChangeInitiated_bl;
+	}
+
+	set trajectoryPositionChangeInitiated(aValue_bl)
+	{
+		this._fIsTrajectoryPositionChangeInitiated_bl = aValue_bl;
+	}
+
+	get crosshairsOffsetPosition()
+	{
+		let lOffset_pt = {x: 0, y: 0};
+
+		let lContainerPos_pt = this.container.position;
+
+		lOffset_pt.x += lContainerPos_pt.x;
+		lOffset_pt.y += lContainerPos_pt.y;
+
+		return lOffset_pt;
+	}
+
+	get isFrozen()
+	{
+		return this._fIsFrozen_bl;
+	}
+
+	updateTrajectory(aTrajectory_obj)
+	{
+		this.trajectory = aTrajectory_obj;
+		this.speed = aTrajectory_obj.speed || this.speed;
+		this.changeView();
+	}
+
+	updateLife(aVal_num)
+	{
+		this.life = aVal_num;
+	}
+
+	get invulnerable()
+	{
+		return this._fInvulnerable_bl;
+	}
+
+	set invulnerable(aValue_bl)
+	{
+		this._fInvulnerable_bl = aValue_bl;
+	}
+
+	constructor(params)
+	{
+		super();
+
+		this._fInvulnerable_bl = false;
+
+		//DEBUG...
+
+		this.tintColor = undefined;
+		this.tintIntencity = undefined;
+		this.shadowTintColor = undefined;
+		//if (APP.currentWindow.mapsController.info.mapId === 1)
+		{
+			this._fGameDebuggingController_gdc = APP.gameDebuggingController;
+			this._fGameDebuggingController_gdc.on(GameDebuggingController.i_EVENT_TINT_UPDATE, this._onDebugTintUpdated, this);
+			this._fGameDebuggingController_gdc.on(GameDebuggingController.i_EVENT_SHADOW_TINT_UPDATE, this._onDebugShadowTintUpdated, this);
+			this.tintColor = APP.gameDebuggingController.debugTintColor;
+			this.tintIntensity = APP.gameDebuggingController.debugTintIntencity;
+			this.shadowTintColor = APP.gameDebuggingController.debugShadowTintColor;
+		}
+		//...DEBUG
+
+		this.parentEnemyId = params.parentEnemyId;
+		this.typeId = params.typeId;
+		this.name = params.name;
+		this.id = params.id;
+		this.radius = params.radius;
+		this.life = 1;
+		this.angle = params.angle;
+		this.speed = params.trajectory.speed || params.speed; //2,4,8
+		this.awardedPrizes = params.awardedPrizes;
+		this.prizes = params.prizes;
+		this._fEnergy_num = params.energy;
+		this._fFullEnergy_num = params.fullEnergy;
+		this.boss = params.boss;
+		this.skin = params.skin;
+		this.trajectory = params.trajectory;
+		this.startPosition = params.startPosition;
+		this.prevTurnPoint = params.prevTurnPoint;
+		this.nextTurnPoint = params.nextTurnPoint;
+		this._fLastPosition_obj = null;
+
+		this._fBossHitScreamTimer_t = null;
+
+		this._parseCustomParams(params);
+
+		this._lastPointTimeInterval = undefined;
+		this.lastPointTimeInterval = params.lastPointTimeInterval || undefined;
+
+		this.instaMark = null;
+
+		this.initialDirection = null;
+
+		this.container = this.addChild(new Sprite);
+		this.container.zIndex = 1;
+
+		this.imageName = this.getImageName(this.name);
+		this.isEnded = false;
+		this.direction = this._calculateDirection();
+		this.turnDirection = DIRECTION_LEFT;
+
+		this.injured = false;
+		this.state = null;
+		this.impactAnimated = false;
+		this.spineSpeed = this.getSpineSpeed();
+
+		this.hitBounceDelta = null;
+		this.bombBounceDelta = null;
+		this.currentHitBounceDelta = null;
+		this.currentBombBounceDelta = null;
+		this.bossAppearanceDelta = null;
+		this.bossAppearanceMask = null;
+
+		this._deathInProgress = false;
+		this._deathOutroAnimationStarted = false;
+
+		this.deathFxAnimation = null;
+
+		this.view = null;
+		this.viewPos = null;
+		this.spineView = null;
+		this.spineViewPos = null;
+		this.preDeathSpineView = null;
+		this.shadow = null;
+		this.footPoint = null;
+
+		this.stepTimers = null;
+		this._stepsAmount = undefined;
+
+		this._vibrateTimer = null;
+
+		this._fBossWalkTimer_t = null;
+
+		this.hvTopContainer = null;
+		this.hvBottomContainer = null;
+		this.hvAppearingEffects = null;
+		this._risingSequence = null;
+		this._fChildHvEnemyId_num = undefined;
+		this.isVibrating_bl = false;
+
+		this._fIsFireDenied_bl = false;
+		this._fIsTrajectoryPositionChangeInitiated_bl = false;
+
+		this._fBossAppearanceInProgress_bln = false;
+		this._fFreezAfterLasthand_bl = null;
+
+		this.hvEffects = null;
+
+		this.setSpineViewPos();
+		this.setViewPos();
+
+		this.addShadow();
+		this.addFootPoint();
+		this.changeShadowPosition();
+		this.changeFootPointPosition();
+		this.changeInstaMarkPosition();
+
+		let lShowAppearanceEffect_bl = !params.allowUpdatePosition;
+		this._fIsLasthand_bl = params.isLasthand;
+		this._createView(lShowAppearanceEffect_bl);
+		if(params.needShowSound) this.playAppearSound();
+
+		this._startDetectingRightClick();
+
+		this._fIsDeathActivated_bl = false;
+
+		this._fCryogunsController_cgs = APP.currentWindow.cryogunsController;
+		this._fCryogunsInfo_csi = this._fCryogunsController_cgs.info;
+
+		this._fCryogunsController_cgs.on(CryogunsController.EVENT_FREEZE_ENEMY, this._onCryogunsFreezeEnemy, this);
+		this._fCryogunsController_cgs.on(CryogunsController.EVENT_UNFREEZE_ENEMY, this._onCryogunsUnfreezeEnemy, this);
+		this._fIsFrozen_bl = false;
+		this._fFreezeBaseContainer_sprt = null;
+		this._fFreezeCover_sprt = null;
+		this._fFreezeMask_sprt = null;
+		this._fFreezeGround_sprt = null;
+
+		this._fEnemyIndicatorsController_eic = this._initEnemyIndicatorsController();
+		this._fEnemyIndicatorsView_eiv = null;
+
+		this.updateIndicatorsPosition();
+
+		this._gameScreen = APP.currentWindow;
+ 		this._gameField = this._gameScreen.gameField;
+ 		this._portalsManager = this._gameField.portalsManager;
+
+		this._initEnemyIndicatorsView();
+
+ 		this._zIndexPortalOffset = undefined;
+
+		this._firstPoint = null;
+		this._portalId = undefined;
+
+		this._addSpecialEffectsIfRequired(this._fIsLasthand_bl);
+
+		!this._fIsLasthand_bl && this._showPortalIfNeeded();
+
+		this._invalidateStates();
+	}
+
+	//PORTAL...
+	_showPortalIfNeeded()
+	{
+		let points = this.trajectory.points;
+
+		if (points && points[0].portal)
+		{
+			this._firstPoint = Utils.clone(points[1]);
+			this._portalId = points[0].portal;
+
+			this._portalsManager.tryToOpenPortal(this.id, points, this._portalId);
+
+			this._portalsManager.getPortalById(this._portalId).addChild(this);
+			this._gameField.screen.removeChild(this);
+
+			this._zIndexPortalOffset = 200;
+			this.changeZindex();
+
+			this.mask = this._portalsManager.getMask(this._portalId, this.id);
+
+			this._startClosePortalTimer();
+		}
+	}
+
+	_startClosePortalTimer()
+	{
+		if (!this.trajectory || !this.trajectory.points || !this.trajectory.points.length) return;
+
+		var points = this.trajectory.points;
+
+		if (this._firstPoint.time <= (this._gameScreen.currentTime + 3 * FRAME_RATE))
+		{
+			this._portalsManager.getPortalById(this._portalId).removeChild(this);
+			this._gameField.screen.addChild(this);
+
+			this._zIndexPortalOffset = undefined;
+			this.changeZindex();
+
+			this._portalsManager.tryToClosePortal(this._portalId, this.id);
+			this.mask = null;
+		}
+		else
+		{
+			new Timer(this._startClosePortalTimer.bind(this), FRAME_RATE);
+		}
+	}
+	//...PORTAL
+
+	_onTimeToTintEnemy()
+	{
+ 		if (!this.isBoss)
+ 		{
+			this.tintColor = TINT_COLOR;
+			this.tintIntensity = TINT_INTENCITY;
+
+ 			this._updateTint();
+ 		}
+	}
+
+	//virtual protected
+	_updateTint()
+	{
+	}
+
+	//virtual protected
+	_untint()
+	{
+	}
+
+	_onDebugTintUpdated()
+	{
+	}
+
+	_onDebugShadowTintUpdated()
+	{
+		this.shadowTintColor = APP.gameDebuggingController.debugShadowTintColor;
+		this._rerenderShadow();
+	}
+
+	_parseCustomParams(params)
+	{
+	}
+
+	//virtual
+	_addSpecialEffectsIfRequired(aOptIsLasthand)
+	{
+	}
+
+	_invalidateStates()
+	{
+		this._freezeSuspicionAfterCreation();
+		this._fIsLasthand_bl = false;
+	}
+
+	//RIGHT CLICK DETECTION...
+	_startDetectingRightClick()
+	{
+		this.on('rightclick', (e) => {
+			this._onPointerRightClick(e);
+		});
+		this.on('pointerclick', (e) => {
+			this._onPointerClick(e);
+		})
+	}
+
+	_stopDetectingRightClick()
+	{
+		this.removeListener('rightclick');
+	}
+
+	_onPointerRightClick(e)
+	{
+		e.stopPropagation();
+		this.emit(Enemy.EVENT_ON_ENEMY_RIGHT_CLICK, {enemyId: this.id});
+	}
+
+	_onPointerClick(e)
+	{
+		e.stopPropagation();
+		this.emit(Enemy.EVENT_ON_ENEMY_CLICK, {enemyId: this.id});
+	}
+
+	//...RIGHT CLICK DETECTION
+
+	getImageName(name)
+	{
+		let imageName;
+		switch (name)
+		{
+			case ENEMIES.WrappedYellow:
+				imageName = 'enemies/mummy_small/MummySmall';
+				break;
+			case ENEMIES.WrappedBlack:
+				imageName = 'enemies/mummy_small_black/MummySmallBlack';
+				break;
+			case ENEMIES.WrappedWhite:
+				imageName = 'enemies/mummy_small_white/MummySmallWhite';
+				break;
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.WeaponCarrier:
+				imageName = 'enemies/mummy_warrior/MummyWarrior';
+				break;
+			case ENEMIES.MummyWarriorGreen:
+				imageName = 'enemies/mummy_warrior_green/MummyWarrior';
+				break;
+			case ENEMIES.BombEnemy:
+			case ENEMIES.MummyGodRed:
+				imageName = 'enemies/mummy_god_red/MummyGodRed';
+				break;
+			case ENEMIES.MummyGodGreen:
+				imageName = 'enemies/mummy_god_green/MummyGodGreen';
+				break;
+			case ENEMIES.Anubis:
+				imageName = 'enemies/anubis/Anubis';
+				break;
+			case ENEMIES.Osiris:
+				imageName = 'enemies/osiris/Osiris';
+				break;
+			case ENEMIES.Thoth:
+				imageName = 'enemies/thoth/Thoth';
+				break;
+
+			case ENEMIES.LocustTeal:
+				imageName = 'enemies/locust_teal/Locust';
+				break;
+			case ENEMIES.Locust:
+				imageName = 'enemies/locust/Locust';
+				break;
+			case ENEMIES.Scorpion:
+				imageName = 'enemies/scorpion/GiantScorpion';
+				break;
+			case ENEMIES.Horus:
+				imageName = 'enemies/horus/Horus';
+				break;
+			case ENEMIES.BrawlerBerserk:
+				imageName = 'enemies/brawler_berserk/UndiscoveredMummy';
+				break;
+
+			default: throw new Error('imageName is undefined for ' + name);
+		}
+
+		return imageName;
+	}
+
+	getImpactTimers()
+	{
+		let timers = {start: 0, end: 0};
+		timers.start = (this.injured) ? 2 : 1.3;
+		timers.end = (this.injured) ? 2.7 : 2;
+
+		return timers;
+	}
+
+	playDeathSound()
+	{
+		let soundName = '';
+		let randomSoundIndex = 1;
+		let lowProfile = APP.profilingController.info.isVfxProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE_VALUES.MEDIUM);
+
+		switch (this.name)
+		{
+			case ENEMIES.Locust:
+			case ENEMIES.LocustTeal:
+			case ENEMIES.Scorpion:
+				randomSoundIndex = APP.isMobile || lowProfile ? 2 : Utils.random(1, 2);
+				soundName = 'mq_enemies_bug_death_' + randomSoundIndex;
+			case ENEMIES.WrappedBlack:
+			case ENEMIES.WrappedWhite:
+				randomSoundIndex = APP.isMobile || lowProfile ? 2 : Utils.random(1, 3);
+				soundName = 'mq_enemies_mummy_fall_' + randomSoundIndex;
+			break;
+
+			case ENEMIES.WrappedYellow:
+				randomSoundIndex = APP.isMobile || lowProfile ? 3 : Utils.random(1, 3);
+				soundName = 'mq_enemies_mummy_death_' + randomSoundIndex;
+			break;
+
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+				randomSoundIndex = APP.isMobile || lowProfile ? 3 : Utils.random(1, 3);
+				soundName = 'mq_enemies_mummy_fall_shield_' + randomSoundIndex;
+				break;
+			case ENEMIES.BombEnemy:
+			case ENEMIES.MummyGodRed:
+			case ENEMIES.MummyGodGreen:
+			case ENEMIES.Horus:
+				randomSoundIndex = APP.isMobile || lowProfile ? 1 : Utils.random(1, 3);
+				soundName = 'mq_enemies_mummy_fall_chain_' + randomSoundIndex;
+			break;
+		}
+
+		if (soundName)
+		{
+			APP.soundsController.play(soundName);
+		}
+	}
+
+	playAppearSound()
+	{
+		let soundName = "";
+		let randomSoundIndex = 1;
+		let isLowProfile = APP.profilingController.info.isVfxProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE_VALUES.MEDIUM);
+
+		switch (this.name)
+		{
+			case ENEMIES.ScarabGreen:
+			case ENEMIES.ScarabBrown:
+			case ENEMIES.ScarabGold:
+			case ENEMIES.ScarabRuby:
+			case ENEMIES.ScarabDiamond:
+			case ENEMIES.Locust:
+			case ENEMIES.LocustTeal:
+			case ENEMIES.Scorpion:
+				randomSoundIndex = APP.isMobile || isLowProfile ? 1 : Utils.random(1, 2);
+				soundName = 'mq_enemy_bug_movement_' + randomSoundIndex;
+				break;
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedBlack:
+			case ENEMIES.WrappedWhite:
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+			case ENEMIES.MummyGodRed:
+			case ENEMIES.MummyGodGreen:
+				if (Math.random() < 0.5)
+				{
+					randomSoundIndex = APP.isMobile || isLowProfile ? 1 : Utils.random(1, 8);
+					soundName = 'mq_enemies_mummy_sfx_' + randomSoundIndex;
+				}
+				break;
+			case ENEMIES.Horus:
+				soundName = 'mq_enemy_horus';
+				break;
+			case ENEMIES.BombEnemy:
+				soundName = 'flame_aura';
+				break;
+		}
+
+		if (soundName)
+		{
+			APP.soundsController.play(soundName);
+		}
+	}
+
+	getSpineSpeed()
+	{
+		let speed = 1;
+		return speed;
+	}
+
+	setViewPos()
+	{
+		let pos = {x: 0, y: 0};
+		this.viewPos = pos;
+	}
+
+	setInjuredViewPos()
+	{
+		let pos = {x: this.viewPos.x, y: this.viewPos.y};
+
+		this.viewPos = pos;
+		this.view && this.view.position.set(this.viewPos.x, this.viewPos.y);
+	}
+
+	setSpineViewPos()
+	{
+		let pos = {x: 0, y: 0};
+		this.spineViewPos = pos;
+	}
+
+	static getDirection(angle)
+	{
+		let direction = DIRECTION.RIGHT_DOWN;
+		if (angle > Math.PI*2) angle -= Math.PI*2;
+		if (angle < 0) angle = 2*Math.PI - angle;
+
+		if (angle > 0) direction = DIRECTION.RIGHT_DOWN;
+		if (angle > Math.PI/2) direction = DIRECTION.LEFT_DOWN;
+		if (angle > Math.PI) direction = DIRECTION.LEFT_UP;
+		if (angle > Math.PI*3/2) direction = DIRECTION.RIGHT_UP;
+
+		return direction
+	}
+
+	getTurnDirection(direction)
+	{
+		let turnDirection;
+
+		switch (this.direction)
+		{
+			case DIRECTION.RIGHT_DOWN:
+				turnDirection = (direction == DIRECTION.RIGHT_UP) ? DIRECTION_LEFT : DIRECTION_RIGHT;
+			break;
+			case DIRECTION.RIGHT_UP:
+				turnDirection = (direction == DIRECTION.LEFT_UP) ? DIRECTION_LEFT : DIRECTION_RIGHT;
+			break;
+			case DIRECTION.LEFT_UP:
+				turnDirection = (direction == DIRECTION.LEFT_DOWN) ? DIRECTION_LEFT : DIRECTION_RIGHT;
+			break;
+			case DIRECTION.LEFT_DOWN:
+				turnDirection = (direction == DIRECTION.RIGHT_DOWN) ? DIRECTION_LEFT : DIRECTION_RIGHT;
+			break;
+		}
+
+		return turnDirection;
+	}
+
+	_calculateDirection()
+	{
+		return Enemy.getDirection(this.angle);
+	}
+
+	addShadow()
+	{
+		this.shadow = this.container.addChild(new Sprite());
+		this.shadow.view = this.shadow.addChild(this._generateShadowView());
+		this.shadow.view.anchor.set(103/235, 67/136);
+		this.shadow.view.alpha = 0.9;
+		this.shadow.zIndex = 1;
+
+		this._rerenderShadow();
+	}
+
+	_rerenderShadow()
+	{
+		let lTintColor_hex = this.shadowTintColor;
+		if (lTintColor_hex == undefined) return;
+		try
+		{
+			let sprite = this.shadow.view;
+			sprite.convertToHeaven();
+			sprite.tint = lTintColor_hex;
+			sprite.color.dark[0] = sprite.color.light[0];
+			sprite.color.dark[1] = sprite.color.light[1];
+			sprite.color.dark[2] = sprite.color.light[2];
+			sprite.color.invalidate();
+		}
+		catch (e)
+		{
+			console.log(e);
+		}
+
+	}
+
+	_generateShadowView()
+	{
+		return APP.library.getSprite('shadow');
+	}
+
+	addFootPoint()
+	{
+		this.footPoint = this.container.addChild(new PIXI.Graphics());
+		this.footPoint.clear().beginFill(0x000000, 0.01).drawCircle(0, 0, 4);
+		this.footPoint.position.set(30, 120);
+		this.footPoint.zIndex = 10;
+	}
+
+	_createView(aShowAppearanceEffect_bl)
+	{
+		this._initView();
+
+		if (this.isHighVolatility)
+		{
+			this._initHVView(aShowAppearanceEffect_bl);
+			// this._initHVValueView();
+		}
+	}
+
+	get isHighVolatility()
+	{
+		return false;
+	}
+
+	_initView()
+	{
+		this.view = this.container.addChild(new Sprite());
+		this.view.scale.set(this.getViewScale());
+		this.view.position.set(this.viewPos.x, this.viewPos.y);
+		this.view.alpha = 0;
+		this.view.animationSpeed = 1;
+		this.view.zIndex = 3;
+
+
+		this.state = STATE_STAY;
+
+		this.spineView = this.container.addChild(APP.spineLibrary.getSprite(this.imageName));
+		this.spineView.scale.set(SPINE_SCALE);
+		this.spineView.setAnimationByName(0, "Walk", true);
+		this.spineView.play();
+		this.spineView.view.state.timeScale = this.spineSpeed;
+		this.spineView.position.set(this.spineViewPos.x, this.spineViewPos.y);
+		this.spineView.zIndex = 3;
+	}
+
+	_updateHitPointerRectangle()
+	{
+		let rect = this._calcHitPointerRectangle();
+
+		//DEBUG...
+		// if (this.hitPointerRectangle && this.hitPointerRectangle.parent)
+		// {
+		// 	this.hitPointerRectangle.destroy();
+		// }
+		// this.hitPointerRectangle = this.container.addChild(new PIXI.Graphics());
+		// this.hitPointerRectangle.clear()
+		// 	.beginFill(0x00ff00, 0.2)
+		// 	.drawRect(rect.x, rect.y, rect.width, rect.height);
+		// this.hitPointerRectangle.zIndex = 300000;
+
+		// this.hitPointerRectangle.endFill();
+		// this.hitPointerRectangle.beginFill(0x0000ff, 0.5);
+		// this.hitPointerRectangle.drawCircle(this.getLocalCenterOffset().x, this.getLocalCenterOffset().y, 3);
+		// this.hitPointerRectangle.endFill();
+		//...DEBUG
+
+		this.interactive = true;
+		this.hitArea = rect;
+	}
+
+	_calcHitPointerRectangle()
+	{
+		let lFootPoint_pt = this.getCurrentFootPointPosition();
+		let lWidth_num = this._getHitRectWidth();
+		let lHeight_num = this._getHitRectHeight();
+
+		let rect = new PIXI.Rectangle(lFootPoint_pt.x + this.getLocalCenterOffset().x - lWidth_num/2, lFootPoint_pt.y + this.getLocalCenterOffset().y - lHeight_num/2, lWidth_num, lHeight_num);
+
+		return rect;
+	}
+
+	_getHitRectWidth()
+	{
+		let hitWidth = 0;
+		return hitWidth;
+	}
+
+	_getHitRectHeight()
+	{
+		let hitHeight = 0;
+		return hitHeight;
+	}
+
+	_getApproximateWidth()
+	{
+		let coef = this.isScarab ? 3 : 2;
+		return this._getHitRectWidth() * coef;
+	}
+
+	_getApproximateHeight()
+	{
+		let coef = this.isScarab ? 3 : 2;
+		return this._getHitRectHeight() * coef;
+	}
+
+	_initHVView(aShowAppearanceEffect_bl = false)
+	{
+		if (!this.hvTopContainer)
+		{
+			this.hvTopContainer = this.container.addChild(new Sprite);
+			this.hvTopContainer.zIndex = 11;
+		}
+		if (!this.hvBottomContainer)
+		{
+			this.hvBottomContainer = this.container.addChild(new Sprite);
+			this.hvBottomContainer.zIndex = 1;
+		}
+
+		if (this._isHvIdleFireEffectsRequired)
+		{
+			this.hvEffects = new HvEffects(this);
+		}
+
+		if (aShowAppearanceEffect_bl)
+		{
+			this._showHVAppearanceEffect(this.name);
+		}
+	}
+
+	get _isHvIdleFireEffectsRequired()
+	{
+		return undefined; //TODO
+	}
+
+	_showHVAppearanceEffect(aEnemyName_str)
+	{
+		//add effects
+		this.changeFootPointPosition();
+		this.direction = this._calculateDirection();
+
+		this.hvAppearingEffects = this._generateHvAppearingEffectsView(aEnemyName_str);
+		this.hvAppearingEffects.once(Sprite.EVENT_ON_DESTROYING, this._onHvAppearanceEffectDestroying, this);
+		this.hvAppearingEffects.zIndex = 100;
+
+		//rising
+		this.spineView && this.spineView.stop();
+		this.container.scale.y = 0;
+
+		let dy = this.getCurrentFootPointPosition().y;
+
+		let lRisingSequence_seq = [
+			{tweens: [], duration: 528},
+			{tweens: [{prop: "scale.y", to: 1,
+						onchange: (e) => {this.container.y = dy * (1 - e.value);}}
+					],
+					duration: 858,
+					onfinish: this._onHVEnemyReadyToGo.bind(this)
+			}
+		];
+
+		this._risingSequence = Sequence.start(this.container, lRisingSequence_seq);
+	}
+
+	get _isHVRisingUpInProgress()
+	{
+		return !!this._risingSequence;
+	}
+
+	_destroyRisingSequence()
+	{
+		if (!this._risingSequence)
+		{
+			return;
+		}
+
+		this._risingSequence.destructor();
+		this._risingSequence = null;
+	}
+
+	_forceHVRisingUpIfRequired()
+	{
+		if (this._risingSequence)
+		{
+			this._destroyRisingSequence();
+
+			this.container.scale.y = 1;
+			this.container.y = 0;
+
+			this._onHVEnemyReadyToGo();
+		}
+	}
+
+	_generateHvAppearingEffectsView(aEnemyName_str)
+	{
+		if (
+				aEnemyName_str == ENEMIES.Osiris
+				|| aEnemyName_str == ENEMIES.Anubis
+				|| aEnemyName_str == ENEMIES.Thoth
+			)
+		{
+			return new EscortHvAppearingEffects(this, this.getCurrentFootPointPosition(), aEnemyName_str);
+		}
+
+		return new HvAppearingEffects(this, this.getCurrentFootPointPosition());
+	}
+
+	_onHVEnemyReadyToGo()
+	{
+		this._destroyRisingSequence();
+
+		if (!this.isFrozen && !this._deathInProgress && !this.isImpactState)
+		{
+			if (this.isWalkState)
+			{
+				this.spineView && this.spineView.play();
+			}
+			else
+			{
+				this.setWalk();
+			}
+		}
+
+		this.emit(Enemy.EVENT_ON_HV_ENEMY_READY_TO_GO);
+	}
+
+	_onHvAppearanceEffectDestroying(event)
+	{
+		this.hvAppearingEffects = null;
+	}
+
+	//ENEMY INDICATORS...
+	_initEnemyIndicatorsView()
+	{
+		this._fEnemyIndicatorsView_eiv = this.addChild(this.enemyIndicatorsController.view);
+		this._fEnemyIndicatorsView_eiv.zIndex = 201;
+
+		if (this.isBoss || this.isBombEnemy)
+		{
+			this.enemyIndicatorsController.disableHPBar();
+		}
+	}
+
+	get enemyIndicatorsController()
+	{
+		return this._fEnemyIndicatorsController_eic || (this._fEnemyIndicatorsController_eic = this._initEnemyIndicatorsController());
+	}
+
+	_initEnemyIndicatorsController()
+	{
+		let lInfo_obj =
+		{
+			typeId: this.typeId,
+			energy: this.energy,
+			fullEnergy: this.fullEnergy,
+			id: this.id,
+			skin: this.skin,
+			enemyName: this.name
+		};
+
+		let l_eic = new EnemyIndicatorsController(lInfo_obj);
+		l_eic.i_init();
+
+		l_eic.on(EnemyIndicatorsController.EVENT_ON_ENERGY_UPDATED, this._onEnergyUpdated, this);
+		this._fEnemyIndicatorsController_eic = l_eic;
+
+		return l_eic;
+	}
+
+	_onEnergyUpdated(data)
+	{
+		let lNewEnergy_num = data.energy;
+		this.energy = lNewEnergy_num;
+
+		this.emit(Enemy.EVENT_ON_ENEMY_ENERGY_UPDATED, {energy: data.energy, damage: data.damage});
+	}
+
+	updateIndicatorsPosition()
+	{
+		let lIndicatorsHeight_num = this.enemyIndicatorsController.view.getBounds().height;
+
+		//preprocessing...
+		switch (this.name)
+		{
+			case ENEMIES.Locust:
+			case ENEMIES.LocustTeal:
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:
+						this.enemyIndicatorsController.view.position.x = -15*0.85;
+						this.enemyIndicatorsController.view.position.y = -25*0.85;
+						break;
+					case DIRECTION.LEFT_UP:
+						this.enemyIndicatorsController.view.position.x = -10*0.85;
+						this.enemyIndicatorsController.view.position.y = -35*0.85;
+						break;
+					case DIRECTION.RIGHT_DOWN:
+						this.enemyIndicatorsController.view.position.x = 12*0.85;
+						this.enemyIndicatorsController.view.position.y = -25*0.85;
+						break;
+					case DIRECTION.RIGHT_UP:
+						this.enemyIndicatorsController.view.position.x = 10*0.85;
+						this.enemyIndicatorsController.view.position.y = -35*0.85;
+						break;
+				}
+				return;
+		}
+		//...preprocessing
+
+		if (this.spineView && this.spineView.view && !this.isBoss)
+		{
+			let lBounds_obj = this.spineView.view.getLocalBounds();
+			let lX_num = lBounds_obj.x * this.spineView.scale.x + this.spineViewPos.x;
+			let lY_num = lBounds_obj.y * this.spineView.scale.y + this.spineViewPos.y;
+			let lW_num = lBounds_obj.width * this.spineView.scale.x;
+			//let lH_num = lBounds_obj.height * this.spineView.scale.y;
+
+			let lIndicatorPositionX_num = lX_num + lW_num/2;
+			let lIndicatorPositionY_num = lY_num - lIndicatorsHeight_num/2 - Y_INDICATOR_OFFSET;
+
+			this.enemyIndicatorsController.view.position.set(lIndicatorPositionX_num, lIndicatorPositionY_num);
+		}
+
+		//postprocessing...
+		let minY;
+		let pos = this.enemyIndicatorsController.view.position;
+		switch (this.name)
+		{
+			case ENEMIES.Horus:
+				minY = -165;
+				if (pos.y < minY)
+				{
+					pos.y = minY;
+				}
+				switch (this.direction)
+				{
+					case DIRECTION.LEFT_DOWN:
+					case DIRECTION.LEFT_UP:
+						pos.x = -20;
+						break;
+					case DIRECTION.RIGHT_DOWN:
+					case DIRECTION.RIGHT_UP:
+						pos.x = 20;
+						break;
+				}
+				pos.x += this.bossAppearanceDelta ? this.bossAppearanceDelta.x : 0;
+				pos.y += this.bossAppearanceDelta ? this.bossAppearanceDelta.y : 0;
+				break;
+		}
+		//...postprocessing
+	}
+	//...ENEMY INDICATORS
+
+	getViewScale()
+	{
+		let scale = 1;
+		return scale;
+	}
+
+	getStepTimers()
+	{
+		let timers = [];
+
+		this._stepsAmount = 0;
+
+		return timers;
+	}
+
+	getScaleCoefficient()
+	{
+		let coef = 1;
+
+		switch (this.name)
+		{
+			case ENEMIES.MummyWarrior:
+			case ENEMIES.MummyWarriorGreen:
+			case ENEMIES.WeaponCarrier:
+				coef = 1.38;
+				break;
+
+			case ENEMIES.WrappedYellow:
+			case ENEMIES.WrappedWhite:
+			case ENEMIES.WrappedBlack:
+			case ENEMIES.MummyGodGreen:
+				coef = 1.1;
+				break;
+
+			case ENEMIES.Anubis:
+			case ENEMIES.Osiris:
+			case ENEMIES.Thoth:
+				coef = 1.25 * 1.25;
+				break;
+
+			case ENEMIES.LocustTeal:
+				coef = 0.25 * 0.75 * 0.65;
+				break;
+			case ENEMIES.Locust:
+				coef = 0.25 * 0.75;
+				break;
+			case ENEMIES.Scorpion:
+			case ENEMIES.Horus:
+				coef = 0.5;
+				break;
+			case ENEMIES.BombEnemy:
+				coef = 1.15;
+				break;
+		}
+
+		return coef;
+	}
+
+	changeSpineView(type, noChangeFrame)
+	{
+		if (this.impactAnimated && type != STATE_IMPACT)
+		{
+			this.impactAnimated = false;
+		}
+
+		let x = this.spineViewPos.x;
+		let y = this.spineViewPos.y;
+		let name = this.imageName;
+		let animationName = '';
+		let animationLoop = true;
+		let scale = SPINE_SCALE;
+
+		if (this.spineView)
+		{
+			if (this.spineView.view && this.spineView.view.state)
+			{
+				this.spineView.view.state.onComplete = null;
+			}
+			this.spineView.destroy();
+		}
+
+		let scaleCoefficient = this.getScaleCoefficient();
+		scale *= scaleCoefficient;
+
+		if (type == STATE_DEATH)
+		{
+			name = this.getDeathSpineAssetName();
+		}
+		else
+		{
+			if (this.direction != DIRECTION.LEFT_DOWN)
+			{
+				name += this.direction.substr(3);
+			}
+
+			if (this.injured)
+			{
+				name += '_Injured';
+			}
+		}
+
+		switch(type)
+		{
+			case STATE_STAY:
+			case STATE_WALK:
+				animationName = 'Walk';
+			break;
+
+			case STATE_IMPACT:
+				animationName = 'Impact';
+				animationLoop = false;
+			break;
+
+			case STATE_DEATH:
+				animationName = 'Death';
+				animationLoop = false;
+			break;
+		}
+
+		this.state = type;
+
+		this.spineView = this.container.addChild(APP.spineLibrary.getSprite(name));
+
+		this.spineView.scale.set(scale);
+		this.spineView.setAnimationByName(0, animationName, animationLoop);
+
+		if (this.state == STATE_STAY)
+		{
+			this.spineView.stop();
+		}
+		else
+		{
+			this.spineView.play();
+		}
+
+		if (type === STATE_DEATH)
+		{
+			let pos = this._getDeathSpineAssetPosition();
+			x = pos.x;
+			y = pos.y;
+		}
+		this.spineView.position.set(x, y);
+		this.spineView.zIndex = 3;
+		this.spineView.view.state.timeScale = this.spineSpeed;
+
+		if (type === STATE_DEATH)
+		{
+			this.spineView.alpha = 0;
+			this.spineView.fadeTo(1, 3*2*16.6);
+		}
+
+		if (type == STATE_IMPACT)
+		{
+			this.spineView.view.state.timeScale = 1.35;
+			let timers = this.getImpactTimers();
+			this.spineView.view.state.tracks[0].animationStart = timers.start;
+			this.spineView.view.state.tracks[0].animationEnd = timers.end;
+		}
+	}
+
+	//left for compatibility
+	getDeathSpineAssetName()
+	{
+		return this.imageName + "_Death";
+	}
+
+	_getDeathSpineAssetPosition()
+	{
+		let pos = {x: this.footPoint.x, y: this.footPoint.y};
+		return pos;
+	}
+
+	changeTextures(type, noChangeFrame, switchView, checkBackDirection)
+	{
+		this.view.alpha = (type == STATE_TURN) ? 1 : 0;
+
+		if (type == STATE_DEATH)
+		{
+			this.changeSpineView(type, noChangeFrame);
+			return;
+		}
+
+		this.spineView.alpha = (type == STATE_IMPACT || type == STATE_WALK || type == STATE_DEATH || type == STATE_STAY ) ? 1 : 0;
+
+		if (this.spineView && this.spineView.alpha > 0)
+		{
+			this.changeSpineView(type, noChangeFrame);
+		}
+		else
+		{
+			if (this.view.alpha == 0)
+			{
+				this.view.alpha = !this.view.alpha*1;
+				this.spineView.alpha = !this.spineView.alpha*1;
+			}
+
+			let textures, speedCoefficient = 1;
+
+			let scale = this.getViewScale();
+			this.view.textures = textures;
+			this.view.scale.set(scale);
+			this.view.animationSpeed = 24 * speedCoefficient / (TURN_ANIM_TIME / this.view.textures.length);
+
+			if (noChangeFrame)
+			{
+				this.view.play();
+			}
+			else
+			{
+				this.view.gotoAndPlay(0);
+			}
+
+			this.changeShadowPosition();
+			this.changeInstaMarkPosition();
+		}
+	}
+
+	changeShadowPosition()
+	{
+		let x = 18, y = 50, scale = 1;
+
+		this.shadow.position.set(x, y);
+		this.shadow.scale.set(scale);
+	}
+
+	changeFootPointPosition()
+	{
+		let x = 0, y = 0;
+
+		this.footPoint.position.set(x, y);
+
+		this._updateHitPointerRectangle();
+	}
+
+	changeInstaMarkPosition()
+	{
+		if (this.instaMark)
+		{
+			let pos = this.getLocalCenterOffset();
+			this.instaMark.position.set(pos.x, pos.y);
+		}
+	}
+
+	getCurrentFootPointPosition()
+	{
+		return this.footPoint.position;
+	}
+
+	getColor()
+	{
+		let color = '0x';
+		switch (this.typeId)
+		{
+			case 3:
+			{
+				color += 'bbcd00';
+				break;
+			}
+			default:
+			{
+				color += 'aabbaa';
+				break;
+			}
+		}
+		return color;
+	}
+
+	checkBackDirection(direction)
+	{
+		let check = (this.direction == DIRECTION.LEFT_DOWN && direction == DIRECTION.RIGHT_UP)
+		|| (this.direction == DIRECTION.LEFT_UP && direction == DIRECTION.RIGHT_DOWN)
+		|| (this.direction == DIRECTION.RIGHT_UP && direction == DIRECTION.LEFT_DOWN)
+		|| (this.direction == DIRECTION.RIGHT_DOWN && direction == DIRECTION.LEFT_UP);
+
+		return check;
+	}
+
+	changeView()
+	{
+		if (this.checkInitialTurn())
+		{
+			return;
+		}
+		let direction = this._calculateDirection();
+		if (direction != this.direction)
+		{
+			this.turnDirection = this.getTurnDirection(direction);
+			let checkBackDirection = this.checkBackDirection(direction);
+			if (!checkBackDirection)
+			{
+				this.changeTextures(STATE_TURN, false, true);
+				this.direction = direction;
+				this.view.removeListener('animationend');
+				this.view.once("animationend", (e) =>{
+					this.endTurn();
+				});
+			}
+			else
+			{
+				if (this.state == STATE_DEATH) return;
+
+				this.direction = direction;
+				this.changeTextures(this.state, true, true, checkBackDirection);
+				this.spineView.view.state.timeScale = this.getSpineSpeed();
+				this.changeShadowPosition();
+				this.changeFootPointPosition();
+				this.changeInstaMarkPosition();
+			}
+		}
+	}
+
+	checkInitialTurn(direction)
+	{
+		//  we don't have to play turn spritesheet animation wneh the enemy first comes into screen - just do it instantly
+		if (!this.initialDirection)
+		{
+			let direction = this._calculateDirection();
+			this.initialDirection = this.direction = direction;
+			this.turnDirection = this.getTurnDirection(direction);
+			this.endTurn(true /*initial*/);
+			return true;
+		}
+		return false;
+	}
+
+	endTurn(aInitial_bl = false)
+	{
+		this.view && this.view.removeListener('animationend');
+
+		if (this._fIsDeathActivated_bl) // we were waiting for endTurn to proceed with the Death animation
+		{
+			this.setDeath();
+			return;
+		}
+		if (this.impactAnimated) return;
+		if (this.state == STATE_DEATH) return;
+
+		this.changeTextures(this.state, true, true);
+		this.spineView.view.state.timeScale = this.getSpineSpeed();
+		this.changeShadowPosition();
+		this.changeFootPointPosition();
+		this.changeInstaMarkPosition();
+	}
+
+	//override
+	changeZindex()
+	{
+		this.zIndex = this.y + this.footPoint.y;
+
+		if (this.name === ENEMIES.Locust)
+		{
+			this.zIndex += 400;
+		}
+		else if (this.name === ENEMIES.LocustTeal)
+		{
+			this.zIndex += 400;
+		}
+		else if (this.name === ENEMIES.Horus)
+		{
+			this.zIndex += 30;
+		}
+
+		if (this._zIndexPortalOffset)
+		{
+			this.zIndex += this._zIndexPortalOffset;
+		}
+	}
+
+	//CRYOGUN EFFECT...
+	_freezeSuspicionAfterCreation()
+	{
+		if (this._fCryogunsController_cgs.i_isEnemyFrozen(this.id))
+		{
+			this._freezeIfRequired(false);
+			this._fFreezAfterLasthand_bl = true;
+		}
+	}
+
+	_freezeIfRequired(aIsAnimated_bl = true)
+	{
+		if (!this._fIsDeathActivated_bl)
+		{
+			//non-animated freezing means this is lasthand - we must check first points then to make sure we need to freeze him
+			if (aIsAnimated_bl || Utils.isEqualPoints(this.trajectory.points[0], this.trajectory.points[1]))
+			{
+				this._freeze(aIsAnimated_bl);
+			}
+		}
+	}
+
+	_freeze(aIsAnimated_bl = true)
+	{
+
+		if (!this._fIsFrozen_bl)
+		{
+			this._destroyFrozenSprites(); //just for sure
+			this.setStay();
+			//do not move enemy while it stays
+			this.currentBombBounceDelta && this.currentBombBounceDelta.sequence && this.currentBombBounceDelta.sequence.pause();
+			this._fIsFrozen_bl = true;
+
+			this._forceHVRisingUpIfRequired();
+
+			//don't add freeze effect for Edge and IE
+			if (APP.isPixiHeavenLibrarySupported)
+			{
+				this._addFreezeEffect(aIsAnimated_bl);
+			}
+
+			this.emit(Enemy.EVENT_ON_ENEMY_FREEZE, {enemyId: this.id});
+		}
+
+		this._fLastPosition_obj = null;
+	}
+
+	_addFreezeEffect(aIsAnimated_bl = true)
+	{
+		this._fFreezeBaseContainer_sprt = this.container.addChild(new Sprite);
+		this._fFreezeBaseContainer_sprt.zIndex = 50;
+
+		//freeze mask...
+		let lMask_sprt = this._generateFreezeMask();
+		lMask_sprt.zIndex = 10;
+		this._fFreezeBaseContainer_sprt.addChild(lMask_sprt);
+		this._fFreezeMask_sprt = lMask_sprt;
+		//...freeze mask
+
+		this._addFreezeCover();
+
+		if (aIsAnimated_bl)
+		{
+			this._fFreezeBaseContainer_sprt.alpha = 0;
+			let lAlphaSequence_seq = [
+				{
+					tweens: [],
+					duration: 5*2*16.7,
+					onfinish: () => {
+						APP.profilingController.info.isVfxDynamicProfileValueMediumOrGreater && this._addFreezeSmokes();
+					}
+				},
+				{
+					tweens: [
+						{ prop: 'alpha', to: 1 }
+					],
+					duration: 10*2*16.7,
+					ease: Easing.sine.easeIn
+				}
+			];
+			Sequence.start(this._fFreezeBaseContainer_sprt, lAlphaSequence_seq);
+		}
+
+		//freeze ground...
+		this._addFreezeGround(aIsAnimated_bl);
+		//...freeze ground
+
+		//freeze hv effects...
+		if (this.hvEffects)
+		{
+			this.hvEffects.freeze();
+		}
+		//...freeze hv effects
+	}
+
+	_generateFreezeMask(aResolution_num)
+	{
+		//position and rotation should be set to 0 for correct texture generation
+		let lRememberStats_obj = {
+			containerRotation: this.container.rotation,
+			spinePosX: this.spineView.position.x,
+			spinePosY: this.spineView.position.y
+		};
+		this.container.rotation = 0;
+		this.spineView.position.x = 0;
+		this.spineView.position.y = 0;
+
+		let lSpineBounds_obj = this.spineView.view.getBounds();
+
+		this.spineView.view.filters = [WHITE_FILTER];
+
+		let lResulution_num = isNaN(aResolution_num) ? (APP.isMobile ? 1 : 2) : aResolution_num;
+		let l_txtr = APP.stage.renderer.generateTexture(this.spineView.view, PIXI.SCALE_MODES.LINEAR, lResulution_num, lSpineBounds_obj);
+		let lMask_sprt = new PIXI.Sprite(l_txtr);
+		lMask_sprt.convertToHeaven();
+
+		this.spineView.view.filters = null;
+
+		let lLocalSpineBounds_obj = this.spineView.view.getLocalBounds();
+		lLocalSpineBounds_obj.x *= this.spineView.scale.x;
+		lLocalSpineBounds_obj.y *= this.spineView.scale.y;
+		lLocalSpineBounds_obj.width *= this.spineView.scale.x;
+		lLocalSpineBounds_obj.height *= this.spineView.scale.y;
+
+		lMask_sprt.position.set(lLocalSpineBounds_obj.x + this.spineViewPos.x, lLocalSpineBounds_obj.y + this.spineViewPos.y);
+
+		//after texture generated return position and rotation to old values
+		this.container.rotation = lRememberStats_obj.containerRotation;
+		this.spineView.position.x = lRememberStats_obj.spinePosX;
+		this.spineView.position.y = lRememberStats_obj.spinePosY;
+		lRememberStats_obj = null;
+
+		return lMask_sprt;
+	}
+
+	_addFreezeCover()
+	{
+		let lFreezeCover_sprt = new PIXI.heaven.Sprite(APP.library.getSprite('weapons/Cryogun/Freeze').textures[0]);
+
+		lFreezeCover_sprt.anchor.set(0.5, 0.5);
+		let centerPos = this.getLocalCenterOffset();
+		lFreezeCover_sprt.position.set(centerPos.x, centerPos.y);
+		let lFreezeBounds_obj = lFreezeCover_sprt.getBounds();
+		let lFreezeCoverScaleY_num =  (this._getApproximateHeight()) / lFreezeBounds_obj.height;
+		let lFreezeCoverScaleX_num = (this._getApproximateWidth()) / lFreezeBounds_obj.width;
+		let lMaxScale_num = Math.max(lFreezeCoverScaleX_num, lFreezeCoverScaleY_num);
+		lFreezeCover_sprt.scale.set(lMaxScale_num, lMaxScale_num);
+
+		this._fFreezeBaseContainer_sprt.addChild(lFreezeCover_sprt);
+		this._fFreezeCover_sprt = lFreezeCover_sprt;
+
+		this._fFreezeCover_sprt.maskSprite = this._fFreezeMask_sprt;
+		this._fFreezeCover_sprt.pluginName = 'spriteMasked';
+		this._fFreezeMask_sprt.alpha = 0.24;
+	}
+
+	_addFreezeSmokes()
+	{
+		let pos = this.getLocalCenterOffset();
+		this._addFreezeSmoke(pos.x + 5, pos.y + 10, /*0xA8F2FF*/0xCBEAEF);
+		this._addFreezeSmoke(pos.x - 5, pos.y + 20);
+	}
+
+	_addFreezeSmoke(x, y, aTint_int = undefined)
+	{
+		let smoke = this._fFreezeBaseContainer_sprt.addChild(new Sprite);
+		smoke.position.set(x, y);
+		smoke.zIndex = 100;
+		smoke.textures = CommonEffectsManager.getDieSmokeUnmultTextures();
+		smoke.anchor.set(0.57, 0.81);
+		smoke.scale.set(2);
+		if (aTint_int !== undefined)
+		{
+			smoke.tint = aTint_int;
+		}
+		smoke.on('animationend', () => {
+			smoke.destroy();
+		})
+		smoke.play();
+	}
+
+	_addFreezeGround(aIsAnimated_bl = true)
+	{
+		if (this.isLocust) return;
+
+		this._fFreezeGround_sprt = APP.library.getSprite('weapons/Cryogun/freeze_ground');
+		this._fFreezeGround_sprt.anchor.set(146/283, 82/195);
+		this._fFreezeGround_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		this._fFreezeGround_sprt.scale.set(this._getFreezeGroundScaleCoef());
+		this.shadow.addChild(this._fFreezeGround_sprt);
+		if (aIsAnimated_bl)
+		{
+			this._fFreezeGround_sprt.alpha = 0;
+			this._fFreezeGround_sprt.fadeTo(1, 15*2*16.7);
+		}
+	}
+
+	_getFreezeGroundScaleCoef()
+	{
+		let coef = 1;
+
+		switch (this.name)
+		{
+			case ENEMIES.Anubis:
+			case ENEMIES.Osiris:
+			case ENEMIES.Thoth:
+				coef = 1.25;
+			break;
+
+			case ENEMIES.Locust:
+			case ENEMIES.LocustTeal:
+				coef = 0.8;
+			break;
+		}
+
+		return coef;
+	}
+
+	_unfreezeIfRequired()
+	{
+		if (this._fIsFrozen_bl && this.isStayState)
+		{
+			this._unfreeze();
+		}
+	}
+
+	_unfreeze(aIsAnimated_bl = true)
+	{
+		this._fIsFrozen_bl = false;
+
+		if (aIsAnimated_bl)
+		{
+			this._explodeIce();
+		}
+
+		this._resumeAfterUnfreeze();
+
+		this.emit(Enemy.EVENT_ON_ENEMY_UNFREEZE, {enemyId: this.id});
+	}
+
+	_explodeIce()
+	{
+		let lIceExplodeSprite_sprt = this.container.addChild(new Sprite);
+		let pos = this.getLocalCenterOffset();
+		lIceExplodeSprite_sprt.position.set(pos.x, pos.y);
+		lIceExplodeSprite_sprt.scale.set(this._getExplodeIceScaleCoefficient());
+		lIceExplodeSprite_sprt.anchor.set(0.5, 0.5);
+		lIceExplodeSprite_sprt.zIndex = 200;
+		lIceExplodeSprite_sprt.textures = CryogunsEffectsManager.getIceExplodeTextures();
+		lIceExplodeSprite_sprt.blendMode = PIXI.BLEND_MODES.SCREEN;
+		lIceExplodeSprite_sprt.on('animationend', () => {
+			lIceExplodeSprite_sprt.destroy();
+		})
+		lIceExplodeSprite_sprt.play();
+	}
+
+	_getExplodeIceScaleCoefficient()
+	{
+		return this.getScaleCoefficient();
+	}
+
+	_resumeAfterUnfreeze()
+	{
+		this._destroyFrozenSprites();
+
+		if (this.hvEffects)
+		{
+			this.hvEffects.unfreeze();
+		}
+
+		if (this.spineView && this.spineView.view && this.spineView.view.state)
+		{
+			this._resumeSpineAnimationAfterUnfreeze();
+		}
+		else
+		{
+			this.setWalk();
+		}
+
+		//complete the bomb rebouncing restore
+		if (this.currentBombBounceDelta && this.currentBombBounceDelta.sequence && this.currentBombBounceDelta.sequence.paused)
+		{
+			this.currentBombBounceDelta.sequence.resume();
+		}
+	}
+
+	_resumeSpineAnimationAfterUnfreeze()
+	{
+		this.state = undefined;
+
+		if(!this._fFreezAfterLasthand_bl)
+		{
+			this.spineView.removeAllListeners();
+			this.stateListener = {complete: (e) =>{
+						this.spineView && this.spineView.stop();
+						this._restoreStateBeforeFreeze();
+						this.stateListener = null;
+					}};
+			this.spineView.view.state.addListener(this.stateListener);
+		}
+		else
+		{
+			this.setWalk();
+			this._fFreezAfterLasthand_bl = false;
+		}
+		this.spineView.play();
+	}
+
+	_destroyFrozenSprites()
+	{
+		if (this._fFreezeBaseContainer_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fFreezeBaseContainer_sprt));
+		}
+		this._fFreezeCover_sprt && this._fFreezeCover_sprt.destroy();
+		this._fFreezeCover_sprt = null;
+		this._fFreezeMask_sprt && this._fFreezeMask_sprt.destroy({children: true, texture: true, baseTexture: true});
+		this._fFreezeMask_sprt = null;
+		this._fFreezeBaseContainer_sprt && this._fFreezeBaseContainer_sprt.destroy();
+		this._fFreezeBaseContainer_sprt = null;
+
+		if (this._fFreezeGround_sprt)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._fFreezeGround_sprt));
+			this._fFreezeGround_sprt.destroy();
+		}
+		this._fFreezeGround_sprt = null;
+	}
+
+	_restoreStateBeforeFreeze()
+	{
+		this.setWalk();
+	}
+	//...CRYOGUN EFFECT
+
+	setStay()
+	{
+		this._destroyBossWalkTimer();
+
+		this.view && this.view.removeListener('animationend');
+		this.changeTextures(STATE_STAY);
+	}
+
+	setWalk()
+	{
+		this._destroyBossWalkTimer();
+
+		if (this._fIsFrozen_bl || this._isHVRisingUpInProgress)
+		{
+			return;
+		}
+		else
+		{
+			this._destroyFrozenSprites();
+		}
+
+		if (this.isBoss && this.state == STATE_STAY)
+		{
+			this._resetBossAppearanceMask();
+		}
+
+		this.view && this.view.removeListener('animationend');
+		this.changeTextures(STATE_WALK);
+	}
+
+	get currentHitBounce()
+	{
+		return this.currentHitBounceDelta;
+	}
+
+	get currentBombBounce()
+	{
+		return this.currentBombBounceDelta;
+	}
+
+	get isRunner()
+	{
+		return false;
+	}
+
+	get isScarab()
+	{
+		return false;
+	}
+
+	get isLocust()
+	{
+		return (this.name === ENEMIES.Locust) || (this.name === ENEMIES.LocustTeal);
+	}
+
+	get isScorpion()
+	{
+		return this.name === ENEMIES.Scorpion;
+	}
+
+	get isCritter()
+	{
+		return this.isScarab || this.isLocust || this.isScorpion;
+	}
+
+	get isBoss()
+	{
+		return this.typeId === ENEMY_TYPES.BOSS;
+	}
+
+	get isBombEnemy()
+	{
+		return this.typeId === ENEMY_TYPES.BOMB_ENEMY;
+	}
+
+	//[Y]TODO to remove
+	get isBossEscort()
+	{
+		return this.skin === 99;
+	}
+
+	showHitAnimation()
+	{
+	}
+
+	showHitBounce(angle, weaponId, aOptHitDuration_num)
+	{
+		if (this.isFrozen)
+		{
+			//don't do hit bounce for frozen enemies - it looks non-natural
+			return;
+		}
+
+		let hitBounceDistance = this.getHitBounceDistance(weaponId) * this.getHitBounceMultiplier();
+
+		if (isNaN(hitBounceDistance))
+		{
+			throw new Error('hitBounceDistance error! hitBounceDistance = " + hitBounceDistance + ", weaponId = ' + weaponId + ", angle = " + angle);
+		}
+
+		let dx = hitBounceDistance * Math.cos(-angle - Math.PI),
+			dy = hitBounceDistance * Math.sin(-angle - Math.PI);
+
+		if (!this.hitBounceDelta)
+		{
+			this.hitBounceDelta = {x: dx, y: dy};
+
+			let seq = [
+				{
+					tweens: [
+						{prop: "x", to: this.hitBounceDelta.x},
+						{prop: "y", to: this.hitBounceDelta.y}
+					],
+					duration: HIT_BOUNCE_TIME/5
+					//ease: /*Easing.quadratic.easeIn*/ Easing.linear.easeIn,
+				},
+				{
+					tweens: [
+						{prop: "x", to: 0},
+						{prop: "y", to: 0}
+					],
+					duration: HIT_BOUNCE_TIME,
+					//ease: /*Easing.quadratic.easeOut*/Easing.linear.easeOut,
+					onfinish: (e) => {
+						this.resetHit();
+					}
+				}
+			]
+
+			this.currentHitBounceDelta = {x: 0, y: 0};
+			Sequence.start(this.currentHitBounceDelta, seq);
+		}
+
+		if (this.isBoss && (Math.random() > 0.8) && !this._fBossHitScreamTimer_t)
+		{
+			let soundIndex = APP.isMobile || APP.profilingController.info.isVfxProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE_VALUES.MEDIUM) ? 5 : Utils.random(1,5);
+			let soundName = 'mq_boss_hit_' + soundIndex;
+			APP.soundsController.play(soundName);
+
+			this._fBossHitScreamTimer_t = new Timer(()=>{
+				this._fBossHitScreamTimer_t && this._fBossHitScreamTimer_t.destructor();
+				this._fBossHitScreamTimer_t = null;
+			}, 1000);
+		}
+	}
+
+	showBombBounce(angle, dist, mapZonePoints)
+	{
+		if (dist > BOMB_RADIUS || this._fIsFrozen_bl || this._isHVRisingUpInProgress || this._fBossAppearanceInProgress_bln)
+		{
+			return;
+		}
+		let distPercentage = Math.min(dist/BOMB_RADIUS, 1);
+		let distance = this.getBombBounceDistance() * this.getHitBounceMultiplier();
+		let step = (1 - distPercentage) * distance;
+
+		let dx = step * Math.cos(-angle - Math.PI),
+			dy = step * Math.sin(-angle - Math.PI);
+
+
+		let potentialPoint = {x: dx, y: dy};
+		if (this.currentBombBounceDelta)
+		{
+			potentialPoint.x += this.currentBombBounceDelta.x;
+			potentialPoint.y += this.currentBombBounceDelta.y;
+		}
+		potentialPoint.x += this.getGlobalPosition().x;
+		potentialPoint.y += this.getGlobalPosition().y;
+
+		let mapZonePolygon = mapZonePoints ? new PIXI.Polygon(mapZonePoints) : null;
+		if (mapZonePolygon && !Utils.isPointInsidePolygon(potentialPoint, mapZonePolygon))
+		{
+			return;
+		}
+
+		this.bombBounceDelta = {x: dx, y: dy};
+		if (this.currentBombBounceDelta)
+		{
+			this.bombBounceDelta.x += this.currentBombBounceDelta.x;
+			this.bombBounceDelta.y += this.currentBombBounceDelta.y;
+			// remove previous sequence
+			this.currentBombBounceDelta.sequence.destructor();
+		}
+		else
+		{
+			this.currentBombBounceDelta = {x: 0, y: 0};
+		}
+
+		let seq = [
+			{
+				tweens: [],
+				duration: distPercentage * 500
+			},
+			{
+				tweens: [
+					{prop: "x", to: this.bombBounceDelta.x},
+					{prop: "y", to: this.bombBounceDelta.y}
+				],
+				duration: BOMB_BOUNCE_TIME,
+				/*ease: Easing.quadratic.easeIn,*/
+				onfinish: (e) => {
+					let pt = {x: this.x + this.container.x, y: this.y + this.container.y};
+					pt.y += this.getCurrentFootPointPosition().y;
+					pt.x += this.getCurrentFootPointPosition().x;
+					this.emit(Enemy.EVENT_ON_ENEMY_ADD_TRAJECTORY_POINT, {enemyId: this.id, x: pt.x, y: pt.y});
+					this.resetBombBounce();
+				}
+			}
+		]
+
+		this.currentBombBounceDelta.sequence = Sequence.start(this.currentBombBounceDelta, seq);
+	}
+
+	getBombBounceDistance()
+	{
+		return Utils.random(30, 40, true);
+	}
+
+	prepareForBossAppearance()
+	{
+		this.container.visible = false;
+		this._fBossAppearanceInProgress_bln = true;
+	}
+
+	showBossAppearance(aSequence_arr, aInitialParams_obj)
+	{
+		if (this.isBoss)
+		{
+			this.resetBossAppearance();
+
+			let lMask_gr = this.addChild(new PIXI.Graphics());
+			let lSpineBounds_rt = this.spineView.view.getLocalBounds();
+			let lY_num = lSpineBounds_rt.y * this.spineView.scale.y + this.spineViewPos.y;
+			let lHeight_num = lSpineBounds_rt.height * this.spineView.scale.y;
+			lMask_gr.beginFill(0x00FF00).drawRect(-480, lY_num, 960, lHeight_num).endFill();
+			this.container.mask = lMask_gr;
+			this.bossAppearanceMask = lMask_gr;
+			this.shadow.visible = false;
+
+			this.bossAppearanceDelta = {x:aInitialParams_obj.x, y:aInitialParams_obj.y, rotation:aInitialParams_obj.rotation};
+			this.bossAppearanceDelta.sequences = [];
+
+			this.updateOffsets();
+			this.updateRotation();
+
+			let n1 = aSequence_arr.length;
+			let n2 = aSequence_arr[n1 - 1].length;
+
+			aSequence_arr[n1 - 1][n2 - 1].onfinish = this._onBossAppear.bind(this);
+
+			for (let i = 0; i < aSequence_arr.length; i++)
+			{
+				this.bossAppearanceDelta.sequences.push(Sequence.start(this.bossAppearanceDelta, aSequence_arr[i]));
+			}
+		}
+
+		if (this.container) this.container.visible = true;
+	}
+
+	_onBossAppear()
+	{
+		this._fBossAppearanceInProgress_bln = false;
+
+		this._resetBossAppearanceMask();
+
+		this._destroyBossWalkTimer();
+	}
+
+	showBossEscort(aBossType_str)
+	{
+		if (this.state === STATE_IMPACT || this.state === STATE_DEATH)
+		{
+			return;
+		}
+		this._showHVAppearanceEffect(aBossType_str);
+		this.container.visible = true;
+	}
+
+	_resetOffsets()
+	{
+		this.resetHit();
+		this.resetBombBounce();
+	}
+
+	resetHit()
+	{
+		Sequence.destroy(Sequence.findByTarget(this.currentHitBounceDelta));
+		this.hitBounceDelta = null;
+		this.currentHitBounceDelta = null;
+	}
+
+	resetBombBounce()
+	{
+		this.bombBounceDelta = null;
+		this.currentBombBounceDelta = null;
+	}
+
+	resetBossAppearance()
+	{
+		this._resetAppearanceDelta();
+
+		this._resetBossAppearanceMask();
+
+		if (this.container)
+		{
+			this.container.visible = true;
+		}
+	}
+
+	_resetAppearanceDelta()
+	{
+		if (this.bossAppearanceDelta && this.bossAppearanceDelta.sequences)
+		{
+			while (this.bossAppearanceDelta.sequences.length)
+			{
+				this.bossAppearanceDelta.sequences.pop().destructor();
+			}
+		}
+		this.bossAppearanceDelta = null;
+	}
+
+	_resetBossAppearanceMask()
+	{
+		if (this.container)
+		{
+			this.container.mask = null;
+		}
+
+		if (this.bossAppearanceMask)
+		{
+			this.bossAppearanceMask.destroy();
+		}
+		this.bossAppearanceMask = null;
+		if (this.shadow) this.shadow.visible = true;
+	}
+
+	impact()
+	{
+		this._destroyBossWalkTimer();
+
+		this.changeTextures(STATE_IMPACT);
+		this.impactAnimated = true;
+		this.spineView.view.state.onComplete = (e) =>{
+			this.impactAnimated = false;
+			!this.isStayState && this.setWalk();
+		};
+		this.setInjured();
+	}
+
+	setInjured()
+	{
+		this._destroyBossWalkTimer();
+
+		if(!this.injured && this.prizes > 1)
+		{
+			this.injured = true;
+			this.setInjuredViewPos();
+		}
+	}
+
+	setDeath(aIsInstantKill_bl = false, aPlayerWin_obj = null)
+	{
+		this._destroyBossWalkTimer();
+
+		this.life = 0;
+
+		if (this.isFrozen)
+		{
+			this._unfreeze();
+		}
+	}
+
+	setDeathFramesAnimation(aIsInstantKill_bl = false, aPlayerWin_obj = null)
+	{
+		this._deathInProgress = true;
+
+		this.view && this.view.removeListener('animationend');
+
+		if (this.isBoss)
+		{
+			this.spineView.stop();
+			this._playBossDeathFxAnimation();
+		}
+		else
+		{
+			if (this.view && this.view.alpha > 0)
+			{
+				this.preDeathSpineView = this.view;
+				this.preDeathSpineView.fadeTo(0, 100);
+			}
+			else
+			{
+				this.preDeathSpineView = this.spineView;
+				this.preDeathSpineView.fadeTo(0, 100, null, () => {this.preDeathSpineView.destroy()});
+			}
+			this.preDeathSpineView.stop();
+			this.spineView = null;
+
+			if (!aIsInstantKill_bl)
+			{
+				this.playDeathSound();
+				this.changeTextures(STATE_DEATH);
+				this.spineView.view.state.onComplete = (e) => {
+					let lEnemyPosition_pt = this.getGlobalPosition();
+					lEnemyPosition_pt.x += this.getCurrentFootPointPosition().x;
+					lEnemyPosition_pt.y += this.getCurrentFootPointPosition().y;
+					this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_BONES_FELL_DOWN, {position: lEnemyPosition_pt, angle: this.angle});
+				}
+			}
+
+			if (this.hvEffects)
+			{
+				this.hvEffects.i_fadeOut();
+			}
+
+			this._forceHVRisingUpIfRequired();
+
+			this._playDeathFxAnimation(aIsInstantKill_bl);
+		}
+
+		this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED);
+	}
+
+	_playDeathFxAnimation(aIsInstantKill_bl)
+	{
+		this.enemyIndicatorsController.disableHPBar();
+
+		this.deathFxAnimation = this.container.addChild(new DeathFxAnimation());
+		this.deathFxAnimation.position.set(this.footPoint.x, this.footPoint.y);
+
+		if (this.isCritter || aIsInstantKill_bl)
+		{
+			this.deathFxAnimation.playIntro(false/*fast variant*/, true /*skip outro*/);
+		}
+		else
+		{
+			this.deathFxAnimation.playIntro(this.hasChildHvEnemy /*fast variant*/);
+		}
+		this.deathFxAnimation.once(DeathFxAnimation.EVENT_ANIMATION_COMPLETED, (e) => {
+			this.onDeathFxAnimationCompleted();
+		});
+
+		if (this.isCritter || aIsInstantKill_bl)
+		{
+			Sequence.destroy(Sequence.findByTarget(this.shadow));
+			Sequence.destroy(Sequence.findByTarget(this.shadow.view));
+			this.shadow.fadeTo(0, 1000, Easing.quadratic.easeIn);
+		}
+		else
+		{
+			this.deathFxAnimation.once(DeathFxAnimation.EVENT_OUTRO_STARTED, (e) => {
+				this.onDeathFxOutroStarted();
+			});
+		}
+		this.deathFxAnimation.zIndex = 20;
+	}
+
+	_playBossDeathFxAnimation(aPlayerWin_obj)
+	{
+		let lPlaySound_bln = !!(aPlayerWin_obj.playerWin !== null && aPlayerWin_obj.playerWin !== undefined && aPlayerWin_obj.playerWin > 0)
+		this.deathFxAnimation = this._getBossDeathFxAnimationInstance(aPlayerWin_obj);
+		this.deathFxAnimation.zIndex = 20;
+		this.deathFxAnimation.once(BossDeathFxAnimation.EVENT_FLARE_STARTED, (e) => {
+			this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_FLARE);
+		});
+		this.deathFxAnimation.on(BossDeathFxAnimation.EVENT_CRACK_STARTED, (e) => {
+			this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_CRACK, {playSound: lPlaySound_bln});
+		});
+		this.deathFxAnimation.once(BossDeathFxAnimation.EVENT_OUTRO_STARTED, this.onBossDeathFxOutroStarted, this);
+		this.deathFxAnimation.once(BossDeathFxAnimation.EVENT_ANIMATION_COMPLETED, this.onDeathFxAnimationCompleted, this);
+		this.deathFxAnimation.once(BossDeathFxAnimation.EVENT_ON_TIME_TO_EXPLODE_COINS, this._onTimeToExplodeCoins, this);
+		this.deathFxAnimation.playIntro();
+	}
+
+	_getBossDeathFxAnimationInstance(aPlayerWin_obj)
+	{
+		return new BossDeathFxAnimation(this.spineView, this.container, aPlayerWin_obj);
+	}
+
+	onDeathFxAnimationCompleted()
+	{
+		this._deathInProgress = false;
+		this._deathOutroAnimationStarted = false;
+		this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_COMPLETED);
+		this.destroy();
+	}
+
+	_onTimeToExplodeCoins(event)
+	{
+		this.emit(Enemy.EVENT_ON_TIME_TO_EXPLODE_COINS, {position: this.getGlobalPosition(), isCoPlayerWin: event.isCoPlayerWin});
+	}
+
+	onDeathFxOutroStarted()
+	{
+		this.showDeathOutroFx(false);
+	}
+
+	onBossDeathFxOutroStarted()
+	{
+		this.showDeathOutroFx(true);
+	}
+
+	showDeathOutroFx(aSkipAnimation_bl = false)
+	{
+		if (aSkipAnimation_bl)
+		{
+			this.spineView && this.spineView.destroy();
+			this.shadow && this.shadow.destroy();
+		}
+		else
+		{
+			this.spineView && this.spineView.fadeTo(0, 300, Easing.quadratic.easeIn);
+			this.shadow.fadeTo(0, 500, Easing.quadratic.easeIn);
+		}
+
+		this._deathOutroAnimationStarted = true;
+
+		this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_OUTRO_STARTED, {position: this.getGlobalPosition()});
+	}
+
+	getHitRectangle()
+	{
+		let rect = new PIXI.Rectangle();
+		rect.width = this.isBoss ? 20 : 10;
+		rect.height = Math.abs(this.getCurrentFootPointPosition().y) / (this.isBoss ? 1.2 : 2);
+		return rect;
+	}
+
+	updateSpineAnimation()
+	{
+		//override
+	}
+
+	updateMembersPosition()
+	{
+		//override
+	}
+
+	tick(delta)
+	{
+		this._validateFreezing();
+		this.updateSpineAnimation();
+		this.updateOffsets();
+		this.updateRotation();
+		this.updateIndicatorsPosition();
+		this.updateMembersPosition();
+	}
+
+	_validateFreezing()
+	{
+		if (this.isFrozen && this.state == STATE_STAY)
+		{
+			if (this._fLastPosition_obj)
+			{
+				if ((this._fLastPosition_obj.x != this.position.x) && (this._fLastPosition_obj.y != this.position.y))
+				{
+					this._unfreeze();
+				}
+			}
+			this._fLastPosition_obj = {x: this.position.x, y: this.position.y};
+		}
+	}
+
+	updateOffsets()
+	{
+		this.enemyIndicatorsController.view.pivot.set(0, 0);
+
+		let lOffset_obj = this._getOffset();
+		this.container.position.set(lOffset_obj.x, lOffset_obj.y);
+	}
+
+	_getOffset()
+	{
+		let dx = 0, dy = 0;
+
+		if (this.currentHitBounce !== null)
+		{
+			dx += this.currentHitBounce.x;
+			dy += this.currentHitBounce.y;
+		}
+
+		if (this.currentBombBounce !== null)
+		{
+			dx += this.currentBombBounce.x;
+			dy += this.currentBombBounce.y;
+		}
+
+		if (this.isVibrating_bl)
+		{
+			dx += 2.5 - Utils.random(0, 5);
+			dy += 2.5 - Utils.random(0, 5);
+		}
+
+		if (this.bossAppearanceDelta !== null)
+		{
+			dx += this.bossAppearanceDelta.x;
+			dy += this.bossAppearanceDelta.y;
+		}
+
+		return {x: dx, y: dy};
+	}
+
+	updateRotation()
+	{
+		let angle = 0;
+		if (this.bossAppearanceDelta !== null)
+		{
+			angle += this.bossAppearanceDelta.rotation;
+		}
+		this.container.rotation = angle;
+	}
+
+	//CRYOGUNS...
+	_onCryogunsFreezeEnemy(aEvent_obj)
+	{
+		let lEnemyId_int = aEvent_obj.enemyId;
+		let lIsAnimated_bl = aEvent_obj.isAnimated;
+		if (this.id === lEnemyId_int)
+		{
+			this._freezeIfRequired(lIsAnimated_bl);
+		}
+	}
+
+	_onCryogunsUnfreezeEnemy(aEvent_obj)
+	{
+		let lEnemyId_int = aEvent_obj.enemyId;
+		if (this.id === lEnemyId_int)
+		{
+			this._unfreezeIfRequired();
+		}
+	}
+	//...CRYOGUNS
+
+	_destroyBossWalkTimer()
+	{
+		this._fBossWalkTimer_t && this._fBossWalkTimer_t.destructor();
+		this._fBossWalkTimer_t = null;
+	}
+
+	destroy(purely = false)
+	{
+		this.removeChild(this._fEnemyIndicatorsView_eiv);
+		this._fEnemyIndicatorsView_eiv = null;
+
+		if (this._fEnemyIndicatorsController_eic)
+		{
+			this._fEnemyIndicatorsController_eic.off(EnemyIndicatorsController.EVENT_ON_ENERGY_UPDATED, this._onEnergyUpdated, this);
+			this._fEnemyIndicatorsController_eic.destroy();
+		}
+
+		this._fEnemyIndicatorsController_eic = null;
+
+ 		this._zIndexPortalOffset = undefined;
+
+		if (this._portalId)
+		{
+			this._portalsManager.destroyPortalIfRequired(this._portalId);
+		}
+
+		this._destroyBossWalkTimer();
+
+		Sequence.destroy(Sequence.findByTarget(this.currentHitBounceDelta));
+		Sequence.destroy(Sequence.findByTarget(this.currentBombBounceDelta));
+
+		this.emit(Enemy.EVENT_ON_ENEMY_DESTROY);
+		if (this._destroyed)
+		{
+			return;
+		}
+
+		/*APP.off("tick", this._tickFunc);*/
+		if (!purely)
+		{
+			let lEnemyPosition_pt = this.getGlobalPosition();
+			lEnemyPosition_pt.x += this.getCurrentFootPointPosition().x;
+			lEnemyPosition_pt.y += this.getCurrentFootPointPosition().y;
+			this.emit(Enemy.EVENT_ON_ENEMY_VIEW_REMOVING, {position: lEnemyPosition_pt, angle: this.angle});
+		}
+
+		this.resetBossAppearance();
+
+		this.container && Sequence.destroy(Sequence.findByTarget(this.container));
+		if (this.currentBombBounceDelta)
+		{
+			this.currentBombBounceDelta.sequence && this.currentBombBounceDelta.sequence.destructor();
+			this.currentBombBounceDelta.sequence = null;
+			this.currentBombBounceDelta = null;
+		}
+
+		if (this.shadow)
+		{
+			Sequence.destroy(Sequence.findByTarget(this.shadow));
+			this.shadow.view && Sequence.destroy(Sequence.findByTarget(this.shadow.view));
+		}
+
+		this._stopDetectingRightClick();
+		this.name = undefined;
+		this.initialDirection = null;
+
+		this.container = null;
+
+		this.hvEffects = null;
+
+		this.id = undefined;
+		this.typeId = undefined;
+		this.imageName = undefined;
+		this.radius = undefined;
+		this.life = undefined;
+		this.isEnded = false;
+		this.angle = undefined;
+		this.direction = undefined;
+		this.turnDirection = undefined;
+		this.speed = undefined;
+		this._lastPointTimeInterval = undefined;
+		this._fLastPosition_obj = null;
+
+		this.awardedPrizes = null;
+		this.prizes = undefined;
+
+		this.boss = false;
+		this.skin = undefined;
+
+		this.injured = false;
+		this.state = null;
+		this.impactAnimated = false;
+
+		this.spineSpeed = undefined;
+
+		this.trajectory = null;
+
+		this.hitBounceDelta = null;
+		this.bombBounceDelta = null;
+		this.currentHitBounceDelta = null;
+
+		this._deathInProgress = false;
+		this._deathOutroAnimationStarted = false;
+		this.deathFxAnimation = null;
+
+		this._vibrateTimer && this._vibrateTimer.destructor();
+		this._vibrateTimer = null;
+
+		this._fIsFireDenied_bl = false;
+		this._fIsTrajectoryPositionChangeInitiated_bl = false;
+
+		this.view = null;
+		this.viewPos = null;
+		this.spineViewPos = null;
+		this.shadow = null;
+		this.footPoint = null;
+
+		this._fBossHitScreamTimer_t && this._fBossHitScreamTimer_t.destructor();
+		this._fBossHitScreamTimer_t = null;
+
+		if (this.spineView)
+		{
+			if (this.spineView.view && this.spineView.view.state)
+			{
+				this.spineView.view.state.onComplete = null;
+			}
+		}
+
+		this.spineView = null;
+		this.preDeathSpineView = null;
+
+		this.stepTimers = null;
+		this._stepsAmount = undefined;
+
+		this.hvTopContainer = null;
+		this.hvBottomContainer = null;
+
+		this.hvAppearingEffects && this.hvAppearingEffects.destroy();
+		this.hvAppearingEffects = null;
+
+		this._fFreezAfterLasthand_bl = null;
+
+		this._destroyRisingSequence();
+
+		this._fChildHvEnemyId_num = undefined;
+		this.isVibrating_bl = false;
+
+		this.instaMark = null;
+
+		this._fBossAppearanceInProgress_bln = null;
+
+		this._fCryogunsController_cgs.off(CryogunsController.EVENT_FREEZE_ENEMY, this._onCryogunsFreezeEnemy, this);
+		this._fCryogunsController_cgs.off(CryogunsController.EVENT_UNFREEZE_ENEMY, this._onCryogunsUnfreezeEnemy, this);
+		this._fIsFrozen_bl = false;
+		this._destroyFrozenSprites();
+
+		this._fGameDebuggingController_gdc && this._fGameDebuggingController_gdc.off(GameDebuggingController.i_EVENT_TINT_UPDATE, this._onDebugTintUpdated, this);
+		this._fGameDebuggingController_gdc && this._fGameDebuggingController_gdc.off(GameDebuggingController.i_EVENT_SHADOW_TINT_UPDATE, this._onDebugShadowTintUpdated, this);
+		this._fGameDebuggingController_gdc = null;
+
+		super.destroy();
+	}
+
+	get isDestroyed()
+	{
+		return this._destroyed;
+	}
+
+	getHitBounceDistance(weaponId)
+	{
+		switch (weaponId)
+		{
+			case WEAPONS.DEFAULT:
+				return 10;
+			case WEAPONS.MINELAUNCHER:
+			case WEAPONS.FLAMETHROWER:
+			case WEAPONS.ARTILLERYSTRIKE:
+				return 25;
+			case WEAPONS.INSTAKILL:
+				return 30;
+		}
+		return 0;
+	}
+
+	getHitBounceMultiplier()
+	{
+		let mult = 1;
+		switch (this.name)
+		{
+			case ENEMIES.Locust:
+			case ENEMIES.LocustTeal:
+			case ENEMIES.Scorpion:
+				mult = 0.5;
+				break;
+			case ENEMIES.Anubis:
+			case ENEMIES.Osiris:
+			case ENEMIES.Thoth:
+				Math.random() < 0.25 ? mult = 1.25 : mult = 0;
+				break;
+		}
+		return mult * Math.sqrt(Math.max(this.speed/4, 1));
+	}
+
+	startVibration(aHitDuration_num)
+	{
+		this.isVibrating_bl = true;
+
+		if (this._vibrateTimer)
+		{
+			this._vibrateTimer && this._vibrateTimer.destructor();
+		}
+
+		this._vibrateTimer = new Timer(this.resetVibration.bind(this), aHitDuration_num);
+	}
+
+	resetVibration()
+	{
+		this.isVibrating_bl = false;
+	}
+
+	getCenterPosition()
+	{
+		let pos = {x: 0, y: 0};
+		pos.x = this.getGlobalPosition().x + this.getLocalCenterOffset().x + this._getOffset().x;
+		pos.y = this.getGlobalPosition().y + this.getLocalCenterOffset().y + this._getOffset().y;
+		return pos;
+	}
+
+	getLocalCenterOffset()
+	{
+		let pos = {x: 0, y: 0};
+		return pos;
+	}
+
+	toString()
+	{
+		return `Enemy {id: ${this.id}, typeId: ${this.typeId}, name: ${this.name}}`;
+	}
+}
+
+export default Enemy;

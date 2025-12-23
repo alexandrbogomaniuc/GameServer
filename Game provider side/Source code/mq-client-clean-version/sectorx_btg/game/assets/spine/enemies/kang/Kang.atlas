@@ -1,0 +1,83 @@
+
+SectorX_Med_Enemy1.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+antennae
+  rotate: false
+  xy: 243, 71
+  size: 178, 262
+  orig: 178, 262
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 4, 4
+  size: 329, 235
+  orig: 329, 235
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 492, 839
+  size: 274, 181
+  orig: 274, 181
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 4, 337
+  size: 484, 683
+  orig: 484, 683
+  offset: 0, 0
+  index: -1
+pupil
+  rotate: false
+  xy: 425, 100
+  size: 88, 96
+  orig: 88, 96
+  offset: 0, 0
+  index: -1
+tentacle1
+  rotate: false
+  xy: 425, 200
+  size: 135, 132
+  orig: 135, 132
+  offset: 0, 0
+  index: -1
+tentacle2
+  rotate: false
+  xy: 492, 661
+  size: 208, 174
+  orig: 208, 174
+  offset: 0, 0
+  index: -1
+tentacle3
+  rotate: false
+  xy: 492, 336
+  size: 153, 137
+  orig: 153, 137
+  offset: 0, 0
+  index: -1
+tentacle3_2
+  rotate: false
+  xy: 492, 477
+  size: 117, 180
+  orig: 117, 180
+  offset: 0, 0
+  index: -1
+tentacle4
+  rotate: false
+  xy: 770, 900
+  size: 183, 120
+  orig: 183, 120
+  offset: 0, 0
+  index: -1
+tentacle5
+  rotate: true
+  xy: 613, 503
+  size: 154, 103
+  orig: 154, 103
+  offset: 0, 0
+  index: -1

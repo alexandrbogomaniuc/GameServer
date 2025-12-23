@@ -1,0 +1,132 @@
+
+Skeleton90.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90/arm_lf
+  rotate: false
+  xy: 925, 378
+  size: 93, 128
+  orig: 93, 128
+  offset: 0, 0
+  index: -1
+90/arm_rt
+  rotate: false
+  xy: 201, 61
+  size: 128, 232
+  orig: 128, 232
+  offset: 0, 0
+  index: -1
+90/body
+  rotate: false
+  xy: 4, 36
+  size: 193, 257
+  orig: 193, 257
+  offset: 0, 0
+  index: -1
+90/calf_lf
+  rotate: true
+  xy: 676, 288
+  size: 130, 205
+  orig: 130, 205
+  offset: 0, 0
+  index: -1
+90/calf_rt
+  rotate: true
+  xy: 676, 422
+  size: 84, 245
+  orig: 84, 245
+  offset: 0, 0
+  index: -1
+90/foot_lf
+  rotate: false
+  xy: 333, 25
+  size: 140, 65
+  orig: 140, 65
+  offset: 0, 0
+  index: -1
+90/foot_rt
+  rotate: false
+  xy: 590, 312
+  size: 72, 85
+  orig: 72, 85
+  offset: 0, 0
+  index: -1
+90/forearm_lf
+  rotate: true
+  xy: 772, 44
+  size: 106, 132
+  orig: 106, 132
+  offset: 0, 0
+  index: -1
+90/forearm_rt
+  rotate: false
+  xy: 517, 118
+  size: 60, 176
+  orig: 60, 176
+  offset: 0, 0
+  index: -1
+90/hand_lf
+  rotate: true
+  xy: 201, 4
+  size: 53, 110
+  orig: 53, 110
+  offset: 0, 0
+  index: -1
+90/hand_rt
+  rotate: false
+  xy: 477, 31
+  size: 59, 59
+  orig: 59, 59
+  offset: 0, 0
+  index: -1
+90/hand_rt2
+  rotate: false
+  xy: 540, 58
+  size: 43, 56
+  orig: 43, 56
+  offset: 0, 0
+  index: -1
+90/head
+  rotate: false
+  xy: 772, 154
+  size: 110, 130
+  orig: 110, 130
+  offset: 0, 0
+  index: -1
+90/hip
+  rotate: true
+  xy: 581, 124
+  size: 160, 187
+  orig: 160, 187
+  offset: 0, 0
+  index: -1
+90/leg_lf
+  rotate: false
+  xy: 333, 94
+  size: 180, 199
+  orig: 180, 199
+  offset: 0, 0
+  index: -1
+90/leg_rt
+  rotate: true
+  xy: 347, 298
+  size: 99, 239
+  orig: 99, 239
+  offset: 0, 0
+  index: -1
+90/shield
+  rotate: true
+  xy: 347, 401
+  size: 105, 325
+  orig: 105, 325
+  offset: 0, 0
+  index: -1
+90/sword
+  rotate: false
+  xy: 4, 297
+  size: 339, 209
+  orig: 339, 209
+  offset: 0, 0
+  index: -1

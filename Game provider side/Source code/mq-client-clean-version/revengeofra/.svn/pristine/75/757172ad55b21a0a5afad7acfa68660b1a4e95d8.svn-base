@@ -1,0 +1,216 @@
+import Sprite from '../../../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../../../common/PIXI/src/globals';
+import * as Easing from '../../../../../../common/PIXI/src/animation/easing';
+import Sequence from '../../../../../../common/PIXI/src/animation/Sequence';
+import AtlasSprite from '../../../../../../common/PIXI/src/display/AtlasSprite';
+import AtlasConfig from '../../../config/AtlasConfig';
+
+const SMOKE_ROTATION_START = 0.63; //36 * Math.PI / 180;
+const SMOKE_ROTATION_FINISH = 2.18; //124 * Math.PI / 180;
+
+class DefaultGunFireEffect extends Sprite 
+{
+	static get EVENT_ON_ANIMATION_COMPLETED() {return "EVENT_ON_ANIMATION_COMPLETED";}
+
+	constructor(aDefaultWeaponId)
+	{
+		super();
+
+		this._defaultWeaponId = aDefaultWeaponId;
+		this._hitboomEffect = null;
+		this._fHitboomTextures_arr = [];
+		this._smokeEffect = null;
+		this._smokeSequence_arr = null;
+		this._redGlowEffect = null;
+		this._redGlowSequence_arr = null;
+		this._fHitGlowTextures_arr = [];
+
+		this._isHitBoomAnimationPlaying_bl = null;
+		this._isSmokeAnimationPlaying_bl = null;
+		this._isRedGlowAnimationPlaying_bl = null;
+
+		this.once('added', (e) => {this._onAdded();});
+	}
+
+	_onAdded()
+	{
+		this._showHitBoomEffect();
+
+		if (this._isSmokeAnimationNeeded()) {
+			this._showSmokeEffect();
+		}
+
+		this._showRedGlowEffect();
+	}
+
+	_showHitBoomEffect()
+	{
+		this._hitboomEffect = this.addChildAt(new Sprite(), 0);
+		this._hitboomEffect.textures = this._getHitBoomTextures(this._defaultWeaponId);
+		this._hitboomEffect.blendMode = PIXI.BLEND_MODES.ADD;
+		this._hitboomEffect.animationSpeed = 4;
+		this._hitboomEffect.position.set(18, 0);
+		this._hitboomEffect.scale.set(2);
+
+		this._isHitBoomAnimationPlaying_bl = true;
+
+		this._hitboomEffect.play();
+		this._hitboomEffect.once('animationend', (e) => {
+			e.target.destroy();
+			this._onHitBoomAnimationCompleted();
+		});
+		
+		this.emit(DefaultGunFireEffect.EVENT_ON_MAIN_BLAZE_COMPLETED);
+	}
+
+	_showSmokeEffect()
+	{
+		this._smokeEffect = this.addChild(APP.library.getSprite('blend/smoke'));
+		
+		this._smokeEffect.scale.set(0);
+		this._smokeEffect.alpha = 1;
+		this._smokeEffect.rotation = SMOKE_ROTATION_START;
+		this._smokeEffect.blendMode = PIXI.BLEND_MODES.SCREEN;
+		this._smokeEffect.position.set(0, 128 + 16);
+
+		let lSmokeScaleFinish_num = this._getSmokeScaleFinish();
+			
+		let lHitSmokeSequenceData = [{
+			tweens:[
+				{prop:"scale.x", to: lSmokeScaleFinish_num},
+				{prop:"scale.y", to: lSmokeScaleFinish_num},
+				{prop:"alpha", to: 0},
+				{prop:"rotation", to: SMOKE_ROTATION_FINISH},
+			], duration: 120, ease: Easing.linear.easeIn, onfinish: () => {
+				this._smokeSequence_arr && this._smokeSequence_arr.destructor();
+				this._smokeEffect = null;
+				this._onSmokeAnimationCompleted();
+			}
+		}];
+			
+		this._isSmokeAnimationPlaying_bl = true;
+		this._smokeSequence_arr = Sequence.start(this._smokeEffect, lHitSmokeSequenceData);
+	}
+
+	_showRedGlowEffect()
+	{
+		this._redGlowEffect = this.addChild(this._getHitGlowTextures(this._defaultWeaponId)); 
+		
+		this._redGlowEffect.scale.set(1);
+		this._redGlowEffect.alpha = 1;
+		this._redGlowEffect.rotation = SMOKE_ROTATION_START;
+		this._redGlowEffect.blendMode = PIXI.BLEND_MODES.SCREEN;
+		this._redGlowEffect.position.set(0, 128 + 16);
+			
+		let lHitRedGlowSequenceData = [{
+			tweens:[
+				{prop:"alpha", to: 0},
+			], duration: 40, ease: Easing.linear.easeIn, onfinish: () => {
+				this._redGlowSequence_arr && this._redGlowSequence_arr.destructor();
+				this._redGlowEffect = null;
+				this._onRedGlowAnimationCompleted();
+			}
+		}];
+			
+		this._isRedGlowAnimationPlaying_bl = true;
+		this._redGlowSequence_arr = Sequence.start(this._redGlowEffect, lHitRedGlowSequenceData);
+	}
+
+	_getSmokeScaleFinish()
+	{
+		switch(this._defaultWeaponId)
+		{
+			case 4: return 0.31;
+			case 5: return 0.4;
+			default: return 0.3;
+		}
+	}
+
+	_isSmokeAnimationNeeded()
+	{
+		switch(this._defaultWeaponId)
+		{
+			case 4: return true;
+			case 5: return true;
+			default: return false;
+		}
+	}
+
+	_getHitBoomTextures(aDefaultWeaponId_int)
+	{
+		if (!this._fHitboomTextures_arr[aDefaultWeaponId_int])
+		{
+			this._setHitBoomTextures(aDefaultWeaponId_int);
+		}
+		return this._fHitboomTextures_arr[aDefaultWeaponId_int];
+	}
+	
+	_setHitBoomTextures(aDefaultWeaponId_int)
+	{
+		this._fHitboomTextures_arr[aDefaultWeaponId_int] = AtlasSprite.getFrames(APP.library.getAsset("weapons/DefaultGun/hitboom/hit_boom_"+aDefaultWeaponId_int), AtlasConfig.DefaultGunHitBoom, "");
+	}
+
+	_getHitGlowTextures(aDefaultWeaponId_int)
+	{
+		if (!this._fHitGlowTextures_arr[aDefaultWeaponId_int])
+		{
+			this._setHitGlowTextures(aDefaultWeaponId_int);
+		}
+		return this._fHitGlowTextures_arr[aDefaultWeaponId_int];
+	}
+	
+	_setHitGlowTextures(aDefaultWeaponId_int)
+	{
+		this._fHitGlowTextures_arr[aDefaultWeaponId_int] = APP.library.getSprite("weapons/DefaultGun/hitglow/hitglow_"+aDefaultWeaponId_int);
+	}
+
+	_onHitBoomAnimationCompleted()
+	{
+		this._isHitBoomAnimationPlaying_bl = false;
+		this._onAnimationCompleted();
+	}
+
+	_onSmokeAnimationCompleted()
+	{
+		this._isSmokeAnimationPlaying_bl = false;
+		this._onAnimationCompleted();
+	}
+
+	_onRedGlowAnimationCompleted()
+	{
+		this._isRedGlowAnimationPlaying_bl = false;
+		this._onAnimationCompleted();
+	}
+	_onAnimationCompleted()
+	{	
+		if (!this._isHitBoomAnimationPlaying_bl 
+			&& !this._isSmokeAnimationPlaying_bl
+			&& !this._isRedGlowAnimationPlaying_bl
+			)
+		{
+			this.emit(DefaultGunFireEffect.EVENT_ON_ANIMATION_COMPLETED);
+		}
+	}
+
+	destroy()
+	{
+		this._fHitboomTextures_arr = null;
+		this._hitboomEffect = null;
+		this._smokeEffect = null;
+		this._smokeSequence_arr && this._smokeSequence_arr.destructor();
+		this._smokeSequence_arr = null;
+
+		this._redGlowEffect = null;
+		this._redGlowSequence_arr && this._redGlowSequence_arr.destructor();
+		this._redGlowSequence_arr = null;
+		this._fHitGlowTextures_arr = null;
+
+		this._isHitBoomAnimationPlaying_bl = null;
+		this._isSmokeAnimationPlaying_bl = null;
+		this._isRedGlowAnimationPlaying_bl = null;
+
+		super.destroy();
+	}
+}
+
+export default DefaultGunFireEffect;

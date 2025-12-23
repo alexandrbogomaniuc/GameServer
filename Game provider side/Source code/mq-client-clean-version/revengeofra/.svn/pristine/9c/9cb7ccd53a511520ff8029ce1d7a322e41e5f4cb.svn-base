@@ -1,0 +1,107 @@
+import InstantKill from './atlas_jsons/InstantKill';
+import GrenadeNew from './atlas_jsons/GrenadeNew';
+import SmokeImpactEnemy from './atlas_jsons/SmokeImpactEnemy';
+import DeathFx from './atlas_jsons/DeathFx';
+import CommonEffects from './atlas_jsons/CommonEffects';
+import WeaponChangeSmoke from './atlas_jsons/WeaponChangeSmoke';
+import Torch from './atlas_jsons/Torch';
+import CrateRedSmoke from './atlas_jsons/CrateRedSmoke';
+import Crate from './atlas_jsons/Crate';
+import Enemies from './atlas_jsons/Enemies';
+import Coin from './atlas_jsons/Coin';
+import WinCoin from './atlas_jsons/WinCoin';
+import SmokeTrail from './atlas_jsons/SmokeTrail';
+import DieSmokeUnmult from './atlas_jsons/DieSmokeUnmult';
+import Streak from './atlas_jsons/Streak';
+import GoldNumbers from './atlas_jsons/GoldNumbers';
+import SilverNumbers from './atlas_jsons/SilverNumbers';
+import IceExplode from './atlas_jsons/IceExplode';
+import FlameThrowerFlameBase from './atlas_jsons/FlameThrowerFlameBase';
+import FlameThrowerFlameBaseFire from './atlas_jsons/FlameThrowerFlameBaseFire';
+import FlameThrowerFlameCoverFire from './atlas_jsons/FlameThrowerFlameCoverFire';
+import FlameThrowerFlameHitBoom from './atlas_jsons/FlameThrowerFlameHitBoom';
+import BossElectricity from './atlas_jsons/BossElectricity';
+import BossElectricityAnimatedArcs from './atlas_jsons/BossElectricityAnimatedArcs';
+import KillStreakNumbers from './atlas_jsons/KillStreakNumbers';
+import BossDeathCoin from './atlas_jsons/BossDeathCoin';
+import SilverWinCoin from './atlas_jsons/SilverWinCoin';
+import Portal from './atlas_jsons/Portal';
+import SparkExplode from './atlas_jsons/SparkExplode';
+import AnubisElectricity from './atlas_jsons/AnubisElectricity';
+import AnubisElectricityAnimatedArcs from './atlas_jsons/AnubisElectricityAnimatedArcs';
+import WheelSectorBrownNumbers from './atlas_jsons/WheelSectorBrownNumbers';
+import WheelSectorGreenNumbers from './atlas_jsons/WheelSectorGreenNumbers';
+import WheelRimGlow from './atlas_jsons/WheelRimGlow';
+import ParticlesSpread from './atlas_jsons/ParticlesSpread';
+import StaffOrb from './atlas_jsons/StaffOrb';
+import WingsFire from './atlas_jsons/WingsFire';
+import Sparks from './atlas_jsons/Sparks';
+import CriticalExplosion from './atlas_jsons/CriticalExplosion';
+import CriticalParticles from './atlas_jsons/CriticalParticles';
+import CriticalNumbers from './atlas_jsons/CriticalNumbers';
+import InstakillExplosion0 from './atlas_jsons/InstakillExplosion0';
+import InstakillExplosion1 from './atlas_jsons/InstakillExplosion1';
+import BigWinParticles1 from './atlas_jsons/BigWinParticles1';
+import BigWinParticles2 from './atlas_jsons/BigWinParticles2';
+import BigWinParticles3 from './atlas_jsons/BigWinParticles3';
+import HPDamageNumbers from './atlas_jsons/HPDamageNumbers';
+import Avatar from './atlas_jsons/Avatar';
+import DefaultWeaponsShotEffects0 from './atlas_jsons/DefaultWeaponsShotEffects0';
+import DefaultWeaponsShotEffects1 from './atlas_jsons/DefaultWeaponsShotEffects1';
+import SmokeScreenmode from './atlas_jsons/SmokeScreenmode';
+
+let AtlasConfig = {
+	InstantKill: InstantKill,
+	GrenadeNew: GrenadeNew,
+	SmokeImpactEnemy: SmokeImpactEnemy,
+	DeathFx: DeathFx,
+	CommonEffects: CommonEffects,
+	WeaponChangeSmoke: WeaponChangeSmoke,
+	Torch: Torch,
+	CrateRedSmoke: CrateRedSmoke,
+	Crate: Crate,
+	Enemies: Enemies,
+	Coin: Coin,
+	WinCoin: WinCoin,
+	SmokeTrail: SmokeTrail,
+	DieSmokeUnmult: DieSmokeUnmult,
+	Streak: Streak,
+	GoldNumbers: GoldNumbers,
+	SilverNumbers: SilverNumbers,
+	IceExplode: IceExplode,
+	FlameThrowerFlameBase: FlameThrowerFlameBase,
+	FlameThrowerFlameBaseFire: FlameThrowerFlameBaseFire,
+	FlameThrowerFlameCoverFire: FlameThrowerFlameCoverFire,
+	FlameThrowerFlameHitBoom: FlameThrowerFlameHitBoom,
+	BossElectricity: BossElectricity,
+	BossElectricityAnimatedArcs: BossElectricityAnimatedArcs,
+	KillStreakNumbers: KillStreakNumbers,
+	BossDeathCoin: BossDeathCoin,
+	SilverWinCoin: SilverWinCoin,
+	AnubisElectricity: AnubisElectricity,
+	AnubisElectricityAnimatedArcs: AnubisElectricityAnimatedArcs,
+	Portal: Portal,
+	SparkExplode: SparkExplode,
+	WheelSectorBrownNumbers: WheelSectorBrownNumbers,
+	WheelSectorGreenNumbers: WheelSectorGreenNumbers,
+	WheelRimGlow: WheelRimGlow,
+	ParticlesSpread: ParticlesSpread,
+	StaffOrb: StaffOrb,
+	WingsFire: WingsFire,
+	Sparks: Sparks,
+	CriticalExplosion: CriticalExplosion,
+	CriticalParticles: CriticalParticles,
+	CriticalNumbers: CriticalNumbers,
+	InstakillExplosion0: InstakillExplosion0,
+	InstakillExplosion1: InstakillExplosion1,
+	BigWinParticles1: BigWinParticles1,
+	BigWinParticles2: BigWinParticles2,
+	BigWinParticles3: BigWinParticles3,
+	HPDamageNumbers: HPDamageNumbers,
+	Avatar: Avatar,
+	DefaultWeaponsShotEffects0: DefaultWeaponsShotEffects0,
+	DefaultWeaponsShotEffects1: DefaultWeaponsShotEffects1,
+	SmokeScreenmode: SmokeScreenmode
+};
+
+export default AtlasConfig;

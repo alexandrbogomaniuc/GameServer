@@ -1,0 +1,2497 @@
+<div class="paytable_container" id="PAYTABLE">
+
+	<!--HOW TO PLAY...-->
+	<div class="page" id="how_to_play">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageHowToPlayHowToPlay" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						HOW TO PLAY
+					</source_meaning>
+					<translated_meaning>
+						วิธีเล่น
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			วิธีเล่น
+		</span>
+		<div class="row">
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_1"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle1" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								CHOOSE A COIN TO PLAY AND WIN
+							</source_meaning>
+							<translated_meaning>
+								เลือกเหรียญเพื่อเล่นและชนะ
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					เลือกเหรียญเพื่อเล่นและชนะ
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_1">
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_1" style="margin-left: 75px"></span>
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_1" style="margin-left: 151px"></span>
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_2" style="margin-left: 226px"></span>
+				</span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText1" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Each shot is a bet with the coin value you chose. Each Game Room is grouped by the Cost Per Bullet Range (bet) amount chosen in the lobby. Coinciding wins are added together on-screen when awarded to players.
+							</source_meaning>
+							<translated_meaning>
+								การยิงแต่ละครั้งคือการพนันที่มีมูลค่าเหรียญที่คุณได้เลือกไว้ ห้องเกมแต่ละห้องจะถูกจัดกลุ่มโดยจำนวนราคาต่อช่วงกระสุน (เดิมพัน) ที่เลือกเมื่ออยู่ในล็อบบี้ เมื่อผู้เล่นมีการชนะที่เกิดขึ้นพร้อมกัน การชนะดังกล่าวจะถูกเพิ่มเข้าด้วยกันบนหน้าจอเกม
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					<span class="description_bold">การยิงแต่ละครั้งคือการพนันที่มีมูลค่าเหรี<br/>ยญที่คุณได้เลือกไว้</span> ห้องเกมแต่ละห้องจะถูกจั<br/>ดกลุ่มโดยจำนวนราคาต่อช่วงกระสุน (เดิมพัน) ที่เลือกเมื่ออยู่ในล็อบบี้ เมื่อผู้เล่นมีการชนะที่เกิดขึ้<br/>นพร้อมกัน การชนะดังกล่าวจะถูกเพิ่มเข้าด้วยกั<br/>นบนหน้าจอเกม
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_2"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle2" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								EACH SHOT GUARANTEED TO HIT
+							</source_meaning>
+							<translated_meaning>
+								การยิงแต่ละครั้งรับประกันว่าจะโดนศัตรู
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					การยิงแต่ละครั้งรับประกันว่าจะโดนศัตรู
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_2"></span>
+				<span id="noSkillNecessaryDescriptionElement" class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText2" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								No skill is necessary! In the case that the fired shot does not strike your target, the shot will ricochet around the screen until it hits another enemy. You can only have a maximum of ##SHOTS_COUNT## active shots at any given time. If any shots remain in the air at the end of the round without having hit any target, your wager will be returned to you. You cannot change your bet while you have active shots in flight.
+							</source_meaning>
+							<translated_meaning>
+								ไม่จำเป็นต้องมีทักษะใด ๆ เลย! ในกรณีที่ลูกที่ยิงออกไปไม่โดนเป้าหมายของคุณ ลูกยิงจะกระเด้งไปรอบ ๆ หน้าจอเกมจนกว่าลูกยิงนั้นจะโดนศัตรูตัวอื่น คุณสามารถยิงได้สูงสุด ##SHOTS_COUNT## นัดเท่านั้นตามเวลาที่กำหนด หากมีการยิงใด ๆ ค้างไว้ในช่วงท้ายของรอบโดยที่ยิงไม่ถูกเป้าหมายใด ๆ จะมีการคืนเงินเดิมพันให้กับคุณ คุณไม่สามารถเปลี่ยนแปลงเดิมพันของคุณได้ในขณะที่คุณมีลูกที่ยิงอยู่
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					ไม่จำเป็นต้องมีทักษะใด ๆ เลย! ในกรณีที่ลูกที่ยิงออกไปไม่โดนเป้าหมายของคุณ ลูกยิงจะกระเด้งไ<br/>ปรอบ ๆ หน้าจอเกมจนกว่าลูกยิงนั้นจะโดนศัตรูตัวอื่น คุณสามารถยิงได้สูงสุด <span class="max_shots_value" id="MAX_SHOTS_COUNT"></span> นัดเท่านั้นตามเ<br/>วลาที่กำหนด หากมีการยิงใด ๆ ค้างไว้ในช่วงท้ายของรอบโดยที่ยิงไม่ถูกเป้าหมายใด ๆ จะมีการคืนเงินเดิมพันให้กับคุณ คุณไม่สามารถเปลี่ยนแปลงเดิมพันของคุณได้ในขณะที่คุณมีลูกที่ยิงอยู่
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_3"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle3" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								EACH SHOT HAS A CHANCE TO WIN
+							</source_meaning>
+							<translated_meaning>
+								การยิงแต่ละครั้งมีโอกาสชนะ
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					การยิงแต่ละครั้งมีโอกาสชนะ
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_3"></span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText3" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Any shot fired has a chance to destroy the enemy it hits. Special Weapons have a higher chance to destroy enemies compared to the standard turret. Enemies can award cash payouts or Special Weapons!
+							</source_meaning>
+							<translated_meaning>
+								กระสุนที่คุณยิงออกไปทุกนัดมีโอกาสทำลายศัตรูที่คุณยิงโดน อาวุธพิเศษมีโอกาสที่จะทำลายศัตรูได้มากกว่าเมื่อเปรียบเทียบกับป้อมปืนมาตรฐาน ศัตรูสามารถมอบรางวัลเงินสดหรืออาวุธพิเศษได้!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					กระสุนที่คุณยิงออกไปทุกนัดมีโอกาสทำลายศัตรูที่คุณยิงโดน อาวุธพิเศษมีโอกาสที่จะทำลายศัตรูได้มากกว่าเมื่อเปรียบเทียบกับป้อมปืนมาตรฐาน ศัตรูสามารถมอบรางวัลเงินสดหรืออาวุธพิเศษได้!
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--...HOW TO PLAY-->
+
+	<!--ENEMIE HP AND VICTORY...-->
+	<div class="page" id="enemie_hp_and_victory">
+		<span id="gradient" class='big_header orange center' style="margin-bottom: 4px;">
+			<!--tad id="TAPaytablePageEnemieHpAndVictoryCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						ENEMY HIT POINTS AND VICTORY!
+					</source_meaning>
+					<translated_meaning>
+						พลังชีวิตของศัตรูและชัยชนะ!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			พลังชีวิตของศัตรูและชัยชนะ!
+		</span>
+		<div class='screen'>
+			<span type="img" src="paytable/pages/enemie_hp_and_victory/screen"></span>
+		</div>
+		<span class="text_block">
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextHP" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Every enemy in MAX QUEST: RISE OF THE MUMMY has a defined number of hit points, or HP.
+							Enemies have levels that can range from 1 – 3. Their amount of hit points rises with their level.
+							Enemy HP is reduced by attacks with the Turret, or Special Weapons.
+						</source_meaning>
+						<translated_meaning>
+							ศัตรูทุกตัวใน MAX QUEST: มัมมี่คืนชีพ มีพลังชีวิต (Hit Points) หรือ HP ที่กำหนดไว้
+							ศัตรูมีระดับในช่วงตั้งแต่ 1 – 3 จำนวนพลังชีวิตจะเพิ่มขึ้นตามระดับ
+							HP ของศัตรูจะลดลงจากการโจมตีด้วยป้อมปืนหรืออาวุธพิเศษ
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				ศัตรูทุกตัวใน MAX QUEST: มัมมี่คืนชีพ มีพลังชีวิต (Hit Points) หรือ HP ที่กำหนดไว้</br>
+				ศัตรูมีระดับในช่วงตั้งแต่ 1 – 3 จำนวนพลังชีวิตจะเพิ่มขึ้นตามระดับ</br>
+				HP ของศัตรูจะลดลงจากการโจมตีด้วยป้อมปืนหรืออาวุธพิเศษ
+			</span>
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextDamage" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Damage determines the size of your payout. The more damage you do with your weapon, the higher your payout will be!
+						</source_meaning>
+						<translated_meaning>
+							ความเสียหายจะกำหนดจำนวนการจ่ายเดิมพัน ยิ่งคุณสร้างความเสียหายด้วยอาวุธมากเท่าไหร่ การจ่ายเดิมพันของคุณก็จะมากขึ้นไปด้วย!
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				ความเสียหายจะกำหนดจำนวนการจ่ายเดิมพัน ยิ่งคุณสร้างความเสียหายด้วยอาวุธมากเท่าไหร่ การจ่ายเดิมพันของคุณก็จะมากขึ้นไปด้วย!
+			</span>
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextSW" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Special Weapons do more damage to all enemies, especially groups and Legendary Bosses!
+						</source_meaning>
+						<translated_meaning>
+							อาวุธพิเศษจะสร้างความเสียหายให้กับศัตรูทุกตัวได้มากกว่า โดยเฉพาะกลุ่มศัตรูและบรรดาบอสในตำนาน!
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				อาวุธพิเศษจะสร้างความเสียหายให้กับศัตรูทุกตัวได้มากกว่า โดยเฉพาะกลุ่มศัตรูและบรรดาบอสในตำนาน!
+			</span>
+		</span>
+		<span type="img" class="center special_wepon" src="paytable/pages/enemie_hp_and_victory/special_weapons"></span>
+
+	</div>
+	<!--ENEMIE HP AND VICTORY...-->
+
+	<!--ENEMIES 1...-->
+	<div class="page" id="enemies">
+		<span id="gradient" class='big_header orange center' style="margin-bottom: 4px;">
+			<!--tad id="TAPaytablePageEnemiesCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						ENEMIES
+					</source_meaning>
+					<translated_meaning>
+						ศัตรู
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ศัตรู
+		</span>
+		<div class="row">
+			
+			<div class='col-1 center'>
+				<div id="enemy_weapon_slider" style="position: absolute; margin-left: 10px; margin-top: 0px;"></div>
+				
+			</div>
+			<div class='col-9'>
+				<div class="row">
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/scarab_hatchling">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesScarabHatchling" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Scarab Hatchling
+									</source_meaning>
+									<translated_meaning>
+										ตัวอ่อนสคารับ
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ตัวอ่อนสคารับ
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytablePageEnemiesEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										HP สูงสุด: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							HP สูงสุด: <span class="hp_value" id="HP_ENEMY_0"></span>
+						</span>
+						<span class='enemy_payout' id="0"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/shadow_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesShadowScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Shadow Scarab
+									</source_meaning>
+									<translated_meaning>
+										สคารับเงา
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							สคารับเงา
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										HP สูงสุด: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							HP สูงสุด: <span class="hp_value" id="HP_ENEMY_1"></span>
+						</span>
+						<span class='enemy_payout' id="1"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/golden_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesGoldenScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Golden Scarab
+									</source_meaning>
+									<translated_meaning>
+										แมลงสคารับทองคำ
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							แมลงสคารับทองคำ
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										HP สูงสุด: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							HP สูงสุด: <span class="hp_value" id="HP_ENEMY_2"></span>
+						</span>
+						<span class='enemy_payout' id="2"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/ruby_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesRubyScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Ruby Scarab
+									</source_meaning>
+									<translated_meaning>
+										แมลงสคารับทับทิม
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							แมลงสคารับทับทิม
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										HP สูงสุด: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							HP สูงสุด: <span class="hp_value" id="HP_ENEMY_3"></span>
+						</span>
+						<span class='enemy_payout' id="3"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/bewjelled_scarab">
+						<span class='enemy_capture' style="margin-top: 65px;">
+							<!--tad id="TAPaytablePageEnemiesBewjelledScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Bejeweled Scarab
+									</source_meaning>
+									<translated_meaning>
+										แมลงสคารับประดับเพชรพลอย
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							แมลงสคารับ<br/>ประดับเพชรพลอย
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										HP สูงสุด: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							HP สูงสุด: <span class="hp_value" id="HP_ENEMY_4"></span>
+						</span>
+						<span class='enemy_payout' id="4"></span>
+					</div>
+				</div>
+				</div>
+				<div class="row">
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/swarming_locust">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesSwarmingLocust" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Swarming Locust
+										</source_meaning>
+										<translated_meaning>
+											ตั๊กแตนจอมไต่ตอม
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ตั๊กแตนจอมไต่ตอม
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_5"></span>
+							</span>
+							<span class='enemy_payout' id="5"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/devouring_locust">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesDevouringLocustr" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Devouring Locust
+										</source_meaning>
+										<translated_meaning>
+											ตั๊กแตนจอมเขมือบ
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ตั๊กแตนจอมเขมือบ
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_6"></span>
+							</span>
+							<span class='enemy_payout' id="6"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/giant_scorpion">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesGiantScorpion" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Giant Scorpion
+										</source_meaning>
+										<translated_meaning>
+											แมงป่องยักษ์
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								แมงป่องยักษ์
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_7"></span>
+							</span>
+							<span class='enemy_payout' id="7"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_minion">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesWrappedMinion" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Minion
+										</source_meaning>
+										<translated_meaning>
+											สมุนพันผ้า
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								สมุนพันผ้า
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_8"></span>
+							</span>
+							<span class='enemy_payout' id="8"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_shadowguard">
+							<span class='enemy_capture' style="margin-top: 65px;">
+								<!--tad id="TAPaytablePageEnemiesWrappedShadowguard" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Shadowguard
+										</source_meaning>
+										<translated_meaning>
+											อารักขาแห่งเงาพันผ้า
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								อารักขาแห่ง<br/>เงาพันผ้า
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_9"></span>
+							</span>
+							<span class='enemy_payout' id="9"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_spiritguard">
+							<span class='enemy_capture' style="margin-top: 65px;">
+								<!--tad id="TAPaytablePageEnemiesWrappedSpiritguard" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Spiritguard
+										</source_meaning>
+										<translated_meaning>
+											อารักขาแห่งวิญญาณพันผ้า
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								อารักขาแห่ง<br/>วิญญาณพันผ้า
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_10"></span>
+							</span>
+							<span class='enemy_payout' id="10"></span>
+						</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/tahawy_warrior">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesTahawyWarrior" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Tahawy Warrior
+										</source_meaning>
+										<translated_meaning>
+											นักรบทาฮาวี
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								นักรบทาฮาวี
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_11"></span>
+							</span>
+							<span class='enemy_payout' id="11"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/tahawy_commander">
+							<span class='enemy_capture' style="margin-top: 65px;">
+								<!--tad id="TAPaytablePageEnemiesTahawyCommander" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Tahawy Commander
+										</source_meaning>
+										<translated_meaning>
+											ผู้บัญชาการแห่งทาฮาวี
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ผู้บัญชาการ<br/>แห่งทาฮาวี
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_12"></span>
+							</span>
+							<span class='enemy_payout' id="12"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/crimson_bataanta">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCrimsonBataanta" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Crimson Bataanta
+										</source_meaning>
+										<translated_meaning>
+											บาทันตาสีชาด
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								บาทันตาสีชาด
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_13"></span>
+							</span>
+							<span class='enemy_payout' id="13"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/emerald_bataanta">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCrimsonBataanta" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Emerald Bataanta
+										</source_meaning>
+										<translated_meaning>
+											บาทันตามรกต
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								บาทันตามรกต
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_14"></span>
+							</span>
+							<span class='enemy_payout' id="14"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/cursed_brawler">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCursedBrawler" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Cursed Brawler
+										</source_meaning>
+										<translated_meaning>
+											นักรบต้องคำสาป
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								นักรบต้องคำสาป
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_15"></span>
+							</span>
+							<span class='enemy_payout' id="15"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/horus">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesHorus" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Horus
+										</source_meaning>
+										<translated_meaning>
+											ฮอรัส
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ฮอรัส
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											HP สูงสุด: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								HP สูงสุด: <span class="hp_value" id="HP_ENEMY_16"></span>
+							</span>
+							<span class='enemy_payout' id="16"></span>
+						</div>
+					</div>
+					</div>
+				</div>
+			<div class='col-1 center'>
+				<span class='enemy_values_text' style="margin-top: 1px;">
+					<!--tad id="TAPaytablePageEnemiesStakeIndicatorText" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+						</source_meaning>
+						<translated_meaning>
+							ค่าที่แสดงเป็นไปตาม [#STAKE #CURRENCY] เหรียญและระดับเดิมพัน [#VALUE]
+						</translated_meaning>
+					</meaning>
+					</tad-->
+					ค่าที่แสดงเป็นไปตาม [<span id='stake_indicator_text'></span>] เหรียญ<br/>และระดับเดิมพัน [<span id='stake_bet_level_value' style="display:inline-block"></span>]
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--...ENEMIES 1-->
+
+	<!--SPECIAL ENEMIES...-->
+	<div class="page" id="special_enemies">
+		<div class="texture">
+			<span type="img" src="paytable/pages/special_enemies/wild_textures"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageSpecialEnemies" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						SPECIAL ENEMIES
+					</source_meaning>
+					<translated_meaning>
+						ศัตรูพิเศษ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ศัตรูพิเศษ
+		</span>
+		<span class='description light_grey center'>
+			<!--tad id="TAPaytablePageEnemyHPAndVictoryTextHP" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Special Enemies will randomly appear on the playing field!
+						These enemies offer unique rewards and effects when they are defeated.
+					</source_meaning>
+					<translated_meaning>
+						ศัตรูพิเศษจะสุ่มปรากฏในพื้นที่เล่นเกม!
+						ศัตรูเหล่านี้จะมอบรางวัลและเอฟเฟกต์พิเศษเมื่อถูกปราบ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ศัตรูพิเศษจะสุ่มปรากฏในพื้นที่เล่นเกม!</br>
+			ศัตรูเหล่านี้จะมอบรางวัลและเอฟเฟกต์พิเศษเมื่อถูกปราบ
+		</span>
+		<div class="row">
+			<div class='col-1 center'>
+				<div id="special_enemies_weapon_slider" style="position: absolute; margin-left: 48px; margin-top: 147px;"></div>
+			</div>
+			<div class='col-9 center'>
+				<div class="col-6">
+					<div class="infernal_forgemaster">
+						<span type="img" src="paytable/pages/special_enemies/infernal_forgemaster"></span>
+						<span class='infernal_forgemaster_max_hp'>
+							<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										HP สูงสุด: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							HP สูงสุด: <span class="hp_value" id="HP_ENEMY_17"></span>
+						</span>
+						<div class="infernal_forgemaster_text">
+								<span class='infernal_forgemaster_capture'>
+									<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterCapture" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Infernal Forgemaster
+											</source_meaning>
+											<translated_meaning>
+												ช่างตีเหล็กไฟนรก
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									ช่างตีเหล็กไฟนรก
+								</span>
+								<span class='infernal_forgemaster_specific'>
+									<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterSpecific" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Always drops a Special Weapon upon defeat!
+											</source_meaning>
+											<translated_meaning>
+												มอบอาวุธพิเศษให้เสมอเมื่อถูกปราบ!
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									มอบอาวุธพิเศษให้เสมอเมื่อถูกปราบ!
+								</span>
+								<span class='enemy_payout' id="17"></span>
+								
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 unstable_avatar">
+					<div class="infernal_forgemaster">
+						<span type="img" src="paytable/pages/special_enemies/unstable_avatar"></span>
+						<div class="unstable_avatar_text">
+								<span class='unstable_avatar_capture'>
+									<!--tad id="TAPaytablePageSpecialEnemiesUnstableAvatarCapture" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Unstable Avatar
+											</source_meaning>
+											<translated_meaning>
+												อวตารไม่เที่ยง
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									อวตารไม่เที่ยง
+								</span>
+								<span class='unstable_avatar_specific'>
+									<!--tad id="TAPaytablePageSpecialEnemiesUnstableAvatarSpecific" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Explodes when destroyed, dealing up to 5000 damage
+												to nearby enemies!
+											</source_meaning>
+											<translated_meaning>
+												ระเบิดเมื่อถูกทำลาย สร้างความเสียหายสูงสุด 5000 ต่อศัตรูที่อยู่ใกล้ ๆ!
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									ระเบิดเมื่อถูกทำลาย สร้างความเสียหายสูงสุด 5000<br/>ต่อศัตรูที่อยู่ใกล้ ๆ!
+								</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class='col-1 center'>
+				<div class='enemy_values_block'>
+					<span class="enemy_values_text">
+						<!--tad id="TAPaytablePageSpecialEnemiesStakeIndicatorText" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+							</source_meaning>
+							<translated_meaning>
+								ค่าที่แสดงเป็นไปตาม [#STAKE #CURRENCY] เหรียญและระดับเดิมพัน [#VALUE]
+							</translated_meaning>
+						</meaning>
+						</tad-->
+						ค่าที่แสดงเป็นไปตาม [<span id='stake_se_indicator_text'></span>] เหรียญ<br/>และระดับเดิมพัน [<span id='stake_se_bet_level_value' style="display:inline-block"></span>]
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--SPECIAL ENEMIES...-->
+
+	<!--UNSTABLE AVATAR...-->
+	<div class="page" id="unstable_avatar">
+		<div id="fx">
+			<span type="img" src="paytable/pages/unstable_avatar/fx"></span>
+		</div>
+		<div id="back">
+			<span type="img" src="paytable/pages/unstable_avatar/back"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageUnstableAvatarUnstableAvatar" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						UNSTABLE AVATAR
+					</source_meaning>
+					<translated_meaning>
+						อวตารไม่เที่ยง
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			อวตารไม่เที่ยง
+		</span>
+		<div class="row">
+			<div class='exploder'>
+				<span type="img" src="paytable/pages/unstable_avatar/exploder"></span>
+			</div>
+			<div class='exploder'>
+				<span type="img" src="paytable/pages/unstable_avatar/explosion"></span>
+			</div>
+		</div>
+		<span class='description light_grey' style="margin-top: 10px">
+			<!--tad id="TAPaytablePageUnstableAvatarText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						This mysterious enemy will explode when killed, potentially destroying all enemies on the playing field, except for Legendary Bosses and Infernal Forgemasters, instantly awarding the sum of their payouts to the player, up to 500x their wager. Unstable Avatars only award prizes when destroyed.
+					</source_meaning>
+					<translated_meaning>
+						ศัตรูปริศนาตัวนี้จะระเบิดตัวเมื่อถูกสังหาร มีโอกาสทำลายศัตรูทั้งหมดในพื้นที่เล่นเกมยกเว้นบอสในตำนานและช่างตีเหล็กไฟนรก และจ่ายรางวัลรวมให้ผู้เล่นสูงสุด 500 เท่าของเดิมพันในทันที อวตารไม่เที่ยงมอบรางวัลเฉพาะเมื่อถูกทำลายเท่านั้น
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ศัตรูปริศนาตัวนี้จะระเบิดตัวเมื่อถูกสังหาร มีโอกาสทำลายศัตรูทั้งหมดในพื้นที่เล่นเกมยกเว้นบอสในตำนานและช่างตีเหล็กไฟนรก และจ่ายรางวัลรวมให้ผู้เล่นสูงสุด 500 เท่าของเดิมพันในทันที อวตารไม่เที่ยงมอบรางวัลเฉพาะเมื่อถูกทำลายเท่านั้น
+		</span>
+	</div>
+	<!--...UNSTABLE AVATAR-->
+
+	<!--LEGENDARY BOSSES...-->
+	<div class="page" id="legendary_bosses">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageLegendaryBossesLegendaryBosses" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						LEGENDARY BOSSES
+					</source_meaning>
+					<translated_meaning>
+						บอสในตำนาน
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			บอสในตำนาน
+		</span>
+		<span class='description light_grey center' style="height: 80px">
+			<!--tad id="TAPaytablePageLegendaryBossesText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Any time an enemy is destroyed, there is the chance of triggering the appearance of one of the 3 Legendary Bosses in a special battle.
+						Special Weapons do additional damage to the Legendary Bosses. During the battle, the Legendary Bosses will award prizes as it takes damage.
+						Finally, a large prize is awarded when it is defeated.
+					</source_meaning>
+					<translated_meaning>
+						ทุกครั้งที่ศัตรูถูกทำลาย คุณมีโอกาสเรียกใช้การปรากฏตัวของหนึ่งใน 3 บอสในตำนานในศึกการต่อสู้พิเศษ
+						อาวุธพิเศษจะสร้างความเสียหายให้กับบอสในตำนานเพิ่มมากขึ้น ในระหว่างศึกการต่อสู้ บอสในตำนานจะมอบรางวัลเมื่อได้รับความเสียหาย
+						ในท้ายที่สุดจะมีการมอบรางวัลใหญ่ให้เมื่อบอสถูกปราบลง
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ทุกครั้งที่ศัตรูถูกทำลาย คุณมีโอกาสเรียกใช้การปรากฏตัวของหนึ่งใน 3 บอสในตำนานในศึกการต่อสู้พิเศษ</br>
+			อาวุธพิเศษจะสร้างความเสียหายให้กับบอสในตำนานเพิ่มมากขึ้น ในระหว่างศึกการต่อสู้ บอสในตำนานจะมอบรางวัลเมื่อได้รับความเสียหาย</br>
+			ในท้ายที่สุดจะมีการมอบรางวัลใหญ่ให้เมื่อบอสถูกปราบลง
+		</span>
+		<div class="row">
+			<div class='col-1 center'>
+				<div id="legendary_bosses_weapon_slider" style="position: absolute; margin-left: 10px; margin-top: 124px;"></div>
+			</div>
+			<div class='col-9 center'>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 17px;">
+						<span type="img" src="paytable/pages/legendary_bosses/anubis">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesAnubis" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											ANUBIS
+										</source_meaning>
+										<translated_meaning>
+											อนูบิส
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								อนูบิส
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesAfterlifesKing" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Afterlife’s King
+										</source_meaning>
+										<translated_meaning>
+											ราชาแห่งชีวิตหลังความตาย
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								ราชาแห่ง<br/>ชีวิตหลังความตาย
+							</span>
+							<span id="BOSS_HP_2" class='boss_hp'></span>
+							<span class='enemy_payout' id="18"></span>
+						</span>
+					</div>
+				</div>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 235px; ">
+						<span type="img" src="paytable/pages/legendary_bosses/osiris">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesOsiris" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											OSIRIS
+										</source_meaning>
+										<translated_meaning>
+											โอซิริส
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								โอซิริส
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesDeathsJudgment" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Death’s Judgment
+										</source_meaning>
+										<translated_meaning>
+											เทพแห่งวิญญาณ
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								เทพแห่งวิญญาณ
+							</span>
+							<span id="BOSS_HP_1" class='boss_hp'></span>
+							<span class='enemy_payout' id="19"></span>
+						</span>
+					</div>
+				</div>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 453px">
+						<span type="img" src="paytable/pages/legendary_bosses/ra">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesRa" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											RA
+										</source_meaning>
+										<translated_meaning>
+											รา
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								รา
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesTheEternalSun" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											The Eternal Sun
+										</source_meaning>
+										<translated_meaning>
+											สุริยเทพ
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								สุริยเทพ
+							</span>
+							<span id="BOSS_HP_1" class='boss_hp'></span>
+							<span class='enemy_payout' id="20"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-1 center'>
+				<div class='enemy_values_block'>
+					<span class='enemy_values_text'>
+						<!--tad id="TAPaytablePageLegendaryBossesStakeIndicatorText" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+							</source_meaning>
+							<translated_meaning>
+								ค่าที่แสดงเป็นไปตาม [#STAKE #CURRENCY] เหรียญและระดับเดิมพัน [#VALUE]
+							</translated_meaning>
+						</meaning>
+						</tad-->
+						ค่าที่แสดงเป็นไปตาม [<span id='stake_lb_indicator_text'></span>] เหรียญ<br/>และระดับเดิมพัน [<span id='stake_lb_bet_level_value' style="display:inline-block"></span>]
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...LEGENDARY BOSSES-->
+
+	<!--WEAPONS...-->
+	<div class="page" id="weapons">
+		<div class="texture">
+			<span type="img" src="paytable/pages/special_enemies/wild_textures"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageWeaponsCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						WEAPONS
+					</source_meaning>
+					<translated_meaning>
+						อาวุธ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			อาวุธ
+		</span>
+		<span class='description light_grey left'>
+			<!--tad id="TAPaytablePageWeaponsText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Game rooms are sorted by the cost of each bullet. Select a cost per bullet value from the lobby to be taken to the first available room of that type.
+
+						The standard base weapon is the Turret, which can be aimed by using the onscreen crosshair. The Turret has 5 bet levels.
+						This can be adjusted up by increasing your bet per shot. The shot payouts will get bigger as the Turret rises in level.
+
+						Misuse/Malfunction voids all pays and plays.
+					</source_meaning>
+					<translated_meaning>
+						ห้องเกมจะถูกแบ่งตามราคาของแต่ละกระสุน เลือกราคาต่อกระสุนจากล็อบบี้ เพื่อไปยังห้องเกมที่ว่างห้องแรกตามประเภทของกระสุนนั้น
+
+						อาวุธพื้นฐานมาตรฐานคือป้อมปืน ซึ่งเล็งได้โดยใช้เป้ายิงที่อยู่บนหน้าจอ ป้อมปืนมี 5 ระดับเดิมพัน
+						สามารถปรับได้โดยการเพิ่มเดิมพันต่อการยิงของคุณ การจ่ายรางวัลสำหรับการยิงจะเพิ่มมากขึ้นเมื่อระดับของป้อมปืนเพิ่มขึ้น
+
+						การใช้งานผิด/การทำงานผิดพลาดทำให้เงินจ่ายและการเล่นทั้งหมดเป็นโมฆะ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ห้องเกมจะถูกแบ่งตามราคาของแต่ละกระสุน เลือกราคาต่อกระสุนจากล็อบบี้ เพื่อไปยังห้องเกมที่ว่างห้องแรกตามประเภทของกระสุนนั้น
+			</br></br>
+			อาวุธพื้นฐานมาตรฐานคือป้อมปืน ซึ่งเล็งได้โดยใช้เป้ายิงที่อยู่บนหน้าจอ ป้อมปืนมี 5 ระดับเดิมพัน
+			</br>
+			สามารถปรับได้โดยการเพิ่มเดิมพันต่อการยิงของคุณ การจ่ายรางวัลสำหรับการยิงจะเพิ่มมากขึ้นเมื่อระดับของป้อมปืนเพิ่มขึ้น
+			</br></br>
+			การใช้งานผิด/การทำงานผิดพลาดทำให้เงินจ่ายและการเล่นทั้งหมดเป็นโมฆะ
+		</span>
+		<div class="turret">
+			<span type="img" src="paytable/pages/weapons/turret"></span>
+			<span class='description light_grey left turret_caption'>
+				<!--tad id="TAPaytablePageWeaponsTurretCaption" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							TURRET
+						</source_meaning>
+						<translated_meaning>
+							ป้อมปืน
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				ป้อมปืน
+			</span>
+			<span class='description light_grey left turret_available'>
+				<!--tad id="TAPaytablePageWeaponsTurretAvailable" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							The base weapon available at all times.
+						</source_meaning>
+						<translated_meaning>
+							อาวุธพื้นฐานสามารถใช้ได้ตลอดเวลา
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				อาวุธพื้นฐานสามารถใช้ได้ตลอดเวลา
+			</span>
+		</div>
+	</div>
+	<!--...WEAPONS-->
+
+	<!--SPECIAL WEAPONS...-->
+	<div class="page" id="special_weapons">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageSpecialWeaponsCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						SPECIAL WEAPONS
+					</source_meaning>
+					<translated_meaning>
+						อาวุธพิเศษ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			อาวุธพิเศษ
+		</span>
+		<span class='description light_grey left'>
+			<!--tad id="TAPaytablePageSpecialWeaponsText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						In addition to the base weapon, the Turret, enemies may drop Special Weapons when they are hit. These Special Weapons are stronger and can affect one or more enemies. Use the Special Weapons wisely: they are most effective when used against strong enemies or groups of enemies. Special Weapons have a greater chance for Instant Wins and Bonus Wins! Special Weapons that are dropped by enemies do not require a wager to fire. Weapon shots do not bounce off walls, but instead will target the nearest enemy to where you clicked. Unused special weapons get converted into cash prize at the end of the round.
+					</source_meaning>
+					<translated_meaning>
+						เพิ่มเติมจากป้อมปืนซึ่งเป็นอาวุธพื้นฐาน ศัตรูอาจมอบอาวุธพิเศษเมื่อถูกยิง อาวุธพิเศษเหล่านี้มีพลังมากกว่าและสามารถส่งผลต่อศัตรูได้หนึ่งตัวหรือมากกว่า ใช้อาวุธพิเศษอย่างชาญฉลาด: อาวุธเหล่านี้มีประสิทธิภาพสูงสุดเมื่อใช้กับศัตรูที่แข็งแกร่งหรือศัตรูเป็นกลุ่ม อาวุธพิเศษมีโอกาสมอบรางวัลด่วนและรางวัลโบนัส! อาวุธพิเศษที่ศัตรูมอบให้ไม่จำเป็นต้องมีการเดิมพันเพื่อยิง การยิงของอาวุธจะไม่สะท้อนกลับจากขอบหน้าจอ แต่จะเล็งเป้าไปยังศัตรูที่อยู่ใกล้ที่สุดกับตำแหน่งที่คุณคลิก อาวุธพิเศษที่ไม่ได้ใช้จะถูกเปลี่ยนให้เป็นรางวัลเงินสดในตอนท้ายของรอบ
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			เพิ่มเติมจากป้อมปืนซึ่งเป็นอาวุธพื้นฐาน ศัตรูอาจมอบอาวุธพิเศษเมื่อถูกยิง อาวุธพิเศษเหล่านี้มีพลังมากกว่าและสามารถส่งผลต่อศัตรูได้หนึ่งตัวหรือมากกว่า ใช้อาวุธพิเศษอย่างชาญฉลาด: อาวุธเหล่านี้มีประสิทธิภาพสูงสุดเมื่อใช้กับศัตรูที่แข็งแกร่งหรือศัตรูเป็นกลุ่ม อาวุธพิเศษมีโอกาสมอบรางวัลด่วนและรางวัลโบนัส! อาวุธพิเศษที่ศัตรูมอบให้ไม่จำเป็นต้องมีการเดิมพันเพื่อยิง การยิงของอาวุธจะไม่สะท้อนกลับจากขอบหน้าจอ แต่จะเล็งเป้าไปยังศัตรูที่อยู่ใกล้ที่สุดกับตำแหน่งที่คุณคลิก <span id='sw_info_cash_prize' style="display:inline-block">อาวุธพิเศษที่ไม่ได้ใช้จะถูกเปลี่ยนให้เป็นรางวัลเงินสดในตอนท้ายของรอบ</span>
+		</span>
+
+		<div class="row">
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/mine_launcher"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnher" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									MINE LAUNCHER
+								</source_meaning>
+								<translated_meaning>
+									ปืนยิงกับระเบิด
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ปืนยิงกับระเบิด
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Launches a land mine at the target area that waits until an enemy comes near before exploding. Can hit multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									ยิงกับระเบิดไปยังพื้นที่เป้าหมาย กับระเบิดจะรอจนกว่าศัตรูเข้ามาใกล้จึงจะระเบิดออก สามารถระเบิดศัตรูหลายเป้าหมายได้พร้อมกัน
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ยิงกับระเบิดไปยังพื้นที่เป้าหมาย กับระเบิดจะรอจนกว่าศัตรูเข้ามาใกล้จึงจะระเบิดออก สามารถระเบิดศัตรูหลายเป้าหมายได้พร้อมกัน
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										ราคา:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ราคา:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_0" class='block cost_value_description'></span>						
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										เดิมพันปัจจุบัน
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เดิมพันปัจจุบัน
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/plasma_rifle"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifle" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									PLASMA RIFLE
+								</source_meaning>
+								<translated_meaning>
+									ไรเฟิลพลาสมา
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ไรเฟิลพลาสมา
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires a stream of super-heated plasma that deals massive damage to a single target.
+								</source_meaning>
+								<translated_meaning>
+									ยิงลำแสงพลาสมาความร้อนสูงที่ทำความเสียหายอย่างมหาศาลแก่เป้าหมายแบบเดี่ยว
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ยิงลำแสงพลาสมาความร้อนสูงที่ทำความเสียหายอย่างมหาศาลแก่เป้าหมายแบบเดี่ยว
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										ราคา:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ราคา:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_1" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										เดิมพันปัจจุบัน
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เดิมพันปัจจุบัน
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/flamethrower"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsFlamethrower" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									FLAMETHROWER
+								</source_meaning>
+								<translated_meaning>
+									ปืนพ่นไฟ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ปืนพ่นไฟ
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Engulfs an enemy in a stream of burning napalm. Can hit multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									เผาผลาญศัตรูด้วยเพลิงนาปาล์มที่ลุกโชน สามารถเผาศัตรูหลายเป้าหมายได้พร้อมกัน
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						เผาผลาญศัตรูด้วยเพลิงนาปาล์มที่ลุกโชน สามารถเผาศัตรูหลายเป้าหมายได้พร้อมกัน
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										ราคา:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ราคา:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_2" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										เดิมพันปัจจุบัน
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เดิมพันปัจจุบัน
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/cryogun"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsCryogun" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									CRYOGUN
+								</source_meaning>
+								<translated_meaning>
+									ปืนแช่แข็ง
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ปืนแช่แข็ง
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsCryogunDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Freezes enemies with a blast of super-chilled gas. Can freeze multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									แช่แข็งศัตรูด้วยการระเบิดของแก๊สเยือกแข็งสุดขั้ว สามารถแช่แข็งศัตรูหลายเป้าหมายได้พร้อมกัน
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						แช่แข็งศัตรูด้วยการระเบิดของแก๊สเยือกแข็งสุดขั้ว สามารถแช่แข็งศัตรูหลายเป้าหมายได้พร้อมกัน
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsCryogunCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										ราคา:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ราคา:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_3" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsCryogunCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										เดิมพันปัจจุบัน
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เดิมพันปัจจุบัน
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/artillery_strike"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrike" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									ARTILLERY STRIKE
+								</source_meaning>
+								<translated_meaning>
+									ปืนใหญ่จู่โจม
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ปืนใหญ่จู่โจม
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Smoke grenade calls down an artillery strike on its location, inflicting high damage to multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									ระเบิดควันส่งสัญญาณบอกตำแหน่งให้แก่ปืนใหญ่จู่โจม สร้างความเสียหายสูงให้แก่ศัตรูหลายเป้าหมาย
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ระเบิดควันส่งสัญญาณบอกตำแหน่งให้แก่ปืนใหญ่จู่โจม สร้างความเสียหายสูงให้แก่ศัตรูหลายเป้าหมาย
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										ราคา:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ราคา:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_4" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										เดิมพันปัจจุบัน
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เดิมพันปัจจุบัน
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		
+
+		<span class='sw_info' >
+			<span id='sw_info_hide_when_frb' class='description light_grey left'>
+				<!--tad id="TAPaytablePageSpecialWeaponsWInfo" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							You can purchase a pay-per-shot Special Weapon at any time during gameplay! These shots multiply your wager depending on the chosen weapon. Simply click on the image of the Special Weapon you want to use on the left side of the screen. Free shots from dropped Special Weapons are played at the bet level they were won at, and the bet level cannot be changed until the free shots are used.
+						</source_meaning>
+						<translated_meaning>
+							คุณสามารถซื้ออาวุธพิเศษแบบจ่ายต่อการยิงเมื่อใดก็ได้ระหว่างการเล่นเกม! การยิงเหล่านี้จะคูณเดิมพันของคุณ โดยเป็นไปตามอาวุธที่เลือก เพียงคลิกที่รูปอาวุธพิเศษที่คุณต้องการใช้ทางด้านซ้ายของหน้าจอ การยิงฟรีจากอาวุธพิเศษที่ได้รับจะเล่นในระดับเดิมพันเมื่อได้รับอาวุธดังกล่าว และไม่สามารถเปลี่ยนระดับเดิมพันได้จนกว่าจะใช้การยิงฟรีหมด
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				คุณสามารถซื้ออาวุธพิเศษแบบจ่ายต่อการยิงเมื่อใดก็ได้ระหว่างการเล่นเกม! การยิงเหล่านี้จะคูณเดิมพันของคุณ โดยเป็นไปตามอาวุธที่เลือก เพียงคลิกที่รูปอาวุธพิเศษที่คุณต้องการใช้ทางด้านซ้ายของหน้าจอ การยิงฟรีจากอาวุธพิเศษที่ได้รับจะเล่นในระดับเดิมพันเมื่อได้รับอาวุธดังกล่าว และไม่สามารถเปลี่ยนระดับเดิมพันได้จนกว่าจะใช้การยิงฟรีหมด
+			</span>
+
+			<span class='description light_grey left' id='sw_info_lose'>
+				<!--tad id="TAPaytablePageSpecialWeaponsBonusModeInfo" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Special weapons must be used in the round they were won in. Any unused special weapons are lost at the end of the round.
+						</source_meaning>
+						<translated_meaning>
+							ต้องใช้อาวุธพิเศษในรอบที่ได้รับอาวุธพิเศษดังกล่าว อาวุธพิเศษใด ๆ ที่ไม่ได้ใช้จะเสียไปเมื่อสิ้นสุดรอบ
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				ต้องใช้อาวุธพิเศษในรอบที่ได้รับอาวุธพิเศษดังกล่าว อาวุธพิเศษใด ๆ ที่ไม่ได้ใช้จะเสียไปเมื่อสิ้นสุดรอบ
+			</span>
+		</span>
+	</div>
+	<!--...SPECIAL WEAPONS-->
+
+	<!--WIN BIG WITH THE MONEY WHEEL!...-->
+	<div class="page" id="money_wheel">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageMoneyWheelWinBigWithTheMoneyWheel" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						WIN BIG WITH THE MONEY WHEEL!
+					</source_meaning>
+					<translated_meaning>
+						ชนะรางวัลใหญ่กับวงล้อนำโชค!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			ชนะรางวัลใหญ่กับวงล้อนำโชค!
+		</span>
+		<div class='wheel'>
+			<span type="img" src="paytable/pages/money_wheel/wheel"></span>
+		</div>
+		<span class='description'>
+			<!--tad id="TAPaytablePageMoneyWheelText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Any shot at any enemy except Legendary Bosses, with any weapon can win an instant spin on the Money Wheel.
+						Special Weapons have a higher chance to trigger the Money Wheel!
+					</source_meaning>
+					<translated_meaning>
+						การยิงศัตรูครั้งใด ๆ ยกเว้นบอสในตำนาน ด้วยอาวุธใด ๆ ก็ตามสามารถชนะการหมุนวงล้อนำโชคในทันทีได้
+						อาวุธพิเศษมีโอกาสในการเรียกใช้วงล้อนำโชคมากกว่า!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			การยิงศัตรูครั้งใด ๆ ยกเว้นบอสในตำนาน ด้วยอาวุธใด ๆ ก็ตามสามารถชนะการหมุนวงล้อนำโชคในทันทีได้</br>
+			อาวุธพิเศษมีโอกาสในการเรียกใช้วงล้อนำโชคมากกว่า!
+		</span>
+	</div>
+	<!--WIN BIG WITH THE MONEY WHEEL!...-->
+
+	<!--KILLS...-->
+	<div class="page" id="kills">
+		<div class="row">
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsCriticalHitCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								CRITICAL HITS
+							</source_meaning>
+							<translated_meaning>
+								การยิงโดนจุดสำคัญ
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					การยิงโดนจุดสำคัญ
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsCriticalHit" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsCriticalHit" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									CRITICAL HIT
+								</source_meaning>
+								<translated_meaning>
+									ยิงโดนจุดสำคัญ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>				
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsCriticalHitsDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								All weapons have a random chance to deliver a Critical Hit to an enemy with every shot fired. Critical Hits from weapons are different for each weapon against each enemy.
+
+								Special Weapons have a greater chance to score a Critical Hit and can affect any enemy! Critical Hits apply a multiplier to the amount won from the shot fired. Multipliers are 2x, 3x, 5x, 7x, and 10x. Shots with the Turret can only receive a 2x multiplier.
+							</source_meaning>
+							<translated_meaning>
+								อาวุธทั้งหมดมีโอกาสแบบสุ่มที่จะยิงโดนจุดสำคัญของศัตรูด้วยกระสุนทุกนัดที่คุณยิง การยิงโดนจุดสำคัญแตกต่างกันไปตามอาวุธและศัตรูแต่ละตัว
+
+								อาวุธพิเศษมีโอกาสยิงโดนจุดสำคัญมากขึ้นและสามารถส่งผลต่อศัตรูได้ทุกตัว! การยิงโดนจุดสำคัญจะใช้ตัวคูณหนึ่งตัวสำหรับจำนวนเงินที่ชนะจากกระสุนที่ยิง ตัวคูณมีตั้งแต่ x2, x3, x5, x7 และ x10 คุณจะได้รับตัวคูณแค่ x2 เท่านั้นถ้ายิงด้วยป้อมปืน
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					อาวุธทั้งหมดมีโอกาสแบบสุ่มที่จะยิงโดนจุดสำคัญของศัตรูด้วยกระสุนทุกนัดที่คุณยิง การยิงโดนจุดสำคัญแตกต่างกันไปตามอาวุธและศัตรูแต่ละตัว
+					</br>
+					<span style="line-height: 12px;"></br></span>	
+					อาวุธพิเศษมีโอกาสยิงโดนจุดสำคัญมากขึ้นและสา<br/>มารถส่งผลต่อศัตรูได้ทุกตัว! การยิงโดนจุดสำคัญจ<br/>ะใช้ตัวคูณหนึ่งตัวสำหรับจำนวนเงินที่ชนะจากกระ<br/>สุนที่ยิง ตัวคูณมีตั้งแต่ x2, x3, x5, x7 และ x10 คุณจะได้รับตัวคูณแค่ x2 เท่านั้นถ้ายิงด้วยป้อมปืน
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsInstantWinsCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								INSTANT WINS
+							</source_meaning>
+							<translated_meaning>
+								รางวัลด่วน
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					รางวัลด่วน
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsInstantWin" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsInstantWin" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									INSTANT WIN!!!
+								</source_meaning>
+								<translated_meaning>
+									รางวัลด่วน!!!
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsInstantWinsDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								The chance for an instant win is dynamic, depending on the enemy’s current HP and the weapon being used.
+
+								Instant wins can instantly defeat any enemy except the Legendary Bosses, Infernal Forgemasters, and Unstable Avatars, if its HP is low enough.
+								
+								Instant wins award random prizes!
+							</source_meaning>
+							<translated_meaning>
+								โอกาสได้รับรางวัลด่วนเปลี่ยนแปลงได้ตลอด ขึ้นอยู่กับค่า HP ของศัตรูและอาวุธที่ใช้
+
+								รางวัลด่วนสามารถปราบศัตรูใด ๆ ได้ในทันทีหากค่า HP ต่ำพอ ยกเว้นบรรดาบอสในตำนาน ช่างตีเหล็กไฟนรก และอวตารไม่เที่ยง
+								
+								รางวัลด่วนมอบรางวัลแบบสุ่ม!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					โอกาสได้รับรางวัลด่วนเปลี่ยนแปลงได้ตลอด ขึ้นอ<br/>ยู่กับค่า HP ของศัตรูและอาวุธที่ใช้
+					</br>
+					</br>
+					รางวัลด่วนสามารถปราบศัตรูใด ๆ ได้ในทันทีหากค่า HP ต่ำพอ ยกเว้นบรรดาบอสในตำนาน ช่างตีเหล็กไฟนรก และอวตารไม่เที่ยง
+					</br>
+					</br>					
+					รางวัลด่วนมอบรางวัลแบบสุ่ม!
+				</span>				
+			</div>
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsBonusWinCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								BONUS WIN!
+							</source_meaning>
+							<translated_meaning>
+								รางวัลโบนัส!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					รางวัลโบนัส!
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsBonusWin" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsBonusWin" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									BONUS WIN
+								</source_meaning>
+								<translated_meaning>
+									รางวัลโบนัส
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsBonusWinDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								If an enemy’s HP is low enough, and your shot does more damage than what remains, it is considered a Bonus Win!
+
+								Bonus Wins award a bonus cash prize in addition to the standard prize won by doing damage to the enemy.
+							</source_meaning>
+							<translated_meaning>
+								หากค่า HP ของศัตรูต่ำพอ และการยิงของคุณส่งผลทำลายได้มากกว่าค่า HP ที่เหลืออยู่ จะถือว่าการยิงของคุณเป็นรางวัลโบนัส!
+
+								รางวัลโบนัสจะมอบรางวัลเงินสดโบนัสให้เพิ่มเติมจากรางวัลมาตรฐานที่คุณได้รับจากการทำลายศัตรู
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					หากค่า HP ของศัตรูต่ำพอ และการยิงของคุณส่งผลทำลายได้มากกว่าค่า HP ที่เหลืออยู่ จะถือว่าการยิงของคุณเป็นรางวัลโบนัส!
+					</br>
+					</br>
+					รางวัลโบนัสจะมอบรางวัลเงินสดโบนัสให้เพิ่มเติมจากรางวัลมาตรฐานที่คุณได้รับจากการทำลายศัตรู
+				</span>
+			</div>
+		</div>	
+	</div>
+	<!--KILLS...-->	
+
+	<!--...CONTROLS_1-->
+	<div class="page" id="controls_1">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-2 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/cross"></span>
+						<span class="center" type="img" src="paytable/pages/controls/cursor" style="width: 42px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsMouseCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Mouse Symbol
+										Crosshair
+									</source_meaning>
+									<translated_meaning>
+										สัญลักษณ์เมาส์
+										เป้ายิง
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							สัญลักษณ์เมาส์</br>
+							เป้ายิง
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsMouse" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									The player’s cursor acts as a crosshair for their weapon. Any fired shot will hit wherever the cursor is pointed.
+								</source_meaning>
+								<translated_meaning>
+									ลูกศรของผู้เล่นทำหน้าที่เป็นเป้าเล็งสำหรับอาวุธของผู้เล่น กระสุนใด ๆ ที่ยิงออกไปจะโดนจุดที่ลูกศรชี้
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ลูกศรของผู้เล่นทำหน้าที่เป็นเป้าเล็งสำหรับอาวุธของผู้เล่น กระสุนใด ๆ ที่ยิงออกไปจะโดนจุดที่ลูกศรชี้
+					</span>
+					<br>
+					<div class="title" style="margin-top: 20px;">
+						<span type="img" src="paytable/pages/controls/keyboard" style="padding-left: 19px; padding-right: 19px; padding-top: 4px;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePage10KeyboardCommands" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Keyboard 
+										Commands
+									</source_meaning>
+									<translated_meaning>
+										เล่นด้วยแป้นพิมพ์
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เล่นด้วย</br>
+							แป้นพิมพ์
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePage10KeyboardCommands1" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Spacebar: Fires the currently selected weapon wherever the cursor is pointing. Hold down to fire continuously.
+								</source_meaning>
+								<translated_meaning>
+									สเปซบาร์: ยิงโดยใช้อาวุธที่เลือกไว้ในปัจจุบันที่จุดใดก็ตามที่มีเคอร์เซอร์ชี้บอก กดค้างไว้เพื่อยิงอย่างต่อเนื่อง
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						สเปซบาร์: ยิงโดยใช้อาวุธที่เลือกไว้ในปัจจุบันที่จุดใดก็ตามที่มีเคอร์เซอร์ชี้บอก กดค้างไว้เพื่อยิงอย่างต่อเนื่อง</br>
+					</span>
+					
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line_weight'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/mouse" style="width: 42px; transform: scaleX(-1); text-align: right;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsRightClickCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Right Click
+										Locks Target
+									</source_meaning>
+									<translated_meaning>
+										คลิกขวา
+										เพื่อล็อกเป้ายิงศัตรู
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							คลิกขวา</br>
+							เพื่อล็อกเป้ายิงศัตรู
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsRightClick" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Click the crosshair button and then click an enemy to Lock On. It will then show a targeting reticule on the chosen enemy. Any shots fired by the player will hit this target, no matter what is in the way. If Auto-Lock is enabled, the game will automatically switch to the next available target.
+								</source_meaning>
+								<translated_meaning>
+									คลิกปุ่มเป้ายิงและคลิกตัวศัตรูเพื่อทำการล็อกเป้า จากนั้นจะมีการแสดงเป้าเล็งการยิงบนตัวศัตรูที่เลือก ผู้เล่นจะยิงถูกเป้าหมายนี้เสมอไม่ว่าจะมีอะไรขวางทางก็ตาม หากการล็อกอัตโนมัติถูกเปิดใช้งาน เกมจะสลับไปยิงเป้าหมายถัดไปที่พร้อมให้ยิงโดยอัตโนมัติ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						คลิกปุ่มเป้ายิงและคลิกตัวศัตรูเพื่อทำการล็อกเป้า จากนั้นจะมีการแสดงเป้าเล็งการยิงบนตัวศัตรูที่เลือก ผู้เล่นจะยิงถูกเป้าหมายนี้เสมอไม่ว่าจะมีอะไรขวางทางก็ตาม หากการล็อกอัตโนมัติถูกเปิดใช้งาน เกมจะสลับไปยิงเป้าหมายถัดไปที่พร้อมให้ยิงโดยอัตโนมัติ
+					</span>
+					<br>
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/mouse" style="width: 42px;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsLeftClickCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Left Click
+										Fires Weapon
+									</source_meaning>
+									<translated_meaning>
+										คลิกซ้าย
+										เพื่อยิง 
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							คลิกซ้าย</br>
+							เพื่อยิง
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsLeftClick1" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires the current weapon at the location indicated by the crosshair. If no enemy target is present at the location of the crosshair, the bullet will bounce off the edges of the screen until it hits an enemy target. Holding this button down allows for continuous fire until the button is released.
+								</source_meaning>
+								<translated_meaning>
+									ยิงอาวุธปัจจุบันที่ตำแหน่งที่กำหนดจากเป้าเล็ง ถ้าไม่มีการแสดงเป้าเล็งศัตรูที่ตำแหน่งของเป้าเล็ง กระสุนจากป้อมปืนจะกระเด้ง สะท้อนกลับจากขอบหน้าจอเกม จนกว่าลูกยิงนั้นจะโดนศัตรูตัวใดตัวหนึ่ง การกดปุ่มนี้ค้างไว้จะทำให้ยิงต่อเนื่องจนกว่าจะปล่อยปุ่ม
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ยิงอาวุธปัจจุบันที่ตำแหน่งที่กำหนดจากเป้าเล็ง ถ้าไม่มีการแสดงเป้าเล็งศัตรูที่ตำแหน่งของเป้าเล็ง กระสุนจากป้อมปืนจะกระเด้ง สะท้อนกลับจากขอบหน้าจอเกม จนกว่าลูกยิงนั้นจะโดนศัตรูตัวใดตัวหนึ่ง การกดปุ่มนี้ค้างไว้จะทำให้ยิงต่อเนื่องจนกว่าจะปล่อยปุ่ม
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line_weight_less'></div>
+				<div class="row_content">
+					<div class='col-6 center'>
+						<span type="img" src="paytable/pages/controls/sw_5" class="sw_5"></span>
+						<span type="img" src="paytable/pages/controls/sw_3" class="sw_3"></span>
+						<span type="img" src="paytable/pages/controls/sw_1" class="sw_1"></span>
+						<span type="img" src="paytable/pages/controls/sw_7" class="sw_7"></span>
+						<span type="img" src="paytable/pages/controls/sw_8" class="sw_8"></span>
+					</div>			
+					<div class='col-6 center'>
+						<span class='title_capture weapon_capture'>
+							<!--tad id="TAPaytablePageControlsWeaponCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Special 
+										Weapons
+									</source_meaning>
+									<translated_meaning>
+										อาวุธพิเศษ
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							อาวุธพิเศษ
+						</span>
+						<span class='description light_grey weapon_description'>
+							<!--tad id="TAPaytablePageControlsWeaponDescription" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										You can use Special Weapons from a series of buttons on the left side of the screen. The Cost Per Shot of the Weapon is indicated on the button. Special Weapons do not ricochet off walls.
+									</source_meaning>
+									<translated_meaning>
+										คุณสามารถใช้อาวุธพิเศษจากปุ่มต่าง ๆ ทางด้านซ้ายของหน้าจอ ราคาต่อการยิงของอาวุธจะแสดงบนปุ่ม อาวุธพิเศษจะไม่กระเด็นออกไปจากขอบหน้าจอ
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							คุณสามารถใช้อาวุธพิเศษจากปุ่มต่าง ๆ ทางด้านซ้ายของหน้าจอ ราคาต่อการยิงของอาวุธจะแสดงบนปุ่ม อาวุธพิเศษจะไม่กระเด็นออกไปจากขอบหน้าจอ
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-1 center'>
+				<div class="row_content">
+					<div class="title" style="margin-left: -6px;">
+						<span type="img" src="paytable/pages/controls/minus" style="width: 30px"></span>
+						<span type="img" src="paytable/pages/controls/plus" style="width: 30px"></span>
+						<span class='title_capture' style="margin-left: 4px; margin-top: 2px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Buttons
+									</source_meaning>
+									<translated_meaning>
+										ปุ่ม
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ปุ่ม
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: 6px; margin-left: -6px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Changes the bet level.
+									</source_meaning>
+									<translated_meaning>
+										เปลี่ยนระดับเดิมพัน
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เปลี่ยนระดับเดิมพัน
+					</span>
+					<span type="img" src="paytable/pages/controls/turret" class="turret_img"></span>
+					<span class='description light_grey' style="margin-left: -6px; margin-top: 4px;">
+						<!--tad id="TAPaytablePageControlsSwitch" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Switches between your equipped Special Weapon and the Standard Turret.
+								</source_meaning>
+								<translated_meaning>
+									สลับระหว่างอาวุธพิเศษของคุณและป้อมปืนมาตรฐาน
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						สลับระหว่างอาวุธพิเศษของคุณและป้อมปืนมาตรฐาน
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_1-->
+
+	<!--CONTROLS_1_MOBILE...-->
+	<div class="page" id="mobile_controls_1">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/finger" style="width: 60px"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsFingerTap" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Finger Tap
+									</source_meaning>
+									<translated_meaning>
+										นิ้วกด
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							นิ้วกด
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsFingerTapText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									The player’s finger tap position designates the intended target. Any fired shot will proceed to the location where the screen is tapped.
+								</source_meaning>
+								<translated_meaning>
+									การกดนิ้วไปที่ตำแหน่งใดจะเป็นการกำหนดเป้าหมาย หากมีการยิง จะยิงไปยังตำแหน่งที่มีการกดหน้าจอ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						การกดนิ้วไปที่ตำแหน่งใดจะเป็นการกำหนดเป้าหมาย หากมีการยิง จะยิงไปยังตำแหน่งที่มีการกดหน้าจอ
+					</span>
+					<div class="title" style="margin-top: 18px;">
+						<span type="img" src="paytable/pages/controls/target" style="width: 60px;"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsLockOnTarget" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Lock Target
+									</source_meaning>
+									<translated_meaning>
+										ล๊อคเป้าหมาย
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ล๊อคเป้าหมาย
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: -13px;">
+						<!--tad id="TAPaytablePageControlsLockOnTargeText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Tap the crosshair button and then tap an enemy to Lock On. It will then show a targeting crosshair on the chosen enemy. Any shots fired by the player will hit this target, no matter what is in the way. If Auto-Lock is enabled, the game will automatically switch to the next available target.
+								</source_meaning>
+								<translated_meaning>
+									แตะปุ่มเป้ายิงและแตะตัวศัตรูเพื่อทำการล็อกเป้า จากนั้นจะมีการแสดง เป้าเล็ง การยิงบนตัวศัตรูที่เลือก ผู้เล่นจะยิงถูกเป้าหมายนี้เสมอไม่ว่าจะมีอะไรขวางทางก็ตาม หากการล็อกอัตโนมัติถูกเปิดใช้งาน เกมจะสลับไปยิงเป้าหมายถัดไปที่พร้อมให้ยิงโดยอัตโนมัติ
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						แตะปุ่มเป้ายิงและแตะตัวศัตรูเพื่อทำการล็อกเป้า จากนั้นจะมีการแสดง เป้าเล็ง การยิงบนตัวศัตรูที่เลือก ผู้เล่นจะยิงถูกเป้าหมายนี้เสมอไม่ว่าจะมีอะไรขวางทางก็ตาม หากการล็อกอัตโนมัติถูกเปิดใช้งาน เกมจะสลับไปยิงเป้าหมายถัดไปที่พร้อมให้ยิงโดยอัตโนมัติ
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/finger_tap" style="width: 60px"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsFingerTap" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Fire Weapon
+									</source_meaning>
+									<translated_meaning>
+										ยิงอาวุธ
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ยิงอาวุธ
+						</span>
+					</div>
+					<span class='description light_grey' id="dis">
+						<!--tad id="TAPaytablePageControlsLeftClick" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires the current weapon at the location indicated by the crosshair. If no enemy target is present at the location of the crosshair, the bullet will bounce off the edges of the screen until it hits an enemy target. Holding your finger on the screen allows for continuous fire until the finger is released.
+								</source_meaning>
+								<translated_meaning>
+									ยิงอาวุธปัจจุบันที่ตำแหน่งที่กำหนดจากเป้าเล็ง ถ้าไม่มีการแสดงเป้าเล็งศัตรูที่ตำแหน่งของเป้าเล็ง กระสุนจากป้อมปืนจะกระเด้ง สะท้อนกลับจากขอบหน้าจอเกม จนกว่าลูกยิงนั้นจะโดนศัตรูตัวใดตัวหนึ่ง การกดนิ้วค้างบนหน้าจอจะทำให้คุณสามารถยิงได้อย่างต่อเนื่องจนกว่าคุณจะเอานิ้วออก
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ยิงอาวุธปัจจุบันที่ตำแหน่งที่กำหนดจากเป้าเล็ง ถ้าไม่มีการแสดงเป้าเล็งศัตรูที่ตำแหน่งของเป้าเล็ง กระสุนจากป้อมปืนจะกระเด้ง สะท้อนกลับจากขอบหน้าจอเกม จนกว่าลูกยิงนั้นจะโดนศัตรูตัวใดตัวหนึ่ง การกดนิ้วค้างบนหน้าจอจะทำให้คุณสามารถยิงได้อย่างต่อเนื่องจนกว่าคุณจะเอานิ้วออก
+					</span>
+				</div>
+			</div>
+			<div class='col-4 center'>
+				<div class='line_weight'></div>
+				<div class="row_content">
+					<div class='col-6 center'>
+						<span type="img" src="paytable/pages/controls/sw_1" class="sw_1"></span>
+						<span type="img" src="paytable/pages/controls/sw_8" class="sw_8"></span>
+						<span type="img" src="paytable/pages/controls/sw_3" class="sw_3"></span>
+						<span type="img" src="paytable/pages/controls/sw_7" class="sw_7"></span>
+						<span type="img" src="paytable/pages/controls/sw_5" class="sw_5"></span>
+					</div>
+					<div class='col-6 center'>
+						<span class='title_capture weapon_capture'>
+							<!--tad id="TAPaytablePageControlsWeaponCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Special 
+										Weapons
+									</source_meaning>
+									<translated_meaning>
+										อาวุธพิเศษ
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							อาวุธพิเศษ
+						</span>
+						<span class='description light_grey weapon_description'>
+							<!--tad id="TAPaytablePageControlsWeaponDescription" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										You can use Special Weapons from a series of buttons on the left side of the screen. The Cost Per Shot of the Weapon is indicated on the button. Special Weapons do not ricochet off walls.
+									</source_meaning>
+									<translated_meaning>
+										คุณสามารถใช้อาวุธพิเศษจากปุ่มต่าง ๆ ทางด้านซ้ายของหน้าจอ ราคาต่อการยิงของอาวุธจะแสดงบนปุ่ม อาวุธพิเศษจะไม่กระเด็นออกไปจากขอบหน้าจอ
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							คุณสามารถใช้อาวุธพิเศษจากปุ่มต่าง ๆ ทางด้านซ้ายของหน้าจอ ราคาต่อการยิงของอาวุธจะแสดงบนปุ่ม อาวุธพิเศษจะไม่กระเด็นออกไปจากขอบหน้าจอ
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-2 center'>
+				<div class="row_content">
+					<div class="title" style="margin-left: -6px;">
+						<span type="img" src="paytable/pages/controls/minus" style="width: 30px"></span>
+						<span type="img" src="paytable/pages/controls/plus" style="width: 30px"></span>
+						<span class='title_capture' style="margin-left: 4px; margin-top: 2px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Buttons
+									</source_meaning>
+									<translated_meaning>
+										ปุ่ม
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ปุ่ม
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: 6px; margin-left: -6px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Changes the bet level.
+									</source_meaning>
+									<translated_meaning>
+										เปลี่ยนระดับเดิมพัน
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เปลี่ยนระดับเดิมพัน
+					</span>
+					<span type="img" src="paytable/pages/controls/turret" class="turret_img"></span>
+					<span class='description light_grey' style="margin-left: -6px; margin-top: 4px;">
+						<!--tad id="TAPaytablePageControlsSwitch" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Switches between your equipped Special Weapon and the Standard Turret.
+								</source_meaning>
+								<translated_meaning>
+									สลับระหว่างอาวุธพิเศษของคุณและป้อมปืนมาตรฐาน
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						สลับระหว่างอาวุธพิเศษของคุณและป้อมปืนมาตรฐาน
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_1_MOBILE-->
+
+	<!--CONTROLS_2...-->
+	<div class="page" id="controls_2">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-6 center'>
+				<div class='line' style="margin-left: 450px"></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/gun" style="width: 60px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsFireControlPanel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Fire Control Panel
+									</source_meaning>
+									<translated_meaning>
+										แป้นควบคุมการยิง
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							แป้นควบคุมการยิง
+						</span>
+					</div>
+					<span class='description light_grey' id="disableAutofire">
+						<!--tad id="TAPaytablePageControlsMouse" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Fire Control Panel, where you can configure the settings for Auto-Fire, Auto-Lock and other options.
+									
+									• Lock On Target: When active, the game will automatically target the next enemy on screen depending on which Target Mode is selected.
+									
+									• Auto Fire: When active, the game will automatically fire at a locked target with the active weapon. If no target is selected, holding down the fire button will cause the game to fire continuously at whatever the cursor is pointing at.
+									
+									• Fire Speed [> >> >>>]: Configures the speed that Auto Fire will fire shots.
+									> denotes the slowest speed. >>> denotes the fastest.
+								</source_meaning>
+								<translated_meaning>
+									เปิดแป้นควบคุมการยิง ที่คุณจะสามารถปรับแต่งการตั้งค่าสำหรับ ยิงอัตโนมัติ ล็อกอัตโนมัติ และตัวเลือกอื่น ๆ
+									
+									• ล็อกเป้า: เมื่อมีการเปิดใช้งาน เกมจะเล็งเป้าศัตรูตัวต่อไปบนหน้าจอให้อัตโนมัติขึ้นอยู่กับว่าคุณได้เลือกโหมดเล็งใดไว้
+									
+									• ยิงอัตโนมัติ: เมื่อเปิดใช้งาน เกมจะยิงศัตรูที่ถูกเล็งไว้ด้วยอาวุธที่ใช้งานอยู่โดยอัตโนมัติ หากไม่ได้เลือกเป้าหมายไว้ การกดปุ่มยิงค้างไว้จะทำให้เกมยิงอะไรก็ตามที่เคอร์เซอร์ชี้อยู่อย่างต่อเนื่อง 
+									
+									• ความเร็วการยิง [> >> >>>]: ปรับแต่งความเร็วของการยิงแบบอัตโนมัติ
+									> แสดงความเร็วที่ต่ำสุด >>> แสดงความเร็วที่เร็วสุด
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						เปิดแป้นควบคุมการยิง ที่คุณจะสามารถปรับแต่งการตั้งค่าสำหรับ ยิงอัตโนมัติ ล็อกอัตโนมัติ และตัวเลือกอื่น ๆ</br>
+						</br>
+						<span class="description_bold light_grey">• ล็อกเป้า:</span> เมื่อมีการเปิดใช้งาน เกมจะเล็งเป้าศัตรูตัวต่อไปบนหน้าจอให้อัตโนมัติขึ้นอยู่กับว่าคุณได้เลือกโหมดเล็งใดไว้</br>
+						</br>
+						<span class="description_bold light_grey">• ยิงอัตโนมัติ:</span> เมื่อเปิดใช้งาน เกมจะยิงศัตรูที่ถูกเล็งไว้ด้วยอาวุธที่ใช้งานอยู่โดยอัตโนมัติ หากไม่ได้เลือกเป้าหมายไว้ การกดปุ่มยิงค้างไว้จะทำให้เกมยิงอะไรก็ตามที่เคอร์เซอร์ชี้อยู่อย่างต่อเนื่อง </br>
+						</br>
+						<span class="description_bold light_grey">• ความเร็วการยิง [> >> >>>]:</span> ปรับแต่งความเร็วของการยิงแบบอัตโนมัติ</br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> แสดงความเร็วที่ต่ำสุด >>> แสดงความเร็วที่เร็วสุด</br>
+					</span>
+					<span class='description light_grey' id="enebleAutofire">
+					<span class='description light_grey' id="enebleAutofire">
+						<!--tad id="TAPaytablePageControlsMouseEnebleAutofire" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Fire Control Panel, where you can configure the settings for Auto-Lock and other options.
+									
+									• Lock On Target: When active, the game will automatically target the next enemy on screen depending on which Target Mode is selected.
+									• Fire Speed [> >> >>>]: Configures the minimal time intervals between shots. > denotes the slowest speed. >>> denotes the fastest.
+								</source_meaning>
+								<translated_meaning>
+									เปิดแป้นควบคุมการยิง ที่คุณจะสามารถปรับแต่งการตั้งค่าสำหรับ ล็อกอัตโนมัติ และตัวเลือกอื่น ๆ
+									
+									• ล็อกเป้า: เมื่อมีการเปิดใช้งาน เกมจะเล็งเป้าศัตรูตัวต่อไปบนหน้าจอให้อัตโนมัติขึ้นอยู่กับว่าคุณได้เลือกโหมดเล็งใดไว้
+									• ความเร็วการยิง [> >> >>>]: ตั้งค่าช่วงเวลาขั้นต่ำระหว่างการยิง >แสดงความเร็วที่ต่ำสุด >>> แสดงความเร็วที่เร็วสุด
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						เปิดแป้นควบคุมการยิง ที่คุณจะสามารถปรับแต่งการตั้งค่าสำหรับ ล็อกอัตโนมัติ และตัวเลือกอื่น ๆ
+						</br>
+						</br>
+						<span class="description_bold light_grey">• ล็อกเป้า:</span> เมื่อมีการเปิดใช้งาน เกมจะเล็งเป้าศัตรูตัวต่อไปบนหน้าจอให้อัตโนมัติขึ้นอยู่กับว่าคุณได้เลือกโหมดเล็งใดไว้</br>
+						</br>
+						<span class="description_bold light_grey">• ความเร็วการยิง [> >> >>>]:</span> ตั้งค่าช่วงเวลาขั้นต่ำระหว่างการยิง</br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> แสดงความเร็วที่ต่ำสุด >>> แสดงความเร็วที่เร็วสุด</br>
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/gun" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsTargetMode" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Target Mode
+									</source_meaning>
+									<translated_meaning>
+										โหมดเล็ง
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							โหมดเล็ง
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsTargetModeText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Changes mode for Lock on Target
+									
+									• SAME: Will target the next available enemy with the closest amount of HP the previous target had.
+									
+									• LOW: Will target the next available enemy with the lowest HP.
+									
+									• HIGH: Will target the next available enemy with the highest HP.
+								</source_meaning>
+								<translated_meaning>
+									เปลี่ยนเป็นโหมดล็อกเป้า
+									
+									• เดิมพันเท่าเดิม: จะเล็งเป้าศัตรูที่ยิงได้ตัวถัดไปที่มีค่า HP ใกล้เคียงกับเป้าหมายก่อนหน้านี้มากที่สุด
+									
+									• เดิมพันต่ำสุด: จะเล็งเป้าศัตรูที่ยิงได้ตัวถัดไปที่มีค่า HP ต่ำที่สุด
+									
+									• เดิมพันสูงสุด: จะเล็งเป้าศัตรูที่ยิงได้ตัวถัดไปที่มีค่า HP สูงที่สุด
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						เปลี่ยนเป็นโหมดล็อกเป้า</br>
+						</br></br>
+						<span class="description_bold light_grey">• เดิมพันเท่าเดิม:</span> จะเล็งเป้าศัตรูที่ยิงได้ตัวถัดไปที่มีค่า HP ใกล้เคียงกับเป้าหมายก่อนหน้านี้มากที่สุด</br>
+						</br></br>
+						<span class="description_bold light_grey">• เดิมพันต่ำสุด:</span> จะเล็งเป้าศัตรูที่ยิงได้ตัวถัดไปที่มีค่า HP ต่ำที่สุด</br>
+						</br></br>
+						<span class="description_bold light_grey">• เดิมพันสูงสุด:</span> จะเล็งเป้าศัตรูที่ยิงได้ตัวถัดไปที่มีค่า HP สูงที่สุด
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class="row_content">
+					<div class="title" style="margin-top: 13px">
+						<span class="left" type="img" src="paytable/pages/controls/sound" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsSound" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Sound
+									</source_meaning>
+									<translated_meaning>
+										เสียง
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							เสียง
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsSoundText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Turns all sounds off or on.
+								</source_meaning>
+								<translated_meaning>
+									เปิดหรือปิดเสียงทั้งหมด
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						เปิดหรือปิดเสียงทั้งหมด
+					</span>
+					<div class="title" style="margin-top: 13px">
+						<span class="left" type="img" src="paytable/pages/controls/back_icon" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsBack" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Back
+									</source_meaning>
+									<translated_meaning>
+										กลับ
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							กลับ
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsBackText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Leaves the room and returns to the game lobby.
+								</source_meaning>
+								<translated_meaning>
+									ออกจากห้องและกลับไปที่ลอบบี้เกม
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						ออกจากห้องและกลับไปที่ลอบบี้เกม
+					</span>
+					<div class="title" id="setting">
+						<div class="title" style="margin-top: 30px;">
+						<span class="left" type="img" src="paytable/pages/controls/gear" style="width: 45px"></span>
+						<span class='title_capture' style="width: 29px">
+							<!--tad id="TAPaytablePageControlsSettings" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Settings
+									</source_meaning>
+									<translated_meaning>
+										ตั้งค่า
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							ตั้งค่า
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-left: -73px; margin-top: 70px;">
+						<!--tad id="TAPaytablePageControlsSettingsText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Settings Panel.
+									Note: Gameplay continues in background.
+								</source_meaning>
+								<translated_meaning>
+									เปิดแป้นตั้งค่า
+									หมายเหตุ: ตัวเกมจะดำเนินการต่อบนพื้นหลัง
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						เปิดแป้นตั้งค่า</br>
+						<span class="description_italic light_grey">หมายเหตุ: ตัวเกมจะดำเนินการต่อบนพื้นหลัง</span>
+					</span>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_2-->
+</div>

@@ -1,0 +1,22 @@
+import ExternalAssetsController from '../../../../../common/PIXI/src/controller/custom/ExternalAssetsController';
+import { APP } from '../../../../../common/PIXI/src/globals';
+import LobbyAPP from '../../LobbyAPP';
+import ExternalAssetsInfo from '../../../../../common/PIXI/src/model/custom/ExternalAssetsInfo';
+
+class LobbyExternalAssetsController extends ExternalAssetsController
+{
+	//INIT...
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		APP.on(LobbyAPP.EVENT_ON_LOBBY_STARTED, this._onLobbyStarted, this);
+	}
+	//...INIT
+
+	_onLobbyStarted(event)
+	{
+	}
+}
+
+export default LobbyExternalAssetsController;

@@ -1,0 +1,55 @@
+
+MummyGodGreen90.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummyGodGreen90_armL
+  rotate: true
+  xy: 510, 6
+  size: 73, 146
+  orig: 73, 146
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_armR
+  rotate: true
+  xy: 2, 12
+  size: 67, 188
+  orig: 67, 188
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_head
+  rotate: true
+  xy: 832, 23
+  size: 56, 76
+  orig: 56, 76
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_hips
+  rotate: true
+  xy: 658, 16
+  size: 63, 91
+  orig: 63, 91
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_legL
+  rotate: true
+  xy: 192, 2
+  size: 77, 169
+  orig: 77, 169
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_legR
+  rotate: true
+  xy: 363, 4
+  size: 75, 145
+  orig: 75, 145
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_torso
+  rotate: true
+  xy: 751, 17
+  size: 62, 79
+  orig: 62, 79
+  offset: 0, 0
+  index: -1

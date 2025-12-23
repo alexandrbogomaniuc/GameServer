@@ -1,0 +1,55 @@
+
+Anubis0.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Anubis_ArmL
+  rotate: false
+  xy: 2, 152
+  size: 420, 319
+  orig: 420, 319
+  offset: 0, 0
+  index: -1
+Anubis_ArmR
+  rotate: false
+  xy: 606, 315
+  size: 79, 156
+  orig: 79, 156
+  offset: 0, 0
+  index: -1
+Anubis_Head
+  rotate: false
+  xy: 687, 338
+  size: 95, 133
+  orig: 95, 133
+  offset: 0, 0
+  index: -1
+Anubis_Hips
+  rotate: true
+  xy: 2, 2
+  size: 148, 212
+  orig: 148, 212
+  offset: 0, 0
+  index: -1
+Anubis_LegL
+  rotate: true
+  xy: 216, 39
+  size: 111, 156
+  orig: 111, 156
+  offset: 0, 0
+  index: -1
+Anubis_LegR
+  rotate: false
+  xy: 424, 265
+  size: 80, 206
+  orig: 80, 206
+  offset: 0, 0
+  index: -1
+Anubis_Torso
+  rotate: false
+  xy: 506, 310
+  size: 98, 161
+  orig: 98, 161
+  offset: 0, 0
+  index: -1

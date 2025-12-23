@@ -1,0 +1,34 @@
+
+gold_capsule.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 4, 107
+  size: 383, 380
+  orig: 383, 380
+  offset: 0, 0
+  index: -1
+coins
+  rotate: false
+  xy: 713, 227
+  size: 263, 260
+  orig: 263, 260
+  offset: 0, 0
+  index: -1
+fill
+  rotate: false
+  xy: 391, 178
+  size: 318, 309
+  orig: 318, 309
+  offset: 0, 0
+  index: -1
+tentacles
+  rotate: false
+  xy: 391, 4
+  size: 170, 170
+  orig: 170, 170
+  offset: 0, 0
+  index: -1

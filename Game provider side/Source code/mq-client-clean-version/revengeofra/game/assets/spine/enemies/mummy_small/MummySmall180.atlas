@@ -1,0 +1,76 @@
+
+MummySmall180.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummySmall180_ArmL
+  rotate: true
+  xy: 161, 47
+  size: 43, 98
+  orig: 43, 98
+  offset: 0, 0
+  index: -1
+MummySmall180_ArmR
+  rotate: true
+  xy: 285, 99
+  size: 27, 111
+  orig: 27, 111
+  offset: 0, 0
+  index: -1
+MummySmall180_Head
+  rotate: false
+  xy: 472, 78
+  size: 38, 48
+  orig: 38, 48
+  offset: 0, 0
+  index: -1
+MummySmall180_Hips
+  rotate: true
+  xy: 261, 2
+  size: 54, 63
+  orig: 54, 63
+  offset: 0, 0
+  index: -1
+MummySmall180_LegL
+  rotate: true
+  xy: 2, 77
+  size: 49, 147
+  orig: 49, 147
+  offset: 0, 0
+  index: -1
+MummySmall180_LegR
+  rotate: true
+  xy: 151, 92
+  size: 34, 132
+  orig: 34, 132
+  offset: 0, 0
+  index: -1
+MummySmall180_Torso
+  rotate: true
+  xy: 60, 3
+  size: 72, 99
+  orig: 72, 99
+  offset: 0, 0
+  index: -1
+MummySmall90_Head
+  rotate: true
+  xy: 161, 10
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+MummySmall90_Hips
+  rotate: false
+  xy: 2, 2
+  size: 56, 73
+  orig: 56, 73
+  offset: 0, 0
+  index: -1
+MummySmall90_Torso
+  rotate: true
+  xy: 398, 58
+  size: 68, 72
+  orig: 68, 72
+  offset: 0, 0
+  index: -1

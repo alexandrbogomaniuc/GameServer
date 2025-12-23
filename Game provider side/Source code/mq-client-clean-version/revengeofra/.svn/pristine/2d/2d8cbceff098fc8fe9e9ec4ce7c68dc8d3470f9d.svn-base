@@ -1,0 +1,97 @@
+
+Locust270.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270/antenna
+  rotate: false
+  xy: 377, 14
+  size: 59, 31
+  orig: 59, 31
+  offset: 0, 0
+  index: -1
+270/body
+  rotate: false
+  xy: 244, 2
+  size: 131, 96
+  orig: 131, 96
+  offset: 0, 0
+  index: -1
+270/body2
+  rotate: false
+  xy: 2, 11
+  size: 153, 66
+  orig: 153, 66
+  offset: 0, 0
+  index: -1
+270/head
+  rotate: true
+  xy: 157, 24
+  size: 53, 78
+  orig: 53, 78
+  offset: 0, 0
+  index: -1
+270/leg_lf1
+  rotate: true
+  xy: 957, 95
+  size: 147, 36
+  orig: 147, 36
+  offset: 0, 0
+  index: -1
+270/leg_lf2
+  rotate: false
+  xy: 693, 71
+  size: 61, 97
+  orig: 61, 97
+  offset: 0, 0
+  index: -1
+270/leg_lf3
+  rotate: false
+  xy: 518, 45
+  size: 173, 123
+  orig: 173, 123
+  offset: 0, 0
+  index: -1
+270/leg_rt1
+  rotate: false
+  xy: 377, 47
+  size: 83, 51
+  orig: 83, 51
+  offset: 0, 0
+  index: -1
+270/leg_rt3
+  rotate: false
+  xy: 244, 142
+  size: 267, 100
+  orig: 267, 100
+  offset: 0, 0
+  index: -1
+270/wing_lf1
+  rotate: false
+  xy: 244, 100
+  size: 272, 40
+  orig: 272, 40
+  offset: 0, 0
+  index: -1
+270/wing_lf2
+  rotate: false
+  xy: 513, 170
+  size: 259, 72
+  orig: 259, 72
+  offset: 0, 0
+  index: -1
+270/wing_rt1
+  rotate: true
+  xy: 774, 82
+  size: 160, 181
+  orig: 160, 181
+  offset: 0, 0
+  index: -1
+270/wing_rt2
+  rotate: false
+  xy: 2, 79
+  size: 240, 163
+  orig: 240, 163
+  offset: 0, 0
+  index: -1

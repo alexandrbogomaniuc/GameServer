@@ -1,0 +1,180 @@
+import SimpleUIController from '../../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import { APP } from '../../../../../../../../common/PIXI/src/globals';
+import LobbyScreen from '../../../../../main/LobbyScreen';
+import PromostionsScreenInfo from '../../../../../model/uis/custom/secondary/promo/PromostionsScreenInfo';
+import PromostionsScreenView from '../../../../../view/uis/custom/secondary/promo/PromostionsScreenView';
+import LobbyExternalCommunicator from '../../../../../external/LobbyExternalCommunicator';
+import { GAME_MESSAGES } from '../../../../../external/LobbyExternalCommunicator';
+import LobbyApp from '../../../../../LobbyAPP';
+import PromosController from '../../promo/PromosController';
+
+class PromostionsScreenController extends SimpleUIController
+{
+	static get EVENT_SCREEN_ACTIVATED()					{ return "onPromostionsScreenActivated"; }
+	static get EVENT_SCREEN_DEACTIVATED()				{ return "onPromostionsScreenDeactivated"; }
+
+	static get EVENT_ON_CLOSE_BTN_CLICKED()				{ return PromostionsScreenView.EVENT_ON_CLOSE_BTN_CLICKED; }
+	static get ON_PROMO_DETAILS_BTN_CLICKED()			{ return PromostionsScreenView.ON_PROMO_DETAILS_BTN_CLICKED }	
+
+	showScreen()
+	{
+		this._showScreen();
+	}
+
+	hideScreen()
+	{
+		this._hideSceeen();
+	}
+
+	initView(aView_uo)
+	{
+		
+		super.initView(aView_uo);
+
+		let view = this.view;
+		let activePromosInfos = this.info.promos;
+		if (activePromosInfos && activePromosInfos.length)
+		{
+			view.addActivePromos(activePromosInfos);
+			view.on(PromostionsScreenView.ON_PROMO_DETAILS_BTN_CLICKED, this._onPromoDetailsBtnClicked, this);
+		}
+	}
+
+	constructor()
+	{
+		super(new PromostionsScreenInfo());
+	}
+
+	//INIT...
+	__init()
+	{
+		super.__init();
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+
+		if (APP.promosController.info.hasActivePromos && APP.isMobile)
+		{
+			this._initActivePromos();
+
+			APP.promosController.on(PromosController.EVENT_ON_PROMOS_STATUS_UPDATED, this._onPromosStatusUpdated, this);
+			APP.promosController.on(PromosController.EVENT_ON_PROMO_REMOVED, this._onPromoRemoved, this);
+		}
+	}
+
+	__initViewLevel()
+	{
+		super.__initViewLevel();
+
+		let lView_qssv = this.view;
+		lView_qssv.on(PromostionsScreenView.EVENT_ON_CLOSE_BTN_CLICKED, this.emit, this);
+	}
+	//...INIT
+
+	_showScreen()
+	{
+		let lView_qssv = this.view;
+
+		lView_qssv.show();
+
+		this.emit(PromostionsScreenController.EVENT_SCREEN_ACTIVATED);
+	}
+
+	_hideSceeen()
+	{
+		let lView_qssv = this.view;
+		if (lView_qssv)
+		{
+			lView_qssv.hide();
+
+			this.emit(PromostionsScreenController.EVENT_SCREEN_DEACTIVATED);
+		}
+	}
+
+	_initActivePromos()
+	{
+		let activePromos = APP.promosController.promoControllers;
+		if (activePromos && activePromos.length > 0)
+		{
+			for (let i=0; i<activePromos.length; i++)
+			{
+				let promoController = activePromos[i];
+				
+				if (promoController.info.promoCompleted)
+				{
+					continue;
+				}
+				else
+				{
+					this.info.addPromoInfo(promoController.info.clone());
+				}
+			}
+		}
+	}
+
+	_onPromoDetailsBtnClicked(event)
+	{
+		if (APP.soundsController && APP.soundsController.play)
+		{
+			APP.soundsController.play("mq_gui_button_accept");
+		}
+
+		this.emit(event);
+	}
+
+	_onPromosStatusUpdated(event)
+	{
+		let promosActive = event.isActive;
+
+		if (!promosActive)
+		{
+			this._removeAllPromos();
+		}
+	}
+
+	_onPromoRemoved(event)
+	{
+		let removedPromoId = event.promoId;
+		let promoInfo = this.info.getPromoById(removedPromoId);
+		
+		this._removePromo(promoInfo);
+	}
+
+	_removeAllPromos()
+	{
+		while (this.info.hasActivePromos)
+		{
+			let promoInfo = this.info.getPromoByIndex(0);
+			
+			this._removePromo(promoInfo);
+		}
+		
+		this._onAllActivePromosRemoved();
+	}
+
+	_removePromo(promoInfo)
+	{
+		this.view && this.view.removePromo(promoInfo);
+		this.info.removePromo(promoInfo);
+	}
+
+	_onAllActivePromosRemoved()
+	{
+		this._hidePromosList();
+	}
+
+	_hidePromosList()
+	{
+		this.view && this.view.removePromosList();
+	}
+
+	destroy()
+	{
+		super.destroy();
+	}
+	
+}
+
+export default PromostionsScreenController

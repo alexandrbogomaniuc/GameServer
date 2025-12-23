@@ -1,0 +1,108 @@
+import SimpleUIView from '../../../../../../../../common/PIXI/src/view/base/SimpleUIView';
+import Button from '../../../../../ui/LobbyButton';
+import I18 from '../../../../../../../../common/PIXI/src/I18';
+import { APP } from '../../../../../../../../common/PIXI/src/globals';
+import PromotionsScreenActivePromosList from './list/PromotionsScreenActivePromosList';
+import PromotionsScreenActivePromosCarousel from './list/PromotionsScreenActivePromosCarousel';
+
+class PromostionsScreenView extends SimpleUIView
+{
+	static get EVENT_ON_CLOSE_BTN_CLICKED()						{ return "onCloseBtnClicked"; }
+	static get ON_PROMO_DETAILS_BTN_CLICKED()					{ return PromotionsScreenActivePromosList.ON_PROMO_DETAILS_BTN_CLICKED }
+	
+	addActivePromos(activePromosInfos)
+	{
+		this._addActivePromos(activePromosInfos);
+	}
+
+	removePromo(promoInfo)
+	{
+		let list = this._activePromosList;
+		if (list)
+		{
+			if (list.hasItem(promoInfo))
+			{
+				list.removeItem(promoInfo);
+			}
+		}
+	}
+
+	removePromosList()
+	{
+		if (this._activePromosList)
+		{
+			this._activePromosList.on(PromotionsScreenActivePromosList.ON_PROMO_DETAILS_BTN_CLICKED, this.emit, this);
+			this._activePromosList.destroy();
+		}
+		this._activePromosList = null;
+
+		this._activePromosCarousel && this._activePromosCarousel.destroy();
+		this._activePromosCarousel = null;
+	}
+
+	constructor()
+	{
+		super();
+
+		this._activePromosList = null;
+		this._activePromosCarousel = null;
+
+		this._init();
+	}
+
+	_init()
+	{
+		this._addBack();
+		this._addCaption();
+
+		this._addButton();
+	}
+
+	_addBack()
+	{
+		this.addChild(APP.library.getSprite("promo/screen/back"));
+	}
+
+	_addCaption()
+	{
+		let lTitleCaption_ta = this.addChild(I18.generateNewCTranslatableAsset("TAPromotionsScreenCaption"));
+		lTitleCaption_ta.position.set(-155, -148);
+
+		let lIcon_sprt = this.addChild(APP.library.getSprite("promo/screen/icon"));
+		lIcon_sprt.position.set(-184, -146);
+	}
+
+	_addButton()
+	{
+		let lCloseButton_btn = this.addChild(new Button("dialogs/exit_btn", null, true, undefined, undefined, Button.BUTTON_TYPE_CANCEL));
+		lCloseButton_btn.position.set(185.5, -146);
+		lCloseButton_btn.on("pointerclick", this._onCloseBtnClicked, this);
+	}
+
+	_onCloseBtnClicked()
+	{
+		this.emit(PromostionsScreenView.EVENT_ON_CLOSE_BTN_CLICKED);
+	}
+
+	_addActivePromos(activePromosInfos)
+	{
+		let activePromosList = this._activePromosList = new PromotionsScreenActivePromosList();
+		activePromosList.data = activePromosInfos;
+		activePromosList.on(PromotionsScreenActivePromosList.ON_PROMO_DETAILS_BTN_CLICKED, this.emit, this);
+
+		let lCarousel_apsc = this._activePromosCarousel = new PromotionsScreenActivePromosCarousel(activePromosList);
+		lCarousel_apsc.position.set(-180, -75);
+
+		this.addChild(lCarousel_apsc);
+	}
+
+	destroy()
+	{
+		super.destroy();
+
+		this._activePromosList = null;
+		this._activePromosCarousel = null;
+	}
+}
+
+export default PromostionsScreenView;

@@ -1,0 +1,69 @@
+
+Osiris90.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Osiris90_ArmL
+  rotate: true
+  xy: 371, 2
+  size: 127, 130
+  orig: 127, 130
+  offset: 0, 0
+  index: -1
+Osiris90_ArmR
+  rotate: true
+  xy: 816, 33
+  size: 102, 162
+  orig: 102, 162
+  offset: 0, 0
+  index: -1
+Osiris90_Head
+  rotate: true
+  xy: 816, 137
+  size: 117, 153
+  orig: 117, 153
+  offset: 0, 0
+  index: -1
+Osiris90_Hips
+  rotate: true
+  xy: 622, 123
+  size: 131, 192
+  orig: 131, 192
+  offset: 0, 0
+  index: -1
+Osiris90_LegL
+  rotate: true
+  xy: 187, 147
+  size: 107, 226
+  orig: 107, 226
+  offset: 0, 0
+  index: -1
+Osiris90_LegR
+  rotate: true
+  xy: 187, 63
+  size: 82, 182
+  orig: 82, 182
+  offset: 0, 0
+  index: -1
+Osiris90_Torso
+  rotate: true
+  xy: 415, 131
+  size: 123, 205
+  orig: 123, 205
+  offset: 0, 0
+  index: -1
+Osiris_ArmL
+  rotate: true
+  xy: 503, 34
+  size: 87, 156
+  orig: 87, 156
+  offset: 0, 0
+  index: -1
+Osiris_Torso
+  rotate: false
+  xy: 2, 79
+  size: 183, 175
+  orig: 183, 175
+  offset: 0, 0
+  index: -1

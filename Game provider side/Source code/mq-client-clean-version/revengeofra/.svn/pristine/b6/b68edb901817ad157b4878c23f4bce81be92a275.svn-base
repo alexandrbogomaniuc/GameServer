@@ -1,0 +1,96 @@
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import PortalEffectsManager from './PortalEffectsManager';
+import { FRAME_RATE } from '../../../../../../shared/src/CommonConstants';
+import { Timer } from '../../../../../../../common/PIXI/src';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import Sequence from '../../../../../../../common/PIXI/src/animation/Sequence';
+import * as Easing from '../../../../../../../common/PIXI/src/animation/easing';
+
+const COUNT = 4;
+
+class PortalSmokeAnimation extends Sprite
+{
+	constructor()
+	{
+		super();
+
+		this._timer = null;
+		this._smokes = [];
+		this._currentIndex = 0;
+		this._completionNeeded = false;
+
+		for (let i = 0; i < COUNT; i++)
+		{
+			let smoke = this.addChild(APP.library.getSprite("portal/fx/smoke_add"));
+			smoke.blendMode = PIXI.BLEND_MODES.ADD;
+			smoke.scale.set(0);
+
+			this._smokes[i] = smoke;
+		}
+	}
+
+	startAnimation()
+	{
+		this._completionNeeded = false;
+
+		this._startNextSequence();
+	}
+
+	completeAnimation()
+	{
+		this._completionNeeded = true;
+	}
+
+	_startNextSequence()
+	{
+		if (this._completionNeeded) return;
+
+		Sequence.destroy(Sequence.findByTarget(this._smokes[this._currentIndex]));
+
+		this._smokes[this._currentIndex].rotation = Math.random() * 2 * Math.PI;
+
+		Sequence.start(this._smokes[this._currentIndex], 
+		[
+			{
+				tweens: [{prop:"alpha", to: 1}, {prop:"scale.x", to: 0}, {prop:"scale.y", to: 0}],
+				duration: 0
+			},
+			{
+				tweens: [{prop:"scale.x", from: 0, to: 0.6}, {prop:"scale.y", from: 0, to: 0.6}],
+				ease: Easing.quadratic.easeIn,
+				duration: 8 * FRAME_RATE * 2
+			},
+			{
+				tweens: [{prop:"scale.x", to: 1.2}, {prop:"scale.y", to: 1.2}, {prop:"alpha", to: 0}],
+				duration: 10 * FRAME_RATE * 2
+			}
+		]);
+
+		this._startTimer();
+	}
+
+	_startTimer()
+	{
+		this._timer = new Timer(this._startNextSequence.bind(this), 6 * FRAME_RATE * 2, /*repeat*/ false);
+		this._currentIndex++;
+
+		if (this._currentIndex >= COUNT) this._currentIndex = 0;
+	}
+
+	destroy()
+	{
+		this._timer.destructor();
+
+		for (let i = 0; i < COUNT; i++)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._smokes[i]));
+		}
+
+		this._smokes = [];
+		this._currentIndex = undefined;
+
+		super.destroy();
+	}
+}
+
+export default PortalSmokeAnimation;

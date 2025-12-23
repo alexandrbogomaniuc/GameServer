@@ -1,0 +1,76 @@
+
+MummyGodGreen180.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MummyGodGreen180_armL
+  rotate: false
+  xy: 465, 14
+  size: 124, 102
+  orig: 124, 102
+  offset: 0, 0
+  index: -1
+MummyGodGreen180_armR
+  rotate: true
+  xy: 2, 32
+  size: 84, 156
+  orig: 84, 156
+  offset: 0, 0
+  index: -1
+MummyGodGreen180_head
+  rotate: true
+  xy: 884, 58
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+MummyGodGreen180_hips
+  rotate: true
+  xy: 790, 63
+  size: 53, 92
+  orig: 53, 92
+  offset: 0, 0
+  index: -1
+MummyGodGreen180_legL
+  rotate: true
+  xy: 327, 52
+  size: 64, 136
+  orig: 64, 136
+  offset: 0, 0
+  index: -1
+MummyGodGreen180_legR
+  rotate: true
+  xy: 160, 66
+  size: 50, 165
+  orig: 50, 165
+  offset: 0, 0
+  index: -1
+MummyGodGreen180_torso
+  rotate: true
+  xy: 591, 32
+  size: 84, 104
+  orig: 84, 104
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_head
+  rotate: true
+  xy: 241, 8
+  size: 56, 76
+  orig: 56, 76
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_hips
+  rotate: true
+  xy: 697, 53
+  size: 63, 91
+  orig: 63, 91
+  offset: 0, 0
+  index: -1
+MummyGodGreen90_torso
+  rotate: true
+  xy: 160, 2
+  size: 62, 79
+  orig: 62, 79
+  offset: 0, 0
+  index: -1

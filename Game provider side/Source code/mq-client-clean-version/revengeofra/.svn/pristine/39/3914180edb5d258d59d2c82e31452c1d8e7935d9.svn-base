@@ -1,0 +1,2502 @@
+<div class="paytable_container" id="PAYTABLE">
+
+	<!--HOW TO PLAY...-->
+	<div class="page" id="how_to_play">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageHowToPlayHowToPlay" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						HOW TO PLAY
+					</source_meaning>
+					<translated_meaning>
+						플레이 방법
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			플레이 방법
+		</span>
+		<div class="row">
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_1"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle1" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								CHOOSE A COIN TO PLAY AND WIN
+							</source_meaning>
+							<translated_meaning>
+								플레이할 코인을 선택하고 우승하세요
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					플레이할 코인을 선택하고 우승하세요
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_1">
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_1" style="margin-left: 75px"></span>
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_1" style="margin-left: 151px"></span>
+					<span class="weapon_indicator" type="img" src="paytable/pages/how_to_play/weapon_indicator_2" style="margin-left: 226px"></span>
+				</span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText1" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Each shot is a bet with the coin value you chose. Each Game Room is grouped by the Cost Per Bullet Range (bet) amount chosen in the lobby. Coinciding wins are added together on-screen when awarded to players.
+							</source_meaning>
+							<translated_meaning>
+								한 번의 슈팅은 선택한 코인 값의 베팅 한 번과 동일합니다. 각 게임 룸은 로비에서 선택한 총알 범위당 비용(베팅) 금액으로 그룹화됩니다. 동시 승리는 플레이어에게 수여될 때 화면에 함께 추가됩니다.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					<span class="description_bold">한 번의 슈팅은 선택한 코인 값의 베팅 한 번과 동일합니다.</span> 각 게임 룸은 로비에서 선택한 총알 범위당 비용(베팅) 금액으로 그룹화됩니다. 동시 승리는 플레이어에게 수여될 때 화면에 함께 추가됩니다.
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_2"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle2" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								EACH SHOT GUARANTEED TO HIT
+							</source_meaning>
+							<translated_meaning>
+								한 번의 슈팅으로 한 발을 쏠 수 있습니다
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					한 번의 슈팅으로 한 발을 쏠 수 있습니다
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_2"></span>
+				<span id="noSkillNecessaryDescriptionElement" class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText2" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								No skill is necessary! In the case that the fired shot does not strike your target, the shot will ricochet around the screen until it hits another enemy. You can only have a maximum of ##SHOTS_COUNT## active shots at any given time. If any shots remain in the air at the end of the round without having hit any target, your wager will be returned to you. You cannot change your bet while you have active shots in flight.
+							</source_meaning>
+							<translated_meaning>
+								스킬이 필요하지 않습니다! 발사된 샷이 목표물을 맞추지 못할 경우 해당 샷이 다른 적을 맞출 때까지 화면에서 튕겨져 움직입니다. 주어진 시간에 최대 ##SHOTS_COUNT## 회의 활성 샷만 보유할 수 있습니다. 슈팅이 라운드 종료 시까지 타겟을 맞추지 않고 공중에 떠 있는 경우 베팅이 플레이어에게 반환됩니다. 활성화된 슈팅이 공중에 떠 있는 동안 베팅을 변경할 수 없습니다.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					스킬이 필요하지 않습니다! 발사된 샷이 목표물을 맞추지 못할 경우 해당 샷이 다른 적을 맞출 때까지 화면에서 튕겨져 움직입니다. 주어진 시간에 최대 <span class="max_shots_value" id="MAX_SHOTS_COUNT"></span> 회의 활성 샷만 보유할 수 있습니다. 슈팅이 라운드 종료 시까지 타겟을 맞추지 않고 공중에 떠 있는 경우 베팅이 플레이어에게 반환됩니다. 활성화된 슈팅이 공중에 떠 있는 동안 베팅을 변경할 수 없습니다.
+				</span>
+			</div>
+			<div class='col-4 center'>
+				<span type="img" src="paytable/pages/how_to_play/index_3"></span>
+				<span class='title center'>
+					<!--tad id="TAPaytablePageHowToPlayTitle3" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								EACH SHOT HAS A CHANCE TO WIN
+							</source_meaning>
+							<translated_meaning>
+								한 번의 슈팅에 우승할 기회가 제공됩니다
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					한 번의 슈팅에 우승할 기회가 제공됩니다
+				</span>
+				<span class="icon" type="img" src="paytable/pages/how_to_play/icon_3"></span>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageHowToPlayText3" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Any shot fired has a chance to destroy the enemy it hits. Special Weapons have a higher chance to destroy enemies compared to the standard turret. Enemies can award cash payouts or Special Weapons!
+							</source_meaning>
+							<translated_meaning>
+								발사된 모든 샷으로 적중한 모든 적을 쓰러트릴 기회가 있습니다. 스페셜 무기는 일반 포탑에 비해 적을 파괴할 확률이 더 높습니다. 적은 현금 페이아웃 또는 스페셜 무기를 지급할 수 있습니다!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					발사된 모든 샷으로 적중한 모든 적을 쓰러트릴 기회가 있습니다. 스페셜 무기는 일반 포탑에 비해 적을 파괴할 확률이 더 높습니다. 적은 현금 페이아웃 또는 스페셜 무기를 지급할 수 있습니다!
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--...HOW TO PLAY-->
+
+	<!--ENEMIE HP AND VICTORY...-->
+	<div class="page" id="enemie_hp_and_victory">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageEnemieHpAndVictoryCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						ENEMY HIT POINTS AND VICTORY!
+					</source_meaning>
+					<translated_meaning>
+						적을 무너뜨리고 승리를 거두세요!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			적을 무너뜨리고 승리를 거두세요!
+		</span>
+		<div class='screen'>
+			<span type="img" src="paytable/pages/enemie_hp_and_victory/screen"></span>
+		</div>
+		<span class="text_block">
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextHP" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Every enemy in MAX QUEST: RISE OF THE MUMMY has a defined number of hit points, or HP.
+							Enemies have levels that can range from 1 – 3. Their amount of hit points rises with their level.
+							Enemy HP is reduced by attacks with the Turret, or Special Weapons.
+						</source_meaning>
+						<translated_meaning>
+							'MAX QUEST: 미라의 부활' 내 모든 적에게는 정해진 체력, 즉, HP가 있습니다.
+							적의 레벨은 1~3까지 있습니다. 체력은 레벨에 따라 증가합니다.
+							포탑의 공격 또는 스페셜 무기로 적의 HP를 감소시킬 수 있습니다.
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				'MAX QUEST: 미라의 부활' 내 모든 적에게는 정해진 체력, 즉, HP가 있습니다.</br>
+				적의 레벨은 1~3까지 있습니다. 체력은 레벨에 따라 증가합니다.</br>
+				포탑의 공격 또는 스페셜 무기로 적의 HP를 감소시킬 수 있습니다.
+			</span>
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextDamage" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Damage determines the size of your payout. The more damage you do with your weapon, the higher your payout will be!
+						</source_meaning>
+						<translated_meaning>
+							지불 금액은 데미지에 따라 달라집니다. 무기로 더 많은 데미지를 줄수록 지불 금액이 높아집니다!
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				지불 금액은 데미지에 따라 달라집니다. 무기로 더 많은 데미지를 줄수록 지불 금액이 높아집니다!
+			</span>
+			<span class='description light_grey center'>
+				<!--tad id="TAPaytablePageEnemyHPAndVictoryTextSW" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Special Weapons do more damage to all enemies, especially groups and Legendary Bosses!
+						</source_meaning>
+						<translated_meaning>
+							스페셜 무기로 모든 적, 특히 그룹과 전설의 보스에게 더 많은 데미지를 줄 수 있습니다!
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				스페셜 무기로 모든 적, 특히 그룹과 전설의 보스에게 더 많은 데미지를 줄 수 있습니다!
+			</span>
+		</span>
+		<span type="img" class="center special_wepon" src="paytable/pages/enemie_hp_and_victory/special_weapons"></span>
+
+	</div>
+	<!--ENEMIE HP AND VICTORY...-->
+
+	<!--ENEMIES 1...-->
+	<div class="page" id="enemies">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageEnemiesCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						ENEMIES
+					</source_meaning>
+					<translated_meaning>
+						적
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			적
+		</span>
+		<div class="row">
+			
+			<div class='col-1 center'>
+				<div id="enemy_weapon_slider" style="position: absolute; margin-left: 10px; margin-top: 0px;"></div>
+				
+			</div>
+			<div class='col-9'>
+				<div class="row">
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/scarab_hatchling">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesScarabHatchling" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Scarab Hatchling
+									</source_meaning>
+									<translated_meaning>
+										새끼 스카라브
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							새끼 스카라브
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytablePageEnemiesEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										최대 HP: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							최대 HP: <span class="hp_value" id="HP_ENEMY_0"></span>
+						</span>
+						<span class='enemy_payout' id="0"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/shadow_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesShadowScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Shadow Scarab
+									</source_meaning>
+									<translated_meaning>
+										그림자 스카라브
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							그림자 스카라브
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										최대 HP: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							최대 HP: <span class="hp_value" id="HP_ENEMY_1"></span>
+						</span>
+						<span class='enemy_payout' id="1"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/golden_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesGoldenScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Golden Scarab
+									</source_meaning>
+									<translated_meaning>
+										황금 스카라브
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							황금 스카라브
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										최대 HP: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							최대 HP: <span class="hp_value" id="HP_ENEMY_2"></span>
+						</span>
+						<span class='enemy_payout' id="2"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/ruby_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesRubyScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Ruby Scarab
+									</source_meaning>
+									<translated_meaning>
+										루비 스카라브
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							루비 스카라브
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										최대 HP: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							최대 HP: <span class="hp_value" id="HP_ENEMY_3"></span>
+						</span>
+						<span class='enemy_payout' id="3"></span>
+					</div>
+				</div>
+				<div class='enemy'>
+					<span type="img" src="paytable/pages/enemies/bewjelled_scarab">
+						<span class='enemy_capture'>
+							<!--tad id="TAPaytablePageEnemiesBewjelledScarab" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Bejeweled Scarab
+									</source_meaning>
+									<translated_meaning>
+										보석 스카라브
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							보석 스카라브
+						</span>
+					</span>
+					<div class='enemy_HP_block'>
+						<span class='enemy_hp_capture'>
+							<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										최대 HP: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							최대 HP: <span class="hp_value" id="HP_ENEMY_4"></span>
+						</span>
+						<span class='enemy_payout' id="4"></span>
+					</div>
+				</div>
+				</div>
+				<div class="row">
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/swarming_locust">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesSwarmingLocust" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Swarming Locust
+										</source_meaning>
+										<translated_meaning>
+											메뚜기 떼
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								메뚜기 떼
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_5"></span>
+							</span>
+							<span class='enemy_payout' id="5"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/devouring_locust">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesDevouringLocustr" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Devouring Locust
+										</source_meaning>
+										<translated_meaning>
+											파멸의 메뚜기
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								파멸의 메뚜기
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_6"></span>
+							</span>
+							<span class='enemy_payout' id="6"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/giant_scorpion">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesGiantScorpion" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Giant Scorpion
+										</source_meaning>
+										<translated_meaning>
+											거대 전갈
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								거대 전갈
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_7"></span>
+							</span>
+							<span class='enemy_payout' id="7"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_minion">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesWrappedMinion" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Minion
+										</source_meaning>
+										<translated_meaning>
+											하인 미라
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								하인 미라
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_8"></span>
+							</span>
+							<span class='enemy_payout' id="8"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_shadowguard">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesWrappedShadowguard" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Shadowguard
+										</source_meaning>
+										<translated_meaning>
+											그림자 경비대 미라
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								그림자 경비대 미라
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_9"></span>
+							</span>
+							<span class='enemy_payout' id="9"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/wrapped_spiritguard">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesWrappedSpiritguard" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Wrapped Spiritguard
+										</source_meaning>
+										<translated_meaning>
+											영혼 경비대 미라
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								영혼 경비대 미라
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_10"></span>
+							</span>
+							<span class='enemy_payout' id="10"></span>
+						</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/tahawy_warrior">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesTahawyWarrior" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Tahawy Warrior
+										</source_meaning>
+										<translated_meaning>
+											타하위 전사
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								타하위 전사
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_11"></span>
+							</span>
+							<span class='enemy_payout' id="11"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/tahawy_commander">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesTahawyCommander" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Tahawy Commander
+										</source_meaning>
+										<translated_meaning>
+											타하위 사령관
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								타하위 사령관
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_12"></span>
+							</span>
+							<span class='enemy_payout' id="12"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/crimson_bataanta">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCrimsonBataanta" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Crimson Bataanta
+										</source_meaning>
+										<translated_meaning>
+											적색의 바탄타
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								적색의 바탄타
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_13"></span>
+							</span>
+							<span class='enemy_payout' id="13"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/emerald_bataanta">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCrimsonBataanta" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Emerald Bataanta
+										</source_meaning>
+										<translated_meaning>
+											에메랄드 바탄타
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								에메랄드 바탄타
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_14"></span>
+							</span>
+							<span class='enemy_payout' id="14"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/cursed_brawler">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesCursedBrawler" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Cursed Brawler
+										</source_meaning>
+										<translated_meaning>
+											저주받은 싸움꾼
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								저주받은 싸움꾼
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_15"></span>
+							</span>
+							<span class='enemy_payout' id="15"></span>
+						</div>
+					</div>
+					<div class='enemy'>
+						<span type="img" src="paytable/pages/enemies/horus">
+							<span class='enemy_capture'>
+								<!--tad id="TAPaytablePageEnemiesHorus" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Horus
+										</source_meaning>
+										<translated_meaning>
+											호루스
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								호루스
+							</span>
+						</span>
+						<div class='enemy_HP_block'>
+							<span class='enemy_hp_capture'>
+								<!--tad id="TAPaytableEnemyMaxHP" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											MAX HP: XX
+										</source_meaning>
+										<translated_meaning>
+											최대 HP: XX
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								최대 HP: <span class="hp_value" id="HP_ENEMY_16"></span>
+							</span>
+							<span class='enemy_payout' id="16"></span>
+						</div>
+					</div>
+					</div>
+				</div>
+			<div class='col-1 center'>
+				<span class='enemy_values_text' style="margin-top: -15px;">
+					<!--tad id="TAPaytablePageEnemiesStakeIndicatorText" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+						</source_meaning>
+						<translated_meaning>
+							금액은 [#STAKE #CURRENCY] 코인 및 [#VALUE] 베팅 레벨을 기반으로 표시됩니다.
+						</translated_meaning>
+					</meaning>
+					</tad-->
+					금액은 [<span id='stake_indicator_text'></span>] 코인 및 [<span id='stake_bet_level_value' style="display:inline-block"></span>] 베팅 레벨을 기반으로 표시됩니다.
+				</span>
+			</div>
+		</div>
+	</div>
+	<!--...ENEMIES 1-->
+
+	<!--SPECIAL ENEMIES...-->
+	<div class="page" id="special_enemies">
+		<div class="texture">
+			<span type="img" src="paytable/pages/special_enemies/wild_textures"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageSpecialEnemies" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						SPECIAL ENEMIES
+					</source_meaning>
+					<translated_meaning>
+						스페셜 적
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			스페셜 적
+		</span>
+		<span class='description light_grey center'>
+			<!--tad id="TAPaytablePageEnemyHPAndVictoryTextHP" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Special Enemies will randomly appear on the playing field!
+						These enemies offer unique rewards and effects when they are defeated.
+					</source_meaning>
+					<translated_meaning>
+						스페셜 적이 플레이 필드에 무작위로 등장합니다!
+						이 적들을 완전히 파괴하면 특별한 보상 및 효과를 제공합니다.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			스페셜 적이 플레이 필드에 무작위로 등장합니다!</br>
+			이 적들을 완전히 파괴하면 특별한 보상 및 효과를 제공합니다.
+		</span>
+		<div class="row">
+			<div class='col-1 center'>
+				<div id="special_enemies_weapon_slider" style="position: absolute; margin-left: 48px; margin-top: 148px;"></div>
+			</div>
+			<div class='col-9 center'>
+				<div class="col-6">
+					<div class="infernal_forgemaster">
+						<span type="img" src="paytable/pages/special_enemies/infernal_forgemaster"></span>
+						<span class='infernal_forgemaster_max_hp'>
+							<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterMaxHP" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										MAX HP: XX
+									</source_meaning>
+									<translated_meaning>
+										최대 HP: XX
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							최대 HP: <span class="hp_value" id="HP_ENEMY_17"></span>
+						</span>
+						<div class="infernal_forgemaster_text">
+								<span class='infernal_forgemaster_capture'>
+									<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterCapture" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Infernal Forgemaster
+											</source_meaning>
+											<translated_meaning>
+												지옥의 대장간지기
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									지옥의 대장간지기
+								</span>
+								<span class='infernal_forgemaster_specific'>
+									<!--tad id="TAPaytablePageSpecialEnemiesInfernalForgemasterSpecific" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Always drops a Special Weapon upon defeat!
+											</source_meaning>
+											<translated_meaning>
+												파괴된 경우 항상 스페셜 무기를 떨어트립니다!
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									파괴된 경우 항상 스페셜 무기를 떨어트립니다!
+								</span>
+								<span class='enemy_payout' id="17"></span>
+								
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 unstable_avatar">
+					<div class="infernal_forgemaster">
+						<span type="img" src="paytable/pages/special_enemies/unstable_avatar"></span>
+						<div class="unstable_avatar_text">
+								<span class='unstable_avatar_capture'>
+									<!--tad id="TAPaytablePageSpecialEnemiesUnstableAvatarCapture" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Unstable Avatar
+											</source_meaning>
+											<translated_meaning>
+												불안정한 아바타
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									불안정한 아바타
+								</span>
+								<span class='unstable_avatar_specific'>
+									<!--tad id="TAPaytablePageSpecialEnemiesUnstableAvatarSpecific" type="txt_based" translated="true">
+										<meaning>
+											<source_meaning>
+												Explodes when destroyed, dealing up to 5000 damage
+												to nearby enemies!
+											</source_meaning>
+											<translated_meaning>
+												파괴 시 폭발하여 인근의 적에게 최대 5,000 데미지를 줍니다!
+											</translated_meaning>
+										</meaning>
+									</tad-->
+									파괴 시 폭발하여 인근의 적에게 최대</br>5,000 데미지를 줍니다!
+								</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class='col-1 center'>
+				<div class='enemy_values_block'>
+					<span class="enemy_values_text">
+						<!--tad id="TAPaytablePageSpecialEnemiesStakeIndicatorText" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+							</source_meaning>
+							<translated_meaning>
+								금액은 [#STAKE #CURRENCY] 코인 및 [#VALUE] 베팅 레벨을 기반으로 표시됩니다.
+							</translated_meaning>
+						</meaning>
+						</tad-->
+						금액은 [<span id='stake_se_indicator_text'></span>] 코인 및 [<span id='stake_se_bet_level_value' style="display:inline-block"></span>] 베팅 레벨을 기반으로 표시됩니다.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--SPECIAL ENEMIES...-->
+
+	<!--UNSTABLE AVATAR...-->
+	<div class="page" id="unstable_avatar">
+		<div id="fx">
+			<span type="img" src="paytable/pages/unstable_avatar/fx"></span>
+		</div>
+		<div id="back">
+			<span type="img" src="paytable/pages/unstable_avatar/back"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageUnstableAvatarUnstableAvatar" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						UNSTABLE AVATAR
+					</source_meaning>
+					<translated_meaning>
+						불안정한 아바타
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			불안정한 아바타
+		</span>
+		<div class="row">
+			<div class='exploder'>
+				<span type="img" src="paytable/pages/unstable_avatar/exploder"></span>
+			</div>
+			<div class='exploder'>
+				<span type="img" src="paytable/pages/unstable_avatar/explosion"></span>
+			</div>
+		</div>
+		<span class='description light_grey' style="margin-top: -5px">
+			<!--tad id="TAPaytablePageUnstableAvatarText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						This mysterious enemy will explode when killed, potentially destroying all enemies on the playing field, except for Legendary Bosses and Infernal Forgemasters, instantly awarding the sum of their payouts to the player, up to 500x their wager. Unstable Avatars only award prizes when destroyed.
+					</source_meaning>
+					<translated_meaning>
+						이 미지의 적을 죽이면 폭발하여 전설의 보스와 지옥의 대장간지기를 제외한 플레이 필드의 모든 적을 파괴할 가능성이 있으며, 플레이어에게 베팅액의 총 최대 500배의 페이아웃을 지급합니다. 불안정한 아바타는 파괴될 시 보상만을 지급합니다.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			이 미지의 적을 죽이면 폭발하여 전설의 보스와 지옥의 대장간지기를 제외한 플레이 필드의 모든<br/>적을 파괴할 가능성이 있으며, 플레이어에게 베팅액의 총 최대 500배의 페이아웃을 지급합니다.<br/>불안정한 아바타는 파괴될 시 보상만을 지급합니다.
+		</span>
+	</div>
+	<!--...UNSTABLE AVATAR-->
+
+	<!--LEGENDARY BOSSES...-->
+	<div class="page" id="legendary_bosses">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageLegendaryBossesLegendaryBosses" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						LEGENDARY BOSSES
+					</source_meaning>
+					<translated_meaning>
+						전설의 보스
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			전설의 보스
+		</span>
+		<span class='description light_grey center' style="height: 80px">
+			<!--tad id="TAPaytablePageLegendaryBossesText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Any time an enemy is destroyed, there is the chance of triggering the appearance of one of the 3 Legendary Bosses in a special battle.
+						Special Weapons do additional damage to the Legendary Bosses. During the battle, the Legendary Bosses will award prizes as it takes damage.
+						Finally, a large prize is awarded when it is defeated.
+					</source_meaning>
+					<translated_meaning>
+						적이 파괴될 때마다 스페셜 전투에서 3명의 전설의 보스 중 한 명이 등장할 가능성이 있습니다.
+						스페셜 무기는 전설의 보스에게 추가 대미지를 줍니다. 전투 중 전설의 보스는 피해를 입으면 보상을 수여합니다.
+						마지막 보스까지 쓰러트리면 큰 보상이 수여됩니다.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			적이 파괴될 때마다 스페셜 전투에서 3명의 전설의 보스 중 한 명이 등장할 가능성이 있습니다.</br>
+			스페셜 무기는 전설의 보스에게 추가 대미지를 줍니다. 전투 중 전설의 보스는 피해를 입으면 보상을 수여합니다.</br>
+			마지막 보스까지 쓰러트리면 큰 보상이 수여됩니다.
+		</span>
+		<div class="row">
+			<div class='col-1 center'>
+				<div id="legendary_bosses_weapon_slider" style="position: absolute; margin-left: 10px; margin-top: 124px;"></div>
+			</div>
+			<div class='col-9 center'>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 17px;">
+						<span type="img" src="paytable/pages/legendary_bosses/anubis">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesAnubis" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											ANUBIS
+										</source_meaning>
+										<translated_meaning>
+											아누비스
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								아누비스
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesAfterlifesKing" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Afterlife’s King
+										</source_meaning>
+										<translated_meaning>
+											저승의 왕
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								저승의 왕
+							</span>
+							<span id="BOSS_HP_2" class='boss_hp'></span>
+							<span class='enemy_payout' id="18"></span>
+						</span>
+					</div>
+				</div>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 235px; ">
+						<span type="img" src="paytable/pages/legendary_bosses/osiris">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesOsiris" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											OSIRIS
+										</source_meaning>
+										<translated_meaning>
+											오시리스
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								오시리스
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesDeathsJudgment" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											Death’s Judgment
+										</source_meaning>
+										<translated_meaning>
+											죽음의 심판
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								죽음의 심판
+							</span>
+							<span id="BOSS_HP_1" class='boss_hp'></span>
+							<span class='enemy_payout' id="19"></span>
+						</span>
+					</div>
+				</div>
+				<div class='col-3 center'>
+					<div class='boss' style="margin-left: 453px">
+						<span type="img" src="paytable/pages/legendary_bosses/ra">
+							<span class='boss_capture'>
+								<!--tad id="TAPaytablePageLegendaryBossesRa" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											RA
+										</source_meaning>
+										<translated_meaning>
+											RA(라)
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								RA(라)
+							</span>
+							<span class='boss_description'>
+								<!--tad id="TAPaytablePageLegendaryBossesTheEternalSun" type="txt_based" translated="true">
+									<meaning>
+										<source_meaning>
+											The Eternal Sun
+										</source_meaning>
+										<translated_meaning>
+											영원한 태양
+										</translated_meaning>
+									</meaning>
+								</tad-->
+								영원한 태양
+							</span>
+							<span id="BOSS_HP_0" class='boss_hp'></span>
+							<span class='enemy_payout' id="20"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-1 center'>
+				<div class='enemy_values_block'>
+					<span class='enemy_values_text'>
+						<!--tad id="TAPaytablePageLegendaryBossesStakeIndicatorText" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								Values shown based on [#STAKE #CURRENCY] coin and bet level of [#VALUE].
+							</source_meaning>
+							<translated_meaning>
+								금액은 [#STAKE #CURRENCY] 코인 및 [#VALUE] 베팅 레벨을 기반으로 표시됩니다.
+							</translated_meaning>
+						</meaning>
+						</tad-->
+						금액은 [<span id='stake_lb_indicator_text'></span>] 코인 및 [<span id='stake_lb_bet_level_value' style="display:inline-block"></span>] 베팅 레벨을 기반으로 표시됩니다.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...LEGENDARY BOSSES-->
+
+	<!--WEAPONS...-->
+	<div class="page" id="weapons">
+		<div class="texture">
+			<span type="img" src="paytable/pages/special_enemies/wild_textures"></span>
+		</div>
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageWeaponsCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						WEAPONS
+					</source_meaning>
+					<translated_meaning>
+						무기
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			무기
+		</span>
+		<span class='description light_grey left'>
+			<!--tad id="TAPaytablePageWeaponsText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Game rooms are sorted by the cost of each bullet. Select a cost per bullet value from the lobby to be taken to the first available room of that type.
+
+						The standard base weapon is the Turret, which can be aimed by using the onscreen crosshair. The Turret has 5 bet levels.
+						This can be adjusted up by increasing your bet per shot. The shot payouts will get bigger as the Turret rises in level.
+
+						Misuse/Malfunction voids all pays and plays.
+					</source_meaning>
+					<translated_meaning>
+						게임 방은 각 총알의 가격에 따라 분류됩니다. 로비에서 총알 가치 당 가격을 선택하면 해당 종류에서 가장 먼저 이용가능한 방으로 이동합니다.
+
+						일반 기본 무기는 화면의 십자선을 사용하여 조준할 수 있는 포탑입니다. 포탑에는 5가지 베팅 레벨이 있습니다.
+						이는 슈팅당 베팅 금액을 높여 조정할 수 있습니다. 포탑의 레벨이 증가하면 슈팅 페이아웃도 커집니다.
+
+						오작동은 모든 결제와 플레이를 무효로 합니다.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			게임 방은 각 총알의 가격에 따라 분류됩니다. 로비에서 총알 가치 당 가격을 선택하면 해당 종류에서 가장 먼저 이용가능한 방으로 이동합니다.
+			</br></br>
+			일반 기본 무기는 화면의 십자선을 사용하여 조준할 수 있는 포탑입니다. 포탑에는 5가지 베팅 레벨이 있습니다.
+			</br>
+			이는 슈팅당 베팅 금액을 높여 조정할 수 있습니다. 포탑의 레벨이 증가하면 슈팅 페이아웃도 커집니다.
+			</br></br>
+			오작동은 모든 결제와 플레이를 무효로 합니다.
+		</span>
+		<div class="turret">
+			<span type="img" src="paytable/pages/weapons/turret"></span>
+			<span class='description light_grey left turret_caption'>
+				<!--tad id="TAPaytablePageWeaponsTurretCaption" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							TURRET
+						</source_meaning>
+						<translated_meaning>
+							포탑
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				포탑
+			</span>
+			<span class='description light_grey left turret_available'>
+				<!--tad id="TAPaytablePageWeaponsTurretAvailable" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							The base weapon available at all times.
+						</source_meaning>
+						<translated_meaning>
+							기본 무기는 언제든 사용할 수 있습니다.
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				기본 무기는 언제든 사용할 수 있습니다.
+			</span>
+		</div>
+	</div>
+	<!--...WEAPONS-->
+
+	<!--SPECIAL WEAPONS...-->
+	<div class="page" id="special_weapons">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageSpecialWeaponsCaption" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						SPECIAL WEAPONS
+					</source_meaning>
+					<translated_meaning>
+						스페셜 무기
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			스페셜 무기
+		</span>
+		<span class='description light_grey left'>
+			<!--tad id="TAPaytablePageSpecialWeaponsText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						In addition to the base weapon, the Turret, enemies may drop Special Weapons when they are hit. These Special Weapons are stronger and can affect one or more enemies. Use the Special Weapons wisely: they are most effective when used against strong enemies or groups of enemies. Special Weapons have a greater chance for Instant Wins and Bonus Wins! Special Weapons that are dropped by enemies do not require a wager to fire. Weapon shots do not bounce off walls, but instead will target the nearest enemy to where you clicked. Unused special weapons get converted into cash prize at the end of the round.
+					</source_meaning>
+					<translated_meaning>
+						기본 무기인 포탑뿐 아니라, 적을 맞출 경우 적들이 스페셜 무기를 떨어트릴 수 있습니다. 이러한 스페셜 무기는 더 강력하며 하나 이상의 적에게 영향을 미칠 수 있습니다. 스페셜 무기를 현명하게 사용: 이는 강력한 적 또는 적의 무리에 대항하는데 가장 효과적입니다. 스페셜 무기를 사용하면 인스턴트 우승 및 보너스 상금의 확률이 더 높습니다! 적들이 떨어트린 스페셜 무기는 발사하는 데 베팅이 필요하지 않습니다. 무기 샷은 벽에 튕겨 나오는 대신 클릭한 곳에서 가장 가까운 적을 조준합니다. 사용하지 않은 스페셜 무기는 라운드가 끝날 때 현금 보상으로 바꿀 수 있습니다.
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			기본 무기인 포탑뿐 아니라, 적을 맞출 경우 적들이 스페셜 무기를 떨어트릴 수 있습니다. 이러한 스페셜 무기는 더 강력하며 하나 이상의 적에게 영향을 미칠 수 있습니다. 스페셜 무기를 현명하게 사용: 이는 강력한 적 또는 적의 무리에 대항하는데 가장 효과적입니다. 스페셜 무기를 사용하면 인스턴트 우승 및 보너스 상금의 확률이 더 높습니다! 적들이 떨어트린 스페셜 무기는 발사하는 데 베팅이 필요하지 않습니다. 무기 샷은 벽에 튕겨 나오는 대신 클릭한 곳에서 가장 가까운 적을 조준합니다. <span id='sw_info_cash_prize' style="display:inline-block">사용하지 않은 스페셜 무기는 라운드가 끝날 때 현금 보상으로 바꿀 수 있습니다.</span>
+		</span>
+
+		<div class="row">
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/mine_launcher"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnher" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									MINE LAUNCHER
+								</source_meaning>
+								<translated_meaning>
+									지뢰 기폭제
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						지뢰 기폭제
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Launches a land mine at the target area that waits until an enemy comes near before exploding. Can hit multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									적이 근처로 올 때까지 기다렸다가 저격 범위에 들어왔을 때, 땅속 지뢰를 터뜨리세요. 다수의 적을 맞을 수 있습니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						적이 근처로 올 때까지 기다렸다가 저격 범위에 들어왔을 때, 땅속 지뢰를 터뜨리세요. 다수의 적을 맞을 수 있습니다.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										비용:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							비용:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_0" class='block cost_value_description'></span>						
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsMineLaucnherCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										현재 베팅 금액
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							현재 베팅 금액
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/plasma_rifle"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifle" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									PLASMA RIFLE
+								</source_meaning>
+								<translated_meaning>
+									플라스마 라이플
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						플라스마 라이플
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires a stream of super-heated plasma that deals massive damage to a single target.
+								</source_meaning>
+								<translated_meaning>
+									적에게 상당한 손상을 입힐 수 있는 초고온의 플라스마 빔을 쏘세요.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						적에게 상당한 손상을 입힐 수 있는 초고온의 플라스마 빔을 쏘세요.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										비용:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							비용:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_1" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsPlasmaRifleCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										현재 베팅 금액
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							현재 베팅 금액
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/flamethrower"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsFlamethrower" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									FLAMETHROWER
+								</source_meaning>
+								<translated_meaning>
+									화염방사기
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						화염방사기
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Engulfs an enemy in a stream of burning napalm. Can hit multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									불타이는 네이팜 줄기로 적을 집어삼키세요. 다수의 적을 맞출 수 있습니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						불타이는 네이팜 줄기로 적을 집어삼키세요. 다수의 적을 맞출 수 있습니다.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										비용:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							비용:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_2" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsFlamethrowerCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										현재 베팅 금액
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							현재 베팅 금액
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/cryogun"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsCryogun" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									CRYOGUN
+								</source_meaning>
+								<translated_meaning>
+									크라이오건
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						크라이오건
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsCryogunDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Freezes enemies with a blast of super-chilled gas. Can freeze multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									극저온 가스 폭풍으로 적을 얼려버리세요. 다수의 적들을 얼릴 수 있습니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						극저온 가스 폭풍으로 적을 얼려버리세요. 다수의 적들을 얼릴 수 있습니다.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsCryogunCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										비용:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							비용:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_3" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsCryogunCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										현재 베팅 금액
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							현재 베팅 금액
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			
+			</div>
+			<div class='col-2 weapon center'>
+				<span type="img" src="paytable/pages/special_weapons/weapon_back"></span>
+				<div class="weapon_block">
+					<span class="weapon_icon" type="img" src="paytable/pages/special_weapons/weapons/artillery_strike"></span>
+					<span class='title center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrike" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									ARTILLERY STRIKE
+								</source_meaning>
+								<translated_meaning>
+									대포 공격
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						대포 공격
+					</span>
+					<span class='weapon_description light_grey center'>
+						<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeDescription" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Smoke grenade calls down an artillery strike on its location, inflicting high damage to multiple enemies.
+								</source_meaning>
+								<translated_meaning>
+									연막탄이 해당 지역에 대포 공격을 일으키며 다수의 적에게 높은 손상을 입힙니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						연막탄이 해당 지역에 대포 공격을 일으키며 다수의 적에게 높은 손상을 입힙니다.
+					</span>
+					<div class='weapon_cost'>
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeCost" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Cost:
+									</source_meaning>
+									<translated_meaning>
+										비용:
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							비용:
+							</span>
+						</div>
+						<span id="WEAPON_PAID_4" class='block cost_value_description'></span>	
+						<div class="block cost_description light_grey">
+							<span class='center'></span>
+							<!--tad id="TAPaytablePageSpecialWeaponsArtilleryStrikeCostWager" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Current Wager
+									</source_meaning>
+									<translated_meaning>
+										현재 베팅 금액
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							현재 베팅 금액
+							</span>
+						</div>
+					</div>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		
+
+		<span class='sw_info' >
+			<span id='sw_info_hide_when_frb' class='description light_grey left'>
+				<!--tad id="TAPaytablePageSpecialWeaponsWInfo" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							You can purchase a pay-per-shot Special Weapon at any time during gameplay! These shots multiply your wager depending on the chosen weapon. Simply click on the image of the Special Weapon you want to use on the left side of the screen. Free shots from dropped Special Weapons are played at the bet level they were won at, and the bet level cannot be changed until the free shots are used.
+						</source_meaning>
+						<translated_meaning>
+							게임 플레이 중 언제든 슈팅당 금액을 지불하는 스페셜 무기를 구매할 수 있습니다! 이러한 슈팅은 선택한 무기에 따라 베팅 금액을 곱해줍니다. 화면의 왼쪽에서 사용하려는 스페셜 무기 이미지를 클릭하시면 됩니다. 적이 떨어뜨린 스페셜 무기의 무료 슈팅은 스페셜 무기를 획득할 당시의 베팅 레벨로 플레이되며 무료 슈팅을 사용할 때까지 베팅 레벨은 변경할 수 없습니다.
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				게임 플레이 중 언제든 슈팅당 금액을 지불하는 스페셜 무기를 구매할 수 있습니다! 이러한 슈팅은 선택한 무기에 따라 베팅 금액을 곱해줍니다. 화면의 왼쪽에서 사용하려는 스페셜 무기 이미지를 클릭하시면 됩니다. 적이 떨어뜨린 스페셜 무기의 무료 슈팅은 스페셜 무기를 획득할 당시의 베팅 레벨로 플레이되며 무료 슈팅을 사용할 때까지 베팅 레벨은 변경할 수 없습니다.
+			</span>
+
+			<span class='description light_grey left' id='sw_info_lose'>
+				<!--tad id="TAPaytablePageSpecialWeaponsBonusModeInfo" type="txt_based" translated="true">
+					<meaning>
+						<source_meaning>
+							Special weapons must be used in the round they were won in. Any unused special weapons are lost at the end of the round.
+						</source_meaning>
+						<translated_meaning>
+							스페셜 무기는 스페셜 무기를 획득한 라운드에 사용해야 합니다. 사용하지 않은 스페셜 무기는 라운드 종료 시 사라집니다.
+						</translated_meaning>
+					</meaning>
+				</tad-->
+				스페셜 무기는 스페셜 무기를 획득한 라운드에 사용해야 합니다. 사용하지 않은 스페셜 무기는 라운드 종료 시 사라집니다.
+			</span>
+		</span>
+	</div>
+	<!--...SPECIAL WEAPONS-->
+
+	<!--WIN BIG WITH THE MONEY WHEEL!...-->
+	<div class="page" id="money_wheel">
+		<span id="gradient" class='big_header orange center'>
+			<!--tad id="TAPaytablePageMoneyWheelWinBigWithTheMoneyWheel" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						WIN BIG WITH THE MONEY WHEEL!
+					</source_meaning>
+					<translated_meaning>
+						머니 휠로 큰 상금을 받아보세요!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			머니 휠로 큰 상금을 받아보세요!
+		</span>
+		<div class='wheel'>
+			<span type="img" src="paytable/pages/money_wheel/wheel"></span>
+		</div>
+		<span class='description'>
+			<!--tad id="TAPaytablePageMoneyWheelText" type="txt_based" translated="true">
+				<meaning>
+					<source_meaning>
+						Any shot at any enemy except Legendary Bosses, with any weapon can win an instant spin on the Money Wheel.
+						Special Weapons have a higher chance to trigger the Money Wheel!
+					</source_meaning>
+					<translated_meaning>
+						무기에 상관없이 전설의 보스를 제외한 적을 쏠 경우 머니 휠의 즉석 회전을 받을 수 있습니다.
+						스페셜 무기는 머니 휠을 발생시킬 가능성이 높습니다!
+					</translated_meaning>
+				</meaning>
+			</tad-->
+			무기에 상관없이 전설의 보스를 제외한 적을 쏠 경우 머니 휠의 즉석 회전을 받을 수 있습니다.</br>
+			스페셜 무기는 머니 휠을 발생시킬 가능성이 높습니다!
+		</span>
+	</div>
+	<!--WIN BIG WITH THE MONEY WHEEL!...-->
+
+	<!--KILLS...-->
+	<div class="page" id="kills">
+		<div class="row">
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsCriticalHitCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								CRITICAL HITS
+							</source_meaning>
+							<translated_meaning>
+								크리티컬 히트
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					크리티컬 히트
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsCriticalHit" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsCriticalHit" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									CRITICAL HIT
+								</source_meaning>
+								<translated_meaning>
+									크리티컬 히트
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>				
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsCriticalHitsDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								All weapons have a random chance to deliver a Critical Hit to an enemy with every shot fired. Critical Hits from weapons are different for each weapon against each enemy.
+
+								Special Weapons have a greater chance to score a Critical Hit and can affect any enemy! Critical Hits apply a multiplier to the amount won from the shot fired. Multipliers are 2x, 3x, 5x, 7x, and 10x. Shots with the Turret can only receive a 2x multiplier.
+							</source_meaning>
+							<translated_meaning>
+								모든 무기는 슈팅을 발사할 때마다 무작위 확률로 적에게 크리티컬 히트를 가할 수 있습니다. 크리티컬 히트로 줄 수 있는 데미지는 적과 무기마다 다릅니다.
+
+								스페셜 무기는 크리티컬 히트를 입힐 확률이 더 높고 모든 적에게 영향을 미칠 수 있습니다! 크리티컬 히트는 발사된 슈팅에서 획득한 금액에 멀티플라이어를 적용합니다. 멀티플라이어는 2x, 3x, 5x, 7x, 10x입니다. 포탑으로 사격하면 2x의 멀티플라이어만 받을 수 있습니다.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					모든 무기는 슈팅을 발사할 때마다 무작위 확률로 적에게 크리티컬 히트를 가할 수 있습니다. 크리티컬 히트로 줄 수 있는 데미지는 적과 무기마다 다릅니다.
+					</br>
+					</br>
+					스페셜 무기는 크리티컬 히트를 입힐 확률이 더 높고 모든 적에게 영향을 미칠 수 있습니다! 크리티컬 히트는 발사된 슈팅에서 획득한 금액에 멀티플라이어를 적용합니다. 멀티플라이어는 2x, 3x, 5x, 7x, 10x입니다. 포탑으로 사격하면 2x의 멀티플라이어만 받을 수 있습니다.
+				</span>				
+			</div>
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsInstantWinsCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								INSTANT WINS
+							</source_meaning>
+							<translated_meaning>
+								인스턴트 우승
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					인스턴트 우승
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsInstantWin" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsInstantWin" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									INSTANT WIN!!!
+								</source_meaning>
+								<translated_meaning>
+									인스턴트 우승!!!
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsInstantWinsDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								The chance for an instant win is dynamic, depending on the enemy’s current HP and the weapon being used.
+
+								Instant wins can instantly defeat any enemy except the Legendary Bosses, Infernal Forgemasters, and Unstable Avatars, if its HP is low enough.
+								
+								Instant wins award random prizes!
+							</source_meaning>
+							<translated_meaning>
+								적의 현재 HP와 사용 중인 무기에 따라 인스턴트 우승의 확률이 변동됩니다.
+
+								인스턴트 우승은 전설의 보스, 지옥의 대장간지기 및 불안정한 아바타를 제외한 모든 적의 HP가 낮을 경우 즉시 적을 파괴합니다.
+								
+								인스턴트 우승을 통해 무작위 보상을 받아보세요!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					적의 현재 HP와 사용 중인 무기에 따라 인스턴트 우승의 확률이 변동됩니다.
+					</br>
+					</br>
+					인스턴트 우승은 전설의 보스, 지옥의 대장간지기 및 불안정한 아바타를 제외한 모든 적의 HP가 낮을 경우 즉시 적을 파괴합니다.
+					</br>
+					</br>					
+					인스턴트 우승을 통해 무작위 보상을 받아보세요!
+				</span>				
+			</div>
+			<div class='col-4 center'>
+				<span id="gradient" class='big_header orange center'>
+					<!--tad id="TAPaytablePageKillsBonusWinCaption" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								BONUS WIN!
+							</source_meaning>
+							<translated_meaning>
+								보너스 상금!
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					보너스 상금!
+				</span>
+				<div class='screenshot'>
+					<span id="TAPaytablePageKillsBonusWin" type="img" translatable="true">
+						<!--tad id="TAPaytablePageKillsBonusWin" type="img_based" translated="true">
+							<meaning>
+								<source_meaning>
+									BONUS WIN
+								</source_meaning>
+								<translated_meaning>
+									보너스 상금
+								</translated_meaning>
+							</meaning>
+						</tad-->
+					</span>
+				</div>
+				<span class='description light_grey center'>
+					<!--tad id="TAPaytablePageKillsBonusWinDescription" type="txt_based" translated="true">
+						<meaning>
+							<source_meaning>
+								If an enemy’s HP is low enough, and your shot does more damage than what remains, it is considered a Bonus Win!
+
+								Bonus Wins award a bonus cash prize in addition to the standard prize won by doing damage to the enemy.
+							</source_meaning>
+							<translated_meaning>
+								적의 HP가 충분히 낮은 경우, 남은 HP보다 더 많은 데미지를 주면 보너스 상금이 제공됩니다!
+
+								보너스 상금은 적에게 데미지를 입혀 얻은 일반 보상에 추가로 보너스 현금 보상을 제공합니다.
+							</translated_meaning>
+						</meaning>
+					</tad-->
+					적의 HP가 충분히 낮은 경우, 남은 HP보다 더 많은 데미지를 주면 보너스 상금이 제공됩니다!
+					</br>
+					</br>
+					보너스 상금은 적에게 데미지를 입혀 얻은 일반 보상에 추가로 보너스 현금 보상을 제공합니다.
+				</span>
+			</div>
+		</div>	
+	</div>
+	<!--KILLS...-->	
+
+	<!--...CONTROLS_1-->
+	<div class="page" id="controls_1">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-2 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/cross"></span>
+						<span class="center" type="img" src="paytable/pages/controls/cursor" style="width: 42px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsMouseCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Mouse Symbol
+										Crosshair
+									</source_meaning>
+									<translated_meaning>
+										마우스 심볼
+										십자선
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							마우스 심볼</br>
+							십자선
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsMouse" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									The player’s cursor acts as a crosshair for their weapon. Any fired shot will hit wherever the cursor is pointed.
+								</source_meaning>
+								<translated_meaning>
+									플레이어의 커서가 무기 십자선으로 기능합니다. 발사된 슈팅은 커서가 가리키는 곳을 맞춥니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						플레이어의 커서가 무기 십자선으로 기능합니다. 발사된 슈팅은 커서가 가리키는 곳을 맞춥니다.
+					</span>
+					<br>
+					<div class="title" style="margin-top: 20px;">
+						<span type="img" src="paytable/pages/controls/keyboard" style="padding-left: 19px; padding-right: 19px; padding-top: 4px;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePage10KeyboardCommands" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Keyboard 
+										Commands
+									</source_meaning>
+									<translated_meaning>
+										키보드
+										명령
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							키보드</br>
+							명령
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePage10KeyboardCommands1" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Spacebar: Fires the currently selected weapon wherever the cursor is pointing. Hold down to fire continuously.
+								</source_meaning>
+								<translated_meaning>
+									스페이스 바: 커서가 가리키는 곳마다 현재 선택된 무기를 발사합니다. 계속해서 발사하려면 계속 누르세요.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						스페이스 바: 커서가 가리키는 곳마다 현재 선택된 무기를 발사합니다. 계속해서 발사하려면 계속 누르세요.</br>
+					</span>
+					
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line_weight'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/mouse" style="width: 42px; transform: scaleX(-1); text-align: right;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsRightClickCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Right Click
+										Locks Target
+									</source_meaning>
+									<translated_meaning>
+										우클릭
+										타겟 조준
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							우클릭</br>
+							타겟 조준
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsRightClick" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Click the crosshair button and then click an enemy to Lock On. It will then show a targeting reticule on the chosen enemy. Any shots fired by the player will hit this target, no matter what is in the way. If Auto-Lock is enabled, the game will automatically switch to the next available target.
+								</source_meaning>
+								<translated_meaning>
+									타겟 십자선을 클릭하고, 적을 클릭하여 조준하세요. 선택된 적에 조준하면 타겟 십자선이 나타납니다. 플레이어에 의해 발사된 모든 슈팅은 방해물이 있다 하더라도 이 타겟을 맞춥니다. 만약 자동 조준이 실행되면, 다음으로 조준 가능한 적으로 자동 조준됩니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						타겟 십자선을 클릭하고, 적을 클릭하여 조준하세요. 선택된 적에 조준하면 타겟 십자선이 나타납니다. 플레이어에 의해 발사된 모든 슈팅은 방해물이 있다 하더라도 이 타겟을 맞춥니다. 만약 자동 조준이 실행되면, 다음으로 조준 가능한 적으로 자동 조준됩니다.
+					</span>
+					<br>
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/mouse" style="width: 42px;"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsLeftClickCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Left Click
+										Fires Weapon
+									</source_meaning>
+									<translated_meaning>
+										좌클릭
+										무기 발사
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							좌클릭</br>
+							무기 발사
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsLeftClick1" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires the current weapon at the location indicated by the crosshair. If no enemy target is present at the location of the crosshair, the bullet will bounce off the edges of the screen until it hits an enemy target. Holding this button down allows for continuous fire until the button is released.
+								</source_meaning>
+								<translated_meaning>
+									십자선에 의해 조준된 위치로 현재의 무기를 발사합니다. 만약 십자선의 위치가 현재 적을 조준하고 있지 않다면, 총알은 하나의 적을 조준하여 맞출 때까지 화면 가장자리에서 튕겨집니다. 버튼을 누르고 있으면 버튼에서 손을 땔 때까지 연속으로 발사됩니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						십자선에 의해 조준된 위치로 현재의 무기를 발사합니다. 만약 십자선의 위치가 현재 적을 조준하고 있지 않다면, 총알은 하나의 적을 조준하여 맞출 때까지 화면 가장자리에서 튕겨집니다. 버튼을 누르고 있으면 버튼에서 손을 땔 때까지 연속으로 발사됩니다.
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line_weight_less'></div>
+				<div class="row_content">
+					<div class='col-6 center'>
+						<span type="img" src="paytable/pages/controls/sw_5" class="sw_5"></span>
+						<span type="img" src="paytable/pages/controls/sw_3" class="sw_3"></span>
+						<span type="img" src="paytable/pages/controls/sw_1" class="sw_1"></span>
+						<span type="img" src="paytable/pages/controls/sw_7" class="sw_7"></span>
+						<span type="img" src="paytable/pages/controls/sw_8" class="sw_8"></span>
+					</div>			
+					<div class='col-6 center'>
+						<span class='title_capture weapon_capture'>
+							<!--tad id="TAPaytablePageControlsWeaponCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Special 
+										Weapons
+									</source_meaning>
+									<translated_meaning>
+										스페셜
+										무기
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							스페셜</br> 
+							무기
+						</span>
+						<span class='description light_grey weapon_description'>
+							<!--tad id="TAPaytablePageControlsWeaponDescription" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										You can use Special Weapons from a series of buttons on the left side of the screen. The Cost Per Shot of the Weapon is indicated on the button. Special Weapons do not ricochet off walls.
+									</source_meaning>
+									<translated_meaning>
+										화면 왼쪽에서 일련의 버튼을 눌러 스페셜 무기를 사용할 수 있습니다. 무기의 슈팅당 비용은 버튼에 표시됩니다. 스페셜 무기는 벽에서 튕겨지지 않습니다.
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							화면 왼쪽에서 일련의 버튼을 눌러 스페셜 무기를 사용할 수 있습니다. 무기의 슈팅당 비용은 버튼에 표시됩니다. 스페셜 무기는 벽에서 튕겨지지 않습니다.
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-1 center'>
+				<div class="row_content">
+					<div class="title" style="margin-left: -6px;">
+						<span type="img" src="paytable/pages/controls/minus" style="width: 30px"></span>
+						<span type="img" src="paytable/pages/controls/plus" style="width: 30px"></span>
+						<span class='title_capture' style="margin-left: 4px; margin-top: 2px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Buttons
+									</source_meaning>
+									<translated_meaning>
+										버튼
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							버튼
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: 6px; margin-left: -6px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Changes the bet level.
+									</source_meaning>
+									<translated_meaning>
+										베팅 레벨 변경.
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							베팅 레벨 변경.
+					</span>
+					<span type="img" src="paytable/pages/controls/turret" class="turret_img"></span>
+					<span class='description light_grey' style="margin-left: -6px; margin-top: 4px;">
+						<!--tad id="TAPaytablePageControlsSwitch" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Switches between your equipped Special Weapon and the Standard Turret.
+								</source_meaning>
+								<translated_meaning>
+									장착한 스페셜 무기와 일반 포탑을 전환합니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						장착한 스페셜 무기와 일반 포탑을 전환합니다.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_1-->
+
+	<!--CONTROLS_1_MOBILE...-->
+	<div class="page" id="mobile_controls_1">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/finger" style="width: 60px"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsFingerTap" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Finger Tap
+									</source_meaning>
+									<translated_meaning>
+										터치
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							터치
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsFingerTapText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									The player’s finger tap position designates the intended target. Any fired shot will proceed to the location where the screen is tapped.
+								</source_meaning>
+								<translated_meaning>
+									플레이어가 터치하는 위치로 타겟을 조준합니다. 모든 발사된 슈팅은 스크린에서 터치된 곳으로 날아갑니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						플레이어가 터치하는 위치로 타겟을 조준합니다. 모든 발사된 슈팅은 스크린에서 터치된 곳으로 날아갑니다.
+					</span>
+					<div class="title" style="margin-top: 18px;">
+						<span type="img" src="paytable/pages/controls/target" style="width: 60px;"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsLockOnTarget" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Lock Target
+									</source_meaning>
+									<translated_meaning>
+										타겟 조준
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							타겟 조준
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: -13px;">
+						<!--tad id="TAPaytablePageControlsLockOnTargeText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Tap the crosshair button and then tap an enemy to Lock On. It will then show a targeting crosshair on the chosen enemy. Any shots fired by the player will hit this target, no matter what is in the way. If Auto-Lock is enabled, the game will automatically switch to the next available target.
+								</source_meaning>
+								<translated_meaning>
+									타겟 십자선을 터치하고, 적을 조준하여 터치하세요. 선택된 적에 조준하면 타겟 십자선이 나타납니다. 플레이어가 발사한 모든 샷은 방해물이 있더라도 타겟을 맞춥니다. 만약 자동 조준이 실행되면 다음으로 조준 가능한 적으로 자동 조준됩니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						타겟 십자선을 터치하고, 적을 조준하여 터치하세요. 선택된 적에 조준하면 타겟 십자선이 나타납니다. 플레이어가 발사한 모든 샷은 방해물이 있더라도 타겟을 맞춥니다. 만약 자동 조준이 실행되면 다음으로 조준 가능한 적으로 자동 조준됩니다.
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span type="img" src="paytable/pages/controls/finger_tap" style="width: 60px"></span>
+						<span class='title_capture' style="margin-top: 13px;">
+							<!--tad id="TAPaytablePageControlsFingerTap" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Fire Weapon
+									</source_meaning>
+									<translated_meaning>
+										무기 발사
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							무기 발사
+						</span>
+					</div>
+					<span class='description light_grey' id="dis">
+						<!--tad id="TAPaytablePageControlsLeftClick" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Fires the current weapon at the location indicated by the crosshair. If no enemy target is present at the location of the crosshair, the bullet will bounce off the edges of the screen until it hits an enemy target. Holding your finger on the screen allows for continuous fire until the finger is released.
+								</source_meaning>
+								<translated_meaning>
+									십자선에 의해 조준된 위치로 현재의 무기를 발사합니다. 만약 십자선의 위치가 현재 적을 조준하고 있지 않다면, 총알은 하나의 적을 조준하여 맞출 때까지 화면 가장자리에서 튕겨집니다. 손가락으로 화면을 오래 누르면 손가락을 뗄 때까지 연속으로 발사할 수 있습니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						십자선에 의해 조준된 위치로 현재의 무기를 발사합니다. 만약 십자선의 위치가 현재 적을 조준하고 있지 않다면, 총알은 하나의 적을 조준하여 맞출 때까지 화면 가장자리에서 튕겨집니다. 손가락으로 화면을 오래 누르면 손가락을 뗄 때까지 연속으로 발사할 수 있습니다.
+					</span>
+				</div>
+			</div>
+			<div class='col-4 center'>
+				<div class='line_weight'></div>
+				<div class="row_content">
+					<div class='col-6 center'>
+						<span type="img" src="paytable/pages/controls/sw_1" class="sw_1"></span>
+						<span type="img" src="paytable/pages/controls/sw_8" class="sw_8"></span>
+						<span type="img" src="paytable/pages/controls/sw_3" class="sw_3"></span>
+						<span type="img" src="paytable/pages/controls/sw_7" class="sw_7"></span>
+						<span type="img" src="paytable/pages/controls/sw_5" class="sw_5"></span>
+					</div>
+					<div class='col-6 center'>
+						<span class='title_capture weapon_capture'>
+							<!--tad id="TAPaytablePageControlsWeaponCapture" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Special 
+										Weapons
+									</source_meaning>
+									<translated_meaning>
+										스페셜
+										무기
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							스페셜</br> 
+							무기
+						</span>
+						<span class='description light_grey weapon_description'>
+							<!--tad id="TAPaytablePageControlsWeaponDescription" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										You can use Special Weapons from a series of buttons on the left side of the screen. The Cost Per Shot of the Weapon is indicated on the button. Special Weapons do not ricochet off walls.
+									</source_meaning>
+									<translated_meaning>
+										화면 왼쪽에서 일련의 버튼을 눌러 스페셜 무기를 사용할 수 있습니다. 무기의 슈팅당 비용은 버튼에 표시됩니다. 스페셜 무기는 벽에서 튕겨지지 않습니다.
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							화면 왼쪽에서 일련의 버튼을 눌러 스페셜 무기를 사용할 수 있습니다. 무기의 슈팅당 비용은 버튼에 표시됩니다. 스페셜 무기는 벽에서 튕겨지지 않습니다.
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class='col-2 center'>
+				<div class="row_content">
+					<div class="title" style="margin-left: -6px;">
+						<span type="img" src="paytable/pages/controls/minus" style="width: 30px"></span>
+						<span type="img" src="paytable/pages/controls/plus" style="width: 30px"></span>
+						<span class='title_capture' style="margin-left: 4px; margin-top: 2px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Buttons
+									</source_meaning>
+									<translated_meaning>
+										버튼
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							버튼
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-top: 6px; margin-left: -6px;">
+							<!--tad id="TAPaytablePageControlsBetLevel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Changes the bet level.
+									</source_meaning>
+									<translated_meaning>
+										베팅 레벨 변경.
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							베팅 레벨 변경.
+					</span>
+					<span type="img" src="paytable/pages/controls/turret" class="turret_img"></span>
+					<span class='description light_grey' style="margin-left: -6px; margin-top: 4px;">
+						<!--tad id="TAPaytablePageControlsSwitch" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Switches between your equipped Special Weapon and the Standard Turret.
+								</source_meaning>
+								<translated_meaning>
+									장착한 스페셜 무기와 일반 포탑을 전환합니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						장착한 스페셜 무기와 일반 포탑을 전환합니다.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_1_MOBILE-->
+
+	<!--CONTROLS_2...-->
+	<div class="page" id="controls_2">
+		<div id="back">
+			<span type="img" src="paytable/pages/controls/back"></span>
+		</div>
+		<div class="row">
+			<div class='col-6 center'>
+				<div class='line' style="margin-left: 450px"></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/gun" style="width: 60px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsFireControlPanel" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Fire Control Panel
+									</source_meaning>
+									<translated_meaning>
+										발사 컨트롤 패널
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							발사 컨트롤 패널
+						</span>
+					</div>
+					<span class='description light_grey' id="disableAutofire">
+						<!--tad id="TAPaytablePageControlsMouse" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Fire Control Panel, where you can configure the settings for Auto-Fire, Auto-Lock and other options.
+									
+									• Lock On Target: When active, the game will automatically target the next enemy on screen depending on which Target Mode is selected.
+									
+									• Auto Fire: When active, the game will automatically fire at a locked target with the active weapon. If no target is selected, holding down the fire button will cause the game to fire continuously at whatever the cursor is pointing at.
+									
+									• Fire Speed [> >> >>>]: Configures the speed that Auto Fire will fire shots.
+									> denotes the slowest speed. >>> denotes the fastest.
+								</source_meaning>
+								<translated_meaning>
+									발사 컨트롤 패널을 열어 자동 발사, 자동 조준 그리고 그 외의 옵션에 대한 설정을 관리할 수 있습니다.
+									
+									• 타겟 조준: 이 기능이 활성화되면, 선택된 타겟 모드에 따라 화면에서 다음 적으로 자동 조준됩니다.
+									
+									• 자동 발사: 이 기능이 활성화되면, 본 게임은 활성화된 무기로 조준된 타겟에 자동으로 슈팅됩니다. 만약 타겟이 선택되지 않으면, 발사 버튼을 눌러 커서가 가르키고 있는 곳마다 연속으로 발사합니다.
+									
+									• 발사 속도 [> >> >>>]: 자동 발사로 발사되는 슈팅 속도를 조정하십시오.
+									> 은 가장 낮은 속도를 의미합니다. >>>은 가장 빠른 속도를 의미합니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						발사 컨트롤 패널을 열어 자동 발사, 자동 조준 그리고 그 외의 옵션에 대한 설정을 관리할 수 있습니다.</br>
+						</br>
+						<span class="description_bold light_grey">• 타겟 조준:</span> 이 기능이 활성화되면, 선택된 타겟 모드에 따라 화면에서 다음 적으로 자동 조준됩니다.</br>
+						</br>
+						<span class="description_bold light_grey">• 자동 발사:</span> 이 기능이 활성화되면, 본 게임은 활성화된 무기로 조준된 타겟에 자동으로 슈팅됩니다. 만약 타겟이 선택되지 않으면, 발사 버튼을 눌러 커서가 가르키고 있는 곳마다 연속으로 발사합니다.</br>
+						</br>
+						<span class="description_bold light_grey">• 발사 속도 [> >> >>>]:</span> 자동 발사로 발사되는 슈팅 속도를 조정하십시오.</br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> 은 가장 낮은 속도를 의미합니다. >>>은 가장 빠른 속도를 의미합니다.</br>
+					</span>
+					<span class='description light_grey' id="enebleAutofire">
+					<span class='description light_grey' id="enebleAutofire">
+						<!--tad id="TAPaytablePageControlsMouseEnebleAutofire" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Fire Control Panel, where you can configure the settings for Auto-Lock and other options.
+									
+									• Lock On Target: When active, the game will automatically target the next enemy on screen depending on which Target Mode is selected.
+									• Fire Speed [> >> >>>]: Configures the minimal time intervals between shots. > denotes the slowest speed. >>> denotes the fastest.
+								</source_meaning>
+								<translated_meaning>
+									발사 컨트롤 패널을 열어 타겟 조준 및 그 외의 옵션에 대한 설정을 관리할 수 있습니다.
+									
+									• 타겟 조준: 이 기능이 활성화되면, 선택된 타겟 모드에 따라 화면에서 다음 적으로 자동 조준됩니다.
+									• 발사 속도 [> >> >>>]: 샷 사이의 최소 시간 간격을 설정하십시오. > 은 가장 낮은 속도를 의미합니다. >>>은 가장 빠른 속도를 의미합니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						발사 컨트롤 패널을 열어 타겟 조준 및 그 외의 옵션에 대한 설정을 관리할 수 있습니다.
+						</br>
+						</br>
+						<span class="description_bold light_grey">• 타겟 조준:</span> 이 기능이 활성화되면, 선택된 타겟 모드에 따라 화면에서 다음 적으로 자동 조준됩니다.</br>
+						</br>
+						<span class="description_bold light_grey">• 발사 속도 [> >> >>>]:</span> 샷 사이의 최소 시간 간격을 설정하십시오.</br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> 은 가장 낮은 속도를 의미합니다. >>>은 가장 빠른 속도를 의미합니다.</br>
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class='line'></div>
+				<div class="row_content">
+					<div class="title">
+						<span class="left" type="img" src="paytable/pages/controls/gun" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsTargetMode" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Target Mode
+									</source_meaning>
+									<translated_meaning>
+										타겟 모드
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							타겟 모드
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsTargetModeText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Changes mode for Lock on Target
+									
+									• SAME: Will target the next available enemy with the closest amount of HP the previous target had.
+									
+									• LOW: Will target the next available enemy with the lowest HP.
+									
+									• HIGH: Will target the next available enemy with the highest HP.
+								</source_meaning>
+								<translated_meaning>
+									타겟 조준의 변경 모드
+									
+									• 동일: 다음으로 조준 가능한 적 중에서 이전 타겟과 가장 근접한 HP를 지닌 적을 조준합니다.
+									
+									• 낮음: 다음으로 조준 가능한 가장 낮은 HP를 지닌 적을 조준합니다.
+									
+									• 높음: 다음으로 조준 가능한 가장 높은 HP를 지닌 적을 조준합니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						타겟 조준의 변경 모드</br>
+						</br></br>
+						<span class="description_bold light_grey">• 동일:</span> 다음으로 조준 가능한 적 중에서 이전 타겟과 가장 근접한 HP를 지닌 적을 조준합니다.</br>
+						</br></br>
+						<span class="description_bold light_grey">• 낮음:</span> 다음으로 조준 가능한 가장 낮은 HP를 지닌 적을 조준합니다.</br>
+						</br></br>
+						<span class="description_bold light_grey">• 높음:</span> 다음으로 조준 가능한 가장 높은 HP를 지닌 적을 조준합니다.
+					</span>
+				</div>
+			</div>
+			<div class='col-3 center'>
+				<div class="row_content">
+					<div class="title" style="margin-top: 13px">
+						<span class="left" type="img" src="paytable/pages/controls/sound" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsSound" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Sound
+									</source_meaning>
+									<translated_meaning>
+										사운드
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							사운드
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsSoundText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Turns all sounds off or on.
+								</source_meaning>
+								<translated_meaning>
+									모든 소리 끄거나 켜기.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						모든 소리 끄거나 켜기.
+					</span>
+					<div class="title" style="margin-top: 13px">
+						<span class="left" type="img" src="paytable/pages/controls/back_icon" style="width: 45px"></span>
+						<span class='title_capture'>
+							<!--tad id="TAPaytablePageControlsBack" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Back
+									</source_meaning>
+									<translated_meaning>
+										뒤로가기
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							뒤로가기
+						</span>
+					</div>
+					<span class='description light_grey'>
+						<!--tad id="TAPaytablePageControlsBackText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Leaves the room and returns to the game lobby.
+								</source_meaning>
+								<translated_meaning>
+									방을 나가고 게임 로비로 돌아가기.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						방을 나가고 게임 로비로 돌아가기.
+					</span>
+					<div class="title" id="setting">
+						<div class="title" style="margin-top: 13px;">
+						<span class="left" type="img" src="paytable/pages/controls/gear" style="width: 45px"></span>
+						<span class='title_capture' style="width: 45px">
+							<!--tad id="TAPaytablePageControlsSettings" type="txt_based" translated="true">
+								<meaning>
+									<source_meaning>
+										Settings
+									</source_meaning>
+									<translated_meaning>
+										설정
+									</translated_meaning>
+								</meaning>
+							</tad-->
+							설정
+						</span>
+					</div>
+					<span class='description light_grey' style="margin-left: -90px; margin-top: 50px;">
+						<!--tad id="TAPaytablePageControlsSettingsText" type="txt_based" translated="true">
+							<meaning>
+								<source_meaning>
+									Opens the Settings Panel.
+									Note: Gameplay continues in background.
+								</source_meaning>
+								<translated_meaning>
+									설정 패널 열기.
+									주의: 배경에서 게임 플레이가 진행중입니다.
+								</translated_meaning>
+							</meaning>
+						</tad-->
+						설정 패널 열기.</br>
+						<span class="description_italic light_grey">주의: 배경에서 게임 플레이가 진행중입니다.</span>
+					</span>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--...CONTROLS_2-->
+</div>

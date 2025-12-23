@@ -1,0 +1,50 @@
+{
+	"1": [
+		{
+			"name": "maps/1/back_1",
+			"src": "maps/1/back_1.jpg",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		}
+	],
+	"2": [
+		{
+			"name": "maps/2/back_2",
+			"src": "maps/2/back_2.jpg",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		}
+	],
+	"3": [
+		{
+			"name": "maps/3/back_3",
+			"src": "maps/3/back_3.jpg",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		}
+	],
+	"4": [
+		{
+			"name": "maps/4/back_4",
+			"src": "maps/4/back_4.jpg",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"noscale": false
+		}
+	]
+}

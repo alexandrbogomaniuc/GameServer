@@ -1,0 +1,79 @@
+import SimpleUIController from '../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import BigWinInfo from '../../../../model/uis/awarding/big_win/BigWinInfo';
+import BigWinView from '../../../../view/uis/awarding/big_win/BigWinView';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+
+class BigWinController extends SimpleUIController {
+
+	static get EVENT_ON_ANIMATION_COMPLETED() 	{ return BigWinView.EVENT_ON_ANIMATION_COMPLETED; }
+	static get EVENT_ON_ANIMATION_INTERRUPTED() { return BigWinView.EVENT_ON_ANIMATION_INTERRUPTED;}
+	static get EVENT_ON_COIN_LANDED() 			{ return BigWinView.EVENT_ON_COIN_LANDED; }
+	static get EVENT_ON_BIG_WIN_AWARD_COUNTED() { return BigWinView.EVENT_ON_BIG_WIN_AWARD_COUNTED; }
+
+	i_startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	i_interrupt()
+	{
+		this._interrupt();
+	}
+
+	constructor(aTotalWin_num, aShotStake_num, aParentContainer_sprt)
+	{
+		super(new BigWinInfo(aTotalWin_num, aShotStake_num), new BigWinView(aParentContainer_sprt));
+	}
+
+	__initControlLevel()
+	{
+		super.__initControlLevel();
+	}
+
+	__initViewLevel()
+	{
+		super.__initViewLevel();
+
+		this.view.on(BigWinView.EVENT_ON_ANIMATION_COMPLETED, this._onAnimationCompleted, this);
+		this.view.on(BigWinView.EVENT_ON_COIN_LANDED, this._onCoinLanded, this);
+		this.view.on(BigWinView.EVENT_ON_BIG_WIN_AWARD_COUNTED, this.emit, this);
+	}
+
+	_onCoinLanded(aEvent_obj)
+	{
+		this.emit(BigWinController.EVENT_ON_COIN_LANDED, aEvent_obj);
+		this.info.pendingTotalWin = this.info.pendingTotalWin - aEvent_obj.money;
+	}
+
+	_startAnimation()
+	{
+		this.view.i_startAnimation();
+	}
+
+	_onAnimationCompleted()
+	{
+		this.emit(BigWinController.EVENT_ON_ANIMATION_COMPLETED);
+	}
+
+	_interrupt()
+	{
+		this.view && this.view.i_interrupt();
+
+		let lMasterSeatId_int = APP.playerController.info.seatId;
+		this.emit(BigWinController.EVENT_ON_COIN_LANDED, {money: this.info.pendingTotalWin, seatId: lMasterSeatId_int }); // to update WIN field
+		this.emit(BigWinController.EVENT_ON_BIG_WIN_AWARD_COUNTED, {money: this.info.pendingTotalWin}); // to update BALANCE field
+	}
+
+	_clear()
+	{
+		this.view.i_clear();
+		this.info.i_clear();
+	}
+
+	destroy()
+	{
+		super.destroy();
+	}
+}
+
+export default BigWinController;

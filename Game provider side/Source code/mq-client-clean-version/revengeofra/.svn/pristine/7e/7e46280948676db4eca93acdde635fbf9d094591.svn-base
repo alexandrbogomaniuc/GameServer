@@ -1,0 +1,617 @@
+var SparkExplode = {
+  "frames": {
+    "spark_explode_0000.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0001.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 404,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0002.jpg": {
+      "frame": {
+        "x": 400,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0003.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 808,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0004.jpg": {
+      "frame": {
+        "x": 400,
+        "y": 404,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0005.jpg": {
+      "frame": {
+        "x": 800,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0006.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 1212,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0007.jpg": {
+      "frame": {
+        "x": 400,
+        "y": 808,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0008.jpg": {
+      "frame": {
+        "x": 800,
+        "y": 404,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0009.jpg": {
+      "frame": {
+        "x": 1200,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0010.jpg": {
+      "frame": {
+        "x": 0,
+        "y": 1616,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0011.jpg": {
+      "frame": {
+        "x": 400,
+        "y": 1212,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0012.jpg": {
+      "frame": {
+        "x": 800,
+        "y": 808,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0013.jpg": {
+      "frame": {
+        "x": 1200,
+        "y": 404,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0014.jpg": {
+      "frame": {
+        "x": 1600,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0015.jpg": {
+      "frame": {
+        "x": 400,
+        "y": 1616,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0016.jpg": {
+      "frame": {
+        "x": 800,
+        "y": 1212,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0017.jpg": {
+      "frame": {
+        "x": 1200,
+        "y": 808,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0018.jpg": {
+      "frame": {
+        "x": 1600,
+        "y": 404,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0019.jpg": {
+      "frame": {
+        "x": 800,
+        "y": 1616,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0020.jpg": {
+      "frame": {
+        "x": 1200,
+        "y": 1212,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0021.jpg": {
+      "frame": {
+        "x": 1600,
+        "y": 808,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0022.jpg": {
+      "frame": {
+        "x": 1200,
+        "y": 1616,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0023.jpg": {
+      "frame": {
+        "x": 1600,
+        "y": 1212,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "spark_explode_0024.jpg": {
+      "frame": {
+        "x": 1600,
+        "y": 1616,
+        "w": 400,
+        "h": 404
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 400,
+        "h": 404
+      },
+      "sourceSize": {
+        "w": 400,
+        "h": 404
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "spark_explode.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 2048,
+      "h": 2048
+    },
+    "scale": 2
+  }
+}
+
+export default SparkExplode;

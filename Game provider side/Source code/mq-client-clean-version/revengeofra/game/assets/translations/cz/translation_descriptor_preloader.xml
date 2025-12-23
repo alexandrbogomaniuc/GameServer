@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+	<font name="fnt_nm_barlow_semibold" url="[root_resources_path]translations/cz/fonts/barlow_semibold_cz.ttf"/>
+	</fonts>
+	
+	<tasds>
+		<tad id="TALobbyPreloaderLogo" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MAX DUEL RISE OF THE MUMMY</source_meaning>
+				<translated_meaning>MAX DUEL RISE OF THE MUMMY</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo.png"/>
+		</tad>
+		
+		<tad id="TALobbyPreloaderLogoReturnOfRaGlow" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>RISE OF THE MUMMY</source_meaning>
+				<translated_meaning>RISE OF THE MUMMY</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo_rise_of_the_mummy_glow.jpg"/>
+		</tad>
+		
+		<tad id="TALobbyPreloaderLogoMaxQuestGlow" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MAX DUEL</source_meaning>
+				<translated_meaning>MAX DUEL</translated_meaning>
+			</meaning>
+			<area x="-512" y="-128" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo_max_quest_glow.jpg"/>
+		</tad>
+		
+		<tad id="TALobbyPreloaderLogoFlarePosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-64" y="-8" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TAPreloaderBrand" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BETSOFT GAMING</source_meaning>
+				<translated_meaning>BETSOFT GAMING</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="256" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="top"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/brand.png"/>
+		</tad>
+		
+		<tad id="TAPreloderClickToStartLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CLICK TO START</source_meaning>
+				<translated_meaning>KLIKNUTÍM SPUSTÍTE</translated_meaning>
+			</meaning>
+			<area x="-200" y="-15" w="400" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="18" color="0Xffffff">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>KLIKNUTÍM SPUSTÍTE</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloderClickToStartLabelMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP TO START</source_meaning>
+				<translated_meaning>KLEPNUTÍM ZAČNĚTE</translated_meaning>
+			</meaning>
+			<area x="-200" y="-15" w="400" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="18" color="0Xffffff">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>KLEPNUTÍM ZAČNĚTE</content>
+			</txt>
+		</tad>
+
+		<!--TIPS...-->
+		<tad id="TAPreloaderTip0" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use SPECIAL WEAPONS for HIGH VALUE ENEMIES</source_meaning>
+				<translated_meaning>Na NEPŘÁTELE S VYSOKOU HODNOTOU použijte SPECIÁLNÍ ZBRANĚ</translated_meaning>
+			</meaning>
+			<area x="-400" y="-75" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="23">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>Na NEPŘÁTELE S VYSOKOU HODNOTOU&#010;použijte SPECIÁLNÍ ZBRANĚ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderTip1" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RIGHT CLICK to AUTO-LOCK target</source_meaning>
+				<translated_meaning>KLIKNĚTE NA PRAVÉ TLAČÍTKO MYŠI, abyste AUTOMATICKY ZAMĚŘILI na cíl</translated_meaning>
+			</meaning>
+			<area x="-400" y="-75" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="23">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>KLIKNĚTE NA PRAVÉ TLAČÍTKO MYŠI,&#010;abyste AUTOMATICKY ZAMĚŘILI na cíl</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderMobileTip1" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP THE BUTTON, THEN THE TARGET TO LOCK ON</source_meaning>
+				<translated_meaning>KLEPNĚTE NA TLAČÍTKO A PAK NA CÍL, KTERÝ CHCETE ZAMĚŘOVAT</translated_meaning>
+			</meaning>
+			<area x="-400" y="-75" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="23">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>KLEPNĚTE NA TLAČÍTKO A PAK NA CÍL,&#010;KTERÝ CHCETE ZAMĚŘOVAT</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderTip2" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use SPECIAL WEAPONS at any time with the SPECIAL WEAPONS BUTTONS</source_meaning>
+				<translated_meaning>Použijte kdykoli SPECIÁLNÍ ZBRANĚ pomocí TLAČÍTEK SPECIÁLNÍCH ZBRANÍ</translated_meaning>
+			</meaning>
+			<area x="-400" y="-75" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="23">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>Použijte kdykoli SPECIÁLNÍ ZBRANĚ pomocí&#010;TLAČÍTEK SPECIÁLNÍCH ZBRANÍ</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderTip3" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CLICK AND HOLD button for AUTOFIRE!</source_meaning>
+				<translated_meaning>KLIKNĚTE A PODRŽTE tlačítko AUTOMATICKÉ STŘÍLENÍ!</translated_meaning>
+			</meaning>
+			<area x="-400" y="-75" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="23">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>KLIKNĚTE A PODRŽTE tlačítko&#010;AUTOMATICKÉ STŘÍLENÍ!</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderMobileTip3" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Tap and hold to AUTOFIRE!</source_meaning>
+				<translated_meaning>AUTOMATICKÉ STŘÍLENÍ se aktivuje klepnutím a podržením tlačítka!</translated_meaning>
+			</meaning>
+			<area x="-400" y="-75" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="23">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>AUTOMATICKÉ STŘÍLENÍ se aktivuje&#010;klepnutím a podržením tlačítka!</content>
+			</txt>
+		</tad>
+		<!--...TIPS-->
+	</tasds>
+</td>

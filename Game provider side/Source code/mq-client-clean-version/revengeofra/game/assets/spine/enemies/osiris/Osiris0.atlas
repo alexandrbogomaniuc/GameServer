@@ -1,0 +1,76 @@
+
+Osiris0.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Osiris270_Head
+  rotate: true
+  xy: 826, 35
+  size: 117, 152
+  orig: 117, 152
+  offset: 0, 0
+  index: -1
+Osiris270_Hips
+  rotate: false
+  xy: 2, 2
+  size: 131, 244
+  orig: 131, 244
+  offset: 0, 0
+  index: -1
+Osiris270_Torso
+  rotate: true
+  xy: 320, 2
+  size: 124, 173
+  orig: 124, 173
+  offset: 0, 0
+  index: -1
+Osiris_ArmL
+  rotate: true
+  xy: 511, 74
+  size: 87, 156
+  orig: 87, 156
+  offset: 0, 0
+  index: -1
+Osiris_ArmR
+  rotate: true
+  xy: 135, 3
+  size: 66, 152
+  orig: 66, 152
+  offset: 0, 0
+  index: -1
+Osiris_Head
+  rotate: true
+  xy: 669, 38
+  size: 114, 155
+  orig: 114, 155
+  offset: 0, 0
+  index: -1
+Osiris_Hips
+  rotate: true
+  xy: 320, 128
+  size: 118, 189
+  orig: 118, 189
+  offset: 0, 0
+  index: -1
+Osiris_LegL
+  rotate: true
+  xy: 511, 163
+  size: 83, 224
+  orig: 83, 224
+  offset: 0, 0
+  index: -1
+Osiris_LegR
+  rotate: true
+  xy: 737, 154
+  size: 92, 214
+  orig: 92, 214
+  offset: 0, 0
+  index: -1
+Osiris_Torso
+  rotate: false
+  xy: 135, 71
+  size: 183, 175
+  orig: 183, 175
+  offset: 0, 0
+  index: -1

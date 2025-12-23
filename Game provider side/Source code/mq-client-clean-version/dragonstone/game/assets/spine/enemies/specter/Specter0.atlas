@@ -1,0 +1,13 @@
+
+Specter0.png
+size: 512,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+specter0
+  rotate: false
+  xy: 4, 4
+  size: 340, 1059
+  orig: 340, 1059
+  offset: 0, 0
+  index: -1

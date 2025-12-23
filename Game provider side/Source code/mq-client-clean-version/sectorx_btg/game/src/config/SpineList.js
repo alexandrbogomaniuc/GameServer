@@ -1,0 +1,43 @@
+const SPINE_LIST = [
+	{name: 'enemies/rocky/Rocky', jsonScale: 1, textureScale: 0.5, assets: ['enemies/rocky/rocky']},
+	{name: 'enemies/pointy/Pointy', jsonScale: 1, textureScale: 0.5, assets: ['enemies/pointy/pointy']},
+	{name: 'enemies/spiky/Spiky', jsonScale: 1, textureScale: 0.5, assets: ['enemies/spiky/spiky']},
+	{name: 'enemies/trex/Trex', jsonScale: 1, textureScale: 0.5, assets: ['enemies/trex/trex']},
+	{name: 'enemies/krang/Krang', jsonScale: 1, textureScale: 0.5, assets: ['enemies/krang/krang']},
+	{name: 'enemies/kang/Kang', jsonScale: 1, textureScale: 0.5, assets: ['enemies/kang/kang']},
+	{name: 'enemies/one_eye/OneEye', jsonScale: 1, textureScale: 0.5, assets: ['enemies/one_eye/one_eye']},
+	{name: 'enemies/pink_flyer/PinkFlyer', jsonScale: 1, textureScale: 0.5, assets: ['enemies/pink_flyer/pink_flyer']},
+	{name: 'enemies/yellow_alien/YellowAlien', jsonScale: 1, textureScale: 0.5, assets: ['enemies/yellow_alien/yellow_alien']},
+	{name: 'enemies/small_flyer/SmallFlyer', jsonScale: 1, textureScale: 0.5, assets: ['enemies/small_flyer/small_flyer']},
+	{name: 'enemies/jump/Jumper', jsonScale: 1, textureScale: 0.5, assets: ['enemies/jump/jumper_blue', 'enemies/jump/jumper_green', 'enemies/jump/jumper_white']},
+	{name: 'enemies/green_hopper/GreenHopper', jsonScale: 1, textureScale: 0.5, assets: ['enemies/green_hopper/green_hopper']},
+	{name: 'enemies/flyer_mutalisk/FlyerMutalisk', jsonScale: 1, textureScale: 0.5, assets: ['enemies/flyer_mutalisk/flyer_mutalisk']},
+	{name: 'enemies/slug/Slug', jsonScale: 1, textureScale: 0.5, assets: ['enemies/slug/slug']},
+	{name: 'enemies/jellyfish/Jellyfish', jsonScale: 1, textureScale: 0.25, assets: ['enemies/jellyfish/jellyfish']},
+	{name: 'enemies/mflyer/mflyer', jsonScale: 1, textureScale: 0.5, assets: ['enemies/mflyer/mflyer']},
+	{name: 'enemies/red_head_flyer/red_head_flyer', jsonScale: 1, textureScale: 0.5, assets: ['enemies/red_head_flyer/red_head_flyer']},
+	{name: 'enemies/froggy/froggy', jsonScale: 1, textureScale: 0.5, assets: ['enemies/froggy/froggy']},
+	{name: 'enemies/eye_flyer/EyeFlyer', jsonScale: 1, textureScale: 0.25, assets: ['enemies/eye_flyer/eye_flyer_green', 'enemies/eye_flyer/eye_flyer_purple', 'enemies/eye_flyer/eye_flyer_red', 'enemies/eye_flyer/eye_flyer_yellow']},
+	{name: 'enemies/bioraptor/Bioraptor', jsonScale: 1, textureScale: 0.25, assets: ['enemies/bioraptor/bioraptor']},
+	{name: 'enemies/crawler/crawler', jsonScale: 1, textureScale: 0.5, assets: ['enemies/crawler/crawler']},
+	{name: 'enemies/mothy/Mothy', jsonScale: 1, textureScale: 0.5, assets: ['enemies/mothy/mothy_blue', 'enemies/mothy/mothy_red', 'enemies/mothy/mothy_white', 'enemies/mothy/mothy_yellow']},
+	{name: 'enemies/flyer/flyer', jsonScale: 1, textureScale: 0.5, assets: ['enemies/flyer/flyer']},
+
+	{name: 'enemies/laser_capsule/LaserCapsule', jsonScale: 1, textureScale: 0.5, assets: ['enemies/laser_capsule/laser_capsule']},
+	{name: 'enemies/killer_capsule/KillerCapsule', jsonScale: 1, textureScale: 0.5, assets: ['enemies/killer_capsule/killer_capsule']},
+	{name: 'enemies/gold_capsule/GoldCapsule', jsonScale: 1, textureScale: 0.5, assets: ['enemies/gold_capsule/gold_capsule']},
+	{name: 'enemies/lightning_capsule/LightningCapsule', jsonScale: 1, textureScale: 0.5, assets: ['enemies/lightning_capsule/lightning_capsule']},
+	{name: 'enemies/bullet_capsule/BulletCapsule', jsonScale: 1, textureScale: 0.5, assets: ['enemies/bullet_capsule/bullet_capsule']},
+	{name: 'enemies/bomb_capsule/BombCapsule', jsonScale: 1, textureScale: 0.5, assets: ['enemies/bomb_capsule/bomb_capsule']},
+	{name: 'enemies/freeze_capsule/FreezeCapsule', jsonScale: 1, textureScale: 0.5, assets: ['enemies/freeze_capsule/freeze_capsule']},
+
+	{name: 'enemies/fire_boss/FireBoss', jsonScale: 1, textureScale: 0.5, assets: ['enemies/fire_boss/fire_boss']},
+	{name: 'enemies/lightning_boss/LightningBoss', jsonScale: 1, textureScale: 0.5, assets: ['enemies/lightning_boss/lightning_boss']},
+	{name: 'enemies/earth/earth', jsonScale: 1, textureScale: 0.5, assets: ['enemies/earth/earth']},
+	{name: 'enemies/ice_boss/IceBoss', jsonScale: 1, textureScale: 0.5, assets: ['enemies/ice_boss/ice_boss']},
+
+	{name: 'enemies/money/gold_container', jsonScale: 1, textureScale: 1, assets: ['enemies/money/gold_container']},
+	{name: 'enemies/money/lock_vfx/lock_vfx', jsonScale: 1, textureScale: 1, assets: ['enemies/money/lock_vfx/lock_vfx']},
+];
+
+export default SPINE_LIST;

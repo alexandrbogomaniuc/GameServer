@@ -1,0 +1,255 @@
+{
+	"images": [
+		{
+			"name": "preloader/cross",
+			"src": "preloader/cross.png",
+			"width": 57,
+			"height": 57,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/finger",
+			"src": "preloader/finger.png",
+			"width": 135,
+			"height": 147,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/back",
+			"src": "preloader/back.jpg",
+			"width": 960,
+			"height": 565,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/mummy",
+			"src": "preloader/mummy.png",
+			"width": 577.5,
+			"height": 341,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "preloader/smoke",
+			"src": "preloader/smoke.jpg",
+			"width": 399,
+			"height": 511.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "preloader/sparks",
+			"src": "preloader/sparks.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "preloader/burst",
+			"src": "preloader/burst.jpg",
+			"width": 392,
+			"height": 270,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "preloader/orange_flare",
+			"src": "preloader/orange_flare.jpg",
+			"width": 237,
+			"height": 238,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "preloader/eye_glow",
+			"src": "preloader/eye_glow.jpg",
+			"width": 108,
+			"height": 29,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "preloader/tips_base",
+			"src": "preloader/tips_base.png",
+			"width": 371,
+			"height": 242,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/dialogs/base",
+			"src": "preloader/dialogs/base.png",
+			"width": 300,
+			"height": 170,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/dialogs/btn_base",
+			"src": "preloader/dialogs/btn_base.png",
+			"width": 91,
+			"height": 31,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "preloader/dialogs/btn_down_base",
+			"src": "preloader/dialogs/btn_down_base.png",
+			"width": 91,
+			"height": 31,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "common_btn_sound_off",
+			"src": "common_panel/btn_sound_off.png",
+			"width": 13,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "common_btn_sound_on",
+			"src": "common_panel/btn_sound_on.png",
+			"width": 13,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2
+		},
+		{
+			"name": "preloader/loading_bar/back",
+			"src": "preloader/loading_bar/back.png",
+			"width": 436,
+			"height": 14,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/loading_bar/fill",
+			"src": "preloader/loading_bar/fill.png",
+			"width": 420,
+			"height": 10.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/logo/logo_flare",
+			"src": "preloader/logo/logo_flare.jpg",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/logo/logo_smoke",
+			"src": "preloader/logo/logo_smoke.jpg",
+			"width": 418,
+			"height": 341.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "preloader/tips/ellipse_tip_0",
+			"src": "preloader/tips/ellipse_tip_0.png",
+			"width": 160.5,
+			"height": 123,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips/ellipse_tip_2",
+			"src": "preloader/tips/ellipse_tip_2.png",
+			"width": 149.5,
+			"height": 198.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips/tip_screen_0",
+			"src": "preloader/tips/tip_screen_0.jpg",
+			"width": 351,
+			"height": 220,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips/tip_screen_1",
+			"src": "preloader/tips/tip_screen_1.jpg",
+			"width": 351,
+			"height": 220,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips/tip_screen_2",
+			"src": "preloader/tips/tip_screen_2.jpg",
+			"width": 351,
+			"height": 220,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "preloader/tips/tip_screen_3",
+			"src": "preloader/tips/tip_screen_3.jpg",
+			"width": 351,
+			"height": 220,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		}
+	],
+	"sounds": [
+		{
+			"name": "mq_mus_lobby_bg",
+			"src": "mq_mus_lobby_bg.mp3",
+			"descr": {
+				"length": 15412,
+				"type": "bg",
+				"volume": 0.7,
+				"offset": 40
+			}
+		}
+	]
+}

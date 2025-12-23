@@ -1,0 +1,48 @@
+
+ice_container.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 4, 178
+  size: 383, 380
+  orig: 383, 380
+  offset: 0, 0
+  index: -1
+fill
+  rotate: false
+  xy: 410, 681
+  size: 318, 309
+  orig: 318, 309
+  offset: 0, 0
+  index: -1
+ice
+  rotate: true
+  xy: 410, 434
+  size: 243, 270
+  orig: 243, 270
+  offset: 0, 0
+  index: -1
+ice_fx
+  rotate: false
+  xy: 4, 562
+  size: 402, 428
+  orig: 402, 428
+  offset: 0, 0
+  index: -1
+ice_particles
+  rotate: false
+  xy: 732, 681
+  size: 270, 309
+  orig: 270, 309
+  offset: 0, 0
+  index: -1
+tentacles
+  rotate: false
+  xy: 4, 4
+  size: 170, 170
+  orig: 170, 170
+  offset: 0, 0
+  index: -1

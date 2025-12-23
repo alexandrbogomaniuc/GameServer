@@ -1,0 +1,69 @@
+
+Scarab90.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90/body
+  rotate: false
+  xy: 2, 2
+  size: 134, 120
+  orig: 134, 120
+  offset: 0, 0
+  index: -1
+90/head
+  rotate: false
+  xy: 138, 14
+  size: 90, 108
+  orig: 90, 108
+  offset: 0, 0
+  index: -1
+90/horn
+  rotate: true
+  xy: 478, 78
+  size: 44, 102
+  orig: 44, 102
+  offset: 0, 0
+  index: -1
+90/leg_lf1
+  rotate: false
+  xy: 672, 80
+  size: 71, 42
+  orig: 71, 42
+  offset: 0, 0
+  index: -1
+90/leg_lf2
+  rotate: false
+  xy: 582, 73
+  size: 88, 49
+  orig: 88, 49
+  offset: 0, 0
+  index: -1
+90/leg_lf3
+  rotate: false
+  xy: 745, 89
+  size: 54, 33
+  orig: 54, 33
+  offset: 0, 0
+  index: -1
+90/leg_rt1
+  rotate: true
+  xy: 380, 67
+  size: 55, 96
+  orig: 55, 96
+  offset: 0, 0
+  index: -1
+90/leg_rt2
+  rotate: false
+  xy: 299, 46
+  size: 79, 76
+  orig: 79, 76
+  offset: 0, 0
+  index: -1
+90/leg_rt3
+  rotate: false
+  xy: 230, 32
+  size: 67, 90
+  orig: 67, 90
+  offset: 0, 0
+  index: -1

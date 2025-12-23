@@ -1,0 +1,83 @@
+
+SectorX_Med_Enemy8.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+antenna
+  rotate: false
+  xy: 292, 509
+  size: 216, 129
+  orig: 216, 129
+  offset: 0, 0
+  index: -1
+arm _rt
+  rotate: false
+  xy: 292, 642
+  size: 291, 362
+  orig: 291, 362
+  offset: 0, 0
+  index: -1
+arm_lf
+  rotate: false
+  xy: 270, 368
+  size: 139, 137
+  orig: 139, 137
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 4, 532
+  size: 284, 472
+  orig: 284, 472
+  offset: 0, 0
+  index: -1
+calf_lf
+  rotate: true
+  xy: 270, 314
+  size: 50, 135
+  orig: 50, 135
+  offset: 0, 0
+  index: -1
+eye
+  rotate: true
+  xy: 4, 238
+  size: 290, 262
+  orig: 290, 262
+  offset: 0, 0
+  index: -1
+foot_lf
+  rotate: false
+  xy: 512, 516
+  size: 70, 122
+  orig: 70, 122
+  offset: 0, 0
+  index: -1
+forearm_lf
+  rotate: true
+  xy: 4, 117
+  size: 117, 261
+  orig: 117, 261
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 587, 688
+  size: 315, 316
+  orig: 315, 316
+  offset: 0, 0
+  index: -1
+leg_lf
+  rotate: false
+  xy: 906, 829
+  size: 67, 175
+  orig: 67, 175
+  offset: 0, 0
+  index: -1
+pupil
+  rotate: false
+  xy: 4, 4
+  size: 90, 109
+  orig: 90, 109
+  offset: 0, 0
+  index: -1

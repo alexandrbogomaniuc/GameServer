@@ -1,0 +1,69 @@
+
+Scarab270.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270/body
+  rotate: false
+  xy: 2, 2
+  size: 139, 115
+  orig: 139, 115
+  offset: 0, 0
+  index: -1
+270/head
+  rotate: true
+  xy: 143, 26
+  size: 91, 118
+  orig: 91, 118
+  offset: 0, 0
+  index: -1
+270/horn
+  rotate: true
+  xy: 441, 73
+  size: 44, 111
+  orig: 44, 111
+  offset: 0, 0
+  index: -1
+270/leg_lf1
+  rotate: true
+  xy: 352, 46
+  size: 71, 87
+  orig: 71, 87
+  offset: 0, 0
+  index: -1
+270/leg_lf2
+  rotate: false
+  xy: 263, 43
+  size: 87, 74
+  orig: 87, 74
+  offset: 0, 0
+  index: -1
+270/leg_lf3
+  rotate: true
+  xy: 554, 64
+  size: 53, 95
+  orig: 53, 95
+  offset: 0, 0
+  index: -1
+270/leg_rt1
+  rotate: false
+  xy: 802, 83
+  size: 54, 34
+  orig: 54, 34
+  offset: 0, 0
+  index: -1
+270/leg_rt2
+  rotate: false
+  xy: 651, 71
+  size: 79, 46
+  orig: 79, 46
+  offset: 0, 0
+  index: -1
+270/leg_rt3
+  rotate: false
+  xy: 732, 81
+  size: 68, 36
+  orig: 68, 36
+  offset: 0, 0
+  index: -1

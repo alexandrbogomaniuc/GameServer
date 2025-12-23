@@ -1,0 +1,601 @@
+import SimpleUIController from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/uis/base/SimpleUIController';
+import { APP } from '../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import DialogController from './DialogController';
+import DialogsInfo from '../../../../model/uis/custom/dialogs/DialogsInfo';
+import DialogsView from '../../../../view/uis/custom/dialogs/DialogsView';
+import NetworkErrorDialogController from './custom/NetworkErrorDialogController';
+import GameNetworkErrorDialogController from './custom/game/GameNetworkErrorDialogController';
+import CriticalErrorDialogController from './custom/CriticalErrorDialogController';
+import GameCriticalErrorDialogController from './custom/game/GameCriticalErrorDialogController';
+import ReconnectDialogController from './custom/ReconnectDialogController';
+import GameReconnectDialogController from './custom/game/GameReconnectDialogController';
+import GameRoomReopenDialogController from './custom/game/GameRoomReopenDialogController';
+import GameNEMDialogController from './custom/game/GameNEMDialogController';
+import RedirectionDialogController from './custom/RedirectionDialogController';
+import RoomNotFoundDialogController from './custom/RoomNotFoundDialogController';
+import ReturnToGameDialogController from './custom/ReturnToGameDialogController';
+import LobbySoundButtonController from '../secondary/LobbySoundButtonController';
+import GameForceSitOutDialogController from './custom/game/GameForceSitOutDialogController';
+import GameMidCompensateSWController from './custom/game/GameMidCompensateSWController';
+import GamePicksUpSpecialWeaponsFirstTimeDialogController from './custom/game/GamePicksUpSpecialWeaponsFirstTimeDialogController';
+import GameMidRoundExitDialogController from './custom/game/GameMidRoundExitDialogController';
+import GameBuyAmmoFailedDialogController from './custom/game/GameBuyAmmoFailedDialogController';
+import WebGLContextLostDialogController from './custom/WebGLContextLostDialogController';
+import RuntimeErrorDialogController from './custom/RuntimeErrorDialogController';
+import BonusDialogController from './custom/BonusDialogController';
+import FRBDialogController from './custom/FRBDialogController';
+import TournamentStateDialogController from './custom/TournamentStateDialogController';
+import GameRebuyDialogController from './custom/game/GameRebuyDialogController';
+import GameNEMForRoomDialogController from './custom/game/GameNEMForRoomDialogController';
+import LobbyRebuyDialogController from './custom/LobbyRebuyDialogController';
+import LobbyNEMDialogController from './custom/LobbyNEMDialogController';
+import LobbyRebuyFailedDialogController from './custom/LobbyRebuyFailedDialogController';
+import GameRoundResultReturnedSWDialogController from './custom/game/GameRoundResultReturnedSWDialogController';
+import GameSWPurchaseLimitExceededDialogController from './custom/game/GameSWPurchaseLimitExceededDialogController';
+import LobbyInsufficientFundsDialogController from './custom/LobbyInsufficientFundsDialogController';
+
+class DialogsController extends SimpleUIController
+{
+	static get EVENT_DIALOG_ACTIVATED() {return DialogController.EVENT_DIALOG_ACTIVATED};
+	static get EVENT_DIALOG_DEACTIVATED() {return DialogController.EVENT_DIALOG_DEACTIVATED};
+
+	get soundButtonController()
+	{
+		return this._soundButtonController;
+	}
+
+	static _sortDialogsByPresentationPriority (dialog1, dialog2)
+	{
+		var firstDialogInfo = dialog1.info;
+		var secondDialogInfo = dialog2.info;
+
+		var firstDialogPriority = firstDialogInfo.priority;
+		var secondDialogPriority = secondDialogInfo.priority;
+		var lRet_num = secondDialogPriority - firstDialogPriority;
+		if (!lRet_num)
+		{
+			var firstDialogActivationTime = firstDialogInfo.activationTime;
+			var secondDialogActivationTime = secondDialogInfo.activationTime;
+
+			lRet_num = firstDialogActivationTime - secondDialogActivationTime;
+		}
+		return lRet_num;
+	}
+
+	constructor(optInfo)
+	{
+		super(new DialogsInfo());
+
+		this._dialogsControllers = null;
+		this._fViewContainer_sprt = null;
+
+		this._initDialogsController();
+
+		this._soundButtonController.init();
+	}
+
+	initView(viewContainer)
+	{
+		this._fViewContainer_sprt = viewContainer;
+
+		let view = new DialogsView();
+		this._fViewContainer_sprt.addChild(view);
+
+		let lSoundButtonView_sbv = this._fViewContainer_sprt.addChild(view.soundButtonView);
+		lSoundButtonView_sbv.position.set(-432, -199);
+
+		if (APP.isMobile)
+		{
+			lSoundButtonView_sbv.scale.set(1.8);
+			lSoundButtonView_sbv.position.y += 14;
+			lSoundButtonView_sbv.position.x += 4;
+		}
+
+		this._soundButtonController.initView(view.soundButtonView);
+
+		super.initView(view);
+	}
+
+	get _soundButtonController()
+	{
+		return this._fSoundButtonController_sbc || (this._fSoundButtonController_sbc = new LobbySoundButtonController());
+	}
+
+	get viewContainer()
+	{
+		return this._fViewContainer_sprt;
+	}
+
+	destroy()
+	{
+		this._dialogsControllers = null;
+
+		super.destroy();
+	}
+
+	get networkErrorDialogController()
+	{
+		return this._networkErrorDialogController;
+	}
+
+	get gameNetworkErrorDialogController()
+	{
+		return this._gameNetworkErrorDialogController;
+	}
+
+	get criticalErrorDialogController()
+	{
+		return this._criticalErrorDialogController;
+	}
+
+	get gameCriticalErrorDialogController()
+	{
+		return this._gameCriticalErrorDialogController;
+	}
+
+	get reconnectDialogController()
+	{
+		return this._reconnectDialogController;
+	}
+
+	get gameReconnectDialogController()
+	{
+		return this._gameReconnectDialogController;
+	}
+
+	get gameRoomReopenDialogController()
+	{
+		return this._gameRoomReopenDialogController;
+	}
+
+	get roomNotFoundDialogController()
+	{
+		return this._roomNotFoundDialogController;
+	}
+
+	get gameNEMDialogController()
+	{
+		return this._gameNEMDialogController;
+	}
+
+	get redirectionDialogController()
+	{
+		return this._redirectionDialogController;
+	}
+
+	get gameBuyAmmoFailedDialogController()
+	{
+		return this._gameBuyAmmoFailedDialogController;
+	}
+
+	get bonusDialogController()
+	{
+		return this._bonusDialogController;
+	}
+
+	get forceSitOutDialogController()
+	{
+		return this._forceSitOutDialogController;
+	}
+
+	get returnToGameDialogController()
+	{
+		return this._returnToGameDialogController;
+	}
+
+	get midRoundCompensateSWExitDialogController()
+	{
+		return this._midRoundCompensateSWExitDialogController;
+	}
+
+	get picksUpSpecialWeaponsFirstTimeDialogController()
+	{
+		return this._picksUpSpecialWeaponsFirstTimeDialogController;
+	}
+
+	get midRoundExitDialogController()
+	{
+		return this._midRoundExitDialogController;
+	}
+
+	get webglContextLostDialogController()
+	{
+		return this._webglContextLostDialogController;
+	}
+
+	get runtimeErrorDialogController()
+	{
+		return this._runtimeErrorDialogController;
+	}
+
+	get FRBDialogController()
+	{
+		return this._FRBDialogController;
+	}
+
+	get tournamentStateDialogController()
+	{
+		return this._tournamentStateDialogController;
+	}
+
+	get gameRebuyDialogController()
+	{
+		return this._gameRebuyDialogController;
+	}
+
+	get gameNEMForRoomDialogController()
+	{
+		return this._gameNEMForRoomDialogController;
+	}
+
+	get lobbyRebuyDialogController()
+	{
+		return this._lobbyRebuyDialogController;
+	}
+
+	get lobbyNEMDialogController()
+	{
+		return this._lobbyNEMDialogController;
+	}
+
+	get lobbyRebuyFailedDialogController()
+	{
+		return this._lobbyRebuyFailedDialogController;
+	}
+
+	get gameSWPurchaseLimitExceededDialogController()
+	{
+		return this._gameSWPurchaseLimitExceededDialogController;
+	}
+
+	_initDialogsController()
+	{
+		this._dialogsControllers = [];
+	}
+
+	__init ()
+	{
+		super.__init();
+	}
+
+	__initControlLevel ()
+	{
+		super.__initControlLevel();
+
+		var info = this.info;
+		var dialogsAmount = info.dialogsCount;
+		for (var i = 0; i < dialogsAmount; i++)
+		{
+			var notificaionController = this.__getDialogController(i);
+			notificaionController.init();
+		}
+	}
+
+	__initViewLevel ()
+	{
+		super.__initViewLevel();
+
+		var view = this.__fView_uo;
+		var dialogsAmount = this.info.dialogsCount;
+		for (var i = 0; i < dialogsAmount; i++)
+		{
+			var dialogController = this.__getDialogController(i);
+			if (dialogController.isViewLevelSelfInitializationMode)
+			{
+				if (!dialogController.hasView)
+				{
+					dialogController.initViewLevelSelfInitializationViewProvider(view);
+				}
+			}
+			else
+			{
+				dialogController.initView(view.getDialogView(i));
+			}
+		}
+	}
+
+	__getDialogController (dialogId)
+	{
+		return this._dialogsControllers[dialogId] || this._initDialogController(dialogId);
+	}
+
+	_initDialogController (dialogId)
+	{
+		var dialogController = this.__generateDialogController(this.info.getDialogInfo(dialogId));
+		this._dialogsControllers[dialogId] = dialogController;
+
+		dialogController.on(DialogController.EVENT_DIALOG_ACTIVATED, this._onDialogActivated, this);
+		dialogController.on(DialogController.EVENT_DIALOG_DEACTIVATED, this._onDialogDeactivated, this);
+
+		return dialogController;
+	}
+
+	__generateDialogController (dialogInfo)
+	{
+		var dialogController;
+		var dialogId = dialogInfo.dialogId;
+		var dialogInfo = dialogInfo;
+
+		switch (dialogId)
+		{
+			case DialogsInfo.DIALOG_ID_NETWORK_ERROR:
+				dialogController = new NetworkErrorDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_NETWORK_ERROR:
+				dialogController = new GameNetworkErrorDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_CRITICAL_ERROR:
+				dialogController = new CriticalErrorDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_CRITICAL_ERROR:
+				dialogController = new GameCriticalErrorDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_RECONNECT:
+				dialogController = new ReconnectDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_RECONNECT:
+				dialogController = new GameReconnectDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_ROOM_REOPEN:
+				dialogController = new GameRoomReopenDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_ROOM_NOT_FOUND:
+				dialogController = new RoomNotFoundDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_NEM:
+				dialogController = new GameNEMDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_REDIRECTION:
+				dialogController = new RedirectionDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_BUY_AMMO_FAILED:
+				dialogController = new GameBuyAmmoFailedDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_RETURN_TO_GAME:
+				dialogController = new ReturnToGameDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_FORCE_SIT_OUT:
+				dialogController = new GameForceSitOutDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_MID_ROUND_COMPENSATE_SW:
+				dialogController = new GameMidCompensateSWController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_PICKS_UP_SPECIAL_WEAPONS_FIRST_TIME:
+				dialogController = new GamePicksUpSpecialWeaponsFirstTimeDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_MID_ROUND_EXIT:
+				dialogController = new GameMidRoundExitDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_WEBGL_CONTEXT_LOST:
+				dialogController = new WebGLContextLostDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_RUNTIME_ERROR:
+				dialogController = new RuntimeErrorDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_BONUS:
+				dialogController = new BonusDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_FRB:
+				dialogController = new FRBDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_TOURNAMENT_STATE:
+				dialogController = new TournamentStateDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_REBUY:
+				dialogController = new GameRebuyDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_NEM_FOR_ROOM:
+				dialogController = new GameNEMForRoomDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_LOBBY_REBUY:
+				dialogController = new LobbyRebuyDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_LOBBY_NEM:
+				dialogController = new LobbyNEMDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_LOBBY_REBUY_FAILED:
+				dialogController = new LobbyRebuyFailedDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_RR_RETURNED_SW:
+				dialogController = new GameRoundResultReturnedSWDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_GAME_SW_PURCHASE_LIMIT_EXCEEDED:
+				dialogController = new GameSWPurchaseLimitExceededDialogController(dialogInfo, this);
+				break;
+			case DialogsInfo.DIALOG_ID_INSUFFICIENT_FUNDS:
+				dialogController = new LobbyInsufficientFundsDialogController(dialogInfo, this);
+				break;
+			default:
+				throw new Error(`Unsupported dialog id: ${dialogId}`);
+		}
+
+		return dialogController;
+	}
+
+	_onDialogActivated (aEvent_ue)
+	{
+		this._updateDialogForPresentationSettings();
+		this.emit(aEvent_ue);
+	}
+
+	_onDialogDeactivated (aEvent_ue)
+	{
+		this._updateDialogForPresentationSettings();
+		this.emit(aEvent_ue);
+	}
+
+	_updateDialogForPresentationSettings ()
+	{
+		var sortedActiveDialogs = this._getActiveDialogsWithPresentationPrioritySorting();
+		// console.log("sortedActiveDialogs", sortedActiveDialogs);
+		var info = this.info;
+
+		if (!sortedActiveDialogs)
+		{
+			info.dialogIdForPresentation = undefined;
+		}
+		else
+		{
+			info.dialogIdForPresentation = sortedActiveDialogs[0].info.dialogId;
+		}
+	}
+
+	_getActiveDialogsWithPresentationPrioritySorting ()
+	{
+		var activeDialogs = null;
+		var dialogsAmount = this.info.dialogsCount;
+		for (var i = 0; i < dialogsAmount; i++)
+		{
+			var dialogController = this.__getDialogController(i);
+			if (dialogController.info.isActive)
+			{
+				activeDialogs = activeDialogs || [];
+				activeDialogs.push(dialogController);
+			}
+		}
+
+		if (activeDialogs)
+		{
+			activeDialogs.sort(DialogsController._sortDialogsByPresentationPriority);
+		}
+
+		return activeDialogs;
+	}
+
+	get _networkErrorDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_NETWORK_ERROR);
+	}
+
+	get _gameNetworkErrorDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_NETWORK_ERROR);
+	}
+
+	get _criticalErrorDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_CRITICAL_ERROR);
+	}
+
+	get _gameCriticalErrorDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_CRITICAL_ERROR);
+	}
+
+	get _reconnectDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_RECONNECT);
+	}
+
+	get _gameReconnectDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_RECONNECT);
+	}
+
+	get _gameRoomReopenDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_ROOM_REOPEN);
+	}
+
+	get _roomNotFoundDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_ROOM_NOT_FOUND);
+	}
+
+	get _gameNEMDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_NEM);
+	}
+
+	get _redirectionDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_REDIRECTION);
+	}
+
+	get _gameBuyAmmoFailedDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_BUY_AMMO_FAILED);
+	}
+
+	get _bonusDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_BONUS);
+	}
+
+	get _forceSitOutDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_FORCE_SIT_OUT);
+	}
+
+	get _returnToGameDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_RETURN_TO_GAME);
+	}
+
+	get _midRoundCompensateSWExitDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_MID_ROUND_COMPENSATE_SW);
+	}
+
+	get _picksUpSpecialWeaponsFirstTimeDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_PICKS_UP_SPECIAL_WEAPONS_FIRST_TIME);
+	}
+
+	get _midRoundExitDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_MID_ROUND_EXIT);
+	}
+
+	get _webglContextLostDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_WEBGL_CONTEXT_LOST);
+	}
+
+	get _runtimeErrorDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_RUNTIME_ERROR);
+	}
+
+	get _FRBDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_FRB);
+	}
+
+	get _tournamentStateDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_TOURNAMENT_STATE);
+	}
+
+	get _gameRebuyDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_REBUY);
+	}
+
+	get _gameNEMForRoomDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_NEM_FOR_ROOM);
+	}
+
+	get _lobbyRebuyDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_LOBBY_REBUY);
+	}
+
+	get _lobbyNEMDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_LOBBY_NEM);
+	}
+
+	get _lobbyRebuyFailedDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_LOBBY_REBUY_FAILED);
+	}
+
+	get _gameSWPurchaseLimitExceededDialogController()
+	{
+		return this.__getDialogController(DialogsInfo.DIALOG_ID_GAME_SW_PURCHASE_LIMIT_EXCEEDED);
+	}
+}
+
+export default DialogsController

@@ -1,0 +1,138 @@
+
+Horus0.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/arm_lf
+  rotate: true
+  xy: 703, 77
+  size: 81, 125
+  orig: 81, 125
+  offset: 0, 0
+  index: -1
+0/arm_rt
+  rotate: false
+  xy: 414, 2
+  size: 114, 75
+  orig: 114, 75
+  offset: 0, 0
+  index: -1
+0/body
+  rotate: false
+  xy: 697, 784
+  size: 199, 235
+  orig: 199, 235
+  offset: 0, 0
+  index: -1
+0/calf_lf
+  rotate: false
+  xy: 813, 610
+  size: 98, 172
+  orig: 98, 172
+  offset: 0, 0
+  index: -1
+0/calf_rt
+  rotate: false
+  xy: 703, 160
+  size: 135, 96
+  orig: 135, 96
+  offset: 0, 0
+  index: -1
+0/foot_lf
+  rotate: false
+  xy: 898, 849
+  size: 102, 170
+  orig: 102, 170
+  offset: 0, 0
+  index: -1
+0/foot_rt
+  rotate: false
+  xy: 631, 90
+  size: 70, 138
+  orig: 70, 138
+  offset: 0, 0
+  index: -1
+0/forearm_lf
+  rotate: true
+  xy: 697, 258
+  size: 114, 143
+  orig: 114, 143
+  offset: 0, 0
+  index: -1
+0/forearm_rt
+  rotate: true
+  xy: 530, 7
+  size: 70, 76
+  orig: 70, 76
+  offset: 0, 0
+  index: -1
+0/hand_lf
+  rotate: false
+  xy: 898, 784
+  size: 81, 63
+  orig: 81, 63
+  offset: 0, 0
+  index: -1
+0/hand_rt
+  rotate: true
+  xy: 813, 558
+  size: 50, 80
+  orig: 50, 80
+  offset: 0, 0
+  index: -1
+0/head
+  rotate: false
+  xy: 697, 374
+  size: 147, 182
+  orig: 147, 182
+  offset: 0, 0
+  index: -1
+0/leg_lf
+  rotate: false
+  xy: 697, 558
+  size: 114, 224
+  orig: 114, 224
+  offset: 0, 0
+  index: -1
+0/leg_rt
+  rotate: false
+  xy: 414, 79
+  size: 215, 149
+  orig: 215, 149
+  offset: 0, 0
+  index: -1
+0/skirt
+  rotate: true
+  xy: 2, 23
+  size: 205, 410
+  orig: 205, 410
+  offset: 0, 0
+  index: -1
+0/spear
+  rotate: false
+  xy: 2, 230
+  size: 693, 789
+  orig: 693, 789
+  offset: 0, 0
+  index: -1
+
+Horus02.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/wing_lf
+  rotate: false
+  xy: 2, 372
+  size: 624, 547
+  orig: 624, 547
+  offset: 0, 0
+  index: -1
+0/wing_rt
+  rotate: true
+  xy: 2, 2
+  size: 368, 731
+  orig: 368, 731
+  offset: 0, 0
+  index: -1

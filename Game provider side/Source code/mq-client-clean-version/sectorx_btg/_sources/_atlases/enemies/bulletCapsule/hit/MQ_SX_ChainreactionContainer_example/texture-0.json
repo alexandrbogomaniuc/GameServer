@@ -1,0 +1,255 @@
+{
+  "frames": {
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00062.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 114,
+        "h": 91
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1156,
+        "y": 1053,
+        "w": 114,
+        "h": 91
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00063.png": {
+      "frame": {
+        "x": 117,
+        "y": 1,
+        "w": 185,
+        "h": 146
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1122,
+        "y": 1027,
+        "w": 185,
+        "h": 146
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00064.png": {
+      "frame": {
+        "x": 304,
+        "y": 1,
+        "w": 648,
+        "h": 538
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 893,
+        "y": 838,
+        "w": 648,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00065.png": {
+      "frame": {
+        "x": 954,
+        "y": 1,
+        "w": 648,
+        "h": 538
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 893,
+        "y": 838,
+        "w": 648,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00066.png": {
+      "frame": {
+        "x": 1,
+        "y": 541,
+        "w": 648,
+        "h": 538
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 893,
+        "y": 838,
+        "w": 648,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00067.png": {
+      "frame": {
+        "x": 1,
+        "y": 1191,
+        "w": 648,
+        "h": 538
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 893,
+        "y": 838,
+        "w": 648,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00068.png": {
+      "frame": {
+        "x": 541,
+        "y": 541,
+        "w": 648,
+        "h": 538
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 893,
+        "y": 838,
+        "w": 648,
+        "h": 538
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00069.png": {
+      "frame": {
+        "x": 1191,
+        "y": 541,
+        "w": 648,
+        "h": 554
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 893,
+        "y": 822,
+        "w": 648,
+        "h": 554
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00070.png": {
+      "frame": {
+        "x": 541,
+        "y": 1081,
+        "w": 667,
+        "h": 606
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 888,
+        "y": 770,
+        "w": 667,
+        "h": 606
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_SX_ChainreactionConasdasdasdatainer_example_00071.png": {
+      "frame": {
+        "x": 1149,
+        "y": 1097,
+        "w": 774,
+        "h": 635
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 834,
+        "y": 741,
+        "w": 774,
+        "h": 635
+      },
+      "sourceSize": {
+        "w": 2000,
+        "h": 2000
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "texture-0.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 1924,
+      "h": 1840
+    },
+    "scale": 2
+  }
+}

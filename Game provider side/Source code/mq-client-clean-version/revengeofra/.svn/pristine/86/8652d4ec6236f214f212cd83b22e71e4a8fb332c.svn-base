@@ -1,0 +1,59 @@
+import SimpleUIInfo from '../../../../../../common/PIXI/src/model/uis/SimpleUIInfo';
+
+class KillStreakCounterInfo extends SimpleUIInfo
+{
+	constructor()
+	{
+		super();
+
+		this._triggerShotTimes = [];
+		this._isFeatureInProgress = false;
+		this._featureStartTime = undefined;
+	}
+
+	get triggerShotTimes()
+	{
+		return this._triggerShotTimes;
+	}
+
+	addTriggerShotTime(value)
+	{
+		this._triggerShotTimes.push(value);
+	}
+
+	removeTriggerShotTime(index)
+	{
+		this._triggerShotTimes.splice(index, 1);
+	}
+	
+	getTriggerShotTime(index)
+	{
+		return this._triggerShotTimes[index];
+	}
+
+	resetTriggerShotTimes()
+	{
+		this._triggerShotTimes = [];
+	}
+
+	set featureInProgress(value)
+	{
+		this._isFeatureInProgress = value;
+	}
+
+	get featureInProgress()
+	{
+		return this._isFeatureInProgress;
+	}
+
+	destroy()
+	{
+		super.destroy();
+
+		this._isFeatureInProgress = undefined;
+		this._featureStartTime = undefined;
+		this._triggerShotTimes = null;
+	}
+}
+
+export default KillStreakCounterInfo;

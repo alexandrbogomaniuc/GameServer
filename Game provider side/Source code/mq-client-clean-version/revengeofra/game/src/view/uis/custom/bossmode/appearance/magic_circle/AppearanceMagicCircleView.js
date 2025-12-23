@@ -1,0 +1,322 @@
+import { APP } from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import { Utils } from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/model/Utils';
+import Sprite from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import Timer from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer';
+import AppearanceAuraView from './AppearanceAuraView';
+import AppearanceMarkerSmokeView from './AppearanceMarkerSmokeView';
+import * as Easing from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import Sequence from '../../../../../../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
+import { FRAME_RATE } from '../../../../../../../../shared/src/CommonConstants';
+
+const MAGIC_CIRCLE_BURST_VERTEXES = [
+	{x:-122,	y:-56},
+	{x: 110,	y:-59},
+	{x: 162,	y:16},
+	{x: 108,	y:80},
+	{x:-180,	y:16},
+	{x:-127,	y:87},
+	{x: -12,	y:108},
+];
+
+const MAGIC_CIRCLE_VERTEXES = [
+	{x:-15,		y:109},
+	{x:-132,	y:88},
+	{x:-184,	y:17},
+	{x:-126,	y:-54},
+	{x:-17,		y:-79},
+	{x:106,		y:-58},
+	{x:158,		y:17},
+	{x:104,		y:82},
+];
+
+const MARKER_AURAS_DISAPPEAR_DELAYS = [180*FRAME_RATE, 186*FRAME_RATE, 186*FRAME_RATE, 186*FRAME_RATE, 180*FRAME_RATE, 186*FRAME_RATE, 186*FRAME_RATE, 180*FRAME_RATE];
+
+const MAGIC_CIRCLE_SMOKES = [
+		{x: 0,		y: 100,		assetName:'boss_mode/marker_smoke_blue', initialDelay:36*FRAME_RATE, disappearDelay:70*3*FRAME_RATE, disappearDuration: 9*FRAME_RATE},
+		{x: -110,	y: 74,		assetName:'boss_mode/marker_smoke_blue', initialDelay:36*FRAME_RATE, disappearDelay:70*3*FRAME_RATE, disappearDuration: 9*FRAME_RATE},
+		{x: 116.5,	y: 58.5,	assetName:'boss_mode/marker_smoke_blue', initialDelay:36*FRAME_RATE, disappearDelay:70*3*FRAME_RATE, disappearDuration: 9*FRAME_RATE},
+		{x: 172,	y: -3,		assetName:'boss_mode/marker_smoke_blue', initialDelay:36*FRAME_RATE, disappearDelay:70*3*FRAME_RATE, disappearDuration: 9*FRAME_RATE},
+		{x: 121.5,	y: -70,		assetName:'boss_mode/marker_smoke_blue', initialDelay:36*FRAME_RATE, disappearDelay:70*3*FRAME_RATE, disappearDuration: 9*FRAME_RATE},
+		{x: -1,		y: -98,		assetName:'boss_mode/marker_smoke_blue', initialDelay:29*FRAME_RATE, disappearDelay:70*3*FRAME_RATE, disappearDuration: 9*FRAME_RATE},
+		{x: -109.5,	y: -74.5,	assetName:'boss_mode/marker_smoke_blue', initialDelay:36*FRAME_RATE, disappearDelay:70*3*FRAME_RATE, disappearDuration: 9*FRAME_RATE},
+		{x: -170.5,	y: -3.5,	assetName:'boss_mode/marker_smoke_blue', initialDelay:45*FRAME_RATE, disappearDelay:70*3*FRAME_RATE, disappearDuration: 9*FRAME_RATE}
+];
+
+class AppearanceMagicCircleView extends Sprite
+{
+	static get EVENT_MAGIC_CIRCLE_ANIMATION_STARTED()		{return "onBossModeMagicCircleAnimationStarted";}
+	static get EVENT_LINES_ON_FLOOR_ANIMATION_COMPLETED()	{return "onBossModeMagicCircleLinesOnFloorAnimationCompleted";}
+	static get EVENT_MAGIC_CIRCLE_ANIMATION_COMPLETED()		{return "onBossModeMagicCircleAnimationCompleted";}
+
+	startAnimation()
+	{
+		this._initAnimations();
+		this._playAnimations();
+	}
+
+	//INIT...
+	constructor()
+	{
+		super();
+
+		this._fMarkerAurasContainer_sprt = null;
+		this._fMarkersContainer_sprt = null;
+		this._fMarkersBurst_arr = null;
+		this._fMarkerAuras_arr = null;
+		this._fMarkerSmokesContainer_sprt = null;
+		this._fMarkerSmokes_bmamsv_arr = null;
+		this._fMarkerStaticAurasCircle_sprt = null;
+
+		this._fAurasInitialTimer_t = null;
+
+		this._fIsInited_bl = false;
+	}
+
+	_initAnimations()
+	{
+		if (this._fIsInited_bl) return;
+		this._fIsInited_bl = true;
+		
+		this._fMarkersContainer_sprt = this.addChild(new Sprite());
+		this._fMarkerSmokesContainer_sprt = this.addChild(new Sprite());
+		this._fMarkerAurasContainer_sprt = this.addChild(new Sprite());
+	
+		this._initMarkerBurst();
+		this._initMarkerAuras();
+		this._initAurasCircle();
+		this._initMarkerSmoke();
+	}
+
+	_initMarkerBurst()
+	{
+		this._fMarkersBurst_arr = [];
+		for (let i = 0; i < this._circleBurstVertex.length; i++)
+		{
+			let lMarkerBurst_sprt = this._fMarkersContainer_sprt.addChild(APP.library.getSprite(this._markerBurstName));
+			lMarkerBurst_sprt.position.set(this._circleBurstVertex[i].x, this._circleBurstVertex[i].y);
+			lMarkerBurst_sprt.scale.set(0);
+			lMarkerBurst_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+			this._fMarkersBurst_arr.push(lMarkerBurst_sprt);
+		}
+	}
+
+	_initMarkerAuras()
+	{
+		this._fMarkerAuras_arr = [];
+		for (let i = 0; i < MAGIC_CIRCLE_VERTEXES.length; i++)
+		{
+			let lMarkerAura_bmaav = this._fMarkerAurasContainer_sprt.addChild(new AppearanceAuraView(this._appearanceAuraName));
+			lMarkerAura_bmaav.position.set(MAGIC_CIRCLE_VERTEXES[i].x, MAGIC_CIRCLE_VERTEXES[i].y);
+			lMarkerAura_bmaav.visible = false;
+			lMarkerAura_bmaav.blendMode = PIXI.BLEND_MODES.ADD;
+			this._fMarkerAuras_arr.push(lMarkerAura_bmaav);
+		}
+	}
+
+	_initAurasCircle()
+	{
+		this._fMarkerStaticAurasCircle_sprt = this._fMarkerAurasContainer_sprt.addChild(new Sprite());
+		this._fMarkerStaticAurasCircle_sprt.alpha = 0;
+		this._fMarkerStaticAurasCircle_sprt.scale.set(Utils.getRandomWiggledValue(100, 15)/100);
+
+		for (let i = 0; i < MAGIC_CIRCLE_VERTEXES.length; i++)
+		{
+			let lAura_sprt = this._fMarkerStaticAurasCircle_sprt.addChild(APP.library.getSprite(this._autaTextureName));
+			lAura_sprt.position.set(MAGIC_CIRCLE_VERTEXES[i].x, MAGIC_CIRCLE_VERTEXES[i].y);
+			lAura_sprt.blendMode = PIXI.BLEND_MODES.ADD;
+		}
+	}
+
+	get _autaTextureName()
+	{
+		return 'boss_mode/marker_aura2';
+	}
+
+	get _circleBurstVertex()
+	{
+		return MAGIC_CIRCLE_BURST_VERTEXES;
+	}
+
+	_initMarkerSmoke()
+	{
+		this._fMarkerSmokes_bmamsv_arr = [];
+		for (let i = 0; i < this._smokesConfig.length; i++)
+		{
+			let lMarkerSmoke_sprt = this._fMarkerSmokesContainer_sprt.addChild(new AppearanceMarkerSmokeView(this._smokesConfig[i].assetName));
+			lMarkerSmoke_sprt.position.set(this._smokesConfig[i].x, this._smokesConfig[i].y);
+			this._fMarkerSmokes_bmamsv_arr.push(lMarkerSmoke_sprt);
+		}
+	}
+
+	get _smokesConfig()
+	{
+		return MAGIC_CIRCLE_SMOKES;
+	}
+
+	get _appearanceAuraName()
+	{
+		return 'boss_mode/marker_aura';
+	}
+
+	get _markerBurstName()
+	{
+		return 'boss_mode/marker_burst';
+	}
+	//...INIT
+
+	//ANIMATION...
+	_playAnimations()
+	{
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this._playBurstAnimation();
+			this._playAurasAnimation();
+			this._playSmokeAnimation();
+		}
+	}
+
+	_playBurstAnimation()
+	{
+		let lBurstSequence_arr = [
+			{ tweens:[{prop:"scale.x", to:2},		{prop:"scale.y", to:2}],	duration:6*FRAME_RATE,	ease:Easing.sine.easeInOut },
+			{ tweens:[{prop:"scale.x", to:0.88},	{prop:"scale.y", to:0.88}],	duration:7*FRAME_RATE,	ease:Easing.sine.easeInOut },
+			{ tweens:[{prop:"scale.x", to:0},		{prop:"scale.y", to:0}],	duration:24*FRAME_RATE,	ease:Easing.sine.easeInOut }
+		];
+
+		for (let lMarkerBurst_sprt of this._fMarkersBurst_arr)
+		{
+			Sequence.start(lMarkerBurst_sprt, lBurstSequence_arr, 46*FRAME_RATE);
+		}
+	}
+
+	get _burstDelay()
+	{
+		return 21;
+	}
+
+	_playAurasAnimation()
+	{
+		let lAurasAlphaSequence_arr = [
+				{ tweens:[{prop:"alpha", to:1}], duration:22*FRAME_RATE },
+				{ tweens:[], duration:this._aurasIntroAlphaDuration },
+				{ tweens:[{prop:"alpha", to:0}], duration:18*FRAME_RATE }
+		];
+
+		Sequence.start(this._fMarkerStaticAurasCircle_sprt, this._aurasScaleSequence, this._markerSequenceDelay);
+		Sequence.start(this._fMarkerStaticAurasCircle_sprt, lAurasAlphaSequence_arr, this._markerSequenceDelay);
+
+		this._fAurasInitialTimer_t && this._fAurasInitialTimer_t.destructor();
+		this._fAurasInitialTimer_t = new Timer(this._onAurasIntroTimeoutCompleted.bind(this), this._aurasIntroDuration);
+	}
+
+	get _markerSequenceDelay()
+	{
+		return 5*FRAME_RATE;
+	}
+
+	get _aurasIntroDuration()
+	{
+		return 25*FRAME_RATE;
+	}
+
+	get _aurasScaleSequence()
+	{
+		let lAurasScaleSequence_arr = [
+			{ tweens:[{prop:"scale.x", to:Utils.getRandomWiggledValue(100, 15)/100}, {prop:"scale.y", to:Utils.getRandomWiggledValue(100, 15)/100}], duration:37*FRAME_RATE },
+			{ tweens:[{prop:"scale.x", to:Utils.getRandomWiggledValue(100, 15)/100}, {prop:"scale.y", to:Utils.getRandomWiggledValue(100, 25)/100}], duration:36*FRAME_RATE },
+			{ tweens:[{prop:"scale.x", to:Utils.getRandomWiggledValue(80,  15)/100}, {prop:"scale.y", to:Utils.getRandomWiggledValue(100, 15)/100}], duration:33*FRAME_RATE },
+			{ tweens:[{prop:"scale.x", to:Utils.getRandomWiggledValue(100, 15)/100}, {prop:"scale.y", to:Utils.getRandomWiggledValue(100, 15)/100}], duration:33*FRAME_RATE },
+			{ tweens:[{prop:"scale.x", to:Utils.getRandomWiggledValue(100, 20)/100}, {prop:"scale.y", to:Utils.getRandomWiggledValue(100, 20)/100}], duration:33*FRAME_RATE },
+			{ tweens:[{prop:"scale.x", to:Utils.getRandomWiggledValue(100, 15)/100}, {prop:"scale.y", to:Utils.getRandomWiggledValue(100, 15)/100}], duration:30*FRAME_RATE }
+		];
+
+		return lAurasScaleSequence_arr;
+	}
+
+	get _aurasIntroAlphaDuration()
+	{
+		return 162*FRAME_RATE;
+	}
+
+	_playSmokeAnimation()
+	{
+		for (let i = 0; i < this._fMarkerSmokes_bmamsv_arr.length; i++)
+		{
+			let lMarkerSmoke_bmamsv = this._fMarkerSmokes_bmamsv_arr[i];
+			lMarkerSmoke_bmamsv.play(	this._smokesConfig[i].initialDelay, 
+										this._smokesConfig[i].disappearDelay, 
+										this._smokesConfig[i].disappearDuration);
+		}
+	}
+
+	_onAurasIntroTimeoutCompleted()
+	{
+		for (let i = 0; i < this._fMarkerAuras_arr.length; ++i)
+		{
+			this._fMarkerAuras_arr[i].visible = true;
+			this._fMarkerAuras_arr[i].play(this._aurasDisapperDelays[i]);
+		}
+	}
+
+	get _aurasDisapperDelays()
+	{
+		return MARKER_AURAS_DISAPPEAR_DELAYS;
+	}
+	//...ANIMATION
+
+	destroy()
+	{
+		this._fIsInited_bl = undefined;
+
+		this._fAurasInitialTimer_t && this._fAurasInitialTimer_t.destructor();
+		this._fAurasInitialTimer_t = null;
+
+		if (this._fMarkersBurst_arr)
+		{
+			while (this._fMarkersBurst_arr.length)
+			{
+				let lMarkers_sprt = this._fMarkersBurst_arr.pop();
+				if (lMarkers_sprt)
+				{
+					Sequence.destroy(Sequence.findByTarget(lMarkers_sprt));
+					lMarkers_sprt.destroy();
+				}
+			}
+			this._fMarkersBurst_arr = null;
+		}
+
+		if (this._fMarkerAuras_arr)
+		{
+			while (this._fMarkerAuras_arr.length)
+			{
+				this._fMarkerAuras_arr.pop().destroy();
+			}
+			this._fMarkerAuras_arr = null;
+		}
+
+		if (this._fMarkerSmokes_bmamsv_arr)
+		{
+			while (this._fMarkerSmokes_bmamsv_arr.length)
+			{
+				let lMarkerSmoke_sprt = this._fMarkerSmokes_bmamsv_arr.pop();
+				if (lMarkerSmoke_sprt)
+				{
+					Sequence.destroy(Sequence.findByTarget(lMarkerSmoke_sprt));
+					lMarkerSmoke_sprt.destroy();
+				}
+			}
+			this._fMarkerSmokes_bmamsv_arr = null;
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this._fMarkerStaticAurasCircle_sprt));
+
+		this._fMarkerAurasContainer_sprt = null;
+		this._fMarkersContainer_sprt = null;
+		this._fMarkerSmokesContainer_sprt = null;
+		this._fMarkerStaticAurasCircle_sprt = null;
+
+		super.destroy();
+	}
+}
+
+export default AppearanceMagicCircleView;

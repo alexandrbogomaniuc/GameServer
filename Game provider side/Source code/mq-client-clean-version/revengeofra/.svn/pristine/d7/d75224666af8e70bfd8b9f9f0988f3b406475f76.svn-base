@@ -1,0 +1,96 @@
+import Sprite from '../../../../../../common/PIXI/src/display/Sprite';
+import { APP } from '../../../../../../common/PIXI/src/globals';
+import { Utils } from '../../../../../../common/PIXI/src/Utils';
+import Sequence from '../../../../../../common/PIXI/src/animation/Sequence';
+
+class KillStreakSmokeView extends Sprite
+{
+	static get ON_ANIMATION_COMPLETED() { return "ON_ANIMATION_COMPLETED"; }
+
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	resetView()
+	{
+		this._resetView();
+	}
+
+	constructor()
+	{
+		super();
+
+		this._container = this.addChild(new Sprite());
+		this._smokeView = null;
+	}
+
+	_startAnimation()
+	{
+		if (!this._smokeView)
+		{
+			this._createSmokeView();
+		}
+
+		this._showAnimation();
+	}
+
+	_resetView()
+	{
+		if (!this._container)
+		{
+			return;
+		}
+
+		Sequence.destroy(Sequence.findByTarget(this._container));
+		
+		this._container.scale.set(0, 0);
+		this._container.rotation = Utils.gradToRad(55);
+		this._container.alpha = 1;
+	}
+
+	_createSmokeView()
+	{
+		let smokeView = this._smokeView = this._container.addChild(APP.library.getSprite('kill_streak_counter/kill_streak_smoke'));
+		smokeView.blendMode = PIXI.BLEND_MODES.SCREEN;
+	}
+	
+	_showAnimation()
+	{
+		this._container.scale.set(0, 0);
+		this._container.rotation = Utils.gradToRad(55);
+		this._container.alpha = 1;
+
+		let scaleSeq = [
+			{tweens: [{prop: "scale.x", to: 2*0.85}, {prop: "scale.y", to: 2*0.85}, {prop: "rotation", to: Utils.gradToRad(75)}], duration: 24*2*16.7, onfinish: this._onAnimationCompleted.bind(this)}
+		];
+		
+		let alphaSeq = [
+			{tweens: [], duration: 8*2*16.7},
+			{tweens: [{prop: "alpha", to: 0}], duration: 13*2*16.7}
+		];
+
+		Sequence.start(this._container, scaleSeq);
+		Sequence.start(this._container, alphaSeq);
+	}
+
+	_onAnimationCompleted()
+	{
+		this.emit(KillStreakSmokeView.ON_ANIMATION_COMPLETED);
+	}
+
+	destroy()
+	{
+		if (this._container)
+		{
+			Sequence.destroy(Sequence.findByTarget(this._container));
+		}
+
+		super.destroy();
+
+		this._container = null;
+		this._smokeView = null;
+	}
+}
+
+export default KillStreakSmokeView;

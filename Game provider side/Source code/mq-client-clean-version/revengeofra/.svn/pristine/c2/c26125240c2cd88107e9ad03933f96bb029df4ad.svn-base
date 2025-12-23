@@ -1,0 +1,55 @@
+
+Anubis270.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Anubis270_ArmL
+  rotate: true
+  xy: 2, 203
+  size: 271, 582
+  orig: 271, 582
+  offset: 0, 0
+  index: -1
+Anubis270_ArmR
+  rotate: false
+  xy: 586, 289
+  size: 102, 185
+  orig: 102, 185
+  offset: 0, 0
+  index: -1
+Anubis270_Head
+  rotate: true
+  xy: 690, 312
+  size: 97, 149
+  orig: 97, 149
+  offset: 0, 0
+  index: -1
+Anubis270_Hips
+  rotate: false
+  xy: 2, 2
+  size: 136, 199
+  orig: 136, 199
+  offset: 0, 0
+  index: -1
+Anubis270_LegL
+  rotate: false
+  xy: 140, 11
+  size: 97, 190
+  orig: 97, 190
+  offset: 0, 0
+  index: -1
+Anubis270_LegR
+  rotate: true
+  xy: 690, 411
+  size: 63, 199
+  orig: 63, 199
+  offset: 0, 0
+  index: -1
+Anubis270_Torso
+  rotate: false
+  xy: 239, 35
+  size: 95, 166
+  orig: 95, 166
+  offset: 0, 0
+  index: -1

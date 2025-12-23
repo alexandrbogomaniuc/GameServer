@@ -1,0 +1,69 @@
+
+ScarabLeft.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+left/body
+  rotate: false
+  xy: 2, 6
+  size: 124, 111
+  orig: 124, 111
+  offset: 0, 0
+  index: -1
+left/head
+  rotate: false
+  xy: 128, 7
+  size: 70, 110
+  orig: 70, 110
+  offset: 0, 0
+  index: -1
+left/horn
+  rotate: true
+  xy: 296, 68
+  size: 49, 106
+  orig: 49, 106
+  offset: 0, 0
+  index: -1
+left/leg_lf1
+  rotate: true
+  xy: 296, 39
+  size: 27, 96
+  orig: 27, 96
+  offset: 0, 0
+  index: -1
+left/leg_lf2
+  rotate: true
+  xy: 394, 7
+  size: 58, 90
+  orig: 58, 90
+  offset: 0, 0
+  index: -1
+left/leg_lf3
+  rotate: false
+  xy: 200, 39
+  size: 94, 78
+  orig: 94, 78
+  offset: 0, 0
+  index: -1
+left/leg_rt1
+  rotate: false
+  xy: 404, 67
+  size: 94, 50
+  orig: 94, 50
+  offset: 0, 0
+  index: -1
+left/leg_rt2
+  rotate: false
+  xy: 200, 2
+  size: 38, 35
+  orig: 38, 35
+  offset: 0, 0
+  index: -1
+left/leg_rt3
+  rotate: false
+  xy: 240, 8
+  size: 29, 29
+  orig: 29, 29
+  offset: 0, 0
+  index: -1

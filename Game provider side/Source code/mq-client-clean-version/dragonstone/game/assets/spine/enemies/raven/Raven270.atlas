@@ -1,0 +1,48 @@
+
+Raven270.png
+size: 486,484
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Angle_90/raven_spine_v1.1_BODY.0007.exr
+  rotate: true
+  xy: 280, 220
+  size: 262, 204
+  orig: 262, 204
+  offset: 0, 0
+  index: -1
+Angle_90/raven_spine_v1.1_LEG_L.0007.exr
+  rotate: false
+  xy: 219, 171
+  size: 56, 83
+  orig: 56, 83
+  offset: 0, 0
+  index: -1
+Angle_90/raven_spine_v1.1_LEG_R.0007.exr
+  rotate: true
+  xy: 141, 191
+  size: 63, 76
+  orig: 63, 76
+  offset: 0, 0
+  index: -1
+Angle_90/raven_spine_v1.1_TAIL.0007.exr
+  rotate: true
+  xy: 2, 8
+  size: 246, 137
+  orig: 246, 137
+  offset: 0, 0
+  index: -1
+Angle_90/raven_spine_v1.1_WING_L.0007.exr
+  rotate: false
+  xy: 2, 256
+  size: 276, 226
+  orig: 276, 226
+  offset: 0, 0
+  index: -1
+Angle_90/raven_spine_v1.1_WING_R.0007.exr
+  rotate: false
+  xy: 141, 83
+  size: 274, 86
+  orig: 274, 86
+  offset: 0, 0
+  index: -1

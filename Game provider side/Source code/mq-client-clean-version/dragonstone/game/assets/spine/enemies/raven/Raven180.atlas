@@ -1,0 +1,48 @@
+
+Raven180.png
+size: 311,311
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Angle_180/raven_spine_v1.1_BODY.0005.exr
+  rotate: false
+  xy: 2, 87
+  size: 172, 134
+  orig: 172, 134
+  offset: 0, 0
+  index: -1
+Angle_180/raven_spine_v1.1_LEG_L.0005.exr
+  rotate: true
+  xy: 142, 9
+  size: 56, 83
+  orig: 56, 83
+  offset: 0, 0
+  index: -1
+Angle_180/raven_spine_v1.1_LEG_R.0005.exr
+  rotate: true
+  xy: 227, 2
+  size: 63, 76
+  orig: 63, 76
+  offset: 0, 0
+  index: -1
+Angle_180/raven_spine_v1.1_TAIL.0005.exr
+  rotate: false
+  xy: 2, 8
+  size: 138, 77
+  orig: 138, 77
+  offset: 0, 0
+  index: -1
+Angle_180/raven_spine_v1.1_WING_L.0005.exr
+  rotate: true
+  xy: 176, 67
+  size: 154, 126
+  orig: 154, 126
+  offset: 0, 0
+  index: -1
+Angle_180/raven_spine_v1.1_WING_R.0005.exr
+  rotate: false
+  xy: 2, 223
+  size: 274, 86
+  orig: 274, 86
+  offset: 0, 0
+  index: -1

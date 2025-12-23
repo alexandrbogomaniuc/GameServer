@@ -1,0 +1,91 @@
+import SimpleUIInfo from '../../../../../../../common/PIXI/src/model/uis/SimpleUIInfo';
+import NotificationInfo from './NotificationInfo';
+
+let notificationIdCounter = 0;
+
+let NOTIFICATIONS_AMOUNT = notificationIdCounter;
+
+class NotificationsInfo extends SimpleUIInfo
+{
+	constructor()
+	{
+		super();
+
+		this._notificationsInfos = null;
+		this._notificationIdForPresentation = undefined;
+
+		this._initNotificationsInfo();
+	}
+
+	destroy()
+	{
+		this._notificationsInfos = null;
+
+		super.destroy();
+	}
+
+	getNotificationInfo (notificationId)
+	{
+		return this._getNotificationInfo(notificationId);
+	}
+
+	get notificationsCount ()
+	{
+		return NOTIFICATIONS_AMOUNT;
+	}
+
+	get notificationIdForPresentation ()
+	{
+		return this._notificationIdForPresentation;
+	}
+
+	set notificationIdForPresentation (notificationId)
+	{
+		this._notificationIdForPresentation = notificationId;
+	}
+
+	get hasActiveNotification ()
+	{
+		var notificationsAmount = this.notificationsCount;
+		for (var i = 0; i < notificationsAmount; i++)
+		{
+			if (this._getNotificationInfo(i).isActive)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	_initNotificationsInfo()
+	{
+		this._notificationsInfos = [];
+	}
+
+	_getNotificationInfo (notificationId)
+	{
+		return this._notificationsInfos[notificationId] || this._initNotificationInfo(notificationId);
+	}
+
+	_initNotificationInfo (notificationId)
+	{
+		var lNotificationInfo_gudi = this.__generateNotificationInfo(notificationId);
+
+		this._notificationsInfos[notificationId] = lNotificationInfo_gudi;
+
+		return lNotificationInfo_gudi;
+	}
+
+	__generateNotificationInfo (notificationId)
+	{
+		var lNotificationInfo_gdi = null;
+		switch (notificationId)
+		{
+			default:
+				throw new Error (`Unsupported notification id: ${notificationId}`);
+		}
+		return lNotificationInfo_gdi;
+	}
+}
+
+export default NotificationsInfo

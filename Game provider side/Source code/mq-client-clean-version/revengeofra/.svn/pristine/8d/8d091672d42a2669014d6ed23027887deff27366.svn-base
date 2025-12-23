@@ -1,0 +1,214 @@
+import SimpleUIController from '../../../../../../../common/PIXI/src/controller/uis/base/SimpleUIController';
+import NotificationView from '../../../../view/uis/custom/notifications/NotificationView';
+import NotificationsController from './NotificationsController';
+import LobbyWebSocketInteractionController from '../../../interaction/server/LobbyWebSocketInteractionController';
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+
+class NotificationController extends SimpleUIController
+{
+	static get EVENT_NOTIFICATION_ACTIVATED() 			{return 'onNotificationActivated' };
+	static get EVENT_NOTIFICATION_DEACTIVATED() 		{return 'onNotificationDeactivated' };
+	static get EVENT_NOTIFICATION_CLOSE_CLICKED() 		{return 'onNotificationCloseClicked' };
+	static get EVENT_NOTIFICATION_PRESENTED() 			{return 'onNotificationPresented' };
+	static get EVENT_PRESENTED_NOTIFICATION_UPDATED() 	{return 'onNotificationUpdated' };
+	static get EVENT_NOTIFICATION_DEFERRED() 			{return 'onNotificationDeferred' };
+
+	constructor(aOptInfo_usuii, aOptView_uo, aOptParentController_usc)
+	{
+		super(aOptInfo_usuii, aOptView_uo, aOptParentController_usc);
+
+		this._notificationsController = null;
+		this._notificationsInfo = null;
+
+		this._initNotificationController();
+	}
+
+	_initNotificationController()
+	{
+		
+	}
+
+	__init ()
+	{
+		this._notificationsController = this.__getParentController();
+		this._notificationsInfo = this._notificationsController.info;
+		
+		super.__init();
+
+		this.__validate();
+	}
+
+	__initViewLevel ()
+	{
+		super.__initViewLevel();
+		let view = this.__fView_uo;
+		
+		view.on(NotificationView.EVENT_ON_CLOSE_BTN_CLICKED, this.__onNotificationCloseButtonClicked, this);
+		
+		this.__validateViewLevel();
+	}
+
+	__initControlLevel ()
+	{
+		super.__initControlLevel();
+
+		this._notificationsController.on(NotificationsController.EVENT_NOTIFICATION_ACTIVATED, this._onSomeNotificationActivated, this);
+		this._notificationsController.on(NotificationsController.EVENT_NOTIFICATION_DEACTIVATED, this._onSomeNotificationDeactivated, this);
+
+		let webSocketInteractionController = APP.webSocketInteractionController;
+		webSocketInteractionController.on(LobbyWebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, this._onLobbyServerConnectionClosed, this);
+		webSocketInteractionController.on(LobbyWebSocketInteractionController.EVENT_ON_SERVER_ERROR_MESSAGE, this._onServerErrorMessage, this);
+	}
+
+	__initViewLevelSelfInitialization ()
+	{
+
+	}
+
+	__isViewLevelSelfInitializationAllowed ()
+	{
+		return true;
+	}
+
+	//VALIDATION...
+	__validateModelLevel ()
+	{
+		super.__validateModelLevel();
+		
+		this._validatePresentationState();
+
+		var info = this.info;
+		info.visible = info.isPresented;
+	}
+
+	__validateViewLevel ()
+	{
+		super.__validateViewLevel();
+
+		this.emit(NotificationController.EVENT_PRESENTED_NOTIFICATION_UPDATED);
+	}
+
+	__validate()
+	{
+		super.__validate();
+	}
+	//...VALIDATION
+
+	__onViewLevelSelfInitializationViewProviderAccessible()
+	{
+		super.__onViewLevelSelfInitializationViewProviderAccessible();
+		if (this.info.isPresented)
+		{
+			this.__forceViewLevelSelfInitialization();
+		}
+	}
+
+	_validatePresentationState ()
+	{
+		var info = this.info;
+		this._updateNotificationPresentedState(info.isActive && this._notificationsInfo.notificationIdForPresentation === info.notificationId);
+	}
+
+	_updateNotificationPresentedState (aPresented_bl)
+	{
+		aPresented_bl = Boolean(aPresented_bl);
+		var info = this.info;
+		if (info.isPresented === aPresented_bl)
+		{
+			return;
+		}
+
+		info.isPresented = aPresented_bl;
+		if (aPresented_bl)
+		{
+			if (!this.__fView_uo && this.__isViewLevelSelfInitializationViewProviderAccessible())
+			{
+				this.__forceViewLevelSelfInitialization();
+			}
+			this.emit(NotificationController.EVENT_NOTIFICATION_PRESENTED);
+		}
+		else if (info.isActive)
+		{
+			this.emit(NotificationController.EVENT_NOTIFICATION_DEFERRED);
+		}
+	}
+
+	__onNotificationCloseButtonClicked(event)
+	{
+		this.emit(NotificationController.EVENT_NOTIFICATION_CLOSE_CLICKED);
+		this.__deactivateNotification();
+	}
+
+	_onLobbyServerConnectionClosed(event)
+	{
+		if (event.wasClean)
+		{
+			return;
+		}
+
+		this.__deactivateNotification();
+	}
+
+	_onServerErrorMessage(event)
+	{
+		let serverData = event.messageData;
+		let requestData = event.requestData;
+		
+		switch (serverData.code) 
+		{
+			case LobbyWebSocketInteractionController.ERROR_CODES.SERVER_SHUTDOWN:
+				this.__deactivateNotification();
+				break;
+		}
+	}
+
+	//NOTIFICATION ACTIVATION...
+	_onSomeNotificationActivated (aEvent_ue)
+	{
+		APP.secondaryScreenController.onNotificationActivated();
+		this.__validate();
+	}
+
+	_onSomeNotificationDeactivated (aEvent_ue)
+	{
+		APP.secondaryScreenController.onNotificationDeactivated();
+		this.__validate();
+	}
+
+	__activateNotification ()
+	{
+		this.__setActiveState(true);
+		this.__validate();
+	}
+
+	__deactivateNotification ()
+	{
+		this.__setActiveState(false);
+		this.__validate();
+	}
+
+	__setActiveState (aActive_bl)
+	{
+		aActive_bl = Boolean(aActive_bl);
+
+		var info = this.info;
+		if (info.isActive === aActive_bl)
+		{
+			return;
+		}
+
+		info.isActive = aActive_bl;
+
+		if (aActive_bl)
+		{
+			this.emit(NotificationController.EVENT_NOTIFICATION_ACTIVATED);
+		}
+		else
+		{
+			this.emit(NotificationController.EVENT_NOTIFICATION_DEACTIVATED);
+		}
+	}	
+	//...NOTIFICATION ACTIVATION
+}
+
+export default NotificationController

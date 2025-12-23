@@ -1,0 +1,101 @@
+import Sprite from '../../../../../../../common/PIXI/src/display/Sprite';
+import Button from '../../../../../../../common/PIXI/src/display/ui/Button';
+import PromoTitleView from './PromoTitleView';
+
+const AREA = new PIXI.Rectangle(0, 0, 190, 16);
+
+class ActivePromosListItem extends Sprite
+{
+	static get ON_PROMO_DETAILS_BTN_CLICKED()		{ return "ON_PROMO_DETAILS_BTN_CLICKED" }
+
+	get info()
+	{
+		return this._fInfo_obj;
+	}
+
+	get borders()
+	{
+		return AREA.clone(); 
+	}
+
+	constructor(itemInfo)
+	{
+		super();
+
+		this._fInfo_obj = itemInfo;
+		this._detailsBtnRequired_bl = itemInfo.isDetailsUrlDefined;
+		
+		this._initView();
+	}
+
+	_initView()
+	{
+		this._container = this.addChild(new Sprite());
+
+		this._addPromoTitle();
+
+		if (this._detailsBtnRequired_bl)
+		{
+			this._addInfoBtn();
+		}
+
+		this._alignContent();
+	}
+
+	_addInfoBtn()
+	{
+		let btn = new Button("promo/promo_info_btn", null, true);
+		btn.position.set(8, AREA.height/2);
+		btn.hitArea = new PIXI.Rectangle(-14, -14, 28, 28);
+		btn.on("pointerclick", this._onInfoBtnClicked, this);
+
+		this._container.addChild(btn);
+	}
+
+	_onInfoBtnClicked(event)
+	{
+		this.emit(ActivePromosListItem.ON_PROMO_DETAILS_BTN_CLICKED);
+	}
+
+	_addPromoTitle()
+	{
+		let promoTitle = this._fInfo_obj.title;
+		let promoTitleView = new PromoTitleView(promoTitle);
+		promoTitleView.y = AREA.height/2;
+
+		let titleBounds = promoTitleView.getBounds();
+		let titleWidth = titleBounds.width;
+
+		this._container.addChild(promoTitleView);
+
+		let title_x_dist = this._detailsBtnRequired_bl ? 16 : 0;
+		let titleMaxWidth = AREA.width - title_x_dist;
+
+		if (titleWidth > titleMaxWidth)
+		{
+			promoTitleView.scale.x *= titleMaxWidth/titleWidth;
+		}
+
+		promoTitleView.scale.y = promoTitleView.scale.x;
+
+		promoTitleView.x = title_x_dist;
+	}
+
+	_alignContent()
+	{
+		let contentBounds = this._container.getBounds();
+		let contentWidth = contentBounds.width;
+
+		this._container.x = (AREA.width - contentWidth)/2;
+	}
+
+
+	destroy()
+	{
+		this._fInfo_obj = null;
+
+		super.destroy();
+	}
+}
+
+export default ActivePromosListItem

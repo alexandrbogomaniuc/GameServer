@@ -1,0 +1,86 @@
+import SimpleUIInfo from '../../../../../../../../common/PIXI/src/model/uis/SimpleUIInfo';
+
+class PromostionsScreenInfo extends SimpleUIInfo
+{
+	constructor()
+	{
+		super();
+
+		this._promos = [];
+	}
+
+	addPromoInfo(promoInfo)
+	{
+		this._promos = this._promos || [];
+
+		this._promos.push(promoInfo);
+	}
+
+	removePromo(promoInfo)
+	{
+		if (!this.hasActivePromos)
+		{
+			return;
+		}
+
+		let promoIndex = this._promos.indexOf(promoInfo);
+		if (promoIndex >= 0)
+		{
+			this.promos.splice(promoIndex, 1);
+			promoInfo.destroy();
+		}
+	}
+
+	getPromoByIndex(index)
+	{
+		if (!this._promos || index >= this._promos.length)
+		{
+			throw new Error(`Promo index (${index}) exceeds promos amount.`);
+		}
+
+		return this._promos[index];
+	}
+
+	getPromoById(promoId)
+	{
+		if (!this.hasActivePromos)
+		{
+			return null;
+		}
+
+		for (let i=0; i<this._promos.length; i++)
+		{
+			let promoInfo = this._promos[i];
+			if (promoInfo.promoId === promoId)
+			{
+				return promoInfo;
+			}
+		}
+
+		return null;
+	}
+
+	get promos()
+	{
+		return this._promos;
+	}
+
+	get	hasActivePromos()
+	{
+		return this._promos && this._promos.length > 0;
+	}
+
+	destroy()
+	{
+		while (this._promos && this._promos.length)
+		{
+			this._promos.pop().destroy();
+		}
+		this._promos = null;
+		
+		super.destroy();
+	}
+
+}
+
+export default PromostionsScreenInfo

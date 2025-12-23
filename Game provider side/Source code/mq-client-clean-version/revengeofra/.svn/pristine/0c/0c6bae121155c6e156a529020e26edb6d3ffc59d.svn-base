@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+	<font name="fnt_nm_barlow_semibold" url="[root_resources_path]translations/zh/fonts/barlow_semibold_zh.ttf"/>
+	</fonts>
+	
+	<tasds>
+		<tad id="TALobbyPreloaderLogo" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MAX QUEST: RISE OF THE MUMMY</source_meaning>
+				<translated_meaning>MAX QUEST：盜墓迷城</translated_meaning>
+			</meaning>
+			<area x="-512" y="-132" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo.png"/>
+		</tad>
+		
+		<tad id="TALobbyPreloaderLogoReturnOfRaGlow" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>RISE OF THE MUMMY</source_meaning>
+				<translated_meaning>盜墓迷城</translated_meaning>
+			</meaning>
+			<area x="-512" y="-132" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo_rise_of_the_mummy_glow.jpg"/>
+		</tad>
+		
+		<tad id="TALobbyPreloaderLogoMaxQuestGlow" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>MAX QUEST</source_meaning>
+				<translated_meaning>MAX QUEST</translated_meaning>
+			</meaning>
+			<area x="-512" y="-132" w="1024" h="256">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/logo_max_quest_glow.jpg"/>
+		</tad>
+		
+		<tad id="TALobbyPreloaderLogoFlarePosition" type="void_based" translated="true">
+			<meaning>
+				<source_meaning></source_meaning>
+				<translated_meaning></translated_meaning>
+			</meaning>
+			<area x="-24" y="-11.5" w="0" h="0">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+		</tad>
+
+		<tad id="TAPreloaderBrand" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BETSOFT GAMING</source_meaning>
+				<translated_meaning>BETSOFT GAMING</translated_meaning>
+			</meaning>
+			<area x="-256" y="-64" w="256" h="128">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="right" v="top"/>
+			</area>
+			<img url="[current_translations_images_path]preloader/brand.png"/>
+		</tad>
+		
+		<tad id="TAPreloderClickToStartLabel" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CLICK TO START</source_meaning>
+				<translated_meaning>點擊開始</translated_meaning>
+			</meaning>
+			<area x="-200" y="-15" w="400" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="18" color="0Xffffff">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>點擊開始</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloderClickToStartLabelMobile" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP TO START</source_meaning>
+				<translated_meaning>輕點開始</translated_meaning>
+			</meaning>
+			<area x="-200" y="-15" w="400" h="30">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="18" color="0Xffffff">
+					<stroke color="0x000000" thickness="1"/>
+				</font>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>輕點開始</content>
+			</txt>
+		</tad>
+
+		<!--TIPS...-->
+		<tad id="TAPreloaderTip0" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use SPECIAL WEAPONS for HIGH VALUE ENEMIES</source_meaning>
+				<translated_meaning>對高值敵人使用特殊武器</translated_meaning>
+			</meaning>
+			<area x="-400" y="-73" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>對高值敵人使用特殊武器</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderTip1" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>RIGHT CLICK to AUTO-LOCK target</source_meaning>
+				<translated_meaning>右擊自動鎖定目標</translated_meaning>
+			</meaning>
+			<area x="-400" y="-73" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>右擊自動鎖定目標</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderMobileTip1" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>TAP THE BUTTON, THEN THE TARGET TO LOCK ON</source_meaning>
+				<translated_meaning>輕點按鈕，然後輕點目標進行鎖定</translated_meaning>
+			</meaning>
+			<area x="-400" y="-73" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>輕點按鈕，然後輕點目標進行鎖定</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderTip2" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Use SPECIAL WEAPONS at any time with the SPECIAL WEAPONS BUTTONS</source_meaning>
+				<translated_meaning>選擇特殊武器按鈕，隨時使用特殊武器</translated_meaning>
+			</meaning>
+			<area x="-400" y="-73" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>選擇特殊武器按鈕，隨時使用特殊武器</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderTip3" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>CLICK AND HOLD button for AUTOFIRE!</source_meaning>
+				<translated_meaning>點擊並按住按鈕來自動射擊！</translated_meaning>
+			</meaning>
+			<area x="-400" y="-73" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>點擊並按住按鈕來自動射擊！</content>
+			</txt>
+		</tad>
+
+		<tad id="TAPreloaderMobileTip3" type="txt_based" translated="true">
+			<meaning>
+				<source_meaning>Tap and hold to AUTOFIRE!</source_meaning>
+				<translated_meaning>點並按住來自動射擊！</translated_meaning>
+			</meaning>
+			<area x="-400" y="-73" w="800" h="150">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<txt width="auto" auto_wrap="false" linespacing="auto">
+				<font name="fnt_nm_barlow_semibold" size="20" color="0xffffff" bold="false"/>
+				<filters>
+					<shadows>
+						<shadow color="0x000000" distance="2" blur="2" angle="90" alpha="1"/>
+					</shadows>
+				</filters>
+				<content>點並按住來自動射擊！</content>
+			</txt>
+		</tad>
+		<!--...TIPS-->
+	</tasds>
+</td>
+

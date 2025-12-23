@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<td>
+	<fonts>
+	</fonts>
+
+	<tasds>
+		<tad id="TAPaytablePageKillsCriticalHit" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>CRITICAL HIT</source_meaning>
+				<translated_meaning>KRITISK TREFF</translated_meaning>
+			</meaning>
+			<area x="-256" y="-256" w="512" h="512">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/critical_hit.png"/>
+		</tad>
+
+		<tad id="TAPaytablePageKillsInstantWin" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>INSTANT	WIN!!!</source_meaning>
+				<translated_meaning>UMIDDELBAR GEVINST!!!</translated_meaning>
+			</meaning>
+			<area x="-256" y="-256" w="512" h="512">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/instant_win.png"/>
+		</tad>
+
+		<tad id="TAPaytablePageKillsBonusWin" type="img_based" translated="true">
+			<meaning>
+				<source_meaning>BONUS WIN</source_meaning>
+				<translated_meaning>BONUSGEVINST</translated_meaning>
+			</meaning>
+			<area x="-256" y="-256" w="512" h="512">
+				<scale x="auto" y="auto" distortion="false"/>
+				<align h="center" v="middle"/>
+			</area>
+			<img url="[current_translations_images_path]paytable/bonus_win.png"/>
+		</tad>
+	</tasds>
+</td>

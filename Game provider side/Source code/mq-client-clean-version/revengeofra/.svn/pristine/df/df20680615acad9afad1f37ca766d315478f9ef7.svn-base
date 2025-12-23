@@ -1,0 +1,165 @@
+import Sprite from '../../../../../../../../common/PIXI/src/display/Sprite';
+import BitmapText from '../../../../../../../../common/PIXI/src/display/BitmapText';
+import WheelSectorView from '../sector/WheelSectorView';
+import { FRAME_RATE } from '../../../../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../../../../common/PIXI/src/animation/Sequence';
+import { Utils } from '../../../../../../../../common/PIXI/src/Utils';
+import * as Easing from '../../../../../../../../common/PIXI/src/animation/easing';
+import AtlasSprite from '../../../../../../../../common/PIXI/src/display/AtlasSprite';
+import AtlasConfig from '../../../../../config/AtlasConfig';
+import { APP } from '../../../../../../../../common/PIXI/src/globals';
+
+const MAX_WIDTH = 55;
+
+class WheelWinValueAnimation extends Sprite
+{
+	static get EVENT_ON_WIN_VALUE_ANIMATION_COMPLETED() { return "EVENT_ON_WIN_VALUE_ANIMATION_COMPLETED" };
+	static get EVENT_ON_HIGHLIGHT_ANIMATION_COMPLETED()	{ return "EVENT_ON_HIGHLIGHT_ANIMATION_COMPLETED" };
+
+	constructor(aValue_num)
+	{
+		super();
+
+		this._fValue_num = aValue_num;
+		this._fContainer_sprt = this.addChild(new Sprite);
+		this._fNormalContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+		this._fNormalValueContainer_sprt = this._fNormalContainer_sprt.addChild(new Sprite);
+		this._fGlowedContainer_sprt = this._fContainer_sprt.addChild(new Sprite);
+		this._fGlowedValueContainer_sprt = this._fGlowedContainer_sprt.addChild(new Sprite);
+
+		this._addGlow();
+		
+		this._addValueView();
+
+		this._fContainer_sprt.scale.set(1.6);
+
+		this._startAnimation();
+	}
+
+	_addGlow()
+	{
+		if (!APP.profilingController.info.isVfxProfileValueLowerOrGreater)
+		{
+			return;
+		}
+
+		let valueGlow = this._fGlowedContainer_sprt.addChild(APP.library.getSprite("quests/wheel/wheel_win_value_glow"));
+		valueGlow.blendMode = PIXI.BLEND_MODES.ADD;
+	}
+
+	_addValueView()
+	{
+		let normalValueView_bt = this._createValueView(this._fNormalValueContainer_sprt, WheelSectorView.getGreenDigitsTextures());
+		normalValueView_bt.write(this._formattedValue);
+
+		let glowedValueView_bt = this._createValueView(this._fGlowedValueContainer_sprt, WheelWinValueAnimation.getGreenGlowedDigitsTextures());
+		glowedValueView_bt.addBlendMode(PIXI.BLEND_MODES.ADD);
+		glowedValueView_bt.write(this._formattedValue);		
+
+		this._alignValues();
+	}
+
+	_createValueView(aContainer_sprt, aTextures_tx_arr, aLetterSpacing_num=0)
+	{
+		return aContainer_sprt.addChild(new BitmapText(aTextures_tx_arr, "0123456789x", "", aLetterSpacing_num));
+	}
+
+	get _formattedValue()
+	{
+		if (isNaN(this._fValue_num) || this._fValue_num <= 0)
+		{
+			return "";
+		}
+
+		return  ("x"+this._fValue_num);
+	}
+
+	_alignValues()
+	{
+		this._alignValue(this._fNormalValueContainer_sprt);
+		this._alignValue(this._fGlowedValueContainer_sprt);
+	}
+
+	_alignValue(aValueContainer_sprt)
+	{
+		aValueContainer_sprt.scale.x = 1;
+		let valueWidth = aValueContainer_sprt.getBounds().width;
+		if (valueWidth > MAX_WIDTH)
+		{
+			aValueContainer_sprt.scale.x = MAX_WIDTH/valueWidth;
+		}
+		aValueContainer_sprt.position.x = -aValueContainer_sprt.getBounds().width/2;
+	}
+
+	_startAnimation()
+	{
+		let moveSeq = [
+			{tweens: [{prop: 'x', to: 2}], duration: 9*FRAME_RATE},
+			{tweens: [{prop: 'x', to: -2}], duration: 4*FRAME_RATE, ease: Easing.sine.easeInOut},
+			{tweens: [{prop: 'x', to: -92}], duration: 8*FRAME_RATE, ease: Easing.sine.easeInOut}
+		];
+
+		let rotSeq = [
+			{tweens: [], duration: 9*FRAME_RATE},
+			{tweens: [{prop: 'rotation', to: Utils.gradToRad(-6)}], duration: 6*FRAME_RATE, ease: Easing.sine.easeInOut},
+			{tweens: [{prop: 'rotation', to: 0}], duration: 11*FRAME_RATE, ease: Easing.sine.easeInOut}
+		];
+
+		Sequence.start(this._fNormalContainer_sprt, moveSeq);
+		Sequence.start(this._fNormalContainer_sprt, rotSeq);
+
+		Sequence.start(this._fGlowedContainer_sprt, moveSeq);
+		Sequence.start(this._fGlowedContainer_sprt, rotSeq);
+
+		let fadeSeq = [
+			{tweens: [], duration: 12*FRAME_RATE, onfinish: () => this._onHighlightCompleted() },
+			{tweens: [{prop: 'alpha', to: 0}], duration: 9*FRAME_RATE, ease: Easing.sine.easeInOut, onfinish: () => { this._onAnimationCompleted(); }}
+		];
+
+		Sequence.start(this._fGlowedContainer_sprt, fadeSeq);
+	}
+
+	_onHighlightCompleted()
+	{
+		this.emit(WheelWinValueAnimation.EVENT_ON_HIGHLIGHT_ANIMATION_COMPLETED);
+	}
+
+	_onAnimationCompleted()
+	{
+		let valueGlobalPos = this._fContainer_sprt.localToGlobal(this._fNormalContainer_sprt.x*this._fContainer_sprt.scale.x, this._fNormalContainer_sprt.y*this._fContainer_sprt.scale.y);
+		this.emit(WheelWinValueAnimation.EVENT_ON_WIN_VALUE_ANIMATION_COMPLETED, {targetWinGlobalPosition: valueGlobalPos});
+
+		this.destroy();
+	}
+
+	destroy()
+	{
+		Sequence.destroy(Sequence.findByTarget(this._fNormalContainer_sprt));
+		Sequence.destroy(Sequence.findByTarget(this._fGlowedContainer_sprt));
+
+		this._fValue_num = undefined;
+		this._fContainer_sprt = null;
+		this._fNormalContainer_sprt = null;
+		this._fNormalValueContainer_sprt = null;
+		this._fGlowedValueContainer_sprt = null;
+		this._fGlowedContainer_sprt = null;
+
+		super.destroy();
+	}
+}
+
+WheelWinValueAnimation.getGreenGlowedDigitsTextures = function ()
+{
+	if (!WheelWinValueAnimation.greenGlowedDigitsTextures)
+	{
+		WheelWinValueAnimation.setGreenGlowedDigitsTextures();
+	}
+	return WheelWinValueAnimation.greenGlowedDigitsTextures;
+}
+
+WheelWinValueAnimation.setGreenGlowedDigitsTextures = function ()
+{
+	WheelWinValueAnimation.greenGlowedDigitsTextures = AtlasSprite.getFrames(APP.library.getAsset("quests/wheel/sector/digits/wheel_sector_digits_green_glow"), AtlasConfig.WheelSectorGreenNumbers, "");
+}
+
+export default WheelWinValueAnimation

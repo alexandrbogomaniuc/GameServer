@@ -1,0 +1,159 @@
+import Sprite from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+import Sequence from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
+import MissEffect from '../../MissEffect';
+import * as Easing from '../../../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
+import InstantKillEffects from '../../InstantKillEffects';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+
+class InstantKillExplosion extends Sprite
+{
+	static get EVENT_ON_READY_FOR_DESTROY() { return 'EVENT_ON_READY_FOR_DESTROY'; }
+
+	constructor(lensFlareParent)
+	{
+		super();
+
+		this.lensFlareParent = lensFlareParent;
+		this.lensFlare = null;
+		this.energyMark = null;
+		this.smoke = null;
+		this.groundSmoke = null;
+		this.glow = null;
+
+		this.start();
+	}
+
+	start()
+	{
+		this.lensFlare = this.lensFlareParent.addChild(APP.library.getSprite("common/lensflare"));
+		this.lensFlare.scale.set(0);
+		this.lensFlare.blendMode = PIXI.BLEND_MODES.ADD;
+
+		var sequence = [{
+							tweens: [],
+							duration: 2 * 2 * 16.6,
+							onfinish: () => {this.addHitEffect();}
+						},
+						{
+							tweens: [
+										{ prop: "scale.x", to: 1.94 },
+										{ prop: "scale.y", to: 1.94 }
+									],
+							duration: 3 * 2 * 16.6
+						},
+						{
+							tweens: [],
+							duration: 3 * 2 * 16.6
+						},
+						{
+							tweens: [
+										{ prop: "scale.x", to: 0 },
+										{ prop: "scale.y", to: 0 }
+									],
+							duration: 8 * 2 * 16.6,
+							ease: Easing.sine.sineInOut,
+							onfinish: () => { this.lensFlareParent.destroy(); }
+						}
+					]
+		Sequence.start(this.lensFlare, sequence);
+	}
+
+	addHitEffect()
+	{
+		this.energyMark = this.addChild(APP.library.getSprite("weapons/InstantKill/plasmaenergymark"));
+		this.energyMark.blendMode = PIXI.BLEND_MODES.ADD;
+		let energyMarkSequence = 	[	
+							{
+								tweens: [],
+								duration: 9 * 2 * 16.6,
+								onfinish: () => { this.energyMark.destroy(); }
+							}
+						];
+		Sequence.start(this.energyMark, energyMarkSequence);
+
+		if(APP.profilingController.info.isVfxProfileValueMediumOrGreater)
+		{
+			this.smoke = this.addChild(new Sprite);
+			this.smoke.textures = MissEffect.getSmokeTextures();
+			this.smoke.blendMode = PIXI.BLEND_MODES.SCREEN;
+			this.smoke.position.set(0, -14);
+			this.smoke.scale.set(2.72);
+			this.smoke.animationSpeed = 1;		
+
+			this.smoke.play();
+			this.smoke.once('animationend', (e) => {
+				e.target.destroy();
+				this.destroySuspicion();
+			});
+
+			this.groundSmoke = this.addChild(new Sprite);
+			this.groundSmoke.textures = InstantKillEffects['groundSmoke'];
+			this.groundSmoke.blendMode = PIXI.BLEND_MODES.SCREEN;
+			this.groundSmoke.scale.set(2);
+			this.groundSmoke.play();
+			this.groundSmoke.once('animationend', (e) => {
+				this.groundSmoke.destroy();
+				this.destroySuspicion();
+			});
+		}
+
+		this.glow = this.addChild(APP.library.getSprite("weapons/InstantKill/glow"));
+		this.glow.blendMode = PIXI.BLEND_MODES.ADD;
+		this.glow.alpha = 0;
+		let glowSequence = [
+								{
+									tweens: [{prop: "alpha", to: 1}],
+									duration: 3*2*16.6
+								},
+								{
+									tweens: [{prop: "alpha", to: 0}],
+									duration: 8*2*16.6,
+									onfinish: () => {
+										this.glow.destroy();
+										this.destroySuspicion();
+									}
+								}
+							];
+		Sequence.start(this.glow, glowSequence);
+	}
+
+	destroySuspicion()
+	{
+		if (this.children.length == 0)
+		{
+			this.destroy();
+		}
+	}
+
+	destroy()
+	{
+		this.emit(InstantKillExplosion.EVENT_ON_READY_FOR_DESTROY);
+		if (this.lensFlare)
+		{
+			Sequence.destroy(Sequence.findByTarget(this.lensFlare));
+		}
+		
+		if (this.energyMark)
+		{
+			Sequence.destroy(Sequence.findByTarget(this.energyMark));
+		}
+		
+		if (this.glow)
+		{
+			Sequence.destroy(Sequence.findByTarget(this.glow));
+		}
+
+		this.lensFlareParent && this.lensFlareParent.destroy();
+		this.lensFlareParent = null;
+		
+		this.lensFlare = null;
+		this.energyMark = null;
+		this.smoke = null;
+		this.groundSmoke = null;
+		this.glow = null;
+
+		super.destroy();
+	}
+}
+
+export default InstantKillExplosion;

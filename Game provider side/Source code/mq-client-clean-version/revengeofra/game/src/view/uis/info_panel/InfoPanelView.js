@@ -1,0 +1,274 @@
+import SimpleUIView from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/SimpleUIView';
+import I18 from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/translations/I18';
+import InfoPanelCPBIndicatorView from './InfoPanelCPBIndicatorView'
+import Timer from "../../../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer";
+import { ENEMIES } from '../../../../../shared/src/CommonConstants';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import Sprite from '../../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Sprite';
+
+const VIEW_TYPES = {
+	GENERAL: "GENERAL"
+}
+
+const BASE_X = -474;
+
+class InfoPanelView extends SimpleUIView
+{
+	update()
+	{
+		this._update();
+	}
+
+	updateKills()
+	{
+		this._updateKills();
+	}
+
+	clear()
+	{
+		this._clear();
+	}
+
+	constructor()
+	{
+		super();
+
+		this._fContainer_sprt = null;
+		this.fIndicatorsContainer_sprt = null;
+		this.fInfobarContainer_sprt = null;
+
+		this._fRoomCaption_ta = null;
+		this._fRoundIdCaption_ta = null;
+		this._fCPBIndicatorView_ipcpbiv = null;
+		this._cpbSeparator_gr = null;
+
+		this._fKillsCaption_ta = null;
+		this._fKillsCaptionTemplate_str = null;
+		this._fKilledBossCaptionTemplate_str = null;
+
+		this._fRoomCaptionTemplate_str = null;
+		this._fRoundIdCaptionTemplate_str = null;
+
+		this._fKillsCaptionShowTimer_t = null;
+
+		this._viewType = VIEW_TYPES.GENERAL;
+	}
+
+	__init()
+	{
+		super.__init();
+
+		this._fContainer_sprt = this.addChild(new Sprite());
+		this._fContainer_sprt.position.set(0, -262);
+
+		let base = this._fContainer_sprt.addChild(new PIXI.Graphics());
+		base.beginFill(0x000000).drawRect(-480, -8, 960, 16).endFill();
+
+
+		this.fIndicatorsContainer_sprt = this._fContainer_sprt.addChild(new Sprite());
+		this.fInfobarContainer_sprt = this._fContainer_sprt.addChild(new Sprite());
+
+		this._initCaptions();
+
+		this._fKillsCaptionShowTimer_t = new Timer(this._hideKillsCaption.bind(this), 2600, true);
+	}
+
+	_initCaptions()
+	{
+		this._fGameNameLable_ta = this.fIndicatorsContainer_sprt.addChild(I18.generateNewCTranslatableAsset("TAInfoPanelGameNameLabel"));
+		this._fGameNameLable_ta.position.set(BASE_X, -1);
+
+		let lGameNameLableBounds_obj = this._fGameNameLable_ta.assetContent.textBounds;
+		let lGameNameLableOffset_num = lGameNameLableBounds_obj.width + 6;
+
+		this._fRoomCaption_ta = this.fIndicatorsContainer_sprt.addChild(I18.generateNewCTranslatableAsset("TAInfoPanelRoomLabel"));
+		this._fRoomCaption_ta.position.set(BASE_X + lGameNameLableOffset_num, -1);
+		this._fRoomCaptionTemplate_str = this._fRoomCaption_ta.text;
+
+		let lRoomBounds_obj = this._fRoomCaption_ta.assetContent.textBounds;
+		let lRoundOffset_num = lRoomBounds_obj.width;
+		this._fRoundIdCaption_ta = this.fIndicatorsContainer_sprt.addChild(I18.generateNewCTranslatableAsset("TAInfoPanelRoundIdLabel"));
+		this._fRoundIdCaption_ta.position.set(BASE_X + lRoundOffset_num + lGameNameLableOffset_num, -1);
+		this._fRoundIdCaptionTemplate_str = this._fRoundIdCaption_ta.text;
+
+		this._fKillsCaption_ta = this.fInfobarContainer_sprt.addChild((I18.generateNewCTranslatableAsset("TAInfoPanelKillsLabel")));
+		this._fKillsCaption_ta.position.set(22, -1);
+		this._fKillsCaptionTemplate_str = this._fKillsCaption_ta.text;
+		this._fKilledBossCaptionTemplate_str = I18.getTranslatableAssetDescriptor("TAInfoPanelKilledBossLabelTemplate").textDescriptor.text;
+		this._fKillsCaption_ta.visible = false;
+
+		this._fCPBIndicatorView_ipcpbiv = this.fIndicatorsContainer_sprt.addChild(new InfoPanelCPBIndicatorView(null, this._isFRBMode));
+		this._fCPBIndicatorView_ipcpbiv.position.set(410, -1);
+		this._cpbSeparator_gr = this.fIndicatorsContainer_sprt.addChild(new PIXI.Graphics());
+		this._cpbSeparator_gr.clear();
+
+		this._updateAccordingViewType();
+	}
+
+	_update()
+	{
+		let lGameNameLableBounds_obj = this._fGameNameLable_ta.assetContent.textBounds;
+		let lGameNameLableOffset_num = lGameNameLableBounds_obj.width + 6;
+
+		this._fRoomCaption_ta.text = this._fRoomCaptionTemplate_str.replace("/VALUE/", this.uiInfo.roomId);
+		this._fRoundIdCaption_ta.text = this._fRoundIdCaptionTemplate_str.replace("/VALUE/", this.uiInfo.roundId);
+
+		let lRoomBounds_obj = this._fRoomCaption_ta.assetContent.textBounds;
+		let lRoundOffset_num = lRoomBounds_obj.width;
+		this._fRoundIdCaption_ta.position.set(BASE_X + lRoundOffset_num + lGameNameLableOffset_num, -1);
+
+		this._fCPBIndicatorView_ipcpbiv.updateBonusMode(this._isFRBMode);
+		if (this.uiInfo.cpb !== undefined)
+		{
+			this._fCPBIndicatorView_ipcpbiv.indicatorValue = this.uiInfo.cpb;
+			this._fCPBIndicatorView_ipcpbiv.show();
+		}
+		else
+		{
+			this._fCPBIndicatorView_ipcpbiv.hide();
+		}
+
+		this._updateAccordingViewType();
+	}
+
+	get _isFRBMode()
+	{
+		return APP.currentWindow.gameFrbController.info.frbMode;
+	}
+
+	_updateKills()
+	{
+		let template_str = this._enemyKillMessageTemplate;
+		let lEnemyName_str = this._getEnemyName(this.uiInfo.messageEnemy);
+		let lText_str = template_str.replace("/PLAYER_NAME/", this.uiInfo.messageNickname).replace("/ENEMY_NAME/", lEnemyName_str);
+
+		let killsFont = this._fKillsCaption_ta.textFormat.fontFamily;
+		if (!APP.fonts.isGlyphsSupported(killsFont, lText_str))
+		{
+			killsFont = "sans-serif";
+		}
+
+		let killsTf = this._fKillsCaption_ta.assetContent;
+		let txtStyle = killsTf.getStyle() || {};
+		txtStyle.fontFamily = killsFont;
+		killsTf.textFormat = txtStyle;
+
+		this._fKillsCaption_ta.text = lText_str;
+		this._fKillsCaption_ta.visible = true;
+
+		this._fKillsCaptionShowTimer_t.start();
+
+		this._updateAccordingViewType();
+	}
+
+	_clear()
+	{
+		this._hideKillsCaption();
+	}
+
+	_updateAccordingViewType()
+	{
+		this._updateViewType();
+
+		let curViewType = this._viewType;
+
+		this.fIndicatorsContainer_sprt.x = 0;
+		this.fIndicatorsContainer_sprt.scale.x = 1;
+
+		switch (curViewType)
+		{
+			case VIEW_TYPES.GENERAL:
+				this._cpbSeparator_gr && this._cpbSeparator_gr.clear();
+
+				this._fCPBIndicatorView_ipcpbiv && this._fCPBIndicatorView_ipcpbiv.position.set(410, -1);
+				this._fKillsCaption_ta && this._fKillsCaption_ta.position.set(22, -1);
+				break;
+		}
+	}
+
+	_updateViewType()
+	{
+		this._viewType = VIEW_TYPES.GENERAL;
+	}
+
+	get _enemyKillMessageTemplate()
+	{
+		let template = this._fKillsCaptionTemplate_str;
+
+		switch (this.uiInfo.messageEnemy)
+		{
+			case ENEMIES.Anubis:
+			case ENEMIES.Osiris:
+			case ENEMIES.Thoth:
+				template = this._fKilledBossCaptionTemplate_str;
+			break;
+			default:
+				template = this._fKillsCaptionTemplate_str;
+			break;
+		}
+
+		return template;
+	}
+
+	_hideKillsCaption()
+	{
+		this._fKillsCaption_ta.visible = false;
+	}
+
+	_getEnemyName(aName_str)
+	{
+		let lAssetName_str = null;
+
+		switch(aName_str)
+		{
+			case ENEMIES.ScarabGreen:		lAssetName_str = "TAInfoPanelEnemyScarabGreen";			break;
+			case ENEMIES.ScarabBrown:		lAssetName_str = "TAInfoPanelEnemyScarabBrown";			break;
+			case ENEMIES.ScarabGold:		lAssetName_str = "TAInfoPanelEnemyScarabGold";			break;
+			case ENEMIES.ScarabRuby:		lAssetName_str = "TAInfoPanelEnemyScarabRuby";			break;
+			case ENEMIES.ScarabDiamond:		lAssetName_str = "TAInfoPanelEnemyScarabDiamond";		break;
+			case ENEMIES.WrappedYellow:		lAssetName_str = "TAInfoPanelEnemyWrappedMinion";		break;
+			case ENEMIES.WrappedBlack:		lAssetName_str = "TAInfoPanelEnemyWrappedShadowguard";	break;
+			case ENEMIES.WrappedWhite:		lAssetName_str = "TAInfoPanelEnemyWrappedSpiritguard";	break;
+			case ENEMIES.MummyWarrior:		lAssetName_str = "TAInfoPanelEnemyTahawyWarrior";		break;
+			case ENEMIES.MummyGodRed:		lAssetName_str = "TAInfoPanelEnemyCrimsonBataana";		break;
+			case ENEMIES.MummyGodGreen:		lAssetName_str = "TAInfoPanelEnemyEmeraldBataana";		break;
+			case ENEMIES.WeaponCarrier:		lAssetName_str = "TAInfoPanelEnemyInfernalForgemaster";	break;
+			case ENEMIES.MummyWarriorGreen:	lAssetName_str = "TAInfoPanelEnemyTahawyCommander";		break;
+			case ENEMIES.BombEnemy:			lAssetName_str = "TAInfoPanelEnemyUnstableAvatar";		break;
+			case ENEMIES.Locust:			lAssetName_str = "TAInfoPanelEnemyDevouringLocust";		break;
+			case ENEMIES.LocustTeal:		lAssetName_str = "TAInfoPanelEnemySwarmingLocust";		break;
+			case ENEMIES.Scorpion:			lAssetName_str = "TAInfoPanelEnemyGiantScorpion";		break;
+			case ENEMIES.Horus:				lAssetName_str = "TAInfoPanelEnemyHorus";				break;
+			case ENEMIES.BrawlerBerserk: 	lAssetName_str = "TAInfoPanelEnemyBrawlerBerserk"; 		break;
+			case ENEMIES.Anubis:			lAssetName_str = "TAInfoPanelEnemyAnubis";				break;
+			case ENEMIES.Osiris:			lAssetName_str = "TAInfoPanelEnemyOsiris";				break;
+			case ENEMIES.Thoth:				lAssetName_str = "TAInfoPanelEnemyThoth";				break;
+		}
+
+		let lAssetDescriptor_ad =  I18.getTranslatableAssetDescriptor(lAssetName_str);
+		return lAssetDescriptor_ad ? lAssetDescriptor_ad.textDescriptor.content.text : "";
+	}
+
+	destroy()
+	{
+		this._fKillsCaptionShowTimer_t && this._fKillsCaptionShowTimer_t.destructor();
+
+		super.destroy();
+
+		this._fContainer_sprt = null;
+		this.fIndicatorsContainer_sprt = null;
+		this.fInfobarContainer_sprt = null;
+		this._fRoomCaption_ta = null;
+		this._fRoundIdCaption_ta = null;
+		this._fKillsCaption_ta = null;
+		this._fKillsCaptionTemplate_str = null;
+		this._fKilledBossCaptionTemplate_str = null;
+		this._fCPBIndicatorView_ipcpbiv = null;
+		this._fRoomCaptionTemplate_str = null;
+		this._fRoundIdCaptionTemplate_str = null;
+		this._fKillsCaptionShowTimer_t = null;
+		this._viewType = null;
+	}
+}
+
+export default InfoPanelView

@@ -1,0 +1,350 @@
+import { APP } from '../../../../../common/PIXI/src/globals';
+import Sprite from '../../../../../common/PIXI/src/display/Sprite';
+import { WEAPONS } from '../../../../shared/src/CommonConstants';
+import Sequence from '../../../../../common/PIXI/src/animation/Sequence';
+import { Utils } from '../../../../../common/PIXI/src/Utils';
+import {Z_INDEXES} from '../GameField';
+import PlayerSpot from '../playerSpots/PlayerSpot';
+
+const DISTANCE_EPS = 10;//px
+const CIRCLES_COORDS = [
+							{x: -44,  y: -102},
+							{x: -30, y: -20},
+							{x: 6, y: -123},
+							{x: 0, y: -10},
+							{x: 42, y: -112},
+							{x: 32, y: -32}
+						];
+
+class Bullet extends Sprite
+{
+	static get EVENT_ON_SHOW_MISS_EFFECT() 	{ return 'EVENT_ON_SHOW_MISS_EFFECT'};
+	static get EVENT_ON_DESTROYED()			{ return 'EVENT_ON_DESTROYED'};
+	static get EVENT_ON_DISAPPEAR()			{ return 'EVENT_ON_DISAPPEAR'};
+
+	constructor(params, points, callback)
+	{
+		super();
+		
+		this.pointsArray = points.reverse();
+		this._fCallback_func = callback;
+
+		let startPos = this.pointsArray.pop();
+		let endPos = this.pointsArray.pop();
+
+		this.id = params.id || 0;
+		this.typeId = params.typeId;
+		this.defaultWeaponBulletId = params.defaultWeaponBulletId;
+		this.radius = params.radius || 4;
+
+		if (this.typeId === WEAPONS.DEFAULT)
+		{
+			this.startPos = this.getCorrectedStartPos(startPos, endPos);
+		}
+		else
+		{
+			this.startPos = startPos;
+		}
+
+		this.endPos = endPos;
+		this.targetEnemy = params.targetEnemy;
+		this.randomOffset = params.randomOffset;
+		this.angle = Math.atan2(endPos.x - startPos.x, endPos.y - startPos.y) + Math.PI/2;
+		this.preEndProps = (params.preEndPos === undefined) ? null : params.preEndPos;
+
+		this.fire = null;
+		this.bullet_1 = null;
+		this.bullet_2 = null;
+		this._fCircles_sprt_arr = null;
+		this.pathCount = undefined;
+		this._fWeaponScale = params.weaponScale ? params.weaponScale: 1;
+
+		this.fireRotation = -this.angle - Math.PI/2;
+
+		this.speed = this.getSpeed();
+
+		this.trailTime = 0;
+
+		this.targetEnemy && this.targetEnemy.once(Sprite.EVENT_ON_DESTROYING, this._onTargetEnemyDestroyed, this);
+
+		this.once('added', () => {
+			this.createView(callback);
+		})
+	}
+
+	_onTargetEnemyDestroyed(event)
+	{
+		this.targetEnemy = null;
+	}
+
+	getSpeed()
+	{
+		switch (this.typeId)
+		{
+			case WEAPONS.DEFAULT: 
+				return 1.6;
+			default: 
+				return 3;
+		}
+	}
+
+	createView(callback)
+	{
+		this.addFire();
+		this.setPos(callback);
+	}
+
+	setPos(callback)
+	{
+		this.position.set(this.startPos.x, this.startPos.y);
+		this.pathCount = 0;
+
+		this.showDefaultTrajectory(callback);
+		
+		this.zIndex = Z_INDEXES.BULLET;
+	}
+
+	getCorrectedStartPos(startPos, endPos)
+	{
+		let angle = Math.PI / 2 - Utils.getAngle(startPos, endPos);
+		var distance = this.getOffsetBullet();
+		let lStartPos = {};
+		lStartPos.x = startPos.x + Math.cos(angle)*(distance);
+		lStartPos.y = startPos.y + Math.sin(angle)*(distance);
+
+		return lStartPos;
+	}
+
+	getOffsetBullet()
+	{		
+		switch (this.typeId)
+		{
+			case WEAPONS.DEFAULT:
+				switch (this.defaultWeaponBulletId)
+				{
+					case 1:  return 30;
+					case 2: return 40;
+					case 3: return 40;
+					case 4: return 50;
+					case 5: return 50;
+					default: return 0;
+				}
+			default: return 0;
+		}
+	}
+
+	showDefaultTrajectory(callback)
+	{
+		let len = Math.sqrt(Math.pow(this.x - this.endPos.x, 2) + Math.pow(this.y - this.endPos.y, 2));
+		let time = len / this.speed;
+
+		if(this.pointsArray.length == 0)
+		{
+			// this.scaleTo(0.5, time);
+			this.scale.set(0.5);
+
+			this.on('tick', this.onTick, this);
+		}
+		else
+		{
+			// this.scaleTo(0.1, time);
+			
+			this.moveTo(this.endPos.x, this.endPos.y, time, null, (e) => {
+				this.startPos.x = this.endPos.x;
+				this.startPos.y = this.endPos.y;
+				this.endPos = this.pointsArray.pop();
+
+				this.angle = Math.atan2(this.endPos.x - this.startPos.x, this.endPos.y - this.startPos.y) + Math.PI/2;
+				this.fireRotation = -this.angle - Math.PI/2;
+				this.fire.rotation = this.fireRotation;
+
+				this.emit(Bullet.EVENT_ON_SHOW_MISS_EFFECT, {x: this.startPos.x, y: this.startPos.y, noFlash: true});
+				this.showDefaultTrajectory(callback);
+			});
+		}
+	}
+
+	onTick(e)
+	{
+		if (!this.endPos)
+		{
+			return;
+		}
+
+		let dist = Math.sqrt(Math.pow(this.x - this.endPos.x, 2) + Math.pow(this.y - this.endPos.y, 2));
+		if (this.targetEnemy)
+		{
+			this.endPos = (this.targetEnemy && this.targetEnemy.transform) ? this.targetEnemy.getCenterPosition() : this.endPos;
+			if (this.randomOffset) 
+			{
+				this.endPos.x += this.randomOffset.x;
+				this.endPos.y += this.randomOffset.y;
+			}
+		}
+
+		let step = e.delta * this.speed;
+		if (dist < DISTANCE_EPS || step > dist)
+		{
+			//this.removeAllListeners();
+			this.off('tick', this.onTick, this);
+			this.position.set(this.endPos.x, this.endPos.y);
+			this._fCallback_func(this, this.endPos, this.angle);
+			this.disappear();
+			return;
+		}
+
+		this.angle = Math.atan2(this.endPos.x - this.x, this.endPos.y - this.y) + Math.PI/2;
+		this.fireRotation = -this.angle - Math.PI/2;
+		this.fire.rotation = this.fireRotation;
+
+		let angle = this.angle - Math.PI;
+		this.x = this.x + Math.cos(angle)*step;
+		this.y = this.y - Math.sin(angle)*step;
+	}
+
+	addFire()
+	{
+		let bullet_1;
+		let bullet_2;
+		let bullet_3;
+
+		switch (this.typeId)
+		{
+			case WEAPONS.DEFAULT: //turret 4
+
+				switch (this.defaultWeaponBulletId)
+				{
+					case 1:
+						this.fire = this.addChild(APP.library.getSprite('weapons/DefaultGun/bullet/bullet_1'));
+						this.fire.blendMode = PIXI.BLEND_MODES.ADD;
+						break;
+					case 2:
+						this.fire = this.addChild(APP.library.getSprite('weapons/DefaultGun/bullet/bullet_2'));
+						this.fire.blendMode = PIXI.BLEND_MODES.ADD;
+						break;
+					case 3:
+						this.fire = this.addChild(APP.library.getSprite('weapons/DefaultGun/bullet/bullet_3'));
+						this.fire.blendMode = PIXI.BLEND_MODES.ADD;
+						break;
+					case 4:
+						this.fire = this.addChild(new Sprite);
+						bullet_1 = this.fire.addChild(APP.library.getSprite('weapons/DefaultGun/bullet/bullet_4'));
+						bullet_1.blendMode = PIXI.BLEND_MODES.ADD;
+						bullet_2 = this.fire.addChild(APP.library.getSprite('weapons/DefaultGun/bullet/bullet_4'));
+						bullet_2.blendMode = PIXI.BLEND_MODES.ADD;
+						bullet_1.x -= 13;
+						bullet_2.x += 13;
+						break;
+					case 5:
+						this.fire = this.addChild(new Sprite);
+						bullet_1 = this.fire.addChild(APP.library.getSprite('weapons/DefaultGun/bullet/bullet_5'));
+						bullet_1.blendMode = PIXI.BLEND_MODES.ADD;
+						bullet_2 = this.fire.addChild(APP.library.getSprite('weapons/DefaultGun/bullet/bullet_5'));
+						bullet_2.blendMode = PIXI.BLEND_MODES.ADD;
+						bullet_3 = this.fire.addChild(APP.library.getSprite('weapons/DefaultGun/bullet/bullet_5'));
+						bullet_3.blendMode = PIXI.BLEND_MODES.ADD;
+						bullet_1.x -= 26;
+						bullet_3.x += 26;
+						break;
+				    default:
+						this.fire = this.addChild(APP.library.getSprite('blend/bullet'));
+						this.fire.blendMode = PIXI.BLEND_MODES.ADD;
+						break;
+				}
+				break;
+
+
+			default:
+				this.fire = this.addChild(APP.library.getSprite('blend/bullet'));
+				this.fire.blendMode = PIXI.BLEND_MODES.ADD;
+				break;
+		}
+		this.fire.rotation = this.fireRotation;
+
+		let scaleX = this.fire.scale.x * this._fWeaponScale;
+		let scaleY = this.fire.scale.y * this._fWeaponScale;
+		this.fire.scale.set(scaleX * PlayerSpot.WEAPON_SCALE, scaleY * PlayerSpot.WEAPON_SCALE);
+	}
+
+	_createCircle(index)
+	{
+		let centerPoint = CIRCLES_COORDS[index];
+
+		let circle = new PIXI.Graphics();
+		circle.beginFill(0xffffff);
+		circle.drawCircle(centerPoint.x * 0.8, centerPoint.y * 0.8, 5);
+		circle.endFill();
+
+		let circleSprite = new Sprite();
+		circleSprite.addChild(circle);
+
+		circleSprite.blendMode = PIXI.BLEND_MODES.ADD;
+
+		return circleSprite;
+	}
+
+	disappear()
+	{
+		this.emit(Bullet.EVENT_ON_DISAPPEAR);
+		this.scaleTo(0.1, 50, null, () => this._onDisappeared());
+	}
+
+	_onDisappeared()
+	{
+		this.destroy();
+	}
+
+	destroy()
+	{
+		this.off('tick', this.onTick, this);
+
+		Sequence.destroy(Sequence.findByTarget(this));
+
+		if (this.fire)
+		{
+			Sequence.destroy(Sequence.findByTarget(this.fire));
+			this.fire = null;
+		}
+
+		if (this._fCircles_sprt_arr)
+		{
+			while (this._fCircles_sprt_arr.length)
+			{
+				this._fCircles_sprt_arr.pop().destroy();
+			}
+			this._fCircles_sprt_arr = null;
+		}
+
+		this.pointsArray = null;
+
+		this.id = undefined;
+		this.typeId = undefined;
+		this.radius = undefined;
+		this.startPos = null;
+		this.endPos = null;
+		
+		this.targetEnemy && this.targetEnemy.off(Sprite.EVENT_ON_DESTROYING, this._onTargetEnemyDestroyed, this, true);
+		this.targetEnemy = null;
+
+		this.randomOffset = undefined;
+		this.angle = undefined;
+		this.preEndProps = null;
+		this.pathCount = undefined;
+		this.fireRotation = undefined;
+		this.speed = undefined;
+
+		this.bullet_1 = null;
+		this.bullet_2 = null;
+
+		this.trailTime = undefined;
+
+		super.destroy();
+	}
+
+	tick(delta)
+	{
+		this.emit('tick', {delta: delta});
+	}
+}
+
+export default Bullet;

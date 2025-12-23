@@ -1,0 +1,147 @@
+import { APP } from '../../../../../../../common/PIXI/src/globals';
+import { Sprite } from '../../../../../../../common/PIXI/src/display';
+import AtlasSprite from '../../../../../../../common/PIXI/src/display/AtlasSprite';
+import AtlasConfig from '../../../../config/AtlasConfig';
+import Sequence from '../../../../../../../common/PIXI/src/animation/Sequence';
+import { FRAME_RATE } from '../../../../../../shared/src/CommonConstants';
+import I18 from '../../../../../../../common/PIXI/src/I18';
+import { Utils } from '../../../../../../../common/PIXI/src/Utils';
+import * as Easing from '../../../../../../../common/PIXI/src/animation/easing';
+
+class InstantKillAnimation extends Sprite
+{
+	static get EVENT_ON_ANIMATION_COMPLETED()		{return "onAnimationCompleted";}
+
+	startAnimation()
+	{
+		this._startAnimation();
+	}
+
+	constructor(aIsMasterSeat_bl)
+	{
+		super();
+
+		this._fIsMasterSeat_bl = aIsMasterSeat_bl;
+		this._fSequences_arr = [];
+
+		this._createView();
+	}
+
+	get isMasterSeat()
+	{
+		return this._fIsMasterSeat_bl;
+	}
+
+	get _mainContainer()
+	{
+		return APP.currentWindow.gameField.instantKillAnimationContainer;
+	}
+
+	_createView()
+	{
+		this._mainContainer.container.addChild(this);
+		this.zIndex = this._mainContainer.zIndex;
+	}
+
+	_startAnimation()
+	{
+		APP.profilingController.info.isVfxProfileValueMediumOrGreater && this._animateGlow();
+		this._animateCaption();
+	}
+
+	_animateGlow()
+	{
+		let lGlow_spr = this.addChild(APP.library.getSprite("common/instant_kill/insta_glow"));
+		lGlow_spr.position.y = -70;
+		lGlow_spr.blendMode = PIXI.BLEND_MODES.SCREEN;
+
+		let lScale_seq = [
+			{tweens: [],																	duration: 4*FRAME_RATE , onfinish: ()=>this._animateExplosion()},
+			{tweens: [],																	duration: 3*FRAME_RATE},
+			{tweens: [{prop: 'scale.x', to: 2.1},		{prop: 'scale.y', to: 2.1}],		duration: 15*FRAME_RATE},
+		];
+
+		let lAlpha_seq = [
+			{tweens: [],							duration: 14*FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}],		duration: 8*FRAME_RATE},
+		];
+
+		this._fSequences_arr.push(Sequence.start(lGlow_spr, lScale_seq));
+		this._fSequences_arr.push(Sequence.start(lGlow_spr, lAlpha_seq));
+	}
+
+	_animateExplosion()
+	{
+		let lExplosion_spr = this.addChildAt(new Sprite, 1);
+		lExplosion_spr.textures = AtlasSprite.getFrames([APP.library.getAsset("common/instant_kill/instakill_explosion_0"), APP.library.getAsset("common/instant_kill/instakill_explosion_1")], [AtlasConfig.InstakillExplosion0, AtlasConfig.InstakillExplosion1], "");
+		lExplosion_spr.blendMode = PIXI.BLEND_MODES.ADD;
+		lExplosion_spr.scale.set(2);
+		lExplosion_spr.gotoAndPlay(3);
+		lExplosion_spr.once('animationend', (e) =>{
+			lExplosion_spr.destroy();
+			this.emit(InstantKillAnimation.EVENT_ON_ANIMATION_COMPLETED);
+		});	
+
+		APP.gameScreen.gameField.shakeTheGround("instaKill");
+	}
+
+	_animateCaption()
+	{
+		let lCaptionCountainer_spr = this.addChild(new Sprite);
+		lCaptionCountainer_spr.scale.set(30);
+		lCaptionCountainer_spr.position.y = 40;
+		lCaptionCountainer_spr.rotation = Utils.gradToRad(135);
+
+		let lCaptionAsset_str = this._fIsMasterSeat_bl ? "TAInstantKillLabel" : "TAInstantKillSilverLabel"
+		let lCaption_spr = lCaptionCountainer_spr.addChild(I18.generateNewCTranslatableAsset(lCaptionAsset_str))
+		let lCaptionWhite_spr = lCaptionCountainer_spr.addChild(I18.generateNewCTranslatableAsset("TAInstantKillWhiteLabel"));
+
+		let lCaptionWhiteAlpha_seq = [
+			{tweens: [],							duration: 7*FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}],		duration: 7*FRAME_RATE, ease: Easing.quartic.easeOut},
+		];
+
+		this._fSequences_arr.push(Sequence.start(lCaptionWhite_spr, lCaptionWhiteAlpha_seq));
+		
+		let lAlpha_seq = [
+			{tweens: [],							duration: 23*FRAME_RATE},
+			{tweens: [{prop: 'alpha', to: 0}],		duration: 5*FRAME_RATE, onfinish: ()=>{!APP.profilingController.info.isVfxProfileValueMediumOrGreater && this.emit(InstantKillAnimation.EVENT_ON_ANIMATION_COMPLETED);}},
+		];
+
+		let lScale_seq = [
+			{tweens: [{prop: 'scale.x', to: 1},		{prop: 'scale.y', to: 1}],		duration: 4*FRAME_RATE, ease: Easing.quartic.easeOut},
+		];
+
+		let lPos_seq = [
+			{tweens: [],																			duration: 7*FRAME_RATE},
+			{tweens: [{prop: 'position.x', to: 2.5},		{prop: 'position.y', to: 40-1.5}],		duration: 4*FRAME_RATE},
+			{tweens: [{prop: 'position.x', to: -1.5},		{prop: 'position.y', to: 40-1}],		duration: 3*FRAME_RATE},
+			{tweens: [{prop: 'position.x', to: 0},			{prop: 'position.y', to: 40-0}],		duration: 4*FRAME_RATE}
+		];
+
+		let lAngle_seq = [
+			{tweens: [{prop: 'rotation', to: Utils.gradToRad(0)}],		duration: 3*FRAME_RATE, ease: Easing.quartic.easeOut},
+		];
+
+		this._fSequences_arr.push(Sequence.start(lCaptionCountainer_spr, lAlpha_seq));
+		this._fSequences_arr.push(Sequence.start(lCaptionCountainer_spr, lScale_seq));
+		this._fSequences_arr.push(Sequence.start(lCaptionCountainer_spr, lPos_seq));
+		this._fSequences_arr.push(Sequence.start(lCaptionCountainer_spr, lAngle_seq));
+	}
+
+	destroy()
+	{
+		this._fIsMasterSeat_bl = null;
+
+		while (this._fSequences_arr && this._fSequences_arr.length)
+		{
+			let seq = this._fSequences_arr.pop();
+			seq && seq.destructor();
+		}
+		this._fSequences_arr = null;
+
+		super.destroy();
+	}
+}
+
+export default InstantKillAnimation;
