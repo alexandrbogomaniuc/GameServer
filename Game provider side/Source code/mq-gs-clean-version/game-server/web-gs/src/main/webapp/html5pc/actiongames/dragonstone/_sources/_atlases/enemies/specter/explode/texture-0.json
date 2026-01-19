@@ -1,0 +1,1119 @@
+{
+  "frames": {
+    "MQ_DS_SpiritSpectre_example_00009.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 134,
+        "h": 126
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 410,
+        "y": 299,
+        "w": 134,
+        "h": 126
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00010.png": {
+      "frame": {
+        "x": 1,
+        "y": 129,
+        "w": 163,
+        "h": 167
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 395,
+        "y": 263,
+        "w": 163,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00011.png": {
+      "frame": {
+        "x": 1,
+        "y": 298,
+        "w": 190,
+        "h": 180
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 383,
+        "y": 254,
+        "w": 190,
+        "h": 180
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00012.png": {
+      "frame": {
+        "x": 1,
+        "y": 480,
+        "w": 205,
+        "h": 186
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 374,
+        "y": 252,
+        "w": 205,
+        "h": 186
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00013.png": {
+      "frame": {
+        "x": 166,
+        "y": 1,
+        "w": 227,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 364,
+        "y": 247,
+        "w": 227,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00014.png": {
+      "frame": {
+        "x": 1,
+        "y": 668,
+        "w": 234,
+        "h": 210
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 360,
+        "y": 238,
+        "w": 234,
+        "h": 210
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00015.png": {
+      "frame": {
+        "x": 193,
+        "y": 196,
+        "w": 256,
+        "h": 218
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 348,
+        "y": 234,
+        "w": 256,
+        "h": 218
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00016.png": {
+      "frame": {
+        "x": 1,
+        "y": 880,
+        "w": 272,
+        "h": 219
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 339,
+        "y": 232,
+        "w": 272,
+        "h": 219
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00017.png": {
+      "frame": {
+        "x": 451,
+        "y": 1,
+        "w": 275,
+        "h": 228
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 341,
+        "y": 226,
+        "w": 275,
+        "h": 228
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00018.png": {
+      "frame": {
+        "x": 208,
+        "y": 416,
+        "w": 288,
+        "h": 230
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 333,
+        "y": 228,
+        "w": 288,
+        "h": 230
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00019.png": {
+      "frame": {
+        "x": 1,
+        "y": 1101,
+        "w": 296,
+        "h": 232
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 225,
+        "w": 296,
+        "h": 232
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00020.png": {
+      "frame": {
+        "x": 728,
+        "y": 1,
+        "w": 310,
+        "h": 238
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 321,
+        "y": 220,
+        "w": 310,
+        "h": 238
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00021.png": {
+      "frame": {
+        "x": 1,
+        "y": 1335,
+        "w": 312,
+        "h": 236
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 318,
+        "y": 223,
+        "w": 312,
+        "h": 236
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00022.png": {
+      "frame": {
+        "x": 275,
+        "y": 648,
+        "w": 322,
+        "h": 248
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 216,
+        "w": 322,
+        "h": 248
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00023.png": {
+      "frame": {
+        "x": 1040,
+        "y": 1,
+        "w": 321,
+        "h": 243
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 313,
+        "y": 218,
+        "w": 321,
+        "h": 243
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00024.png": {
+      "frame": {
+        "x": 1,
+        "y": 1573,
+        "w": 323,
+        "h": 249
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 315,
+        "y": 216,
+        "w": 323,
+        "h": 249
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00025.png": {
+      "frame": {
+        "x": 299,
+        "y": 898,
+        "w": 326,
+        "h": 249
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 312,
+        "y": 215,
+        "w": 326,
+        "h": 249
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00026.png": {
+      "frame": {
+        "x": 1363,
+        "y": 1,
+        "w": 332,
+        "h": 248
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 311,
+        "y": 215,
+        "w": 332,
+        "h": 248
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00027.png": {
+      "frame": {
+        "x": 498,
+        "y": 241,
+        "w": 336,
+        "h": 247
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 306,
+        "y": 214,
+        "w": 336,
+        "h": 247
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00028.png": {
+      "frame": {
+        "x": 315,
+        "y": 1149,
+        "w": 334,
+        "h": 251
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 309,
+        "y": 212,
+        "w": 334,
+        "h": 251
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00029.png": {
+      "frame": {
+        "x": 1697,
+        "y": 1,
+        "w": 331,
+        "h": 257
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 210,
+        "w": 331,
+        "h": 257
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00030.png": {
+      "frame": {
+        "x": 599,
+        "y": 490,
+        "w": 337,
+        "h": 251
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 308,
+        "y": 212,
+        "w": 337,
+        "h": 251
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00031.png": {
+      "frame": {
+        "x": 326,
+        "y": 1402,
+        "w": 339,
+        "h": 253
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 306,
+        "y": 212,
+        "w": 339,
+        "h": 253
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00032.png": {
+      "frame": {
+        "x": 938,
+        "y": 246,
+        "w": 338,
+        "h": 250
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 305,
+        "y": 213,
+        "w": 338,
+        "h": 250
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00033.png": {
+      "frame": {
+        "x": 627,
+        "y": 743,
+        "w": 328,
+        "h": 250
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 312,
+        "y": 214,
+        "w": 328,
+        "h": 250
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00034.png": {
+      "frame": {
+        "x": 326,
+        "y": 1657,
+        "w": 337,
+        "h": 243
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 307,
+        "y": 218,
+        "w": 337,
+        "h": 243
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00035.png": {
+      "frame": {
+        "x": 1278,
+        "y": 260,
+        "w": 339,
+        "h": 249
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 213,
+        "w": 339,
+        "h": 249
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00036.png": {
+      "frame": {
+        "x": 651,
+        "y": 995,
+        "w": 336,
+        "h": 247
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 308,
+        "y": 217,
+        "w": 336,
+        "h": 247
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00037.png": {
+      "frame": {
+        "x": 665,
+        "y": 1657,
+        "w": 333,
+        "h": 250
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 309,
+        "y": 219,
+        "w": 333,
+        "h": 250
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00038.png": {
+      "frame": {
+        "x": 1619,
+        "y": 260,
+        "w": 352,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 299,
+        "y": 219,
+        "w": 352,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00039.png": {
+      "frame": {
+        "x": 957,
+        "y": 498,
+        "w": 346,
+        "h": 255
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 302,
+        "y": 222,
+        "w": 346,
+        "h": 255
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00040.png": {
+      "frame": {
+        "x": 667,
+        "y": 1244,
+        "w": 348,
+        "h": 255
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 301,
+        "y": 218,
+        "w": 348,
+        "h": 255
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00041.png": {
+      "frame": {
+        "x": 1214,
+        "y": 511,
+        "w": 341,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 304,
+        "y": 218,
+        "w": 341,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00042.png": {
+      "frame": {
+        "x": 1017,
+        "y": 846,
+        "w": 342,
+        "h": 252
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 306,
+        "y": 216,
+        "w": 342,
+        "h": 252
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00043.png": {
+      "frame": {
+        "x": 1000,
+        "y": 1501,
+        "w": 352,
+        "h": 256
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 299,
+        "y": 218,
+        "w": 352,
+        "h": 256
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00044.png": {
+      "frame": {
+        "x": 1557,
+        "y": 518,
+        "w": 348,
+        "h": 247
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 301,
+        "y": 218,
+        "w": 348,
+        "h": 247
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00045.png": {
+      "frame": {
+        "x": 1000,
+        "y": 1759,
+        "w": 344,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 304,
+        "y": 214,
+        "w": 344,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00046.png": {
+      "frame": {
+        "x": 1017,
+        "y": 1190,
+        "w": 342,
+        "h": 263
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 305,
+        "y": 214,
+        "w": 342,
+        "h": 263
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00047.png": {
+      "frame": {
+        "x": 1557,
+        "y": 767,
+        "w": 340,
+        "h": 249
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 306,
+        "y": 216,
+        "w": 340,
+        "h": 249
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00048.png": {
+      "frame": {
+        "x": 1346,
+        "y": 1759,
+        "w": 345,
+        "h": 252
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 302,
+        "y": 220,
+        "w": 345,
+        "h": 252
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00049.png": {
+      "frame": {
+        "x": 1271,
+        "y": 769,
+        "w": 346,
+        "h": 251
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 305,
+        "y": 220,
+        "w": 346,
+        "h": 251
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00050.png": {
+      "frame": {
+        "x": 1354,
+        "y": 1455,
+        "w": 340,
+        "h": 251
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 306,
+        "y": 217,
+        "w": 340,
+        "h": 251
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00051.png": {
+      "frame": {
+        "x": 1693,
+        "y": 1018,
+        "w": 353,
+        "h": 253
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 301,
+        "y": 218,
+        "w": 353,
+        "h": 253
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00052.png": {
+      "frame": {
+        "x": 1693,
+        "y": 1708,
+        "w": 350,
+        "h": 247
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 300,
+        "y": 222,
+        "w": 350,
+        "h": 247
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00053.png": {
+      "frame": {
+        "x": 1361,
+        "y": 1117,
+        "w": 336,
+        "h": 243
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 307,
+        "y": 223,
+        "w": 336,
+        "h": 243
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_DS_SpiritSpectre_example_00054.png": {
+      "frame": {
+        "x": 1696,
+        "y": 1273,
+        "w": 337,
+        "h": 242
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 307,
+        "y": 223,
+        "w": 337,
+        "h": 242
+      },
+      "sourceSize": {
+        "w": 951,
+        "h": 752
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "texture-0.jpg",
+    "format": "RGB888",
+    "size": {
+      "w": 2048,
+      "h": 2048
+    },
+    "scale": 2
+  }
+}

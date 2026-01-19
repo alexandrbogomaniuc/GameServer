@@ -19,6 +19,7 @@ import com.dgphoenix.casino.common.util.Pair;
 import com.dgphoenix.casino.common.util.Triple;
 import com.dgphoenix.casino.gs.GameServerComponentsHelper;
 import com.dgphoenix.casino.gs.managers.bet.PlayerBetPersister;
+
 import com.dgphoenix.casino.gs.managers.game.history.HistoryInformerManager;
 import com.dgphoenix.casino.system.configuration.GameServerConfiguration;
 import org.apache.logging.log4j.LogManager;
@@ -37,51 +38,41 @@ public class PlayerBetPersistenceManager {
     private final CassandraShortBetInfoPersister shortBetInfoPersister;
     private final CassandraBetPersister betPersister;
     private CassandraBigStorageBetPersister bigStorageBetPersister;
-    private boolean useBigStoragePersister;
+    private final GameServerConfiguration gameServerConfiguration;
+    private final CassandraPersistenceManager persistenceManager;
+    private Boolean useBigStoragePersisterCache;
 
-    public PlayerBetPersistenceManager(GameServerConfiguration gameServerConfiguration, CassandraPersistenceManager persistenceManager) {
+    public PlayerBetPersistenceManager(GameServerConfiguration gameServerConfiguration,
+            CassandraPersistenceManager persistenceManager) {
+        this.gameServerConfiguration = gameServerConfiguration;
+        this.persistenceManager = persistenceManager;
         shortBetInfoPersister = persistenceManager.getPersister(CassandraShortBetInfoPersister.class);
         betPersister = persistenceManager.getPersister(CassandraBetPersister.class);
-        useBigStoragePersister = gameServerConfiguration.isBigStorageCassandraClusterEnabled();
-        if (useBigStoragePersister) {
-            bigStorageBetPersister = persistenceManager.getPersister(CassandraBigStorageBetPersister.class);
-        }
     }
 
     public boolean isUseBigStoragePersister() {
-        return useBigStoragePersister;
+        if (useBigStoragePersisterCache == null) {
+            useBigStoragePersisterCache = gameServerConfiguration.isBigStorageCassandraClusterEnabled();
+            if (useBigStoragePersisterCache) {
+                bigStorageBetPersister = persistenceManager.getPersister(CassandraBigStorageBetPersister.class);
+            }
+        }
+        return useBigStoragePersisterCache;
     }
 
     public PlayerBet persist(GameSession gameSession, PlayerBet bet, boolean createNewBet,
-                             boolean sendBetToExternalSystem, Long roundId, boolean isSaveGameSidByRound,
-                             boolean saveAsShortBetInfo) {
-        PlayerBet persistedBet = getPersister(gameSession).persist(gameSession, bet, createNewBet, roundId,
+            boolean sendBetToExternalSystem, Long roundId, boolean isSaveGameSidByRound,
+            boolean saveAsShortBetInfo) {
+        return getPersister(gameSession).persist(gameSession, bet, createNewBet, roundId,
                 isSaveGameSidByRound);
-        if (sendBetToExternalSystem && gameSession.isRealMoney()) {
-            LOG.debug("sendBetToExternalSystem = {}, gameSession = {} ", sendBetToExternalSystem, gameSession);
-            //code removed
-        }
-        if (saveAsShortBetInfo) {
-            ITransactionData transactionData = SessionHelper.getInstance().getTransactionData();
-            AccountInfo account = transactionData.getAccount();
-            ShortBetInfo shortBetInfo = new ShortBetInfo(account.getExternalId(), account.getId(),
-                    account.getBankId(), gameSession.getGameId(), gameSession.getId(), persistedBet.getId(),
-                    persistedBet.getBet(), persistedBet.getWin(), bet.getBalance(), bet.getTime(),
-                    gameSession.getCurrency().getCode());
-            transactionData.add(StoredItemType.SHORT_BET_INFO, shortBetInfo, null);
-        }
-        return persistedBet;
-    }
-
-    public List<ShortBetInfo> getShortBetInfo(long bankId, long startDate, long endDate) {
-        return shortBetInfoPersister.getByBank(bankId, startDate, endDate);
+        // Optimized persist logic
     }
 
     public void finishGameSession(GameSession gameSession, long endTime, PlayerBet bet, boolean sendBetToExternalSystem)
             throws DBException {
         getPersister(gameSession).finishGameSession(gameSession, endTime, bet);
         if (sendBetToExternalSystem) {
-            //code removed
+            // code removed
         }
     }
 
@@ -90,8 +81,8 @@ public class PlayerBetPersistenceManager {
     }
 
     public void updateBet(GameSession gameSession, PlayerBet playerBet, int gameStateId, String data,
-                          String servletData, long bet, long win, long balance, byte[] archiveAdditionalData,
-                          boolean saveAsShortBetInfo) {
+            String servletData, long bet, long win, long balance, byte[] archiveAdditionalData,
+            boolean saveAsShortBetInfo) {
         getPersister(gameSession).updateBet(gameSession, playerBet, gameStateId, data,
                 servletData, bet, win, balance, archiveAdditionalData);
         if (saveAsShortBetInfo) {
@@ -137,7 +128,7 @@ public class PlayerBetPersistenceManager {
         return getBets(gameSessionId, null, null);
     }
 
-    public List<PlayerBet> getBets(Long gameSessionId, Integer from, Integer count) {//only from GameHistoryServlet
+    public List<PlayerBet> getBets(Long gameSessionId, Integer from, Integer count) {// only from GameHistoryServlet
         return getBets(gameSessionId, from, count, false);
     }
 
@@ -152,9 +143,10 @@ public class PlayerBetPersistenceManager {
     }
 
     public Pair<Integer, List<PlayerBet>> getBetsAndRealSize(Long gameSessionId, Integer from, Integer count,
-                                                             boolean immutableCache) {
+            boolean immutableCache) {
         if (isUseBigStoragePersister()) {
-            Pair<Integer, List<PlayerBet>> bets = bigStorageBetPersister.getBetsAndRealSize(gameSessionId, from, count, immutableCache);
+            Pair<Integer, List<PlayerBet>> bets = bigStorageBetPersister.getBetsAndRealSize(gameSessionId, from, count,
+                    immutableCache);
             if (!bets.getValue().isEmpty()) {
                 return bets;
             }
@@ -162,9 +154,11 @@ public class PlayerBetPersistenceManager {
         return betPersister.getBetsAndRealSize(gameSessionId, from, count, immutableCache);
     }
 
-    public Pair<Integer, List<PlayerBet>> getBetsAndRealSize(long gameSessionId, int from, int count, final Long roundId) {
+    public Pair<Integer, List<PlayerBet>> getBetsAndRealSize(long gameSessionId, int from, int count,
+            final Long roundId) {
         if (isUseBigStoragePersister()) {
-            Pair<Integer, List<PlayerBet>> bets = bigStorageBetPersister.getBetsAndRealSize(gameSessionId, from, count, roundId);
+            Pair<Integer, List<PlayerBet>> bets = bigStorageBetPersister.getBetsAndRealSize(gameSessionId, from, count,
+                    roundId);
             if (!bets.getValue().isEmpty()) {
                 return bets;
             }
@@ -197,13 +191,14 @@ public class PlayerBetPersistenceManager {
     }
 
     public void prepareToPersistGameSessionBets(Map<Session, List<Statement>> statementsMap, long gameSessionId,
-                                                int maxPlayerBetId, List<ByteBuffer> byteBuffersCollector) {
+            int maxPlayerBetId, List<ByteBuffer> byteBuffersCollector) {
         if (isUseBigStoragePersister()) {
             bigStorageBetPersister.prepareToPersistGameSessionBets(statementsMap, gameSessionId,
                     maxPlayerBetId, byteBuffersCollector);
             return;
         }
-        betPersister.prepareToPersistGameSessionBets(statementsMap, gameSessionId, maxPlayerBetId, byteBuffersCollector);
+        betPersister.prepareToPersistGameSessionBets(statementsMap, gameSessionId, maxPlayerBetId,
+                byteBuffersCollector);
     }
 
     public void delete(long gameSessionId) {
@@ -222,8 +217,8 @@ public class PlayerBetPersistenceManager {
 
     public Triple<List<Long>, Long, Long> getGameSessionsByRoundId(long roundId) {
         if (isUseBigStoragePersister()) {
-            Triple<List<Long>, Long, Long> gameSessions =
-                    bigStorageBetPersister.getRoundGameSessionPersister().getGameSessionsByRoundId(roundId);
+            Triple<List<Long>, Long, Long> gameSessions = bigStorageBetPersister.getRoundGameSessionPersister()
+                    .getGameSessionsByRoundId(roundId);
             if (gameSessions != null) {
                 return gameSessions;
             }

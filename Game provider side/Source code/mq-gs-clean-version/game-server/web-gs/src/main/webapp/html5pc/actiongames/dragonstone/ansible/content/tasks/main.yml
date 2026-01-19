@@ -1,0 +1,43 @@
+---
+  - name: Uploading lobby
+    copy:
+      src: "{{ build_root }}/max-quest-dragonstone-lobby.tar.gz"
+      dest: "/home/users/{{ user }}/deploy/max-quest-dragonstone-lobby.tar.gz"
+
+  - name: Uploading game
+    copy:
+      src: "{{ build_root }}/max-quest-dragonstone-game.tar.gz"
+      dest: "/home/users/{{ user }}/deploy/max-quest-dragonstone-game.tar.gz"
+
+  - name: Removing old backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/_backup"
+      state: absent
+
+  - name: Creating dir for backup
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/_backup"
+      state: directory
+
+  - name: Creating lobby backup
+    shell: "mv /www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/lobby/ /www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/_backup/lobby/"
+
+  - name: Creating dir for lobby
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/lobby/"
+      state: directory
+
+  - name: Extracting lobby
+    shell: "tar -xzf /home/users/{{ user }}/deploy/max-quest-dragonstone-lobby.tar.gz -C /www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/lobby/"
+
+  - name: Creating game backup
+    shell: "mv /www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/game/ /www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/_backup/game/"
+
+  - name: Creating dir for game
+    file:
+      path: "/www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/game/"
+      state: directory
+
+  - name: Extracting game
+    shell: "tar -xzf /home/users/{{ user }}/deploy/max-quest-dragonstone-game.tar.gz -C /www/html/{{ lobby_name }}/html5pc/actiongames/dragonstone/game/"
+

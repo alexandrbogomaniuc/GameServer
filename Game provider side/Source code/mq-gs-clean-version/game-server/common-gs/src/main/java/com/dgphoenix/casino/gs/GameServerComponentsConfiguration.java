@@ -69,8 +69,11 @@ import org.quartz.Scheduler;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
+import com.dgphoenix.casino.kafka.config.KafkaConfiguration;
 
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -80,6 +83,7 @@ import java.util.concurrent.ScheduledExecutorService;
  */
 @Configuration
 @PropertySource("classpath:gdpr.properties")
+@Import(KafkaConfiguration.class)
 public class GameServerComponentsConfiguration {
 
     @Bean
@@ -89,13 +93,13 @@ public class GameServerComponentsConfiguration {
 
     @Bean
     IPromoCampaignManager promoCampaignManager(CassandraPersistenceManager persistenceManager,
-                                               IPrizeWonHandlersFactory prizeWonHandlersFactory,
-                                               HostConfiguration hostConfiguration,
-                                               ICurrencyRateManager currencyRatesManager,
-                                               KafkaRequestMultiPlayer kafkaRequestMultiPlayer,
-                                               ScheduledExecutorService executorService,
-                                               PlayerAliasService playerAliasService,
-                                               IPromoCountryRestrictionService promoCountryRestrictionService) {
+            IPrizeWonHandlersFactory prizeWonHandlersFactory,
+            HostConfiguration hostConfiguration,
+            ICurrencyRateManager currencyRatesManager,
+            KafkaRequestMultiPlayer kafkaRequestMultiPlayer,
+            ScheduledExecutorService executorService,
+            PlayerAliasService playerAliasService,
+            IPromoCountryRestrictionService promoCountryRestrictionService) {
         IAccountInfoPersister accountPersister = persistenceManager.getPersister(CassandraAccountInfoPersister.class);
         return new PromoCampaignManager(
                 persistenceManager,
@@ -110,8 +114,10 @@ public class GameServerComponentsConfiguration {
     }
 
     @Bean
-    PlayerAliasService playerAliasService(CassandraPersistenceManager persistenceManager, GameServerConfiguration gameServerConfiguration) {
-        return new PlayerAliasService(persistenceManager, IntegerIdGenerator.getInstance(), gameServerConfiguration.getClusterId());
+    PlayerAliasService playerAliasService(CassandraPersistenceManager persistenceManager,
+            GameServerConfiguration gameServerConfiguration) {
+        return new PlayerAliasService(persistenceManager, IntegerIdGenerator.getInstance(),
+                gameServerConfiguration.getClusterId());
     }
 
     @Bean
@@ -121,60 +127,62 @@ public class GameServerComponentsConfiguration {
 
     @Bean
     MessagesHandlersFactory messagesHandlersFactory(IPromoCampaignManager promoCampaignManager,
-                                                    CassandraPersistenceManager persistenceManager,
-                                                    GameServerConfiguration gameServerConfiguration) {
+            CassandraPersistenceManager persistenceManager,
+            GameServerConfiguration gameServerConfiguration) {
         return new MessagesHandlersFactory(promoCampaignManager, persistenceManager, gameServerConfiguration);
     }
 
     @Bean
     IPromoMessagesDispatcher promoMessagesDispatcher(IWebSocketSessionsController webSocketSessionsController,
-                                                     IPromoCampaignManager promoCampaignManager,
-                                                     TournamentsManager tournamentsManager,
-                                                     PromoNotificationsCreator promoNotificationsCreator) {
+            IPromoCampaignManager promoCampaignManager,
+            TournamentsManager tournamentsManager,
+            PromoNotificationsCreator promoNotificationsCreator) {
         return new PromoMessagesDispatcher(webSocketSessionsController, promoCampaignManager, tournamentsManager,
                 promoNotificationsCreator);
     }
 
     @Bean
-    IWebSocketSessionsController webSocketSessionsController(MessagesHandlersFactory messagesHandlersFactory, ScheduledExecutorService executorService) {
+    IWebSocketSessionsController webSocketSessionsController(MessagesHandlersFactory messagesHandlersFactory,
+            ScheduledExecutorService executorService) {
         return new WebSocketSessionsController(messagesHandlersFactory, executorService);
     }
 
     @Bean
     SummaryTournamentFeedWriter summaryTournamentFeedWriter(GameServerConfiguration configuration,
-                                                            CassandraPersistenceManager persistenceManager) {
+            CassandraPersistenceManager persistenceManager) {
         return new SummaryTournamentFeedWriter(configuration, persistenceManager);
     }
 
     @Bean
     CurrencyUpdateProcessor currencyUpdateProcessor(GameServerConfiguration configuration,
-                                                    CassandraPersistenceManager persistenceManager) {
+            CassandraPersistenceManager persistenceManager) {
         return new CurrencyUpdateProcessor(configuration, persistenceManager);
     }
 
     @Bean
     ICurrencyRateManager currencyRatesManager(CassandraPersistenceManager persistenceManager,
-                                              CurrencyUpdateProcessor currencyUpdateProcessor) {
+            CurrencyUpdateProcessor currencyUpdateProcessor) {
         return new CurrencyRatesManager(persistenceManager, currencyUpdateProcessor);
     }
 
     @Bean
     TournamentsManager tournamentsManager(IPromoCampaignManager promoCampaignManager,
-                                          CassandraPersistenceManager persistenceManager, ScheduledExecutorService executor) {
+            CassandraPersistenceManager persistenceManager, ScheduledExecutorService executor) {
         return new TournamentsManager(promoCampaignManager, persistenceManager, executor);
     }
 
     @Bean
     RemoteCallHelper remoteCallHelper(IWebSocketSessionsController webSocketSessionsController,
-                                      IPromoCampaignManager promoCampaignManager,
-                                      InServiceServiceHandler serviceHandler,
-                                      KafkaMessageService kafkaMessageService) {
-        return new RemoteCallHelper(webSocketSessionsController, promoCampaignManager, serviceHandler, kafkaMessageService);
+            IPromoCampaignManager promoCampaignManager,
+            InServiceServiceHandler serviceHandler,
+            KafkaMessageService kafkaMessageService) {
+        return new RemoteCallHelper(webSocketSessionsController, promoCampaignManager, serviceHandler,
+                kafkaMessageService);
     }
 
     @Bean
     PromoNotificationsCreator promoNotificationsCreator(IPromoCampaignManager promoCampaignManager,
-                                                        TournamentsManager tournamentsManager) {
+            TournamentsManager tournamentsManager) {
         return new PromoNotificationsCreator(promoCampaignManager, tournamentsManager);
     }
 
@@ -192,34 +200,35 @@ public class GameServerComponentsConfiguration {
 
     @Bean
     public HistoryInformerManager historyInformerManager(CassandraPersistenceManager persistenceManager,
-                                                         PlayerBetPersistenceManager playerBetPersistenceManager) {
+            PlayerBetPersistenceManager playerBetPersistenceManager) {
         return new HistoryInformerManager(persistenceManager, playerBetPersistenceManager);
     }
 
     @Bean
     public InServiceServiceHandler inServiceServiceHandler(MQServiceHandler mqServiceHandler,
-                                                           ServersStatusWatcher serversStatusWatcher,
-                                                           CassandraPersistenceManager persistenceManager) {
+            ServersStatusWatcher serversStatusWatcher,
+            CassandraPersistenceManager persistenceManager) {
         return new InServiceServiceHandler(mqServiceHandler, serversStatusWatcher, persistenceManager);
     }
 
     @Bean
     public MQServiceHandler mqServiceHandler(CassandraPersistenceManager persistenceManager,
-                                             ICurrencyRateManager currencyRatesManager,
-                                             ErrorPersisterHelper errorPersisterHelper,
-                                             TournamentBuyInHelper tournamentBuyInHelper,
-                                             IPromoCampaignManager promoCampaignManager,
-                                             PlayerBetPersistenceManager betPersistenceManager,
-                                             AccountManager accountManager,
-                                             CommonExecutorService executorService) {
-        return new MQServiceHandler(persistenceManager, promoCampaignManager, tournamentBuyInHelper, currencyRatesManager, errorPersisterHelper,
+            ICurrencyRateManager currencyRatesManager,
+            ErrorPersisterHelper errorPersisterHelper,
+            TournamentBuyInHelper tournamentBuyInHelper,
+            IPromoCampaignManager promoCampaignManager,
+            PlayerBetPersistenceManager betPersistenceManager,
+            AccountManager accountManager,
+            CommonExecutorService executorService) {
+        return new MQServiceHandler(persistenceManager, promoCampaignManager, tournamentBuyInHelper,
+                currencyRatesManager, errorPersisterHelper,
                 betPersistenceManager, accountManager, executorService);
     }
 
     @Bean
     public ServersStatusWatcher serversStatusWatcher(LoadBalancerCache loadBalancerCache,
-                                                     KafkaMessageService kafkaMessageService,
-                                                     ServerCoordinatorInfoProvider serverCoordinatorInfoProvider) {
+            KafkaMessageService kafkaMessageService,
+            ServerCoordinatorInfoProvider serverCoordinatorInfoProvider) {
         return new ServersStatusWatcher(loadBalancerCache, kafkaMessageService, serverCoordinatorInfoProvider);
     }
 
@@ -230,13 +239,14 @@ public class GameServerComponentsConfiguration {
 
     @Bean
     public ExpiredMassAwardTracker expiredFRBonusTracker(ScheduledExecutorService scheduler,
-                                                         CassandraPersistenceManager persistenceManager,
-                                                         MassAwardBonusManager massAwardBonusManager) {
+            CassandraPersistenceManager persistenceManager,
+            MassAwardBonusManager massAwardBonusManager) {
         return new ExpiredMassAwardTracker(scheduler, persistenceManager, massAwardBonusManager);
     }
 
     @Bean
-    public DelayedMassAwardManager delayedMassAwardManager(CassandraPersistenceManager cpm, ScheduledExecutorService scheduler) {
+    public DelayedMassAwardManager delayedMassAwardManager(CassandraPersistenceManager cpm,
+            ScheduledExecutorService scheduler) {
         return new DelayedMassAwardManager(cpm, scheduler);
     }
 
@@ -247,17 +257,18 @@ public class GameServerComponentsConfiguration {
 
     @Bean
     public ErrorPersisterHelper errorPersisterHelper(GameServerConfiguration gameServerConfiguration,
-                                                     CassandraPersistenceManager persistenceManager) {
+            CassandraPersistenceManager persistenceManager) {
         return new ErrorPersisterHelper(gameServerConfiguration, persistenceManager);
     }
 
     @Bean
     public TournamentManager tournamentManager(IPromoCampaignManager promoCampaignManager,
-                                               TournamentWebSocketSessionsController webSocketSessionsController,
-                                               CassandraPersistenceManager cpm,
-                                               ICurrencyRateManager currencyRateManager,
-                                               GameServerConfiguration configuration) {
-        return new TournamentManager(promoCampaignManager, webSocketSessionsController, cpm, currencyRateManager, configuration);
+            TournamentWebSocketSessionsController webSocketSessionsController,
+            CassandraPersistenceManager cpm,
+            ICurrencyRateManager currencyRateManager,
+            GameServerConfiguration configuration) {
+        return new TournamentManager(promoCampaignManager, webSocketSessionsController, cpm, currencyRateManager,
+                configuration);
     }
 
     @Bean
@@ -270,20 +281,20 @@ public class GameServerComponentsConfiguration {
 
     @Bean
     TournamentMessageHandlersFactory tournamentMessageHandlersFactory(IPromoCampaignManager promoCampaignManager,
-                                                                      CassandraPersistenceManager cpm,
-                                                                      ICurrencyRateManager currencyRatesManager,
-                                                                      TournamentBuyInHelper tournamentBuyInHelper,
-                                                                      ErrorPersisterHelper errorPersisterHelper,
-                                                                      PlayerAliasManager playerAliasManager,
-                                                                      MQServiceHandler mqServiceHandler) {
+            CassandraPersistenceManager cpm,
+            ICurrencyRateManager currencyRatesManager,
+            TournamentBuyInHelper tournamentBuyInHelper,
+            ErrorPersisterHelper errorPersisterHelper,
+            PlayerAliasManager playerAliasManager,
+            MQServiceHandler mqServiceHandler) {
         return new TournamentMessageHandlersFactory(promoCampaignManager, cpm, currencyRatesManager,
                 tournamentBuyInHelper, errorPersisterHelper, playerAliasManager, mqServiceHandler);
     }
 
     @Bean
     public TournamentBuyInHelper tournamentBuyInHelper(ICurrencyRateManager currencyRatesManager,
-                                                       CassandraPersistenceManager cpm) {
-        return new TournamentBuyInHelper(currencyRatesManager, cpm);
+            CassandraPersistenceManager cpm, AccountManager accountManager) {
+        return new TournamentBuyInHelper(currencyRatesManager, cpm, accountManager);
     }
 
     @Bean
@@ -292,55 +303,65 @@ public class GameServerComponentsConfiguration {
     }
 
     @Bean
-    public DynamicCoinManager dynamicCoinManager(ICurrencyRateManager currencyRateManager, GamesLevelHelper gamesLevelHelper) {
+    public DynamicCoinManager dynamicCoinManager(ICurrencyRateManager currencyRateManager,
+            GamesLevelHelper gamesLevelHelper) {
         BankInfoCache bankInfoCache = BankInfoCache.getInstance();
         BaseGameInfoTemplateCache baseGameInfoTemplateCache = BaseGameInfoTemplateCache.getInstance();
         return new DynamicCoinManager(bankInfoCache, baseGameInfoTemplateCache, currencyRateManager, gamesLevelHelper);
     }
 
     @Bean
-    public GameSettingsManager gameSettingsManager(ICurrencyRateManager currencyRateManager, DynamicCoinManager dynamicCoinManager) {
+    public GameSettingsManager gameSettingsManager(ICurrencyRateManager currencyRateManager,
+            DynamicCoinManager dynamicCoinManager) {
         BaseGameInfoTemplateCache baseGameInfoTemplateCache = BaseGameInfoTemplateCache.getInstance();
         SessionHelper sessionHelper = SessionHelper.getInstance();
-        return new GameSettingsManager(currencyRateManager, baseGameInfoTemplateCache, sessionHelper, dynamicCoinManager);
+        return new GameSettingsManager(currencyRateManager, baseGameInfoTemplateCache, sessionHelper,
+                dynamicCoinManager);
     }
 
     @Bean
     public PlayerAliasManager getPlayerAliasManager(CassandraPersistenceManager cpm,
-                                                    GameServerConfiguration gameServerConfiguration) {
+            GameServerConfiguration gameServerConfiguration) {
         return new PlayerAliasManager(cpm, gameServerConfiguration);
     }
 
     @Bean
     public FreeGameCalculator freeGameCalculator(GameServerConfiguration gameServerConfiguration,
-                                                 ICurrencyRateManager currencyRateManager,
-                                                 GameSettingsManager gameSettingsManager) {
+            ICurrencyRateManager currencyRateManager,
+            GameSettingsManager gameSettingsManager) {
         return new FreeGameCalculator(gameServerConfiguration, currencyRateManager, gameSettingsManager,
                 BankInfoCache.getInstance(), BaseGameInfoTemplateCache.getInstance());
     }
 
     @Bean
-    public MassAwardBonusManager massAwardBonusManager(CassandraPersistenceManager persistenceManager, RemoteCallHelper remoteCallHelper) {
+    public MassAwardBonusManager massAwardBonusManager(CassandraPersistenceManager persistenceManager,
+            RemoteCallHelper remoteCallHelper) {
         return new MassAwardBonusManager(persistenceManager, remoteCallHelper);
     }
 
     @Bean
-    public CommonExecutorService commonExecutorService() {
-        return new CommonExecutorService();
+    @DependsOn("gameServerConfiguration")
+    public CommonExecutorService commonExecutorService(GameServerConfiguration gameServerConfiguration) {
+        if (gameServerConfiguration == null) {
+            throw new IllegalStateException(
+                    "GameServerConfiguration bean is null during CommonExecutorService creation");
+        }
+        return new CommonExecutorService(gameServerConfiguration);
     }
 
     @Bean
     public BattlegroundService getBattlegroundService(CassandraPersistenceManager cpm, LoginService loginService,
-                                                      AccountManager accountManager,
-                                                      CommonExecutorService executorService,
-                                                      MQServiceHandler mqServiceHandler,
-                                                      KafkaRequestMultiPlayer kafkaRequestMultiPlayer) {
-        return new BattlegroundService(cpm, BankInfoCache.getInstance(), BaseGameInfoTemplateCache.getInstance(), loginService,
+            AccountManager accountManager,
+            CommonExecutorService executorService,
+            MQServiceHandler mqServiceHandler,
+            KafkaRequestMultiPlayer kafkaRequestMultiPlayer) {
+        return new BattlegroundService(cpm, BankInfoCache.getInstance(), BaseGameInfoTemplateCache.getInstance(),
+                loginService,
                 accountManager, executorService, mqServiceHandler, kafkaRequestMultiPlayer);
     }
 
     @Bean
-    public KafkaRequestMultiPlayer kafkaRequestMultiPlayer(KafkaMessageService kafkaMessageService){
+    public KafkaRequestMultiPlayer kafkaRequestMultiPlayer(KafkaMessageService kafkaMessageService) {
         return new KafkaRequestMultiPlayer(kafkaMessageService);
     }
 
@@ -356,34 +377,35 @@ public class GameServerComponentsConfiguration {
 
     @Bean
     public GameUserHistoryService getGameUserHistoryService(CassandraPersistenceManager cpm, LoginService loginService,
-                                                            AccountManager accountManager) {
+            AccountManager accountManager) {
         return new GameUserHistoryService(loginService, cpm, accountManager, BaseGameInfoTemplateCache.getInstance());
     }
 
     @Bean
     public FRBonusManager frBonusManager(CassandraPersistenceManager cpm,
-                                         KafkaRequestMultiPlayer kafkaRequestMultiPlayer,
-                                         MassAwardBonusManager massAwardBonusManager,
-                                         ICurrencyRateManager currencyConverter) {
+            KafkaRequestMultiPlayer kafkaRequestMultiPlayer,
+            MassAwardBonusManager massAwardBonusManager,
+            ICurrencyRateManager currencyConverter) {
         return new FRBonusManager(cpm, kafkaRequestMultiPlayer, massAwardBonusManager, currencyConverter);
     }
 
     @Bean
     public BonusManager bonusManager(CassandraPersistenceManager cpm,
-                                     KafkaRequestMultiPlayer kafkaRequestMultiPlayer,
-                                     MassAwardBonusManager massAwardBonusManager) {
+            KafkaRequestMultiPlayer kafkaRequestMultiPlayer,
+            MassAwardBonusManager massAwardBonusManager) {
         return new BonusManager(cpm, kafkaRequestMultiPlayer, massAwardBonusManager);
     }
 
     @Bean
-    public CountryRestrictionService countryRestrictionService(GeoIp geoIp, CassandraPersistenceManager persistenceManager) {
+    public CountryRestrictionService countryRestrictionService(GeoIp geoIp,
+            CassandraPersistenceManager persistenceManager) {
         return new CountryRestrictionService(geoIp, persistenceManager);
     }
 
     @Bean
     public MPGameSessionService mpGameSessionService(CassandraPersistenceManager cpm,
-                                                     BattlegroundService battlegroundService,
-                                                     KafkaRequestMultiPlayer kafkaRequestMultiPlayer) {
+            BattlegroundService battlegroundService,
+            KafkaRequestMultiPlayer kafkaRequestMultiPlayer) {
         return new MPGameSessionService(
                 BankInfoCache.getInstance(),
                 GameServer.getInstance(),
@@ -399,7 +421,8 @@ public class GameServerComponentsConfiguration {
     }
 
     @Bean
-    public PlayerBetHistoryService playerBetHistoryService(PlayerBetPersistenceManager playerBetPersistenceManager, CassandraPersistenceManager persistenceManager) {
+    public PlayerBetHistoryService playerBetHistoryService(PlayerBetPersistenceManager playerBetPersistenceManager,
+            CassandraPersistenceManager persistenceManager) {
         return new PlayerBetHistoryService(playerBetPersistenceManager, persistenceManager);
     }
 
@@ -409,18 +432,23 @@ public class GameServerComponentsConfiguration {
     }
 
     @Bean
-    public DomainSessionFactory domainSessionFactory(CassandraPersistenceManager persistenceManager, LoadBalancerCache loadBalancerCache,
-                                                     IRemoteUnlocker remoteUnlocker, ITransactionDataCreator transactionDataCreator,
-                                                     AccountManager accountManager, SystemPropertyReader systemPropertyReader,
-                                                     ServerCoordinatorInfoProvider serverIdProvider) {
-        ILockManager lockManager = initLockManager(persistenceManager, loadBalancerCache, remoteUnlocker, serverIdProvider);
-        ITransactionDataPersister transactionDataPersister = initTransactionDataPersister(systemPropertyReader, persistenceManager, serverIdProvider);
+    public DomainSessionFactory domainSessionFactory(CassandraPersistenceManager persistenceManager,
+            LoadBalancerCache loadBalancerCache,
+            IRemoteUnlocker remoteUnlocker, ITransactionDataCreator transactionDataCreator,
+            AccountManager accountManager, SystemPropertyReader systemPropertyReader,
+            ServerCoordinatorInfoProvider serverIdProvider) {
+        ILockManager lockManager = initLockManager(persistenceManager, loadBalancerCache, remoteUnlocker,
+                serverIdProvider);
+        ITransactionDataPersister transactionDataPersister = initTransactionDataPersister(systemPropertyReader,
+                persistenceManager, serverIdProvider);
         return new DomainSessionFactory(lockManager, transactionDataPersister, transactionDataCreator, accountManager);
     }
 
-    private ILockManager initLockManager(CassandraPersistenceManager persistenceManager, LoadBalancerCache loadBalancerCache,
-                                         IRemoteUnlocker remoteUnlocker, ServerCoordinatorInfoProvider serverIdProvider) {
-        AccountDistributedLockManager accountDistributedLockManager = persistenceManager.getPersister(AccountDistributedLockManager.class);
+    private ILockManager initLockManager(CassandraPersistenceManager persistenceManager,
+            LoadBalancerCache loadBalancerCache,
+            IRemoteUnlocker remoteUnlocker, ServerCoordinatorInfoProvider serverIdProvider) {
+        AccountDistributedLockManager accountDistributedLockManager = persistenceManager
+                .getPersister(AccountDistributedLockManager.class);
         accountDistributedLockManager.setLoadBalancer(loadBalancerCache);
         accountDistributedLockManager.setRemoteUnlocker(remoteUnlocker);
         accountDistributedLockManager.setServerId(serverIdProvider.getServerId());
@@ -428,16 +456,17 @@ public class GameServerComponentsConfiguration {
     }
 
     private ITransactionDataPersister initTransactionDataPersister(SystemPropertyReader systemPropertyReader,
-                                                                   CassandraPersistenceManager persistenceManager,
-                                                                   ServerCoordinatorInfoProvider serverIdProvider) {
+            CassandraPersistenceManager persistenceManager,
+            ServerCoordinatorInfoProvider serverIdProvider) {
         int serverId = serverIdProvider.getServerId();
-        CassandraTransactionDataPersister transactionDataPersister =
-                persistenceManager.getPersister(CassandraTransactionDataPersister.class);
+        CassandraTransactionDataPersister transactionDataPersister = persistenceManager
+                .getPersister(CassandraTransactionDataPersister.class);
         transactionDataPersister.setGameServerId(serverId);
         transactionDataPersister.registerStoredDataProcessors(StoredItemType.GAME_SESSION,
                 new GameSessionHistoryChangesProcessor());
         transactionDataPersister.registerStoredDataProcessors(StoredItemType.LASTHAND, new LasthandChangesProcessor());
-        transactionDataPersister.registerStoredDataProcessors(StoredItemType.PLAYER_BET, new PlayerBetChangesProcessor());
+        transactionDataPersister.registerStoredDataProcessors(StoredItemType.PLAYER_BET,
+                new PlayerBetChangesProcessor());
         transactionDataPersister.registerStoredDataProcessors(StoredItemType.TRANSFER_PLAYER_BET,
                 new PlayerBetTransferProcessor());
         transactionDataPersister.registerStoredDataProcessors(StoredItemType.ACCOUNT, new AccountChangesProcessor());

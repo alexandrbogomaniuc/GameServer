@@ -32,14 +32,16 @@ public class ServerConfigsTemplateCache extends AbstractExportableCache<GameServ
 
     @Override
     public void exportEntries(ObjectOutputStream outStream) throws IOException {
-        synchronized (template) {
-            outStream.writeObject(new ExportableCacheEntry(String.valueOf(template.getId()), template));
+        synchronized (this) {
+            if (template != null) {
+                outStream.writeObject(new ExportableCacheEntry(String.valueOf(template.getId()), template));
+            }
         }
     }
 
     @Override
     public void importEntry(ExportableCacheEntry entry) {
-        synchronized (template) {
+        synchronized (this) {
             if (entry.getValue() instanceof GameServerConfigTemplate) {
                 GameServerConfigTemplate config = (GameServerConfigTemplate) entry.getValue();
                 try {
@@ -81,4 +83,3 @@ public class ServerConfigsTemplateCache extends AbstractExportableCache<GameServ
         return getAdditionalInfo();
     }
 }
-

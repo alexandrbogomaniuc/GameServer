@@ -1,0 +1,831 @@
+{
+  "frames": {
+    "MQ_FireSpecter_BOMB_example_00204.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 67,
+        "h": 142
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 308,
+        "y": 294,
+        "w": 67,
+        "h": 142
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00205.png": {
+      "frame": {
+        "x": 1,
+        "y": 145,
+        "w": 136,
+        "h": 172
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 273,
+        "y": 281,
+        "w": 136,
+        "h": 172
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00206.png": {
+      "frame": {
+        "x": 1,
+        "y": 319,
+        "w": 205,
+        "h": 243
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 237,
+        "y": 246,
+        "w": 205,
+        "h": 243
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00207.png": {
+      "frame": {
+        "x": 1,
+        "y": 564,
+        "w": 274,
+        "h": 334
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 201,
+        "y": 194,
+        "w": 274,
+        "h": 334
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00209.png": {
+      "frame": {
+        "x": 1,
+        "y": 900,
+        "w": 413,
+        "h": 542
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 129,
+        "y": 65,
+        "w": 413,
+        "h": 542
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00210.png": {
+      "frame": {
+        "x": 208,
+        "y": 1,
+        "w": 480,
+        "h": 634
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 95,
+        "y": 12,
+        "w": 480,
+        "h": 634
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00211.png": {
+      "frame": {
+        "x": 1,
+        "y": 1444,
+        "w": 251,
+        "h": 461
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 219,
+        "y": 0,
+        "w": 251,
+        "h": 461
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00212.png": {
+      "frame": {
+        "x": 277,
+        "y": 483,
+        "w": 279,
+        "h": 469
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 204,
+        "y": 0,
+        "w": 279,
+        "h": 469
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00214.png": {
+      "frame": {
+        "x": 844,
+        "y": 1,
+        "w": 327,
+        "h": 484
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 182,
+        "y": 0,
+        "w": 327,
+        "h": 484
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00215.png": {
+      "frame": {
+        "x": 254,
+        "y": 1444,
+        "w": 351,
+        "h": 492
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 171,
+        "y": 0,
+        "w": 351,
+        "h": 492
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00216.png": {
+      "frame": {
+        "x": 1173,
+        "y": 1,
+        "w": 372,
+        "h": 498
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 162,
+        "y": 0,
+        "w": 372,
+        "h": 498
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00217.png": {
+      "frame": {
+        "x": 416,
+        "y": 764,
+        "w": 390,
+        "h": 504
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 152,
+        "y": 0,
+        "w": 390,
+        "h": 504
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00219.png": {
+      "frame": {
+        "x": 1547,
+        "y": 1,
+        "w": 424,
+        "h": 512
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 138,
+        "y": 0,
+        "w": 424,
+        "h": 512
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00220.png": {
+      "frame": {
+        "x": 607,
+        "y": 1270,
+        "w": 430,
+        "h": 510
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 135,
+        "y": 0,
+        "w": 430,
+        "h": 510
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00221.png": {
+      "frame": {
+        "x": 748,
+        "y": 487,
+        "w": 230,
+        "h": 293
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 228,
+        "y": 191,
+        "w": 230,
+        "h": 293
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00222.png": {
+      "frame": {
+        "x": 607,
+        "y": 1782,
+        "w": 231,
+        "h": 297
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 227,
+        "y": 186,
+        "w": 231,
+        "h": 297
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00224.png": {
+      "frame": {
+        "x": 808,
+        "y": 719,
+        "w": 232,
+        "h": 303
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 227,
+        "y": 182,
+        "w": 232,
+        "h": 303
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00225.png": {
+      "frame": {
+        "x": 1043,
+        "y": 515,
+        "w": 237,
+        "h": 307
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 224,
+        "y": 180,
+        "w": 237,
+        "h": 307
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00226.png": {
+      "frame": {
+        "x": 906,
+        "y": 1782,
+        "w": 236,
+        "h": 310
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 225,
+        "y": 179,
+        "w": 236,
+        "h": 310
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00227.png": {
+      "frame": {
+        "x": 1218,
+        "y": 1782,
+        "w": 235,
+        "h": 314
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 225,
+        "y": 178,
+        "w": 235,
+        "h": 314
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00229.png": {
+      "frame": {
+        "x": 1534,
+        "y": 1782,
+        "w": 235,
+        "h": 318
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 227,
+        "y": 176,
+        "w": 235,
+        "h": 318
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00230.png": {
+      "frame": {
+        "x": 808,
+        "y": 1024,
+        "w": 236,
+        "h": 318
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 226,
+        "y": 176,
+        "w": 236,
+        "h": 318
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00231.png": {
+      "frame": {
+        "x": 1282,
+        "y": 515,
+        "w": 217,
+        "h": 321
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 233,
+        "y": 174,
+        "w": 217,
+        "h": 321
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00232.png": {
+      "frame": {
+        "x": 1039,
+        "y": 1262,
+        "w": 211,
+        "h": 324
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 236,
+        "y": 173,
+        "w": 211,
+        "h": 324
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00234.png": {
+      "frame": {
+        "x": 1501,
+        "y": 515,
+        "w": 213,
+        "h": 324
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 235,
+        "y": 173,
+        "w": 213,
+        "h": 324
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00235.png": {
+      "frame": {
+        "x": 1716,
+        "y": 515,
+        "w": 213,
+        "h": 325
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 235,
+        "y": 173,
+        "w": 213,
+        "h": 325
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00236.png": {
+      "frame": {
+        "x": 1128,
+        "y": 838,
+        "w": 221,
+        "h": 324
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 231,
+        "y": 174,
+        "w": 221,
+        "h": 324
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00237.png": {
+      "frame": {
+        "x": 1252,
+        "y": 1164,
+        "w": 221,
+        "h": 321
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 231,
+        "y": 177,
+        "w": 221,
+        "h": 321
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00239.png": {
+      "frame": {
+        "x": 1351,
+        "y": 841,
+        "w": 220,
+        "h": 322
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 232,
+        "y": 176,
+        "w": 220,
+        "h": 322
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00240.png": {
+      "frame": {
+        "x": 1475,
+        "y": 1063,
+        "w": 221,
+        "h": 324
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 232,
+        "y": 175,
+        "w": 221,
+        "h": 324
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00241.png": {
+      "frame": {
+        "x": 1475,
+        "y": 1389,
+        "w": 220,
+        "h": 323
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 233,
+        "y": 175,
+        "w": 220,
+        "h": 323
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00242.png": {
+      "frame": {
+        "x": 1675,
+        "y": 842,
+        "w": 211,
+        "h": 324
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 238,
+        "y": 175,
+        "w": 211,
+        "h": 324
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00244.png": {
+      "frame": {
+        "x": 1697,
+        "y": 1389,
+        "w": 206,
+        "h": 322
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 241,
+        "y": 176,
+        "w": 206,
+        "h": 322
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "MQ_FireSpecter_BOMB_example_00245.png": {
+      "frame": {
+        "x": 1698,
+        "y": 1055,
+        "w": 199,
+        "h": 325
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 177,
+        "w": 199,
+        "h": 325
+      },
+      "sourceSize": {
+        "w": 797,
+        "h": 685
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com/",
+    "version": "0.3.3",
+    "image": "png_assets-0.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2048,
+      "h": 2048
+    },
+    "scale": 2
+  }
+}

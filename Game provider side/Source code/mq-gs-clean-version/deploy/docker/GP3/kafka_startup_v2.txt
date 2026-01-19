@@ -1,0 +1,7 @@
+time="2026-01-07T09:07:42Z" level=warning msg="D:\\OneDrive - Roan Solutions, Inc\\DOCUMENTS\\Igaming Project\\Game provider side\\Source code\\mq-gs-clean-version\\deploy\\docker\\row-configs\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container row-configs-zookeeper-1  Recreate
+ Container row-configs-zookeeper-1  Recreated
+ Container row-configs-kafka-1  Recreate
+ Container row-configs-kafka-1  Recreated
+ Container row-configs-zookeeper-1  Starting
+Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint row-configs-zookeeper-1 (0bbee870db691b4798579434f8dc6e4e03e0056dad3abbc2a6270176a57e07c6): Bind for 0.0.0.0:2181 failed: port is already allocated

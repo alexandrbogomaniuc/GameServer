@@ -1,0 +1,471 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\game-server\web-gs\pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] utils-restricted                                                   [jar]
+[INFO] gsn-utils-restricted                                               [jar]
+[INFO] common-promo                                                       [jar]
+[INFO] gsn-common                                                         [jar]
+[INFO] gsn-cache-restricted                                               [jar]
+[INFO] gsn-common-persisters                                              [jar]
+[INFO] gsn-promo-persisters                                               [jar]
+[INFO] gsn-promo-core                                                     [jar]
+[INFO] common-wallet                                                      [jar]
+[INFO] gsn-game-server                                                    [pom]
+[INFO] gsn-common-gs                                                      [jar]
+[INFO] gsn-web-gs                                                         [war]
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0                                   [1/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ utils-restricted ---
+[INFO] Deleting D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 311 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\target\classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\src\test\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 18 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\target\utils-restricted.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ utils-restricted ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\target\utils-restricted-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ utils-restricted ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\utils-restricted\1.1.0\utils-restricted-1.1.0.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\target\utils-restricted.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\utils-restricted\1.1.0\utils-restricted-1.1.0.jar
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\sb-utils\target\utils-restricted-sources.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\utils-restricted\1.1.0\utils-restricted-1.1.0-sources.jar
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-utils-restricted >--------------
+[INFO] Building gsn-utils-restricted 1.0-SNAPSHOT                        [2/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gsn-utils-restricted ---
+[INFO] Deleting D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\src\main\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-utils-restricted ---
+[INFO] Compiling 32 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-utils-restricted ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\src\test\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-utils-restricted ---
+[INFO] Compiling 4 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.10:test (default-test) @ gsn-utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-utils-restricted ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\target\gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-utils-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-utils-restricted ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\target\gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-utils-restricted ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-utils-restricted\1.0-SNAPSHOT\gsn-utils-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\target\gsn-utils-restricted-1.0-SNAPSHOT.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-utils-restricted\1.0-SNAPSHOT\gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\utils\target\gsn-utils-restricted-1.0-SNAPSHOT-sources.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-utils-restricted\1.0-SNAPSHOT\gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0                                       [3/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ common-promo ---
+[INFO] Deleting D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\src\main\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 133 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\target\classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\target\common-promo.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ common-promo ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\target\common-promo-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-promo ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\common-promo\1.1.0\common-promo-1.1.0.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\target\common-promo.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\common-promo\1.1.0\common-promo-1.1.0.jar
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-promo\target\common-promo-sources.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\common-promo\1.1.0\common-promo-1.1.0-sources.jar
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-common >-------------------
+[INFO] Building gsn-common 1.0-SNAPSHOT                                  [4/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gsn-common ---
+[INFO] Deleting D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common ---
+[INFO] Copying 58 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common ---
+[INFO] Compiling 342 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common ---
+[INFO] Compiling 11 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common\target\gsn-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-common\1.0-SNAPSHOT\gsn-common-1.0-SNAPSHOT.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common\target\gsn-common-1.0-SNAPSHOT.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-common\1.0-SNAPSHOT\gsn-common-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-cache-restricted >--------------
+[INFO] Building gsn-cache-restricted 1.0-SNAPSHOT                        [5/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gsn-cache-restricted ---
+[INFO] Deleting D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-cache-restricted ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-cache-restricted ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\src\main\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-cache-restricted ---
+[INFO] Compiling 32 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-cache-restricted ---
+[INFO] Copying 5 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-cache-restricted ---
+[INFO] Compiling 17 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-cache-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-cache-restricted ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\target\gsn-cache-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-cache-restricted >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-cache-restricted ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-cache-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-cache-restricted ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\target\gsn-cache-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-cache-restricted ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-cache-restricted\1.0-SNAPSHOT\gsn-cache-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\target\gsn-cache-restricted-1.0-SNAPSHOT.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-cache-restricted\1.0-SNAPSHOT\gsn-cache-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\cache\target\gsn-cache-restricted-1.0-SNAPSHOT-sources.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-cache-restricted\1.0-SNAPSHOT\gsn-cache-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0                                [6/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\src\main\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 87 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-common-persisters ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\src\test\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-common-persisters ---
+[INFO] Compiling 2 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-common-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-common-persisters ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\target\gsn-common-persisters-1.0.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-common-persisters >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-common-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-common-persisters ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\target\gsn-common-persisters-1.0-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-common-persisters ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-common-persisters\1.0\gsn-common-persisters-1.0.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\target\gsn-common-persisters-1.0.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-common-persisters\1.0\gsn-common-persisters-1.0.jar
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\cassandra-cache\common-persisters\target\gsn-common-persisters-1.0-sources.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-common-persisters\1.0\gsn-common-persisters-1.0-sources.jar
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-promo-persisters >--------------
+[INFO] Building gsn-promo-persisters 1.2                                 [7/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-promo-persisters ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\src\main\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-promo-persisters ---
+[INFO] Compiling 22 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-promo-persisters ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\src\test\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-promo-persisters ---
+[INFO] Compiling 1 source file to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-promo-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-promo-persisters ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\target\gsn-promo-persisters-1.2.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-promo-persisters >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-promo-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-promo-persisters ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\target\gsn-promo-persisters-1.2-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-promo-persisters ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-promo-persisters\1.2\gsn-promo-persisters-1.2.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\target\gsn-promo-persisters-1.2.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-promo-persisters\1.2\gsn-promo-persisters-1.2.jar
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\persisters\target\gsn-promo-persisters-1.2-sources.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-promo-persisters\1.2\gsn-promo-persisters-1.2-sources.jar
+[INFO] 
+[INFO] ----------------< com.dgphoenix.casino:gsn-promo-core >-----------------
+[INFO] Building gsn-promo-core 1.2                                       [8/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gsn-promo-core ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-core ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ gsn-promo-core ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\src\main\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ gsn-promo-core ---
+[INFO] Compiling 17 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ gsn-promo-core ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\src\test\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ gsn-promo-core ---
+[INFO] Compiling 1 source file to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ gsn-promo-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ gsn-promo-core ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\target\gsn-promo-core-1.2.jar
+[INFO] 
+[INFO] >>> source:2.4:jar (default) > generate-sources @ gsn-promo-core >>>
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-core ---
+[INFO] 
+[INFO] <<< source:2.4:jar (default) < generate-sources @ gsn-promo-core <<<
+[INFO] 
+[INFO] 
+[INFO] --- source:2.4:jar (default) @ gsn-promo-core ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\target\gsn-promo-core-1.2-sources.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ gsn-promo-core ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-promo-core\1.2\gsn-promo-core-1.2.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\target\gsn-promo-core-1.2.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-promo-core\1.2\gsn-promo-core-1.2.jar
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\promo\core\target\gsn-promo-core-1.2-sources.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\gsn-promo-core\1.2\gsn-promo-core-1.2-sources.jar
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67                                     [9/12]
+[INFO]   from D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-wallet\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/axis/axis/1.4/axis-1.4.pom
+Progress (1): 343 B                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/axis/axis/1.4/axis-1.4.pom (343 B at 939 B/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/caucho/hessian/4.0.7/hessian-4.0.7.pom
+Progress (1): 549 B                   Downloaded from central: https://repo.maven.apache.org/maven2/com/caucho/hessian/4.0.7/hessian-4.0.7.pom (549 B at 13 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc-client/3.1.3/xmlrpc-client-3.1.3.pom
+Progress (1): 827 BProgress (1): 2.0 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc-client/3.1.3/xmlrpc-client-3.1.3.pom (2.7 kB at 55 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc/3.1.3/xmlrpc-3.1.3.pom
+Progress (1): 778 BProgress (1): 2.0 kBProgress (1): 3.4 kBProgress (1): 6.0 kBProgress (1): 8.8 kBProgress (1): 10 kB Progress (1): 12 kBProgress (1): 15 kBProgress (1): 18 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc/3.1.3/xmlrpc-3.1.3.pom (18 kB at 370 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc-common/3.1.3/xmlrpc-common-3.1.3.pom
+Progress (1): 827 BProgress (1): 2.0 kBProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc-common/3.1.3/xmlrpc-common-3.1.3.pom (2.7 kB at 62 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/ws/commons/util/ws-commons-util/1.0.2/ws-commons-util-1.0.2.pom
+Progress (1): 859 BProgress (1): 2.1 kBProgress (1): 4.5 kBProgress (1): 8.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/ws/commons/util/ws-commons-util/1.0.2/ws-commons-util-1.0.2.pom (8.1 kB at 149 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-test/4.3.14.RELEASE/spring-test-4.3.14.RELEASE.pom
+Progress (1): 1.3 kBProgress (1): 4.0 kBProgress (1): 8.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-test/4.3.14.RELEASE/spring-test-4.3.14.RELEASE.pom (8.2 kB at 146 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/axis/axis/1.4/axis-1.4.jar
+Downloading from central: https://repo.maven.apache.org/maven2/com/caucho/hessian/4.0.7/hessian-4.0.7.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc-client/3.1.3/xmlrpc-client-3.1.3.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc-common/3.1.3/xmlrpc-common-3.1.3.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/ws/commons/util/ws-commons-util/1.0.2/ws-commons-util-1.0.2.jar
+Progress (1): 0.9/384 kBProgress (1): 2.3/384 kBProgress (1): 3.6/384 kBProgress (1): 5.0/384 kBProgress (1): 6.4/384 kBProgress (1): 7.7/384 kBProgress (1): 9.1/384 kBProgress (1): 10/384 kB Progress (1): 11/384 kBProgress (1): 13/384 kBProgress (1): 14/384 kBProgress (1): 16/384 kBProgress (1): 17/384 kBProgress (1): 18/384 kBProgress (1): 20/384 kBProgress (1): 21/384 kBProgress (1): 22/384 kBProgress (1): 24/384 kBProgress (1): 28/384 kBProgress (1): 32/384 kBProgress (1): 36/384 kBProgress (1): 41/384 kBProgress (1): 45/384 kBProgress (1): 49/384 kBProgress (1): 53/384 kBProgress (1): 58/384 kBProgress (1): 62/384 kBProgress (1): 66/384 kBProgress (1): 70/384 kBProgress (1): 74/384 kBProgress (1): 79/384 kBProgress (1): 83/384 kBProgress (1): 87/384 kBProgress (1): 91/384 kBProgress (1): 96/384 kBProgress (1): 100/384 kBProgress (1): 104/384 kBProgress (1): 108/384 kBProgress (1): 113/384 kBProgress (1): 117/384 kBProgress (1): 121/384 kBProgress (1): 125/384 kBProgress (1): 129/384 kBProgress (1): 134/384 kBProgress (1): 138/384 kBProgress (1): 142/384 kBProgress (1): 142/384 kBProgress (1): 147/384 kBProgress (1): 151/384 kBProgress (1): 155/384 kBProgress (1): 159/384 kBProgress (1): 164/384 kBProgress (1): 168/384 kBProgress (1): 172/384 kBProgress (1): 176/384 kBProgress (1): 181/384 kBProgress (1): 185/384 kBProgress (1): 189/384 kBProgress (1): 205/384 kBProgress (1): 222/384 kBProgress (1): 238/384 kBProgress (1): 255/384 kBProgress (1): 271/384 kBProgress (1): 274/384 kBProgress (1): 290/384 kBProgress (1): 306/384 kBProgress (1): 323/384 kBProgress (1): 339/384 kBProgress (1): 355/384 kBProgress (1): 359/384 kBProgress (1): 376/384 kBProgress (1): 384 kB    Progress (2): 384 kB | 0.9/109 kBProgress (2): 384 kB | 2.3/109 kBProgress (2): 384 kB | 3.6/109 kBProgress (2): 384 kB | 5.0/109 kBProgress (2): 384 kB | 6.4/109 kBProgress (2): 384 kB | 7.7/109 kBProgress (2): 384 kB | 9.1/109 kBProgress (2): 384 kB | 10/109 kB Progress (2): 384 kB | 12/109 kBProgress (2): 384 kB | 13/109 kBProgress (2): 384 kB | 15/109 kBProgress (2): 384 kB | 16/109 kBProgress (2): 384 kB | 17/109 kBProgress (2): 384 kB | 19/109 kBProgress (2): 384 kB | 20/109 kBProgress (2): 384 kB | 21/109 kBProgress (2): 384 kB | 23/109 kBProgress (2): 384 kB | 24/109 kBProgress (2): 384 kB | 26/109 kBProgress (2): 384 kB | 27/109 kBProgress (2): 384 kB | 28/109 kBProgress (3): 384 kB | 28/109 kB | 0.9/34 kBProgress (3): 384 kB | 29/109 kB | 0.9/34 kBProgress (3): 384 kB | 29/109 kB | 2.3/34 kBProgress (3): 384 kB | 30/109 kB | 2.3/34 kBProgress (3): 384 kB | 32/109 kB | 2.3/34 kBProgress (3): 384 kB | 32/109 kB | 3.6/34 kBProgress (3): 384 kB | 33/109 kB | 3.6/34 kBProgress (3): 384 kB | 33/109 kB | 5.0/34 kBProgress (3): 384 kB | 35/109 kB | 5.0/34 kBProgress (3): 384 kB | 35/109 kB | 6.4/34 kBProgress (3): 384 kB | 36/109 kB | 6.4/34 kBProgress (3): 384 kB | 37/109 kB | 6.4/34 kBProgress (3): 384 kB | 37/109 kB | 7.7/34 kBProgress (3): 384 kB | 39/109 kB | 7.7/34 kBProgress (3): 384 kB | 39/109 kB | 9.1/34 kBProgress (3): 384 kB | 40/109 kB | 9.1/34 kBProgress (3): 384 kB | 40/109 kB | 10/34 kB Progress (3): 384 kB | 41/109 kB | 10/34 kBProgress (3): 384 kB | 41/109 kB | 11/34 kBProgress (3): 384 kB | 43/109 kB | 11/34 kBProgress (3): 384 kB | 43/109 kB | 13/34 kBProgress (3): 384 kB | 44/109 kB | 13/34 kBProgress (3): 384 kB | 44/109 kB | 14/34 kBProgress (3): 384 kB | 46/109 kB | 14/34 kBProgress (3): 384 kB | 46/109 kB | 16/34 kBProgress (3): 384 kB | 47/109 kB | 16/34 kBProgress (3): 384 kB | 47/109 kB | 17/34 kBProgress (3): 384 kB | 48/109 kB | 17/34 kBProgress (3): 384 kB | 48/109 kB | 18/34 kBProgress (3): 384 kB | 50/109 kB | 18/34 kBProgress (3): 384 kB | 50/109 kB | 20/34 kBProgress (3): 384 kB | 51/109 kB | 20/34 kBProgress (3): 384 kB | 51/109 kB | 21/34 kBProgress (3): 384 kB | 52/109 kB | 21/34 kBProgress (3): 384 kB | 52/109 kB | 22/34 kBProgress (3): 384 kB | 52/109 kB | 24/34 kBProgress (3): 384 kB | 54/109 kB | 24/34 kBProgress (3): 384 kB | 54/109 kB | 25/34 kBProgress (3): 384 kB | 54/109 kB | 26/34 kBProgress (3): 384 kB | 55/109 kB | 26/34 kBProgress (3): 384 kB | 55/109 kB | 28/34 kBProgress (3): 384 kB | 55/109 kB | 29/34 kBProgress (3): 384 kB | 59/109 kB | 29/34 kBProgress (3): 384 kB | 59/109 kB | 31/34 kBProgress (3): 384 kB | 59/109 kB | 32/34 kBProgress (3): 384 kB | 59/109 kB | 33/34 kBProgress (3): 384 kB | 59/109 kB | 34 kB   Progress (3): 384 kB | 64/109 kB | 34 kBProgress (3): 384 kB | 68/109 kB | 34 kBProgress (4): 384 kB | 68/109 kB | 34 kB | 0.9/59 kBProgress (4): 384 kB | 68/109 kB | 34 kB | 2.3/59 kBProgress (4): 384 kB | 68/109 kB | 34 kB | 3.6/59 kBProgress (4): 384 kB | 68/109 kB | 34 kB | 5.0/59 kBProgress (4): 384 kB | 68/109 kB | 34 kB | 6.4/59 kBProgress (4): 384 kB | 68/109 kB | 34 kB | 7.7/59 kBProgress (4): 384 kB | 68/109 kB | 34 kB | 9.1/59 kBProgress (4): 384 kB | 68/109 kB | 34 kB | 10/59 kB                                                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/ws/commons/util/ws-commons-util/1.0.2/ws-commons-util-1.0.2.jar (34 kB at 334 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-test/4.3.14.RELEASE/spring-test-4.3.14.RELEASE.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/com/caucho/hessian/4.0.7/hessian-4.0.7.jar (384 kB at 3.7 MB/s)
+Progress (2): 68/109 kB | 11/59 kBProgress (2): 68/109 kB | 13/59 kBProgress (2): 68/109 kB | 14/59 kBProgress (2): 68/109 kB | 16/59 kBProgress (2): 68/109 kB | 17/59 kBProgress (2): 68/109 kB | 18/59 kBProgress (2): 68/109 kB | 20/59 kBProgress (2): 68/109 kB | 21/59 kBProgress (2): 68/109 kB | 22/59 kBProgress (2): 68/109 kB | 24/59 kBProgress (2): 68/109 kB | 25/59 kBProgress (2): 68/109 kB | 26/59 kBProgress (2): 68/109 kB | 28/59 kBProgress (2): 68/109 kB | 29/59 kBProgress (2): 72/109 kB | 29/59 kBProgress (2): 72/109 kB | 31/59 kBProgress (2): 72/109 kB | 32/59 kBProgress (2): 76/109 kB | 32/59 kBProgress (2): 76/109 kB | 33/59 kBProgress (2): 81/109 kB | 33/59 kBProgress (2): 81/109 kB | 35/59 kBProgress (2): 85/109 kB | 35/59 kBProgress (2): 85/109 kB | 36/59 kBProgress (2): 89/109 kB | 36/59 kBProgress (2): 89/109 kB | 37/59 kBProgress (2): 89/109 kB | 39/59 kBProgress (2): 93/109 kB | 39/59 kBProgress (2): 93/109 kB | 40/59 kBProgress (2): 97/109 kB | 40/59 kBProgress (2): 97/109 kB | 42/59 kBProgress (2): 102/109 kB | 42/59 kBProgress (2): 102/109 kB | 43/59 kBProgress (2): 106/109 kB | 43/59 kBProgress (2): 106/109 kB | 44/59 kBProgress (2): 109 kB | 44/59 kB    Progress (2): 109 kB | 46/59 kBProgress (2): 109 kB | 47/59 kBProgress (2): 109 kB | 48/59 kBProgress (2): 109 kB | 50/59 kBProgress (2): 109 kB | 51/59 kBProgress (2): 109 kB | 52/59 kBProgress (2): 109 kB | 54/59 kBProgress (2): 109 kB | 55/59 kBProgress (2): 109 kB | 59 kB                               Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc-client/3.1.3/xmlrpc-client-3.1.3.jar (59 kB at 537 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/xmlrpc/xmlrpc-common/3.1.3/xmlrpc-common-3.1.3.jar (109 kB at 1.0 MB/s)
+Progress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0/1.6 MBProgress (1): 0.1/1.6 MBProgress (1): 0.1/1.6 MBProgress (2): 0.1/1.6 MB | 0.9/602 kBProgress (2): 0.1/1.6 MB | 0.9/602 kBProgress (2): 0.1/1.6 MB | 2.3/602 kBProgress (2): 0.1/1.6 MB | 2.3/602 kBProgress (2): 0.1/1.6 MB | 3.6/602 kBProgress (2): 0.1/1.6 MB | 3.6/602 kBProgress (2): 0.1/1.6 MB | 5.0/602 kBProgress (2): 0.1/1.6 MB | 6.4/602 kBProgress (2): 0.1/1.6 MB | 6.4/602 kBProgress (2): 0.1/1.6 MB | 7.7/602 kBProgress (2): 0.1/1.6 MB | 9.1/602 kBProgress (2): 0.1/1.6 MB | 10/602 kB Progress (2): 0.1/1.6 MB | 12/602 kBProgress (2): 0.1/1.6 MB | 13/602 kBProgress (2): 0.1/1.6 MB | 15/602 kBProgress (2): 0.1/1.6 MB | 16/602 kBProgress (2): 0.1/1.6 MB | 17/602 kBProgress (2): 0.1/1.6 MB | 19/602 kBProgress (2): 0.1/1.6 MB | 20/602 kBProgress (2): 0.1/1.6 MB | 20/602 kBProgress (2): 0.1/1.6 MB | 25/602 kBProgress (2): 0.1/1.6 MB | 29/602 kBProgress (2): 0.1/1.6 MB | 33/602 kBProgress (2): 0.1/1.6 MB | 37/602 kBProgress (2): 0.1/1.6 MB | 42/602 kBProgress (2): 0.1/1.6 MB | 46/602 kBProgress (2): 0.1/1.6 MB | 50/602 kBProgress (2): 0.1/1.6 MB | 54/602 kBProgress (2): 0.1/1.6 MB | 58/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 63/602 kBProgress (2): 0.1/1.6 MB | 67/602 kBProgress (2): 0.1/1.6 MB | 67/602 kBProgress (2): 0.1/1.6 MB | 71/602 kBProgress (2): 0.1/1.6 MB | 71/602 kBProgress (2): 0.1/1.6 MB | 75/602 kBProgress (2): 0.1/1.6 MB | 75/602 kBProgress (2): 0.1/1.6 MB | 80/602 kBProgress (2): 0.1/1.6 MB | 80/602 kBProgress (2): 0.1/1.6 MB | 84/602 kBProgress (2): 0.1/1.6 MB | 84/602 kBProgress (2): 0.1/1.6 MB | 88/602 kBProgress (2): 0.1/1.6 MB | 92/602 kBProgress (2): 0.1/1.6 MB | 92/602 kBProgress (2): 0.1/1.6 MB | 97/602 kBProgress (2): 0.2/1.6 MB | 97/602 kBProgress (2): 0.2/1.6 MB | 101/602 kBProgress (2): 0.2/1.6 MB | 101/602 kBProgress (2): 0.2/1.6 MB | 105/602 kBProgress (2): 0.2/1.6 MB | 105/602 kBProgress (2): 0.2/1.6 MB | 109/602 kBProgress (2): 0.2/1.6 MB | 109/602 kBProgress (2): 0.2/1.6 MB | 113/602 kBProgress (2): 0.2/1.6 MB | 113/602 kBProgress (2): 0.2/1.6 MB | 118/602 kBProgress (2): 0.2/1.6 MB | 118/602 kBProgress (2): 0.2/1.6 MB | 122/602 kBProgress (2): 0.2/1.6 MB | 122/602 kBProgress (2): 0.2/1.6 MB | 122/602 kBProgress (2): 0.2/1.6 MB | 122/602 kBProgress (2): 0.2/1.6 MB | 126/602 kBProgress (2): 0.2/1.6 MB | 126/602 kBProgress (2): 0.2/1.6 MB | 130/602 kBProgress (2): 0.2/1.6 MB | 135/602 kBProgress (2): 0.2/1.6 MB | 135/602 kBProgress (2): 0.2/1.6 MB | 139/602 kBProgress (2): 0.2/1.6 MB | 143/602 kBProgress (2): 0.2/1.6 MB | 147/602 kBProgress (2): 0.2/1.6 MB | 151/602 kBProgress (2): 0.2/1.6 MB | 156/602 kBProgress (2): 0.2/1.6 MB | 160/602 kBProgress (2): 0.2/1.6 MB | 164/602 kBProgress (2): 0.2/1.6 MB | 168/602 kBProgress (2): 0.2/1.6 MB | 173/602 kBProgress (2): 0.2/1.6 MB | 177/602 kBProgress (2): 0.2/1.6 MB | 181/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.2/1.6 MB | 185/602 kBProgress (2): 0.3/1.6 MB | 185/602 kBProgress (2): 0.3/1.6 MB | 185/602 kBProgress (2): 0.3/1.6 MB | 185/602 kBProgress (2): 0.3/1.6 MB | 185/602 kBProgress (2): 0.3/1.6 MB | 185/602 kBProgress (2): 0.3/1.6 MB | 202/602 kBProgress (2): 0.3/1.6 MB | 218/602 kBProgress (2): 0.3/1.6 MB | 234/602 kBProgress (2): 0.3/1.6 MB | 251/602 kBProgress (2): 0.3/1.6 MB | 267/602 kBProgress (2): 0.3/1.6 MB | 283/602 kBProgress (2): 0.3/1.6 MB | 299/602 kBProgress (2): 0.3/1.6 MB | 299/602 kBProgress (2): 0.3/1.6 MB | 299/602 kBProgress (2): 0.4/1.6 MB | 299/602 kBProgress (2): 0.4/1.6 MB | 315/602 kBProgress (2): 0.4/1.6 MB | 315/602 kBProgress (2): 0.4/1.6 MB | 315/602 kBProgress (2): 0.4/1.6 MB | 315/602 kBProgress (2): 0.4/1.6 MB | 315/602 kBProgress (2): 0.4/1.6 MB | 315/602 kBProgress (2): 0.5/1.6 MB | 315/602 kBProgress (2): 0.5/1.6 MB | 315/602 kBProgress (2): 0.5/1.6 MB | 315/602 kBProgress (2): 0.5/1.6 MB | 315/602 kBProgress (2): 0.5/1.6 MB | 315/602 kBProgress (2): 0.5/1.6 MB | 315/602 kBProgress (2): 0.6/1.6 MB | 315/602 kBProgress (2): 0.6/1.6 MB | 332/602 kBProgress (2): 0.6/1.6 MB | 348/602 kBProgress (2): 0.6/1.6 MB | 364/602 kBProgress (2): 0.6/1.6 MB | 364/602 kBProgress (2): 0.6/1.6 MB | 381/602 kBProgress (2): 0.6/1.6 MB | 397/602 kBProgress (2): 0.6/1.6 MB | 397/602 kBProgress (2): 0.6/1.6 MB | 414/602 kBProgress (2): 0.6/1.6 MB | 414/602 kBProgress (2): 0.6/1.6 MB | 430/602 kBProgress (2): 0.6/1.6 MB | 430/602 kBProgress (2): 0.6/1.6 MB | 446/602 kBProgress (2): 0.6/1.6 MB | 463/602 kBProgress (2): 0.6/1.6 MB | 469/602 kBProgress (2): 0.6/1.6 MB | 485/602 kBProgress (2): 0.6/1.6 MB | 502/602 kBProgress (2): 0.6/1.6 MB | 518/602 kBProgress (2): 0.6/1.6 MB | 522/602 kBProgress (2): 0.6/1.6 MB | 535/602 kBProgress (2): 0.6/1.6 MB | 535/602 kBProgress (2): 0.6/1.6 MB | 551/602 kBProgress (2): 0.7/1.6 MB | 551/602 kBProgress (2): 0.7/1.6 MB | 567/602 kBProgress (2): 0.7/1.6 MB | 567/602 kBProgress (2): 0.7/1.6 MB | 567/602 kBProgress (2): 0.7/1.6 MB | 567/602 kBProgress (2): 0.7/1.6 MB | 567/602 kBProgress (2): 0.7/1.6 MB | 567/602 kBProgress (2): 0.8/1.6 MB | 567/602 kBProgress (2): 0.8/1.6 MB | 567/602 kBProgress (2): 0.8/1.6 MB | 584/602 kBProgress (2): 0.8/1.6 MB | 584/602 kBProgress (2): 0.8/1.6 MB | 584/602 kBProgress (2): 0.8/1.6 MB | 584/602 kBProgress (2): 0.8/1.6 MB | 584/602 kBProgress (2): 0.9/1.6 MB | 584/602 kBProgress (2): 0.9/1.6 MB | 584/602 kBProgress (2): 0.9/1.6 MB | 600/602 kBProgress (2): 0.9/1.6 MB | 602 kB                                     Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-test/4.3.14.RELEASE/spring-test-4.3.14.RELEASE.jar (602 kB at 2.7 MB/s)
+Progress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 0.9/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.0/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.1/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.2/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.3/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.4/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.5/1.6 MBProgress (1): 1.6/1.6 MBProgress (1): 1.6/1.6 MBProgress (1): 1.6/1.6 MBProgress (1): 1.6 MB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/axis/axis/1.4/axis-1.4.jar (1.6 MB at 5.4 MB/s)
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ common-wallet ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ common-wallet ---
+[INFO] skip non existing resourceDirectory D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-wallet\src\main\resources
+[INFO] 
+[INFO] --- compiler:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 13 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-wallet\target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ common-wallet ---
+[INFO] Copying 108 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:2.5.1:testCompile (default-testCompile) @ common-wallet ---
+[INFO] Compiling 4 source files to D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-wallet\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.19.1:test (default-test) @ common-wallet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:2.6:jar (default-jar) @ common-wallet ---
+[INFO] Building jar: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-wallet\target\common-wallet-1.0.67.jar
+[INFO] 
+[INFO] --- install:3.1.2:install (default-install) @ common-wallet ---
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-wallet\pom.xml to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\common-wallet\1.0.67\common-wallet-1.0.67.pom
+[INFO] Installing D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\common-wallet\target\common-wallet-1.0.67.jar to C:\Users\Alex\.m2\repository\com\dgphoenix\casino\common-wallet\1.0.67\common-wallet-1.0.67.jar
+[INFO] 
+[INFO] ----------------< com.dgphoenix.casino:gsn-game-server >----------------
+[INFO] Building gsn-game-server 1.0.1                                   [10/12]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/xml-maven-plugin/1.0.2/xml-maven-plugin-1.0.2.pom
+Progress (1): 1.0 kBProgress (1): 3.3 kBProgress (1): 6.5 kBProgress (1): 8.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/xml-maven-plugin/1.0.2/xml-maven-plugin-1.0.2.pom (8.6 kB at 81 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/mojo-parent/40/mojo-parent-40.pom
+Progress (1): 715 BProgress (1): 2.5 kBProgress (1): 5.5 kBProgress (1): 7.3 kBProgress (1): 9.6 kBProgress (1): 15 kB Progress (1): 19 kBProgress (1): 21 kBProgress (1): 24 kBProgress (1): 28 kBProgress (1): 33 kBProgress (1): 34 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/mojo-parent/40/mojo-parent-40.pom (34 kB at 611 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/xml-maven-plugin/1.0.2/xml-maven-plugin-1.0.2.jar
+Progress (1): 7.7/64 kBProgress (1): 16/64 kB Progress (1): 28/64 kBProgress (1): 44/64 kBProgress (1): 61/64 kBProgress (1): 64 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/xml-maven-plugin/1.0.2/xml-maven-plugin-1.0.2.jar (64 kB at 671 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/properties-maven-plugin/1.0.0/properties-maven-plugin-1.0.0.pom
+Progress (1): 794 BProgress (1): 2.2 kBProgress (1): 5.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/properties-maven-plugin/1.0.0/properties-maven-plugin-1.0.0.pom (5.0 kB at 79 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/mojo-parent/38/mojo-parent-38.pom
+Progress (1): 708 BProgress (1): 2.4 kBProgress (1): 5.5 kBProgress (1): 7.2 kBProgress (1): 9.6 kBProgress (1): 15 kB Progress (1): 18 kBProgress (1): 21 kBProgress (1): 24 kBProgress (1): 28 kBProgress (1): 33 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/mojo-parent/38/mojo-parent-38.pom (33 kB at 525 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/properties-maven-plugin/1.0.0/properties-maven-plugin-1.0.0.jar
+Progress (1): 7.7/30 kBProgress (1): 16/30 kB Progress (1): 30 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/properties-maven-plugin/1.0.0/properties-maven-plugin-1.0.0.jar (30 kB at 422 kB/s)
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ gsn-game-server ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-game-server ---
+[INFO] 
+[INFO] --- properties:1.0.0:read-project-properties (default) @ gsn-game-server ---
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar
+Progress (1): 7.7/245 kBProgress (1): 11/245 kB Progress (1): 28/245 kBProgress (1): 44/245 kBProgress (1): 61/245 kBProgress (1): 77/245 kBProgress (1): 93/245 kBProgress (1): 110/245 kBProgress (1): 126/245 kBProgress (1): 142/245 kBProgress (1): 159/245 kBProgress (1): 175/245 kBProgress (1): 192/245 kBProgress (1): 208/245 kBProgress (1): 224/245 kBProgress (1): 241/245 kBProgress (1): 245 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar (245 kB at 3.5 MB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] utils-restricted 1.1.0 ............................. SUCCESS [  9.865 s]
+[INFO] gsn-utils-restricted 1.0-SNAPSHOT .................. SUCCESS [  3.298 s]
+[INFO] common-promo 1.1.0 ................................. SUCCESS [  4.455 s]
+[INFO] gsn-common 1.0-SNAPSHOT ............................ SUCCESS [ 13.643 s]
+[INFO] gsn-cache-restricted 1.0-SNAPSHOT .................. SUCCESS [  3.637 s]
+[INFO] gsn-common-persisters 1.0 .......................... SUCCESS [  6.166 s]
+[INFO] gsn-promo-persisters 1.2 ........................... SUCCESS [  1.237 s]
+[INFO] gsn-promo-core 1.2 ................................. SUCCESS [  1.271 s]
+[INFO] common-wallet 1.0.67 ............................... SUCCESS [  6.930 s]
+[INFO] gsn-game-server 1.0.1 .............................. FAILURE [  0.726 s]
+[INFO] gsn-common-gs 1.0 .................................. SKIPPED
+[INFO] gsn-web-gs 1.89.0 .................................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  51.609 s
+[INFO] Finished at: 2026-01-02T13:56:01Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.codehaus.mojo:properties-maven-plugin:1.0.0:read-project-properties (default) on project gsn-game-server: Properties could not be loaded from File: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\game-server\config\${cluster.properties} -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :gsn-game-server

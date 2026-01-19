@@ -10,6 +10,7 @@
             </bankIds>
             <domainNames>
                 <string>default-gp3.local.com</string>
+                <string>localhost:8081</string>
             </domainNames>
         </value>
     </com.dgphoenix.casino.common.cache.ExportableCacheEntry>

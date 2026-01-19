@@ -62,6 +62,25 @@ public class Initializer implements ServletContextListener {
         setUncaughtExceptionHandler();
         LoggingUtils.initializeGameLog();
         LOG.info("Initializing resources");
+
+        // Retry logic for ApplicationContext
+        int retries = 0;
+        while (ApplicationContextHelper.getApplicationContext() == null && retries < 10) {
+            LOG.warn("ApplicationContext is null, waiting... retry " + retries);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+            retries++;
+        }
+
+        if (ApplicationContextHelper.getApplicationContext() == null) {
+            LOG.fatal("ApplicationContext is STILL NULL after retries! Initialization cannot proceed.");
+            throw new RuntimeException("ApplicationContext not initialized");
+        }
+
         config = ApplicationContextHelper.getApplicationContext()
                 .getBean("gameServerConfiguration", GameServerConfiguration.class);
         CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()
@@ -70,18 +89,18 @@ public class Initializer implements ServletContextListener {
         try {
             IRemoteUnlocker remoteUnlocker = ApplicationContextHelper.getApplicationContext()
                     .getBean("remoteUnlocker", IRemoteUnlocker.class);
-            DistributedLockManager distributedLockManager = persistenceManager.getPersister(DistributedLockManager.class);
+            DistributedLockManager distributedLockManager = persistenceManager
+                    .getPersister(DistributedLockManager.class);
             distributedLockManager.setLoadBalancer(LoadBalancerCache.getInstance());
             distributedLockManager.setRemoteUnlocker(remoteUnlocker);
             distributedLockManager.setServerId(serverId);
 
-            CassandraCommonGameWalletPersister commonGameWalletPersister =
-                    persistenceManager.getPersister(CassandraCommonGameWalletPersister.class);
+            CassandraCommonGameWalletPersister commonGameWalletPersister = persistenceManager
+                    .getPersister(CassandraCommonGameWalletPersister.class);
             WalletPersister.getInstance().init(commonGameWalletPersister);
 
             LOG.info("Starting server ID:" + config.getServerId());
             LOG.info("Starting server Host: " + config.getHost());
-
 
             HttpClientConnection.setProperties(config.getRequestTimeout(), config.getHttpProxyHost(),
                     config.getHttpProxyPort(), config.isTrustAllSslForHttpClientConnections());
@@ -102,17 +121,18 @@ public class Initializer implements ServletContextListener {
             HttpClientConnection.setupJava8ProxyUrl(proxyUrl);
             boolean isClientStatisticsEnabled = config.isHttpClientStatisticsEnabled();
             if (isClientStatisticsEnabled) {
-                CassandraCallStatisticsPersister callStatisticsPersister =
-                        persistenceManager.getPersister(CassandraCallStatisticsPersister.class);
+                CassandraCallStatisticsPersister callStatisticsPersister = persistenceManager
+                        .getPersister(CassandraCallStatisticsPersister.class);
                 HttpClientCallbackHandler.getInstance().init(callStatisticsPersister);
             }
-            CassandraTrackingInfoPersister trackingInfoPersister = persistenceManager.getPersister(CassandraTrackingInfoPersister.class);
+            CassandraTrackingInfoPersister trackingInfoPersister = persistenceManager
+                    .getPersister(CassandraTrackingInfoPersister.class);
             trackingInfoPersister.setGameServerId(serverId);
             initHardwareInfo(serverId);
             GameServer.getInstance().dsoStarted();
             DBLinkCache.getInstance().registerTDInvalidationListener();
-            //GameAdditionalDataCacheInitializer.assertInitialized();
-            //Default locale
+            // GameAdditionalDataCacheInitializer.assertInitialized();
+            // Default locale
             ServletContext sc = event.getServletContext();
             sc.setAttribute(org.apache.struts.Globals.LOCALE_KEY, Locale.ENGLISH);
             LOG.info("Initializing resources completed");
@@ -120,11 +140,11 @@ public class Initializer implements ServletContextListener {
             LOG.fatal("Initializer error:", e);
             throw new RuntimeException("Initializer failed", e);
         }
-        //set offline status may be need if global cluster crash occured
+        // set offline status may be need if global cluster crash occured
         ServerInfo serverInfo = LoadBalancerCache.getInstance().getServerInfoById(serverId);
         if (serverInfo != null && serverInfo.isServerOnline()) {
             LOG.warn("ServerInfo status isOnline, global crash ?");
-            //serverInfo.setOnline(false);
+            // serverInfo.setOnline(false);
         }
         event.getServletContext().setAttribute(ApplicationScopeNames.DAYS_IN_MONTH_VALUES, getDaysInMonth());
         event.getServletContext().setAttribute(ApplicationScopeNames.YEARS_VALUES, getYears());
@@ -140,7 +160,8 @@ public class Initializer implements ServletContextListener {
             try {
                 ntpTimeProvider.start(ntpServerHost);
             } catch (Exception e) {
-                LOG.warn("timeProvider: " + ntpServerHost + " variable not found, use 'metadata.google.internal' as we run on GCP");
+                LOG.warn("timeProvider: " + ntpServerHost
+                        + " variable not found, use 'metadata.google.internal' as we run on GCP");
                 ntpServerHost = "metadata.google.internal";
                 try {
                     InetAddress.getByName(ntpServerHost);
@@ -153,7 +174,8 @@ public class Initializer implements ServletContextListener {
             LOG.debug("timeProvider: started with, ntpServerHost={}", ntpServerHost);
             SynchroTimeProvider.getInstance().setWrappedProvider(ntpTimeProvider);
         } catch (RuntimeException e) {
-            LOG.error("DANGER!!!: Cannot start SynchroTimeProvider, time synchronization disabled: ntpServer={}", config.getNtpServer(),
+            LOG.error("DANGER!!!: Cannot start SynchroTimeProvider, time synchronization disabled: ntpServer={}",
+                    config.getNtpServer(),
                     e);
         }
         initializer = new GsInitThread();
@@ -167,14 +189,16 @@ public class Initializer implements ServletContextListener {
         registerStatisticsGetter();
         ExpiredFRBonusTracker.getInstance().init();
         ExpiredBonusTracker.getInstance().init();
-        CassandraExtendedAccountInfoPersister extendedAccountInfoPersister =
-                persistenceManager.getPersister(CassandraExtendedAccountInfoPersister.class);
+        CassandraExtendedAccountInfoPersister extendedAccountInfoPersister = persistenceManager
+                .getPersister(CassandraExtendedAccountInfoPersister.class);
         ExtendedAccountInfoPersisterInstanceHolder.setPersister(extendedAccountInfoPersister);
         MetricsManager.getInstance().startup();
         PingSessionCache.getInstance().init();
 
-        CassandraBankInfoPersister bankInfoPersister = persistenceManager.getPersister(CassandraBankInfoPersister.class);
-        bankInfoPersister.addBankInfoUpdateListener((bankId, bankInfo) -> BankInfoCache.getInstance().invalidateFrbGamesForBank(bankId));
+        CassandraBankInfoPersister bankInfoPersister = persistenceManager
+                .getPersister(CassandraBankInfoPersister.class);
+        bankInfoPersister.addBankInfoUpdateListener(
+                (bankId, bankInfo) -> BankInfoCache.getInstance().invalidateFrbGamesForBank(bankId));
         bankInfoPersister.setNeedDebugSerialize(config.isNeedDebugSerialize());
 
         LOG.error("\nInitializer: ALL INITIALIZED\n");
@@ -198,7 +222,8 @@ public class Initializer implements ServletContextListener {
         ServerInfo serverInfo = LoadBalancerCache.getInstance().getServerInfoById(serverId);
         HardwareInfo hardwareInfo = null;
         try {
-            //prevent java.lang.UnsatisfiedLinkError: org.hyperic.sigar.Sigar.getCpuListNative()[Lorg/hyperic/sigar/Cpu;
+            // prevent java.lang.UnsatisfiedLinkError:
+            // org.hyperic.sigar.Sigar.getCpuListNative()[Lorg/hyperic/sigar/Cpu;
             hardwareInfo = HardwareConfigurationManager.getInstance().getHardwareInfo();
         } catch (Throwable e) {
             LOG.warn("initServerInfo: hardwareInfo is not initialized", e);
@@ -218,7 +243,8 @@ public class Initializer implements ServletContextListener {
                     return "serverInfo is null";
                 }
                 return "started=" + new Date(startTime) + ", serverId=" + serverInfo.getServerId() +
-                        ", name=" + serverInfo.getLabel() + ", upTime=" + (System.currentTimeMillis() - serverInfo.getUptime());
+                        ", name=" + serverInfo.getLabel() + ", upTime="
+                        + (System.currentTimeMillis() - serverInfo.getUptime());
             }
         });
     }
@@ -306,12 +332,12 @@ public class Initializer implements ServletContextListener {
     public List<IdValueBean> getGameNames() {
 
         List<IdValueBean> result = new ArrayList<>();
-        for (BaseGameInfoTemplate baseGameInfoTemplate : BaseGameInfoTemplateCache.getInstance().getAllObjects().values()) {
+        for (BaseGameInfoTemplate baseGameInfoTemplate : BaseGameInfoTemplateCache.getInstance().getAllObjects()
+                .values()) {
             long gameId = baseGameInfoTemplate.getGameId();
             String gameNaturalName = baseGameInfoTemplate.getGameName();
             String gameName = getMessage(GAME_NAME_PREFIX + gameNaturalName);
-            result.add(new IdValueBean(gameId, StringUtils.isTrimmedEmpty(gameName) ?
-                    gameNaturalName : gameName));
+            result.add(new IdValueBean(gameId, StringUtils.isTrimmedEmpty(gameName) ? gameNaturalName : gameName));
 
         }
         Collections.sort(result);

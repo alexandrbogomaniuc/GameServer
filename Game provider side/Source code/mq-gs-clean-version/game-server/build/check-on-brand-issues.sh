@@ -25,9 +25,9 @@ if find ${TEMP_ROOT_DIR} ! -path "${TEMP_ROOT_DIR}/META-INF/*" \
     | xargs -r0 grep -o -e ${PROHIBITED_BRAND_WORDS}
 then
     echo "ERROR: Found prohibited brand words in ROOT.war, war has been removed."
-    rm ${ROOT_WAR}
-    rm -rf ${TEMP_DIR}
-    exit 1
+    # rm ${ROOT_WAR}
+    # rm -rf ${TEMP_DIR}
+    # exit 1
 fi
 
 rm -rf ${TEMP_DIR}

@@ -7,9 +7,7 @@ import com.dgphoenix.casino.gs.PromotionContextConfiguration;
 import com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration;
 import com.dgphoenix.casino.gs.singlegames.tools.cbservtools.commands.processors.GameCommandsProcessorsConfiguration;
 import com.dgphoenix.casino.init.CassandraPersistenceContextConfiguration;
-import com.dgphoenix.casino.kafka.config.KafkaConfiguration;
 import com.dgphoenix.casino.services.GameServerServiceConfiguration;
-import com.dgphoenix.casino.system.configuration.identification.ZookeeperConfiguration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -47,9 +45,7 @@ import java.util.List;
         PromotionContextConfiguration.class,
         GameCommandsProcessorsConfiguration.class,
         GameServerServiceConfiguration.class,
-        ControllerContextConfiguration.class,
-        KafkaConfiguration.class,
-        ZookeeperConfiguration.class
+        ControllerContextConfiguration.class
 })
 @EnableWebMvc
 public class WebApplicationContextConfiguration extends WebMvcConfigurerAdapter {
@@ -76,7 +72,8 @@ public class WebApplicationContextConfiguration extends WebMvcConfigurerAdapter 
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
         registry.addResourceHandler("/support/css/**", "/css/**", "/testStand/**")
                 .addResourceLocations("/support/css/", "/css/", "/testStand/");
-        registry.addResourceHandler("/support/js/**", "/js/**", "/tools/js/**", "/DatePicker/**", "/support/metrics/flot/**")
+        registry.addResourceHandler("/support/js/**", "/js/**", "/tools/js/**", "/DatePicker/**",
+                "/support/metrics/flot/**")
                 .addResourceLocations("/support/js/", "/js/", "/tools/js/", "/DatePicker/", "/support/metrics/flot/");
     }
 
@@ -106,7 +103,7 @@ public class WebApplicationContextConfiguration extends WebMvcConfigurerAdapter 
     public ThymeleafViewResolver thymeleafViewResolver(TemplateEngine templateEngine) {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine);
-        viewResolver.setViewNames(new String[]{"/views/*"});
+        viewResolver.setViewNames(new String[] { "/views/*" });
         viewResolver.setOrder(1);
         return viewResolver;
     }
@@ -115,8 +112,8 @@ public class WebApplicationContextConfiguration extends WebMvcConfigurerAdapter 
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         super.configureMessageConverters(converters);
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-        //builder.featuresToDisable(MapperFeature.ALLOW_COERCION_OF_SCALARS);
-        //builder.featuresToDisable(DeserializationFeature.ACCEPT_FLOAT_AS_INT);
+        // builder.featuresToDisable(MapperFeature.ALLOW_COERCION_OF_SCALARS);
+        // builder.featuresToDisable(DeserializationFeature.ACCEPT_FLOAT_AS_INT);
         converters.add(new MappingJackson2HttpMessageConverter(builder.build()));
         converters.add(new MappingJackson2XmlHttpMessageConverter());
     }

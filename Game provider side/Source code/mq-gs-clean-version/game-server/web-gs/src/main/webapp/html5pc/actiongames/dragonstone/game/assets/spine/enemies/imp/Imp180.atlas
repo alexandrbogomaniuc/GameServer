@@ -1,0 +1,48 @@
+
+Imp180.png
+size: 953,953
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/Body
+  rotate: false
+  xy: 2, 65
+  size: 687, 886
+  orig: 687, 886
+  offset: 0, 0
+  index: -1
+180/arm_lf
+  rotate: true
+  xy: 691, 2
+  size: 135, 166
+  orig: 135, 166
+  offset: 0, 0
+  index: -1
+180/arm_rt
+  rotate: true
+  xy: 691, 139
+  size: 160, 193
+  orig: 160, 193
+  offset: 0, 0
+  index: -1
+180/forearm_lf
+  rotate: true
+  xy: 691, 443
+  size: 158, 233
+  orig: 158, 233
+  offset: 0, 0
+  index: -1
+180/forearm_rt
+  rotate: true
+  xy: 691, 301
+  size: 140, 241
+  orig: 140, 241
+  offset: 0, 0
+  index: -1
+180/tail
+  rotate: false
+  xy: 691, 603
+  size: 167, 348
+  orig: 167, 348
+  offset: 0, 0
+  index: -1

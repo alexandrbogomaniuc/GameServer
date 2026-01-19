@@ -1,0 +1,34 @@
+
+Bat0.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/body
+  rotate: false
+  xy: 726, 596
+  size: 287, 293
+  orig: 287, 293
+  offset: 0, 0
+  index: -1
+0/head
+  rotate: false
+  xy: 726, 418
+  size: 150, 174
+  orig: 150, 174
+  offset: 0, 0
+  index: -1
+0/wing_lf
+  rotate: false
+  xy: 4, 319
+  size: 718, 570
+  orig: 718, 570
+  offset: 0, 0
+  index: -1
+0/wing_rt
+  rotate: false
+  xy: 4, 4
+  size: 871, 311
+  orig: 871, 311
+  offset: 0, 0
+  index: -1

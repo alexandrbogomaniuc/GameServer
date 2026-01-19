@@ -24,10 +24,16 @@ public class SpringContextInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         LOG.debug("Starting spring context initialization...");
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.setConfigLocation("com.dgphoenix.casino.config");
+        context.register(WebApplicationContextConfiguration.class);
+        // Register additional configurations that were missing
+        context.register(com.dgphoenix.casino.gs.GameServerComponentsConfiguration.class);
+        context.register(com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration.class);
+        context.register(com.dgphoenix.casino.init.CassandraPersistenceContextConfiguration.class);
+
         servletContext.addListener(new ContextLoaderListener(context));
 
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(context));
+        ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher",
+                new DispatcherServlet(context));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
 

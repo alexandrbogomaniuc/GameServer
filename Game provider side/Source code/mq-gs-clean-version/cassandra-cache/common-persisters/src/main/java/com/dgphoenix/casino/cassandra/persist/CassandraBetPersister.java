@@ -55,8 +55,7 @@ public class CassandraBetPersister extends AbstractCassandraPersister<Long, Long
             ), GAME_SESSION_ID_FIELD)
             .caching(Caching.NONE)
             .gcGraceSeconds(0)
-            .compaction(CompactionStrategy.LEVELED)
-            .compression(Compression.DEFLATE);
+            .compaction(CompactionStrategy.LEVELED);
 
     protected final Cache<Long, List<PlayerBet>> cached = CacheBuilder.
             newBuilder().

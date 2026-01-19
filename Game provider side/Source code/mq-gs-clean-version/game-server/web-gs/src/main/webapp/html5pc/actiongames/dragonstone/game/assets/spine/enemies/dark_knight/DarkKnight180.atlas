@@ -1,0 +1,202 @@
+
+DarkKnight180.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/arm_l
+  rotate: false
+  xy: 603, 84
+  size: 62, 65
+  orig: 62, 65
+  offset: 0, 0
+  index: -1
+180/arm_r
+  rotate: false
+  xy: 363, 161
+  size: 55, 60
+  orig: 55, 60
+  offset: 0, 0
+  index: -1
+180/belt
+  rotate: false
+  xy: 423, 148
+  size: 127, 75
+  orig: 127, 75
+  offset: 0, 0
+  index: -1
+180/body
+  rotate: false
+  xy: 535, 337
+  size: 126, 161
+  orig: 126, 161
+  offset: 0, 0
+  index: -1
+180/calf_l
+  rotate: true
+  xy: 640, 217
+  size: 80, 150
+  orig: 80, 150
+  offset: 0, 0
+  index: -1
+180/calf_r
+  rotate: true
+  xy: 837, 318
+  size: 72, 147
+  orig: 72, 147
+  offset: 0, 0
+  index: -1
+180/cape
+  rotate: false
+  xy: 4, 98
+  size: 177, 400
+  orig: 177, 400
+  offset: 0, 0
+  index: -1
+180/foot_l
+  rotate: false
+  xy: 536, 74
+  size: 63, 70
+  orig: 63, 70
+  offset: 0, 0
+  index: -1
+180/foot_r
+  rotate: true
+  xy: 794, 206
+  size: 91, 65
+  orig: 91, 65
+  offset: 0, 0
+  index: -1
+180/forearm_l
+  rotate: true
+  xy: 423, 71
+  size: 73, 109
+  orig: 73, 109
+  offset: 0, 0
+  index: -1
+180/forearm_r
+  rotate: false
+  xy: 863, 215
+  size: 93, 99
+  orig: 93, 99
+  offset: 0, 0
+  index: -1
+180/hand_l
+  rotate: true
+  xy: 762, 140
+  size: 62, 79
+  orig: 62, 79
+  offset: 0, 0
+  index: -1
+180/hand_r
+  rotate: true
+  xy: 960, 257
+  size: 57, 54
+  orig: 57, 54
+  offset: 0, 0
+  index: -1
+180/head
+  rotate: false
+  xy: 669, 87
+  size: 64, 62
+  orig: 64, 62
+  offset: 0, 0
+  index: -1
+180/horn_l
+  rotate: true
+  xy: 665, 301
+  size: 78, 153
+  orig: 78, 153
+  offset: 0, 0
+  index: -1
+180/horn_r
+  rotate: true
+  xy: 837, 394
+  size: 104, 148
+  orig: 104, 148
+  offset: 0, 0
+  index: -1
+180/knee_l
+  rotate: true
+  xy: 350, 85
+  size: 72, 69
+  orig: 72, 69
+  offset: 0, 0
+  index: -1
+180/knee_r
+  rotate: true
+  xy: 554, 154
+  size: 69, 80
+  orig: 69, 80
+  offset: 0, 0
+  index: -1
+180/leg_l
+  rotate: false
+  xy: 423, 318
+  size: 108, 180
+  orig: 108, 180
+  offset: 0, 0
+  index: -1
+180/leg_orn_l
+  rotate: true
+  xy: 176, 4
+  size: 67, 153
+  orig: 67, 153
+  offset: 0, 0
+  index: -1
+180/leg_orn_r
+  rotate: true
+  xy: 4, 10
+  size: 84, 168
+  orig: 84, 168
+  offset: 0, 0
+  index: -1
+180/leg_r
+  rotate: true
+  xy: 665, 383
+  size: 115, 168
+  orig: 115, 168
+  offset: 0, 0
+  index: -1
+180/shoulder_l
+  rotate: false
+  xy: 423, 227
+  size: 111, 87
+  orig: 111, 87
+  offset: 0, 0
+  index: -1
+180/shoulder_r
+  rotate: false
+  xy: 538, 227
+  size: 98, 106
+  orig: 98, 106
+  offset: 0, 0
+  index: -1
+180/skirt
+  rotate: false
+  xy: 363, 225
+  size: 56, 273
+  orig: 56, 273
+  offset: 0, 0
+  index: -1
+180/spikes_l
+  rotate: false
+  xy: 185, 75
+  size: 161, 89
+  orig: 161, 89
+  offset: 0, 0
+  index: -1
+180/spikes_r
+  rotate: true
+  xy: 638, 153
+  size: 60, 120
+  orig: 60, 120
+  offset: 0, 0
+  index: -1
+180/sword
+  rotate: false
+  xy: 185, 168
+  size: 174, 330
+  orig: 174, 330
+  offset: 0, 0
+  index: -1

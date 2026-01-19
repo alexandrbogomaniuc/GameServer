@@ -1,0 +1,221 @@
+
+Ogre0.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_Ogre_Walk_Club
+  rotate: false
+  xy: 4, 625
+  size: 535, 395
+  orig: 535, 395
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_Head
+  rotate: false
+  xy: 832, 405
+  size: 161, 205
+  orig: 161, 205
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_Head_3
+  rotate: false
+  xy: 832, 196
+  size: 161, 205
+  orig: 161, 205
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_Head_damaged
+  rotate: true
+  xy: 330, 39
+  size: 161, 205
+  orig: 161, 205
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_L_Knee
+  rotate: false
+  xy: 695, 43
+  size: 129, 157
+  orig: 129, 157
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_L_Toe
+  rotate: false
+  xy: 539, 54
+  size: 152, 146
+  orig: 152, 146
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_R_Knee
+  rotate: true
+  xy: 828, 45
+  size: 147, 150
+  orig: 147, 150
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_R_Palm
+  rotate: false
+  xy: 153, 13
+  size: 173, 198
+  orig: 173, 198
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_R_Toe
+  rotate: true
+  xy: 4, 4
+  size: 207, 145
+  orig: 207, 145
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_body
+  rotate: false
+  xy: 4, 215
+  size: 410, 406
+  orig: 410, 406
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_body_3
+  rotate: false
+  xy: 543, 614
+  size: 410, 406
+  orig: 410, 406
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_body_4
+  rotate: false
+  xy: 418, 204
+  size: 410, 406
+  orig: 410, 406
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 957, 998
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+
+Ogre02.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_Ogre_Walk_Armor
+  rotate: false
+  xy: 743, 739
+  size: 266, 281
+  orig: 266, 281
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_Armor_2
+  rotate: true
+  xy: 703, 184
+  size: 266, 281
+  orig: 266, 281
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_Armor_damaged
+  rotate: false
+  xy: 746, 454
+  size: 266, 281
+  orig: 266, 281
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_Cloth
+  rotate: false
+  xy: 4, 288
+  size: 370, 322
+  orig: 370, 322
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_Hip
+  rotate: false
+  xy: 418, 494
+  size: 324, 213
+  orig: 324, 213
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_L_Fingers
+  rotate: false
+  xy: 230, 8
+  size: 127, 117
+  orig: 127, 117
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_L_Palm
+  rotate: false
+  xy: 230, 129
+  size: 140, 155
+  orig: 140, 155
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_L_Thai
+  rotate: false
+  xy: 4, 4
+  size: 222, 280
+  orig: 222, 280
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_R_Shoulder
+  rotate: false
+  xy: 418, 711
+  size: 321, 309
+  orig: 321, 309
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_R_Shoulder_damaged
+  rotate: false
+  xy: 378, 181
+  size: 321, 309
+  orig: 321, 309
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_body_damaged
+  rotate: false
+  xy: 4, 614
+  size: 410, 406
+  orig: 410, 406
+  offset: 0, 0
+  index: -1
+
+Ogre03.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_Ogre_Walk_L_Elbow
+  rotate: false
+  xy: 4, 240
+  size: 270, 246
+  orig: 270, 246
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_L_Shoulder
+  rotate: true
+  xy: 278, 69
+  size: 204, 282
+  orig: 204, 282
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_R_Elbow
+  rotate: true
+  xy: 278, 277
+  size: 209, 287
+  orig: 209, 287
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_R_Elbow_damaged
+  rotate: true
+  xy: 569, 277
+  size: 209, 287
+  orig: 209, 287
+  offset: 0, 0
+  index: -1
+0_Ogre_Walk_R_Thai
+  rotate: false
+  xy: 4, 4
+  size: 256, 232
+  orig: 256, 232
+  offset: 0, 0
+  index: -1

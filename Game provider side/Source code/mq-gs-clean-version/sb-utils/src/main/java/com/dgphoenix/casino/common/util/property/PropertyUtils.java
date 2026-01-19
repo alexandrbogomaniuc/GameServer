@@ -33,15 +33,18 @@ public class PropertyUtils {
     }
 
     public static boolean getBooleanProperty(Map<String, String> properties, String name) {
+        if (properties == null) {
+            return Boolean.FALSE;
+        }
         String result = properties.get(name);
-        if(result == null) {
+        if (result == null) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE.toString().equalsIgnoreCase(result);
     }
 
     public static String getStringProperty(Map<String, String> properties, String name) {
-        if(properties == null) {
+        if (properties == null) {
             return null;
         }
         String result = properties.get(name);

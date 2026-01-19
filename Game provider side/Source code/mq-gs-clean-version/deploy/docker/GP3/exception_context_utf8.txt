@@ -1,0 +1,1291 @@
+﻿
+> logs_full.txt:9:   log.StdErrLog:String) [], RemoteException
+  logs_full.txt:10:    + FullyQualifiedErrorId : 
+NativeCommandError
+  logs_full.txt:11: 
+  logs_full.txt:12:2026-01-07 07:42:34.488:INFO:oejs.Server:main: 
+  logs_full.txt:13:jetty-9.4.18.v20190429; built: 
+2019-04-29T20:42:08.989Z; git: 
+  logs_full.txt:14:e1bc35120a6617ee3df052294e433f3a25ce7097; jvm 
+1.8.0_232-b09
+  logs_full.txt:15:Cassandra startup completed successfully --- OK
+  logs_full.txt:16:Listening for transport dt_socket at address: 
+9000
+  logs_full.txt:17:2026-01-07 
+07:42:34.515:INFO:oejdp.ScanningAppProvider:main: 
+  logs_full.txt:18:Deployment monitor 
+[file:///var/lib/jetty/webapps/] at interval 1
+  logs_full.txt:19:2026-01-07 
+  logs_full.txt:20:07:42:44.164:WARN:oeja.AnnotationParser:qtp1463
+70526-22: 
+  logs_full.txt:21:org.apache.taglibs.standard.Version scanned 
+from multiple 
+  logs_full.txt:22:locations: 
+jar:file:///usr/local/jetty/lib/apache-jstl/org.apache.
+  logs_full.txt:23:taglibs.taglibs-standard-impl-1.2.5.jar!/org/ap
+ache/taglibs/standa
+  logs_full.txt:24:rd/Version.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+  logs_full.txt:25:y-1861951044268808292.dir/webapp/WEB-INF/lib/js
+tl-1.2.jar!/org/apa
+  logs_full.txt:26:che/taglibs/standard/Version.class
+  logs_full.txt:27:2026-01-07 
+  logs_full.txt:28:07:42:44.172:WARN:oeja.AnnotationParser:qtp1463
+70526-22: 
+  
+logs_full.txt:29:org.apache.taglibs.standard.functions.Functions 
+scanned from 
+> logs_full.txt:121:e.taglibs.standard.tag.common.core.NullAttribu
+teException scanned 
+  logs_full.txt:122:from multiple locations: 
+jar:file:///usr/local/jetty/lib/apache-js
+  logs_full.txt:123:tl/org.apache.taglibs.taglibs-standard-impl-1.
+2.5.jar!/org/apache/
+> logs_full.txt:124:taglibs/standard/tag/common/core/NullAttribute
+Exception.class, jar
+  logs_full.txt:125::file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any
+-1861951044268808292
+  logs_full.txt:126:.dir/webapp/WEB-INF/lib/jstl-1.2.jar!/org/apac
+he/taglibs/standard/
+> logs_full.txt:127:tag/common/core/NullAttributeException.class
+  logs_full.txt:128:2026-01-07 
+  logs_full.txt:129:07:42:44.214:WARN:oeja.AnnotationParser:qtp146
+370526-22: 
+  logs_full.txt:130:org.apache.taglibs.standard.tag.common.core.Ot
+herwiseTag scanned 
+  logs_full.txt:131:from multiple locations: 
+jar:file:///usr/local/jetty/lib/apache-js
+  logs_full.txt:132:tl/org.apache.taglibs.taglibs-standard-impl-1.
+2.5.jar!/org/apache/
+  logs_full.txt:133:taglibs/standard/tag/common/core/OtherwiseTag.
+class, jar:file:///t
+  logs_full.txt:134:mp/jetty-0.0.0.0-8080-ROOT.war-_-any-186195104
+4268808292.dir/webap
+  logs_full.txt:135:p/WEB-INF/lib/jstl-1.2.jar!/org/apache/taglibs
+/standard/tag/common
+  logs_full.txt:136:/core/OtherwiseTag.class
+  logs_full.txt:137:2026-01-07 
+  logs_full.txt:138:07:42:44.214:WARN:oeja.AnnotationParser:qtp146
+370526-22: 
+  logs_full.txt:139:org.apache.taglibs.standard.tag.common.core.Ou
+tSupport scanned 
+  logs_full.txt:140:from multiple locations: 
+jar:file:///usr/local/jetty/lib/apache-js
+  logs_full.txt:141:tl/org.apache.taglibs.taglibs-standard-impl-1.
+2.5.jar!/org/apache/
+  logs_full.txt:142:taglibs/standard/tag/common/core/OutSupport.cl
+ass, jar:file:///tmp
+  logs_full.txt:143:/jetty-0.0.0.0-8080-ROOT.war-_-any-18619510442
+68808292.dir/webapp/
+  logs_full.txt:144:WEB-INF/lib/jstl-1.2.jar!/org/apache/taglibs/s
+tandard/tag/common/c
+  logs_full.txt:145:ore/OutSupport.class
+  logs_full.txt:146:2026-01-07 
+  logs_full.txt:147:07:42:44.214:WARN:oeja.AnnotationParser:qtp146
+370526-22: 
+> logs_full.txt:986:net.jpountz.lz4.LZ4Exception scanned from 
+multiple locations: jar:
+  logs_full.txt:987:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-
+1861951044268808292.
+> logs_full.txt:988:dir/webapp/WEB-INF/lib/lz4-1.3.0.jar!/net/jpou
+ntz/lz4/LZ4Exception
+  logs_full.txt:989:.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619510
+  logs_full.txt:990:44268808292.dir/webapp/WEB-INF/lib/lz4-java-1.
+7.1.jar!/net/jpountz
+> logs_full.txt:991:/lz4/LZ4Exception.class
+  logs_full.txt:992:2026-01-07 
+  logs_full.txt:993:07:42:44.261:WARN:oeja.AnnotationParser:qtp146
+370526-14: 
+  logs_full.txt:994:net.jpountz.lz4.LZ4Factory scanned from 
+multiple locations: jar:fi
+  logs_full.txt:995:le:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18
+61951044268808292.di
+  logs_full.txt:996:r/webapp/WEB-INF/lib/lz4-1.3.0.jar!/net/jpount
+z/lz4/LZ4Factory.cla
+  logs_full.txt:997:ss, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-186195104426
+  logs_full.txt:998:8808292.dir/webapp/WEB-INF/lib/lz4-java-1.7.1.
+jar!/net/jpountz/lz4
+  logs_full.txt:999:/LZ4Factory.class
+  logs_full.txt:1000:2026-01-07 
+  logs_full.txt:1001:07:42:44.261:WARN:oeja.AnnotationParser:qtp14
+6370526-14: 
+  logs_full.txt:1002:net.jpountz.lz4.LZ4FastDecompressor scanned 
+from multiple 
+  logs_full.txt:1003:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+  logs_full.txt:1004:51044268808292.dir/webapp/WEB-INF/lib/lz4-1.3
+.0.jar!/net/jpountz/l
+  logs_full.txt:1005:z4/LZ4FastDecompressor.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-R
+  logs_full.txt:1006:OOT.war-_-any-1861951044268808292.dir/webapp/
+WEB-INF/lib/lz4-java-
+  logs_full.txt:1007:1.7.1.jar!/net/jpountz/lz4/LZ4FastDecompresso
+r.class
+  logs_full.txt:1008:2026-01-07 
+  logs_full.txt:1009:07:42:44.307:WARN:oeja.AnnotationParser:qtp14
+6370526-14: 
+  logs_full.txt:1010:net.jpountz.lz4.LZ4HCJNICompressor scanned 
+from multiple 
+  logs_full.txt:1011:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+> logs_full.txt:1529:org.xmlpull.v1.XmlPullParserException 
+scanned from multiple 
+  logs_full.txt:1530:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+  logs_full.txt:1531:51044268808292.dir/webapp/WEB-INF/lib/xmlpull
+-1.1.3.1.jar!/org/xml
+> logs_full.txt:1532:pull/v1/XmlPullParserException.class, 
+jar:file:///tmp/jetty-0.0.0.
+  logs_full.txt:1533:0-8080-ROOT.war-_-any-1861951044268808292.dir
+/webapp/WEB-INF/lib/x
+> logs_full.txt:1534:pp3_min-1.1.4c.jar!/org/xmlpull/v1/XmlPullPar
+serException.class
+  logs_full.txt:1535:2026-01-07 
+  logs_full.txt:1536:07:42:44.690:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  logs_full.txt:1537:com.ctc.wstx.api.CommonConfig scanned from 
+multiple locations: jar
+  logs_full.txt:1538::file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+y-1861951044268808292
+  logs_full.txt:1539:.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.j
+ar!/com/ctc/wstx/api/
+  logs_full.txt:1540:CommonConfig.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:1541:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/webservices-rt-2.3.
+  logs_full.txt:1542:jar!/com/ctc/wstx/api/CommonConfig.class
+  logs_full.txt:1543:2026-01-07 
+  logs_full.txt:1544:07:42:44.690:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  logs_full.txt:1545:com.ctc.wstx.api.EmptyElementHandler$HtmlEmpt
+yElementHandler 
+  logs_full.txt:1546:scanned from multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-808
+  logs_full.txt:1547:0-ROOT.war-_-any-1861951044268808292.dir/weba
+pp/WEB-INF/lib/woodst
+  logs_full.txt:1548:ox-core-7.0.0.jar!/com/ctc/wstx/api/EmptyElem
+entHandler$HtmlEmptyE
+  logs_full.txt:1549:lementHandler.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_
+  logs_full.txt:1550:-any-1861951044268808292.dir/webapp/WEB-INF/l
+ib/webservices-rt-2.3
+  logs_full.txt:1551:.jar!/com/ctc/wstx/api/EmptyElementHandler$Ht
+mlEmptyElementHandler
+  logs_full.txt:1552:.class
+  logs_full.txt:1553:2026-01-07 
+  logs_full.txt:1554:07:42:44.690:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:2216:com.ctc.wstx.exc.WstxEOFException scanned 
+from multiple 
+  logs_full.txt:2217:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+  logs_full.txt:2218:51044268808292.dir/webapp/WEB-INF/lib/woodsto
+x-core-7.0.0.jar!/com
+> logs_full.txt:2219:/ctc/wstx/exc/WstxEOFException.class, 
+jar:file:///tmp/jetty-0.0.0.
+  logs_full.txt:2220:0-8080-ROOT.war-_-any-1861951044268808292.dir
+/webapp/WEB-INF/lib/w
+> logs_full.txt:2221:ebservices-rt-2.3.jar!/com/ctc/wstx/exc/WstxE
+OFException.class
+  logs_full.txt:2222:2026-01-07 
+  logs_full.txt:2223:07:42:44.710:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:2224:com.ctc.wstx.exc.WstxException scanned from 
+multiple locations: ja
+  logs_full.txt:2225:r:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-a
+ny-186195104426880829
+  logs_full.txt:2226:2.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.
+jar!/com/ctc/wstx/exc
+> logs_full.txt:2227:/WstxException.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-
+  logs_full.txt:2228:_-any-1861951044268808292.dir/webapp/WEB-INF/
+lib/webservices-rt-2.
+> logs_full.txt:2229:3.jar!/com/ctc/wstx/exc/WstxException.class
+  logs_full.txt:2230:2026-01-07 
+  logs_full.txt:2231:07:42:44.710:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:2232:com.ctc.wstx.exc.WstxIOException scanned 
+from multiple locations: 
+  logs_full.txt:2233:jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_
+-any-1861951044268808
+  logs_full.txt:2234:292.dir/webapp/WEB-INF/lib/woodstox-core-7.0.
+0.jar!/com/ctc/wstx/e
+> logs_full.txt:2235:xc/WstxIOException.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.
+  logs_full.txt:2236:war-_-any-1861951044268808292.dir/webapp/WEB-
+INF/lib/webservices-r
+> logs_full.txt:2237:t-2.3.jar!/com/ctc/wstx/exc/WstxIOException.c
+lass
+  logs_full.txt:2238:2026-01-07 
+  logs_full.txt:2239:07:42:44.710:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:2240:com.ctc.wstx.exc.WstxLazyException scanned 
+from multiple 
+  logs_full.txt:2241:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+  logs_full.txt:2242:51044268808292.dir/webapp/WEB-INF/lib/woodsto
+x-core-7.0.0.jar!/com
+> logs_full.txt:2243:/ctc/wstx/exc/WstxLazyException.class, 
+jar:file:///tmp/jetty-0.0.0
+  logs_full.txt:2244:.0-8080-ROOT.war-_-any-1861951044268808292.di
+r/webapp/WEB-INF/lib/
+> logs_full.txt:2245:webservices-rt-2.3.jar!/com/ctc/wstx/exc/Wstx
+LazyException.class
+  logs_full.txt:2246:2026-01-07 
+  logs_full.txt:2247:07:42:44.710:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:2248:com.ctc.wstx.exc.WstxOutputException scanned 
+from multiple 
+  logs_full.txt:2249:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+  logs_full.txt:2250:51044268808292.dir/webapp/WEB-INF/lib/woodsto
+x-core-7.0.0.jar!/com
+> logs_full.txt:2251:/ctc/wstx/exc/WstxOutputException.class, 
+jar:file:///tmp/jetty-0.0
+  logs_full.txt:2252:.0.0-8080-ROOT.war-_-any-1861951044268808292.
+dir/webapp/WEB-INF/li
+> logs_full.txt:2253:b/webservices-rt-2.3.jar!/com/ctc/wstx/exc/Ws
+txOutputException.cla
+  logs_full.txt:2254:ss
+  logs_full.txt:2255:2026-01-07 
+  logs_full.txt:2256:07:42:44.710:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:2257:com.ctc.wstx.exc.WstxParsingException 
+scanned from multiple 
+  logs_full.txt:2258:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+  logs_full.txt:2259:51044268808292.dir/webapp/WEB-INF/lib/woodsto
+x-core-7.0.0.jar!/com
+> logs_full.txt:2260:/ctc/wstx/exc/WstxParsingException.class, 
+jar:file:///tmp/jetty-0.
+  logs_full.txt:2261:0.0.0-8080-ROOT.war-_-any-1861951044268808292
+.dir/webapp/WEB-INF/l
+> logs_full.txt:2262:ib/webservices-rt-2.3.jar!/com/ctc/wstx/exc/W
+stxParsingException.c
+  logs_full.txt:2263:lass
+  logs_full.txt:2264:2026-01-07 
+  logs_full.txt:2265:07:42:44.710:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:2266:com.ctc.wstx.exc.WstxUnexpectedCharException 
+scanned from 
+  logs_full.txt:2267:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:2268:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/woodstox-core-7.0.0
+> logs_full.txt:2269:.jar!/com/ctc/wstx/exc/WstxUnexpectedCharExce
+ption.class, jar:file
+  logs_full.txt:2270::///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-186
+1951044268808292.dir/
+  logs_full.txt:2271:webapp/WEB-INF/lib/webservices-rt-2.3.jar!/co
+m/ctc/wstx/exc/WstxUn
+> logs_full.txt:2272:expectedCharException.class
+  logs_full.txt:2273:2026-01-07 
+  logs_full.txt:2274:07:42:44.710:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:2275:com.ctc.wstx.exc.WstxValidationException 
+scanned from multiple 
+  logs_full.txt:2276:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+  logs_full.txt:2277:51044268808292.dir/webapp/WEB-INF/lib/woodsto
+x-core-7.0.0.jar!/com
+> logs_full.txt:2278:/ctc/wstx/exc/WstxValidationException.class, 
+jar:file:///tmp/jetty
+  logs_full.txt:2279:-0.0.0.0-8080-ROOT.war-_-any-1861951044268808
+292.dir/webapp/WEB-IN
+  logs_full.txt:2280:F/lib/webservices-rt-2.3.jar!/com/ctc/wstx/ex
+c/WstxValidationExcep
+  logs_full.txt:2281:tion.class
+  logs_full.txt:2282:2026-01-07 
+  logs_full.txt:2283:07:42:44.711:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  logs_full.txt:2284:com.ctc.wstx.io.AsciiReader scanned from 
+multiple locations: jar:f
+  logs_full.txt:2285:ile:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-
+1861951044268808292.d
+  logs_full.txt:2286:ir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar
+!/com/ctc/wstx/io/Asc
+  logs_full.txt:2287:iiReader.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-
+  logs_full.txt:2288:1861951044268808292.dir/webapp/WEB-INF/lib/we
+bservices-rt-2.3.jar!
+  logs_full.txt:2289:/com/ctc/wstx/io/AsciiReader.class
+  logs_full.txt:2290:2026-01-07 
+  logs_full.txt:2291:07:42:44.711:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  logs_full.txt:2292:com.ctc.wstx.io.BaseInputSource scanned from 
+multiple locations: j
+  logs_full.txt:2293:ar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+any-18619510442688082
+  logs_full.txt:2294:92.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0
+.jar!/com/ctc/wstx/io
+  logs_full.txt:2295:/BaseInputSource.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.wa
+  logs_full.txt:2296:r-_-any-1861951044268808292.dir/webapp/WEB-IN
+F/lib/webservices-rt-
+  
+logs_full.txt:2297:2.3.jar!/com/ctc/wstx/io/BaseInputSource.class
+  logs_full.txt:2298:2026-01-07 
+> logs_full.txt:2634:com.ctc.wstx.sax.WrappedSaxException scanned 
+from multiple 
+  logs_full.txt:2635:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+  logs_full.txt:2636:51044268808292.dir/webapp/WEB-INF/lib/woodsto
+x-core-7.0.0.jar!/com
+> logs_full.txt:2637:/ctc/wstx/sax/WrappedSaxException.class, 
+jar:file:///tmp/jetty-0.0
+  logs_full.txt:2638:.0.0-8080-ROOT.war-_-any-1861951044268808292.
+dir/webapp/WEB-INF/li
+> logs_full.txt:2639:b/webservices-rt-2.3.jar!/com/ctc/wstx/sax/Wr
+appedSaxException.cla
+  logs_full.txt:2640:ss
+  logs_full.txt:2641:2026-01-07 
+  logs_full.txt:2642:07:42:44.716:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  logs_full.txt:2643:com.ctc.wstx.sax.WstxSAXParser$AttributesWrap
+per scanned from 
+  logs_full.txt:2644:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:2645:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/woodstox-core-7.0.0
+  logs_full.txt:2646:.jar!/com/ctc/wstx/sax/WstxSAXParser$Attribut
+esWrapper.class, jar:
+  logs_full.txt:2647:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any
+-1861951044268808292.
+  logs_full.txt:2648:dir/webapp/WEB-INF/lib/webservices-rt-2.3.jar
+!/com/ctc/wstx/sax/Ws
+  logs_full.txt:2649:txSAXParser$AttributesWrapper.class
+  logs_full.txt:2650:2026-01-07 
+  logs_full.txt:2651:07:42:44.716:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  logs_full.txt:2652:com.ctc.wstx.sax.WstxSAXParser$DocHandlerWrap
+per scanned from 
+  logs_full.txt:2653:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:2654:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/woodstox-core-7.0.0
+  logs_full.txt:2655:.jar!/com/ctc/wstx/sax/WstxSAXParser$DocHandl
+erWrapper.class, jar:
+  logs_full.txt:2656:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any
+-1861951044268808292.
+  logs_full.txt:2657:dir/webapp/WEB-INF/lib/webservices-rt-2.3.jar
+!/com/ctc/wstx/sax/Ws
+  logs_full.txt:2658:txSAXParser$DocHandlerWrapper.class
+  logs_full.txt:2659:2026-01-07 
+> logs_full.txt:3040:com.ctc.wstx.util.ExceptionUtil scanned from 
+multiple locations: j
+  logs_full.txt:3041:ar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+any-18619510442688082
+  logs_full.txt:3042:92.dir/webapp/WEB-INF/lib/webservices-rt-2.3.
+jar!/com/ctc/wstx/uti
+> logs_full.txt:3043:l/ExceptionUtil.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war
+  logs_full.txt:3044:-_-any-1861951044268808292.dir/webapp/WEB-INF
+/lib/woodstox-core-7.
+> 
+logs_full.txt:3045:0.0.jar!/com/ctc/wstx/util/ExceptionUtil.class
+  logs_full.txt:3046:2026-01-07 
+  logs_full.txt:3047:07:42:44.762:WARN:oeja.AnnotationParser:qtp14
+6370526-24: 
+  logs_full.txt:3048:com.ctc.wstx.util.InternCache scanned from 
+multiple locations: jar
+  logs_full.txt:3049::file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+y-1861951044268808292
+  logs_full.txt:3050:.dir/webapp/WEB-INF/lib/webservices-rt-2.3.ja
+r!/com/ctc/wstx/util/
+  logs_full.txt:3051:InternCache.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-a
+  logs_full.txt:3052:ny-1861951044268808292.dir/webapp/WEB-INF/lib
+/woodstox-core-7.0.0.
+  logs_full.txt:3053:jar!/com/ctc/wstx/util/InternCache.class
+  logs_full.txt:3054:2026-01-07 
+  logs_full.txt:3055:07:42:44.762:WARN:oeja.AnnotationParser:qtp14
+6370526-24: 
+  logs_full.txt:3056:com.ctc.wstx.util.PrefixedName scanned from 
+multiple locations: ja
+  logs_full.txt:3057:r:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-a
+ny-186195104426880829
+  logs_full.txt:3058:2.dir/webapp/WEB-INF/lib/webservices-rt-2.3.j
+ar!/com/ctc/wstx/util
+  logs_full.txt:3059:/PrefixedName.class, 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_
+  logs_full.txt:3060:-any-1861951044268808292.dir/webapp/WEB-INF/l
+ib/woodstox-core-7.0.
+  logs_full.txt:3061:0.jar!/com/ctc/wstx/util/PrefixedName.class
+  logs_full.txt:3062:2026-01-07 
+  logs_full.txt:3063:07:42:44.762:WARN:oeja.AnnotationParser:qtp14
+6370526-24: 
+  logs_full.txt:3064:com.ctc.wstx.util.SimpleCache$LimitMap 
+scanned from multiple 
+  logs_full.txt:3065:locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18619
+> logs_full.txt:4162:org.codehaus.stax2.typed.TypedXMLStreamExcept
+ion scanned from 
+  logs_full.txt:4163:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:4164:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/stax2-api-4.2.2.jar
+> logs_full.txt:4165:!/org/codehaus/stax2/typed/TypedXMLStreamExce
+ption.class, jar:file
+  logs_full.txt:4166::///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-186
+1951044268808292.dir/
+  logs_full.txt:4167:webapp/WEB-INF/lib/webservices-rt-2.3.jar!/or
+g/codehaus/stax2/type
+> logs_full.txt:4168:d/TypedXMLStreamException.class
+  logs_full.txt:4169:2026-01-07 
+  logs_full.txt:4170:07:42:45.178:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  
+logs_full.txt:4171:org.codehaus.stax2.typed.TypedXMLStreamReader 
+scanned from 
+  logs_full.txt:4172:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:4173:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/stax2-api-4.2.2.jar
+  logs_full.txt:4174:!/org/codehaus/stax2/typed/TypedXMLStreamRead
+er.class, jar:file://
+  logs_full.txt:4175:/tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-186195
+1044268808292.dir/web
+  logs_full.txt:4176:app/WEB-INF/lib/webservices-rt-2.3.jar!/org/c
+odehaus/stax2/typed/T
+  logs_full.txt:4177:ypedXMLStreamReader.class
+  logs_full.txt:4178:2026-01-07 
+  logs_full.txt:4179:07:42:45.178:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  
+logs_full.txt:4180:org.codehaus.stax2.typed.TypedXMLStreamWriter 
+scanned from 
+  logs_full.txt:4181:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:4182:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/stax2-api-4.2.2.jar
+  logs_full.txt:4183:!/org/codehaus/stax2/typed/TypedXMLStreamWrit
+er.class, jar:file://
+  logs_full.txt:4184:/tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-186195
+1044268808292.dir/web
+  logs_full.txt:4185:app/WEB-INF/lib/webservices-rt-2.3.jar!/org/c
+odehaus/stax2/typed/T
+  logs_full.txt:4186:ypedXMLStreamWriter.class
+  logs_full.txt:4187:2026-01-07 
+  logs_full.txt:4188:07:42:45.178:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:4285:org.codehaus.stax2.validation.XMLValidationEx
+ception scanned from 
+  logs_full.txt:4286:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:4287:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/stax2-api-4.2.2.jar
+> logs_full.txt:4288:!/org/codehaus/stax2/validation/XMLValidation
+Exception.class, jar:
+  logs_full.txt:4289:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any
+-1861951044268808292.
+  logs_full.txt:4290:dir/webapp/WEB-INF/lib/webservices-rt-2.3.jar
+!/org/codehaus/stax2/
+> logs_full.txt:4291:validation/XMLValidationException.class
+  logs_full.txt:4292:2026-01-07 
+  logs_full.txt:4293:07:42:45.179:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  logs_full.txt:4294:org.codehaus.stax2.validation.XMLValidationPr
+oblem scanned from 
+  logs_full.txt:4295:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:4296:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/stax2-api-4.2.2.jar
+  logs_full.txt:4297:!/org/codehaus/stax2/validation/XMLValidation
+Problem.class, jar:fi
+  logs_full.txt:4298:le:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-1
+861951044268808292.di
+  logs_full.txt:4299:r/webapp/WEB-INF/lib/webservices-rt-2.3.jar!/
+org/codehaus/stax2/va
+  logs_full.txt:4300:lidation/XMLValidationProblem.class
+  logs_full.txt:4301:2026-01-07 
+  logs_full.txt:4302:07:42:45.179:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+  logs_full.txt:4303:org.codehaus.stax2.validation.XMLValidationSc
+hema scanned from 
+  logs_full.txt:4304:multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+  logs_full.txt:4305:any-1861951044268808292.dir/webapp/WEB-INF/li
+b/stax2-api-4.2.2.jar
+  logs_full.txt:4306:!/org/codehaus/stax2/validation/XMLValidation
+Schema.class, jar:fil
+  logs_full.txt:4307:e:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-18
+61951044268808292.dir
+  logs_full.txt:4308:/webapp/WEB-INF/lib/webservices-rt-2.3.jar!/o
+rg/codehaus/stax2/val
+  logs_full.txt:4309:idation/XMLValidationSchema.class
+  logs_full.txt:4310:2026-01-07 
+  logs_full.txt:4311:07:42:45.179:WARN:oeja.AnnotationParser:qtp14
+6370526-26: 
+> logs_full.txt:4615:07.01.2026 07:42:55,927 [ERROR] ERROR 
+[LeaderSelector Curator-LeaderSelector-0] - The leader threw an 
+exception
+> logs_full.txt:4616:org.apache.curator.framework.api.CuratorClose
+dException: Expected state [STARTED] was [STOPPED]
+  logs_full.txt:4617:	at org.apache.curator.framework.imps.Curator
+FrameworkBase.checkState(CuratorFrameworkBase.java:103)
+  logs_full.txt:4618:	at org.apache.curator.framework.imps.Curator
+FrameworkBase.delete(CuratorFrameworkBase.java:139)
+  logs_full.txt:4619:	at org.apache.curator.framework.recipes.lock
+s.LockInternals.deleteOurPath(LockInternals.java:283)
+  logs_full.txt:4620:	at org.apache.curator.framework.recipes.lock
+s.LockInternals.releaseLock(LockInternals.java:109)
+  logs_full.txt:4621:	at org.apache.curator.framework.recipes.lock
+s.InterProcessMutex.release(InterProcessMutex.java:140)
+  logs_full.txt:4622:	at org.apache.curator.framework.recipes.lead
+er.LeaderSelector.doWork(LeaderSelector.java:451)
+  logs_full.txt:4623:	at org.apache.curator.framework.recipes.lead
+er.LeaderSelector.doWorkLoop(LeaderSelector.java:472)
+  logs_full.txt:4624:	at org.apache.curator.framework.recipes.lead
+er.LeaderSelector.access$100(LeaderSelector.java:66)
+  logs_full.txt:4625:	at org.apache.curator.framework.recipes.lead
+er.LeaderSelector$2.call(LeaderSelector.java:245)
+  logs_full.txt:4626:	at org.apache.curator.framework.recipes.lead
+er.LeaderSelector$2.call(LeaderSelector.java:242)
+  logs_full.txt:4627:	at 
+java.util.concurrent.FutureTask.run(FutureTask.java:266)
+  logs_full.txt:4628:	at java.util.concurrent.Executors$RunnableAd
+apter.call(Executors.java:511)
+  logs_full.txt:4629:	at 
+java.util.concurrent.FutureTask.run(FutureTask.java:266)
+  logs_full.txt:4630:	at java.util.concurrent.ThreadPoolExecutor.r
+unWorker(ThreadPoolExecutor.java:1149)
+  logs_full.txt:4631:	at java.util.concurrent.ThreadPoolExecutor$W
+orker.run(ThreadPoolExecutor.java:624)
+  logs_full.txt:4632:	at java.lang.Thread.run(Thread.java:748)
+  logs_full.txt:4633:07.01.2026 07:42:56,043 [COMMON] INFO  
+[NtpTimeProvider main] - shutdown completed
+  logs_full.txt:4634:07.01.2026 07:42:56,044 [COMMON] INFO  
+[ExecutorUtils main] - finalizeExecutor started
+  logs_full.txt:4635:07.01.2026 07:42:56,044 [COMMON] INFO  
+[ExecutorUtils main] - ExecutorUtils shutdown started
+  logs_full.txt:4636:07.01.2026 07:42:56,044 [COMMON] INFO  
+[ExecutorUtils pool-11-thread-1] - NtpTimeProvider shutdown 
+started
+> logs_full.txt:4647:org.springframework.beans.factory.Unsatisfied
+DependencyException: Error creating bean with name 
+'battlegroundController' defined in file [/tmp/jetty-0.0.0.0-8080-
+ROOT.war-_-any-1861951044268808292.dir/webapp/WEB-INF/classes/com/
+dgphoenix/casino/controller/battleground/BattlegroundController.cl
+ass]: Unsatisfied dependency expressed through constructor 
+parameter 0; nested exception is 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource [com/dgphoenix/casino/gs/GameServerComponentsC
+onfiguration.class]: Unsatisfied dependency expressed through 
+method 'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'accountManager' defined in class path 
+resource [com/dgphoenix/casino/gs/SharedGameServerComponentsConfig
+uration.class]: Bean instantiation via factory method failed; 
+nested exception is 
+org.springframework.beans.BeanInstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.account.AccountManager]: 
+Factory method 'accountManager' threw exception; nested exception 
+is java.lang.NullPointerException
+  logs_full.txt:4648:	at org.springframework.beans.factory.support
+.ConstructorResolver.createArgumentArray(ConstructorResolver.java:
+749)
+  logs_full.txt:4649:	at org.springframework.beans.factory.support
+.ConstructorResolver.autowireConstructor(ConstructorResolver.java:
+189)
+  logs_full.txt:4650:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAu
+towireCapableBeanFactory.java:1193)
+  logs_full.txt:4651:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAut
+owireCapableBeanFactory.java:1095)
+  logs_full.txt:4652:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.java:513)
+  logs_full.txt:4653:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:483)
+  logs_full.txt:4654:	at org.springframework.beans.factory.support
+.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:4655:	at org.springframework.beans.factory.support
+.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+  logs_full.txt:4656:	at org.springframework.beans.factory.support
+.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+  logs_full.txt:4657:	at org.springframework.beans.factory.support
+.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+  logs_full.txt:4658:	at org.springframework.beans.factory.support
+.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListab
+leBeanFactory.java:761)
+  logs_full.txt:4659:	at org.springframework.context.support.Abstr
+actApplicationContext.finishBeanFactoryInitialization(AbstractAppl
+icationContext.java:867)
+  logs_full.txt:4660:	at org.springframework.context.support.Abstr
+actApplicationContext.refresh(AbstractApplicationContext.java:543)
+  logs_full.txt:4661:	at org.springframework.web.context.ContextLo
+ader.configureAndRefreshWebApplicationContext(ContextLoader.java:4
+43)
+  logs_full.txt:4662:	at org.springframework.web.context.ContextLo
+ader.initWebApplicationContext(ContextLoader.java:325)
+  logs_full.txt:4663:	at org.springframework.web.context.ContextLo
+aderListener.contextInitialized(ContextLoaderListener.java:107)
+  logs_full.txt:4664:	at org.eclipse.jetty.server.handler.ContextH
+andler.callContextInitialized(ContextHandler.java:957)
+  logs_full.txt:4665:	at org.eclipse.jetty.servlet.ServletContextH
+andler.callContextInitialized(ServletContextHandler.java:553)
+  logs_full.txt:4666:	at org.eclipse.jetty.server.handler.ContextH
+andler.startContext(ContextHandler.java:922)
+  logs_full.txt:4667:	at org.eclipse.jetty.servlet.ServletContextH
+andler.startContext(ServletContextHandler.java:365)
+> logs_full.txt:4708:Caused by: 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource [com/dgphoenix/casino/gs/GameServerComponentsC
+onfiguration.class]: Unsatisfied dependency expressed through 
+method 'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'accountManager' defined in class path 
+resource [com/dgphoenix/casino/gs/SharedGameServerComponentsConfig
+uration.class]: Bean instantiation via factory method failed; 
+nested exception is 
+org.springframework.beans.BeanInstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.account.AccountManager]: 
+Factory method 'accountManager' threw exception; nested exception 
+is java.lang.NullPointerException
+  logs_full.txt:4709:	at org.springframework.beans.factory.support
+.ConstructorResolver.createArgumentArray(ConstructorResolver.java:
+749)
+  logs_full.txt:4710:	at org.springframework.beans.factory.support
+.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorReso
+lver.java:467)
+  logs_full.txt:4711:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(
+AbstractAutowireCapableBeanFactory.java:1173)
+  logs_full.txt:4712:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAut
+owireCapableBeanFactory.java:1067)
+  logs_full.txt:4713:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.java:513)
+  logs_full.txt:4714:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:483)
+  logs_full.txt:4715:	at org.springframework.beans.factory.support
+.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:4716:	at org.springframework.beans.factory.support
+.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+  logs_full.txt:4717:	at org.springframework.beans.factory.support
+.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+  logs_full.txt:4718:	at org.springframework.beans.factory.support
+.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+  logs_full.txt:4719:	at org.springframework.beans.factory.config.
+DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:20
+8)
+  logs_full.txt:4720:	at org.springframework.beans.factory.support
+.DefaultListableBeanFactory.doResolveDependency(DefaultListableBea
+nFactory.java:1138)
+  logs_full.txt:4721:	at org.springframework.beans.factory.support
+.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanF
+actory.java:1066)
+  logs_full.txt:4722:	at org.springframework.beans.factory.support
+.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.
+java:835)
+  logs_full.txt:4723:	at org.springframework.beans.factory.support
+.ConstructorResolver.createArgumentArray(ConstructorResolver.java:
+741)
+  logs_full.txt:4724:	... 59 more
+> logs_full.txt:4725:Caused by: 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'accountManager' defined in class path 
+resource [com/dgphoenix/casino/gs/SharedGameServerComponentsConfig
+uration.class]: Bean instantiation via factory method failed; 
+nested exception is 
+org.springframework.beans.BeanInstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.account.AccountManager]: 
+Factory method 'accountManager' threw exception; nested exception 
+is java.lang.NullPointerException
+  logs_full.txt:4726:	at org.springframework.beans.factory.annotat
+ion.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitia
+lization(InitDestroyAnnotationBeanPostProcessor.java:137)
+  logs_full.txt:4727:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeI
+nitialization(AbstractAutowireCapableBeanFactory.java:409)
+  logs_full.txt:4728:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowir
+eCapableBeanFactory.java:1620)
+  logs_full.txt:4729:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.java:555)
+  logs_full.txt:4730:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:483)
+  logs_full.txt:4731:	at org.springframework.beans.factory.support
+.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:4732:	at org.springframework.beans.factory.support
+.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+  logs_full.txt:4733:	at org.springframework.beans.factory.support
+.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+  logs_full.txt:4734:	at org.springframework.beans.factory.support
+.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+  logs_full.txt:4735:	at org.springframework.beans.factory.config.
+DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:20
+8)
+  logs_full.txt:4736:	at org.springframework.beans.factory.support
+.DefaultListableBeanFactory.doResolveDependency(DefaultListableBea
+nFactory.java:1138)
+  logs_full.txt:4737:	at org.springframework.beans.factory.support
+.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanF
+actory.java:1066)
+  logs_full.txt:4738:	at org.springframework.beans.factory.support
+.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.
+java:835)
+  logs_full.txt:4739:	at org.springframework.beans.factory.support
+.ConstructorResolver.createArgumentArray(ConstructorResolver.java:
+741)
+  logs_full.txt:4740:	... 73 more
+> logs_full.txt:4741:Caused by: 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'accountManager' defined in class path 
+resource [com/dgphoenix/casino/gs/SharedGameServerComponentsConfig
+uration.class]: Bean instantiation via factory method failed; 
+nested exception is 
+org.springframework.beans.BeanInstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.account.AccountManager]: 
+Factory method 'accountManager' threw exception; nested exception 
+is java.lang.NullPointerException
+  logs_full.txt:4742:	at org.springframework.beans.factory.support
+.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorReso
+lver.java:599)
+  logs_full.txt:4743:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(
+AbstractAutowireCapableBeanFactory.java:1173)
+  logs_full.txt:4744:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAut
+owireCapableBeanFactory.java:1067)
+  logs_full.txt:4745:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.java:513)
+  logs_full.txt:4746:	at org.springframework.beans.factory.support
+.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:483)
+  logs_full.txt:4747:	at org.springframework.beans.factory.support
+.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:4748:	at org.springframework.beans.factory.support
+.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+  logs_full.txt:4749:	at org.springframework.beans.factory.support
+.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+  logs_full.txt:4750:	at org.springframework.beans.factory.support
+.AbstractBeanFactory.getBean(AbstractBeanFactory.java:220)
+  logs_full.txt:4751:	at org.springframework.beans.factory.support
+.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFa
+ctory.java:1018)
+  logs_full.txt:4752:	at org.springframework.beans.factory.support
+.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.jav
+a:345)
+  logs_full.txt:4753:	at org.springframework.beans.factory.support
+.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.jav
+a:340)
+  logs_full.txt:4754:	at org.springframework.context.support.Abstr
+actApplicationContext.getBean(AbstractApplicationContext.java:1092
+)
+  logs_full.txt:4755:	at com.dgphoenix.casino.gs.maintenance.Cache
+Exporter.getAccountManager(CacheExporter.java:88)
+  logs_full.txt:4756:	at com.dgphoenix.casino.gs.maintenance.Cache
+Exporter.importAll(CacheExporter.java:353)
+  logs_full.txt:4757:	at com.dgphoenix.casino.init.DefaultConfigsI
+nitializer.initialize(DefaultConfigsInitializer.java:51)
+  logs_full.txt:4758:	at com.dgphoenix.casino.cassandra.CassandraP
+ersistenceManager.init(CassandraPersistenceManager.java:116)
+  logs_full.txt:4759:	at 
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  logs_full.txt:4760:2026-01-07 
+07:42:56.048:WARN:oejw.WebAppContext:main: Failed 
+  logs_full.txt:4761:startup of context 
+o.e.j.w.WebAppContext@66d18979{sb_gs,/,file:///
+> logs_full.txt:4764:org.springframework.beans.factory.Unsatisfied
+DependencyException: 
+  logs_full.txt:4765:Error creating bean with name 
+'battlegroundController' defined in 
+  logs_full.txt:4766:file 
+[/tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-1861951044268808292.d
+  logs_full.txt:4767:ir/webapp/WEB-INF/classes/com/dgphoenix/casin
+o/controller/battlegr
+  logs_full.txt:4768:ound/BattlegroundController.class]: 
+Unsatisfied dependency 
+> logs_full.txt:4769:expressed through constructor parameter 0; 
+nested exception is 
+> logs_full.txt:4770:org.springframework.beans.factory.Unsatisfied
+DependencyException: 
+  logs_full.txt:4771:Error creating bean with name 
+'getBattlegroundService' defined in 
+  logs_full.txt:4772:class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsC
+  logs_full.txt:4773:onfiguration.class]: Unsatisfied dependency 
+expressed through 
+> logs_full.txt:4774:method 'getBattlegroundService' parameter 0; 
+nested exception is 
+> logs_full.txt:4775:org.springframework.beans.factory.BeanCreatio
+nException: Error 
+  logs_full.txt:4776:creating bean with name 
+'persistenceManager': Invocation of init 
+> logs_full.txt:4777:method failed; nested exception is 
+> logs_full.txt:4778:org.springframework.beans.factory.BeanCreatio
+nException: Error 
+  logs_full.txt:4779:creating bean with name 'accountManager' 
+defined in class path 
+  logs_full.txt:4780:resource 
+[com/dgphoenix/casino/gs/SharedGameServerComponentsConfig
+  logs_full.txt:4781:uration.class]: Bean instantiation via 
+factory method failed; 
+> logs_full.txt:4782:nested exception is 
+> logs_full.txt:4783:org.springframework.beans.BeanInstantiationEx
+ception: Failed to 
+  logs_full.txt:4784:instantiate 
+[com.dgphoenix.casino.account.AccountManager]: 
+> logs_full.txt:4785:Factory method 'accountManager' threw 
+exception; nested exception 
+> logs_full.txt:4786:is java.lang.NullPointerException
+  logs_full.txt:4787:	at 
+org.springframework.beans.factory.support.ConstructorResolver.
+  logs_full.txt:4788:createArgumentArray(ConstructorResolver.java:
+749)
+  logs_full.txt:4789:	at 
+org.springframework.beans.factory.support.ConstructorResolver.
+  logs_full.txt:4790:autowireConstructor(ConstructorResolver.java:
+189)
+  logs_full.txt:4791:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:4792:bleBeanFactory.autowireConstructor(AbstractAu
+towireCapableBeanFact
+  logs_full.txt:4793:ory.java:1193)
+  logs_full.txt:4794:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:4795:bleBeanFactory.createBeanInstance(AbstractAut
+owireCapableBeanFacto
+  logs_full.txt:4796:ry.java:1095)
+  logs_full.txt:4797:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:4798:bleBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.jav
+  logs_full.txt:4799:a:513)
+  logs_full.txt:4800:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:4801:bleBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:
+  logs_full.txt:4802:483)
+  logs_full.txt:4803:	at 
+org.springframework.beans.factory.support.AbstractBeanFactory$
+  logs_full.txt:4804:1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:4805:	at 
+org.springframework.beans.factory.support.DefaultSingletonBean
+  logs_full.txt:4806:Registry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+> logs_full.txt:4884:Caused by: 
+org.springframework.beans.BeanInstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.account.AccountManager]: 
+Factory method 'accountManager' threw exception; nested exception 
+is java.lang.NullPointerException
+  logs_full.txt:4885:	at org.springframework.beans.factory.support
+.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrate
+gy.java:189)
+  logs_full.txt:4886:	at org.springframework.beans.factory.support
+.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorReso
+lver.java:588)
+  logs_full.txt:4887:	... 109 more
+> logs_full.txt:4888:Caused by: java.lang.NullPointerException
+  logs_full.txt:4889:	at com.dgphoenix.casino.system.configuration
+.GameServerConfiguration.getCasinoSystemType(GameServerConfigurati
+on.java:102)
+  logs_full.txt:4890:	at com.dgphoenix.casino.gs.SharedGameServerC
+omponentsConfiguration.accountManager(SharedGameServerComponentsCo
+nfiguration.java:91)
+  logs_full.txt:4891:	at com.dgphoenix.casino.gs.SharedGameServerC
+omponentsConfiguration$$EnhancerBySpringCGLIB$$9e71f74a.CGLIB$acco
+untManager$4(<generated>)
+  logs_full.txt:4892:	at com.dgphoenix.casino.gs.SharedGameServerC
+omponentsConfiguration$$EnhancerBySpringCGLIB$$9e71f74a$$FastClass
+BySpringCGLIB$$ebebe14f.invoke(<generated>)
+  logs_full.txt:4893:	at org.springframework.cglib.proxy.MethodPro
+xy.invokeSuper(MethodProxy.java:228)
+  logs_full.txt:4894:	at org.springframework.context.annotation.Co
+nfigurationClassEnhancer$BeanMethodInterceptor.intercept(Configura
+tionClassEnhancer.java:358)
+  logs_full.txt:4895:	at com.dgphoenix.casino.gs.SharedGameServerC
+omponentsConfiguration$$EnhancerBySpringCGLIB$$9e71f74a.accountMan
+ager(<generated>)
+  logs_full.txt:4896:	at 
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  logs_full.txt:4897:	at sun.reflect.NativeMethodAccessorImpl.invo
+ke(NativeMethodAccessorImpl.java:62)
+  logs_full.txt:4898:	at sun.reflect.DelegatingMethodAccessorImpl.
+invoke(DelegatingMethodAccessorImpl.java:43)
+  logs_full.txt:4899:	at 
+java.lang.reflect.Method.invoke(Method.java:498)
+  logs_full.txt:4900:	at org.springframework.beans.factory.support
+.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrate
+gy.java:162)
+  logs_full.txt:4901:	... 110 more
+  logs_full.txt:4902:	at 
+org.eclipse.jetty.util.component.ContainerLifeCycle.start(Cont
+  logs_full.txt:4903:ainerLifeCycle.java:167)
+  logs_full.txt:4904:	at 
+org.eclipse.jetty.server.Server.start(Server.java:418)
+  logs_full.txt:4905:	at 
+org.eclipse.jetty.util.component.ContainerLifeCycle.doStart(Co
+  logs_full.txt:4906:ntainerLifeCycle.java:119)
+  logs_full.txt:4907:	at 
+org.eclipse.jetty.server.handler.AbstractHandler.doStart(Abstr
+  logs_full.txt:4908:actHandler.java:113)
+> logs_full.txt:4929:org.springframework.beans.factory.Unsatisfied
+DependencyException: 
+  logs_full.txt:4930:Error creating bean with name 
+'getBattlegroundService' defined in 
+  logs_full.txt:4931:class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsC
+  logs_full.txt:4932:onfiguration.class]: Unsatisfied dependency 
+expressed through 
+> logs_full.txt:4933:method 'getBattlegroundService' parameter 0; 
+nested exception is 
+> logs_full.txt:4934:org.springframework.beans.factory.BeanCreatio
+nException: Error 
+  logs_full.txt:4935:creating bean with name 
+'persistenceManager': Invocation of init 
+> logs_full.txt:4936:method failed; nested exception is 
+> logs_full.txt:4937:org.springframework.beans.factory.BeanCreatio
+nException: Error 
+  logs_full.txt:4938:creating bean with name 'accountManager' 
+defined in class path 
+  logs_full.txt:4939:resource 
+[com/dgphoenix/casino/gs/SharedGameServerComponentsConfig
+  logs_full.txt:4940:uration.class]: Bean instantiation via 
+factory method failed; 
+> logs_full.txt:4941:nested exception is 
+> logs_full.txt:4942:org.springframework.beans.BeanInstantiationEx
+ception: Failed to 
+  logs_full.txt:4943:instantiate 
+[com.dgphoenix.casino.account.AccountManager]: 
+> logs_full.txt:4944:Factory method 'accountManager' threw 
+exception; nested exception 
+> logs_full.txt:4945:is java.lang.NullPointerException
+  logs_full.txt:4946:	at 
+org.springframework.beans.factory.support.ConstructorResolver.
+  logs_full.txt:4947:createArgumentArray(ConstructorResolver.java:
+749)
+  logs_full.txt:4948:	at 
+org.springframework.beans.factory.support.ConstructorResolver.
+  logs_full.txt:4949:instantiateUsingFactoryMethod(ConstructorReso
+lver.java:467)
+  logs_full.txt:4950:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:4951:bleBeanFactory.instantiateUsingFactoryMethod(
+AbstractAutowireCapab
+  logs_full.txt:4952:leBeanFactory.java:1173)
+  logs_full.txt:4953:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:4954:bleBeanFactory.createBeanInstance(AbstractAut
+owireCapableBeanFacto
+  logs_full.txt:4955:ry.java:1067)
+  logs_full.txt:4956:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:4957:bleBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.jav
+  logs_full.txt:4958:a:513)
+  logs_full.txt:4959:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:4960:bleBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:
+  logs_full.txt:4961:483)
+  logs_full.txt:4962:	at 
+org.springframework.beans.factory.support.AbstractBeanFactory$
+  logs_full.txt:4963:1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:4964:	at 
+org.springframework.beans.factory.support.DefaultSingletonBean
+  logs_full.txt:4965:Registry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+> logs_full.txt:5095:org.springframework.beans.factory.BeanCreatio
+nException: Error 
+  logs_full.txt:5096:creating bean with name 
+'persistenceManager': Invocation of init 
+> logs_full.txt:5097:method failed; nested exception is 
+> logs_full.txt:5098:org.springframework.beans.factory.BeanCreatio
+nException: Error 
+  logs_full.txt:5099:creating bean with name 'accountManager' 
+defined in class path 
+  logs_full.txt:5100:resource 
+[com/dgphoenix/casino/gs/SharedGameServerComponentsConfig
+  logs_full.txt:5101:uration.class]: Bean instantiation via 
+factory method failed; 
+> logs_full.txt:5102:nested exception is 
+> logs_full.txt:5103:org.springframework.beans.BeanInstantiationEx
+ception: Failed to 
+  logs_full.txt:5104:instantiate 
+[com.dgphoenix.casino.account.AccountManager]: 
+> logs_full.txt:5105:Factory method 'accountManager' threw 
+exception; nested exception 
+> logs_full.txt:5106:is java.lang.NullPointerException
+  logs_full.txt:5107:	at 
+org.springframework.beans.factory.annotation.InitDestroyAnnota
+  logs_full.txt:5108:tionBeanPostProcessor.postProcessBeforeInitia
+lization(InitDestroyA
+  logs_full.txt:5109:nnotationBeanPostProcessor.java:137)
+  logs_full.txt:5110:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5111:bleBeanFactory.applyBeanPostProcessorsBeforeI
+nitialization(Abstrac
+  logs_full.txt:5112:tAutowireCapableBeanFactory.java:409)
+  logs_full.txt:5113:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5114:bleBeanFactory.initializeBean(AbstractAutowir
+eCapableBeanFactory.j
+  logs_full.txt:5115:ava:1620)
+  logs_full.txt:5116:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5117:bleBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.jav
+  logs_full.txt:5118:a:555)
+  logs_full.txt:5119:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5120:bleBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:
+  logs_full.txt:5121:483)
+  logs_full.txt:5122:	at 
+org.springframework.beans.factory.support.AbstractBeanFactory$
+  logs_full.txt:5123:1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:5124:	at 
+org.springframework.beans.factory.support.DefaultSingletonBean
+  logs_full.txt:5125:Registry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+  logs_full.txt:5126:	at 
+org.springframework.beans.factory.support.AbstractBeanFactory.
+> logs_full.txt:5287:org.springframework.beans.factory.BeanCreatio
+nException: Error 
+  logs_full.txt:5288:creating bean with name 'accountManager' 
+defined in class path 
+  logs_full.txt:5289:resource 
+[com/dgphoenix/casino/gs/SharedGameServerComponentsConfig
+  logs_full.txt:5290:uration.class]: Bean instantiation via 
+factory method failed; 
+> logs_full.txt:5291:nested exception is 
+> logs_full.txt:5292:org.springframework.beans.BeanInstantiationEx
+ception: Failed to 
+  logs_full.txt:5293:instantiate 
+[com.dgphoenix.casino.account.AccountManager]: 
+> logs_full.txt:5294:Factory method 'accountManager' threw 
+exception; nested exception 
+> logs_full.txt:5295:is java.lang.NullPointerException
+  logs_full.txt:5296:	at 
+org.springframework.beans.factory.support.ConstructorResolver.
+  logs_full.txt:5297:instantiateUsingFactoryMethod(ConstructorReso
+lver.java:599)
+  logs_full.txt:5298:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5299:bleBeanFactory.instantiateUsingFactoryMethod(
+AbstractAutowireCapab
+  logs_full.txt:5300:leBeanFactory.java:1173)
+  logs_full.txt:5301:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5302:bleBeanFactory.createBeanInstance(AbstractAut
+owireCapableBeanFacto
+  logs_full.txt:5303:ry.java:1067)
+  logs_full.txt:5304:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5305:bleBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.jav
+  logs_full.txt:5306:a:513)
+  logs_full.txt:5307:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5308:bleBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:
+  logs_full.txt:5309:483)
+  logs_full.txt:5310:	at 
+org.springframework.beans.factory.support.AbstractBeanFactory$
+  logs_full.txt:5311:1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:5312:	at 
+org.springframework.beans.factory.support.DefaultSingletonBean
+  logs_full.txt:5313:Registry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+  logs_full.txt:5314:	at 
+org.springframework.beans.factory.support.AbstractBeanFactory.
+  logs_full.txt:5315:doGetBean(AbstractBeanFactory.java:302)
+> logs_full.txt:5526:org.springframework.beans.BeanInstantiationEx
+ception: Failed to 
+  logs_full.txt:5527:instantiate 
+[com.dgphoenix.casino.account.AccountManager]: 
+> logs_full.txt:5528:Factory method 'accountManager' threw 
+exception; nested exception 
+> logs_full.txt:5529:is java.lang.NullPointerException
+  logs_full.txt:5530:	at 
+org.springframework.beans.factory.support.SimpleInstantiationS
+  logs_full.txt:5531:trategy.instantiate(SimpleInstantiationStrate
+gy.java:189)
+  logs_full.txt:5532:	at 
+org.springframework.beans.factory.support.ConstructorResolver.
+  logs_full.txt:5533:instantiateUsingFactoryMethod(ConstructorReso
+lver.java:588)
+  logs_full.txt:5534:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5535:bleBeanFactory.instantiateUsingFactoryMethod(
+AbstractAutowireCapab
+  logs_full.txt:5536:leBeanFactory.java:1173)
+  logs_full.txt:5537:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5538:bleBeanFactory.createBeanInstance(AbstractAut
+owireCapableBeanFacto
+  logs_full.txt:5539:ry.java:1067)
+  logs_full.txt:5540:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5541:bleBeanFactory.doCreateBean(AbstractAutowireC
+apableBeanFactory.jav
+  logs_full.txt:5542:a:513)
+  logs_full.txt:5543:	at 
+org.springframework.beans.factory.support.AbstractAutowireCapa
+  logs_full.txt:5544:bleBeanFactory.createBean(AbstractAutowireCap
+ableBeanFactory.java:
+  logs_full.txt:5545:483)
+  logs_full.txt:5546:	at 
+org.springframework.beans.factory.support.AbstractBeanFactory$
+  logs_full.txt:5547:1.getObject(AbstractBeanFactory.java:306)
+  logs_full.txt:5548:	at 
+org.springframework.beans.factory.support.DefaultSingletonBean
+  logs_full.txt:5549:Registry.getSingleton(DefaultSingletonBeanReg
+istry.java:230)
+> logs_full.txt:5762:java.lang.NullPointerException
+  logs_full.txt:5763:	at 
+com.dgphoenix.casino.system.configuration.GameServerConfigurat
+  logs_full.txt:5764:ion.getCasinoSystemType(GameServerConfigurati
+on.java:102)
+  logs_full.txt:5765:	at 
+com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguratio
+  logs_full.txt:5766:n.accountManager(SharedGameServerComponentsCo
+nfiguration.java:91)
+  logs_full.txt:5767:	at 
+com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguratio
+  logs_full.txt:5768:n$$EnhancerBySpringCGLIB$$9e71f74a.CGLIB$acco
+untManager$4(<generat
+  logs_full.txt:5769:ed>)
+  logs_full.txt:5770:	at 
+com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguratio
+  logs_full.txt:5771:n$$EnhancerBySpringCGLIB$$9e71f74a$$FastClass
+BySpringCGLIB$$ebebe1
+  logs_full.txt:5772:4f.invoke(<generated>)
+  logs_full.txt:5773:	at 
+org.springframework.cglib.proxy.MethodProxy.invokeSuper(Method
+  logs_full.txt:5774:Proxy.java:228)
+  logs_full.txt:5775:	at 
+org.springframework.context.annotation.ConfigurationClassEnhan
+  logs_full.txt:5776:cer$BeanMethodInterceptor.intercept(Configura
+tionClassEnhancer.jav
+  logs_full.txt:5777:a:358)
+  logs_full.txt:5778:	at 
+com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguratio
+  logs_full.txt:5779:n$$EnhancerBySpringCGLIB$$9e71f74a.accountMan
+ager(<generated>)
+  logs_full.txt:5780:	at 
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  logs_full.txt:5781:	at 
+sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccess
+  logs_full.txt:5782:orImpl.java:62)
+> logs_full.txt:6263:java.lang.NullPointerException
+  logs_full.txt:6264:	at 
+org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(
+  logs_full.txt:6265:ServletHandler.java:1610)
+  logs_full.txt:6266:	at 
+org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandl
+  logs_full.txt:6267:er.java:540)
+  logs_full.txt:6268:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+  logs_full.txt:6269:ndler.java:146)
+  logs_full.txt:6270:	at 
+org.eclipse.jetty.security.SecurityHandler.handle(SecurityHand
+  logs_full.txt:6271:ler.java:548)
+  logs_full.txt:6272:	at 
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+  logs_full.txt:6273:Wrapper.java:132)
+  logs_full.txt:6274:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+  logs_full.txt:6275:edHandler.java:257)
+  logs_full.txt:6276:	at 
+org.eclipse.jetty.server.session.SessionHandler.doHandle(Sessi
+  logs_full.txt:6277:onHandler.java:1700)
+  logs_full.txt:6278:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+  logs_full.txt:6279:edHandler.java:255)
+  logs_full.txt:6280:	at 
+org.eclipse.jetty.server.handler.ContextHandler.doHandle(Conte
+  logs_full.txt:6281:xtHandler.java:1345)
+  logs_full.txt:6282:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+  logs_full.txt:6283:dHandler.java:203)
+> logs_full.txt:6317:java.lang.NullPointerException
+  logs_full.txt:6318:	at 
+org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(
+  logs_full.txt:6319:ServletHandler.java:1610)
+  logs_full.txt:6320:	at 
+org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandl
+  logs_full.txt:6321:er.java:540)
+  logs_full.txt:6322:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+  logs_full.txt:6323:ndler.java:146)
+  logs_full.txt:6324:	at 
+org.eclipse.jetty.security.SecurityHandler.handle(SecurityHand
+  logs_full.txt:6325:ler.java:548)
+  logs_full.txt:6326:	at 
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+  logs_full.txt:6327:Wrapper.java:132)
+  logs_full.txt:6328:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+  logs_full.txt:6329:edHandler.java:257)
+  logs_full.txt:6330:	at 
+org.eclipse.jetty.server.session.SessionHandler.doHandle(Sessi
+  logs_full.txt:6331:onHandler.java:1700)
+  logs_full.txt:6332:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+  logs_full.txt:6333:edHandler.java:255)
+  logs_full.txt:6334:	at 
+org.eclipse.jetty.server.handler.ContextHandler.doHandle(Conte
+  logs_full.txt:6335:xtHandler.java:1345)
+  logs_full.txt:6336:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+  logs_full.txt:6337:dHandler.java:203)
+> logs_full.txt:6379:java.lang.NullPointerException
+  logs_full.txt:6380:	at 
+org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(
+  logs_full.txt:6381:ServletHandler.java:1610)
+  logs_full.txt:6382:	at 
+org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandl
+  logs_full.txt:6383:er.java:540)
+  logs_full.txt:6384:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+  logs_full.txt:6385:ndler.java:146)
+  logs_full.txt:6386:	at 
+org.eclipse.jetty.security.SecurityHandler.handle(SecurityHand
+  logs_full.txt:6387:ler.java:548)
+  logs_full.txt:6388:	at 
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+  logs_full.txt:6389:Wrapper.java:132)
+  logs_full.txt:6390:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+  logs_full.txt:6391:edHandler.java:257)
+  logs_full.txt:6392:	at 
+org.eclipse.jetty.server.session.SessionHandler.doHandle(Sessi
+  logs_full.txt:6393:onHandler.java:1700)
+  logs_full.txt:6394:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+  logs_full.txt:6395:edHandler.java:255)
+  logs_full.txt:6396:	at 
+org.eclipse.jetty.server.handler.ContextHandler.doHandle(Conte
+  logs_full.txt:6397:xtHandler.java:1345)
+  logs_full.txt:6398:	at 
+org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+  logs_full.txt:6399:dHandler.java:203)
+
+

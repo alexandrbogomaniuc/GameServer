@@ -7,7 +7,7 @@
     <writeConsistencyLevel>LOCAL_ONE</writeConsistencyLevel>
     <replicationFactor>1</replicationFactor>
     <createScheme>true</createScheme>
-    <hosts>localhost:9142</hosts>
+    <hosts>c1:9042</hosts>
     <minimumOnlineHosts>-1</minimumOnlineHosts>
     <columnFamilies>
         <ColumnFamily>

@@ -1,0 +1,90 @@
+
+Monk_Demon90.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90/arm_rt
+  rotate: true
+  xy: 405, 32
+  size: 171, 260
+  orig: 171, 260
+  offset: 0, 0
+  index: -1
+90/book
+  rotate: false
+  xy: 741, 465
+  size: 256, 278
+  orig: 256, 278
+  offset: 0, 0
+  index: -1
+90/forearm_lf
+  rotate: false
+  xy: 741, 16
+  size: 264, 216
+  orig: 264, 216
+  offset: 0, 0
+  index: -1
+90/forearm_rt
+  rotate: false
+  xy: 741, 236
+  size: 223, 225
+  orig: 223, 225
+  offset: 0, 0
+  index: -1
+90/head
+  rotate: true
+  xy: 146, 4
+  size: 199, 255
+  orig: 199, 255
+  offset: 0, 0
+  index: -1
+90/legs
+  rotate: false
+  xy: 146, 207
+  size: 591, 809
+  orig: 591, 809
+  offset: 0, 0
+  index: -1
+90/staff
+  rotate: false
+  xy: 4, 50
+  size: 138, 966
+  orig: 138, 966
+  offset: 0, 0
+  index: -1
+90/staff_head
+  rotate: false
+  xy: 741, 747
+  size: 257, 269
+  orig: 257, 269
+  offset: 0, 0
+  index: -1
+90/arm_lf
+  rotate: true
+  xy: 1028, 4
+  size: 146, 221
+  orig: 146, 221
+  offset: 0, 0
+  index: -1
+90/body
+  rotate: false
+  xy: 1028, 154
+  size: 344, 339
+  orig: 344, 339
+  offset: 0, 0
+  index: -1
+90/hand_lf
+  rotate: false
+  xy: 1376, 391
+  size: 141, 102
+  orig: 141, 102
+  offset: 0, 0
+  index: -1
+90/hand_rt
+  rotate: false
+  xy: 1253, 43
+  size: 111, 107
+  orig: 111, 107
+  offset: 0, 0
+  index: -1

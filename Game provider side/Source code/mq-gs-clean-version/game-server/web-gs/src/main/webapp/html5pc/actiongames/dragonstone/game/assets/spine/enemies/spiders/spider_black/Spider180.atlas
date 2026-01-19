@@ -1,0 +1,139 @@
+
+Spider180.png
+size: 512,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180_abs
+  rotate: false
+  xy: 2, 6
+  size: 60, 56
+  orig: 60, 56
+  offset: 0, 0
+  index: -1
+180_head
+  rotate: false
+  xy: 351, 42
+  size: 35, 20
+  orig: 35, 20
+  offset: 0, 0
+  index: -1
+180_lf_foreleg_1
+  rotate: true
+  xy: 64, 2
+  size: 14, 26
+  orig: 14, 26
+  offset: 0, 0
+  index: -1
+180_lf_foreleg_2
+  rotate: true
+  xy: 388, 47
+  size: 15, 37
+  orig: 15, 37
+  offset: 0, 0
+  index: -1
+180_lf_foreleg_3
+  rotate: true
+  xy: 172, 20
+  size: 23, 45
+  orig: 23, 45
+  offset: 0, 0
+  index: -1
+180_lf_foreleg_4
+  rotate: true
+  xy: 64, 18
+  size: 44, 69
+  orig: 44, 69
+  offset: 0, 0
+  index: -1
+180_lf_leg_1
+  rotate: true
+  xy: 477, 53
+  size: 9, 23
+  orig: 9, 23
+  offset: 0, 0
+  index: -1
+180_lf_leg_2
+  rotate: true
+  xy: 427, 45
+  size: 17, 26
+  orig: 17, 26
+  offset: 0, 0
+  index: -1
+180_lf_leg_3
+  rotate: true
+  xy: 317, 37
+  size: 25, 32
+  orig: 25, 32
+  offset: 0, 0
+  index: -1
+180_lf_leg_4
+  rotate: false
+  xy: 135, 2
+  size: 35, 41
+  orig: 35, 41
+  offset: 0, 0
+  index: -1
+180_rt_foreleg_1
+  rotate: true
+  xy: 219, 2
+  size: 21, 30
+  orig: 21, 30
+  offset: 0, 0
+  index: -1
+180_rt_foreleg_2
+  rotate: true
+  xy: 219, 25
+  size: 18, 46
+  orig: 18, 46
+  offset: 0, 0
+  index: -1
+180_rt_foreleg_3
+  rotate: true
+  xy: 218, 45
+  size: 17, 57
+  orig: 17, 57
+  offset: 0, 0
+  index: -1
+180_rt_foreleg_4
+  rotate: true
+  xy: 135, 45
+  size: 17, 81
+  orig: 17, 81
+  offset: 0, 0
+  index: -1
+180_rt_leg_1
+  rotate: false
+  xy: 172, 2
+  size: 23, 16
+  orig: 23, 16
+  offset: 0, 0
+  index: -1
+180_rt_leg_2
+  rotate: true
+  xy: 251, 2
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+180_rt_leg_3
+  rotate: true
+  xy: 455, 43
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+180_rt_leg_4
+  rotate: true
+  xy: 92, 4
+  size: 12, 30
+  orig: 12, 30
+  offset: 0, 0
+  index: -1
+90_head
+  rotate: false
+  xy: 277, 34
+  size: 38, 28
+  orig: 38, 28
+  offset: 0, 0
+  index: -1

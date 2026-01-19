@@ -1,0 +1,26 @@
+<ClusterConfig>
+    <clusterName>CasinoCluster</clusterName>
+    <keySpace>RBigStorageCasinoKS</keySpace>
+    <hostTimeoutWindow>30000</hostTimeoutWindow>
+    <replicationStrategyClass>org.apache.cassandra.locator.SimpleStrategy</replicationStrategyClass>
+    <readConsistencyLevel>LOCAL_ONE</readConsistencyLevel>
+    <writeConsistencyLevel>LOCAL_ONE</writeConsistencyLevel>
+    <replicationFactor>1</replicationFactor>
+    <createScheme>true</createScheme>
+    <hosts>c1.gsmp.lan:9042</hosts>
+    <jmxHosts>c1.gsmp.lan:7199</jmxHosts>
+    <minimumOnlineHosts>-1</minimumOnlineHosts>
+
+    <columnFamilies>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraBigStorageBetPersister</className>
+            <ttl>10368000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+        <ColumnFamily>
+            <className>com.dgphoenix.casino.cassandra.persist.CassandraBigStorageRoundGameSessionPersister</className>
+            <ttl>5184000</ttl>
+            <enabled>true</enabled>
+        </ColumnFamily>
+    </columnFamilies>
+</ClusterConfig>

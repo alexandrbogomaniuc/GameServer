@@ -1,0 +1,48 @@
+
+Imp270.png
+size: 929,929
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270/arm_lf
+  rotate: false
+  xy: 628, 387
+  size: 167, 196
+  orig: 167, 196
+  offset: 0, 0
+  index: -1
+270/arm_rt
+  rotate: true
+  xy: 628, 3
+  size: 135, 161
+  orig: 135, 161
+  offset: 0, 0
+  index: -1
+270/body
+  rotate: false
+  xy: 2, 38
+  size: 624, 889
+  orig: 624, 889
+  offset: 0, 0
+  index: -1
+270/forearm_lf
+  rotate: false
+  xy: 628, 140
+  size: 143, 245
+  orig: 143, 245
+  offset: 0, 0
+  index: -1
+270/forearm_rt
+  rotate: false
+  xy: 773, 147
+  size: 154, 238
+  orig: 154, 238
+  offset: 0, 0
+  index: -1
+270/tail
+  rotate: false
+  xy: 628, 585
+  size: 196, 342
+  orig: 196, 342
+  offset: 0, 0
+  index: -1

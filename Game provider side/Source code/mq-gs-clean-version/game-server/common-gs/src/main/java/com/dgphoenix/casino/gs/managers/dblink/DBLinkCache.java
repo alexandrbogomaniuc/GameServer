@@ -26,14 +26,14 @@ import java.util.concurrent.TimeUnit;
 
 @CacheKeyInfo(description = "dbLink.id")
 public class DBLinkCache implements IDistributedCache<Long, IDBLink> {
-    private static final DBLinkCache instance = new DBLinkCache();
+    private static DBLinkCache instance; // Lazy initialization
     public static final long SLEEPTIME = 90000;
     private static final Logger LOG = LogManager.getLogger(DBLinkCache.class);
     // gameSessionId->IDBLink
     private static final NonBlockingHashMapLong<IDBLink> dbLinks = new NonBlockingHashMapLong<>(2048, false);
     private static long cleanerTotalCount = 0;
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    private final CassandraTransactionDataPersister transactionDataPersister;
+    private ScheduledExecutorService scheduler;
+    private CassandraTransactionDataPersister transactionDataPersister;
 
     static {
         StatisticsManager.getInstance()
@@ -53,17 +53,27 @@ public class DBLinkCache implements IDistributedCache<Long, IDBLink> {
     }
 
     private DBLinkCache() {
+        scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(new Cleaner(), SLEEPTIME, SLEEPTIME, TimeUnit.MILLISECONDS);
-        CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()
-                .getBean("persistenceManager", CassandraPersistenceManager.class);
-        transactionDataPersister = persistenceManager.getPersister(CassandraTransactionDataPersister.class);
+        // Note: transactionDataPersister will be initialized in
+        // registerTDInvalidationListener()
+        // to avoid circular dependency during Spring initialization
     }
 
-    public static DBLinkCache getInstance() {
+    public static synchronized DBLinkCache getInstance() {
+        if (instance == null) {
+            instance = new DBLinkCache();
+        }
         return instance;
     }
 
     public void registerTDInvalidationListener() {
+        // Lazy initialization to avoid circular dependency
+        if (transactionDataPersister == null) {
+            CassandraPersistenceManager persistenceManager = ApplicationContextHelper.getApplicationContext()
+                    .getBean("persistenceManager", CassandraPersistenceManager.class);
+            transactionDataPersister = persistenceManager.getPersister(CassandraTransactionDataPersister.class);
+        }
         transactionDataPersister.registerInvalidationListener(new TransactionDataInvalidatedListener() {
             @Override
             public void invalidate(ITransactionData td) {
@@ -114,7 +124,6 @@ public class DBLinkCache implements IDistributedCache<Long, IDBLink> {
         StatisticsManager.getInstance().updateRequestStatistics("DBLinkCache: put",
                 System.currentTimeMillis() - now, accountId);
     }
-
 
     public IDBLink get(long gameSessionId) {
         return dbLinks.get(gameSessionId);

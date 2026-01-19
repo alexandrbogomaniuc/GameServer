@@ -1,0 +1,159 @@
+
+Gargoyle0.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/arm_rt
+  rotate: true
+  xy: 896, 9
+  size: 79, 113
+  orig: 79, 113
+  offset: 0, 0
+  index: -1
+0/body
+  rotate: false
+  xy: 518, 153
+  size: 183, 241
+  orig: 183, 241
+  offset: 0, 0
+  index: -1
+0/calf_lf
+  rotate: true
+  xy: 363, 17
+  size: 65, 68
+  orig: 65, 68
+  offset: 0, 0
+  index: -1
+0/calf_rt
+  rotate: true
+  xy: 177, 14
+  size: 68, 85
+  orig: 68, 85
+  offset: 0, 0
+  index: -1
+0/foot_lf
+  rotate: false
+  xy: 808, 25
+  size: 84, 146
+  orig: 84, 146
+  offset: 0, 0
+  index: -1
+0/foot_rt
+  rotate: true
+  xy: 872, 412
+  size: 141, 117
+  orig: 141, 117
+  offset: 0, 0
+  index: -1
+0/forearm_lf
+  rotate: false
+  xy: 896, 92
+  size: 81, 126
+  orig: 81, 126
+  offset: 0, 0
+  index: -1
+0/hand_lf
+  rotate: true
+  xy: 266, 37
+  size: 45, 93
+  orig: 45, 93
+  offset: 0, 0
+  index: -1
+0/hand_rt
+  rotate: true
+  xy: 111, 4
+  size: 78, 62
+  orig: 78, 62
+  offset: 0, 0
+  index: -1
+0/head
+  rotate: true
+  xy: 4, 4
+  size: 78, 103
+  orig: 78, 103
+  offset: 0, 0
+  index: -1
+0/leg_lf
+  rotate: false
+  xy: 893, 222
+  size: 111, 186
+  orig: 111, 186
+  offset: 0, 0
+  index: -1
+0/tail
+  rotate: false
+  xy: 705, 175
+  size: 184, 219
+  orig: 184, 219
+  offset: 0, 0
+  index: -1
+0/wing_lf1
+  rotate: true
+  xy: 581, 398
+  size: 155, 287
+  orig: 155, 287
+  offset: 0, 0
+  index: -1
+0/wing_lf3
+  rotate: false
+  xy: 4, 479
+  size: 573, 541
+  orig: 573, 541
+  offset: 0, 0
+  index: -1
+0/wing_rt1
+  rotate: true
+  xy: 518, 20
+  size: 129, 286
+  orig: 129, 286
+  offset: 0, 0
+  index: -1
+0/wing_rt2
+  rotate: false
+  xy: 581, 557
+  size: 423, 463
+  orig: 423, 463
+  offset: 0, 0
+  index: -1
+0/wing_rt3
+  rotate: false
+  xy: 4, 86
+  size: 510, 389
+  orig: 510, 389
+  offset: 0, 0
+  index: -1
+
+Gargoyle02.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/arm_lf
+  rotate: false
+  xy: 4, 56
+  size: 125, 125
+  orig: 125, 125
+  offset: 0, 0
+  index: -1
+0/forearm_rt
+  rotate: false
+  xy: 699, 647
+  size: 103, 103
+  orig: 103, 103
+  offset: 0, 0
+  index: -1
+0/leg_rt
+  rotate: true
+  xy: 485, 4
+  size: 746, 210
+  orig: 746, 210
+  offset: 0, 0
+  index: -1
+0/wing_lf2
+  rotate: false
+  xy: 4, 185
+  size: 477, 565
+  orig: 477, 565
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,59 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260107111554
+Username: DESKTOP-221K2HU\Alex
+RunAs User: DESKTOP-221K2HU\Alex
+Configuration Name: 
+Machine: DESKTOP-221K2HU (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "c:\Users\Alex\AppData\Local\Programs\Antigravity\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+Process ID: 74392
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is d:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\launch_debug.txt
+Wrapper: Script started at 01/07/2026 11:15:54
+Wrapper: Current Location: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\deploy\docker
+Wrapper: User: Alex
+Starting Docker Environment...
+Configs Dir: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\deploy\docker\GP3
+Checking docker...
+
+Checking docker-compose...
+
+Loading .env file...
+Set LOBBY_DOMAIN = localhost
+Set WEBAPP_DIR = d:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\deploy\webapps\gs
+Set LOG_DIR = d:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\deploy\logs
+Set DEFAULT_CONFIGS_DIR = d:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\deploy\default-configs
+Set STATIC_DIR = d:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\deploy\static
+Running docker-compose up -d --build...
+
+D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source 
+code\mq-gs-clean-version\deploy\docker\launch.ps1 : An error occurred: Docker Compose failed with exit code 1
+At line:1 char:1
++ .\launch.ps1
++ ~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,launch.ps1
+D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game
+provider side\Source
+code\mq-gs-clean-version\deploy\docker\launch.ps1 : An error
+occurred: Docker Compose failed with exit code 1
+At line:1 char:1
++ .\launch.ps1
++ ~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], Writ
+   eErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteEr
+   rorException,launch.ps1
+
+**********************
+Windows PowerShell transcript end
+End time: 20260107111555
+**********************

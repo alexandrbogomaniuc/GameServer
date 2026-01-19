@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: gsn-web-gs
+Build-Date: 2026-01-12 12:20
+Implementation-Version: 
+Built-By: Alex
+Specification-Title: gsn-web-gs
+Implementation-Vendor-Id: com.dgphoenix.casino
+Created-By: Apache Maven 3.9.12
+Build-Jdk: 1.8.0_472
+Specification-Version: 1.89
+

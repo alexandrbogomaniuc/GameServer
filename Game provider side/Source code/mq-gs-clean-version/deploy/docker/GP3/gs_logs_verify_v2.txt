@@ -1,0 +1,10 @@
+docker : Error response from daemon: No such container: gp3-gs-1
+At line:1 char:1
++ docker logs gp3-gs-1 2>&1 | Select-Object -Last 100 | Out-String 
+| Se ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Error response ...aine 
+   r: gp3-gs-1:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+

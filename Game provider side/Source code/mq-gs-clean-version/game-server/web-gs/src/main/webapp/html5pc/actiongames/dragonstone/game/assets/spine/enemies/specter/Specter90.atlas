@@ -1,0 +1,13 @@
+
+Specter90.png
+size: 512,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+specter90
+  rotate: false
+  xy: 4, 4
+  size: 326, 1133
+  orig: 326, 1133
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,100 @@
+﻿	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	... 52 more
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accountManager' defined in class path resource [com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.class]: Unsatisfied dependency expressed through method 'accountManager' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverIdLockerService' defined in class path resource [com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider]: Factory method 'serverIdLockerService' threw exception; nested exception is org.apache.zookeeper.KeeperException$UnimplementedException: KeeperErrorCode = Unimplemented for /gs/pool
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:467)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:220)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveNamedBean(DefaultListableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:345)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBean(DefaultListableBeanFactory.java:340)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1092)
+	at com.dgphoenix.casino.gs.maintenance.CacheExporter.getAccountManager(CacheExporter.java:88)
+	at com.dgphoenix.casino.gs.maintenance.CacheExporter.importAll(CacheExporter.java:353)
+	at com.dgphoenix.casino.init.DefaultConfigsInitializer.initialize(DefaultConfigsInitializer.java:51)
+	at com.dgphoenix.casino.cassandra.CassandraPersistenceManager.init(CassandraPersistenceManager.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 65 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'serverIdLockerService' defined in class path resource [com/dgphoenix/casino/gs/SharedGameServerComponentsConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider]: Factory method 'serverIdLockerService' threw exception; nested exception is org.apache.zookeeper.KeeperException$UnimplementedException: KeeperErrorCode = Unimplemented for /gs/pool
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:296)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:296)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:835)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:741)
+	... 89 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.dgphoenix.casino.common.cache.data.server.ServerCoordinatorInfoProvider]: Factory method 'serverIdLockerService' threw exception; nested exception is org.apache.zookeeper.KeeperException$UnimplementedException: KeeperErrorCode = Unimplemented for /gs/pool
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	... 106 more
+Caused by: org.apache.zookeeper.KeeperException$UnimplementedException: KeeperErrorCode = Unimplemented for /gs/pool
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:105)
+	at org.apache.zookeeper.KeeperException.create(KeeperException.java:53)
+	at org.apache.zookeeper.ZooKeeper.create(ZooKeeper.java:1450)
+	at org.apache.curator.framework.imps.CreateBuilderImpl$18.call(CreateBuilderImpl.java:1171)
+	at org.apache.curator.framework.imps.CreateBuilderImpl$18.call(CreateBuilderImpl.java:1151)
+	at org.apache.curator.RetryLoop.callWithRetry(RetryLoop.java:88)
+	at org.apache.curator.framework.imps.CreateBuilderImpl.pathInForeground(CreateBuilderImpl.java:1151)
+	at org.apache.curator.framework.imps.CreateBuilderImpl.protectedPathInForeground(CreateBuilderImpl.java:574)
+	at org.apache.curator.framework.imps.CreateBuilderImpl.forPath(CreateBuilderImpl.java:566)
+	at org.apache.curator.framework.imps.CreateBuilderImpl.forPath(CreateBuilderImpl.java:549)
+	at org.apache.curator.framework.imps.CreateBuilderImpl$4.forPath(CreateBuilderImpl.java:453)
+	at org.apache.curator.framework.imps.CreateBuilderImpl$4.forPath(CreateBuilderImpl.java:394)
+	at com.dgphoenix.casino.system.configuration.identification.ServersCoordinatorService.initPool(ServersCoordinatorService.java:81)
+	at com.dgphoenix.casino.system.configuration.identification.ServersCoordinatorService.<init>(ServersCoordinatorService.java:70)
+	at com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration.serverIdLockerService(SharedGameServerComponentsConfiguration.java:33)
+	at com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration$$EnhancerBySpringCGLIB$$fcbcce12.CGLIB$serverIdLockerService$7(<generated>)
+	at com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration$$EnhancerBySpringCGLIB$$fcbcce12$$FastClassBySpringCGLIB$$10d496ec.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	at com.dgphoenix.casino.gs.SharedGameServerComponentsConfiguration$$EnhancerBySpringCGLIB$$fcbcce12.serverIdLockerService(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	... 107 more
+07.01.2026 04:58:37,210 [COMMON] INFO  [DBLinkCache pool-20-thread-1] - Running cleaner
+Checking if Cassandra is up and running ...
+Cassandra startup completed successfully --- OK
+Listening for transport dt_socket at address: 9000
+07.01.2026 05:05:01,864 [COMMON] DEBUG [SpringContextInitializer main] - Starting spring context initialization...
+07.01.2026 05:05:01,963 [COMMON] DEBUG [SpringContextInitializer main] - Spring context initialization finished
+07.01.2026 05:05:02,839 [COMMON] DEBUG [ApplicationContextHelper main] - ApplicationContextHelper created
+07.01.2026 05:05:06,122 [COMMON] DEBUG [KeyspaceManagerImpl main] - Creating keyspace manager...
+07.01.2026 05:05:06,124 [COMMON] DEBUG [KeyspaceManagerImpl main] - Keyspace manager created
+07.01.2026 05:05:06,132 [COMMON] DEBUG [KeyspaceManagerImpl main] - Creating keyspace manager...
+07.01.2026 05:05:06,132 [COMMON] DEBUG [KeyspaceManagerImpl main] - Keyspace manager created
+07.01.2026 05:05:06,138 [COMMON] INFO  [KeyspaceManagerImpl main] - Start initialization manager for keyspace: RCasinoKS with configuration (ClusterConfig[clusterName='CasinoCluster', keySpace='RCasinoKS', hostTimeoutWindow=30000, replicationStrategyClass='org.apache.cassandra.locator.SimpleStrategy', readConsistencyLevel='LOCAL_ONE', writeConsistencyLevel='LOCAL_ONE', replicationFactor=1, createScheme=true, columnFamilyConfigs=[ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraBetPersister', ttl=10368000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister', ttl=5184000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraWalletOperationInfoPersister', ttl=2592000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraGameSessionPersister', ttl=10368000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraArchiverPersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraBonusArchivePersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraFrbWinOperationPersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraTrackingInfoPersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraPlayerSessionHistoryPersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraCurrentPlayerSessionStatePersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardHistoryPersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraDelayedMassAwardFailedDeliveryPersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraSupportPersister', ttl=5184000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraCallStatisticsPersister', ttl=null, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister', ttl=5184000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraNotificationPersister', ttl=5184000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraMetricsPersister', ttl=2592000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraShortBetInfoPersister', ttl=259200, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.promo.persisters.CassandraSummaryTournamentPromoFeedPersister', ttl=10368000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraHistoryInformerItemPersister', ttl=864000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.mp.TicketedDrawConfigPersister', ttl=10368000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraHttpCallInfoPersister', ttl=5184000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraHistoryTokenPersister', ttl=3600, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.mp.RoundKPIInfoPersister', ttl=86400, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.mp.BattlegroundHistoryPersister', ttl=10368000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.promo.persisters.PromoPredefinedUsersPersister', ttl=15552000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraClientStatisticsPersister', ttl=259200, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.mp.BattlegroundPrivateRoomSettingsPersister', ttl=10368000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.promo.persisters.CassandraPromoWinPersister', ttl=2592000, enabled=true], ColumnFamilyConfig[className='com.dgphoenix.casino.cassandra.persist.CassandraBatchOperationStatusPersister', ttl=259200, enabled=true]], hosts=c1.gsmp.lan:9042, jmxHosts=c1.gsmp.lan:7199])
+07.01.2026 05:05:06,268 [COMMON] DEBUG [PersisterDependencyInjector main] - Dependency class com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister for persister com.dgphoenix.casino.cassandra.persist.CassandraBetPersister@b267745 with injectionPoint (class com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister,private void com.dgphoenix.casino.cassandra.persist.CassandraBetPersister.setRoundGameSessionPersister(com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister)) added to dependencyMap
+07.01.2026 05:05:06,268 [COMMON] DEBUG [PersisterDependencyInjector main] - Dependency class com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister for persister com.dgphoenix.casino.cassandra.persist.CassandraBetPersister@b267745 with injectionPoint (class com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister,private void com.dgphoenix.casino.cassandra.persist.CassandraBetPersister.setTempBetPersister(com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister)) added to dependencyMap
+07.01.2026 05:05:06,284 [COMMON] DEBUG [PersisterDependencyInjector main] - Dependency class com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister for persister com.dgphoenix.casino.cassandra.persist.CassandraCallStatisticsPersister@21698e5a with injectionPoint (class com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister,private void com.dgphoenix.casino.cassandra.persist.CassandraCallStatisticsPersister.setCallIssuesPersister(com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister)) added to dependencyMap

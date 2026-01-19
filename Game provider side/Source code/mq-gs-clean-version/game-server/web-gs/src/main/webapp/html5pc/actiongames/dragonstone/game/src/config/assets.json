@@ -1,0 +1,5719 @@
+{
+	"images": [
+		{
+			"name":  "weapons/emblems/flamethrower_emblem",
+			"src":  "weapons/emblems/flamethrower_emblem.png",
+			"width":  184,
+			"height":  116,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/flamethrower_emblem_glow",
+			"src":  "weapons/emblems/flamethrower_emblem_glow.jpg",
+			"width":  111,
+			"height":  72,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/plasma_emblem",
+			"src":  "weapons/emblems/plasma_emblem.png",
+			"width":  211,
+			"height":  122,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/plasma_emblem_glow",
+			"src":  "weapons/emblems/plasma_emblem_glow.jpg",
+			"width":  128,
+			"height":  80,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/cryogun_emblem",
+			"src":  "weapons/emblems/cryogun_emblem.png",
+			"width":  203,
+			"height":  107,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/cryogun_emblem_glow",
+			"src":  "weapons/emblems/cryogun_emblem_glow.jpg",
+			"width":  116,
+			"height":  68,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/artillerystrike_emblem",
+			"src":  "weapons/emblems/artillerystrike_emblem.png",
+			"width":  65,
+			"height":  115,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/artillerystrike_emblem_glow",
+			"src":  "weapons/emblems/artillerystrike_emblem_glow.jpg",
+			"width":  48,
+			"height":  72,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/railgun_emblem",
+			"src":  "weapons/emblems/railgun_emblem.png",
+			"width":  243,
+			"height":  113,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/emblems/railgun_emblem_glow",
+			"src":  "weapons/emblems/railgun_emblem_glow.jpg",
+			"width":  128,
+			"height":  74,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/scoreboard/scoreboard_item_arrow",
+			"src":  "battleground/scoreboard/scoreboard_item_arrow.png",
+			"width":  14.5,
+			"height":  19.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+	   {
+			"name":  "battleground/scoreboard/prize_container_background",
+			"src":  "battleground/scoreboard/prize_container_background.png",
+			"width":  123,
+			"height":  33,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/scoreboard/my_player_background",
+			"src":  "battleground/scoreboard/my_player_background.png",
+			"width":  113,
+			"height":  22,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+	   {
+		   "name":  "battleground/scoreboard/timer_container_background",
+		   "src":  "battleground/scoreboard/timer_container_background.png",
+		   "width":  141,
+		   "height":  27,
+		   "frames":  1,
+		   "layers":  1,
+		   "totalFrames":  1
+	   },
+		{
+			"name": "gameplay_dialogs/battleground/close_button",
+			"src": "gameplay_dialogs/battleground/close_button.png",
+			"width": 13,
+			"height": 13,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+		"name":  "round_result/battleground/separate_line",
+		"src":  "round_result/battleground/separate_line.png",
+		"width":  106,
+		"height":  1,
+		"frames":  1,
+		"layers":  1,
+		"totalFrames":  1
+		},
+		{
+			"name": "transition/fog",
+			"src": "transition/fog.png",
+			"width": 97,
+			"height": 84,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "big_win/particles/big_win_particle_1",
+			"src": "big_win/particles/big_win_particle_1.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "big_win/particles/big_win_particle_2",
+			"src": "big_win/particles/big_win_particle_2.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "big_win/particles/big_win_particle_3",
+			"src": "big_win/particles/big_win_particle_3.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "big_win/circle_big_win",
+			"src": "big_win/circle_big_win.jpg",
+			"width": 710,
+			"height": 708,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "big_win/circle_huge_win",
+			"src": "big_win/circle_huge_win.jpg",
+			"width": 710,
+			"height": 708,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "big_win/circle_mega_win",
+			"src": "big_win/circle_mega_win.jpg",
+			"width": 710,
+			"height": 708,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "quests/sparkles",
+			"src": "quests/sparkles.jpg",
+			"width": 128,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "callouts/callout_panel",
+			"src": "callouts/callout_panel.png",
+			"width": 512,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "fire_settings/fire_settings_mobile",
+			"src": "fire_settings/fire_settings_mobile.png",
+			"width": 64,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"isMobile": true
+		},
+		{
+			"name": "fire_settings/header",
+			"src": "fire_settings/header.jpg",
+			"width": 325,
+			"height": 58,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"isMobile": true
+		},
+		{
+			"name": "fire_settings/fire_settings",
+			"src": "fire_settings/fire_settings.png",
+			"width": 20,
+			"height": 11,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"isMobile": false
+		},
+		{
+			"name": "avatar/avatar",
+			"src": "avatar/avatar.png",
+			"width": 663,
+			"height": 349.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "round_result/back",
+			"src": "round_result/back.png",
+			"width": 677,
+			"height": 399.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "round_result/coin_atlas",
+			"src": "round_result/coin_atlas.jpg",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "blend/smoke_fx/u_smoke_screenmode",
+			"src": "blend/smoke_fx/u_smoke_screenmode.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "crate/crate",
+			"src": "crate/crate.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"isMobile": true
+		},
+		{
+			"name": "crate/crate",
+			"src": "crate/crate.jpg",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"isMobile": false
+		},
+		{
+			"name": "crate/crate-mask",
+			"src": "crate/crate-mask.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"isMobile": false
+		},
+		{
+			"name":  "common/crate_glow",
+			"src":  "common/crate_glow.jpg",
+			"width":  128,
+			"height":  128,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/groundburn",
+			"src":  "common/groundburn.jpg",
+			"width":  127,
+			"height":  63.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/ArtilleryStrike/groundburn",
+			"src":  "weapons/ArtilleryStrike/groundburn.jpg",
+			"width":  128,
+			"height":  64,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/lensflare",
+			"src":  "common/lensflare.jpg",
+			"width":  256,
+			"height":  256,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/u_groundsmoke_unmult",
+			"src":  "common/u_groundsmoke_unmult.png",
+			"width":  1024,
+			"height":  512,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/spark",
+			"src":  "common/spark.png",
+			"width":  11,
+			"height":  4,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/torch_atlas",
+			"src":  "common/torch_atlas.jpg",
+			"width":  256,
+			"height":  256,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/torch_atlas_blue",
+			"src":  "common/torch_atlas_blue.jpg",
+			"width":  256,
+			"height":  256,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/coin_spin",
+			"src":  "common/coin_spin.png",
+			"width":  128,
+			"height":  64,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/silver_coin_spin",
+			"src":  "common/silver_coin_spin.png",
+			"width":  64,
+			"height":  64,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/die_smoke_unmult",
+			"src":  "common/die_smoke_unmult.png",
+			"width":  512,
+			"height":  512,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/streak",
+			"src":  "common/streak.jpg",
+			"width":  512,
+			"height":  512,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/rounded_mask",
+			"src":  "common/rounded_mask.jpg",
+			"width":  128,
+			"height":  128,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/blue_flare",
+			"src":  "common/blue_flare.jpg",
+			"width":  109.5,
+			"height":  68,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/orange_flare",
+			"src":  "common/orange_flare.jpg",
+			"width":  174.5,
+			"height":  115,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/orange_flare_glowed",
+			"src":  "common/orange_flare_glowed.jpg",
+			"width":  256,
+			"height":  256,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/transition_smoke_fx_unmult",
+			"src":  "common/transition_smoke_fx_unmult.png",
+			"width":  86.5,
+			"height":  82.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "common/weapon_awarding_flare",
+			"src":  "common/weapon_awarding_flare.jpg",
+			"width":  135.5,
+			"height":  105.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"vfx":  "medium"
+		},
+		{
+			"name": "crate/crate_fx/crate_revealburst",
+			"src": "crate/crate_fx/crate_revealburst.jpg",
+			"width": 140.5,
+			"height": 95,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "crate/crate_fx/red_smoke_puff",
+			"src": "crate/crate_fx/red_smoke_puff.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "awards/gold_numbers",
+			"src": "awards/gold_numbers.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "awards/silver_numbers",
+			"src": "awards/silver_numbers.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "awards/white_numbers",
+			"src": "awards/white_numbers.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "awards/circle_blast",
+			"src": "awards/circle_blast.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/orc/Orc0",
+			"src": "enemies/orc/Orc0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/orc/Orc90",
+			"src": "enemies/orc/Orc90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/orc/Orc180",
+			"src": "enemies/orc/Orc180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/orc/Orc270",
+			"src": "enemies/orc/Orc270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre0",
+			"src": "enemies/ogre/Ogre0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre02",
+			"src": "enemies/ogre/Ogre02.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre03",
+			"src": "enemies/ogre/Ogre03.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre90",
+			"src": "enemies/ogre/Ogre90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre902",
+			"src": "enemies/ogre/Ogre902.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre903",
+			"src": "enemies/ogre/Ogre903.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre180",
+			"src": "enemies/ogre/Ogre180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre1802",
+			"src": "enemies/ogre/Ogre1802.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre270",
+			"src": "enemies/ogre/Ogre270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/ogre/Ogre2702",
+			"src": "enemies/ogre/Ogre2702.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/skeletons/skeleton_shield/SkeletonShield0",
+			"src": "enemies/skeletons/skeleton_shield/SkeletonShield0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/skeletons/skeleton_shield/SkeletonShield90",
+			"src": "enemies/skeletons/skeleton_shield/SkeletonShield90.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/skeletons/skeleton_shield/SkeletonShield180",
+			"src": "enemies/skeletons/skeleton_shield/SkeletonShield180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/skeletons/skeleton_shield/SkeletonShield270",
+			"src": "enemies/skeletons/skeleton_shield/SkeletonShield270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/skeletons/skeleton/Skeleton0",
+			"src": "enemies/skeletons/skeleton/Skeleton0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/skeletons/skeleton/Skeleton90",
+			"src": "enemies/skeletons/skeleton/Skeleton90.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/skeletons/skeleton/Skeleton180",
+			"src": "enemies/skeletons/skeleton/Skeleton180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/skeletons/skeleton/Skeleton270",
+			"src": "enemies/skeletons/skeleton/Skeleton270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/imp_effects",
+			"src": "enemies/imp/imp_effects.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/smoke_clouds",
+			"src": "enemies/imp/smoke_clouds.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/red/Imp0",
+			"src": "enemies/imp/red/Imp0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/red/Imp90",
+			"src": "enemies/imp/red/Imp90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/red/Imp180",
+			"src": "enemies/imp/red/Imp180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/red/Imp270",
+			"src": "enemies/imp/red/Imp270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/green/Imp0",
+			"src": "enemies/imp/green/Imp0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/green/Imp90",
+			"src": "enemies/imp/green/Imp90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/green/Imp180",
+			"src": "enemies/imp/green/Imp180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/imp/green/Imp270",
+			"src": "enemies/imp/green/Imp270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/Gargoyle0",
+			"src": "enemies/gargoyle/Gargoyle0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/Gargoyle90",
+			"src": "enemies/gargoyle/Gargoyle90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/Gargoyle180",
+			"src": "enemies/gargoyle/Gargoyle180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/Gargoyle270",
+			"src": "enemies/gargoyle/Gargoyle270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/Gargoyle02",
+			"src": "enemies/gargoyle/Gargoyle02.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/Gargoyle902",
+			"src": "enemies/gargoyle/Gargoyle902.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/Gargoyle1802",
+			"src": "enemies/gargoyle/Gargoyle1802.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/Gargoyle2702",
+			"src": "enemies/gargoyle/Gargoyle2702.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/gargoyle/glow",
+			"src": "enemies/gargoyle/glow.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/silver/WallKnightA90",
+			"src": "enemies/wall_knight/silver/WallKnightA90.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/silver/WallKnight0",
+			"src": "enemies/wall_knight/silver/WallKnightB0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/silver/WallKnight90",
+			"src": "enemies/wall_knight/silver/WallKnightB90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/silver/WallKnight180",
+			"src": "enemies/wall_knight/silver/WallKnightB180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/silver/WallKnight270",
+			"src": "enemies/wall_knight/silver/WallKnightB270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/blue/WallKnightA90",
+			"src": "enemies/wall_knight/blue/WallKnightA90.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/blue/WallKnight0",
+			"src": "enemies/wall_knight/blue/WallKnightB0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/blue/WallKnight90",
+			"src": "enemies/wall_knight/blue/WallKnightB90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/blue/WallKnight180",
+			"src": "enemies/wall_knight/blue/WallKnightB180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/blue/WallKnight270",
+			"src": "enemies/wall_knight/blue/WallKnightB270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/gold/WallKnightA90",
+			"src": "enemies/wall_knight/gold/WallKnightA90.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/gold/WallKnight0",
+			"src": "enemies/wall_knight/gold/WallKnightB0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/gold/WallKnight90",
+			"src": "enemies/wall_knight/gold/WallKnightB90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/gold/WallKnight180",
+			"src": "enemies/wall_knight/gold/WallKnightB180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/gold/WallKnight270",
+			"src": "enemies/wall_knight/gold/WallKnightB270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wall_knight/green_puff",
+			"src": "enemies/wall_knight/green_puff.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/wall_knight/green_smoke",
+			"src": "enemies/wall_knight/green_smoke.png",
+			"width": 64,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/dark_knight/DarkKnight0",
+			"src": "enemies/dark_knight/DarkKnight0.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/dark_knight/DarkKnight90",
+			"src": "enemies/dark_knight/DarkKnight90.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/dark_knight/DarkKnight180",
+			"src": "enemies/dark_knight/DarkKnight180.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/dark_knight/DarkKnight270",
+			"src": "enemies/dark_knight/DarkKnight270.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/red/Monk_Demon0",
+			"src": "enemies/wizards/red/Monk_Demon0.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/red/Monk_Demon90",
+			"src": "enemies/wizards/red/Monk_Demon90.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/red/Monk_Demon180",
+			"src": "enemies/wizards/red/Monk_Demon180.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/red/Monk_Demon270",
+			"src": "enemies/wizards/red/Monk_Demon270.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/red/teleport0",
+			"src": "enemies/wizards/red/teleport0.jpg",
+			"width": 944,
+			"height": 949,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/red/teleport1",
+			"src": "enemies/wizards/red/teleport1.jpg",
+			"width": 943.5,
+			"height": 944,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/red/glow",
+			"src": "enemies/wizards/red/glow.png",
+			"width": 181,
+			"height": 135.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/wizards/red/smoke",
+			"src": "enemies/wizards/red/smoke.jpg",
+			"width": 501.5,
+			"height": 991,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/wizards/blue/Monk_Demon0",
+			"src": "enemies/wizards/blue/Monk_Demon0.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/blue/Monk_Demon90",
+			"src": "enemies/wizards/blue/Monk_Demon90.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/blue/Monk_Demon180",
+			"src": "enemies/wizards/blue/Monk_Demon180.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/blue/Monk_Demon270",
+			"src": "enemies/wizards/blue/Monk_Demon270.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/blue/teleport0",
+			"src": "enemies/wizards/blue/teleport0.jpg",
+			"width": 1006,
+			"height": 991,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/blue/teleport1",
+			"src": "enemies/wizards/blue/teleport1.jpg",
+			"width": 669,
+			"height": 1005.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/blue/glow",
+			"src": "enemies/wizards/blue/glow.png",
+			"width": 181,
+			"height": 133.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/wizards/blue/smoke",
+			"src": "enemies/wizards/blue/smoke.jpg",
+			"width": 611,
+			"height": 991,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/wizards/purple/Monk_Demon0",
+			"src": "enemies/wizards/purple/Monk_Demon0.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/purple/Monk_Demon90",
+			"src": "enemies/wizards/purple/Monk_Demon90.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/purple/Monk_Demon180",
+			"src": "enemies/wizards/purple/Monk_Demon180.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/purple/Monk_Demon270",
+			"src": "enemies/wizards/purple/Monk_Demon270.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/purple/teleport0",
+			"src": "enemies/wizards/purple/teleport0.jpg",
+			"width": 1001.5,
+			"height": 1007.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/purple/teleport1",
+			"src": "enemies/wizards/purple/teleport1.jpg",
+			"width": 668,
+			"height": 1006,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/wizards/purple/glow",
+			"src": "enemies/wizards/purple/glow.png",
+			"width": 181,
+			"height": 133.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/wizards/purple/smoke",
+			"src": "enemies/wizards/purple/smoke.jpg",
+			"width": 821.5,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/spiders/spider_brown/Spider0",
+			"src": "enemies/spiders/spider_brown/Spider0.png",
+			"width": 64,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/spiders/spider_brown/Spider90",
+			"src": "enemies/spiders/spider_brown/Spider90.png",
+			"width": 64,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/spiders/spider_brown/Spider180",
+			"src": "enemies/spiders/spider_brown/Spider180.png",
+			"width": 64,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/spiders/spider_brown/Spider270",
+			"src": "enemies/spiders/spider_brown/Spider270.png",
+			"width": 64,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/spiders/spider_black/Spider0",
+			"src": "enemies/spiders/spider_black/Spider0.png",
+			"width": 128,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/spiders/spider_black/Spider90",
+			"src": "enemies/spiders/spider_black/Spider90.png",
+			"width": 128,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/spiders/spider_black/Spider180",
+			"src": "enemies/spiders/spider_black/Spider180.png",
+			"width": 128,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/spiders/spider_black/Spider270",
+			"src": "enemies/spiders/spider_black/Spider270.png",
+			"width": 128,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/brown_rat/Rat0",
+			"src": "enemies/rats/brown_rat/Rat0.png",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/brown_rat/Rat45",
+			"src": "enemies/rats/brown_rat/Rat45.png",
+			"width": 64,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/brown_rat/Rat90",
+			"src": "enemies/rats/brown_rat/Rat90.png",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/brown_rat/Rat135",
+			"src": "enemies/rats/brown_rat/Rat135.png",
+			"width": 128,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/brown_rat/Rat180",
+			"src": "enemies/rats/brown_rat/Rat180.png",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/brown_rat/Rat225",
+			"src": "enemies/rats/brown_rat/Rat225.png",
+			"width": 64,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/brown_rat/Rat270",
+			"src": "enemies/rats/brown_rat/Rat270.png",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/brown_rat/Rat315",
+			"src": "enemies/rats/brown_rat/Rat315.png",
+			"width": 128,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/black_rat/Rat0",
+			"src": "enemies/rats/black_rat/Rat0.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/black_rat/Rat45",
+			"src": "enemies/rats/black_rat/Rat45.png",
+			"width": 64,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/black_rat/Rat90",
+			"src": "enemies/rats/black_rat/Rat90.png",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/black_rat/Rat135",
+			"src": "enemies/rats/black_rat/Rat135.png",
+			"width": 128,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/black_rat/Rat180",
+			"src": "enemies/rats/black_rat/Rat180.png",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/black_rat/Rat225",
+			"src": "enemies/rats/black_rat/Rat225.png",
+			"width": 64,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/black_rat/Rat270",
+			"src": "enemies/rats/black_rat/Rat270.png",
+			"width": 64,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rats/black_rat/Rat315",
+			"src": "enemies/rats/black_rat/Rat315.png",
+			"width": 128,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/green/Goblin0",
+			"src": "enemies/goblins/green/Goblin0.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/green/Goblin90",
+			"src": "enemies/goblins/green/Goblin90.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/green/Goblin180",
+			"src": "enemies/goblins/green/Goblin180.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/green/Goblin270",
+			"src": "enemies/goblins/green/Goblin270.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/hobgoblin/Goblin0",
+			"src": "enemies/goblins/hobgoblin/Goblin0.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/hobgoblin/Goblin90",
+			"src": "enemies/goblins/hobgoblin/Goblin90.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/hobgoblin/Goblin180",
+			"src": "enemies/goblins/hobgoblin/Goblin180.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/hobgoblin/Goblin270",
+			"src": "enemies/goblins/hobgoblin/Goblin270.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/duplicated/Goblin0",
+			"src": "enemies/goblins/duplicated/Goblin0.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/duplicated/Goblin90",
+			"src": "enemies/goblins/duplicated/Goblin90.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/duplicated/Goblin180",
+			"src": "enemies/goblins/duplicated/Goblin180.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/goblins/duplicated/Goblin270",
+			"src": "enemies/goblins/duplicated/Goblin270.png",
+			"width": 153.5,
+			"height": 153.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rage/spike",
+			"src": "enemies/rage/spike.png",
+			"width": 18,
+			"height": 86.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rage/spike_smoke",
+			"src": "enemies/rage/spike_smoke.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "enemies/rage/crack",
+			"src": "enemies/rage/crack.png",
+			"width": 43,
+			"height": 79,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rage/center_crack",
+			"src": "enemies/rage/center_crack.png",
+			"width": 158.5,
+			"height": 98,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rage/smoke",
+			"src": "enemies/rage/smoke.png",
+			"width": 340,
+			"height": 324,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "enemies/rage/stone",
+			"src": "enemies/rage/stone.png",
+			"width": 54.5,
+			"height": 38.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rage/stone_big",
+			"src": "enemies/rage/stone_big.png",
+			"width": 71.5,
+			"height": 36.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rage/light",
+			"src": "enemies/rage/light.jpg",
+			"width": 89.5,
+			"height": 16,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/rage/circle",
+			"src": "enemies/rage/circle.png",
+			"width": 481,
+			"height": 473.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "enemies/rage/circle_red",
+			"src": "enemies/rage/circle_red.png",
+			"width": 481,
+			"height": 473.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "enemies/dragon/Dragon0",
+			"src": "enemies/dragon/Dragon0.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus0",
+			"src": "enemies/cerberus/Cerberus0.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus02",
+			"src": "enemies/cerberus/Cerberus02.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus03",
+			"src": "enemies/cerberus/Cerberus03.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus90",
+			"src": "enemies/cerberus/Cerberus90.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus902",
+			"src": "enemies/cerberus/Cerberus902.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus903",
+			"src": "enemies/cerberus/Cerberus903.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus180",
+			"src": "enemies/cerberus/Cerberus180.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus1802",
+			"src": "enemies/cerberus/Cerberus1802.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus270",
+			"src": "enemies/cerberus/Cerberus270.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/Cerberus2702",
+			"src": "enemies/cerberus/Cerberus2702.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/fire_breath",
+			"src": "enemies/cerberus/fire_breath.png",
+			"width": 39,
+			"height": 43,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/cerberus/fire_breath_smoke",
+			"src": "enemies/cerberus/fire_breath_smoke.png",
+			"width": 16,
+			"height": 28,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/raven/Raven0",
+			"src": "enemies/raven/Raven0.png",
+			"width": 136.5,
+			"height": 139,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/raven/Raven90",
+			"src": "enemies/raven/Raven90.png",
+			"width": 136.5,
+			"height": 139,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/raven/Raven180",
+			"src": "enemies/raven/Raven180.png",
+			"width": 148.5,
+			"height": 151,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/raven/Raven270",
+			"src": "enemies/raven/Raven270.png",
+			"width": 205,
+			"height": 184,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/bat/Bat0",
+			"src": "enemies/bat/Bat0.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/bat/Bat90",
+			"src": "enemies/bat/Bat90.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/bat/Bat180",
+			"src": "enemies/bat/Bat180.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/bat/Bat270",
+			"src": "enemies/bat/Bat270.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "death/death_pile",
+			"src": "death/death_pile.png",
+			"width": 59.5,
+			"height": 33.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "death/death_pile_gold",
+			"src": "death/death_pile_gold.png",
+			"width": 64,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "critical_hit/critical_explosion",
+			"src": "critical_hit/critical_explosion.jpg",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "critical_hit/critical_particles",
+			"src": "critical_hit/critical_particles.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "critical_hit/flare",
+			"src": "critical_hit/flare.jpg",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "critical_hit/critical_numbers",
+			"src": "critical_hit/critical_numbers.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "critical_hit/light_sweep",
+			"src": "critical_hit/light_sweep.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "round_result/battleground/light_sweep",
+			"src":  "round_result/battleground/light_sweep.png",
+			"width":  128,
+			"height":  128,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "gradient",
+			"src": "gradient.png",
+			"width": 960,
+			"height": 112,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "hitflash",
+			"src": "hitflash.jpg",
+			"width": 315,
+			"height": 274.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "smoke",
+			"src": "smoke.png",
+			"width": 64,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "enemy_impact/default_impact_smoke",
+			"src": "enemy_impact/default_impact_smoke.jpg",
+			"width": 418,
+			"height": 341.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemy_impact/smoke_frames",
+			"src": "enemy_impact/smoke.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "enemy_impact/smoke",
+			"src": "enemy_impact/smoke.png",
+			"width": 45,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "enemy_impact/win_flare/win_flare_2",
+			"src": "enemy_impact/win_flare/win_flare_2.jpg",
+			"width": 264,
+			"height": 200.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemy_impact/win_flare/win_flare_3",
+			"src": "enemy_impact/win_flare/win_flare_3.jpg",
+			"width": 348,
+			"height": 268.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemy_impact/win_flare/win_flare_4_5",
+			"src": "enemy_impact/win_flare/win_flare_4_5.jpg",
+			"width": 349,
+			"height": 270,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "level_ui/wait",
+			"src": "level_ui/wait.png",
+			"width": 960,
+			"height": 540,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "shadow",
+			"src": "shadow.png",
+			"width": 117.5,
+			"height": 68,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "TargetCrosshair_RED",
+			"src": "TargetCrosshair_RED.png",
+			"width": 44.5,
+			"height": 44.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "weapons/Cryogun/ice_explode",
+			"src": "weapons/Cryogun/ice_explode.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "weapons/Cryogun/plasmabeam",
+			"src":  "weapons/Cryogun/plasmabeam.jpg",
+			"width":  354,
+			"height":  103,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "weapons/Railgun/electric_arcs",
+			"src": "weapons/Railgun/electric_arcs.jpg",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "weapons/Cryogun/white_circle",
+			"src":  "weapons/Cryogun/white_circle.jpg",
+			"width":  315,
+			"height":  162.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "weapons/Railgun/hitboom_glued",
+			"src": "weapons/Railgun/hitboom_glued.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "weapons/Railgun/electric_trendis",
+			"src": "weapons/Railgun/electric_trendis.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "weapons/FlameThrower/flame_base",
+			"src": "weapons/FlameThrower/flame_base.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "weapons/FlameThrower/flame_base_fire",
+			"src": "weapons/FlameThrower/flame_base_fire.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "weapons/FlameThrower/flame_cover_fire",
+			"src": "weapons/FlameThrower/flame_cover_fire.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "weapons/FlameThrower/hit_boom",
+			"src": "weapons/FlameThrower/hit_boom.jpg",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "weapons/ArtilleryStrike/fire_loop",
+			"src": "weapons/ArtilleryStrike/fire_loop.jpg",
+			"width": 2048,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "weapons/ArtilleryStrike/smoke_trail",
+			"src": "weapons/ArtilleryStrike/smoke_trail.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "weapons/GrenadeGun/Grenade_Blast_ADD_atlas",
+			"src": "weapons/GrenadeGun/Grenade_Blast_ADD_atlas.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "weapons/InstantKill/smoke_loop",
+			"src": "weapons/InstantKill/smoke_loop.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "weapons/InstantKill/plasma_spinner",
+			"src": "weapons/InstantKill/plasma_spinner.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "weapons/InstantKill/plasma_marker",
+			"src": "weapons/InstantKill/plasma_marker.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "weapons/InstantKill/groundsmoke",
+			"src": "weapons/InstantKill/groundsmoke.jpg",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name":  "weapons/InstantKill/glow",
+			"src":  "weapons/InstantKill/glow.jpg",
+			"width":  352,
+			"height":  256,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1
+		},
+		{
+			"name":  "weapons/InstantKill/plasmaenergymark",
+			"src":  "weapons/InstantKill/plasmaenergymark.jpg",
+			"width":  126.5,
+			"height":  121.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1
+		},
+		{
+			"name":  "weapons/InstantKill/plasmasmoke",
+			"src":  "weapons/InstantKill/plasmasmoke.png",
+			"width":  114,
+			"height":  113,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1
+		},
+		{
+			"name":  "weapons/InstantKill/plasmasmoke_indigo",
+			"src":  "weapons/InstantKill/plasmasmoke_indigo.png",
+			"width":  115,
+			"height":  115,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1
+		},
+
+		{
+			"name": "death/death_fx-0",
+			"src": "death/death_fx-0.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "death/death_fx-1",
+			"src": "death/death_fx-1.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/death_fx-2",
+			"src": "death/death_fx-2.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/death_fx-3",
+			"src": "death/death_fx-3.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/death_fx-4",
+			"src": "death/death_fx-4.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/pile_back",
+			"src": "death/big_enemy/pile_back.png",
+			"width": 140,
+			"height": 97,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/pile_front",
+			"src": "death/big_enemy/pile_front.png",
+			"width": 102,
+			"height": 71,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/swirl",
+			"src": "death/big_enemy/swirl.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/wind",
+			"src": "death/big_enemy/wind.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/flare",
+			"src": "death/big_enemy/flare.png",
+			"width": 46,
+			"height": 32,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/blast",
+			"src": "death/big_enemy/blast.png",
+			"width": 50,
+			"height": 50,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/smoke",
+			"src": "death/big_enemy/smoke.jpg",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/shadow",
+			"src": "death/big_enemy/shadow.png",
+			"width": 30,
+			"height": 20,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/cerberus_parts",
+			"src": "death/big_enemy/cerberus_parts.png",
+			"width": 128,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/knight_parts",
+			"src": "death/big_enemy/knight_parts.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/knight_swords_part",
+			"src": "death/big_enemy/knight_swords_part.png",
+			"width": 70,
+			"height": 50,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/swords_smoke",
+			"src": "death/big_enemy/swords_smoke.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "death/big_enemy/ogre_parts",
+			"src": "death/big_enemy/ogre_parts.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "boss_mode/damage/damage_assets",
+			"src": "boss_mode/damage/damage_assets.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "boss_mode/damage/damage_atlas",
+			"src": "boss_mode/damage/damage_atlas.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "boss_mode/boss_fire_flash",
+			"src":  "boss_mode/boss_fire_flash.jpg",
+			"width":  512,
+			"height":  256,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "dragonstones/stone_fragments_highlight",
+			"src": "dragonstones/stone_fragments_highlight.jpg",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dragonstones/stone_fragments",
+			"src": "dragonstones/stone_fragments.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dragonstones/ray_purple",
+			"src": "dragonstones/ray_purple.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1
+		},
+		{
+			"name": "dragonstones/particles_spread",
+			"src": "dragonstones/particles_spread.jpg",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dragonstones/dragonstone_assets_normal",
+			"src": "dragonstones/dragonstone_assets_normal.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "dragonstones/dragonstone_assets_blend",
+			"src": "dragonstones/dragonstone_assets_blend.jpg",
+			"width": 256,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "mini_slot/win/texture-0",
+			"src": "mini_slot/win/texture-0.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "mini_slot/win/texture-1",
+			"src": "mini_slot/win/texture-1.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "mini_slot/win/texture-2",
+			"src": "mini_slot/win/texture-2.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "mini_slot/win/texture-3",
+			"src": "mini_slot/win/texture-3.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/specter/spirit/Specter0",
+			"src": "enemies/specter/spirit/Specter0.png",
+			"width": 64,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/spirit/Specter90",
+			"src": "enemies/specter/spirit/Specter90.png",
+			"width": 64,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/spirit/appearing_smoke",
+			"src": "enemies/specter/spirit/appearing_smoke.jpg",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/spirit/bottom_smoke",
+			"src": "enemies/specter/spirit/bottom_smoke.jpg",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/spirit/smoke",
+			"src": "enemies/specter/spirit/smoke.jpg",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/specter/spirit/explode_1",
+			"src": "enemies/specter/spirit/explode_1.jpg",
+			"width": 1016.5,
+			"height": 1021.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/spirit/explode_2",
+			"src": "enemies/specter/spirit/explode_2.jpg",
+			"width": 1015,
+			"height": 1009.5,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/fire/Specter0",
+			"src": "enemies/specter/fire/Specter0.png",
+			"width": 64,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/fire/Specter90",
+			"src": "enemies/specter/fire/Specter90.png",
+			"width": 64,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/fire/explode_add",
+			"src": "enemies/specter/fire/explode_add.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/fire/smoke",
+			"src": "enemies/specter/fire/smoke.jpg",
+			"width": 512,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/fire/circle",
+			"src": "enemies/specter/fire/circle.jpg",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/specter/fire/aura",
+			"src": "enemies/specter/fire/aura.jpg",
+			"width": 512,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/specter/fire/bottom_fire",
+			"src": "enemies/specter/fire/bottom_fire.jpg",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"vfx": "medium"
+		},
+		{
+			"name": "enemies/specter/explode_1",
+			"src": "enemies/specter/explode_1.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/explode_2",
+			"src": "enemies/specter/explode_2.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/fire/fire_ring",
+			"src": "enemies/specter/fire/fire_ring.jpg",
+			"width": 318,
+			"height": 149,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name":  "round_result/battleground/fire_win/fire_win_animation",
+			"src":  "round_result/battleground/fire_win/fire_win_animation.png",
+			"width":  1024,
+			"height":  1024,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "enemies/specter/lightning/Specter0",
+			"src": "enemies/specter/lightning/Specter0.png",
+			"width": 64,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/Specter90",
+			"src": "enemies/specter/lightning/Specter90.png",
+			"width": 128,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/lightning_splash",
+			"src": "enemies/specter/lightning/lightning_splash.jpg",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/aura",
+			"src": "enemies/specter/lightning/aura.jpg",
+			"width": 512,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/ground_glow",
+			"src": "enemies/specter/lightning/ground_glow.jpg",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/intro_lightning",
+			"src": "enemies/specter/lightning/intro_lightning.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/single_lightning",
+			"src": "enemies/specter/lightning/single_lightning.jpg",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/area_lightning",
+			"src": "enemies/specter/lightning/area_lightning.jpg",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/big_lightning",
+			"src": "enemies/specter/lightning/big_lightning.jpg",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/lightning/final_lightning_explosion",
+			"src": "enemies/specter/lightning/final_lightning_explosion.jpg",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/png_assets-0",
+			"src": "enemies/specter/png_assets-0.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "enemies/specter/png_assets-1",
+			"src": "enemies/specter/png_assets-1.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "battleground/powerup/powerup_atlas",
+			"src": "battleground/powerup/powerup_atlas.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "big_win/big_win_atlas",
+			"src": "big_win/big_win_atlas.png",
+			"width": 4096,
+			"height": 4096,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "blend/blend_atlas",
+			"src": "blend/blend_atlas.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "boss_mode/bm_boss_mode/boss_mode_atlas",
+			"src": "boss_mode/bm_boss_mode/boss_mode_atlas.png",
+			"width": 2048,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "boss_mode/hourglass/hourglass_atlas",
+			"src": "boss_mode/hourglass/hourglass_atlas.png",
+			"width": 2048,
+			"height": 2048,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "cursor/cursor_atlas",
+			"src": "cursor/cursor_atlas.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "enemy_impact/circle_blast/circle_blast_atlas",
+			"src": "enemy_impact/circle_blast/circle_blast_atlas.png",
+			"width": 2048,
+			"height": 2048,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "enemy_impact/default_weapon_4/default_weapon_4_atlas",
+			"src": "enemy_impact/default_weapon_4/default_weapon_4_atlas.png",
+			"width": 4096,
+			"height": 2048,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "enemy_impact/explosion/explosion_atlas",
+			"src": "enemy_impact/explosion/explosion_atlas.png",
+			"width": 2048,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "final_count/final_count_atlas",
+			"src": "final_count/final_count_atlas.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "gameplay_dialogs/battleground/count_down/count_down_atlas",
+			"src": "gameplay_dialogs/battleground/count_down/count_down_atlas.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "mini_slot/mini_slot_atlas",
+			"src": "mini_slot/mini_slot_atlas.png",
+			"width": 4096,
+			"height": 2048,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true,
+			"quality": 1
+		},
+		{
+			"name":  "mini_slot/back_shadow",
+			"src":  "mini_slot/back_shadow.png",
+			"width":  436.5,
+			"height":  164,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "mini_slot/back",
+			"src":  "mini_slot/back.png",
+			"width":  420.5,
+			"height":  266,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "mini_slot/frame_glow",
+			"src":  "mini_slot/frame_glow.png",
+			"width":  698,
+			"height":  462,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "mini_slot/front_shadow",
+			"src":  "mini_slot/front_shadow.png",
+			"width":  421,
+			"height":  281,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "mini_slot/front_shadow_glow",
+			"src":  "mini_slot/front_shadow_glow.png",
+			"width":  421,
+			"height":  281,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "mini_slot/icon_glow",
+			"src":  "mini_slot/icon_glow.png",
+			"width":  499,
+			"height":  374,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "player_spot/ps_player_spot/player_spot_atlas",
+			"src": "player_spot/ps_player_spot/player_spot_atlas.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "player_spot/bet_level/bet_level_atlas",
+			"src": "player_spot/bet_level/bet_level_atlas.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "preloader/loading_back",
+			"src": "preloader/loading_back.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1
+		},
+		{
+			"name": "round_result/rr_round_result/round_result_atlas",
+			"src": "round_result/rr_round_result/round_result_atlas.png",
+			"width": 1024,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "round_result/battleground/battleground_atlas",
+			"src": "round_result/battleground/battleground_atlas.png",
+			"width": 4096,
+			"height": 2048,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name":  "gameplay_dialogs/battleground/count_down/active_btn",
+			"src":  "gameplay_dialogs/battleground/count_down/active_btn.png",
+			"width":  182,
+			"height":  54,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "gameplay_dialogs/battleground/count_down/back_to_lobby_button",
+			"src":  "gameplay_dialogs/battleground/count_down/back_to_lobby_button.png",
+			"width":  147,
+			"height":  40,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "gameplay_dialogs/battleground/count_down/count_down_frame_dialog",
+			"src":  "gameplay_dialogs/battleground/count_down/count_down_frame_dialog.png",
+			"width":  275,
+			"height":  179,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "gameplay_dialogs/battleground/count_down/count_down_frame",
+			"src":  "gameplay_dialogs/battleground/count_down/count_down_frame.png",
+			"width":  491,
+			"height":  212,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/crown",
+			"src":  "battleground/crown.png",
+			"width":  19,
+			"height":  19,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/powerup/background",
+			"src":  "battleground/powerup/background.png",
+			"width":  94,
+			"height":  95,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/powerup/badge_glow",
+			"src":  "battleground/powerup/badge_glow.jpg",
+			"width":  47,
+			"height":  47.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"vfx":  "medium"
+		},
+		{
+			"name":  "battleground/powerup/stripe_normal",
+			"src":  "battleground/powerup/stripe_normal.png",
+			"width":  28,
+			"height":  16,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/powerup/stripe_add",
+			"src":  "battleground/powerup/stripe_add.png",
+			"width":  28,
+			"height":  16,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/powerup/grey_smoke",
+			"src":  "battleground/powerup/grey_smoke.jpg",
+			"width":  114.5,
+			"height":  114.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/scoreboard/sweep",
+			"src":  "battleground/scoreboard/sweep.png",
+			"width":  50,
+			"height":  49,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/scoreboard/win_coin",
+			"src":  "battleground/scoreboard/win_coin.png",
+			"width":  32,
+			"height":  16,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/scoreboard/prize_background",
+			"src":  "battleground/scoreboard/prize_background.png",
+			"width":  69,
+			"height":  29,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "boss_mode/hourglass/sand_spread",
+			"src":  "boss_mode/hourglass/sand_spread.png",
+			"width":  557,
+			"height":  212,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "battleground/scoreboard/timer_background",
+			"src":  "battleground/scoreboard/timer_background.png",
+			"width":  49,
+			"height":  29,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		
+		{
+			"name": "round_result/chest/chest_atlas",
+			"src": "round_result/chest/chest_atlas.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "round_result/effect/effect_atlas",
+			"src": "round_result/effect/effect_atlas.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "round_result/players_list/gold/gold_atlas",
+			"src": "round_result/players_list/gold/gold_atlas.png",
+			"width": 256,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "tips/tips_atlas",
+			"src": "tips/tips_atlas.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "tutorial/tutorial_atlas",
+			"src": "tutorial/tutorial_atlas.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/wp_weapons/weapons_atlas",
+			"src": "weapons/wp_weapons/weapons_atlas.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/ArtilleryStrike/weapons_artillery_gun_atlas",
+			"src": "weapons/ArtilleryStrike/weapons_artillery_gun_atlas.png",
+			"width": 1024,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true,
+			"quality": 1
+		},
+		{
+			"name": "weapons/Cryogun/cryo_gun_atlas",
+			"src": "weapons/Cryogun/cryo_gun_atlas.png",
+			"width": 1024,
+			"height": 2048,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/emblems/emblems_atlas",
+			"src": "weapons/emblems/emblems_atlas.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/FlameThrower/flame_thrower_atlas",
+			"src": "weapons/FlameThrower/flame_thrower_atlas.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true,
+			"quality": 2
+		},
+		{
+			"name": "weapons/GrenadeGun/grenade_gun_atlas",
+			"src": "weapons/GrenadeGun/grenade_gun_atlas.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/InstantKill/instant_kill_atlas",
+			"src": "weapons/InstantKill/instant_kill_atlas.png",
+			"width": 2048,
+			"height": 2048,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true,
+			"quality": 2
+		},
+		{
+			"name": "weapons/Railgun/railgun_atlas",
+			"src": "weapons/Railgun/railgun_atlas.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"quality": 2,
+			"scriptGenerated": true
+		},
+		{
+			"name":  "weapons/Railgun/railgun_glow",
+			"src":  "weapons/Railgun/railgun_glow.jpg",
+			"width":  67,
+			"height":  99,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"vfx":  "medium"
+		},
+		{
+			"name":  "weapons/sidebar/burning_ring",
+			"src":  "weapons/sidebar/burning_ring.jpg",
+			"width":  196,
+			"height":  171,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/sidebar/rim_glow",
+			"src":  "weapons/sidebar/rim_glow.jpg",
+			"width":  46,
+			"height":  51,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/sidebar/flare_ring",
+			"src":  "weapons/sidebar/flare_ring.jpg",
+			"width":  242,
+			"height":  144,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/ArtilleryStrike/artillery_grenade_tossed",
+			"src":  "weapons/ArtilleryStrike/artillery_grenade_tossed.png",
+			"width":  30.5,
+			"height":  58,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/ArtilleryStrike/missile",
+			"src":  "weapons/ArtilleryStrike/missile.png",
+			"width":  10,
+			"height":  35,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/ArtilleryStrike/SmokeGrenadeTrailMask",
+			"src":  "weapons/ArtilleryStrike/SmokeGrenadeTrailMask.jpg",
+			"width":  58,
+			"height":  137,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/ArtilleryStrike/SmokeGrenadeTrail_unmult_blurred",
+			"src":  "weapons/ArtilleryStrike/SmokeGrenadeTrail_unmult_blurred.png",
+			"width":  91,
+			"height":  244.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/ArtilleryStrike/SmokeGrenadeTrail_unmult_green_blurred",
+			"src":  "weapons/ArtilleryStrike/SmokeGrenadeTrail_unmult_green_blurred.png",
+			"width":  91,
+			"height":  244.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/Cryogun/center_plasmasmoke",
+			"src":  "weapons/Cryogun/center_plasmasmoke.jpg",
+			"width":  186.5,
+			"height":  90,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"vfx":  "medium"
+		},
+		{
+			"name":  "weapons/Cryogun/plasmasmoke",
+			"src":  "weapons/Cryogun/plasmasmoke.png",
+			"width":  114,
+			"height":  113,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1,
+			"vfx":  "medium"
+		},
+		{
+			"name":  "weapons/Cryogun/plasmasmoke_indigo",
+			"src":  "weapons/Cryogun/plasmasmoke_indigo.png",
+			"width":  115,
+			"height":  115,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1,
+			"vfx":  "medium"
+		},
+		{
+			"name": "weapons/sidebar/sb_sidebar/sidebar_atlas",
+			"src": "weapons/sidebar/sb_sidebar/sidebar_atlas.png",
+			"width": 1024,
+			"height": 1024,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name":  "round_result/battleground/button_yellow",
+			"src":  "round_result/battleground/button_yellow.png",
+			"width":  147,
+			"height":  45,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/button_yellow_glow",
+			"src":  "round_result/battleground/button_yellow_glow.png",
+			"width":  147,
+			"height":  45,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/button_gray",
+			"src":  "round_result/battleground/button_gray.png",
+			"width":  147,
+			"height":  45,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/button_gray_glow",
+			"src":  "round_result/battleground/button_gray_glow.png",
+			"width":  147,
+			"height":  45,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/win_frame",
+			"src":  "round_result/battleground/win_frame.png",
+			"width":  455,
+			"height":  156.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/win_frame_glow",
+			"src":  "round_result/battleground/win_frame_glow.png",
+			"width":  455,
+			"height":  156.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/bottom_frame",
+			"src":  "round_result/battleground/bottom_frame.png",
+			"width":  470,
+			"height":  323.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/top_frame",
+			"src":  "round_result/battleground/top_frame.png",
+			"width":  470,
+			"height":  156.5,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/top_frame_glow",
+			"src":  "round_result/battleground/top_frame_glow.png",
+			"width":  455,
+			"height":  157,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/blend_star_top_frame",
+			"src":  "round_result/battleground/blend_star_top_frame.jpg",
+			"width":  480,
+			"height":  270,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/blend_top_frame",
+			"src":  "round_result/battleground/blend_top_frame.jpg",
+			"width":  480,
+			"height":  270,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "round_result/battleground/fire_explosion/fire_explosion_texture",
+			"src":  "round_result/battleground/fire_explosion/fire_explosion_texture.png",
+			"width":  1024,
+			"height":  1024,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name": "player_spot/playerspotbattleground/playerspotbattleground_atlas",
+			"src": "player_spot/playerspotbattleground/playerspotbattleground_atlas.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "player_spot/playerspoticons/playerspoticons_atlas",
+			"src": "player_spot/playerspoticons/playerspoticons_atlas.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "player_spot/playerspotfx/playerspotfx_atlas",
+			"src": "player_spot/playerspotfx/playerspotfx_atlas.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/sidebar/sb_artillerystrike/sb_artillerystrike_atlas",
+			"src": "weapons/sidebar/sb_artillerystrike/sb_artillerystrike_atlas.png",
+			"width": 512,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/sidebar/sb_cryogun/sb_cryogun_atlas",
+			"src": "weapons/sidebar/sb_cryogun/sb_cryogun_atlas.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/sidebar/sb_flamethrower/sb_flamethrower_atlas",
+			"src": "weapons/sidebar/sb_flamethrower/sb_flamethrower_atlas.png",
+			"width": 256,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/sidebar/sb_minelauncher/sb_minelauncher_atlas",
+			"src": "weapons/sidebar/sb_minelauncher/sb_minelauncher_atlas.png",
+			"width": 256,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/sidebar/sb_plasma/sb_plasma_atlas",
+			"src": "weapons/sidebar/sb_plasma/sb_plasma_atlas.png",
+			"width": 512,
+			"height": 512,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/sidebar/sb_railgun/sb_railgun_atlas",
+			"src": "weapons/sidebar/sb_railgun/sb_railgun_atlas.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/MineLauncher/minelauncher_debris/minelauncher_debris_atlas",
+			"src": "weapons/MineLauncher/minelauncher_debris/minelauncher_debris_atlas.png",
+			"width": 128,
+			"height": 128,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/grenadegun_debris/grenadegun_debris_atlas",
+			"src": "weapons/grenadegun_debris/grenadegun_debris_atlas.png",
+			"width": 64,
+			"height": 64,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name": "weapons/DefaultGun/weapons_default_gun_atlas",
+			"src": "weapons/DefaultGun/weapons_default_gun_atlas.png",
+			"width": 512,
+			"height": 256,
+			"frames": 1,
+			"layers": 1,
+			"totalFrames": 1,
+			"scriptGenerated": true
+		},
+		{
+			"name":  "weapons/InstantKill/plasma_arcs",
+			"src":  "weapons/InstantKill/plasma_arcs.jpg",
+			"width":  88,
+			"height":  40,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1
+		},
+		{
+			"name":  "weapons/InstantKill/plasmabeam",
+			"src":  "weapons/InstantKill/plasmabeam.jpg",
+			"width":  288,
+			"height":  41,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1
+		},
+		{
+			"name":  "weapons/InstantKill/plasmabeam_white",
+			"src":  "weapons/InstantKill/plasmabeam_white.jpg",
+			"width":  277,
+			"height":  13,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"quality":  1
+		},
+
+		{
+			"name":  "weapons/DefaultGun/flash",
+			"src":  "weapons/DefaultGun/flash.png",
+			"width":  64,
+			"height":  64,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1
+		},
+		{
+			"name":  "weapons/DefaultGun/glow",
+			"src":  "weapons/DefaultGun/glow.png",
+			"width":  131.5,
+			"height":  134,
+			"frames":  1,
+			"layers":  1,
+			"totalFrames":  1,
+			"vfx":  "medium"
+		}
+	],
+	"sounds": [
+		{
+			"name": "mq_dragonstone_mini_notification_banner",
+			"src": [
+				"mq_dragonstone_mini_notification_banner_high.mp3",
+				"mq_dragonstone_mini_notification_banner_high.mp4",
+				"mq_dragonstone_mini_notification_banner_high.ogg",
+				"mq_dragonstone_mini_notification_banner_low.mp3",
+				"mq_dragonstone_mini_notification_banner_low.mp4",
+				"mq_dragonstone_mini_notification_banner_low.ogg"
+			],
+			"descr": {
+				"length": 1685,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_enemies_wizard_teleport_end",
+			"src": [
+				"enemies/teleport_close_high.mp3",
+				"enemies/teleport_close_high.mp4",
+				"enemies/teleport_close_high.ogg",
+				"enemies/teleport_close_low.mp3",
+				"enemies/teleport_close_low.mp4",
+				"enemies/teleport_close_low.ogg"
+			],
+			"descr": {
+				"length": 888,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_enemies_cerberus_spawn",
+			"src": [
+				"enemies/mq_enemies_cerberus_spawn_high.mp3",
+				"enemies/mq_enemies_cerberus_spawn_high.mp4",
+				"enemies/mq_enemies_cerberus_spawn_high.ogg",
+				"enemies/mq_enemies_cerberus_spawn_low.mp3",
+				"enemies/mq_enemies_cerberus_spawn_low.mp4",
+				"enemies/mq_enemies_cerberus_spawn_low.ogg"
+			],
+			"descr": {
+				"length": 5180,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_enemies_ogre_spawn",
+			"src": [
+				"enemies/mq_enemies_ogre_spawn_high.mp3",
+				"enemies/mq_enemies_ogre_spawn_high.mp4",
+				"enemies/mq_enemies_ogre_spawn_high.ogg",
+				"enemies/mq_enemies_ogre_spawn_low.mp3",
+				"enemies/mq_enemies_ogre_spawn_low.mp4",
+				"enemies/mq_enemies_ogre_spawn_low.ogg"
+			],
+			"descr": {
+				"length": 1946,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_enemies_orc_spawn",
+			"src": [
+				"enemies/mq_enemies_orc_spawn_high.mp3",
+				"enemies/mq_enemies_orc_spawn_high.mp4",
+				"enemies/mq_enemies_orc_spawn_high.ogg",
+				"enemies/mq_enemies_orc_spawn_low.mp3",
+				"enemies/mq_enemies_orc_spawn_low.mp4",
+				"enemies/mq_enemies_orc_spawn_low.ogg"
+			],
+			"descr": {
+				"length": 1863,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_enemies_ravens_spawn_0",
+			"src": [
+				"enemies/mq_enemies_ravens_spawn_0_high.mp3",
+				"enemies/mq_enemies_ravens_spawn_0_high.mp4",
+				"enemies/mq_enemies_ravens_spawn_0_high.ogg",
+				"enemies/mq_enemies_ravens_spawn_0_low.mp3",
+				"enemies/mq_enemies_ravens_spawn_0_low.mp4",
+				"enemies/mq_enemies_ravens_spawn_0_low.ogg"
+			],
+			"descr": {
+				"length": 263,
+				"type": "fx",
+				"volume": 0.8,
+				"offset": 90
+			}
+		},
+		{
+			"name": "mq_enemies_ravens_spawn_1",
+			"src": [
+				"enemies/mq_enemies_ravens_spawn_1_high.mp3",
+				"enemies/mq_enemies_ravens_spawn_1_high.mp4",
+				"enemies/mq_enemies_ravens_spawn_1_high.ogg",
+				"enemies/mq_enemies_ravens_spawn_1_low.mp3",
+				"enemies/mq_enemies_ravens_spawn_1_low.mp4",
+				"enemies/mq_enemies_ravens_spawn_1_low.ogg"
+			],
+			"descr": {
+				"length": 364,
+				"type": "fx",
+				"volume": 0.8,
+				"offset": 87
+			}
+		},
+		{
+			"name": "mq_enemies_ravens_spawn_2",
+			"src": [
+				"enemies/mq_enemies_ravens_spawn_2_high.mp3",
+				"enemies/mq_enemies_ravens_spawn_2_high.mp4",
+				"enemies/mq_enemies_ravens_spawn_2_high.ogg",
+				"enemies/mq_enemies_ravens_spawn_2_low.mp3",
+				"enemies/mq_enemies_ravens_spawn_2_low.mp4",
+				"enemies/mq_enemies_ravens_spawn_2_low.ogg"
+			],
+			"descr": {
+				"length": 280,
+				"type": "fx",
+				"volume": 0.8,
+				"offset": 83
+			}
+		},
+		{
+			"name": "mq_dragonstone_rage",
+			"src": [
+				"rage/mq_dragonstone_rage_high.mp3",
+				"rage/mq_dragonstone_rage_high.mp4",
+				"rage/mq_dragonstone_rage_high.ogg",
+				"rage/mq_dragonstone_rage_low.mp3",
+				"rage/mq_dragonstone_rage_low.mp4",
+				"rage/mq_dragonstone_rage_low.ogg"
+			],
+			"descr": {
+				"length": 3788,
+				"type": "fx",
+				"volume": 1,
+				"offset": 63
+			}
+		},
+		{
+			"name": "mq_dragonstone_fire_specter_death",
+			"src": [
+				"enemies/specters/mq_dragonstone_fire_specter_death_high.mp3",
+				"enemies/specters/mq_dragonstone_fire_specter_death_high.mp4",
+				"enemies/specters/mq_dragonstone_fire_specter_death_high.ogg",
+				"enemies/specters/mq_dragonstone_fire_specter_death_low.mp3",
+				"enemies/specters/mq_dragonstone_fire_specter_death_low.mp4",
+				"enemies/specters/mq_dragonstone_fire_specter_death_low.ogg"
+			],
+			"descr": {
+				"length": 2315,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_fire_specter_spawn",
+			"src": [
+				"enemies/specters/mq_dragonstone_fire_specter_spawn_high.mp3",
+				"enemies/specters/mq_dragonstone_fire_specter_spawn_high.mp4",
+				"enemies/specters/mq_dragonstone_fire_specter_spawn_high.ogg",
+				"enemies/specters/mq_dragonstone_fire_specter_spawn_low.mp3",
+				"enemies/specters/mq_dragonstone_fire_specter_spawn_low.mp4",
+				"enemies/specters/mq_dragonstone_fire_specter_spawn_low.ogg"
+			],
+			"descr": {
+				"length": 2561,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_lightning_specter_death",
+			"src": [
+				"enemies/specters/mq_dragonstone_lightning_specter_death_high.mp3",
+				"enemies/specters/mq_dragonstone_lightning_specter_death_high.mp4",
+				"enemies/specters/mq_dragonstone_lightning_specter_death_high.ogg",
+				"enemies/specters/mq_dragonstone_lightning_specter_death_low.mp3",
+				"enemies/specters/mq_dragonstone_lightning_specter_death_low.mp4",
+				"enemies/specters/mq_dragonstone_lightning_specter_death_low.ogg"
+			],
+			"descr": {
+				"length": 2000,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_lightning_specter_spawn",
+			"src": [
+				"enemies/specters/mq_dragonstone_lightning_specter_spawn_high.mp3",
+				"enemies/specters/mq_dragonstone_lightning_specter_spawn_high.mp4",
+				"enemies/specters/mq_dragonstone_lightning_specter_spawn_high.ogg",
+				"enemies/specters/mq_dragonstone_lightning_specter_spawn_low.mp3",
+				"enemies/specters/mq_dragonstone_lightning_specter_spawn_low.mp4",
+				"enemies/specters/mq_dragonstone_lightning_specter_spawn_low.ogg"
+			],
+			"descr": {
+				"length": 2390,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_spirit_specter_death",
+			"src": [
+				"enemies/specters/mq_dragonstone_spirit_specter_death_high.mp3",
+				"enemies/specters/mq_dragonstone_spirit_specter_death_high.mp4",
+				"enemies/specters/mq_dragonstone_spirit_specter_death_high.ogg",
+				"enemies/specters/mq_dragonstone_spirit_specter_death_low.mp3",
+				"enemies/specters/mq_dragonstone_spirit_specter_death_low.mp4",
+				"enemies/specters/mq_dragonstone_spirit_specter_death_low.ogg"
+			],
+			"descr": {
+				"length": 2000,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_spirit_specter_spawn",
+			"src": [
+				"enemies/specters/mq_dragonstone_spirit_specter_spawn_high.mp3",
+				"enemies/specters/mq_dragonstone_spirit_specter_spawn_high.mp4",
+				"enemies/specters/mq_dragonstone_spirit_specter_spawn_high.ogg",
+				"enemies/specters/mq_dragonstone_spirit_specter_spawn_low.mp3",
+				"enemies/specters/mq_dragonstone_spirit_specter_spawn_low.mp4",
+				"enemies/specters/mq_dragonstone_spirit_specter_spawn_low.ogg"
+			],
+			"descr": {
+				"length": 3000,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_enemies_gargoyle_fly",
+			"src": [
+				"enemies/mq_enemies_gargoyle_fly_high.mp3",
+				"enemies/mq_enemies_gargoyle_fly_high.mp4",
+				"enemies/mq_enemies_gargoyle_fly_high.ogg",
+				"enemies/mq_enemies_gargoyle_fly_low.mp3",
+				"enemies/mq_enemies_gargoyle_fly_low.mp4",
+				"enemies/mq_enemies_gargoyle_fly_low.ogg"
+			],
+			"descr": {
+				"length": 2847,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_enemies_wizard_teleport_start",
+			"src": [
+				"enemies/teleport_open_high.mp3",
+				"enemies/teleport_open_high.mp4",
+				"enemies/teleport_open_high.ogg",
+				"enemies/teleport_open_low.mp3",
+				"enemies/teleport_open_low.mp4",
+				"enemies/teleport_open_low.ogg"
+			],
+			"descr": {
+				"length": 888,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_orc_music",
+			"src": [
+				"bg_music/mq_dragonstone_orc_music_high.mp3",
+				"bg_music/mq_dragonstone_orc_music_high.mp4",
+				"bg_music/mq_dragonstone_orc_music_high.ogg",
+				"bg_music/mq_dragonstone_orc_music_low.mp3",
+				"bg_music/mq_dragonstone_orc_music_low.mp4",
+				"bg_music/mq_dragonstone_orc_music_low.ogg"
+			],
+			"descr": {
+				"length": 9590,
+				"type": "bg",
+				"volume": 1,
+				"offset": 52
+			}
+		},
+		{
+			"name": "mq_mus_game_bg_main_1",
+			"src": [
+				"bg_music/mq_mus_game_bg_main_1_high.mp3",
+				"bg_music/mq_mus_game_bg_main_1_high.mp4",
+				"bg_music/mq_mus_game_bg_main_1_high.ogg",
+				"bg_music/mq_mus_game_bg_main_1_low.mp3",
+				"bg_music/mq_mus_game_bg_main_1_low.mp4",
+				"bg_music/mq_mus_game_bg_main_1_low.ogg"
+			],
+			"descr": {
+				"length": 40050,
+				"type": "bg",
+				"volume": 1,
+				"offset": 56
+			}
+		},
+		{
+			"name": "mq_mus_game_bg_main_2",
+			"src": [
+				"bg_music/mq_mus_game_bg_main_2_high.mp3",
+				"bg_music/mq_mus_game_bg_main_2_high.mp4",
+				"bg_music/mq_mus_game_bg_main_2_high.ogg",
+				"bg_music/mq_mus_game_bg_main_2_low.mp3",
+				"bg_music/mq_mus_game_bg_main_2_low.mp4",
+				"bg_music/mq_mus_game_bg_main_2_low.ogg"
+			],
+			"descr": {
+				"length": 32052,
+				"type": "bg",
+				"volume": 0.5,
+				"offset": 56
+			}
+		},
+		{
+			"name": "mq_mus_game_bg_main_3",
+			"src": [
+				"bg_music/mq_mus_game_bg_main_3_high.mp3",
+				"bg_music/mq_mus_game_bg_main_3_high.mp4",
+				"bg_music/mq_mus_game_bg_main_3_high.ogg",
+				"bg_music/mq_mus_game_bg_main_3_low.mp3",
+				"bg_music/mq_mus_game_bg_main_3_low.mp4",
+				"bg_music/mq_mus_game_bg_main_3_low.ogg"
+			],
+			"descr": {
+				"length": 34959,
+				"type": "bg",
+				"volume": 1,
+				"offset": 72
+			}
+		},
+		{
+			"name": "mq_mus_game_bg_prev_boss",
+			"src": [
+				"bg_music/mq_mus_game_bg_prev_boss_high.mp3",
+				"bg_music/mq_mus_game_bg_prev_boss_high.mp4",
+				"bg_music/mq_mus_game_bg_prev_boss_high.ogg",
+				"bg_music/mq_mus_game_bg_prev_boss_low.mp3",
+				"bg_music/mq_mus_game_bg_prev_boss_low.mp4",
+				"bg_music/mq_mus_game_bg_prev_boss_low.ogg"
+			],
+			"descr": {
+				"length": 25602,
+				"type": "bg",
+				"volume": 0.5,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_mus_game_bg_boss",
+			"src": [
+				"bg_music/mq_mus_game_bg_boss_high.mp3",
+				"bg_music/mq_mus_game_bg_boss_high.mp4",
+				"bg_music/mq_mus_game_bg_boss_high.ogg",
+				"bg_music/mq_mus_game_bg_boss_low.mp3",
+				"bg_music/mq_mus_game_bg_boss_low.mp4",
+				"bg_music/mq_mus_game_bg_boss_low.ogg"
+			],
+			"descr": {
+				"length": 32052,
+				"type": "bg",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_mus_game_bg_summary_screen",
+			"src": [
+				"bg_music/mq_mus_game_bg_summary_screen_high.mp3",
+				"bg_music/mq_mus_game_bg_summary_screen_high.mp4",
+				"bg_music/mq_mus_game_bg_summary_screen_high.ogg",
+				"bg_music/mq_mus_game_bg_summary_screen_low.mp3",
+				"bg_music/mq_mus_game_bg_summary_screen_low.mp4",
+				"bg_music/mq_mus_game_bg_summary_screen_low.ogg"
+			],
+			"descr": {
+				"length": 17452,
+				"type": "bg",
+				"volume": 0.7,
+				"offset": 53
+			}
+		},
+		{
+			"name": "mq_booster_crate_landing",
+			"src": [
+				"wins/booster/mq_booster_crate_landing_high.mp3",
+				"wins/booster/mq_booster_crate_landing_high.mp4",
+				"wins/booster/mq_booster_crate_landing_high.ogg",
+				"wins/booster/mq_booster_crate_landing_low.mp3",
+				"wins/booster/mq_booster_crate_landing_low.mp4",
+				"wins/booster/mq_booster_crate_landing_low.ogg"
+			],
+			"descr": {
+				"length": 832,
+				"type": "fx",
+				"volume": 0.4,
+				"offset": 48
+			}
+		},
+		{
+			"name": "mq_booster_end",
+			"src": [
+				"wins/booster/mq_booster_end_high.mp3",
+				"wins/booster/mq_booster_end_high.mp4",
+				"wins/booster/mq_booster_end_high.ogg",
+				"wins/booster/mq_booster_end_low.mp3",
+				"wins/booster/mq_booster_end_low.mp4",
+				"wins/booster/mq_booster_end_low.ogg"
+			],
+			"descr": {
+				"length": 895,
+				"type": "fx",
+				"volume": 1,
+				"offset": 51
+			}
+		},
+		{
+			"name": "summary_win",
+			"src": [
+				"wins/summary_win_high.mp3",
+				"wins/summary_win_high.mp4",
+				"wins/summary_win_high.ogg",
+				"wins/summary_win_low.mp3",
+				"wins/summary_win_low.mp4",
+				"wins/summary_win_low.ogg"
+			],
+			"descr": {
+				"length": 4342,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "weapon_drop",
+			"src": [
+				"wins/weapon_drop.mp3"
+			],
+			"descr": {
+				"length": 1954,
+				"type": "fx",
+				"volume": 1,
+				"offset": 118
+			}
+		},
+		{
+			"name": "weapon_drop_dublacate_of_same_asset_for_fading_backround_music",
+			"src": [
+				"wins/weapon_drop.mp3"
+			],
+			"descr": {
+				"length": 1954,
+				"type": "fx",
+				"volume": 1,
+				"offset": 118
+			}
+		},
+		{
+			"name": "boss_coins_explode",
+			"src": [
+				"wins/coin_splash_high.mp3",
+				"wins/coin_splash_high.mp4",
+				"wins/coin_splash_high.ogg",
+				"wins/coin_splash_low.mp3",
+				"wins/coin_splash_low.mp4",
+				"wins/coin_splash_low.ogg"
+			],
+			"descr": {
+				"length": 6270,
+				"type": "fx",
+				"volume": 1,
+				"offset": 70
+			}
+		},
+		{
+			"name": "wins_large",
+			"src": [
+				"wins/win_large_high.mp3",
+				"wins/win_large_high.mp4",
+				"wins/win_large_high.ogg",
+				"wins/win_large_low.mp3",
+				"wins/win_large_low.mp4",
+				"wins/win_large_low.ogg"
+			],
+			"descr": {
+				"length": 3218,
+				"type": "fx",
+				"offset": 0
+			}
+		},
+		{
+			"name": "wins_medium",
+			"src": [
+				"wins/win_medium_high.mp3",
+				"wins/win_medium_high.mp4",
+				"wins/win_medium_high.ogg",
+				"wins/win_medium_low.mp3",
+				"wins/win_medium_low.mp4",
+				"wins/win_medium_low.ogg"
+			],
+			"descr": {
+				"length": 1472,
+				"type": "fx",
+				"offset": 0
+			}
+		},
+		{
+			"name": "wins_small",
+			"src": [
+				"wins/win_small_high.mp3",
+				"wins/win_small_high.mp4",
+				"wins/win_small_high.ogg",
+				"wins/win_small_low.mp3",
+				"wins/win_small_low.mp4",
+				"wins/win_small_low.ogg"
+			],
+			"descr": {
+				"length": 1569,
+				"type": "fx",
+				"offset": 0
+			}
+		},
+		{
+			"name": "coin_splash",
+			"src": [
+				"wins/coin_splash_high.mp3",
+				"wins/coin_splash_high.mp4",
+				"wins/coin_splash_high.ogg",
+				"wins/coin_splash_low.mp3",
+				"wins/coin_splash_low.mp4",
+				"wins/coin_splash_low.ogg"
+			],
+			"descr": {
+				"length": 336,
+				"type": "fx",
+				"offset": 1
+			}
+		},
+		{
+			"name": "wins_coinappear",
+			"src": [
+				"wins/coin_appear_high.mp3",
+				"wins/coin_appear_high.mp4",
+				"wins/coin_appear_high.ogg",
+				"wins/coin_appear_low.mp3",
+				"wins/coin_collect_low.mp4",
+				"wins/coin_appear_low.ogg"
+			],
+			"descr": {
+				"length": 336,
+				"type": "fx",
+				"offset": 0
+			}
+		},
+		{
+			"name": "wins_coincollect",
+			"src": [
+				"wins/coin_collect_high.mp3",
+				"wins/coin_collect_high.mp4",
+				"wins/coin_collect_high.ogg",
+				"wins/coin_collect_low.mp3",
+				"wins/coin_collect_low.mp4",
+				"wins/coin_collect_low.ogg"
+			],
+			"descr": {
+				"length": 686,
+				"type": "fx",
+				"offset": 0
+			}
+		},
+		{
+			"name": "free_shot",
+			"src": [
+				"wins/free_shot_high.mp3",
+				"wins/free_shot_high.mp4",
+				"wins/free_shot_high.ogg",
+				"wins/free_shot_low.mp3",
+				"wins/free_shot_low.mp4",
+				"wins/free_shot_low.ogg"
+			],
+			"descr": {
+				"length": 1498,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_gui_button_generic_ui",
+			"src": [
+				"mq_gui_button_generic_ui_high.mp3",
+				"mq_gui_button_generic_ui_high.mp4",
+				"mq_gui_button_generic_ui_high.ogg",
+				"mq_gui_button_generic_ui_low.mp3",
+				"mq_gui_button_generic_ui_low.mp4",
+				"mq_gui_button_generic_ui_low.ogg"
+			],
+			"descr": {
+				"length": 168,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "10secleft",
+			"src": [
+				"10secleft_high.mp3",
+				"10secleft_high.mp4",
+				"10secleft_high.ogg",
+				"10secleft_low.mp3",
+				"10secleft_low.mp4",
+				"10secleft_low.ogg"
+			],
+			"descr": {
+				"length": 1625,
+				"type": "fx",
+				"volume": 1,
+				"offset": 51
+			}
+		},
+		{
+			"name": "mq_scoreboard_last_seconds",
+			"src": [
+				"mq_scoreboard_last_seconds_high.mp3",
+				"mq_scoreboard_last_seconds_high.mp4",
+				"mq_scoreboard_last_seconds_high.ogg",
+				"mq_scoreboard_last_seconds_low.mp3",
+				"mq_scoreboard_last_seconds_low.mp4",
+				"mq_scoreboard_last_seconds_low.ogg"
+			],
+			"descr": {
+				"length": 985,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_scoreboard_final_countdown",
+			"src": [
+				"mq_scoreboard_final_countdown_high.mp3",
+				"mq_scoreboard_final_countdown_high.mp4",
+				"mq_scoreboard_final_countdown_high.ogg",
+				"mq_scoreboard_final_countdown_low.mp3",
+				"mq_scoreboard_final_countdown_low.mp4",
+				"mq_scoreboard_final_countdown_low.ogg"
+			],
+			"descr": {
+				"length": 1509,
+				"type": "fx",
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_boss_dragon_death",
+			"src": [
+				"enemies/boss/mq_dragonstone_boss_dragon_death_high.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_death_high.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_death_high.ogg",
+				"enemies/boss/mq_dragonstone_boss_dragon_death_low.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_death_low.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_death_low.ogg"
+			],
+			"descr": {
+				"length": 6713,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_cerberus_death",
+			"src": [
+				"enemies/mq_dragonstone_cerberus_death_high.mp3",
+				"enemies/mq_dragonstone_cerberus_death_high.mp4",
+				"enemies/mq_dragonstone_cerberus_death_high.ogg",
+				"enemies/mq_dragonstone_cerberus_death_low.mp3",
+				"enemies/mq_dragonstone_cerberus_death_low.mp4",
+				"enemies/mq_dragonstone_cerberus_death_low.ogg"
+			],
+			"descr": {
+				"length": 1000,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_dark_knight_death",
+			"src": [
+				"enemies/mq_dragonstone_dark_knight_death_high.mp3",
+				"enemies/mq_dragonstone_dark_knight_death_high.mp4",
+				"enemies/mq_dragonstone_dark_knight_death_high.ogg",
+				"enemies/mq_dragonstone_dark_knight_death_low.mp3",
+				"enemies/mq_dragonstone_dark_knight_death_low.mp4",
+				"enemies/mq_dragonstone_dark_knight_death_low.ogg"
+			],
+			"descr": {
+				"length": 2546,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_ogre_death",
+			"src": [
+				"enemies/mq_dragonstone_ogre_death_high.mp3",
+				"enemies/mq_dragonstone_ogre_death_high.mp4",
+				"enemies/mq_dragonstone_ogre_death_high.ogg",
+				"enemies/mq_dragonstone_ogre_death_low.mp3",
+				"enemies/mq_dragonstone_ogre_death_low.mp4",
+				"enemies/mq_dragonstone_ogre_death_low.ogg"
+			],
+			"descr": {
+				"length": 1382,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_boss_dragon_move",
+			"src": [
+				"enemies/boss/mq_dragonstone_boss_dragon_move_high.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_move_high.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_move_high.ogg",
+				"enemies/boss/mq_dragonstone_boss_dragon_move_low.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_move_low.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_move_low.ogg"
+			],
+			"descr": {
+				"length": 1855,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_boss_dragon_shadow",
+			"src": [
+				"enemies/boss/mq_dragonstone_boss_dragon_shadow_high.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_shadow_high.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_shadow_high.ogg",
+				"enemies/boss/mq_dragonstone_boss_dragon_shadow_low.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_shadow_low.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_shadow_low.ogg"
+			],
+			"descr": {
+				"length": 2401,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_boss_dragon_spawn",
+			"src": [
+				"enemies/boss/mq_dragonstone_boss_dragon_spawn_high.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_spawn_high.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_spawn_high.ogg",
+				"enemies/boss/mq_dragonstone_boss_dragon_spawn_low.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_spawn_low.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_spawn_low.ogg"
+			],
+			"descr": {
+				"length": 3344,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_boss_dragon_fire",
+			"src": [
+				"enemies/boss/mq_dragonstone_boss_dragon_fire_high.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_fire_high.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_fire_high.ogg",
+				"enemies/boss/mq_dragonstone_boss_dragon_fire_low.mp3",
+				"enemies/boss/mq_dragonstone_boss_dragon_fire_low.mp4",
+				"enemies/boss/mq_dragonstone_boss_dragon_fire_low.ogg"
+			],
+			"descr": {
+				"length": 4174,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_boss_intro_notification",
+			"src": [
+				"enemies/boss/mq_dragonstone_boss_intro_notification_high.mp3",
+				"enemies/boss/mq_dragonstone_boss_intro_notification_high.mp4",
+				"enemies/boss/mq_dragonstone_boss_intro_notification_high.ogg",
+				"enemies/boss/mq_dragonstone_boss_intro_notification_low.mp3",
+				"enemies/boss/mq_dragonstone_boss_intro_notification_low.mp4",
+				"enemies/boss/mq_dragonstone_boss_intro_notification_low.ogg"
+			],
+			"descr": {
+				"length": 6539,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_boss_outro_notification",
+			"src": [
+				"enemies/boss/mq_dragonstone_boss_outro_notification_high.mp3",
+				"enemies/boss/mq_dragonstone_boss_outro_notification_high.mp4",
+				"enemies/boss/mq_dragonstone_boss_outro_notification_high.ogg",
+				"enemies/boss/mq_dragonstone_boss_outro_notification_low.mp3",
+				"enemies/boss/mq_dragonstone_boss_outro_notification_low.mp4",
+				"enemies/boss/mq_dragonstone_boss_outro_notification_low.ogg"
+			],
+			"descr": {
+				"length": 4375,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_notification",
+			"src": [
+				"mq_dragonstone_notification_high.mp3",
+				"mq_dragonstone_notification_high.mp4",
+				"mq_dragonstone_notification_high.ogg",
+				"mq_dragonstone_notification_low.mp3",
+				"mq_dragonstone_notification_low.mp4",
+				"mq_dragonstone_notification_low.ogg"
+			],
+			"descr": {
+				"length": 2785,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_token_collect",
+			"src": [
+				"quests/mq_dragonstone_token_collect_high.mp3",
+				"quests/mq_dragonstone_token_collect_high.mp4",
+				"quests/mq_dragonstone_token_collect_high.ogg",
+				"quests/mq_dragonstone_token_collect_low.mp3",
+				"quests/mq_dragonstone_token_collect_low.mp4",
+				"quests/mq_dragonstone_token_collect_low.ogg"
+			],
+			"descr": {
+				"length": 1731,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_token_appear",
+			"src": [
+				"quests/mq_dragonstone_token_appear_high.mp3",
+				"quests/mq_dragonstone_token_appear_high.mp4",
+				"quests/mq_dragonstone_token_appear_high.ogg",
+				"quests/mq_dragonstone_token_appear_low.mp3",
+				"quests/mq_dragonstone_token_appear_low.mp4",
+				"quests/mq_dragonstone_token_appear_low.ogg"
+			],
+			"descr": {
+				"length": 1750,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_token_collect_trigger",
+			"src": [
+				"quests/mq_dragonstone_token_collect_trigger_high.mp3",
+				"quests/mq_dragonstone_token_collect_trigger_high.mp4",
+				"quests/mq_dragonstone_token_collect_trigger_high.ogg",
+				"quests/mq_dragonstone_token_collect_trigger_low.mp3",
+				"quests/mq_dragonstone_token_collect_trigger_low.mp4",
+				"quests/mq_dragonstone_token_collect_trigger_low.ogg"
+			],
+			"descr": {
+				"length": 3051,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_token_eye_collect",
+			"src": [
+				"quests/mq_dragonstone_token_eye_collect_high.mp3",
+				"quests/mq_dragonstone_token_eye_collect_high.mp4",
+				"quests/mq_dragonstone_token_eye_collect_high.ogg",
+				"quests/mq_dragonstone_token_eye_collect_low.mp3",
+				"quests/mq_dragonstone_token_eye_collect_low.mp4",
+				"quests/mq_dragonstone_token_eye_collect_low.ogg"
+			],
+			"descr": {
+				"length": 2774,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_1",
+			"src": [
+				"weapons/flyby/mq_guns_bullets_flyby_1_high.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_1_high.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_1_high.ogg",
+				"weapons/flyby/mq_guns_bullets_flyby_1_low.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_1_low.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_1_low.ogg"
+			],
+			"descr": {
+				"length": 305,
+				"type": "fx",
+				"volume": 1,
+				"offset": 149
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_2",
+			"src": [
+				"weapons/flyby/mq_guns_bullets_flyby_2_high.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_2_high.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_2_high.ogg",
+				"weapons/flyby/mq_guns_bullets_flyby_2_low.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_2_low.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_2_low.ogg"
+			],
+			"descr": {
+				"length": 213,
+				"type": "fx",
+				"volume": 1,
+				"offset": 161
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_3",
+			"src": [
+				"weapons/flyby/mq_guns_bullets_flyby_3_high.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_3_high.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_3_high.ogg",
+				"weapons/flyby/mq_guns_bullets_flyby_3_low.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_3_low.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_3_low.ogg"
+			],
+			"descr": {
+				"length": 263,
+				"type": "fx",
+				"volume": 1,
+				"offset": 95
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_4",
+			"src": [
+				"weapons/flyby/mq_guns_bullets_flyby_4_high.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_4_high.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_4_high.ogg",
+				"weapons/flyby/mq_guns_bullets_flyby_4_low.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_4_low.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_4_low.ogg"
+			],
+			"descr": {
+				"length": 263,
+				"type": "fx",
+				"volume": 1,
+				"offset": 98
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_5",
+			"src": [
+				"weapons/flyby/mq_guns_bullets_flyby_5_high.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_5_high.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_5_high.ogg",
+				"weapons/flyby/mq_guns_bullets_flyby_5_low.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_5_low.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_5_low.ogg"
+			],
+			"descr": {
+				"length": 267,
+				"type": "fx",
+				"volume": 1,
+				"offset": 167
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_6",
+			"src": [
+				"weapons/flyby/mq_guns_bullets_flyby_6_high.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_6_high.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_6_high.ogg",
+				"weapons/flyby/mq_guns_bullets_flyby_6_low.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_6_low.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_6_low.ogg"
+			],
+			"descr": {
+				"length": 244,
+				"type": "fx",
+				"volume": 1,
+				"offset": 88
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_7",
+			"src": [
+				"weapons/flyby/mq_guns_bullets_flyby_7_high.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_7_high.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_7_high.ogg",
+				"weapons/flyby/mq_guns_bullets_flyby_7_low.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_7_low.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_7_low.ogg"
+			],
+			"descr": {
+				"length": 322,
+				"type": "fx",
+				"volume": 1,
+				"offset": 111
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_8",
+			"src": [
+				"weapons/flyby/mq_guns_bullets_flyby_8_high.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_8_high.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_8_high.ogg",
+				"weapons/flyby/mq_guns_bullets_flyby_8_low.mp3",
+				"weapons/flyby/mq_guns_bullets_flyby_8_low.mp4",
+				"weapons/flyby/mq_guns_bullets_flyby_8_low.ogg"
+			],
+			"descr": {
+				"length": 325,
+				"type": "fx",
+				"volume": 1,
+				"offset": 97
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_1_coop",
+			"src": "mq_guns_bullets_flyby_1",
+			"descr": {
+				"length": 305,
+				"type": "fx",
+				"volume": 1,
+				"offset": 149
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_2_coop",
+			"src": "mq_guns_bullets_flyby_2",
+			"descr": {
+				"length": 213,
+				"type": "fx",
+				"volume": 1,
+				"offset": 161
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_3_coop",
+			"src": "mq_guns_bullets_flyby_3",
+			"descr": {
+				"length": 263,
+				"type": "fx",
+				"volume": 1,
+				"offset": 95
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_4_coop",
+			"src": "mq_guns_bullets_flyby_4",
+			"descr": {
+				"length": 263,
+				"type": "fx",
+				"volume": 1,
+				"offset": 98
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_5_coop",
+			"src": "mq_guns_bullets_flyby_5",
+			"descr": {
+				"length": 267,
+				"type": "fx",
+				"volume": 1,
+				"offset": 167
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_6_coop",
+			"src": "mq_guns_bullets_flyby_6",
+			"descr": {
+				"length": 244,
+				"type": "fx",
+				"volume": 1,
+				"offset": 88
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_7_coop",
+			"src": "mq_guns_bullets_flyby_7",
+			"descr": {
+				"length": 322,
+				"type": "fx",
+				"volume": 1,
+				"offset": 111
+			}
+		},
+		{
+			"name": "mq_guns_bullets_flyby_8_coop",
+			"src": "mq_guns_bullets_flyby_8",
+			"descr": {
+				"length": 325,
+				"type": "fx",
+				"volume": 1,
+				"offset": 97
+			}
+		},
+		{
+			"name": "mq_turret_burst1",
+			"src": [
+				"weapons/default/mq_turret_burst1_high.mp3",
+				"weapons/default/mq_turret_burst1_high.mp4",
+				"weapons/default/mq_turret_burst1_high.ogg",
+				"weapons/default/mq_turret_burst1_low.mp3",
+				"weapons/default/mq_turret_burst1_low.mp4",
+				"weapons/default/mq_turret_burst1_low.ogg"
+			],
+			"descr": {
+				"length": 500,
+				"type": "fx",
+				"volume": 1,
+				"offset": 47
+			}
+		},
+		{
+			"name": "mq_turret_burst2",
+			"src": [
+				"weapons/default/mq_turret_burst2_high.mp3",
+				"weapons/default/mq_turret_burst2_high.mp4",
+				"weapons/default/mq_turret_burst2_high.ogg",
+				"weapons/default/mq_turret_burst2_low.mp3",
+				"weapons/default/mq_turret_burst2_low.mp4",
+				"weapons/default/mq_turret_burst2_low.ogg"
+			],
+			"descr": {
+				"length": 254,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_turret_burst3",
+			"src": [
+				"weapons/default/mq_turret_burst3_high.mp3",
+				"weapons/default/mq_turret_burst3_high.mp4",
+				"weapons/default/mq_turret_burst3_high.ogg",
+				"weapons/default/mq_turret_burst3_low.mp3",
+				"weapons/default/mq_turret_burst3_low.mp4",
+				"weapons/default/mq_turret_burst3_low.ogg"
+			],
+			"descr": {
+				"length": 240,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_turret_burst4",
+			"src": [
+				"weapons/default/mq_turret_burst4_high.mp3",
+				"weapons/default/mq_turret_burst4_high.mp4",
+				"weapons/default/mq_turret_burst4_high.ogg",
+				"weapons/default/mq_turret_burst4_low.mp3",
+				"weapons/default/mq_turret_burst4_low.mp4",
+				"weapons/default/mq_turret_burst4_low.ogg"
+			],
+			"descr": {
+				"length": 256,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "mq_turret_burst5",
+			"src": [
+				"weapons/default/mq_turret_burst5_high.mp3",
+				"weapons/default/mq_turret_burst5_high.mp4",
+				"weapons/default/mq_turret_burst5_high.ogg",
+				"weapons/default/mq_turret_burst5_low.mp3",
+				"weapons/default/mq_turret_burst5_low.mp4",
+				"weapons/default/mq_turret_burst5_low.ogg"
+			],
+			"descr": {
+				"length": 712,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "mq_turret_burst1_coop",
+			"src": "mq_turret_burst1",
+			"descr": {
+				"length": 500,
+				"type": "fx",
+				"volume": 0.67,
+				"offset": 47
+			}
+		},
+		{
+			"name": "mq_turret_burst2_coop",
+			"src": "mq_turret_burst2",
+			"descr": {
+				"length": 232,
+				"type": "fx",
+				"volume": 0.67,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_turret_burst3_coop",
+			"src": "mq_turret_burst3",
+			"descr": {
+				"length": 235,
+				"type": "fx",
+				"volume": 0.67,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_turret_burst4_coop",
+			"src": "mq_turret_burst4",
+			"descr": {
+				"length": 266,
+				"type": "fx",
+				"volume": 0.67,
+				"offset": 50
+			}
+		},
+		{
+			"name": "mq_turret_burst5_coop",
+			"src": "mq_turret_burst5",
+			"descr": {
+				"length": 784,
+				"type": "fx",
+				"volume": 0.67,
+				"offset": 50
+			}
+		},
+		{
+			"name": "plasma_target",
+			"src": [
+				"weapons/plasma/plasma_target_high.mp3",
+				"weapons/plasma/plasma_target_high.mp4",
+				"weapons/plasma/plasma_target_high.ogg",
+				"weapons/plasma/plasma_target_low.mp3",
+				"weapons/plasma/plasma_target_low.mp4",
+				"weapons/plasma/plasma_target_low.ogg"
+			],
+			"descr": {
+				"length": 725,
+				"type": "fx",
+				"volume": 1,
+				"offset": 56
+			}
+		},
+		{
+			"name": "plasma_powerup",
+			"src": [
+				"weapons/plasma/plasma_powerup_high.mp3",
+				"weapons/plasma/plasma_powerup_high.mp4",
+				"weapons/plasma/plasma_powerup_high.ogg",
+				"weapons/plasma/plasma_powerup_low.mp3",
+				"weapons/plasma/plasma_powerup_low.mp4",
+				"weapons/plasma/plasma_powerup_low.ogg"
+			],
+			"descr": {
+				"length": 1749,
+				"type": "fx",
+				"volume": 1,
+				"offset": 103
+			}
+		},
+		{
+			"name": "plasma_powerup_coop",
+			"src": "plasma_powerup",
+			"descr": {
+				"length": 1749,
+				"type": "fx",
+				"volume": 1,
+				"offset": 103
+			}
+		},
+		{
+			"name": "plasma_shot",
+			"src": [
+				"weapons/plasma/plasma_shot_high.mp3",
+				"weapons/plasma/plasma_shot_high.mp4",
+				"weapons/plasma/plasma_shot_high.ogg",
+				"weapons/plasma/plasma_shot_low.mp3",
+				"weapons/plasma/plasma_shot_low.mp4",
+				"weapons/plasma/plasma_shot_low.ogg"
+			],
+			"descr": {
+				"length": 705,
+				"type": "fx",
+				"volume": 1,
+				"offset": 48
+			}
+		},
+		{
+			"name": "plasma_shot_coop",
+			"src": "plasma_shot",
+			"descr": {
+				"length": 705,
+				"type": "fx",
+				"volume": 1,
+				"offset": 48
+			}
+		},
+		{
+			"name": "cryo_gun_unfreeze",
+			"src": [
+				"weapons/cryo_gun/cryo_gun_unfreeze_high.mp3",
+				"weapons/cryo_gun/cryo_gun_unfreeze_high.mp4",
+				"weapons/cryo_gun/cryo_gun_unfreeze_high.ogg",
+				"weapons/cryo_gun/cryo_gun_unfreeze_low.mp3",
+				"weapons/cryo_gun/cryo_gun_unfreeze_low.mp4",
+				"weapons/cryo_gun/cryo_gun_unfreeze_low.ogg"
+			],
+			"descr": {
+				"length": 1260,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "cryo_gun_shot",
+			"src": [
+				"weapons/cryo_gun/cryo_gun_shot_high.mp3",
+				"weapons/cryo_gun/cryo_gun_shot_high.mp4",
+				"weapons/cryo_gun/cryo_gun_shot_high.ogg",
+				"weapons/cryo_gun/cryo_gun_shot_low.mp3",
+				"weapons/cryo_gun/cryo_gun_shot_low.mp4",
+				"weapons/cryo_gun/cryo_gun_shot_low.ogg"
+			],
+			"descr": {
+				"length": 1732,
+				"type": "fx",
+				"volume": 1,
+				"offset": 61
+			}
+		},
+		{
+			"name": "cryo_gun_shot_coop",
+			"src": "cryo_gun_shot",
+			"descr": {
+				"length": 1732,
+				"type": "fx",
+				"volume": 1,
+				"offset": 61
+			}
+		},
+		{
+			"name": "cryo_gun_charge",
+			"src": [
+				"weapons/cryo_gun/cryo_gun_charge_high.mp3",
+				"weapons/cryo_gun/cryo_gun_charge_high.mp4",
+				"weapons/cryo_gun/cryo_gun_charge_high.ogg",
+				"weapons/cryo_gun/cryo_gun_charge_low.mp3",
+				"weapons/cryo_gun/cryo_gun_charge_low.mp4",
+				"weapons/cryo_gun/cryo_gun_charge_low.ogg"
+			],
+			"descr": {
+				"length": 1850,
+				"type": "fx",
+				"volume": 1,
+				"offset": 49
+			}
+		},
+		{
+			"name": "cryo_gun_charge_coop",
+			"src": "cryo_gun_charge",
+			"descr": {
+				"length": 1850,
+				"type": "fx",
+				"volume": 1,
+				"offset": 49
+			}
+		},
+		{
+			"name": "railgun_shot",
+			"src": [
+				"weapons/railgun/railgun_shot_high.mp3",
+				"weapons/railgun/railgun_shot_high.mp4",
+				"weapons/railgun/railgun_shot_high.ogg",
+				"weapons/railgun/railgun_shot_low.mp3",
+				"weapons/railgun/railgun_shot_low.mp4",
+				"weapons/railgun/railgun_shot_low.ogg"
+			],
+			"descr": {
+				"length": 1602,
+				"type": "fx",
+				"volume": 1,
+				"offset": 44
+			}
+		},
+		{
+			"name": "railgun_shot_coop",
+			"src": "railgun_shot",
+			"descr": {
+				"length": 1602,
+				"type": "fx",
+				"volume": 1,
+				"offset": 44
+			}
+		},
+		{
+			"name": "flamethrower_shot",
+			"src": [
+				"weapons/flamethrower/flamethrower_shot_high.mp3",
+				"weapons/flamethrower/flamethrower_shot_high.mp4",
+				"weapons/flamethrower/flamethrower_shot_high.ogg",
+				"weapons/flamethrower/flamethrower_shot_low.mp3",
+				"weapons/flamethrower/flamethrower_shot_low.mp4",
+				"weapons/flamethrower/flamethrower_shot_low.ogg"
+			],
+			"descr": {
+				"length": 2190,
+				"type": "fx",
+				"volume": 1,
+				"offset": 46
+			}
+		},
+		{
+			"name": "flamethrower_shot_coop",
+			"src": "flamethrower_shot",
+			"descr": {
+				"length": 2190,
+				"type": "fx",
+				"volume": 1,
+				"offset": 46
+			}
+		},
+		{
+			"name": "artillery_explosion",
+			"src": [
+				"weapons/artillery_strike/artillery_explosion_high.mp3",
+				"weapons/artillery_strike/artillery_explosion_high.mp4",
+				"weapons/artillery_strike/artillery_explosion_high.ogg",
+				"weapons/artillery_strike/artillery_explosion_low.mp3",
+				"weapons/artillery_strike/artillery_explosion_low.mp4",
+				"weapons/artillery_strike/artillery_explosion_low.ogg"
+			],
+			"descr": {
+				"length": 2288,
+				"type": "fx",
+				"volume": 1,
+				"offset": 46
+			}
+		},
+		{
+			"name": "artillery_explosion_coop",
+			"src": "artillery_explosion",
+			"descr": {
+				"length": 2288,
+				"type": "fx",
+				"volume": 1,
+				"offset": 46
+			}
+		},
+		{
+			"name": "artillery_strikes_flying",
+			"src": [
+				"weapons/artillery_strike/artillery_strikes_flying_high.mp3",
+				"weapons/artillery_strike/artillery_strikes_flying_high.mp4",
+				"weapons/artillery_strike/artillery_strikes_flying_high.ogg",
+				"weapons/artillery_strike/artillery_strikes_flying_low.mp3",
+				"weapons/artillery_strike/artillery_strikes_flying_low.mp4",
+				"weapons/artillery_strike/artillery_strikes_flying_low.ogg"
+			],
+			"descr": {
+				"length": 1955,
+				"type": "fx",
+				"volume": 1,
+				"offset": 66
+			}
+		},
+		{
+			"name": "artillery_strikes_flying_coop",
+			"src": "artillery_strikes_flying",
+			"descr": {
+				"length": 1955,
+				"type": "fx",
+				"volume": 1,
+				"offset": 66
+			}
+		},
+		{
+			"name": "bomb_flying",
+			"src": [
+				"weapons/artillery_strike/bomb_flying_high.mp3",
+				"weapons/artillery_strike/bomb_flying_high.mp4",
+				"weapons/artillery_strike/bomb_flying_high.ogg",
+				"weapons/artillery_strike/bomb_flying_low.mp3",
+				"weapons/artillery_strike/bomb_flying_low.mp4",
+				"weapons/artillery_strike/bomb_flying_low.ogg"
+			],
+			"descr": {
+				"length": 816,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "bomb_flying_coop",
+			"src": "bomb_flying",
+			"descr": {
+				"length": 816,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "bomb_smoking",
+			"src": [
+				"weapons/artillery_strike/bomb_smoking_high.mp3",
+				"weapons/artillery_strike/bomb_smoking_high.mp4",
+				"weapons/artillery_strike/bomb_smoking_high.ogg",
+				"weapons/artillery_strike/bomb_smoking_low.mp3",
+				"weapons/artillery_strike/bomb_smoking_low.mp4",
+				"weapons/artillery_strike/bomb_smoking_low.ogg"
+			],
+			"descr": {
+				"length": 2337,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "bomb_smoking_coop",
+			"src": "bomb_smoking",
+			"descr": {
+				"length": 2337,
+				"type": "fx",
+				"volume": 1,
+				"offset": 50
+			}
+		},
+		{
+			"name": "quests_win_figure",
+			"src": [
+				"quests/win_figure_high.mp3",
+				"quests/win_figure_high.mp4",
+				"quests/win_figure_high.ogg",
+				"quests/win_figure_low.mp3",
+				"wquests/win_figure_low.mp4",
+				"quests/win_figure_low.ogg"
+			],
+			"descr": {
+				"length": 1958,
+				"type": "fx",
+				"volume": 1,
+				"offset": 34
+			}
+		},
+		{
+			"name": "critical_hit",
+			"src": [
+				"wins/critical_hit_high.mp3",
+				"wins/critical_hit_high.mp4",
+				"wins/critical_hit_high.ogg",
+				"wins/critical_hit_low.mp3",
+				"wins/critical_hit_low.mp4",
+				"wins/critical_hit_low.ogg"
+			],
+			"descr": {
+				"length": 854,
+				"type": "fx",
+				"volume": 1,
+				"offset": 75
+			}
+		},
+		{
+			"name": "insta_kill",
+			"src": [
+				"wins/insta_kill_high.mp3",
+				"wins/insta_kill_high.mp4",
+				"wins/insta_kill_high.ogg",
+				"wins/insta_kill_low.mp3",
+				"wins/insta_kill_low.mp4",
+				"wins/insta_kill_low.ogg"
+			],
+			"descr": {
+				"length": 463,
+				"type": "fx",
+				"volume": 1,
+				"offset": 74
+			}
+		},
+		{
+			"name": "big_win_sound",
+			"src": [
+				"wins/big_win/big_win_high.mp3",
+				"wins/big_win/big_win_high.mp4",
+				"wins/big_win/big_win_high.ogg",
+				"wins/big_win/big_win_low.mp3",
+				"wins/big_win/big_win_low.mp4",
+				"wins/big_win/big_win_low.ogg"
+			],
+			"descr": {
+				"length": 2655,
+				"type": "bg",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "huge_win_sound",
+			"src": [
+				"wins/big_win/huge_win_high.mp3",
+				"wins/big_win/huge_win_high.mp4",
+				"wins/big_win/huge_win_high.ogg",
+				"wins/big_win/huge_win_low.mp3",
+				"wins/big_win/huge_win_low.mp4",
+				"wins/big_win/huge_win_low.ogg"
+			],
+			"descr": {
+				"length": 3108,
+				"type": "bg",
+				"volume": 1,
+				"offset": 218
+			}
+		},
+		{
+			"name": "mega_win_sound",
+			"src": [
+				"wins/big_win/mega_win_high.mp3",
+				"wins/big_win/mega_win_high.mp4",
+				"wins/big_win/mega_win_high.ogg",
+				"wins/big_win/mega_win_low.mp3",
+				"wins/big_win/mega_win_low.mp4",
+				"wins/big_win/mega_win_low.ogg"
+			],
+			"descr": {
+				"length": 4780,
+				"type": "bg",
+				"volume": 1,
+				"offset": 218
+			}
+		},
+		{
+			"name": "turret_change",
+			"src": [
+				"bet_change/turret_change_high.mp3",
+				"bet_change/turret_change_high.mp4",
+				"bet_change/turret_change_high.ogg",
+				"bet_change/turret_change_low.mp3",
+				"bet_change/turret_change_low.mp4",
+				"bet_change/turret_change_low.ogg"
+			],
+			"descr": {
+				"length": 217,
+				"type": "fx",
+				"volume": 1,
+				"offset": 47
+			}
+		},
+		{
+			"name": "turret_battleground_change",
+			"src": [
+				"bet_change/turret_battleground_change_high.mp3",
+				"bet_change/turret_battleground_change_high.mp4",
+				"bet_change/turret_battleground_change_high.ogg",
+				"bet_change/turret_battleground_change_low.mp3",
+				"bet_change/turret_battleground_change_low.mp4",
+				"bet_change/turret_battleground_change_low.ogg"
+			],
+			"descr": {
+				"length": 993,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_trigger",
+			"src": [
+				"minislot/mq_dragonstone_minislot_trigger_high.mp3",
+				"minislot/mq_dragonstone_minislot_trigger_high.mp4",
+				"minislot/mq_dragonstone_minislot_trigger_high.ogg",
+				"minislot/mq_dragonstone_minislot_trigger_low.mp3",
+				"minislot/mq_dragonstone_minislot_trigger_low.mp4",
+				"minislot/mq_dragonstone_minislot_trigger_low.ogg"
+			],
+			"descr": {
+				"length": 1202,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_spin",
+			"src": [
+				"minislot/mq_dragonstone_minislot_spin_high.mp3",
+				"minislot/mq_dragonstone_minislot_spin_high.mp4",
+				"minislot/mq_dragonstone_minislot_spin_high.ogg",
+				"minislot/mq_dragonstone_minislot_spin_low.mp3",
+				"minislot/mq_dragonstone_minislot_spin_low.mp4",
+				"minislot/mq_dragonstone_minislot_spin_low.ogg"
+			],
+			"descr": {
+				"length": 1463,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_popup",
+			"src": [
+				"minislot/mq_dragonstone_minislot_popup_high.mp3",
+				"minislot/mq_dragonstone_minislot_popup_high.mp4",
+				"minislot/mq_dragonstone_minislot_popup_high.ogg",
+				"minislot/mq_dragonstone_minislot_popup_low.mp3",
+				"minislot/mq_dragonstone_minislot_popup_low.mp4",
+				"minislot/mq_dragonstone_minislot_popup_low.ogg"
+			],
+			"descr": {
+				"length": 1541,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_bigwin",
+			"src": [
+				"minislot/mq_dragonstone_minislot_bigwin_high.mp3",
+				"minislot/mq_dragonstone_minislot_bigwin_high.mp4",
+				"minislot/mq_dragonstone_minislot_bigwin_high.ogg",
+				"minislot/mq_dragonstone_minislot_bigwin_low.mp3",
+				"minislot/mq_dragonstone_minislot_bigwin_low.mp4",
+				"minislot/mq_dragonstone_minislot_bigwin_low.ogg"
+			],
+			"descr": {
+				"length": 3169,
+				"type": "bg",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_bigwin_end",
+			"src": [
+				"minislot/mq_dragonstone_minislot_bigwin_end_high.mp3",
+				"minislot/mq_dragonstone_minislot_bigwin_end_high.mp4",
+				"minislot/mq_dragonstone_minislot_bigwin_end_high.ogg",
+				"minislot/mq_dragonstone_minislot_bigwin_end_low.mp3",
+				"minislot/mq_dragonstone_minislot_bigwin_end_low.mp4",
+				"minislot/mq_dragonstone_minislot_bigwin_end_low.ogg"
+			],
+			"descr": {
+				"length": 1358,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_win",
+			"src": [
+				"minislot/mq_dragonstone_minislot_win_high.mp3",
+				"minislot/mq_dragonstone_minislot_win_high.mp4",
+				"minislot/mq_dragonstone_minislot_win_high.ogg",
+				"minislot/mq_dragonstone_minislot_win_low.mp3",
+				"minislot/mq_dragonstone_minislot_win_low.mp4",
+				"minislot/mq_dragonstone_minislot_win_low.ogg"
+			],
+			"descr": {
+				"length": 1698,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_hugewin",
+			"src": [
+				"minislot/mq_dragonstone_minislot_hugewin_high.mp3",
+				"minislot/mq_dragonstone_minislot_hugewin_high.mp4",
+				"minislot/mq_dragonstone_minislot_hugewin_high.ogg",
+				"minislot/mq_dragonstone_minislot_hugewin_low.mp3",
+				"minislot/mq_dragonstone_minislot_hugewin_low.mp4",
+				"minislot/mq_dragonstone_minislot_hugewin_low.ogg"
+			],
+			"descr": {
+				"length": 3717,
+				"type": "bg",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_megawin",
+			"src": [
+				"minislot/mq_dragonstone_minislot_megawin_high.mp3",
+				"minislot/mq_dragonstone_minislot_megawin_high.mp4",
+				"minislot/mq_dragonstone_minislot_megawin_high.ogg",
+				"minislot/mq_dragonstone_minislot_megawin_low.mp3",
+				"minislot/mq_dragonstone_minislot_megawin_low.mp4",
+				"minislot/mq_dragonstone_minislot_megawin_low.ogg"
+			],
+			"descr": {
+				"length": 4266,
+				"type": "bg",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_minislot_outro",
+			"src": [
+				"minislot/mq_dragonstone_minislot_outro_high.mp3",
+				"minislot/mq_dragonstone_minislot_outro_high.mp4",
+				"minislot/mq_dragonstone_minislot_outro_high.ogg",
+				"minislot/mq_dragonstone_minislot_outro_low.mp3",
+				"minislot/mq_dragonstone_minislot_outro_low.mp4",
+				"minislot/mq_dragonstone_minislot_outro_low.ogg"
+			],
+			"descr": {
+				"length": 1990,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		},
+		{
+			"name": "mq_dragonstone_round_countdown",
+			"src": [
+				"mq_dragonstone_round_countdown_high.mp3",
+				"mq_dragonstone_round_countdown_high.mp4",
+				"mq_dragonstone_round_countdown_high.ogg",
+				"mq_dragonstone_round_countdown_low.mp3",
+				"mq_dragonstone_round_countdown_low.mp4",
+				"mq_dragonstone_round_countdown_low.ogg"
+			],
+			"descr": {
+				"length": 918,
+				"type": "fx",
+				"volume": 1,
+				"offset": 0
+			}
+		}
+	],
+	"fonts": [
+		{
+			"name": "fnt_nm_arial_currency",
+			"src": "currency.ttf"
+		},
+		{
+			"name": "fnt_nm_amerika",
+			"src": "amerika_en.ttf"
+		},
+		{
+			"name": "fnt_nm_barlow_bold_digits",
+			"src": "fnt_nm_barlow_bold_digits.ttf"
+		}
+	]
+}
+

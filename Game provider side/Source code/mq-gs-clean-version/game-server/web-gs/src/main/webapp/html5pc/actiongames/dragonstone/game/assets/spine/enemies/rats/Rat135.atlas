@@ -1,0 +1,55 @@
+
+RatRight.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+left/left_body
+  rotate: false
+  xy: 268, 12
+  size: 177, 113
+  orig: 177, 113
+  offset: 0, 0
+  index: -1
+left/left_head
+  rotate: false
+  xy: 536, 42
+  size: 88, 83
+  orig: 88, 83
+  offset: 0, 0
+  index: -1
+left/left_lf_arm
+  rotate: false
+  xy: 2, 2
+  size: 83, 72
+  orig: 83, 72
+  offset: 0, 0
+  index: -1
+left/left_lf_leg
+  rotate: false
+  xy: 447, 39
+  size: 87, 86
+  orig: 87, 86
+  offset: 0, 0
+  index: -1
+left/left_rt_arm
+  rotate: false
+  xy: 710, 53
+  size: 80, 72
+  orig: 80, 72
+  offset: 0, 0
+  index: -1
+left/left_rt_leg
+  rotate: false
+  xy: 626, 44
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+left/left_tail
+  rotate: false
+  xy: 2, 76
+  size: 264, 49
+  orig: 264, 49
+  offset: 0, 0
+  index: -1

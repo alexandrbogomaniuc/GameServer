@@ -1,0 +1,48 @@
+
+Imp90.png
+size: 931,931
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90/arm_lf
+  rotate: true
+  xy: 647, 7
+  size: 160, 170
+  orig: 160, 170
+  offset: 0, 0
+  index: -1
+90/arm_rt
+  rotate: false
+  xy: 787, 431
+  size: 142, 209
+  orig: 142, 209
+  offset: 0, 0
+  index: -1
+90/body
+  rotate: false
+  xy: 2, 82
+  size: 643, 847
+  orig: 643, 847
+  offset: 0, 0
+  index: -1
+90/forearm_lf
+  rotate: false
+  xy: 647, 343
+  size: 138, 297
+  orig: 138, 297
+  offset: 0, 0
+  index: -1
+90/forearm_rt
+  rotate: false
+  xy: 647, 642
+  size: 168, 287
+  orig: 168, 287
+  offset: 0, 0
+  index: -1
+90/tail
+  rotate: true
+  xy: 647, 169
+  size: 172, 201
+  orig: 172, 201
+  offset: 0, 0
+  index: -1

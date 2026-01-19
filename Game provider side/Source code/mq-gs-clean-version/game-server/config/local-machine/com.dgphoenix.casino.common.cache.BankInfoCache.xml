@@ -48,19 +48,19 @@
           </entry>
           <entry>
               <string>COMMON_WALLET_AUTH_URL</string>
-              <string>http://gs:8080/config/stub/auth.jsp</string>
+              <string>http://host.docker.internal:8000/bav/authenticate</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_BALANCE_URL</string>
-              <string>http://gs:8080/config/stub/balance.jsp</string>
+              <string>http://host.docker.internal:8000/bav/balance</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_WAGER_URL</string>
-              <string>http://gs:8080/config/stub/wager_sleep.jsp</string>
+              <string>http://host.docker.internal:8000/bav/betResult</string>
           </entry>
           <entry>
               <string>COMMON_WALLET_REFUND_URL</string>
-              <string>http://gs:8080/config/stub/refund.jsp</string>
+              <string>http://host.docker.internal:8000/bav/refundBet</string>
           </entry>
           <entry>
               <string>BONUS_RELEASE_URL</string>

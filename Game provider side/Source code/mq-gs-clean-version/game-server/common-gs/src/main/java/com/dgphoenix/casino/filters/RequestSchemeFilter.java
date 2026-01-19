@@ -16,19 +16,22 @@ public class RequestSchemeFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        //nop
+        // nop
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        LOG.error("RequestSchemeFilter.doFilter: START");
         HttpServletRequest request = (HttpServletRequest) req;
 
-        //LOG.debug("doFilter: " + request.getRequestURI());
+        // LOG.debug("doFilter: " + request.getRequestURI());
         chain.doFilter(new HttpServletRequestProxy(request), response);
+        LOG.error("RequestSchemeFilter.doFilter: END");
     }
 
     @Override
     public void destroy() {
-        //nop
+        // nop
     }
 }

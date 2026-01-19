@@ -38,8 +38,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 public class SystemDiagnosisServlet extends BaseDiagnosisServlet {
     private static final Logger LOG = LogManager.getLogger(SystemDiagnosisServlet.class);
     private static final int STATISTICS_DROP_PERIOD = 1;
-    private final GameServerConfiguration configuration = ApplicationContextHelper.getApplicationContext()
-            .getBean("gameServerConfiguration", GameServerConfiguration.class);
+    private GameServerConfiguration configuration;
 
     @Override
     public boolean discontinuesSameTypeErrorsDiagnosticEnabled() {
@@ -48,6 +47,8 @@ public class SystemDiagnosisServlet extends BaseDiagnosisServlet {
 
     @Override
     public void init() throws ServletException {
+        configuration = ApplicationContextHelper.getApplicationContext().getBean("gameServerConfiguration",
+                GameServerConfiguration.class);
         super.init();
         LOG.debug("SystemDiagnosisServlet::init");
         RunnableCheckTask tmpRun;
@@ -123,8 +124,10 @@ public class SystemDiagnosisServlet extends BaseDiagnosisServlet {
         };
         taskList.add(new CassandraStateMonitoringTask());
         taskList.add(new ExchangeRateMonitoringTask());
-        ScheduledExecutorService statisticsLoggerScheduleService = ApplicationContextHelper.getBean(CommonExecutorService.class);
-        statisticsLoggerScheduleService.scheduleWithFixedDelay(statisticsLoggingTask, STATISTICS_DROP_PERIOD, STATISTICS_DROP_PERIOD, TimeUnit.MINUTES);
+        ScheduledExecutorService statisticsLoggerScheduleService = ApplicationContextHelper
+                .getBean(CommonExecutorService.class);
+        statisticsLoggerScheduleService.scheduleWithFixedDelay(statisticsLoggingTask, STATISTICS_DROP_PERIOD,
+                STATISTICS_DROP_PERIOD, TimeUnit.MINUTES);
     }
 
     @Override
@@ -202,7 +205,8 @@ public class SystemDiagnosisServlet extends BaseDiagnosisServlet {
 
         public ExchangeRateMonitoringTask() {
             super(null, true);
-            persistenceManager = ApplicationContextHelper.getApplicationContext().getBean("persistenceManager", CassandraPersistenceManager.class);
+            persistenceManager = ApplicationContextHelper.getApplicationContext().getBean("persistenceManager",
+                    CassandraPersistenceManager.class);
             cassandraCurrencyRatesPersister = persistenceManager.getPersister(CassandraCurrencyRatesPersister.class);
         }
 
@@ -232,7 +236,8 @@ public class SystemDiagnosisServlet extends BaseDiagnosisServlet {
 
             if (monitoredRate.isPresent()) {
                 long expMillis = System.currentTimeMillis() - monitoredRate.get().getUpdateDate();
-                LOG.error("{} to {} was updated {} hours ago", source, target, TimeUnit.MILLISECONDS.toHours(expMillis));
+                LOG.error("{} to {} was updated {} hours ago", source, target,
+                        TimeUnit.MILLISECONDS.toHours(expMillis));
                 this.warning = true;
                 errorMessage = String.format(ERROR_MSG_TMPL, source, target, LIMIT_HOURS);
                 return true;

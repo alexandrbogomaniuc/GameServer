@@ -20,9 +20,15 @@ public class DefaultConfigsInitializer implements IConfigsInitializer {
     private static final Logger LOG = LogManager.getLogger(DefaultConfigsInitializer.class);
 
     private final CachesHolder cachesHolder;
+    private final LoadBalancerCache loadBalancerCache;
+    private final AccountManager accountManager;
 
-    public DefaultConfigsInitializer(CachesHolder cachesHolder) {
+    public DefaultConfigsInitializer(CachesHolder cachesHolder,
+            LoadBalancerCache loadBalancerCache,
+            AccountManager accountManager) {
         this.cachesHolder = cachesHolder;
+        this.loadBalancerCache = loadBalancerCache;
+        this.accountManager = accountManager;
     }
 
     @Override
@@ -57,13 +63,13 @@ public class DefaultConfigsInitializer implements IConfigsInitializer {
             CurrencyCache.getInstance().initBaseCurrencies();
             saveConfigs(persistenceManager);
             BaseGameCache.getInstance().invalidateAll();
-            ApplicationContextHelper.getBean(AccountManager.class).setCasinoSystemType(CasinoSystemType.MULTIBANK);
+            accountManager.setCasinoSystemType(CasinoSystemType.MULTIBANK);
 
             LOG.info("Import configs completed, recommend restart server");
         }
 
-        cachesHolder.register(ApplicationContextHelper.getBean(LoadBalancerCache.class));
-        cachesHolder.register(ApplicationContextHelper.getBean(AccountManager.class));
+        cachesHolder.register(loadBalancerCache);
+        cachesHolder.register(accountManager);
     }
 
     private int loadConfigs(CassandraPersistenceManager manager) {

@@ -1,0 +1,159 @@
+
+Gargoyle180.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/body
+  rotate: false
+  xy: 830, 243
+  size: 183, 301
+  orig: 183, 301
+  offset: 0, 0
+  index: -1
+180/calf_lf
+  rotate: false
+  xy: 950, 7
+  size: 66, 87
+  orig: 66, 87
+  offset: 0, 0
+  index: -1
+180/foot_rt
+  rotate: true
+  xy: 950, 98
+  size: 141, 57
+  orig: 141, 57
+  offset: 0, 0
+  index: -1
+180/tail
+  rotate: false
+  xy: 763, 11
+  size: 183, 228
+  orig: 183, 228
+  offset: 0, 0
+  index: -1
+180/wing_lf1
+  rotate: false
+  xy: 581, 4
+  size: 178, 289
+  orig: 178, 289
+  offset: 0, 0
+  index: -1
+180/wing_lf2
+  rotate: true
+  xy: 569, 548
+  size: 472, 439
+  orig: 472, 439
+  offset: 0, 0
+  index: -1
+180/wing_lf3
+  rotate: false
+  xy: 4, 42
+  size: 573, 430
+  orig: 573, 430
+  offset: 0, 0
+  index: -1
+180/wing_rt1
+  rotate: false
+  xy: 581, 297
+  size: 245, 247
+  orig: 245, 247
+  offset: 0, 0
+  index: -1
+180/wing_rt3
+  rotate: false
+  xy: 4, 476
+  size: 561, 544
+  orig: 561, 544
+  offset: 0, 0
+  index: -1
+
+Gargoyle1802.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/arm_lf
+  rotate: false
+  xy: 574, 901
+  size: 126, 119
+  orig: 126, 119
+  offset: 0, 0
+  index: -1
+180/arm_rt
+  rotate: false
+  xy: 4, 90
+  size: 78, 137
+  orig: 78, 137
+  offset: 0, 0
+  index: -1
+180/calf_rt
+  rotate: false
+  xy: 229, 295
+  size: 68, 98
+  orig: 68, 98
+  offset: 0, 0
+  index: -1
+180/foot_lf
+  rotate: false
+  xy: 704, 937
+  size: 84, 83
+  orig: 84, 83
+  offset: 0, 0
+  index: -1
+180/forearm_lf
+  rotate: false
+  xy: 574, 800
+  size: 81, 97
+  orig: 81, 97
+  offset: 0, 0
+  index: -1
+180/forearm_rt
+  rotate: false
+  xy: 119, 288
+  size: 106, 105
+  orig: 106, 105
+  offset: 0, 0
+  index: -1
+180/hand_lf
+  rotate: false
+  xy: 4, 4
+  size: 60, 82
+  orig: 60, 82
+  offset: 0, 0
+  index: -1
+180/hand_rt
+  rotate: true
+  xy: 301, 321
+  size: 72, 76
+  orig: 72, 76
+  offset: 0, 0
+  index: -1
+180/head
+  rotate: false
+  xy: 574, 713
+  size: 77, 83
+  orig: 77, 83
+  offset: 0, 0
+  index: -1
+180/leg_lf
+  rotate: false
+  xy: 4, 231
+  size: 111, 162
+  orig: 111, 162
+  offset: 0, 0
+  index: -1
+180/leg_rt
+  rotate: true
+  xy: 381, 262
+  size: 758, 189
+  orig: 758, 189
+  offset: 0, 0
+  index: -1
+180/wing_rt2
+  rotate: false
+  xy: 4, 397
+  size: 373, 623
+  orig: 373, 623
+  offset: 0, 0
+  index: -1

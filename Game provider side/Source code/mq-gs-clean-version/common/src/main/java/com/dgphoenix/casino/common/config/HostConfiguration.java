@@ -44,11 +44,12 @@ public class HostConfiguration {
     private ClusterType initClusterType(String clusterTypeAsString) {
         if (StringUtils.isTrimmedEmpty(clusterTypeAsString)) {
 
-            if (gsDomain.endsWith("softgaming.com") || ( gsDomain.endsWith("eusgaming.com") && !gsDomain.contains("copy") )) {
+            if (gsDomain.endsWith("softgaming.com")
+                    || (gsDomain.endsWith("eusgaming.com") && !gsDomain.contains("copy"))) {
                 return ClusterType.PRODUCTION;
             }
 
-            if(gsDomain.endsWith("dgphoenix.com")) {
+            if (gsDomain.endsWith("dgphoenix.com")) {
                 return ClusterType.DEVELOPMENT;
             }
         } else {
@@ -63,7 +64,21 @@ public class HostConfiguration {
     }
 
     private String initClusterName() {
-        return gsDomain.substring(1, gsDomain.indexOf('.', 1)).split("-")[0];
+        if (StringUtils.isTrimmedEmpty(gsDomain)) {
+            return "LOCAL"; // Default for missing gsDomain
+        }
+
+        int dotIndex = gsDomain.indexOf('.', 1);
+        if (dotIndex <= 1) {
+            // No dot found or dot at position 0/1 - invalid format
+            return "LOCAL"; // Default for invalid format
+        }
+
+        try {
+            return gsDomain.substring(1, dotIndex).split("-")[0];
+        } catch (Exception e) {
+            return "LOCAL"; // Fallback on any parsing error
+        }
     }
 
     public ClusterType getClusterType() {
@@ -83,7 +98,8 @@ public class HostConfiguration {
         if (isProductionCluster()) {
             if (url.contains(".sb")) {
                 String secondLevelDomainName = this.getSecondLevelDomainName();
-                curacaoHost = url.substring(0, url.indexOf('.' + secondLevelDomainName)) + ".cur." + secondLevelDomainName;
+                curacaoHost = url.substring(0, url.indexOf('.' + secondLevelDomainName)) + ".cur."
+                        + secondLevelDomainName;
             } else {
                 curacaoHost = curacaoHost.replace("-sb", "-cur");
             }

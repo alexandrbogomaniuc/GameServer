@@ -1,0 +1,1361 @@
+﻿
+logs_full.txt:5645:07.01.2026 
+04:57:07,597 [ERROR] ERROR 
+[ContextLoader Scanner-0] - 
+Context initialization failed
+logs_full.txt:5646:org.springframe
+work.beans.factory.UnsatisfiedDepe
+ndencyException: Error creating 
+bean with name 
+'battlegroundController' defined 
+in file [/tmp/jetty-0.0.0.0-8080-R
+OOT.war-_-any-8308617478655288527.
+dir/webapp/WEB-INF/classes/com/dgp
+hoenix/casino/controller/battlegro
+und/BattlegroundController.class]:
+ Unsatisfied dependency expressed 
+through constructor parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.UnsatisfiedDep
+endencyException: Error creating 
+bean with name 
+'getBattlegroundService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/GameServerComponents
+Configuration.class]: Unsatisfied 
+dependency expressed through 
+method 'getBattlegroundService' 
+parameter 0; nested exception is o
+rg.springframework.beans.factory.B
+eanCreationException: Error 
+creating bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:5686:Caused by: org.
+springframework.beans.factory.Unsa
+tisfiedDependencyException: Error 
+creating bean with name 
+'getBattlegroundService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/GameServerComponents
+Configuration.class]: Unsatisfied 
+dependency expressed through 
+method 'getBattlegroundService' 
+parameter 0; nested exception is o
+rg.springframework.beans.factory.B
+eanCreationException: Error 
+creating bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:5703:Caused by: org.
+springframework.beans.factory.Bean
+CreationException: Error creating 
+bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:5719:Caused by: org.
+springframework.beans.factory.Unsa
+tisfiedDependencyException: Error 
+creating bean with name 
+'accountManager' defined in class 
+path resource [com/dgphoenix/casin
+o/gs/SharedGameServerComponentsCon
+figuration.class]: Unsatisfied 
+dependency expressed through 
+method 'accountManager' parameter 
+0; nested exception is org.springf
+ramework.beans.factory.BeanCreatio
+nException: Error creating bean 
+with name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:5746:Caused by: org.
+springframework.beans.factory.Bean
+CreationException: Error creating 
+bean with name 
+'serverIdLockerService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/SharedGameServerComp
+onentsConfiguration.class]: Bean 
+instantiation via factory method 
+failed; nested exception is org.sp
+ringframework.beans.BeanInstantiat
+ionException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:5766:Caused by: org.
+springframework.beans.BeanInstanti
+ationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:5770:Caused by: org.
+apache.zookeeper.KeeperException$U
+nimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:5771:	at org.apache.
+zookeeper.KeeperException.create(K
+eeperException.java:105)
+logs_full.txt:5772:	at org.apache.
+zookeeper.KeeperException.create(K
+eeperException.java:53)
+logs_full.txt:5808:07.01.2026 
+05:05:06,138 [COMMON] INFO  
+[KeyspaceManagerImpl main] - 
+Start initialization manager for 
+keyspace: RCasinoKS with 
+configuration (ClusterConfig[clust
+erName='CasinoCluster', 
+keySpace='RCasinoKS', 
+hostTimeoutWindow=30000, replicati
+onStrategyClass='org.apache.cassan
+dra.locator.SimpleStrategy', 
+readConsistencyLevel='LOCAL_ONE', 
+writeConsistencyLevel='LOCAL_ONE',
+ replicationFactor=1, 
+createScheme=true, columnFamilyCon
+figs=[ColumnFamilyConfig[className
+='com.dgphoenix.casino.cassandra.p
+ersist.CassandraBetPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraRoundGameSessionPersister', 
+ttl=5184000, enabled=true], Column
+FamilyConfig[className='com.dgphoe
+nix.casino.cassandra.persist.Cassa
+ndraWalletOperationInfoPersister',
+ ttl=2592000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraGameSessionPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraArchiverPersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aBonusArchivePersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aFrBonusArchivePersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aFrbWinOperationPersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aTrackingInfoPersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aPlayerSessionHistoryPersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aCurrentPlayerSessionStatePersiste
+r', ttl=null, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraDelayedMassAwardHistoryPersis
+ter', ttl=null, enabled=true], Col
+umnFamilyConfig[className='com.dgp
+hoenix.casino.cassandra.persist.Ca
+ssandraDelayedMassAwardFailedDeliv
+eryPersister', ttl=null, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraSupportPe
+rsister', ttl=5184000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraCallStati
+sticsPersister', ttl=null, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraCallIssue
+sPersister', ttl=5184000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraNotificat
+ionPersister', ttl=5184000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraMetricsPe
+rsister', ttl=2592000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraShortBetI
+nfoPersister', ttl=259200, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.pr
+omo.persisters.CassandraSummaryTou
+rnamentPromoFeedPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraHistoryInformerItemPersister'
+, ttl=864000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.mp.T
+icketedDrawConfigPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraHttpCallInfoPersister', 
+ttl=5184000, enabled=true], Column
+FamilyConfig[className='com.dgphoe
+nix.casino.cassandra.persist.Cassa
+ndraHistoryTokenPersister', 
+ttl=3600, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.mp.Round
+KPIInfoPersister', ttl=86400, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.mp.BattlegroundHis
+toryPersister', ttl=10368000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.pr
+omo.persisters.PromoPredefinedUser
+sPersister', ttl=15552000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraClientSta
+tisticsPersister', ttl=259200, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.mp.BattlegroundPri
+vateRoomSettingsPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.promo.persisters.Cassa
+ndraPromoWinPersister', 
+ttl=2592000, enabled=true], Column
+FamilyConfig[className='com.dgphoe
+nix.casino.cassandra.persist.Cassa
+ndraBatchOperationStatusPersister'
+, ttl=259200, enabled=true]], 
+hosts=c1.gsmp.lan:9042, 
+jmxHosts=c1.gsmp.lan:7199])
+logs_full.txt:5840:07.01.2026 
+05:05:07,066 [COMMON] INFO  
+[SchemaCreator main] - Updating 
+schema: com.dgphoenix.casino.cassa
+ndra.persist.CassandraDelayedMassA
+wardFailedDeliveryPersister@402feb
+85
+logs_full.txt:5841:07.01.2026 
+05:05:07,066 [COMMON] DEBUG [Cassa
+ndraDelayedMassAwardFailedDelivery
+Persister main] - updateTable: 
+tableMetadata=CREATE TABLE 
+rcasinoks.dmassawardfailedsendcf 
+(key bigint, jcn text, scn blob, 
+PRIMARY KEY (key)) WITH 
+read_repair_chance = 0.0 AND 
+dclocal_read_repair_chance = 0.1 
+AND gc_grace_seconds = 10800 AND 
+bloom_filter_fp_chance = 0.01 AND 
+caching = { 'keys' : 'ALL', 
+'rows_per_partition' : 'NONE' } 
+AND comment = '' AND compaction = 
+{ 'class' : 'org.apache.cassandra.
+db.compaction.SizeTieredCompaction
+Strategy' } AND compression = {  
+} AND default_time_to_live = 0 
+AND speculative_retry = 
+'99.0PERCENTILE' AND 
+min_index_interval = 128 AND 
+max_index_interval = 2048 AND 
+memtable_flush_period_in_ms = 0;
+logs_full.txt:5845:07.01.2026 
+05:05:07,067 [COMMON] DEBUG 
+[CassandraCallStatisticsPersister 
+main] - updateTable: 
+tableMetadata=CREATE TABLE 
+rcasinoks.httpcallstatistics 
+(date text, url text, failedcount 
+counter, successcount counter, 
+PRIMARY KEY (date, url)) WITH 
+CLUSTERING ORDER BY (url ASC) AND 
+read_repair_chance = 0.0 AND 
+dclocal_read_repair_chance = 0.1 
+AND gc_grace_seconds = 10800 AND 
+bloom_filter_fp_chance = 0.01 AND 
+caching = { 'keys' : 'ALL', 
+'rows_per_partition' : 'NONE' } 
+AND comment = '' AND compaction = 
+{ 'class' : 'org.apache.cassandra.
+db.compaction.SizeTieredCompaction
+Strategy' } AND compression = {  
+} AND default_time_to_live = 0 
+AND speculative_retry = 
+'99.0PERCENTILE' AND 
+min_index_interval = 128 AND 
+max_index_interval = 2048 AND 
+memtable_flush_period_in_ms = 0;
+logs_full.txt:6052:07.01.2026 
+05:05:07,546 [COMMON] ERROR [Cassa
+ndraServerConfigTemplatePersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6053:07.01.2026 
+05:05:07,546 [ERROR] ERROR [Cassan
+draServerConfigTemplatePersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6054:07.01.2026 
+05:05:07,546 [COMMON] ERROR [Cassa
+ndraServerConfigTemplatePersister 
+main] - loadAllForLongKeys return 
+null
+logs_full.txt:6055:07.01.2026 
+05:05:07,546 [ERROR] ERROR [Cassan
+draServerConfigTemplatePersister 
+main] - loadAllForLongKeys return 
+null
+logs_full.txt:6056:07.01.2026 
+05:05:07,549 [COMMON] ERROR 
+[CassandraSubCasinoPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6057:07.01.2026 
+05:05:07,549 [ERROR] ERROR 
+[CassandraSubCasinoPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6058:07.01.2026 
+05:05:07,551 [COMMON] ERROR 
+[CassandraSubCasinoGroupPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6059:07.01.2026 
+05:05:07,551 [ERROR] ERROR 
+[CassandraSubCasinoGroupPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6060:07.01.2026 
+05:05:07,554 [COMMON] ERROR [Cassa
+ndraDomainWhiteListPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6061:07.01.2026 
+05:05:07,554 [ERROR] ERROR [Cassan
+draDomainWhiteListPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6062:07.01.2026 
+05:05:07,557 [COMMON] ERROR 
+[CassandraCurrencyPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6063:07.01.2026 
+05:05:07,557 [ERROR] ERROR 
+[CassandraCurrencyPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6064:07.01.2026 
+05:05:07,559 [COMMON] ERROR 
+[CassandraBankInfoPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6065:07.01.2026 
+05:05:07,559 [ERROR] ERROR 
+[CassandraBankInfoPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6066:07.01.2026 
+05:05:07,561 [COMMON] ERROR 
+[CassandraBankInfoPersister main] 
+- loadAllForLongKeys return null
+logs_full.txt:6067:07.01.2026 
+05:05:07,561 [ERROR] ERROR 
+[CassandraBankInfoPersister main] 
+- loadAllForLongKeys return null
+logs_full.txt:6068:07.01.2026 
+05:05:07,564 [COMMON] ERROR [Cassa
+ndraBaseGameInfoTemplatePersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6069:07.01.2026 
+05:05:07,564 [ERROR] ERROR [Cassan
+draBaseGameInfoTemplatePersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6070:07.01.2026 
+05:05:07,564 [COMMON] ERROR [Cassa
+ndraBaseGameInfoTemplatePersister 
+main] - loadAllForLongKeys is null
+logs_full.txt:6071:07.01.2026 
+05:05:07,564 [ERROR] ERROR [Cassan
+draBaseGameInfoTemplatePersister 
+main] - loadAllForLongKeys is null
+logs_full.txt:6072:07.01.2026 
+05:05:07,566 [COMMON] ERROR 
+[CassandraMassAwardPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6073:07.01.2026 
+05:05:07,566 [ERROR] ERROR 
+[CassandraMassAwardPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6074:07.01.2026 
+05:05:07,566 [COMMON] ERROR 
+[CassandraMassAwardPersister 
+main] - loadAll is null
+logs_full.txt:6075:07.01.2026 
+05:05:07,566 [ERROR] ERROR 
+[CassandraMassAwardPersister 
+main] - loadAll is null
+logs_full.txt:6092:07.01.2026 
+05:05:08,895 [COMMON] ERROR [WebAp
+plicationContextConfiguration 
+main] - 
+logs_full.txt:6095:07.01.2026 
+05:05:08,895 [ERROR] ERROR [WebApp
+licationContextConfiguration 
+main] - 
+logs_full.txt:6098:07.01.2026 
+05:05:08,898 [ERROR] ERROR 
+[ContextLoader main] - Context 
+initialization failed
+logs_full.txt:6099:org.springframe
+work.beans.factory.UnsatisfiedDepe
+ndencyException: Error creating 
+bean with name 
+'battlegroundController' defined 
+in file [/tmp/jetty-0.0.0.0-8080-R
+OOT.war-_-any-8005661823752503292.
+dir/webapp/WEB-INF/classes/com/dgp
+hoenix/casino/controller/battlegro
+und/BattlegroundController.class]:
+ Unsatisfied dependency expressed 
+through constructor parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.UnsatisfiedDep
+endencyException: Error creating 
+bean with name 
+'getBattlegroundService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/GameServerComponents
+Configuration.class]: Unsatisfied 
+dependency expressed through 
+method 'getBattlegroundService' 
+parameter 0; nested exception is o
+rg.springframework.beans.factory.B
+eanCreationException: Error 
+creating bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6160:Caused by: org.
+springframework.beans.factory.Unsa
+tisfiedDependencyException: Error 
+creating bean with name 
+'getBattlegroundService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/GameServerComponents
+Configuration.class]: Unsatisfied 
+dependency expressed through 
+method 'getBattlegroundService' 
+parameter 0; nested exception is o
+rg.springframework.beans.factory.B
+eanCreationException: Error 
+creating bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6177:Caused by: org.
+springframework.beans.factory.Bean
+CreationException: Error creating 
+bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6193:Caused by: org.
+springframework.beans.factory.Unsa
+tisfiedDependencyException: Error 
+creating bean with name 
+'accountManager' defined in class 
+path resource [com/dgphoenix/casin
+o/gs/SharedGameServerComponentsCon
+figuration.class]: Unsatisfied 
+dependency expressed through 
+method 'accountManager' parameter 
+0; nested exception is org.springf
+ramework.beans.factory.BeanCreatio
+nException: Error creating bean 
+with name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6220:Caused by: org.
+springframework.beans.factory.Bean
+CreationException: Error creating 
+bean with name 
+'serverIdLockerService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/SharedGameServerComp
+onentsConfiguration.class]: Bean 
+instantiation via factory method 
+failed; nested exception is org.sp
+ringframework.beans.BeanInstantiat
+ionException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6240:Caused by: org.
+springframework.beans.BeanInstanti
+ationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6244:Caused by: org.
+apache.zookeeper.KeeperException$U
+nimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6245:	at org.apache.
+zookeeper.KeeperException.create(K
+eeperException.java:105)
+logs_full.txt:6246:	at org.apache.
+zookeeper.KeeperException.create(K
+eeperException.java:53)
+logs_full.txt:6275:07.01.2026 
+05:15:07,230 [COMMON] ERROR 
+[DistributedLockManager 
+pool-3-thread-1] - 
+CleanOldLocksTask was failed:
+logs_full.txt:6276:java.lang.NullP
+ointerException
+logs_full.txt:6288:07.01.2026 
+05:15:07,230 [ERROR] ERROR 
+[DistributedLockManager 
+pool-3-thread-1] - 
+CleanOldLocksTask was failed:
+logs_full.txt:6289:java.lang.NullP
+ointerException
+logs_full.txt:6301:07.01.2026 
+05:15:07,231 [COMMON] DEBUG 
+[DistributedLockManager 
+pool-3-thread-1] - Task 
+completed. Total lockIds affected 
+= 0, unlocked = 0, failed = 0
+logs_full.txt:6305:07.01.2026 
+05:15:07,232 [COMMON] ERROR 
+[AccountDistributedLockManager 
+pool-4-thread-1] - 
+CleanOldLocksTask was failed:
+logs_full.txt:6306:java.lang.NullP
+ointerException
+logs_full.txt:6318:07.01.2026 
+05:15:07,232 [ERROR] ERROR 
+[AccountDistributedLockManager 
+pool-4-thread-1] - 
+CleanOldLocksTask was failed:
+logs_full.txt:6319:java.lang.NullP
+ointerException
+logs_full.txt:6331:07.01.2026 
+05:15:07,233 [COMMON] DEBUG 
+[AccountDistributedLockManager 
+pool-4-thread-1] - Task 
+completed. Total lockIds affected 
+= 0, unlocked = 0, failed = 0
+logs_full.txt:6394:07.01.2026 
+07:34:35,626 [COMMON] INFO  
+[KeyspaceManagerImpl main] - 
+Start initialization manager for 
+keyspace: RCasinoKS with 
+configuration (ClusterConfig[clust
+erName='CasinoCluster', 
+keySpace='RCasinoKS', 
+hostTimeoutWindow=30000, replicati
+onStrategyClass='org.apache.cassan
+dra.locator.SimpleStrategy', 
+readConsistencyLevel='LOCAL_ONE', 
+writeConsistencyLevel='LOCAL_ONE',
+ replicationFactor=1, 
+createScheme=true, columnFamilyCon
+figs=[ColumnFamilyConfig[className
+='com.dgphoenix.casino.cassandra.p
+ersist.CassandraBetPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraRoundGameSessionPersister', 
+ttl=5184000, enabled=true], Column
+FamilyConfig[className='com.dgphoe
+nix.casino.cassandra.persist.Cassa
+ndraWalletOperationInfoPersister',
+ ttl=2592000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraGameSessionPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraArchiverPersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aBonusArchivePersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aFrBonusArchivePersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aFrbWinOperationPersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aTrackingInfoPersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aPlayerSessionHistoryPersister', 
+ttl=null, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.Cassandr
+aCurrentPlayerSessionStatePersiste
+r', ttl=null, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraDelayedMassAwardHistoryPersis
+ter', ttl=null, enabled=true], Col
+umnFamilyConfig[className='com.dgp
+hoenix.casino.cassandra.persist.Ca
+ssandraDelayedMassAwardFailedDeliv
+eryPersister', ttl=null, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraSupportPe
+rsister', ttl=5184000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraCallStati
+sticsPersister', ttl=null, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraCallIssue
+sPersister', ttl=5184000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraNotificat
+ionPersister', ttl=5184000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraMetricsPe
+rsister', ttl=2592000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraShortBetI
+nfoPersister', ttl=259200, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.pr
+omo.persisters.CassandraSummaryTou
+rnamentPromoFeedPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraHistoryInformerItemPersister'
+, ttl=864000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.mp.T
+icketedDrawConfigPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.cassandra.persist.Cass
+andraHttpCallInfoPersister', 
+ttl=5184000, enabled=true], Column
+FamilyConfig[className='com.dgphoe
+nix.casino.cassandra.persist.Cassa
+ndraHistoryTokenPersister', 
+ttl=3600, enabled=true], ColumnFam
+ilyConfig[className='com.dgphoenix
+.casino.cassandra.persist.mp.Round
+KPIInfoPersister', ttl=86400, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.mp.BattlegroundHis
+toryPersister', ttl=10368000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.pr
+omo.persisters.PromoPredefinedUser
+sPersister', ttl=15552000, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.CassandraClientSta
+tisticsPersister', ttl=259200, 
+enabled=true], ColumnFamilyConfig[
+className='com.dgphoenix.casino.ca
+ssandra.persist.mp.BattlegroundPri
+vateRoomSettingsPersister', 
+ttl=10368000, enabled=true], Colum
+nFamilyConfig[className='com.dgpho
+enix.casino.promo.persisters.Cassa
+ndraPromoWinPersister', 
+ttl=2592000, enabled=true], Column
+FamilyConfig[className='com.dgphoe
+nix.casino.cassandra.persist.Cassa
+ndraBatchOperationStatusPersister'
+, ttl=259200, enabled=true]], 
+hosts=c1.gsmp.lan:9042, 
+jmxHosts=c1.gsmp.lan:7199])
+logs_full.txt:6426:07.01.2026 
+07:34:36,538 [COMMON] INFO  
+[SchemaCreator main] - Updating 
+schema: com.dgphoenix.casino.cassa
+ndra.persist.CassandraDelayedMassA
+wardFailedDeliveryPersister@5606d5
+37
+logs_full.txt:6427:07.01.2026 
+07:34:36,538 [COMMON] DEBUG [Cassa
+ndraDelayedMassAwardFailedDelivery
+Persister main] - updateTable: 
+tableMetadata=CREATE TABLE 
+rcasinoks.dmassawardfailedsendcf 
+(key bigint, jcn text, scn blob, 
+PRIMARY KEY (key)) WITH 
+read_repair_chance = 0.0 AND 
+dclocal_read_repair_chance = 0.1 
+AND gc_grace_seconds = 10800 AND 
+bloom_filter_fp_chance = 0.01 AND 
+caching = { 'keys' : 'ALL', 
+'rows_per_partition' : 'NONE' } 
+AND comment = '' AND compaction = 
+{ 'class' : 'org.apache.cassandra.
+db.compaction.SizeTieredCompaction
+Strategy' } AND compression = {  
+} AND default_time_to_live = 0 
+AND speculative_retry = 
+'99.0PERCENTILE' AND 
+min_index_interval = 128 AND 
+max_index_interval = 2048 AND 
+memtable_flush_period_in_ms = 0;
+logs_full.txt:6431:07.01.2026 
+07:34:36,539 [COMMON] DEBUG 
+[CassandraCallStatisticsPersister 
+main] - updateTable: 
+tableMetadata=CREATE TABLE 
+rcasinoks.httpcallstatistics 
+(date text, url text, failedcount 
+counter, successcount counter, 
+PRIMARY KEY (date, url)) WITH 
+CLUSTERING ORDER BY (url ASC) AND 
+read_repair_chance = 0.0 AND 
+dclocal_read_repair_chance = 0.1 
+AND gc_grace_seconds = 10800 AND 
+bloom_filter_fp_chance = 0.01 AND 
+caching = { 'keys' : 'ALL', 
+'rows_per_partition' : 'NONE' } 
+AND comment = '' AND compaction = 
+{ 'class' : 'org.apache.cassandra.
+db.compaction.SizeTieredCompaction
+Strategy' } AND compression = {  
+} AND default_time_to_live = 0 
+AND speculative_retry = 
+'99.0PERCENTILE' AND 
+min_index_interval = 128 AND 
+max_index_interval = 2048 AND 
+memtable_flush_period_in_ms = 0;
+logs_full.txt:6638:07.01.2026 
+07:34:37,038 [COMMON] ERROR [Cassa
+ndraServerConfigTemplatePersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6639:07.01.2026 
+07:34:37,038 [ERROR] ERROR [Cassan
+draServerConfigTemplatePersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6640:07.01.2026 
+07:34:37,038 [COMMON] ERROR [Cassa
+ndraServerConfigTemplatePersister 
+main] - loadAllForLongKeys return 
+null
+logs_full.txt:6641:07.01.2026 
+07:34:37,038 [ERROR] ERROR [Cassan
+draServerConfigTemplatePersister 
+main] - loadAllForLongKeys return 
+null
+logs_full.txt:6642:07.01.2026 
+07:34:37,042 [COMMON] ERROR 
+[CassandraSubCasinoPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6643:07.01.2026 
+07:34:37,042 [ERROR] ERROR 
+[CassandraSubCasinoPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6644:07.01.2026 
+07:34:37,045 [COMMON] ERROR 
+[CassandraSubCasinoGroupPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6645:07.01.2026 
+07:34:37,045 [ERROR] ERROR 
+[CassandraSubCasinoGroupPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6646:07.01.2026 
+07:34:37,049 [COMMON] ERROR [Cassa
+ndraDomainWhiteListPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6647:07.01.2026 
+07:34:37,049 [ERROR] ERROR [Cassan
+draDomainWhiteListPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6648:07.01.2026 
+07:34:37,052 [COMMON] ERROR 
+[CassandraCurrencyPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6649:07.01.2026 
+07:34:37,052 [ERROR] ERROR 
+[CassandraCurrencyPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6650:07.01.2026 
+07:34:37,056 [COMMON] ERROR 
+[CassandraBankInfoPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6651:07.01.2026 
+07:34:37,056 [ERROR] ERROR 
+[CassandraBankInfoPersister main] 
+- loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6652:07.01.2026 
+07:34:37,056 [COMMON] ERROR 
+[CassandraBankInfoPersister main] 
+- loadAllForLongKeys return null
+logs_full.txt:6653:07.01.2026 
+07:34:37,056 [ERROR] ERROR 
+[CassandraBankInfoPersister main] 
+- loadAllForLongKeys return null
+logs_full.txt:6654:07.01.2026 
+07:34:37,061 [COMMON] ERROR [Cassa
+ndraBaseGameInfoTemplatePersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6655:07.01.2026 
+07:34:37,061 [ERROR] ERROR [Cassan
+draBaseGameInfoTemplatePersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6656:07.01.2026 
+07:34:37,061 [COMMON] ERROR [Cassa
+ndraBaseGameInfoTemplatePersister 
+main] - loadAllForLongKeys is null
+logs_full.txt:6657:07.01.2026 
+07:34:37,061 [ERROR] ERROR [Cassan
+draBaseGameInfoTemplatePersister 
+main] - loadAllForLongKeys is null
+logs_full.txt:6658:07.01.2026 
+07:34:37,065 [COMMON] ERROR 
+[CassandraMassAwardPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6659:07.01.2026 
+07:34:37,065 [ERROR] ERROR 
+[CassandraMassAwardPersister 
+main] - 
+loadAllForLongKeysAsMapKryo: 
+rowList is null or empty
+logs_full.txt:6660:07.01.2026 
+07:34:37,065 [COMMON] ERROR 
+[CassandraMassAwardPersister 
+main] - loadAll is null
+logs_full.txt:6661:07.01.2026 
+07:34:37,065 [ERROR] ERROR 
+[CassandraMassAwardPersister 
+main] - loadAll is null
+logs_full.txt:6678:07.01.2026 
+07:34:37,933 [COMMON] ERROR [WebAp
+plicationContextConfiguration 
+main] - 
+logs_full.txt:6681:07.01.2026 
+07:34:37,933 [ERROR] ERROR [WebApp
+licationContextConfiguration 
+main] - 
+logs_full.txt:6684:07.01.2026 
+07:34:37,935 [ERROR] ERROR 
+[ContextLoader main] - Context 
+initialization failed
+logs_full.txt:6685:org.springframe
+work.beans.factory.UnsatisfiedDepe
+ndencyException: Error creating 
+bean with name 
+'battlegroundController' defined 
+in file [/tmp/jetty-0.0.0.0-8080-R
+OOT.war-_-any-3190570233834936447.
+dir/webapp/WEB-INF/classes/com/dgp
+hoenix/casino/controller/battlegro
+und/BattlegroundController.class]:
+ Unsatisfied dependency expressed 
+through constructor parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.UnsatisfiedDep
+endencyException: Error creating 
+bean with name 
+'getBattlegroundService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/GameServerComponents
+Configuration.class]: Unsatisfied 
+dependency expressed through 
+method 'getBattlegroundService' 
+parameter 0; nested exception is o
+rg.springframework.beans.factory.B
+eanCreationException: Error 
+creating bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6746:Caused by: org.
+springframework.beans.factory.Unsa
+tisfiedDependencyException: Error 
+creating bean with name 
+'getBattlegroundService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/GameServerComponents
+Configuration.class]: Unsatisfied 
+dependency expressed through 
+method 'getBattlegroundService' 
+parameter 0; nested exception is o
+rg.springframework.beans.factory.B
+eanCreationException: Error 
+creating bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6763:Caused by: org.
+springframework.beans.factory.Bean
+CreationException: Error creating 
+bean with name 
+'persistenceManager': Invocation 
+of init method failed; nested 
+exception is org.springframework.b
+eans.factory.UnsatisfiedDependency
+Exception: Error creating bean 
+with name 'accountManager' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Unsatisfied dependency 
+expressed through method 
+'accountManager' parameter 0; 
+nested exception is org.springfram
+ework.beans.factory.BeanCreationEx
+ception: Error creating bean with 
+name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6779:Caused by: org.
+springframework.beans.factory.Unsa
+tisfiedDependencyException: Error 
+creating bean with name 
+'accountManager' defined in class 
+path resource [com/dgphoenix/casin
+o/gs/SharedGameServerComponentsCon
+figuration.class]: Unsatisfied 
+dependency expressed through 
+method 'accountManager' parameter 
+0; nested exception is org.springf
+ramework.beans.factory.BeanCreatio
+nException: Error creating bean 
+with name 'serverIdLockerService' 
+defined in class path resource [co
+m/dgphoenix/casino/gs/SharedGameSe
+rverComponentsConfiguration.class]
+: Bean instantiation via factory 
+method failed; nested exception 
+is org.springframework.beans.BeanI
+nstantiationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6806:Caused by: org.
+springframework.beans.factory.Bean
+CreationException: Error creating 
+bean with name 
+'serverIdLockerService' defined 
+in class path resource [com/dgphoe
+nix/casino/gs/SharedGameServerComp
+onentsConfiguration.class]: Bean 
+instantiation via factory method 
+failed; nested exception is org.sp
+ringframework.beans.BeanInstantiat
+ionException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6826:Caused by: org.
+springframework.beans.BeanInstanti
+ationException: Failed to 
+instantiate [com.dgphoenix.casino.
+common.cache.data.server.ServerCoo
+rdinatorInfoProvider]: Factory 
+method 'serverIdLockerService' 
+threw exception; nested exception 
+is org.apache.zookeeper.KeeperExce
+ption$UnimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6830:Caused by: org.
+apache.zookeeper.KeeperException$U
+nimplementedException: 
+KeeperErrorCode = Unimplemented 
+for /gs/pool
+logs_full.txt:6831:	at org.apache.
+zookeeper.KeeperException.create(K
+eeperException.java:105)
+logs_full.txt:6832:	at org.apache.
+zookeeper.KeeperException.create(K
+eeperException.java:53)
+
+

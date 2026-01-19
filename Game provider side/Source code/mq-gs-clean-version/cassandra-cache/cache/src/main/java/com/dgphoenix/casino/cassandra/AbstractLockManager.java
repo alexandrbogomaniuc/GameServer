@@ -31,7 +31,7 @@ import java.util.concurrent.*;
 public abstract class AbstractLockManager extends AbstractCassandraPersister<String, Integer> implements ILockManager {
 
     private static final String LOCK_ID = "LOCK_ID";
-    //locker is serverId holded this lock
+    // locker is serverId holded this lock
     private static final String LOCKER = "LOCKER";
     private static final String LAST_LOCKER = "LLOCKER";
     private static final String LOCK_TIME = "LOCK_TIME";
@@ -59,15 +59,16 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     private volatile IRemoteUnlocker remoteUnlocker;
 
     protected AbstractLockManager(int localLocksInitSize, int serverLocksInitSize, int serverLocksMaxSize,
-                                  int serverLocksConcurrencyLevel) {
+            int serverLocksConcurrencyLevel) {
         this(localLocksInitSize, serverLocksInitSize, serverLocksMaxSize, serverLocksConcurrencyLevel, null, null);
     }
 
     protected AbstractLockManager(int localLocksInitSize, int serverLocksInitSize, int serverLocksMaxSize,
-                                  int serverLocksConcurrencyLevel, Integer serverId, ILoadBalancer loadBalancer) {
+            int serverLocksConcurrencyLevel, Integer serverId, ILoadBalancer loadBalancer) {
         this.serverId = serverId;
         this.localLocksCache = new ConcurrentHashMap<>(localLocksInitSize);
-        this.serverLocksCache = getServerLocksCache(serverLocksInitSize, serverLocksMaxSize, serverLocksConcurrencyLevel);
+        this.serverLocksCache = getServerLocksCache(serverLocksInitSize, serverLocksMaxSize,
+                serverLocksConcurrencyLevel);
         this.loadBalancer = loadBalancer;
         registerStatisticsGetter();
     }
@@ -107,8 +108,8 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                         new ColumnDefinition(LOCK_ID, DataType.text(), false, false, true),
                         new ColumnDefinition(LOCKER, DataType.cint(), false, true, false),
                         new ColumnDefinition(LAST_LOCKER, DataType.cint()),
-                        new ColumnDefinition(LOCK_TIME, DataType.bigint())
-                ), LOCK_ID)
+                        new ColumnDefinition(LOCK_TIME, DataType.bigint())),
+                LOCK_ID)
                 .caching(Caching.ACTUAL_DATA)
                 .compaction(CompactionStrategy.getLeveled(true, TimeUnit.HOURS.toSeconds(1)))
                 .gcGraceSeconds(0);
@@ -155,8 +156,8 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
 
     private ServerLockInfo getCurrentLocker(String id) {
         long now = System.currentTimeMillis();
-        Select select = QueryBuilder.select(LOCK_TIME, LOCKER, LAST_LOCKER).from(getMainColumnFamilyName()).
-                where(eq(LOCK_ID, id)).limit(1);
+        Select select = QueryBuilder.select(LOCK_TIME, LOCKER, LAST_LOCKER).from(getMainColumnFamilyName())
+                .where(eq(LOCK_ID, id)).limit(1);
         ResultSet resultSet = execute(select, "getCurrentLocker");
         Row row = resultSet.one();
         if (row == null) {
@@ -173,21 +174,14 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     private boolean persist(String id, ServerLockInfo currentLocker, long newLockTime) {
         ResultSet resultSet;
         if (currentLocker == null) {
-            Statement query = getInsertQuery().
-                    value(LOCK_ID, id).
-                    value(LOCKER, getLockerId()).
-                    value(LOCK_TIME, newLockTime).
-                    value(LAST_LOCKER, getLockerId()).
-                    ifNotExists();
+            Statement query = getInsertQuery().value(LOCK_ID, id).value(LOCKER, getLockerId())
+                    .value(LOCK_TIME, newLockTime).value(LAST_LOCKER, getLockerId()).ifNotExists();
             resultSet = executeWithCheckTimeout(query, "persist: insert");
         } else {
-            Statement updateQuery =
-                    getUpdateQuery(QueryBuilder.eq(LOCK_ID, id)).
-                            with().
-                            and(QueryBuilder.set(LOCK_TIME, newLockTime)).
-                            and(QueryBuilder.set(LOCKER, getLockerId())).
-                            and(QueryBuilder.set(LAST_LOCKER, getLockerId())).
-                            onlyIf(QueryBuilder.eq(LOCK_TIME, currentLocker.getLockTime()));
+            Statement updateQuery = getUpdateQuery(QueryBuilder.eq(LOCK_ID, id)).with()
+                    .and(QueryBuilder.set(LOCK_TIME, newLockTime)).and(QueryBuilder.set(LOCKER, getLockerId()))
+                    .and(QueryBuilder.set(LAST_LOCKER, getLockerId()))
+                    .onlyIf(QueryBuilder.eq(LOCK_TIME, currentLocker.getLockTime()));
             resultSet = executeWithCheckTimeout(updateQuery, "persist: update");
         }
         return resultSet.wasApplied();
@@ -205,10 +199,8 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                     needSleep = false;
                 }
                 now1 = System.currentTimeMillis();
-                Statement query =
-                        getUpdateQuery(QueryBuilder.eq(LOCK_ID, lockId)).
-                                with(QueryBuilder.set(LOCKER, -1)).
-                                onlyIf(QueryBuilder.eq(LOCKER, getLockerId()));
+                Statement query = getUpdateQuery(QueryBuilder.eq(LOCK_ID, lockId)).with(QueryBuilder.set(LOCKER, -1))
+                        .onlyIf(QueryBuilder.eq(LOCKER, getLockerId()));
                 ResultSet resultSet = execute(query, "delete");
                 success = resultSet.wasApplied();
                 break;
@@ -234,7 +226,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                 serverLockInfo.setServerId(getLockerId());
                 serverLockInfo.setLastLockerServerId(getLockerId());
             }
-        } else { //only if interrupted
+        } else { // only if interrupted
             getLog().error("delete: {}, is not success", lockId);
             serverLocksCache.invalidate(lockId);
         }
@@ -274,7 +266,8 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     public LockingInfo tryLock(String id) throws CommonException {
         return lock(id, new WaitCondition() {
             /**
-             * First attempt may be unsuccessful only because of specifics of optimistic locking strategy.
+             * First attempt may be unsuccessful only because of specifics of optimistic
+             * locking strategy.
              * 2 attempts must be allowed for fix this question.
              */
             private boolean firstAttempt = true;
@@ -340,7 +333,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
                         serverLock.setServerId(getLockerId());
                         notifyLockChangedListeners(serverLock);
                         serverLock.setLastLockerServerId(serverLock.getServerId());
-                    } else { //if new lock, don't notify listener
+                    } else { // if new lock, don't notify listener
                         serverLock = new ServerLockInfo(id, getLockerId(), newLockTime, newLockTime, getLockerId());
                     }
                     break;
@@ -377,7 +370,7 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
         try {
             return serverLocksCache.get(lockId);
         } catch (CacheLoader.InvalidCacheLoadException e) {
-            //nop, this may be if lock not found in DB
+            // nop, this may be if lock not found in DB
         } catch (ExecutionException e) {
             getLog().error("getServerLockSilent failed, lockId=" + lockId, e);
         }
@@ -385,6 +378,9 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
     }
 
     private int getLockerId() {
+        if (serverId == null) {
+            return -1;
+        }
         return serverId;
     }
 
@@ -448,8 +444,10 @@ public abstract class AbstractLockManager extends AbstractCassandraPersister<Str
             Long lockerStartTime = loadBalancer.getStartTime(serverLockInfo.getServerId());
             if (lockerStartTime != null) {
                 if (serverLockInfo.getLockTime() < lockerStartTime) {
-                    getLog().debug("Lock time is lower than locker's start time, possibly lock before shutdown took place, " +
-                            "lockInfo: {}, lockerStartTime: {}", serverLockInfo, new Date(lockerStartTime));
+                    getLog().debug(
+                            "Lock time is lower than locker's start time, possibly lock before shutdown took place, " +
+                                    "lockInfo: {}, lockerStartTime: {}",
+                            serverLockInfo, new Date(lockerStartTime));
                     unlocked = remoteUnlocker.unlock(serverLockInfo.getServerId(), getClass(),
                             serverLockInfo.getLockId(), serverLockInfo.getLockTime());
                 }

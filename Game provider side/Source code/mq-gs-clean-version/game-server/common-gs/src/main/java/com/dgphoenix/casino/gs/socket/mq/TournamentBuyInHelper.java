@@ -54,29 +54,31 @@ public class TournamentBuyInHelper {
     private final AccountManager accountManager;
     private final CassandraBattlegroundConfigPersister cassandraBattlegroundConfigPersister;
 
-    public TournamentBuyInHelper(ICurrencyRateManager currencyRateManager, CassandraPersistenceManager cpm) {
+    public TournamentBuyInHelper(ICurrencyRateManager currencyRateManager, CassandraPersistenceManager cpm,
+            AccountManager accountManager) {
         this.currencyRateManager = currencyRateManager;
         this.externalTransactionPersister = cpm.getPersister(CassandraExternalTransactionPersister.class);
         this.lasthandPersister = cpm.getPersister(CassandraLasthandPersister.class);
-        this.accountManager = AccountManager.getInstance();
+        this.accountManager = accountManager;
         this.cassandraBattlegroundConfigPersister = cpm.getPersister(CassandraBattlegroundConfigPersister.class);
     }
 
     public void performBuyIn(String sessionId, long tournamentId, long buyInAmount, String currency, int betNumber,
-                             long tournamentBalance,
-                             boolean isBuyIn) throws CommonException, ForceCreateDetailsException {
+            long tournamentBalance,
+            boolean isBuyIn) throws CommonException, ForceCreateDetailsException {
         SessionHelper.getInstance().lock(sessionId);
         try {
             SessionHelper.getInstance().openSession();
             SessionInfo sessionInfo = SessionHelper.getInstance().getTransactionData().getPlayerSession();
             AccountInfo accountInfo = accountManager.getAccountInfo(sessionInfo.getAccountId());
-            GameSession gameSession = isBuyIn ? null : SessionHelper.getInstance().getTransactionData().getGameSession();
+            GameSession gameSession = isBuyIn ? null
+                    : SessionHelper.getInstance().getTransactionData().getGameSession();
             long buyInAmountInPlayerCurrency = (long) currencyRateManager
                     .convert(buyInAmount, currency, accountInfo.getCurrency().getCode());
             if (buyInAmountInPlayerCurrency > 0) {
                 if (accountInfo.getBalance() < buyInAmountInPlayerCurrency) {
                     LOG.warn("performBuyIn: insufficient funds sessionId={}, tournamentId={}, buyInAmount={}, " +
-                                    "currency={}, buyInAmountInPlayerCurrency={}, accountInfo.getBalance()={}",
+                            "currency={}, buyInAmountInPlayerCurrency={}, accountInfo.getBalance()={}",
                             sessionId, tournamentId, buyInAmount, currency, buyInAmountInPlayerCurrency,
                             accountInfo.getBalance());
                     throw new WalletException(accountInfo.getId(), "Not enough money",
@@ -118,7 +120,8 @@ public class TournamentBuyInHelper {
             if (config.isEnabled()) {
                 battlegroundInfos.add(new BattlegroundInfo(config.getGameId(), config.getIcon(),
                         config.getRulesLink(), getBuyIns(config.getBuyInsForDefaultCurrency(),
-                        config.getBuyInsByCurrencyMap(), playerCurrencyCode, bankInfo), config.getRake()));
+                                config.getBuyInsByCurrencyMap(), playerCurrencyCode, bankInfo),
+                        config.getRake()));
             }
         }
         if (client != null) {
@@ -128,7 +131,7 @@ public class TournamentBuyInHelper {
     }
 
     private List<Long> getBuyIns(List<Long> buyInsForDefaultCurrency, Map<String, List<Long>> buyInsByCurrencyMap,
-                                 String playerCurrencyCode, BankInfo bankInfo) throws CommonException {
+            String playerCurrencyCode, BankInfo bankInfo) throws CommonException {
         if (playerCurrencyCode.equals(bankInfo.getDefaultCurrency().getCode())) {
             return buyInsForDefaultCurrency;
         } else {
@@ -169,8 +172,8 @@ public class TournamentBuyInHelper {
     }
 
     private void processBuyIn(String sessionId, long amount, int betNumber, AccountInfo account,
-                              GameSession gameSession, long tournamentId,
-                              boolean isBuyIn) throws CommonException, ForceCreateDetailsException {
+            GameSession gameSession, long tournamentId,
+            boolean isBuyIn) throws CommonException, ForceCreateDetailsException {
         LOG.debug("buyIn: sessionId={}, amount={}, betNumber={}, tournamentId={}", sessionId, amount,
                 betNumber, tournamentId);
         SessionInfo sessionInfo = SessionHelper.getInstance().getTransactionData().getPlayerSession();
@@ -200,7 +203,7 @@ public class TournamentBuyInHelper {
     }
 
     private void makeWalletWin(SessionInfo sessionInfo, GameSession gameSession, AccountInfo account,
-                               IDBLink dbLink, long tournamentId) throws CommonException {
+            IDBLink dbLink, long tournamentId) throws CommonException {
         sessionInfo.updateActivity();
         ITransactionData transactionData = SessionHelper.getInstance().getTransactionData();
         IWallet wallet = transactionData.getWallet();
@@ -247,7 +250,8 @@ public class TournamentBuyInHelper {
         }
         if (needSendWin) {
             try {
-                WalletProtocolFactory.getInstance().interceptCreditCompleted(account.getId(), dbLink, true, handler, dbLink.getRoundId());
+                WalletProtocolFactory.getInstance().interceptCreditCompleted(account.getId(), dbLink, true, handler,
+                        dbLink.getRoundId());
             } catch (WalletException e) {
                 LOG.error("processing error: interceptCreditCompleted failed, sessionInfo={}, gameSession={}",
                         sessionInfo, gameSession, e);
@@ -258,7 +262,7 @@ public class TournamentBuyInHelper {
     }
 
     private void makeWin(AccountInfo account, GameSession gameSession, IDBLink dbLink,
-                         long tournamentId) throws CommonException {
+            long tournamentId) throws CommonException {
         ITransactionData transactionData = SessionHelper.getInstance().getTransactionData();
         LOG.info("Deleting online CT lastHand={}", transactionData.getLasthand());
         transactionData.setLasthand(null);
@@ -284,7 +288,7 @@ public class TournamentBuyInHelper {
     }
 
     private void saveExternalTransaction(long amount, AccountInfo account, int betNumber, GameSession gameSession,
-                                         boolean walletBank, Long roundId, long tournamentId) {
+            boolean walletBank, Long roundId, long tournamentId) {
         String externalTransactionId = getDebitExternalTransactionIdForMpGame(account.getId(),
                 gameSession.getId(), betNumber, tournamentId);
         ExternalPaymentTransaction transaction = new ExternalPaymentTransaction(externalTransactionId,
@@ -297,7 +301,7 @@ public class TournamentBuyInHelper {
     }
 
     private String getDebitExternalTransactionIdForMpGame(long accountId, long gameSessionId, int betNumber,
-                                                          long tournamentId) {
+            long tournamentId) {
         return accountId + DELIMITER + gameSessionId + DELIMITER + betNumber + DELIMITER + tournamentId;
     }
 
@@ -306,7 +310,7 @@ public class TournamentBuyInHelper {
     }
 
     private void makeWalletBet(SessionInfo sessionInfo, IDBLink dbLink, GameSession gameSession, AccountInfo account,
-                               long amount) throws CommonException {
+            long amount) throws CommonException {
         LOG.debug("makeWalletBet: before debit account={}", account);
         IWallet wallet = SessionHelper.getInstance().getTransactionData().getWallet();
         checkPendingOperation(wallet, gameSession.getGameId());
@@ -343,7 +347,7 @@ public class TournamentBuyInHelper {
     }
 
     private void makeBet(SessionInfo sessionInfo, IDBLink dbLink, GameSession gameSession, AccountInfo account,
-                         long amount) throws CommonException {
+            long amount) throws CommonException {
         LOG.debug("makeBet: before debit account={}", account);
         sessionInfo.updateActivity();
         try {
@@ -368,7 +372,7 @@ public class TournamentBuyInHelper {
     }
 
     private IDBLink getDBLink(SessionInfo sessionInfo, GameSession gameSession,
-                              AccountInfo accountInfo) throws CommonException {
+            AccountInfo accountInfo) throws CommonException {
         checkInvalidDBLink(sessionInfo);
         IDBLink dbLink;
         if (gameSession == null) {
@@ -419,4 +423,3 @@ public class TournamentBuyInHelper {
         return new TournamentDBLink(fakeGameSession, accountInfo);
     }
 }
-

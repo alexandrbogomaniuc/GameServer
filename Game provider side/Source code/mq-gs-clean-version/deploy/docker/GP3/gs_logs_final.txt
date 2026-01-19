@@ -1,0 +1,19 @@
+Checking if Cassandra is up and running ...
+docker : 2026-01-07 11:38:45.463:INFO::main: Logging initialized 
+@656ms to org.eclipse.jetty.util.log.StdErrLog
+At line:1 char:1
++ docker logs gp3-gs-1 2>&1 | Select-Object -Last 100 | Out-String 
+| Se ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-01-07 11:3...l.lo 
+   g.StdErrLog:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Cassandra startup completed successfully --- OK
+Listening for transport dt_socket at address: 9000
+2026-01-07 11:38:45.736:INFO:oejs.Server:main: 
+jetty-9.4.18.v20190429; built: 2019-04-29T20:42:08.989Z; git: 
+e1bc35120a6617ee3df052294e433f3a25ce7097; jvm 1.8.0_232-b09
+2026-01-07 11:38:45.766:INFO:oejdp.ScanningAppProvider:main: 
+Deployment monitor [file:///var/lib/jetty/webapps/] at interval 1
+

@@ -72,8 +72,7 @@ import static com.dgphoenix.casino.common.util.string.StringUtils.isTrimmedEmpty
  * User: isirbis
  * Date: 03.10.14
  */
-public abstract class BaseStartGameAction<F extends CommonStartGameForm, L extends LoginRequest,
-        R extends StartGameRequest>
+public abstract class BaseStartGameAction<F extends CommonStartGameForm, L extends LoginRequest, R extends StartGameRequest>
         extends BaseAction<F> implements APUBConstants {
     protected static final Logger LOG = LogManager.getLogger(BaseStartGameAction.class);
 
@@ -84,7 +83,8 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
 
     public BaseStartGameAction() {
         ApplicationContext applicationContext = ApplicationContextHelper.getApplicationContext();
-        CassandraPersistenceManager persistenceManager = applicationContext.getBean("persistenceManager", CassandraPersistenceManager.class);
+        CassandraPersistenceManager persistenceManager = applicationContext.getBean("persistenceManager",
+                CassandraPersistenceManager.class);
         gameServerConfiguration = applicationContext.getBean("gameServerConfiguration", GameServerConfiguration.class);
         extendedAccountInfoPersister = persistenceManager.getPersister(CassandraExtendedAccountInfoPersister.class);
         errorPersisterHelper = applicationContext.getBean(ErrorPersisterHelper.class);
@@ -93,7 +93,7 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request,
-                                 HttpServletResponse response) throws Exception {
+            HttpServletResponse response) throws Exception {
         F form = (F) actionForm;
         if (isTournamentLobbyRequest(form)) {
             String tournamentLobbyUrl = "/tournamentlobby.do?" + request.getQueryString();
@@ -111,7 +111,8 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
         return loginHelper.login(loginRequest);
     }
 
-    protected StartGameResponse prepareMQStartGame(R startGameRequest, HttpServletResponse response) throws CommonException {
+    protected StartGameResponse prepareMQStartGame(R startGameRequest, HttpServletResponse response)
+            throws CommonException {
         SessionInfo sessionInfo = startGameRequest.getSessionInfo();
         AccountInfo accountInfo = startGameRequest.getAccountInfo();
         Integer bankId = startGameRequest.getBankId();
@@ -128,13 +129,14 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
         try {
             long now1 = System.currentTimeMillis();
 
-            Currency currency = accountInfo.getCurrencyFraction() == null ?
-                    accountInfo.getCurrency() : accountInfo.getCurrencyFraction();
+            Currency currency = accountInfo.getCurrencyFraction() == null ? accountInfo.getCurrency()
+                    : accountInfo.getCurrencyFraction();
             IBaseGameInfo gameInfo = getGameInfo(bankId, gameId, currency, startGameRequest.getProfileId());
             startGameResponse.setGameInfo(gameInfo);
             Long bonusId = validateBonusIdParam(startGameRequest, gameMode, accountInfo);
             LOG.debug("prepareMQStartGame: starting game for accountId:" + accountId +
-                    " sessionId:" + sessionId + ", " + "bonusId=" + bonusId + ", mode=" + gameMode + ", gameId=" + gameId +
+                    " sessionId:" + sessionId + ", " + "bonusId=" + bonusId + ", mode=" + gameMode + ", gameId="
+                    + gameId +
                     ", notGameFRB=" + startGameRequest.isNotGameFRB());
             if (bonusId == null) {
                 FRBonusManager.getInstance().checkMassAwardsForAccount(accountInfo);
@@ -150,11 +152,11 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
             StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() +
                     ":prepareMQStartGame: 1", System.currentTimeMillis() - now1, accountId);
             startGameResponse.setBonusId(bonusId);
-            //Long gameSessionId = getPredefinedGameSessionId(startGameRequest);
+            // Long gameSessionId = getPredefinedGameSessionId(startGameRequest);
             now1 = System.currentTimeMillis();
             Long unclosedGameSessionId = sessionInfo.getGameSessionId();
             if (unclosedGameSessionId != null) {
-                //closeOnlineGame(unclosedGameSessionId, accountInfo, sessionInfo);
+                // closeOnlineGame(unclosedGameSessionId, accountInfo, sessionInfo);
             }
             StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() +
                     ":prepareMQStartGame: 2", System.currentTimeMillis() - now1, accountId);
@@ -165,7 +167,8 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
                         " player tries to start new game session not closing old one, " +
                         "old gameSessionId:" + unclosedGameSessionId +
                         " new gameSessionId:" + sessionInfo.getGameSessionId() + "^^^^");
-                // throw new CommonException("failed to start new game session, need to close previous");
+                // throw new CommonException("failed to start new game session, need to close
+                // previous");
             }
 
             checkPendingOperations(accountInfo, gameId, sessionInfo, unclosedGameSessionId, gameMode, checkWalletOps);
@@ -175,17 +178,20 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
 
             GameServer.getInstance().checkMaintenanceMode(gameMode, language, accountInfo, gameId);
 
-            //additionalProcess() - typically make deposit request, this is not required for MQ/CT
-            //perform deposit on sitIn/startGameSession
-            //startGameRequest.getStartGameProcessor().additionalProcess(startGameRequest, response, accountInfo,
-            //        sessionInfo, gameInfo, gameMode, gameSessionId);
+            // additionalProcess() - typically make deposit request, this is not required
+            // for MQ/CT
+            // perform deposit on sitIn/startGameSession
+            // startGameRequest.getStartGameProcessor().additionalProcess(startGameRequest,
+            // response, accountInfo,
+            // sessionInfo, gameInfo, gameMode, gameSessionId);
         } catch (Throwable e) {
             if (e instanceof CommonException) {
                 throw (CommonException) e;
             }
             throw new CommonException("Unexpected error", e);
         } finally {
-            StatisticsManager.getInstance().updateRequestStatistics(getClass().getSimpleName() + ":prepareMQStartGame: ",
+            StatisticsManager.getInstance().updateRequestStatistics(
+                    getClass().getSimpleName() + ":prepareMQStartGame: ",
                     System.currentTimeMillis() - now);
         }
         return startGameResponse;
@@ -208,7 +214,8 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
         try {
             long now1 = System.currentTimeMillis();
 
-            Currency currency = accountInfo.getCurrencyFraction() == null ? accountInfo.getCurrency() : accountInfo.getCurrencyFraction();
+            Currency currency = accountInfo.getCurrencyFraction() == null ? accountInfo.getCurrency()
+                    : accountInfo.getCurrencyFraction();
             IBaseGameInfo gameInfo = getGameInfo(bankId, gameId, currency, startGameRequest.getProfileId());
             Long bonusId = validateBonusIdParam(startGameRequest, gameMode, accountInfo);
             LOG.debug("starting game for accountId:" + accountId + " sessionId:" + sessionId + ", " +
@@ -291,7 +298,7 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
     }
 
     protected void checkPendingOperations(AccountInfo accountInfo, int gameId, SessionInfo sessionInfo,
-                                          Long unclosedGameSessionId, GameMode gameMode, boolean checkWalletOps)
+            Long unclosedGameSessionId, GameMode gameMode, boolean checkWalletOps)
             throws CommonException {
         String sessionId = sessionInfo.getSessionId();
         long accountId = accountInfo.getId();
@@ -314,7 +321,7 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
         }
         final ITransactionData ITransactionData = SessionHelper.getInstance().getTransactionData();
         if (ITransactionData != null) {
-            if (GameMode.REAL == gameMode) {//do not start the same frb game if win in tracking
+            if (GameMode.REAL == gameMode) {// do not start the same frb game if win in tracking
                 FRBonusWin frbonusWin = ITransactionData.getFrbWin();
                 FRBonusManager.getInstance().checkPendingOperation(frbonusWin, accountInfo, gameId);
             }
@@ -352,7 +359,8 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
                 false);
     }
 
-    protected Long validateBonusIdParam(R startGameRequest, GameMode mode, AccountInfo accountInfo) throws CommonException {
+    protected Long validateBonusIdParam(R startGameRequest, GameMode mode, AccountInfo accountInfo)
+            throws CommonException {
         return null;
     }
 
@@ -361,13 +369,13 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
     }
 
     protected ActionRedirect getForward(ActionMapping mapping, HttpServletRequest request, F actionForm, int gameId,
-                                        String host, String sessionId, String startGamePage, GameMode mode, String lang,
-                                        short serverId, StartGameResponse startGameResponse, BankInfo bankInfo,
-                                        ITransactionData transactionData)
+            String host, String sessionId, String startGamePage, GameMode mode, String lang,
+            short serverId, StartGameResponse startGameResponse, BankInfo bankInfo,
+            ITransactionData transactionData)
             throws CommonException {
 
         String url = getUrlForward(request, mode, lang, startGamePage);
-        //LOG.info("getForward: url=" + url);
+        // LOG.info("getForward: url=" + url);
         ActionRedirect redirect = new ActionRedirect(url);
 
         redirect.addParameter(BaseAction.BANK_ID_ATTRIBUTE, String.valueOf(actionForm.getBankId()));
@@ -434,12 +442,12 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
                     com.dgphoenix.casino.actions.enter.game.BaseStartGameAction.needToShowPromoBar(promoCampaigns));
         }
 
-        //start
+        // start
         String fpath = request.getParameter(BaseAction.PARAM_SWF_PATH);
         if (fpath != null) {
             redirect.addParameter(BaseAction.PARAM_SWF_PATH, fpath);
         }
-        //end
+        // end
         if (startGameResponse != null) {
             ICurrency currency = null;
             AccountInfo account = transactionData.getAccount();
@@ -484,7 +492,7 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
     }
 
     protected String getStartGamePage(BankInfo bankInfo, GameMode mode, BaseGameInfoTemplate template, String userAgent,
-                                      String platform) {
+            String platform) {
         return ShellDetector.getShellPath(bankInfo, mode, template, userAgent, platform, false);
     }
 
@@ -499,7 +507,8 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
     protected void saveReferer(HttpServletRequest request, AccountInfo accountInfo) {
         String referer = request.getHeader("Referer");
         if (!isTrimmedEmpty(referer)) {
-            extendedAccountInfoPersister.persist(accountInfo.getBankId(), accountInfo.getExternalId(), "REFERER", referer);
+            extendedAccountInfoPersister.persist(accountInfo.getBankId(), accountInfo.getExternalId(), "REFERER",
+                    referer);
         }
     }
 
@@ -515,29 +524,44 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
     }
 
     protected ActionRedirect getMultiPlayerForward(HttpServletRequest request, GameMode mode, BankInfo bankInfo,
-                                                   String sessionId, String lang, boolean validateNotFRBStartGame,
-                                                   long gameId) {
+            String sessionId, String lang, boolean validateNotFRBStartGame,
+            long gameId) {
 
         String mpLobbyUrl = bankInfo.getMpLobbyWsUrl();
         if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
-            mpLobbyUrl = gameServerConfiguration.getStringPropertySilent(GameServerConfigTemplate.KEY_MP_LOBBY_WS_HOST);
+            // Check BankInfo if config is missing (fallback)
+            // But log deeply to catch where 'games/1' comes from
+            String bankInfoUrl = bankInfo.getMpLobbyWsUrl();
+            LOG.error("DEBUG_MP: [DuplicateClass] Config missing, trying BankInfo. ID=" + bankInfo.getId() + " URL="
+                    + bankInfoUrl);
+            mpLobbyUrl = bankInfoUrl;
+        } else {
+            LOG.error("DEBUG_MP: [DuplicateClass] Found mpLobbyUrl in Config: " + mpLobbyUrl);
         }
+
+        // Expanded check to catch 'games', 'games/', 'local', or 'gs1-mp.local'
+        if (StringUtils.isTrimmedEmpty(mpLobbyUrl) || mpLobbyUrl.contains("gs1-mp.local") || mpLobbyUrl.equals("local")
+                || mpLobbyUrl.toLowerCase().contains("games")) {
+            LOG.error("MP_LOBBY_WS_URL invalid/bad for bank=" + bankInfo.getId() + " found="
+                    + mpLobbyUrl + ". FORCE RESETTING to localhost:8080");
+            mpLobbyUrl = "localhost:8080";
+        }
+
         if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
-            LOG.error("MP_LOBBY_WS_URL property not found for bank=" + bankInfo.getId());
-            LOG.error("MP_LOBBY_WS_HOST property not found in GameServerConfiguration");
-            mpLobbyUrl = "localhost:8080/";
+            LOG.error("MP_LOBBY_WS_URL final check failed (empty). Defaulting to localhost:8080");
+            mpLobbyUrl = "localhost:8080";
         }
 
         String forwardedScheme = request.getHeader("X-Forwarded-Proto");
         String webSocketScheme = request.isSecure() || "https".equals(forwardedScheme) ? "wss" : "ws";
 
-        if(hostConfiguration != null && hostConfiguration.isProductionCluster()) {
+        if (hostConfiguration != null && hostConfiguration.isProductionCluster()) {
             webSocketScheme = "wss";
         }
-        mpLobbyUrl = webSocketScheme + "://" + mpLobbyUrl ;
+        mpLobbyUrl = webSocketScheme + "://" + mpLobbyUrl;
 
         String httpScheme = request.isSecure() || "https".equals(forwardedScheme) ? "https" : "http";
-        if(hostConfiguration != null && hostConfiguration.isProductionCluster()) {
+        if (hostConfiguration != null && hostConfiguration.isProductionCluster()) {
             httpScheme = "https";
         }
         String url = httpScheme + "://" + request.getServerName() + "/" + mode.getModePath() + "/mp/template.jsp";

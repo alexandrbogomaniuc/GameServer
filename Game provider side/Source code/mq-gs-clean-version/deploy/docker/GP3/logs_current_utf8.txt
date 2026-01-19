@@ -1,0 +1,188 @@
+﻿07.01.2026 07:44:27,073 [COMMON] DEBUG [PersisterDependencyInjector pool-5-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraPaymentTransactionPersister.setAccountInfoPersister(com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister@b12d408 on persister com.dgphoenix.casino.cassandra.persist.CassandraPaymentTransactionPersister@2da8682c
+docker : 2026-01-07 
+07:45:17.508:WARN:oejs.HttpChannel:qtp146370526-20: /
+At line:1 char:1
++ docker logs --tail 100 gp3-gs-1 *> logs_current.txt; 
+Get-Content logs ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-01-07 07:4...14 
+   6370526-20: /:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+07.01.2026 07:44:27,074 [COMMON] DEBUG [PersisterDependencyInjector pool-5-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraFrBonusPersister.setFrBonusArchivePersister(com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister@d408892 on persister com.dgphoenix.casino.cassandra.persist.CassandraFrBonusPersister@36ec2ac4
+07.01.2026 07:44:27,074 [COMMON] DEBUG [PersisterDependencyInjector pool-5-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraBonusPersister.setBonusArchivePersister(com.dgphoenix.casino.cassandra.persist.CassandraBonusArchivePersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraBonusArchivePersister@117e49b3 on persister com.dgphoenix.casino.cassandra.persist.CassandraBonusPersister@4f6d4551
+07.01.2026 07:44:27,074 [COMMON] DEBUG [PersisterDependencyInjector pool-5-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.AccountDistributedLockManager.setTransactionDataPersister(com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister@7884d9b6 on persister com.dgphoenix.casino.cassandra.AccountDistributedLockManager@248bbe76
+07.01.2026 07:44:27,074 [COMMON] DEBUG [PersisterDependencyInjector pool-5-thread-1] - End injecting
+07.01.2026 07:44:27,074 [COMMON] DEBUG [CachesHolder pool-5-thread-1] - Starting register caches...
+07.01.2026 07:44:27,074 [COMMON] DEBUG [CachesHolder pool-5-thread-1] - All caches register, total size: 22
+07.01.2026 07:44:27,075 [COMMON] WARN  [IdGenerator pool-5-thread-1] - SequencerPersister already initialized
+java.lang.NullPointerException
+07.01.2026 07:44:27,076 [COMMON] WARN  [IntegerIdGenerator pool-5-thread-1] - SequencerPersister already initialized
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(
+ServletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandl
+er.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+ndler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHand
+ler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+Wrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+edHandler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(Sessi
+onHandler.java:1700)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+edHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(Conte
+xtHandler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+dHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandle
+r.java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(Sessio
+nHandler.java:1667)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+dHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(Contex
+tHandler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+ndler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.hand
+le(ContextHandlerCollection.java:220)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(Hand
+lerCollection.java:152)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+Wrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:505)
+	at 
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:370)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnect
+ion.java:267)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded
+(AbstractConnection.java:305)
+	at 
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.jav
+a:117)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedTh
+readPool.java:698)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(Queu
+edThreadPool.java:804)
+	at java.lang.Thread.run(Thread.java:748)
+2026-01-07 07:46:03.573:WARN:oejs.HttpChannel:qtp146370526-27: /
+java.lang.NullPointerException
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(
+ServletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandl
+er.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+ndler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHand
+ler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+Wrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+edHandler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(Sessi
+onHandler.java:1700)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+edHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(Conte
+xtHandler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+dHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandle
+r.java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(Sessio
+nHandler.java:1667)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+dHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(Contex
+tHandler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+ndler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.hand
+le(ContextHandlerCollection.java:220)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(Hand
+lerCollection.java:152)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+Wrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:505)
+	at 
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:370)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnect
+ion.java:267)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded
+(AbstractConnection.java:305)
+	at 
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.jav
+a:117)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(
+EatWhatYouKill.java:333)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduc
+e(EatWhatYouKill.java:310)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProdu
+ce(EatWhatYouKill.java:168)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(
+EatWhatYouKill.java:132)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedTh
+readPool.java:698)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(Queu
+edThreadPool.java:804)
+	at java.lang.Thread.run(Thread.java:748)
+2026-01-07 07:47:28.667:WARN:oejs.HttpChannel:qtp146370526-24: /
+java.lang.NullPointerException
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(
+ServletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandl
+er.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+ndler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHand
+ler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+Wrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+edHandler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(Sessi
+onHandler.java:1700)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scop
+edHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(Conte
+xtHandler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+dHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandle
+r.java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(Sessio
+nHandler.java:1667)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(Scope
+dHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(Contex
+tHandler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHa
+ndler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.hand
+le(ContextHandlerCollection.java:220)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(Hand
+lerCollection.java:152)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(Handler
+Wrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:505)
+	at 
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:370)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnect
+ion.java:267)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded
+(AbstractConnection.java:305)
+	at 
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.jav
+a:117)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedTh
+readPool.java:698)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(Queu
+edThreadPool.java:804)
+	at java.lang.Thread.run(Thread.java:748)

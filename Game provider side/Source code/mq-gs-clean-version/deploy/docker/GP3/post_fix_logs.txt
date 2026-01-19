@@ -1,0 +1,100 @@
+08.01.2026 09:51:53,324 [COMMON] DEBUG [CassandraSummaryFeedTransformerPersister pool-6-thread-1] - updateTable: tableMetadata=CREATE TABLE rcasinoscks.summarytransformercf (id bigint, jcn text, scn blob, PRIMARY KEY (id)) WITH read_repair_chance = 0.0 AND dclocal_read_repair_chance = 0.1 AND gc_grace_seconds = 10800 AND bloom_filter_fp_chance = 0.01 AND caching = { 'keys' : 'ALL', 'rows_per_partition' : 'NONE' } AND comment = '' AND compaction = { 'class' : 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy' } AND compression = {  } AND default_time_to_live = 5184000 AND speculative_retry = '99.0PERCENTILE' AND min_index_interval = 128 AND max_index_interval = 2048 AND memtable_flush_period_in_ms = 0;
+08.01.2026 09:51:53,324 [COMMON] INFO  [SchemaCreator pool-6-thread-1] - Updating schema: com.dgphoenix.casino.promo.persisters.CassandraMaxBalanceTournamentPersister@242f70a
+08.01.2026 09:51:53,324 [COMMON] DEBUG [CassandraMaxBalanceTournamentPersister pool-6-thread-1] - updateTable: tableMetadata=CREATE TABLE rcasinoscks.promotmaxbalancecf (cid bigint, aid bigint, jcn text, scn blob, PRIMARY KEY (cid, aid)) WITH CLUSTERING ORDER BY (aid ASC) AND read_repair_chance = 0.0 AND dclocal_read_repair_chance = 0.1 AND gc_grace_seconds = 10800 AND bloom_filter_fp_chance = 0.1 AND caching = { 'keys' : 'ALL', 'rows_per_partition' : 'NONE' } AND comment = '' AND compaction = { 'class' : 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'sstable_size_in_mb' : 100 } AND compression = {  } AND default_time_to_live = 15552000 AND speculative_retry = '99.0PERCENTILE' AND min_index_interval = 128 AND max_index_interval = 2048 AND memtable_flush_period_in_ms = 0;
+08.01.2026 09:51:53,325 [COMMON] INFO  [SchemaCreator pool-6-thread-1] - Updating schema: com.dgphoenix.casino.promo.persisters.CassandraTournamentIconPersister@675a27af
+08.01.2026 09:51:53,325 [COMMON] DEBUG [CassandraTournamentIconPersister pool-6-thread-1] - updateTable: tableMetadata=CREATE TABLE rcasinoscks.tournamenticoncf (id bigint, ha text, n text, PRIMARY KEY (id)) WITH read_repair_chance = 0.0 AND dclocal_read_repair_chance = 0.1 AND gc_grace_seconds = 10800 AND bloom_filter_fp_chance = 0.01 AND caching = { 'keys' : 'ALL', 'rows_per_partition' : 'NONE' } AND comment = '' AND compaction = { 'class' : 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy' } AND compression = {  } AND default_time_to_live = 0 AND speculative_retry = '99.0PERCENTILE' AND min_index_interval = 128 AND max_index_interval = 2048 AND memtable_flush_period_in_ms = 0;
+08.01.2026 09:51:53,325 [COMMON] INFO  [SchemaCreator pool-6-thread-1] - Updating schema: com.dgphoenix.casino.promo.persisters.CassandraPlayerAliasPersister@59d74c61
+08.01.2026 09:51:53,325 [COMMON] DEBUG [CassandraPlayerAliasPersister pool-6-thread-1] - updateTable: tableMetadata=CREATE TABLE rcasinoscks.playeraliascf (ntid bigint, pa text, ap bigint, PRIMARY KEY (ntid, pa, ap)) WITH CLUSTERING ORDER BY (pa ASC, ap ASC) AND read_repair_chance = 0.0 AND dclocal_read_repair_chance = 0.1 AND gc_grace_seconds = 10800 AND bloom_filter_fp_chance = 0.1 AND caching = { 'keys' : 'ALL', 'rows_per_partition' : 'NONE' } AND comment = '' AND compaction = { 'class' : 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'sstable_size_in_mb' : 100 } AND compression = {  } AND default_time_to_live = 7776000 AND speculative_retry = '99.0PERCENTILE' AND min_index_interval = 128 AND max_index_interval = 2048 AND memtable_flush_period_in_ms = 0;
+08.01.2026 09:51:53,326 [COMMON] INFO  [SchemaCreator pool-6-thread-1] - Updating schema: com.dgphoenix.casino.promo.persisters.CassandraBattlegroundConfigPersister@246dad64
+08.01.2026 09:51:53,326 [COMMON] DEBUG [CassandraBattlegroundConfigPersister pool-6-thread-1] - updateTable: tableMetadata=CREATE TABLE rcasinoscks.battlegroundcf (bankid bigint, gameid bigint, jcn text, scn blob, PRIMARY KEY (bankid, gameid)) WITH CLUSTERING ORDER BY (gameid ASC) AND read_repair_chance = 0.0 AND dclocal_read_repair_chance = 0.1 AND gc_grace_seconds = 10800 AND bloom_filter_fp_chance = 0.1 AND caching = { 'keys' : 'ALL', 'rows_per_partition' : 'NONE' } AND comment = '' AND compaction = { 'class' : 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'sstable_size_in_mb' : 100 } AND compression = {  } AND default_time_to_live = 0 AND speculative_retry = '99.0PERCENTILE' AND min_index_interval = 128 AND max_index_interval = 2048 AND memtable_flush_period_in_ms = 0;
+08.01.2026 09:51:53,326 [COMMON] INFO  [SchemaCreator pool-6-thread-1] - Updating schema: com.dgphoenix.casino.promo.persisters.CassandraUnsendedPromoWinInfoPersister@3182f444
+08.01.2026 09:51:53,326 [COMMON] DEBUG [CassandraUnsendedPromoWinInfoPersister pool-6-thread-1] - updateTable: tableMetadata=CREATE TABLE rcasinoscks.usendedpwicf (gamesessionid bigint, windate bigint, jcn text, roundid bigint, scn blob, PRIMARY KEY (gamesessionid, windate)) WITH CLUSTERING ORDER BY (windate ASC) AND read_repair_chance = 0.0 AND dclocal_read_repair_chance = 0.1 AND gc_grace_seconds = 86400000 AND bloom_filter_fp_chance = 0.1 AND caching = { 'keys' : 'NONE', 'rows_per_partition' : 'NONE' } AND comment = '' AND compaction = { 'class' : 'org.apache.cassandra.db.compaction.LeveledCompactionStrategy', 'sstable_size_in_mb' : 100 } AND compression = {  } AND default_time_to_live = 604800 AND speculative_retry = '99.0PERCENTILE' AND min_index_interval = 128 AND max_index_interval = 2048 AND memtable_flush_period_in_ms = 0;
+08.01.2026 09:51:53,327 [COMMON] WARN  [SchemaCreator pool-6-thread-1] - Start executing CQL script
+08.01.2026 09:51:53,331 [COMMON] WARN  [SchemaCreator pool-6-thread-1] - Execute query: DROP TABLE IF EXISTS RCasinoSCKS.PaymentTransactionCF;
+result: ResultSet[ exhausted: true, Columns[]]
+08.01.2026 09:51:53,333 [COMMON] WARN  [SchemaCreator pool-6-thread-1] - Execute query: DROP TABLE IF EXISTS RCasinoKS.MinMaxWalletCF;
+result: ResultSet[ exhausted: true, Columns[]]
+08.01.2026 09:51:53,334 [COMMON] WARN  [SchemaCreator pool-6-thread-1] - CQL script executed
+08.01.2026 09:51:53,334 [COMMON] WARN  [SchemaCreator pool-6-thread-1] - Complete schema update for: RCasinoSCKS
+08.01.2026 09:51:53,350 [COMMON] INFO  [KeyspaceManagerImpl pool-6-thread-1] - AwaitOnlineHosts:: checking minimumOnlineHosts is disabled
+08.01.2026 09:51:53,350 [COMMON] INFO  [KeyspaceManagerImpl pool-6-thread-1] - Complete initialize manager for keyspace: RCasinoSCKS
+08.01.2026 09:51:53,350 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Start injecting
+08.01.2026 09:51:53,350 [COMMON] DEBUG [CassandraBetPersister pool-6-thread-1] - Start setting roundGameSessionPersister: com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister@3233efa3
+08.01.2026 09:51:53,350 [COMMON] DEBUG [CassandraBetPersister pool-6-thread-1] - Set roundGameSessionPersister field: com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister@3233efa3
+08.01.2026 09:51:53,350 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraBetPersister.setRoundGameSessionPersister(com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraRoundGameSessionPersister@3233efa3 on persister com.dgphoenix.casino.cassandra.persist.CassandraBetPersister@43071ac6
+08.01.2026 09:51:53,350 [COMMON] DEBUG [CassandraBetPersister pool-6-thread-1] - Start setting tempBetPersister: com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister@6da6102d
+08.01.2026 09:51:53,351 [COMMON] DEBUG [CassandraBetPersister pool-6-thread-1] - Set tempBetPersister: com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister@6da6102d
+08.01.2026 09:51:53,351 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraBetPersister.setTempBetPersister(com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraTempBetPersister@6da6102d on persister com.dgphoenix.casino.cassandra.persist.CassandraBetPersister@43071ac6
+08.01.2026 09:51:53,351 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraBonusPersister.setBonusArchivePersister(com.dgphoenix.casino.cassandra.persist.CassandraBonusArchivePersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraBonusArchivePersister@2fadd97 on persister com.dgphoenix.casino.cassandra.persist.CassandraBonusPersister@1c887b6a
+08.01.2026 09:51:53,351 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraFrBonusPersister.setFrBonusArchivePersister(com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraFrBonusArchivePersister@5df6a8ba on persister com.dgphoenix.casino.cassandra.persist.CassandraFrBonusPersister@39aef3bb
+08.01.2026 09:51:53,351 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraPaymentTransactionPersister.setAccountInfoPersister(com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister@3a95f330 on persister com.dgphoenix.casino.cassandra.persist.CassandraPaymentTransactionPersister@1c6e0149
+08.01.2026 09:51:53,351 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.AccountDistributedLockManager.setTransactionDataPersister(com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister@290d6802 on persister com.dgphoenix.casino.cassandra.AccountDistributedLockManager@b45c8c8
+08.01.2026 09:51:53,351 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister.setAccountInfoPersister(com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraAccountInfoPersister@3a95f330 on persister com.dgphoenix.casino.cassandra.persist.CassandraTransactionDataPersister@290d6802
+08.01.2026 09:51:53,352 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - Invoked setter [private void com.dgphoenix.casino.cassandra.persist.CassandraCallStatisticsPersister.setCallIssuesPersister(com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister)] with dependency com.dgphoenix.casino.cassandra.persist.CassandraCallIssuesPersister@26a2d8c9 on persister com.dgphoenix.casino.cassandra.persist.CassandraCallStatisticsPersister@6545d33a
+08.01.2026 09:51:53,352 [COMMON] DEBUG [PersisterDependencyInjector pool-6-thread-1] - End injecting
+08.01.2026 09:51:53,352 [COMMON] DEBUG [CachesHolder pool-6-thread-1] - Starting register caches...
+08.01.2026 09:51:53,353 [COMMON] DEBUG [CachesHolder pool-6-thread-1] - All caches register, total size: 22
+08.01.2026 09:51:53,353 [COMMON] WARN  [IdGenerator pool-6-thread-1] - SequencerPersister already initialized
+08.01.2026 09:51:53,354 [COMMON] WARN  [IntegerIdGenerator pool-6-thread-1] - SequencerPersister already initialized
+2026-01-08 09:53:30.489:WARN:oejs.HttpChannel:qtp146370526-18: /
+java.lang.NullPointerException
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1700)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1667)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:152)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:505)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:370)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:267)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:117)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:698)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:804)
+	at java.lang.Thread.run(Thread.java:748)
+2026-01-08 09:53:30.963:WARN:oejs.HttpChannel:qtp146370526-25: /favicon.ico
+java.lang.NullPointerException
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1700)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1667)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:220)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:152)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:505)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:370)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:267)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:117)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:132)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:698)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:804)
+	at java.lang.Thread.run(Thread.java:748)

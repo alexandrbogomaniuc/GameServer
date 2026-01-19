@@ -1,0 +1,48 @@
+
+Rat90.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90_body
+  rotate: false
+  xy: 2, 79
+  size: 190, 174
+  orig: 190, 174
+  offset: 0, 0
+  index: -1
+90_lf_arm
+  rotate: false
+  xy: 388, 158
+  size: 70, 95
+  orig: 70, 95
+  offset: 0, 0
+  index: -1
+90_lf_leg
+  rotate: true
+  xy: 2, 2
+  size: 75, 96
+  orig: 75, 96
+  offset: 0, 0
+  index: -1
+90_rt_arm
+  rotate: true
+  xy: 100, 14
+  size: 63, 94
+  orig: 63, 94
+  offset: 0, 0
+  index: -1
+90_rt_leg
+  rotate: false
+  xy: 196, 37
+  size: 61, 98
+  orig: 61, 98
+  offset: 0, 0
+  index: -1
+90_tail
+  rotate: false
+  xy: 194, 137
+  size: 192, 116
+  orig: 192, 116
+  offset: 0, 0
+  index: -1

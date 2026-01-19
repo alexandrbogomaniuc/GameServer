@@ -1,7 +1,7 @@
 # FROM gcr.io/mq-legacy-games/atlassian-default-image-4-customized AS build
-# FROM maven:3.9-amazoncorretto-8 AS build
+FROM maven:3.9-amazoncorretto-8 AS build
 # FROM maven:3.9-eclipse-temurin-8-alpine AS build
-FROM mq-gs-base:latest AS build
+# FROM mq-gs-base:latest AS build
 
 # FROM maven:3.9-amazoncorretto-8-alpine AS build
 
@@ -9,6 +9,8 @@ WORKDIR /app
 
 COPY --chown=nobody:nogroup . .
 
+RUN find . -name "*.sh" -exec sed -i 's/\r$//' {} +
 RUN ./build-all-modules.sh
+RUN yum install -y unzip
 
 RUN ./game-server/build/live/build-mqb2-live.sh

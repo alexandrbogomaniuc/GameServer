@@ -1,0 +1,132 @@
+
+Orc0.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0/arm_lf
+  rotate: false
+  xy: 4, 157
+  size: 177, 192
+  orig: 177, 192
+  offset: 0, 0
+  index: -1
+0/arm_rt
+  rotate: false
+  xy: 613, 787
+  size: 214, 214
+  orig: 214, 214
+  offset: 0, 0
+  index: -1
+0/body
+  rotate: false
+  xy: 299, 686
+  size: 310, 315
+  orig: 310, 315
+  offset: 0, 0
+  index: -1
+0/calf_lf
+  rotate: true
+  xy: 299, 573
+  size: 109, 148
+  orig: 109, 148
+  offset: 0, 0
+  index: -1
+0/calf_rt
+  rotate: true
+  xy: 451, 555
+  size: 127, 131
+  orig: 127, 131
+  offset: 0, 0
+  index: -1
+0/foot_lf
+  rotate: false
+  xy: 586, 567
+  size: 110, 113
+  orig: 110, 113
+  offset: 0, 0
+  index: -1
+0/foot_rt
+  rotate: false
+  xy: 613, 684
+  size: 159, 99
+  orig: 159, 99
+  offset: 0, 0
+  index: -1
+0/forearm_lf
+  rotate: false
+  xy: 198, 28
+  size: 154, 158
+  orig: 154, 158
+  offset: 0, 0
+  index: -1
+0/forearm_rt
+  rotate: true
+  xy: 776, 632
+  size: 135, 150
+  orig: 135, 150
+  offset: 0, 0
+  index: -1
+0/hair
+  rotate: false
+  xy: 4, 353
+  size: 273, 302
+  orig: 273, 302
+  offset: 0, 0
+  index: -1
+0/hand_lf
+  rotate: false
+  xy: 281, 442
+  size: 106, 127
+  orig: 106, 127
+  offset: 0, 0
+  index: -1
+0/hand_lf2
+  rotate: false
+  xy: 391, 456
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+0/hand_rt
+  rotate: false
+  xy: 302, 224
+  size: 93, 128
+  orig: 93, 128
+  offset: 0, 0
+  index: -1
+0/hand_rt2
+  rotate: true
+  xy: 281, 356
+  size: 82, 111
+  orig: 82, 111
+  offset: 0, 0
+  index: -1
+0/head
+  rotate: false
+  xy: 831, 771
+  size: 127, 230
+  orig: 127, 230
+  offset: 0, 0
+  index: -1
+0/hip
+  rotate: false
+  xy: 4, 659
+  size: 291, 342
+  orig: 291, 342
+  offset: 0, 0
+  index: -1
+0/leg_lf
+  rotate: false
+  xy: 185, 190
+  size: 113, 159
+  orig: 113, 159
+  offset: 0, 0
+  index: -1
+0/leg_rt
+  rotate: false
+  xy: 4, 4
+  size: 190, 149
+  orig: 190, 149
+  offset: 0, 0
+  index: -1

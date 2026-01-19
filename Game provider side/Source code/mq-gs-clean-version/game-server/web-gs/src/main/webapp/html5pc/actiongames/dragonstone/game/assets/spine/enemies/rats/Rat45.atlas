@@ -1,0 +1,55 @@
+
+RatDown.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+down/down_body
+  rotate: true
+  xy: 2, 6
+  size: 95, 156
+  orig: 95, 156
+  offset: 0, 0
+  index: -1
+down/down_head
+  rotate: true
+  xy: 413, 2
+  size: 57, 93
+  orig: 57, 93
+  offset: 0, 0
+  index: -1
+down/down_lf_arm
+  rotate: true
+  xy: 309, 17
+  size: 38, 102
+  orig: 38, 102
+  offset: 0, 0
+  index: -1
+down/down_lf_leg
+  rotate: true
+  xy: 309, 57
+  size: 44, 99
+  orig: 44, 99
+  offset: 0, 0
+  index: -1
+down/down_rt_arm
+  rotate: true
+  xy: 410, 61
+  size: 40, 100
+  orig: 40, 100
+  offset: 0, 0
+  index: -1
+down/down_rt_leg
+  rotate: true
+  xy: 160, 6
+  size: 47, 100
+  orig: 47, 100
+  offset: 0, 0
+  index: -1
+down/down_tail
+  rotate: true
+  xy: 160, 55
+  size: 46, 147
+  orig: 46, 147
+  offset: 0, 0
+  index: -1

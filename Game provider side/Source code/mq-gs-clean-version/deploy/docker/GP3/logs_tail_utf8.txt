@@ -1,0 +1,50 @@
+﻿	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 05:15:07,233 [COMMON] DEBUG [AccountDistributedLockManager pool-4-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0
+07.01.2026 05:25:07,164 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 05:25:07,165 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 05:25:07,168 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 05:25:07,168 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 05:35:07,102 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 05:35:07,103 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 05:35:07,106 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 05:35:07,106 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 05:45:07,042 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 05:45:07,042 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 05:45:07,045 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 05:45:07,045 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 05:55:06,980 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 05:55:06,980 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 05:55:06,984 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 05:55:06,984 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:05:06,919 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 06:05:06,920 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:05:06,923 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 06:05:06,923 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:15:06,857 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 06:15:06,857 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:15:06,860 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 06:15:06,861 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:25:06,793 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 06:25:06,793 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:25:06,796 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 06:25:06,797 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:35:06,732 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 06:35:06,732 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:35:06,736 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 06:35:06,736 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:45:06,670 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 06:45:06,671 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:45:06,674 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 06:45:06,674 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:55:06,608 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 06:55:06,609 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 06:55:06,612 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 06:55:06,612 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0

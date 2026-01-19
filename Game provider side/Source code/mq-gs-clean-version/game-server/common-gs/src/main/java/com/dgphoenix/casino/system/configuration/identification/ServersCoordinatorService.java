@@ -55,8 +55,7 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
         this.client = CuratorFrameworkFactory.newClient(
                 properties.getConnect(),
                 SESSION_TIMEOUT_MS, SESSION_TIMEOUT_MS,
-                new ExponentialBackoffRetry(1000, 3)
-        );
+                new ExponentialBackoffRetry(1000, 3));
         this.client.getConnectionStateListenable().addListener((cli, state) -> {
             if (state == ConnectionState.RECONNECTED) {
                 try {
@@ -102,8 +101,9 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
     }
 
     private String getGameServerHostname() {
-        String gameServerHostname = System.getProperty(HOSTNAME) != null 
-                ? System.getProperty(HOSTNAME) : System.getenv(HOSTNAME);
+        String gameServerHostname = System.getProperty(HOSTNAME) != null
+                ? System.getProperty(HOSTNAME)
+                : System.getenv(HOSTNAME);
         return gameServerHostname;
     }
 
@@ -111,7 +111,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
         String nodeId = Optional.ofNullable(getGameServerHostname())
                 .orElseThrow(() -> new RuntimeException("CRITICAL: ! Unable to get nodeId for this server."));
 
-        LOG.info("[LEADER ELECTION]:️ Node " + nodeId + " / " + thisServerId + " started and participating in elections");
+        LOG.info("[LEADER ELECTION]:️ Node " + nodeId + " / " + thisServerId
+                + " started and participating in elections");
         String leaderPath = properties.getServicePath() + "/leaders";
         this.leaderSelector = new LeaderSelector(client, leaderPath, new LeaderSelectorListenerAdapter() {
             @Override
@@ -153,9 +154,11 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
     }
 
     private synchronized Integer assignServerId(String serverIdentifier, boolean withRetry) throws Exception {
+        LOG.info("Assigning server id for identifier: " + serverIdentifier + ", withRetry: " + withRetry);
         long now = System.currentTimeMillis();
 
         for (int i = 0; i < properties.getPoolSize(); i++) {
+            LOG.info("Checking pool index (existing): " + i);
             String base = properties.getPoolPath() + "/" + i;
             String resPath = base + "/reservation";
             String lockPath = base + "/lock";
@@ -172,8 +175,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
                         } else {
                             if (withRetry) {
                                 LOG.warn("Unable to assign serverId as serverIdentifier '"
-                                                + serverIdentifier + "' is already locked at "
-                                                + lockPath + ". Will retry in " + (SESSION_TIMEOUT_MS + 5000)  + "ms ...");
+                                        + serverIdentifier + "' is already locked at "
+                                        + lockPath + ". Will retry in " + (SESSION_TIMEOUT_MS + 5000) + "ms ...");
                                 Thread.sleep(SESSION_TIMEOUT_MS + 5000);
                                 return assignServerId(serverIdentifier, false);
                             } else {
@@ -186,12 +189,14 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
                         lastLockedIndex = i;
                         startHeartbeat(i, serverIdentifier);
                         return i + 1;
-                    } catch (KeeperException.NodeExistsException ignored) {}
+                    } catch (KeeperException.NodeExistsException ignored) {
+                    }
                 }
             }
         }
 
         for (int i = 0; i < properties.getPoolSize(); i++) {
+            LOG.info("Checking pool index (new assignment): " + i);
             String base = properties.getPoolPath() + "/" + i;
             String resPath = base + "/reservation";
             String lockPath = base + "/lock";
@@ -220,7 +225,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
                     lastLockedIndex = i;
                     startHeartbeat(i, serverIdentifier);
                     return i + 1;
-                } catch (KeeperException.NodeExistsException ignored) {}
+                } catch (KeeperException.NodeExistsException ignored) {
+                }
             }
         }
 
@@ -245,7 +251,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
     }
 
     private void reLockIfValid() throws Exception {
-        if (lastLockedIndex == null) return;
+        if (lastLockedIndex == null)
+            return;
 
         String base = properties.getPoolPath() + "/" + lastLockedIndex;
         String resPath = base + "/reservation";
@@ -257,7 +264,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
         if (System.currentTimeMillis() - lastSeen <= properties.getTtlMillis()) {
             try {
                 client.create().withMode(CreateMode.EPHEMERAL).forPath(lockPath);
-            } catch (KeeperException.NodeExistsException ignored) {}
+            } catch (KeeperException.NodeExistsException ignored) {
+            }
         }
     }
 
@@ -269,6 +277,7 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
             // ignore
         }
     }
+
     @Override
     public void close() throws IOException {
         heartbeatTimer.cancel();

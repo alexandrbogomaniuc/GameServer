@@ -16,8 +16,14 @@ public class ApplicationContextHelper implements ApplicationContextAware {
 
     private static volatile ApplicationContext applicationContext;
 
+    public ApplicationContextHelper() {
+        System.out.println("DEBUG: ApplicationContextHelper instantiated: " + this);
+        LOG.debug("ApplicationContextHelper created");
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        System.out.println("DEBUG: ApplicationContextHelper.setApplicationContext called with: " + applicationContext);
         ApplicationContextHelper.applicationContext = applicationContext;
     }
 
@@ -25,11 +31,13 @@ public class ApplicationContextHelper implements ApplicationContextAware {
         return applicationContext;
     }
 
-    public ApplicationContextHelper() {
-        LOG.debug("ApplicationContextHelper created");
-    }
-
     public static <T> T getBean(Class<T> clazz) {
+        if (applicationContext == null) {
+            System.err
+                    .println("CRITICAL: ApplicationContextHelper.getApplicationContext() is NULL when requesting bean: "
+                            + clazz.getName());
+            throw new IllegalStateException("ApplicationContext is not initialized yet!");
+        }
         return applicationContext.getBean(clazz);
     }
 }

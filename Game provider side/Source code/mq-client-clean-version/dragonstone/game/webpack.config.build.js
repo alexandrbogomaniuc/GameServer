@@ -28,11 +28,16 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.mjs$/,
+				include: /node_modules/,
+				type: 'javascript/auto'
+			},
+			{
 				test: /\.js$/,
 				include: [PIXI_SRC, PROJECT_SRC, SHARED_SRC],
 				exclude: [],
 				loader: 'babel-loader',
-				query: { presets: ["es2015", "stage-0"] ,compact: false}
+				query: { presets: ["es2015", "stage-0"], compact: false }
 			}
 		],
 		noParse: [
@@ -42,14 +47,19 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.js', '.json'],
+		extensions: ['.js', '.json', '.mjs'],
+		mainFields: ['main', 'module'],
 		alias: {
 			"P2M": PIXI_SRC
 		}
 	},
+	externals: {
+		'pixi.js': 'PIXI',
+		'pixi.js-legacy': 'PIXI'
+	},
 	optimization: {
 
-		minimizer: [new UglifyJsPlugin({sourceMap: true})],
+		minimizer: [new UglifyJsPlugin({ sourceMap: true })],
 
 	},
 	plugins: [

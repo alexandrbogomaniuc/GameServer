@@ -1,0 +1,560 @@
+docker : time="2026-01-07T11:33:27Z" level=warning 
+msg="D:\\OneDrive - Roan Solutions, Inc\\DOCUMENTS\\Igaming 
+Project\\Game provider side\\Source 
+code\\mq-gs-clean-version\\deploy\\docker\\GP3\\docker-compose.yml: 
+the attribute `version` is obsolete, it will be ignored, please 
+remove it to avoid potential confusion"
+At line:1 char:1
++ docker compose -p gp3 up -d --build 2>&1 | Out-String | 
+Set-Content - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (time="2026-01-0...tial 
+    confusion":String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.36kB done
+#1 DONE 0.0s
+
+#2 [static internal] load build definition from Dockerfile
+#2 transferring dockerfile: 857B done
+#2 DONE 0.0s
+
+#3 [gs internal] load build definition from Dockerfile
+#3 transferring dockerfile: 619B done
+#3 DONE 0.0s
+
+#4 [gs internal] load metadata for docker.io/library/jetty:9.4.18
+#4 ...
+
+#5 [static internal] load metadata for docker.io/library/nginx:1.13.10
+#5 DONE 0.5s
+
+#6 [static internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#4 [gs internal] load metadata for docker.io/library/jetty:9.4.18
+#4 DONE 0.5s
+
+#7 [gs internal] load .dockerignore
+#7 transferring context: 2B done
+#7 DONE 0.0s
+
+#8 [gs internal] load build context
+#8 DONE 0.0s
+
+#9 [static  1/13] FROM docker.io/library/nginx:1.13.10@sha256:ccdb5fdf47709493f9fc5af32478c0d86b3cbee0c306e3f04a0d3e640a50ea2d
+#9 resolve docker.io/library/nginx:1.13.10@sha256:ccdb5fdf47709493f9fc5af32478c0d86b3cbee0c306e3f04a0d3e640a50ea2d 0.0s done
+#9 DONE 0.0s
+
+#10 [static internal] load build context
+#10 transferring context: 90B done
+#10 DONE 0.0s
+
+#11 [gs 1/7] FROM docker.io/library/jetty:9.4.18@sha256:d8f374b030b7e0af3d422887dafefa75ef9fe1b4de36f3e4e1a806de59fbbeae
+#11 resolve docker.io/library/jetty:9.4.18@sha256:d8f374b030b7e0af3d422887dafefa75ef9fe1b4de36f3e4e1a806de59fbbeae 0.0s done
+#11 DONE 0.0s
+
+#12 [static  7/13] RUN useradd uploader-stat && echo uploader-stat:Squ2pKvGUmJjsecX | chpasswd
+#12 CACHED
+
+#13 [static  2/13] COPY nginx.conf /etc/nginx/nginx.conf
+#13 CACHED
+
+#14 [static  4/13] RUN echo "deb http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list
+#14 CACHED
+
+#15 [static  3/13] COPY games /etc/nginx/sites-enabled/games
+#15 CACHED
+
+#16 [static  5/13] RUN rm /etc/nginx/conf.d/default.conf
+#16 CACHED
+
+#17 [static  6/13] RUN chmod 777 /etc/nginx/nginx.conf && chmod -R 777 /etc/nginx/sites-enabled
+#17 CACHED
+
+#18 [static  8/13] RUN apt-get update
+#18 CACHED
+
+#8 [gs internal] load build context
+#8 transferring context: 88B done
+#8 DONE 0.0s
+
+#19 [gs 2/7] COPY ./wait-for-cassandra-and-start.sh /wait-for-cassandra-and-start.sh
+#19 CACHED
+
+#20 [gs 3/7] COPY ./webdefault.xml /usr/local/jetty/etc/webdefault.xml
+#20 CACHED
+
+#21 [gs 4/7] RUN echo "deb http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list
+#21 CACHED
+
+#22 [gs 6/7] RUN apt install -y --allow-unauthenticated netcat
+#22 CACHED
+
+#23 [gs 5/7] RUN apt update
+#23 CACHED
+
+#24 [gs 7/7] RUN chmod +x /wait-for-cassandra-and-start.sh
+#24 CACHED
+
+#25 [gs] exporting to image
+#25 exporting layers 0.0s done
+#25 exporting manifest sha256:3643f74262b36ac961a2c2ce5b301517c30fd6611f612a1b223b2951633021d7 0.0s done
+#25 exporting config sha256:4d5e41e4e71061ca2df2a13c33bb4e7888163a62f84cdb3da580892b58b0cd1b done
+#25 exporting attestation manifest sha256:287faf3ba5151455365eff396a27c2250bf9452e0c1439efaa2898ecea730576 0.0s done
+#25 exporting manifest list sha256:1d4e29baea05644b3fdfc136a01842ddb3f61bd774a40620f518927b43f070a1
+#25 exporting manifest list sha256:1d4e29baea05644b3fdfc136a01842ddb3f61bd774a40620f518927b43f070a1 0.0s done
+#25 naming to docker.io/library/jetty-gs:latest done
+#25 unpacking to docker.io/library/jetty-gs:latest 0.0s done
+#25 DONE 0.2s
+
+#26 [static  9/13] RUN apt-get install -y --allow-unauthenticated openssh-server
+#26 0.328 Reading package lists...
+#26 ...
+
+#27 [gs] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#26 [static  9/13] RUN apt-get install -y --allow-unauthenticated openssh-server
+#26 0.328 Reading package lists...
+#26 0.912 Building dependency tree...
+#26 1.003 Reading state information...
+#26 1.097 The following additional packages will be installed:
+#26 1.097   cgmanager dbus dmsetup krb5-locales libapparmor1 libcap2 libcgmanager0
+#26 1.097   libcryptsetup4 libdbus-1-3 libdevmapper1.02.1 libffi6 libglib2.0-0
+#26 1.097   libglib2.0-data libgssapi-krb5-2 libidn11 libip4tc0 libk5crypto3
+#26 1.097   libkeyutils1 libkmod2 libkrb5-3 libkrb5support0 libnih-dbus1 libnih1
+#26 1.098   libpam-systemd libprocps6 libseccomp2 libssl1.0.2 libsystemd0 libwrap0
+#26 1.098   libxext6 libxmuu1 ncurses-term openssh-client openssh-sftp-server procps
+#26 1.098   psmisc shared-mime-info systemd systemd-shim tcpd xauth xdg-user-dirs
+#26 1.100 Suggested packages:
+#26 1.100   default-dbus-session-bus | dbus-session-bus krb5-doc krb5-user keychain
+#26 1.100   libpam-ssh monkeysphere ssh-askpass molly-guard rssh ufw systemd-ui
+#26 1.100   systemd-container policykit-1 pm-utils
+#26 1.354 The following NEW packages will be installed:
+#26 1.354   cgmanager dbus dmsetup krb5-locales libapparmor1 libcap2 libcgmanager0
+#26 1.354   libcryptsetup4 libdbus-1-3 libdevmapper1.02.1 libffi6 libglib2.0-0
+#26 1.354   libglib2.0-data libgssapi-krb5-2 libidn11 libip4tc0 libk5crypto3
+#26 1.354   libkeyutils1 libkmod2 libkrb5-3 libkrb5support0 libnih-dbus1 libnih1
+#26 1.355   libpam-systemd libprocps6 libseccomp2 libssl1.0.2 libwrap0 libxext6 libxmuu1
+#26 1.355   ncurses-term openssh-client openssh-server openssh-sftp-server procps psmisc
+#26 1.355   shared-mime-info systemd systemd-shim tcpd xauth xdg-user-dirs
+#26 1.357 The following packages will be upgraded:
+#26 1.357   libsystemd0
+#26 1.361 1 upgraded, 42 newly installed, 0 to remove and 28 not upgraded.
+#26 1.361 Need to get 14.8 MB of archives.
+#26 1.361 After this operation, 51.0 MB of additional disk space will be used.
+#26 1.361 WARNING: The following packages cannot be authenticated!
+#26 1.361   libsystemd0 libapparmor1 libcap2 dmsetup libdevmapper1.02.1 libcryptsetup4
+#26 1.361   libidn11 libip4tc0 libkmod2 libseccomp2 libprocps6 procps systemd
+#26 1.361   libssl1.0.2 libdbus-1-3 dbus krb5-locales libkeyutils1 libkrb5support0
+#26 1.361   libk5crypto3 libkrb5-3 libgssapi-krb5-2 libffi6 libglib2.0-0 libnih1
+#26 1.361   libnih-dbus1 libcgmanager0 cgmanager systemd-shim libpam-systemd libwrap0
+#26 1.361   ncurses-term openssh-client libglib2.0-data libxext6 libxmuu1
+#26 1.361   openssh-sftp-server openssh-server psmisc shared-mime-info tcpd xauth
+#26 1.361   xdg-user-dirs
+#26 1.399 Authentication warning overridden.
+#26 1.399 Get:1 http://archive.debian.org/debian stretch/main amd64 libsystemd0 amd64 232-25+deb9u12 [282 kB]
+#26 1.507 Get:2 http://archive.debian.org/debian stretch/main amd64 libapparmor1 amd64 2.11.0-3+deb9u2 [78.9 kB]
+#26 1.563 Get:3 http://archive.debian.org/debian stretch/main amd64 libcap2 amd64 1:2.25-1 [16.8 kB]
+#26 1.564 Get:4 http://archive.debian.org/debian stretch/main amd64 dmsetup amd64 2:1.02.137-2 [107 kB]
+#26 1.711 Get:5 http://archive.debian.org/debian stretch/main amd64 libdevmapper1.02.1 amd64 2:1.02.137-2 [170 kB]
+#26 1.717 Get:6 http://archive.debian.org/debian stretch/main amd64 libcryptsetup4 amd64 2:1.7.3-4 [109 kB]
+#26 1.723 Get:7 http://archive.debian.org/debian stretch/main amd64 libidn11 amd64 1.33-1+deb9u1 [115 kB]
+#26 1.729 Get:8 http://archive.debian.org/debian stretch/main amd64 libip4tc0 amd64 1.6.0+snapshot20161117-6 [67.8 kB]
+#26 1.811 Get:9 http://archive.debian.org/debian stretch/main amd64 libkmod2 amd64 23-2 [48.1 kB]
+#26 1.815 Get:10 http://archive.debian.org/debian stretch/main amd64 libseccomp2 amd64 2.3.1-2.1+deb9u1 [40.7 kB]
+#26 1.816 Get:11 http://archive.debian.org/debian stretch/main amd64 libprocps6 amd64 2:3.3.12-3+deb9u1 [58.5 kB]
+#26 1.919 Get:12 http://archive.debian.org/debian stretch/main amd64 procps amd64 2:3.3.12-3+deb9u1 [250 kB]
+#26 1.936 Get:13 http://archive.debian.org/debian stretch/main amd64 systemd amd64 232-25+deb9u12 [2469 kB]
+#26 2.712 Get:14 http://archive.debian.org/debian stretch/main amd64 libssl1.0.2 amd64 1.0.2u-1~deb9u1 [1304 kB]
+#26 3.225 Get:15 http://archive.debian.org/debian stretch/main amd64 libdbus-1-3 amd64 1.10.32-0+deb9u1 [196 kB]
+#26 3.235 Get:16 http://archive.debian.org/debian stretch/main amd64 dbus amd64 1.10.32-0+deb9u1 [213 kB]
+#26 3.249 Get:17 http://archive.debian.org/debian stretch/main amd64 krb5-locales all 1.15-1+deb9u1 [93.8 kB]
+#26 3.256 Get:18 http://archive.debian.org/debian stretch/main amd64 libkeyutils1 amd64 1.5.9-9 [12.4 kB]
+#26 3.257 Get:19 http://archive.debian.org/debian stretch/main amd64 libkrb5support0 amd64 1.15-1+deb9u1 [61.9 kB]
+#26 3.265 Get:20 http://archive.debian.org/debian stretch/main amd64 libk5crypto3 amd64 1.15-1+deb9u1 [119 kB]
+#26 3.271 Get:21 http://archive.debian.org/debian stretch/main amd64 libkrb5-3 amd64 1.15-1+deb9u1 [311 kB]
+#26 3.290 Get:22 http://archive.debian.org/debian stretch/main amd64 libgssapi-krb5-2 amd64 1.15-1+deb9u1 [155 kB]
+#26 3.300 Get:23 http://archive.debian.org/debian stretch/main amd64 libffi6 amd64 3.2.1-6 [20.4 kB]
+#26 3.301 Get:24 http://archive.debian.org/debian stretch/main amd64 libglib2.0-0 amd64 2.50.3-2+deb9u2 [2692 kB]
+#26 3.675 Get:25 http://archive.debian.org/debian stretch/main amd64 libnih1 amd64 1.0.3-8 [125 kB]
+#26 3.682 Get:26 http://archive.debian.org/debian stretch/main amd64 libnih-dbus1 amd64 1.0.3-8 [96.8 kB]
+#26 5.427 Get:27 http://archive.debian.org/debian stretch/main amd64 libcgmanager0 amd64 0.41-2 [41.1 kB]
+#26 5.429 Get:28 http://archive.debian.org/debian stretch/main amd64 cgmanager amd64 0.41-2 [84.0 kB]
+#26 5.433 Get:29 http://archive.debian.org/debian stretch/main amd64 systemd-shim amd64 10-3 [20.0 kB]
+#26 5.434 Get:30 http://archive.debian.org/debian stretch/main amd64 libpam-systemd amd64 232-25+deb9u12 [189 kB]
+#26 5.442 Get:31 http://archive.debian.org/debian stretch/main amd64 libwrap0 amd64 7.6.q-26 [58.2 kB]
+#26 5.445 Get:32 http://archive.debian.org/debian stretch/main amd64 ncurses-term all 6.0+20161126-1+deb9u2 [469 kB]
+#26 5.469 Get:33 http://archive.debian.org/debian stretch/main amd64 openssh-client amd64 1:7.4p1-10+deb9u7 [780 kB]
+#26 5.501 Get:34 http://archive.debian.org/debian stretch/main amd64 libglib2.0-data all 2.50.3-2+deb9u2 [2517 kB]
+#26 5.876 Get:35 http://archive.debian.org/debian stretch/main amd64 libxext6 amd64 2:1.3.3-1+b2 [52.5 kB]
+#26 5.877 Get:36 http://archive.debian.org/debian stretch/main amd64 libxmuu1 amd64 2:1.1.2-2 [23.5 kB]
+#26 5.879 Get:37 http://archive.debian.org/debian stretch/main amd64 openssh-sftp-server amd64 1:7.4p1-10+deb9u7 [39.5 kB]
+#26 6.389 Get:38 http://archive.debian.org/debian stretch/main amd64 openssh-server amd64 1:7.4p1-10+deb9u7 [332 kB]
+#26 6.401 Get:39 http://archive.debian.org/debian stretch/main amd64 psmisc amd64 22.21-2.1+b2 [123 kB]
+#26 6.406 Get:40 http://archive.debian.org/debian stretch/main amd64 shared-mime-info amd64 1.8-1+deb9u1 [731 kB]
+#26 6.433 Get:41 http://archive.debian.org/debian stretch/main amd64 tcpd amd64 7.6.q-26 [23.3 kB]
+#26 6.435 Get:42 http://archive.debian.org/debian stretch/main amd64 xauth amd64 1:1.0.9-1+b2 [39.6 kB]
+#26 6.437 Get:43 http://archive.debian.org/debian stretch/main amd64 xdg-user-dirs amd64 0.15-2+b1 [52.2 kB]
+#26 6.564 debconf: delaying package configuration, since apt-utils is not installed
+#26 6.587 Fetched 14.8 MB in 5s (2916 kB/s)
+#26 6.621 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 7027 files and directories currently installed.)
+#26 6.630 Preparing to unpack .../libsystemd0_232-25+deb9u12_amd64.deb ...
+#26 6.649 Unpacking libsystemd0:amd64 (232-25+deb9u12) over (232-25+deb9u2) ...
+#26 6.721 Setting up libsystemd0:amd64 (232-25+deb9u12) ...
+#26 6.775 Selecting previously unselected package libapparmor1:amd64.
+#26 6.775 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 7027 files and directories currently installed.)
+#26 6.783 Preparing to unpack .../00-libapparmor1_2.11.0-3+deb9u2_amd64.deb ...
+#26 6.789 Unpacking libapparmor1:amd64 (2.11.0-3+deb9u2) ...
+#26 6.838 Selecting previously unselected package libcap2:amd64.
+#26 6.839 Preparing to unpack .../01-libcap2_1%3a2.25-1_amd64.deb ...
+#26 6.844 Unpacking libcap2:amd64 (1:2.25-1) ...
+#26 6.881 Selecting previously unselected package dmsetup.
+#26 6.882 Preparing to unpack .../02-dmsetup_2%3a1.02.137-2_amd64.deb ...
+#26 6.887 Unpacking dmsetup (2:1.02.137-2) ...
+#26 6.942 Selecting previously unselected package libdevmapper1.02.1:amd64.
+#26 6.943 Preparing to unpack .../03-libdevmapper1.02.1_2%3a1.02.137-2_amd64.deb ...
+#26 6.948 Unpacking libdevmapper1.02.1:amd64 (2:1.02.137-2) ...
+#26 7.007 Selecting previously unselected package libcryptsetup4:amd64.
+#26 7.008 Preparing to unpack .../04-libcryptsetup4_2%3a1.7.3-4_amd64.deb ...
+#26 7.013 Unpacking libcryptsetup4:amd64 (2:1.7.3-4) ...
+#26 7.063 Selecting previously unselected package libidn11:amd64.
+#26 7.063 Preparing to unpack .../05-libidn11_1.33-1+deb9u1_amd64.deb ...
+#26 7.068 Unpacking libidn11:amd64 (1.33-1+deb9u1) ...
+#26 7.126 Selecting previously unselected package libip4tc0:amd64.
+#26 7.128 Preparing to unpack .../06-libip4tc0_1.6.0+snapshot20161117-6_amd64.deb ...
+#26 7.134 Unpacking libip4tc0:amd64 (1.6.0+snapshot20161117-6) ...
+#26 7.182 Selecting previously unselected package libkmod2:amd64.
+#26 7.183 Preparing to unpack .../07-libkmod2_23-2_amd64.deb ...
+#26 7.189 Unpacking libkmod2:amd64 (23-2) ...
+#26 7.239 Selecting previously unselected package libseccomp2:amd64.
+#26 7.240 Preparing to unpack .../08-libseccomp2_2.3.1-2.1+deb9u1_amd64.deb ...
+#26 7.245 Unpacking libseccomp2:amd64 (2.3.1-2.1+deb9u1) ...
+#26 7.289 Selecting previously unselected package libprocps6:amd64.
+#26 7.290 Preparing to unpack .../09-libprocps6_2%3a3.3.12-3+deb9u1_amd64.deb ...
+#26 7.295 Unpacking libprocps6:amd64 (2:3.3.12-3+deb9u1) ...
+#26 7.342 Selecting previously unselected package procps.
+#26 7.343 Preparing to unpack .../10-procps_2%3a3.3.12-3+deb9u1_amd64.deb ...
+#26 7.348 Unpacking procps (2:3.3.12-3+deb9u1) ...
+#26 7.416 Selecting previously unselected package systemd.
+#26 7.417 Preparing to unpack .../11-systemd_232-25+deb9u12_amd64.deb ...
+#26 7.461 Unpacking systemd (232-25+deb9u12) ...
+#26 7.828 Selecting previously unselected package libssl1.0.2:amd64.
+#26 7.829 Preparing to unpack .../12-libssl1.0.2_1.0.2u-1~deb9u1_amd64.deb ...
+#26 7.834 Unpacking libssl1.0.2:amd64 (1.0.2u-1~deb9u1) ...
+#26 8.004 Selecting previously unselected package libdbus-1-3:amd64.
+#26 8.006 Preparing to unpack .../13-libdbus-1-3_1.10.32-0+deb9u1_amd64.deb ...
+#26 8.016 Unpacking libdbus-1-3:amd64 (1.10.32-0+deb9u1) ...
+#26 8.118 Selecting previously unselected package dbus.
+#26 8.120 Preparing to unpack .../14-dbus_1.10.32-0+deb9u1_amd64.deb ...
+#26 8.137 Unpacking dbus (1.10.32-0+deb9u1) ...
+#26 8.201 Selecting previously unselected package krb5-locales.
+#26 8.202 Preparing to unpack .../15-krb5-locales_1.15-1+deb9u1_all.deb ...
+#26 8.207 Unpacking krb5-locales (1.15-1+deb9u1) ...
+#26 8.258 Selecting previously unselected package libkeyutils1:amd64.
+#26 8.260 Preparing to unpack .../16-libkeyutils1_1.5.9-9_amd64.deb ...
+#26 8.265 Unpacking libkeyutils1:amd64 (1.5.9-9) ...
+#26 8.307 Selecting previously unselected package libkrb5support0:amd64.
+#26 8.308 Preparing to unpack .../17-libkrb5support0_1.15-1+deb9u1_amd64.deb ...
+#26 8.313 Unpacking libkrb5support0:amd64 (1.15-1+deb9u1) ...
+#26 8.357 Selecting previously unselected package libk5crypto3:amd64.
+#26 8.358 Preparing to unpack .../18-libk5crypto3_1.15-1+deb9u1_amd64.deb ...
+#26 8.363 Unpacking libk5crypto3:amd64 (1.15-1+deb9u1) ...
+#26 8.414 Selecting previously unselected package libkrb5-3:amd64.
+#26 8.415 Preparing to unpack .../19-libkrb5-3_1.15-1+deb9u1_amd64.deb ...
+#26 8.420 Unpacking libkrb5-3:amd64 (1.15-1+deb9u1) ...
+#26 8.493 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#26 8.494 Preparing to unpack .../20-libgssapi-krb5-2_1.15-1+deb9u1_amd64.deb ...
+#26 8.498 Unpacking libgssapi-krb5-2:amd64 (1.15-1+deb9u1) ...
+#26 8.555 Selecting previously unselected package libffi6:amd64.
+#26 8.558 Preparing to unpack .../21-libffi6_3.2.1-6_amd64.deb ...
+#26 8.563 Unpacking libffi6:amd64 (3.2.1-6) ...
+#26 8.613 Selecting previously unselected package libglib2.0-0:amd64.
+#26 8.614 Preparing to unpack .../22-libglib2.0-0_2.50.3-2+deb9u2_amd64.deb ...
+#26 8.619 Unpacking libglib2.0-0:amd64 (2.50.3-2+deb9u2) ...
+#26 8.879 Selecting previously unselected package libnih1.
+#26 8.880 Preparing to unpack .../23-libnih1_1.0.3-8_amd64.deb ...
+#26 8.884 Unpacking libnih1 (1.0.3-8) ...
+#26 8.929 Selecting previously unselected package libnih-dbus1.
+#26 8.930 Preparing to unpack .../24-libnih-dbus1_1.0.3-8_amd64.deb ...
+#26 8.934 Unpacking libnih-dbus1 (1.0.3-8) ...
+#26 8.982 Selecting previously unselected package libcgmanager0:amd64.
+#26 8.984 Preparing to unpack .../25-libcgmanager0_0.41-2_amd64.deb ...
+#26 8.989 Unpacking libcgmanager0:amd64 (0.41-2) ...
+#26 9.042 Selecting previously unselected package cgmanager.
+#26 9.044 Preparing to unpack .../26-cgmanager_0.41-2_amd64.deb ...
+#26 9.049 Unpacking cgmanager (0.41-2) ...
+#26 9.114 Selecting previously unselected package systemd-shim.
+#26 9.115 Preparing to unpack .../27-systemd-shim_10-3_amd64.deb ...
+#26 9.129 Adding 'diversion of /usr/share/dbus-1/system-services/org.freedesktop.systemd1.service to /usr/share/dbus-1/system-services/org.freedesktop.systemd1.service.systemd by systemd-shim'
+#26 9.152 Unpacking systemd-shim (10-3) ...
+#26 9.201 Selecting previously unselected package libpam-systemd:amd64.
+#26 9.203 Preparing to unpack .../28-libpam-systemd_232-25+deb9u12_amd64.deb ...
+#26 9.209 Unpacking libpam-systemd:amd64 (232-25+deb9u12) ...
+#26 9.284 Selecting previously unselected package libwrap0:amd64.
+#26 9.286 Preparing to unpack .../29-libwrap0_7.6.q-26_amd64.deb ...
+#26 9.292 Unpacking libwrap0:amd64 (7.6.q-26) ...
+#26 9.334 Selecting previously unselected package ncurses-term.
+#26 9.335 Preparing to unpack .../30-ncurses-term_6.0+20161126-1+deb9u2_all.deb ...
+#26 9.341 Unpacking ncurses-term (6.0+20161126-1+deb9u2) ...
+#26 10.05 Selecting previously unselected package openssh-client.
+#26 10.06 Preparing to unpack .../31-openssh-client_1%3a7.4p1-10+deb9u7_amd64.deb ...
+#26 10.07 Unpacking openssh-client (1:7.4p1-10+deb9u7) ...
+#26 10.25 Selecting previously unselected package libglib2.0-data.
+#26 10.26 Preparing to unpack .../32-libglib2.0-data_2.50.3-2+deb9u2_all.deb ...
+#26 10.26 Unpacking libglib2.0-data (2.50.3-2+deb9u2) ...
+#26 10.47 Selecting previously unselected package libxext6:amd64.
+#26 10.47 Preparing to unpack .../33-libxext6_2%3a1.3.3-1+b2_amd64.deb ...
+#26 10.48 Unpacking libxext6:amd64 (2:1.3.3-1+b2) ...
+#26 10.52 Selecting previously unselected package libxmuu1:amd64.
+#26 10.52 Preparing to unpack .../34-libxmuu1_2%3a1.1.2-2_amd64.deb ...
+#26 10.53 Unpacking libxmuu1:amd64 (2:1.1.2-2) ...
+#26 10.57 Selecting previously unselected package openssh-sftp-server.
+#26 10.57 Preparing to unpack .../35-openssh-sftp-server_1%3a7.4p1-10+deb9u7_amd64.deb ...
+#26 10.57 Unpacking openssh-sftp-server (1:7.4p1-10+deb9u7) ...
+#26 10.63 Selecting previously unselected package openssh-server.
+#26 10.63 Preparing to unpack .../36-openssh-server_1%3a7.4p1-10+deb9u7_amd64.deb ...
+#26 10.65 Unpacking openssh-server (1:7.4p1-10+deb9u7) ...
+#26 10.73 Selecting previously unselected package psmisc.
+#26 10.73 Preparing to unpack .../37-psmisc_22.21-2.1+b2_amd64.deb ...
+#26 10.74 Unpacking psmisc (22.21-2.1+b2) ...
+#26 10.80 Selecting previously unselected package shared-mime-info.
+#26 10.80 Preparing to unpack .../38-shared-mime-info_1.8-1+deb9u1_amd64.deb ...
+#26 10.80 Unpacking shared-mime-info (1.8-1+deb9u1) ...
+#26 10.92 Selecting previously unselected package tcpd.
+#26 10.92 Preparing to unpack .../39-tcpd_7.6.q-26_amd64.deb ...
+#26 10.92 Unpacking tcpd (7.6.q-26) ...
+#26 10.97 Selecting previously unselected package xauth.
+#26 10.97 Preparing to unpack .../40-xauth_1%3a1.0.9-1+b2_amd64.deb ...
+#26 10.97 Unpacking xauth (1:1.0.9-1+b2) ...
+#26 11.02 Selecting previously unselected package xdg-user-dirs.
+#26 11.02 Preparing to unpack .../41-xdg-user-dirs_0.15-2+b1_amd64.deb ...
+#26 11.02 Unpacking xdg-user-dirs (0.15-2+b1) ...
+#26 11.09 Setting up ncurses-term (6.0+20161126-1+deb9u2) ...
+#26 11.11 Setting up libip4tc0:amd64 (1.6.0+snapshot20161117-6) ...
+#26 11.13 Setting up psmisc (22.21-2.1+b2) ...
+#26 11.15 Setting up libxext6:amd64 (2:1.3.3-1+b2) ...
+#26 11.16 Setting up libcap2:amd64 (1:2.25-1) ...
+#26 11.18 Setting up libprocps6:amd64 (2:3.3.12-3+deb9u1) ...
+#26 11.19 Setting up libkmod2:amd64 (23-2) ...
+#26 11.21 Setting up libxmuu1:amd64 (2:1.1.2-2) ...
+#26 11.22 Setting up procps (2:3.3.12-3+deb9u1) ...
+#26 11.25 update-alternatives: using /usr/bin/w.procps to provide /usr/bin/w (w) in auto mode
+#26 11.25 update-alternatives: warning: skip creation of /usr/share/man/man1/w.1.gz because associated file /usr/share/man/man1/w.procps.1.gz (of link group w) doesn't exist
+#26 11.27 Setting up xauth (1:1.0.9-1+b2) ...
+#26 11.29 Setting up libssl1.0.2:amd64 (1.0.2u-1~deb9u1) ...
+#26 11.38 debconf: unable to initialize frontend: Dialog
+#26 11.38 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#26 11.38 debconf: falling back to frontend: Readline
+#26 11.38 debconf: unable to initialize frontend: Readline
+#26 11.38 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.24.1 /usr/local/share/perl/5.24.1 /usr/lib/x86_64-linux-gnu/perl5/5.24 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.24 /usr/share/perl/5.24 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base .) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#26 11.38 debconf: falling back to frontend: Teletype
+#26 11.41 Setting up libglib2.0-data (2.50.3-2+deb9u2) ...
+#26 11.43 Setting up krb5-locales (1.15-1+deb9u1) ...
+#26 11.44 Processing triggers for libc-bin (2.24-11+deb9u3) ...
+#26 11.53 Setting up libseccomp2:amd64 (2.3.1-2.1+deb9u1) ...
+#26 11.55 Setting up libapparmor1:amd64 (2.11.0-3+deb9u2) ...
+#26 11.56 Setting up libffi6:amd64 (3.2.1-6) ...
+#26 11.58 Setting up libkeyutils1:amd64 (1.5.9-9) ...
+#26 11.59 Setting up xdg-user-dirs (0.15-2+b1) ...
+#26 11.61 Setting up libnih1 (1.0.3-8) ...
+#26 11.63 Setting up libidn11:amd64 (1.33-1+deb9u1) ...
+#26 11.64 Setting up libdbus-1-3:amd64 (1.10.32-0+deb9u1) ...
+#26 11.65 Setting up libnih-dbus1 (1.0.3-8) ...
+#26 11.67 Setting up libwrap0:amd64 (7.6.q-26) ...
+#26 11.69 Setting up libcgmanager0:amd64 (0.41-2) ...
+#26 11.70 Setting up libglib2.0-0:amd64 (2.50.3-2+deb9u2) ...
+#26 11.71 No schema files found: doing nothing.
+#26 11.72 Setting up tcpd (7.6.q-26) ...
+#26 11.73 Setting up libkrb5support0:amd64 (1.15-1+deb9u1) ...
+#26 11.75 Setting up cgmanager (0.41-2) ...
+#26 11.88 Created symlink /etc/systemd/system/multi-user.target.wants/cgmanager.service GåÆ /lib/systemd/system/cgmanager.service.
+#26 12.09 Created symlink /etc/systemd/system/multi-user.target.wants/cgproxy.service GåÆ /lib/systemd/system/cgproxy.service.
+#26 12.11 invoke-rc.d: could not determine current runlevel
+#26 12.12 invoke-rc.d: policy-rc.d denied execution of start.
+#26 12.13 invoke-rc.d: could not determine current runlevel
+#26 12.14 invoke-rc.d: policy-rc.d denied execution of start.
+#26 12.15 Setting up shared-mime-info (1.8-1+deb9u1) ...
+#26 14.44 Setting up dbus (1.10.32-0+deb9u1) ...
+#26 14.60 invoke-rc.d: could not determine current runlevel
+#26 14.61 invoke-rc.d: policy-rc.d denied execution of start.
+#26 14.62 Setting up systemd-shim (10-3) ...
+#26 14.65 Setting up libk5crypto3:amd64 (1.15-1+deb9u1) ...
+#26 14.66 Setting up libkrb5-3:amd64 (1.15-1+deb9u1) ...
+#26 14.67 Setting up libgssapi-krb5-2:amd64 (1.15-1+deb9u1) ...
+#26 14.69 Setting up openssh-client (1:7.4p1-10+deb9u7) ...
+#26 14.79 Setting up openssh-sftp-server (1:7.4p1-10+deb9u7) ...
+#26 14.81 Setting up openssh-server (1:7.4p1-10+deb9u7) ...
+#26 14.91 debconf: unable to initialize frontend: Dialog
+#26 14.91 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#26 14.91 debconf: falling back to frontend: Readline
+#26 14.91 debconf: unable to initialize frontend: Readline
+#26 14.91 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.24.1 /usr/local/share/perl/5.24.1 /usr/lib/x86_64-linux-gnu/perl5/5.24 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.24 /usr/share/perl/5.24 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base .) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#26 14.91 debconf: falling back to frontend: Teletype
+#26 15.02 
+#26 15.02 Creating config file /etc/ssh/sshd_config with new version
+#26 15.07 Creating SSH2 RSA key; this may take some time ...
+#26 15.13 2048 SHA256:Im9A/Xj8Q/C4qfkfuMdPVoJwOXDkHHizqpgcHYU9Bk8 root@buildkitsandbox (RSA)
+#26 15.13 Creating SSH2 ECDSA key; this may take some time ...
+#26 15.14 256 SHA256:/dIqN1Ir7NS/sqq3Bjoj0fi0r6yheg944coK8XrI92Y root@buildkitsandbox (ECDSA)
+#26 15.14 Creating SSH2 ED25519 key; this may take some time ...
+#26 15.15 256 SHA256:IyVvWd9dddRmdX9xfQ7LBUiWtZOPG/6CgfLOJTz4ABg root@buildkitsandbox (ED25519)
+#26 15.36 Created symlink /etc/systemd/system/sshd.service GåÆ /lib/systemd/system/ssh.service.
+#26 15.36 Created symlink /etc/systemd/system/multi-user.target.wants/ssh.service GåÆ /lib/systemd/system/ssh.service.
+#26 15.44 invoke-rc.d: could not determine current runlevel
+#26 15.45 invoke-rc.d: policy-rc.d denied execution of start.
+#26 15.48 Setting up libdevmapper1.02.1:amd64 (2:1.02.137-2) ...
+#26 15.50 Setting up dmsetup (2:1.02.137-2) ...
+#26 15.51 Setting up libcryptsetup4:amd64 (2:1.7.3-4) ...
+#26 15.53 Setting up systemd (232-25+deb9u12) ...
+#26 15.61 Created symlink /etc/systemd/system/getty.target.wants/getty@tty1.service GåÆ /lib/systemd/system/getty@.service.
+#26 15.61 Created symlink /etc/systemd/system/multi-user.target.wants/remote-fs.target GåÆ /lib/systemd/system/remote-fs.target.
+#26 15.62 Created symlink /etc/systemd/system/sysinit.target.wants/systemd-timesyncd.service GåÆ /lib/systemd/system/systemd-timesyncd.service.
+#26 15.66 Adding group `systemd-journal' (GID 104) ...
+#26 15.68 Done.
+#26 16.16 Setting up libpam-systemd:amd64 (232-25+deb9u12) ...
+#26 16.24 debconf: unable to initialize frontend: Dialog
+#26 16.24 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#26 16.24 debconf: falling back to frontend: Readline
+#26 16.24 debconf: unable to initialize frontend: Readline
+#26 16.24 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.24.1 /usr/local/share/perl/5.24.1 /usr/lib/x86_64-linux-gnu/perl5/5.24 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.24 /usr/share/perl/5.24 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base .) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#26 16.24 debconf: falling back to frontend: Teletype
+#26 16.34 Processing triggers for libc-bin (2.24-11+deb9u3) ...
+#26 16.35 Processing triggers for dbus (1.10.32-0+deb9u1) ...
+#26 DONE 16.5s
+
+#28 [static 10/13] RUN echo "Port 222" >> /etc/ssh/sshd_config && echo "AllowUsers uploader-stat" >> /etc/ssh/sshd_config     RUN update-rc.d ssh defaults      RUN systemctl enable ssh
+#28 DONE 0.3s
+
+#29 [static 11/13] RUN apt-get install -y --allow-unauthenticated gettext-base
+#29 0.290 Reading package lists...
+#29 0.834 Building dependency tree...
+#29 0.933 Reading state information...
+#29 1.036 The following packages will be upgraded:
+#29 1.037   gettext-base
+#29 1.042 1 upgraded, 0 newly installed, 0 to remove and 27 not upgraded.
+#29 1.042 Need to get 122 kB of archives.
+#29 1.042 After this operation, 0 B of additional disk space will be used.
+#29 1.042 WARNING: The following packages cannot be authenticated!
+#29 1.042   gettext-base
+#29 1.083 Authentication warning overridden.
+#29 1.083 Get:1 http://archive.debian.org/debian stretch/main amd64 gettext-base amd64 0.19.8.1-2+deb9u1 [122 kB]
+#29 1.307 debconf: delaying package configuration, since apt-utils is not installed
+#29 1.332 Fetched 122 kB in 0s (892 kB/s)
+#29 1.358 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 11316 files and directories currently installed.)
+#29 1.370 Preparing to unpack .../gettext-base_0.19.8.1-2+deb9u1_amd64.deb ...
+#29 1.382 Unpacking gettext-base (0.19.8.1-2+deb9u1) over (0.19.8.1-2) ...
+#29 1.467 Setting up gettext-base (0.19.8.1-2+deb9u1) ...
+#29 DONE 1.5s
+
+#30 [static 12/13] COPY entrypoint.sh /entrypoint.sh
+#30 DONE 0.1s
+
+#31 [static 13/13] RUN chmod +x /entrypoint.sh
+#31 DONE 0.3s
+
+#32 [static] exporting to image
+#32 exporting layers
+#32 exporting layers 2.1s done
+#32 exporting manifest sha256:1597342997737cc1c34b2dbcdcd0f0abed4a07aa30c7e0e3207ece9a2b0c380d 0.0s done
+#32 exporting config sha256:f67db4b404176c5226111fa8114f7318d431dc72f7660452652bc00db10df217 0.0s done
+#32 exporting attestation manifest sha256:90bf644c89cef28288d4a21f07860386447fb2d903ab54ab028a9d0aa4da8402 0.0s done
+#32 exporting manifest list sha256:ea14c98ca5067dd719763a370cc52552ec2f14670cd0d891614082d70c744dda 0.0s done
+#32 naming to docker.io/library/static:latest done
+#32 unpacking to docker.io/library/static:latest
+#32 unpacking to docker.io/library/static:latest 1.5s done
+#32 DONE 3.7s
+
+#33 [static] resolving provenance for metadata file
+#33 DONE 0.0s
+ jetty-gs  Built
+ static  Built
+ Network gp3_gs-network  Creating
+ Network gp3_gs-network  Created
+ Container gp3-c1-1  Creating
+ Container gp3-zookeeper-1  Creating
+ Container gp3-c1-1  Created
+ Container gp3-gs-1  Creating
+ Container gp3-zookeeper-1  Created
+ Container gp3-kafka-1  Creating
+ Container gp3-kafka-1  Created
+ Container gp3-gs-1  Created
+ Container gp3-static-1  Creating
+ Container gp3-static-1  Created
+ Container gp3-c1-1  Starting
+ Container gp3-zookeeper-1  Starting
+ Container gp3-zookeeper-1  Started
+ Container gp3-kafka-1  Starting
+ Container gp3-c1-1  Started
+ Container gp3-gs-1  Starting
+ Container gp3-kafka-1  Started
+ Container gp3-gs-1  Started
+ Container gp3-static-1  Starting
+ Container gp3-static-1  Started
+

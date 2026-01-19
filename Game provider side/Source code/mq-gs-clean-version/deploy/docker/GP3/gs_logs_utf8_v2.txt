@@ -1,0 +1,100 @@
+﻿gs-1  | java.lang.NullPointerException
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+gs-1  | 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+gs-1  | 	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+gs-1  | 	at java.lang.Thread.run(Thread.java:748)
+gs-1  | 07.01.2026 15:34:15,696 [ERROR] ERROR [DistributedLockManager pool-3-thread-1] - CleanOldLocksTask was failed:
+gs-1  | java.lang.NullPointerException
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+gs-1  | 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+gs-1  | 	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+gs-1  | 	at java.lang.Thread.run(Thread.java:748)
+gs-1  | 07.01.2026 15:34:15,696 [ERROR] ERROR [AccountDistributedLockManager pool-4-thread-1] - CleanOldLocksTask was failed:
+gs-1  | java.lang.NullPointerException
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+gs-1  | 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+gs-1  | 	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+gs-1  | 	at java.lang.Thread.run(Thread.java:748)
+gs-1  | 07.01.2026 15:34:15,696 [COMMON] DEBUG [AccountDistributedLockManager pool-4-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0
+gs-1  | 07.01.2026 15:34:15,696 [COMMON] DEBUG [DistributedLockManager pool-3-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0
+gs-1  | 07.01.2026 15:35:47,398 [COMMON] INFO  [DistributedLockManager pool-14-thread-1] - Running cleaner
+gs-1  | 07.01.2026 15:35:47,399 [COMMON] INFO  [DistributedLockManager pool-14-thread-1] - Removed old lockInfo: 0
+gs-1  | 07.01.2026 15:35:47,399 [COMMON] DEBUG [DistributedLockManager pool-14-thread-1] - Task execution started..
+gs-1  | 07.01.2026 15:35:47,400 [COMMON] INFO  [AccountDistributedLockManager pool-15-thread-1] - Running cleaner
+gs-1  | 07.01.2026 15:35:47,400 [COMMON] INFO  [AccountDistributedLockManager pool-15-thread-1] - Removed old lockInfo: 0
+gs-1  | 07.01.2026 15:35:47,400 [COMMON] ERROR [DistributedLockManager pool-14-thread-1] - CleanOldLocksTask was failed:
+gs-1  | java.lang.NullPointerException
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+gs-1  | 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+gs-1  | 	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+gs-1  | 	at java.lang.Thread.run(Thread.java:748)
+gs-1  | 07.01.2026 15:35:47,400 [COMMON] DEBUG [AccountDistributedLockManager pool-15-thread-1] - Task execution started..
+gs-1  | 07.01.2026 15:35:47,400 [ERROR] ERROR [DistributedLockManager pool-14-thread-1] - CleanOldLocksTask was failed:
+gs-1  | java.lang.NullPointerException
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+gs-1  | 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+gs-1  | 	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+gs-1  | 	at java.lang.Thread.run(Thread.java:748)
+gs-1  | 07.01.2026 15:35:47,400 [COMMON] DEBUG [DistributedLockManager pool-14-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0
+gs-1  | 07.01.2026 15:35:47,400 [COMMON] ERROR [AccountDistributedLockManager pool-15-thread-1] - CleanOldLocksTask was failed:
+gs-1  | java.lang.NullPointerException
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+gs-1  | 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+gs-1  | 	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+gs-1  | 	at java.lang.Thread.run(Thread.java:748)
+gs-1  | 07.01.2026 15:35:47,400 [ERROR] ERROR [AccountDistributedLockManager pool-15-thread-1] - CleanOldLocksTask was failed:
+gs-1  | java.lang.NullPointerException
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+gs-1  | 	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+gs-1  | 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+gs-1  | 	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+gs-1  | 	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+gs-1  | 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+gs-1  | 	at java.lang.Thread.run(Thread.java:748)
+gs-1  | 07.01.2026 15:35:47,401 [COMMON] DEBUG [AccountDistributedLockManager pool-15-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0

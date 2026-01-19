@@ -1,0 +1,262 @@
+2026-01-07 11:48:29.519:WARN:oejs.HttpChannel:qtp146370526-120: /
+java.lang.NullPointerException
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(Se
+rvletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler
+.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHand
+ler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandle
+r.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWr
+apper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scoped
+Handler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(Session
+Handler.java:1700)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scoped
+Handler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(Context
+Handler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedH
+andler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.
+java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionH
+andler.java:1667)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedH
+andler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextH
+andler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHand
+ler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle
+(ContextHandlerCollection.java:220)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(Handle
+rCollection.java:152)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWr
+apper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:505)
+	at 
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:370)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnectio
+n.java:267)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(A
+bstractConnection.java:305)
+	at 
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at 
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:117)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(Ea
+tWhatYouKill.java:333)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(
+EatWhatYouKill.java:310)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce
+(EatWhatYouKill.java:168)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWha
+tYouKill.java:126)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThr
+ead.run(ReservedThreadExecutor.java:366)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThre
+adPool.java:698)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(Queued
+ThreadPool.java:804)
+	at java.lang.Thread.run(Thread.java:748)
+2026-01-07 11:48:30.097:WARN:oejs.HttpChannel:qtp146370526-23: 
+/favicon.ico
+java.lang.NullPointerException
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(Se
+rvletHandler.java:1610)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler
+.java:540)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHand
+ler.java:146)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandle
+r.java:548)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWr
+apper.java:132)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scoped
+Handler.java:257)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(Session
+Handler.java:1700)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(Scoped
+Handler.java:255)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(Context
+Handler.java:1345)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedH
+andler.java:203)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.
+java:480)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionH
+andler.java:1667)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedH
+andler.java:201)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextH
+andler.java:1247)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHand
+ler.java:144)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle
+(ContextHandlerCollection.java:220)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(Handle
+rCollection.java:152)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWr
+apper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:505)
+	at 
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:370)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnectio
+n.java:267)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(A
+bstractConnection.java:305)
+	at 
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+	at 
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:117)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(Ea
+tWhatYouKill.java:333)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(
+EatWhatYouKill.java:310)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce
+(EatWhatYouKill.java:168)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWha
+tYouKill.java:126)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThr
+ead.run(ReservedThreadExecutor.java:366)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThre
+adPool.java:698)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(Queued
+ThreadPool.java:804)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:49:04,322 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 11:49:04,323 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 11:49:04,324 [COMMON] DEBUG [DistributedLockManager pool-3-thread-1] - Task execution started..
+07.01.2026 11:49:04,324 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 11:49:04,324 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 11:49:04,325 [COMMON] DEBUG [AccountDistributedLockManager pool-4-thread-1] - Task execution started..
+07.01.2026 11:49:04,325 [COMMON] ERROR [DistributedLockManager pool-3-thread-1] - CleanOldLocksTask was failed:
+java.lang.NullPointerException
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:49:04,325 [COMMON] ERROR [AccountDistributedLockManager pool-4-thread-1] - CleanOldLocksTask was failed:
+java.lang.NullPointerException
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:49:04,325 [ERROR] ERROR [AccountDistributedLockManager pool-4-thread-1] - CleanOldLocksTask was failed:
+java.lang.NullPointerException
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:49:04,325 [ERROR] ERROR [DistributedLockManager pool-3-thread-1] - CleanOldLocksTask was failed:
+java.lang.NullPointerException
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:49:04,326 [COMMON] DEBUG [DistributedLockManager pool-3-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0
+07.01.2026 11:49:04,326 [COMMON] DEBUG [AccountDistributedLockManager pool-4-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0
+07.01.2026 11:50:36,272 [COMMON] INFO  [DistributedLockManager pool-14-thread-1] - Running cleaner
+07.01.2026 11:50:36,272 [COMMON] INFO  [DistributedLockManager pool-14-thread-1] - Removed old lockInfo: 0
+07.01.2026 11:50:36,272 [COMMON] DEBUG [DistributedLockManager pool-14-thread-1] - Task execution started..
+07.01.2026 11:50:36,273 [COMMON] ERROR [DistributedLockManager pool-14-thread-1] - CleanOldLocksTask was failed:
+java.lang.NullPointerException
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:50:36,274 [COMMON] INFO  [AccountDistributedLockManager pool-15-thread-1] - Running cleaner
+07.01.2026 11:50:36,273 [ERROR] ERROR [DistributedLockManager pool-14-thread-1] - CleanOldLocksTask was failed:
+java.lang.NullPointerException
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:50:36,274 [COMMON] INFO  [AccountDistributedLockManager pool-15-thread-1] - Removed old lockInfo: 0
+07.01.2026 11:50:36,274 [COMMON] DEBUG [DistributedLockManager pool-14-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0
+07.01.2026 11:50:36,274 [COMMON] DEBUG [AccountDistributedLockManager pool-15-thread-1] - Task execution started..
+07.01.2026 11:50:36,275 [COMMON] ERROR [AccountDistributedLockManager pool-15-thread-1] - CleanOldLocksTask was failed:
+java.lang.NullPointerException
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:50:36,275 [ERROR] ERROR [AccountDistributedLockManager pool-15-thread-1] - CleanOldLocksTask was failed:
+java.lang.NullPointerException
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockerId(AbstractLockManager.java:388)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.getLockIds(AbstractLockManager.java:558)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager.access$600(AbstractLockManager.java:31)
+	at com.dgphoenix.casino.cassandra.AbstractLockManager$CleanOldLocksTask.run(AbstractLockManager.java:518)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+07.01.2026 11:50:36,276 [COMMON] DEBUG [AccountDistributedLockManager pool-15-thread-1] - Task completed. Total lockIds affected = 0, unlocked = 0, failed = 0
+07.01.2026 11:59:04,277 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 11:59:04,278 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 11:59:04,279 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 11:59:04,279 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+07.01.2026 12:00:36,226 [COMMON] INFO  [DistributedLockManager pool-14-thread-1] - Running cleaner
+07.01.2026 12:00:36,227 [COMMON] INFO  [DistributedLockManager pool-14-thread-1] - Removed old lockInfo: 0
+07.01.2026 12:00:36,229 [COMMON] INFO  [AccountDistributedLockManager pool-15-thread-1] - Running cleaner
+07.01.2026 12:00:36,229 [COMMON] INFO  [AccountDistributedLockManager pool-15-thread-1] - Removed old lockInfo: 0
+07.01.2026 12:09:04,233 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Running cleaner
+07.01.2026 12:09:04,233 [COMMON] INFO  [DistributedLockManager pool-3-thread-1] - Removed old lockInfo: 0
+07.01.2026 12:09:04,235 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Running cleaner
+07.01.2026 12:09:04,235 [COMMON] INFO  [AccountDistributedLockManager pool-4-thread-1] - Removed old lockInfo: 0
+

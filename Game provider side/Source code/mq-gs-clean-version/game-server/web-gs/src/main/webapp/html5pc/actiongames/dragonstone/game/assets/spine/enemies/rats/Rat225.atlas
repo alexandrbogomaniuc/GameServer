@@ -1,0 +1,55 @@
+
+RatUp.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+up/up_body
+  rotate: true
+  xy: 2, 2
+  size: 99, 128
+  orig: 99, 128
+  offset: 0, 0
+  index: -1
+up/up_head
+  rotate: true
+  xy: 372, 44
+  size: 57, 75
+  orig: 57, 75
+  offset: 0, 0
+  index: -1
+up/up_lf_arm
+  rotate: true
+  xy: 224, 15
+  size: 38, 48
+  orig: 38, 48
+  offset: 0, 0
+  index: -1
+up/up_lf_leg
+  rotate: true
+  xy: 280, 57
+  size: 44, 90
+  orig: 44, 90
+  offset: 0, 0
+  index: -1
+up/up_rt_arm
+  rotate: false
+  xy: 449, 56
+  size: 41, 45
+  orig: 41, 45
+  offset: 0, 0
+  index: -1
+up/up_rt_leg
+  rotate: true
+  xy: 132, 6
+  size: 47, 90
+  orig: 47, 90
+  offset: 0, 0
+  index: -1
+up/up_tail
+  rotate: true
+  xy: 132, 55
+  size: 46, 146
+  orig: 46, 146
+  offset: 0, 0
+  index: -1

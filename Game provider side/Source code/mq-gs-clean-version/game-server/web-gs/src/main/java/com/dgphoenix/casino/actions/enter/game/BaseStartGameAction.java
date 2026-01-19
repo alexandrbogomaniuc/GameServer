@@ -90,7 +90,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         APUBConstants {
     public static final String ACCOUNT_ID = "accountId";
     public static final String SUBCASINO_ID = "subCasinoId";
-    protected static final Set<Integer> BANKS_WITHOUT_MP_VALIDATION = new HashSet<>(Arrays.asList(6274, 6275, 9128, 9129, 9522));
+    protected static final Set<Integer> BANKS_WITHOUT_MP_VALIDATION = new HashSet<>(
+            Arrays.asList(6274, 6275, 9128, 9129, 9522));
     private static final Logger LOG = LogManager.getLogger(BaseStartGameAction.class);
 
     private final CassandraExtendedAccountInfoPersister extendedAccountInfoPersister;
@@ -102,7 +103,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
     public BaseStartGameAction() {
         ApplicationContext applicationContext = ApplicationContextHelper.getApplicationContext();
-        CassandraPersistenceManager persistenceManager = applicationContext.getBean("persistenceManager", CassandraPersistenceManager.class);
+        CassandraPersistenceManager persistenceManager = applicationContext.getBean("persistenceManager",
+                CassandraPersistenceManager.class);
         gameServerConfiguration = applicationContext.getBean("gameServerConfiguration", GameServerConfiguration.class);
         mpGameSessionService = applicationContext.getBean("mpGameSessionService", MPGameSessionService.class);
         extendedAccountInfoPersister = persistenceManager.getPersister(CassandraExtendedAccountInfoPersister.class);
@@ -113,7 +115,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request,
-                                 HttpServletResponse response) throws Exception {
+            HttpServletResponse response) throws Exception {
         T form = (T) actionForm;
         if (isTournamentLobbyRequest(form)) {
             String tournamentLobbyUrl = "/tournamentlobby.do?" + request.getQueryString();
@@ -128,8 +130,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
     @Override
     protected ActionForward process(ActionMapping mapping, T actionForm, HttpServletRequest request,
-                                    HttpServletResponse response) throws Exception {
-        //nop
+            HttpServletResponse response) throws Exception {
+        // nop
         return null;
     }
 
@@ -160,11 +162,13 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         return mpGameSessionService.getPlayerSessionWithUnfinishedSid(extId);
     }
 
-    protected void savePlayerSessionState(String sid, String extId, String privateRoomId, boolean isFinishGameSession, long dateTime) {
+    protected void savePlayerSessionState(String sid, String extId, String privateRoomId, boolean isFinishGameSession,
+            long dateTime) {
         mpGameSessionService.savePlayerSessionState(sid, extId, privateRoomId, isFinishGameSession, dateTime);
     }
 
-    protected boolean isNeedStartUnfinishedGame(GameMode mode, BankInfo bankInfo, AccountInfo accountInfo, long gameId) {
+    protected boolean isNeedStartUnfinishedGame(GameMode mode, BankInfo bankInfo, AccountInfo accountInfo,
+            long gameId) {
         boolean needStartUnfinishedGame = !accountInfo.isTestUser() && mode == GameMode.REAL &&
                 bankInfo.isOverrideGameIdIfFoundUnfinished();
         if (needStartUnfinishedGame) {
@@ -183,11 +187,11 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
     protected long getUnfinishedGameId(long bankId, long currentGameId, AccountInfo accountInfo) {
         LasthandInfo lasthand = SessionHelper.getInstance().getTransactionData().getLasthand();
-        //if found unfinished online && not in maintenanceMode
+        // if found unfinished online && not in maintenanceMode
         if (lasthand != null && !StringUtils.isTrimmedEmpty(lasthand.getLasthandData())) {
             long lasthandGameId = lasthand.getId();
-            BaseGameInfoTemplate template =
-                    BaseGameInfoTemplateCache.getInstance().getBaseGameInfoTemplateById(lasthandGameId);
+            BaseGameInfoTemplate template = BaseGameInfoTemplateCache.getInstance()
+                    .getBaseGameInfoTemplateById(lasthandGameId);
             if (template != null && !template.isRoundFinished(lasthand.getLasthandData())) {
                 IBaseGameInfo defCurrencyBgi = BaseGameCache.getInstance().getGameInfo(bankId, lasthandGameId, "");
                 if (defCurrencyBgi != null && !defCurrencyBgi.isMaintenanceMode()) {
@@ -201,8 +205,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
             long gameId = entry.getKey();
             String lh = entry.getValue();
             if (!StringUtils.isTrimmedEmpty(lh)) {
-                BaseGameInfoTemplate template =
-                        BaseGameInfoTemplateCache.getInstance().getBaseGameInfoTemplateById(gameId);
+                BaseGameInfoTemplate template = BaseGameInfoTemplateCache.getInstance()
+                        .getBaseGameInfoTemplateById(gameId);
                 if (template != null && !template.isRoundFinished(lh)) {
                     IBaseGameInfo defCurrencyBgi = BaseGameCache.getInstance().getGameInfo(bankId, gameId, "");
                     if (defCurrencyBgi != null && !defCurrencyBgi.isMaintenanceMode()) {
@@ -216,17 +220,18 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         return unfinishedGameIds.isEmpty() ? currentGameId : unfinishedGameIds.get(0);
     }
 
-    protected AccountInfoAndSessionInfoPair loginGuest(T form, HttpServletRequest request, Currency currency) throws CommonException {
+    protected AccountInfoAndSessionInfoPair loginGuest(T form, HttpServletRequest request, Currency currency)
+            throws CommonException {
         try {
             AccountInfoAndSessionInfoPair pair = createGuestAccount(form.getBankId(), form.getSubCasinoId(), currency);
             AccountInfo accountInfo = pair.getAccount();
             long bankId = form.getBankId();
             getLog().debug("TransactionData: " + SessionHelper.getInstance().getTransactionData());
-            IPlayerSessionManager psm =
-                    PlayerSessionFactory.getInstance().getPlayerSessionManager(bankId);
+            IPlayerSessionManager psm = PlayerSessionFactory.getInstance().getPlayerSessionManager(bankId);
             String fakeExternalSessionId = StringIdGenerator.generateSessionId(GameServer.getInstance().getServerId(),
                     accountInfo.getBankId(), accountInfo.getExternalId());
-            SessionInfo sessionInfo = psm.login(accountInfo, fakeExternalSessionId, request.getRemoteHost(), form.getClientType());
+            SessionInfo sessionInfo = psm.login(accountInfo, fakeExternalSessionId, request.getRemoteHost(),
+                    form.getClientType());
             pair.setSessionInfo(sessionInfo);
             return pair;
         } catch (CommonException e) {
@@ -236,16 +241,20 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     }
 
     /**
-     *  Makes auth request to external side use input params of action form.
-     * @param form  action form
-     * @param token token from action form
-     * @param bankInfo bank info of system getting from bankId parameter of action form
+     * Makes auth request to external side use input params of action form.
+     * 
+     * @param form       action form
+     * @param token      token from action form
+     * @param bankInfo   bank info of system getting from bankId parameter of action
+     *                   form
      * @param remoteHost remoteHost from request
-     * @param request request
-     * @return {@code CommonWalletAuthResult} result of auth request to external side.
+     * @param request    request
+     * @return {@code CommonWalletAuthResult} result of auth request to external
+     *         side.
      * @throws CommonException if any unexpected error occur
      */
-    protected CommonWalletAuthResult getAuthInfo(T form, String token, BankInfo bankInfo, String remoteHost, HttpServletRequest request)
+    protected CommonWalletAuthResult getAuthInfo(T form, String token, BankInfo bankInfo, String remoteHost,
+            HttpServletRequest request)
             throws CommonException {
         if (isTrimmedEmpty(token) && form.getGameMode() == GameMode.REAL) {
             throw new CommonException("incorrect parameters: empty token and real mode");
@@ -262,7 +271,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     }
 
     protected CommonWalletAuthResult auth(ICommonWalletClient client, String token, T form,
-                                          HttpServletRequest request, BankInfo bankInfo) throws CommonException {
+            HttpServletRequest request, BankInfo bankInfo) throws CommonException {
         long subCasinoId = bankInfo.getSubCasinoId();
         if (subCasinoId == 39 || subCasinoId == 62 || subCasinoId == 212) {
             // 0002807: VERA JOHN -- INTEGRATION AND SUPPORT
@@ -279,22 +288,25 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     }
 
     /**
-     * Process of login.  As a result, a player session will be created in the system.
-     * @param form form of start action
-     * @param token token of playr from action form
+     * Process of login. As a result, a player session will be created in the
+     * system.
+     * 
+     * @param form       form of start action
+     * @param token      token of playr from action form
      * @param remoteHost remote host from request
-     * @param gameId gameId
-     * @param mode mode (FREE|REAL|BONUS)
-     * @param accountId accountId of player
-     * @return {@code AccountInfoAndSessionInfoPair} pair of account info and player session info.
+     * @param gameId     gameId
+     * @param mode       mode (FREE|REAL|BONUS)
+     * @param accountId  accountId of player
+     * @return {@code AccountInfoAndSessionInfoPair} pair of account info and player
+     *         session info.
      * @throws CommonException if any unexpected error occur
      */
     protected AccountInfoAndSessionInfoPair loginV3(T form, String token, String remoteHost,
-                                                    long gameId, GameMode mode, long accountId)
+            long gameId, GameMode mode, long accountId)
             throws CommonException {
         AccountInfo accountInfo = null;
-        CWPlayerSessionManager psm = (CWPlayerSessionManager)
-                PlayerSessionFactory.getInstance().getPlayerSessionManager(form.getBankId());
+        CWPlayerSessionManager psm = (CWPlayerSessionManager) PlayerSessionFactory.getInstance()
+                .getPlayerSessionManager(form.getBankId());
         try {
             long now = System.currentTimeMillis();
             accountInfo = AccountManager.getInstance().getAccountInfo(accountId);
@@ -312,12 +324,12 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
             StatisticsManager.getInstance().updateRequestStatistics("loginV3 6", System.currentTimeMillis() - now);
             AccountInfoAndSessionInfoPair infoPair = new AccountInfoAndSessionInfoPair(accountInfo, sessionInfo);
 
-            LOG.debug("BaseStartGameAction loginV3: infoPair={}",infoPair);
+            LOG.debug("BaseStartGameAction loginV3: infoPair={}", infoPair);
 
             return infoPair;
         } catch (Exception e) {
-            LOG.error("BaseStartGameAction loginV3: unable to login player: " + (accountInfo == null ? "unknown, token=" + token :
-                    accountInfo), e);
+            LOG.error("BaseStartGameAction loginV3: unable to login player: "
+                    + (accountInfo == null ? "unknown, token=" + token : accountInfo), e);
             if (e instanceof CommonException) {
                 throw (CommonException) e;
             }
@@ -327,11 +339,11 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
     protected void processCommonWalletAuthResult(T form, CommonWalletAuthResult result, BankInfo bankInfo)
             throws CommonException {
-        //nop by default
+        // nop by default
     }
 
     protected GameServerResponse startGame(AccountInfo accountInfo, SessionInfo sessionInfo, T form,
-                                           HttpServletResponse response, String lang, boolean checkWalletOps)
+            HttpServletResponse response, String lang, boolean checkWalletOps)
             throws CommonException {
         long now = System.currentTimeMillis();
         GameServerResponse gameServerResponse = new GameServerResponse();
@@ -421,16 +433,19 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
     /**
      * Checks pending operations for gameId, accountId
-     * @param accountInfo accountInfo of player
-     * @param gameId gameId
-     * @param sessionInfo player session info
+     * 
+     * @param accountInfo           accountInfo of player
+     * @param gameId                gameId
+     * @param sessionInfo           player session info
      * @param unclosedGameSessionId old gameSessionId
-     * @param mode game mode
-     * @param checkWalletOps true, if needed to check uncompleted wallet operations.
-     * @throws CommonException if any unexpected error occur or there is uncompleted wallet operations
+     * @param mode                  game mode
+     * @param checkWalletOps        true, if needed to check uncompleted wallet
+     *                              operations.
+     * @throws CommonException if any unexpected error occur or there is uncompleted
+     *                         wallet operations
      */
     protected void checkPendingOperations(AccountInfo accountInfo, long gameId, SessionInfo sessionInfo,
-                                          Long unclosedGameSessionId, GameMode mode, boolean checkWalletOps)
+            Long unclosedGameSessionId, GameMode mode, boolean checkWalletOps)
             throws CommonException {
         if (!WalletProtocolFactory.getInstance().isWalletBank(accountInfo.getBankId())) {
             Long transactionId = PaymentManager.getInstance().getTrackingTransactionId();
@@ -450,7 +465,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
             }
         }
         final ITransactionData ITransactionData = SessionHelper.getInstance().getTransactionData();
-        if (GameMode.REAL == mode) {//do not start the same frb game if win in tracking
+        if (GameMode.REAL == mode) {// do not start the same frb game if win in tracking
             FRBonusWin frbonusWin = ITransactionData.getFrbWin();
             FRBonusManager.getInstance().checkPendingOperation(frbonusWin, accountInfo, gameId);
         }
@@ -464,7 +479,6 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     protected ServerInfo assignServer(long bankId, Long gameId, GameMode mode) throws CommonException {
         return GameServer.getInstance().getServerInfo();
     }
-
 
     protected IBaseGameInfo getGameInfo(AccountInfo accountInfo, long gameId) throws CommonException {
         Currency currency = accountInfo.getCurrency();
@@ -488,7 +502,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     }
 
     private void closeOnlineGame(long gameSessionId, AccountInfo accountInfo,
-                                 SessionInfo sessionInfo)
+            SessionInfo sessionInfo)
             throws CommonException {
         GameSession gameSession = GameSessionPersister.getInstance().getGameSession(gameSessionId);
         LOG.debug("BaseStartGameAction closeOnlineGame: need closeOnlineGame, gameSessionId: {}", gameSessionId);
@@ -497,8 +511,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     }
 
     protected AccountInfo saveAccount(Long accountId, String externalId, String extCurrency, String extNickName,
-                                      String extFirstName, String extLastName, String extEmail,
-                                      String countryCode, CommonActionForm actionForm, boolean newAccount)
+            String extFirstName, String extLastName, String extEmail,
+            String countryCode, CommonActionForm actionForm, boolean newAccount)
             throws CommonException {
 
         return AccountManager.getInstance().saveAccountWithCurrencyUpdate(
@@ -517,7 +531,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
                 newAccount);
     }
 
-    private AccountInfoAndSessionInfoPair createGuestAccount(int bankId, short subCasinoId, Currency currency) throws CommonException {
+    private AccountInfoAndSessionInfoPair createGuestAccount(int bankId, short subCasinoId, Currency currency)
+            throws CommonException {
         String randomStr;
         if (AccountManager.getInstance().isPerfectAccountIdMode(bankId)) {
             randomStr = String.valueOf(-RNG.nextLong());
@@ -530,43 +545,48 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         SessionHelper.getInstance().lock(bankId, randomStr);
         SessionHelper.getInstance().openSession();
         Currency accountCurrency = (currency == null) ? bankInfo.getDefaultCurrency() : currency;
-        AccountInfo account = AccountManager.getInstance().saveAccount(null, randomStr, bankInfo, subCasinoId, nickName, true, false,
+        AccountInfo account = AccountManager.getInstance().saveAccount(null, randomStr, bankInfo, subCasinoId, nickName,
+                true, false,
                 null, ClientType.FLASH, null, null, accountCurrency, null, true);
         return new AccountInfoAndSessionInfoPair(account);
     }
 
     /**
-     * Prepares and makes redirect to start game for usual games (slots, table, ..). Not used for MQ games.
-     * @param mapping ActionMapping
-     * @param request request
-     * @param actionForm action form from start action
-     * @param gameId gameId
-     * @param host host
-     * @param sessionId player sessionId
-     * @param startGamePage startGamePage (usually it is launch.jsp)
-     * @param mode game mode (FREE|REAL|BONUS)
-     * @param lang language
-     * @param serverId serverId
-     * @param bankInfo bank info for player
-     * @param currency currency of player
-     * @param showRedirectedUnfinishedGameMessage true, if needed to show message for unfinished game.
-     * @param transactionData transaction data for player
+     * Prepares and makes redirect to start game for usual games (slots, table, ..).
+     * Not used for MQ games.
+     * 
+     * @param mapping                             ActionMapping
+     * @param request                             request
+     * @param actionForm                          action form from start action
+     * @param gameId                              gameId
+     * @param host                                host
+     * @param sessionId                           player sessionId
+     * @param startGamePage                       startGamePage (usually it is
+     *                                            launch.jsp)
+     * @param mode                                game mode (FREE|REAL|BONUS)
+     * @param lang                                language
+     * @param serverId                            serverId
+     * @param bankInfo                            bank info for player
+     * @param currency                            currency of player
+     * @param showRedirectedUnfinishedGameMessage true, if needed to show message
+     *                                            for unfinished game.
+     * @param transactionData                     transaction data for player
      * @return {@code ActionRedirect} data for redirection.
      */
     protected ActionRedirect getForward(ActionMapping mapping,
-                                        HttpServletRequest request,
-                                        T actionForm,
-                                        long gameId,
-                                        String host,
-                                        String sessionId,
-                                        String startGamePage,
-                                        GameMode mode,
-                                        String lang,
-                                        long serverId,
-                                        BankInfo bankInfo,
-                                        String currency,
-                                        boolean showRedirectedUnfinishedGameMessage,
-                                        ITransactionData transactionData) {
+            HttpServletRequest request,
+            T actionForm,
+            long gameId,
+            String host,
+            String sessionId,
+            String startGamePage,
+            GameMode mode,
+            String lang,
+            long serverId,
+            BankInfo bankInfo,
+            String currency,
+            boolean showRedirectedUnfinishedGameMessage,
+            ITransactionData transactionData) {
         String url = "/" + mode.getModePath() + "/" + lang + "/" + startGamePage;
         ActionRedirect redirect = BaseAction.getActionRedirect(request, url);
         redirect.addParameter(BaseAction.BANK_ID_ATTRIBUTE, String.valueOf(actionForm.getBankId()));
@@ -596,7 +616,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         }
         IBaseGameInfo gameInfo = BaseGameCache.getInstance().getGameInfoById(bankInfo.getId(), gameId,
                 currency == null ? null : CurrencyCache.getInstance().get(currency));
-        if ((mode == GameMode.REAL && !isTrimmedEmpty(currency)) ) {
+        if ((mode == GameMode.REAL && !isTrimmedEmpty(currency))) {
             AccountInfo account = transactionData.getAccount();
             GameSession gameSession = transactionData.getGameSession();
         }
@@ -684,7 +704,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     }
 
     protected String getStartGamePage(BankInfo bankInfo, GameMode mode, BaseGameInfoTemplate template, String userAgent,
-                                      String platform) {
+            String platform) {
         return ShellDetector.getShellPath(bankInfo, mode, template, userAgent, platform, false);
     }
 
@@ -736,13 +756,14 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         return false;
     }
 
-    public String getGameHistoryUrl(HttpServletRequest request, T actionForm, String sessionId, BankInfo bankInfo, long gameId,
-                                    String lang) {
+    public String getGameHistoryUrl(HttpServletRequest request, T actionForm, String sessionId, BankInfo bankInfo,
+            long gameId,
+            String lang) {
         return getGameHistoryUrl(request, sessionId, bankInfo, gameId, lang);
     }
 
     public static String getGameHistoryUrl(HttpServletRequest request, String sessionId, BankInfo bankInfo, long gameId,
-                                           String lang) {
+            String lang) {
         String gameHistoryUrl = request.getParameter(GAME_HISTORY_URL);
         if (isTrimmedEmpty(gameHistoryUrl)) {
             gameHistoryUrl = bankInfo.getGameHistoryUrl();
@@ -759,17 +780,17 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     }
 
     public void additionalProcess(T form, HttpServletResponse response, AccountInfo accountInfo,
-                                  SessionInfo sessionInfo, IBaseGameInfo gameInfo, GameMode mode,
-                                  Long gameSessionId)
+            SessionInfo sessionInfo, IBaseGameInfo gameInfo, GameMode mode,
+            Long gameSessionId)
             throws CommonException {
-        //nop by default
+        // nop by default
     }
 
     public void afterGameStartedProcess(T form, HttpServletResponse response, AccountInfo accountInfo,
-                                        SessionInfo sessionInfo, IBaseGameInfo gameInfo, GameMode mode,
-                                        Long gameSessionId)
+            SessionInfo sessionInfo, IBaseGameInfo gameInfo, GameMode mode,
+            Long gameSessionId)
             throws CommonException {
-        //nop by default
+        // nop by default
     }
 
     protected boolean isMultiPlayerGame(long gameId) {
@@ -779,36 +800,50 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
     /**
      * Prepares and redirect client to MQ side for connection to MQ server
+     * 
      * @param actionForm action form from start action
-     * @param request request
-     * @param mode game mode
-     * @param bankInfo bankInfo for player bank
-     * @param sessionId player sessionId
-     * @param lang language of player for localization
-     * @param gameId gameId
+     * @param request    request
+     * @param mode       game mode
+     * @param bankInfo   bankInfo for player bank
+     * @param sessionId  player sessionId
+     * @param lang       language of player for localization
+     * @param gameId     gameId
      * @return {@code ActionRedirect} redirect data for client
      */
     protected ActionRedirect getMultiPlayerForward(T actionForm, HttpServletRequest request, GameMode mode,
-                                                   BankInfo bankInfo, String sessionId, String lang, long gameId) {
-        String mpLobbyUrl = bankInfo.getMpLobbyWsUrl();
+            BankInfo bankInfo, String sessionId, String lang, long gameId) {
+        LOG.info("getMultiPlayerForward: VERSION_8080_CHECK - checking mpLobbyUrl for bank=" + bankInfo.getId());
+        String mpLobbyUrl = gameServerConfiguration.getStringPropertySilent("mp.lobby.ws.host");
         if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
             mpLobbyUrl = gameServerConfiguration.getStringPropertySilent(GameServerConfigTemplate.KEY_MP_LOBBY_WS_HOST);
         }
+
         if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
-            LOG.error("MP_LOBBY_WS_URL property not found for bank=" + bankInfo.getId());
-            LOG.error("MP_LOBBY_WS_HOST property not found in GameServerConfiguration");
-            mpLobbyUrl = "localhost:8080/";
+            // Check bankInfo only if config is missing, and sanity check it (optional, or
+            // just skip it)
+            mpLobbyUrl = bankInfo.getMpLobbyWsUrl();
+            LOG.error("DEBUG_MP: Config missing, used BankInfo mpLobbyUrl=" + mpLobbyUrl);
+        } else {
+            LOG.error("DEBUG_MP: Found config mpLobbyUrl=" + mpLobbyUrl);
+        }
+
+        // Expanded check to catch 'games' or 'games/'
+        if (StringUtils.isTrimmedEmpty(mpLobbyUrl) || mpLobbyUrl.contains("gs1-mp.local") || mpLobbyUrl.equals("local")
+                || mpLobbyUrl.toLowerCase().contains("games")) {
+            LOG.error("MP_LOBBY_WS_URL property not found or invalid for bank=" + bankInfo.getId() + " found="
+                    + mpLobbyUrl + ". Resetting to localhost:8080");
+            mpLobbyUrl = "localhost:8080";
         }
 
         String forwardedScheme = request.getHeader("X-Forwarded-Proto");
         String webSocketScheme = request.isSecure() || "https".equals(forwardedScheme) ? "wss" : "ws";
-        if(hostConfiguration != null && hostConfiguration.isProductionCluster()) {
+        if (hostConfiguration != null && hostConfiguration.isProductionCluster()) {
             webSocketScheme = "wss";
         }
-        mpLobbyUrl = webSocketScheme + "://" + mpLobbyUrl ;
+        mpLobbyUrl = webSocketScheme + "://" + mpLobbyUrl;
 
         String httpScheme = request.isSecure() || "https".equals(forwardedScheme) ? "https" : "http";
-        if(hostConfiguration != null && hostConfiguration.isProductionCluster()) {
+        if (hostConfiguration != null && hostConfiguration.isProductionCluster()) {
             httpScheme = "https";
         }
         String url = httpScheme + "://" + request.getServerName() + "/" + mode.getModePath() + "/mp/template.jsp";
@@ -833,10 +868,16 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         if (!isTrimmedEmpty(homeUrl)) {
             redirect.addParameter(BaseAction.PARAM_HOME_URL, homeUrl);
         }
+
         String cachierUrl = request.getParameter(BaseAction.PARAM_CASHIER_URL);
         if (!isTrimmedEmpty(cachierUrl)) {
             redirect.addParameter(BaseAction.PARAM_CASHIER_URL, cachierUrl);
         }
+
+        // DEBUG LOGGING
+        LOG.error("DEBUG_REDIRECT: ActionRedirect Object: " + redirect.toString());
+        LOG.error("DEBUG_REDIRECT: Intended WEB_SOCKET_URL value: " + (mpLobbyUrl + "/websocket/mplobby"));
+
         return redirect;
     }
 
@@ -846,10 +887,10 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
         String incompleteRoundUrl;
 
-        if(!StringUtils.isTrimmedEmpty(privateRoomId)) {
+        if (!StringUtils.isTrimmedEmpty(privateRoomId)) {
 
             LOG.debug("BaseStartGameAction redirectTIIncompleteRoundPage: privateRoomId={}, lang={}, homeUrl={}, " +
-                            "request={}", privateRoomId, lang, homeUrl, request);
+                    "request={}", privateRoomId, lang, homeUrl, request);
 
             incompleteRoundUrl = buildPrivateRoomLaunchUrl(lang, homeUrl, privateRoomId, request);
 
@@ -860,12 +901,12 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
                     .isBattleGroundsMultiplayerGame();
 
             LOG.debug("BaseStartGameAction redirectTIIncompleteRoundPage: " +
-                            "isBattleGroundsMultiplayerGame={}, gameId={}, buyIn={}, lang={}, homeUrl={}, request={}",
+                    "isBattleGroundsMultiplayerGame={}, gameId={}, buyIn={}, lang={}, homeUrl={}, request={}",
                     isBattleGroundsMultiplayerGame, gameId, buyIn, lang, homeUrl, request);
 
-            incompleteRoundUrl = isBattleGroundsMultiplayerGame ?
-                    buildBgLaunchUrl(bankInfo, gameId, buyIn, lang, homeUrl, request) :
-                    buildCrashLaunchUrl(bankInfo, gameId, lang, homeUrl, request);
+            incompleteRoundUrl = isBattleGroundsMultiplayerGame
+                    ? buildBgLaunchUrl(bankInfo, gameId, buyIn, lang, homeUrl, request)
+                    : buildCrashLaunchUrl(bankInfo, gameId, lang, homeUrl, request);
         }
 
         LOG.debug("BaseStartGameAction redirectTIIncompleteRoundPage: incompleteRoundUrl={}", incompleteRoundUrl);
@@ -877,7 +918,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         return redirect;
     }
 
-    private String buildPrivateRoomLaunchUrl(String lang, String homeUrl, String privateRoomId, HttpServletRequest request) {
+    private String buildPrivateRoomLaunchUrl(String lang, String homeUrl, String privateRoomId,
+            HttpServletRequest request) {
 
         return request.getScheme() + "://" + request.getServerName() + "/battlegroundstartprivategame.do?" +
                 "privateRoomId=" + privateRoomId +
@@ -886,7 +928,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
                 (StringUtils.isTrimmedEmpty(homeUrl) ? "" : "&homeUrl=" + homeUrl);
     }
 
-    private String buildBgLaunchUrl(BankInfo bankInfo, long gameId, Long buyIn, String lang, String homeUrl, HttpServletRequest request) {
+    private String buildBgLaunchUrl(BankInfo bankInfo, long gameId, Long buyIn, String lang, String homeUrl,
+            HttpServletRequest request) {
 
         return request.getScheme() + "://" + request.getServerName() + "/battlegroundstartgamev2.do?" +
                 buildCommonLaunchMpParams(bankInfo, gameId, lang, request) +
@@ -895,7 +938,8 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
                 (StringUtils.isTrimmedEmpty(homeUrl) ? "" : "&homeUrl=" + homeUrl);
     }
 
-    private String buildCrashLaunchUrl(BankInfo bankInfo, long gameId, String lang, String homeUrl, HttpServletRequest request) {
+    private String buildCrashLaunchUrl(BankInfo bankInfo, long gameId, String lang, String homeUrl,
+            HttpServletRequest request) {
 
         return request.getScheme() + "://" + request.getServerName() + "/cwstartgamev2.do?" +
                 buildCommonLaunchMpParams(bankInfo, gameId, lang, request) +
@@ -905,7 +949,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
     private String buildCommonLaunchMpParams(BankInfo bankInfo, long gameId, String lang, HttpServletRequest request) {
         String cdn = getCdn(bankInfo, request);
         String cachierUrl = request.getParameter(BaseAction.PARAM_CASHIER_URL);
-        return  "&bankId=" + bankInfo.getId() +
+        return "&bankId=" + bankInfo.getId() +
                 "&gameId=" + gameId +
                 "&MODE=" + GameMode.REAL.getModePath() +
                 (StringUtils.isTrimmedEmpty(lang) ? "" : "&lang=" + lang) +

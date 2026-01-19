@@ -1,0 +1,7 @@
+Starting Log 
+Current Dir: D:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version\deploy\docker 
+Checking docker-compose: 
+Docker Compose version v2.40.3-desktop.1
+Starting Docker Compose... 
+invalid project name "GP3": must consist only of lowercase alphanumeric characters, hyphens, and underscores as well as start with a letter or number
+Docker Compose failed with exit code 1 

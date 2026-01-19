@@ -1,0 +1,139 @@
+
+Orc270.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270/arm_lf
+  rotate: false
+  xy: 4, 4
+  size: 140, 212
+  orig: 140, 212
+  offset: 0, 0
+  index: -1
+270/arm_rt
+  rotate: false
+  xy: 287, 805
+  size: 226, 211
+  orig: 226, 211
+  offset: 0, 0
+  index: -1
+270/body
+  rotate: false
+  xy: 4, 707
+  size: 279, 309
+  orig: 279, 309
+  offset: 0, 0
+  index: -1
+270/calf_lf
+  rotate: false
+  xy: 901, 848
+  size: 114, 168
+  orig: 114, 168
+  offset: 0, 0
+  index: -1
+270/calf_rt
+  rotate: true
+  xy: 286, 401
+  size: 121, 158
+  orig: 121, 158
+  offset: 0, 0
+  index: -1
+270/foot_lf
+  rotate: true
+  xy: 148, 61
+  size: 155, 78
+  orig: 155, 78
+  offset: 0, 0
+  index: -1
+270/foot_rt
+  rotate: false
+  xy: 239, 170
+  size: 105, 82
+  orig: 105, 82
+  offset: 0, 0
+  index: -1
+270/forearm_lf
+  rotate: false
+  xy: 715, 848
+  size: 182, 168
+  orig: 182, 168
+  offset: 0, 0
+  index: -1
+270/forearm_rt
+  rotate: false
+  xy: 378, 263
+  size: 103, 134
+  orig: 103, 134
+  offset: 0, 0
+  index: -1
+270/hair
+  rotate: false
+  xy: 517, 823
+  size: 194, 193
+  orig: 194, 193
+  offset: 0, 0
+  index: -1
+270/hand_lf
+  rotate: false
+  xy: 448, 408
+  size: 105, 121
+  orig: 105, 121
+  offset: 0, 0
+  index: -1
+270/hand_lf2
+  rotate: false
+  xy: 485, 289
+  size: 75, 115
+  orig: 75, 115
+  offset: 0, 0
+  index: -1
+270/hand_rt
+  rotate: false
+  xy: 437, 533
+  size: 124, 132
+  orig: 124, 132
+  offset: 0, 0
+  index: -1
+270/hand_rt2
+  rotate: false
+  xy: 230, 66
+  size: 87, 100
+  orig: 87, 100
+  offset: 0, 0
+  index: -1
+270/head
+  rotate: true
+  xy: 287, 669
+  size: 132, 215
+  orig: 132, 215
+  offset: 0, 0
+  index: -1
+270/hip
+  rotate: false
+  xy: 4, 419
+  size: 278, 284
+  orig: 278, 284
+  offset: 0, 0
+  index: -1
+270/hip2
+  rotate: false
+  xy: 286, 526
+  size: 147, 139
+  orig: 147, 139
+  offset: 0, 0
+  index: -1
+270/leg_lf
+  rotate: false
+  xy: 4, 220
+  size: 231, 195
+  orig: 231, 195
+  offset: 0, 0
+  index: -1
+270/leg_rt
+  rotate: false
+  xy: 239, 256
+  size: 135, 141
+  orig: 135, 141
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,11 @@
+docker : DNS fwd/rev mismatch: c1 != gp3-c1-1.gp3_gs-network
+At line:1 char:1
++ docker exec gp3-gs-1 nc -zv c1 9042 2>&1 | Out-String | 
+Set-Content - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (DNS fwd/rev mis....gp3 
+   _gs-network:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+c1 [172.18.0.3] 9042 (?) open
+

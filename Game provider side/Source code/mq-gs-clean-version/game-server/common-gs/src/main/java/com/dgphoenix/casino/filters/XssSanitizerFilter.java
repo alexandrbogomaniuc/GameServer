@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class XssSanitizerFilter implements Filter {
     private static final Logger LOG = LogManager.getLogger(XssSanitizerFilter.class);
-    private final GameServerConfiguration gsConfig = GameServerConfiguration.getInstance();
+    private GameServerConfiguration gsConfig;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -18,17 +18,31 @@ public class XssSanitizerFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        LOG.error("XssSanitizerFilter.doFilter: START");
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
-        if (gsConfig.isEnableXssSanitizer()
-                && isNotServlet(httpRequest.getRequestURI())
-                && isFilteringAllowedOnDomain(httpRequest.getServerName())
-                && isFilteringAllowedOnURI(httpRequest.getRequestURI())) {
-            chain.doFilter(new XssSanitizerRequestWrapper(httpRequest), response);
-        } else {
-            chain.doFilter(request, response);
+        // Lazy initialization of gsConfig to avoid NPE when Spring context is not ready
+        if (gsConfig == null) {
+            gsConfig = GameServerConfiguration.getInstance();
         }
+
+        try {
+            // If config is still null or XSS sanitizer is disabled, skip sanitization
+            if (gsConfig == null || !gsConfig.isEnableXssSanitizer()
+                    && isNotServlet(httpRequest.getRequestURI())
+                    && isFilteringAllowedOnDomain(httpRequest.getServerName())
+                    && isFilteringAllowedOnURI(httpRequest.getRequestURI())) {
+                chain.doFilter(new XssSanitizerRequestWrapper(httpRequest), response);
+            } else {
+                chain.doFilter(request, response);
+            }
+        } catch (Exception e) {
+            LOG.error("XssSanitizerFilter.doFilter: EXCEPTION", e);
+            throw e;
+        }
+        LOG.error("XssSanitizerFilter.doFilter: END");
     }
 
     @Override
@@ -37,7 +51,8 @@ public class XssSanitizerFilter implements Filter {
     }
 
     private boolean isNotServlet(String uri) {
-        return !(uri.endsWith(".game") || uri.endsWith(".servlet") || uri.endsWith("webSocket") || uri.endsWith("tournamentWebSocket"));
+        return !(uri.endsWith(".game") || uri.endsWith(".servlet") || uri.endsWith("webSocket")
+                || uri.endsWith("tournamentWebSocket"));
     }
 
     private boolean isFilteringAllowedOnDomain(String domain) {

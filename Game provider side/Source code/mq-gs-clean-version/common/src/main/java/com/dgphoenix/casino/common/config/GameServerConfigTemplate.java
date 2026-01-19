@@ -87,7 +87,7 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
     private String sshStaticLobbyUser;
     private String sshStaticLobbyPass;
 
-    //from ServerConfiguration
+    // from ServerConfiguration
     private List<Long> winnerFeedBanks;
     private String domain;
     private long requestTimeout = 60000;
@@ -239,7 +239,6 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
     @StringProperty(description = "CM host")
     public static final String KEY_CM_HOST = "CM_HOST";
 
-
     public GameServerConfigTemplate() {
     }
 
@@ -282,7 +281,6 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
     public synchronized void setDelayExecutorTimeout(long delayExecutorTimeout) {
         this.delayExecutorTimeout = delayExecutorTimeout;
     }
-
 
     public boolean isEnableMassBonusCreator() {
         return enableMassBonusCreator;
@@ -622,6 +620,9 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
     }
 
     public Set<String> getSshJackpotsUploadHosts() {
+        if (properties == null) {
+            return Collections.emptySet();
+        }
         String hosts = properties.get(KEY_SSH_JACKPOTS_UPLOAD_HOSTS);
         if (isTrimmedEmpty(hosts)) {
             return Collections.emptySet();
@@ -637,13 +638,12 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
         return uploadPort;
     }
 
-
     public String getSshStatisticUpdaterUser() {
-        return properties.get(KEY_SSH_STATISTIC_UPDATER_USER);
+        return properties == null ? null : properties.get(KEY_SSH_STATISTIC_UPDATER_USER);
     }
 
     public String getSshStatisticUpdaterPass() {
-        return properties.get(KEY_SSH_STATISTIC_UPDATER_PASS);
+        return properties == null ? null : properties.get(KEY_SSH_STATISTIC_UPDATER_PASS);
     }
 
     public String getDomain() {
@@ -800,7 +800,7 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
     }
 
     public String getProperty(String propertyName) {
-        return properties.get(propertyName);
+        return properties == null ? null : properties.get(propertyName);
     }
 
     public synchronized void setProperty(String key, String value) {
@@ -986,7 +986,7 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
         output.writeString(sshStaticLobbyUser);
         output.writeString(sshStaticLobbyPass);
 
-        //from ServerConfiguration
+        // from ServerConfiguration
         kryo.writeObjectOrNull(output, winnerFeedBanks, ArrayList.class);
         output.writeString(domain);
         output.writeLong(requestTimeout, true);
@@ -1067,7 +1067,7 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
         sshStaticLobbyUser = input.readString();
         sshStaticLobbyPass = input.readString();
 
-        //from ServerConfiguration
+        // from ServerConfiguration
         winnerFeedBanks = kryo.readObjectOrNull(input, ArrayList.class);
         domain = input.readString();
         requestTimeout = input.readLong(true);
@@ -1087,6 +1087,9 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
         initTrustedSubnets();
 
         properties = kryo.readObjectOrNull(input, HashMap.class);
+        if (properties == null) {
+            properties = new HashMap<>();
+        }
 
         if (version > 0) {
             enableXssSanitizer = input.readBoolean();
@@ -1168,7 +1171,7 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
         sshStaticLobbyUser = from.sshStaticLobbyUser;
         sshStaticLobbyPass = from.sshStaticLobbyPass;
 
-        //from ServerConfiguration
+        // from ServerConfiguration
         winnerFeedBanks = from.winnerFeedBanks == null ? null : new ArrayList<>(from.winnerFeedBanks);
         domain = from.domain;
         requestTimeout = from.requestTimeout;
@@ -1324,7 +1327,7 @@ public class GameServerConfigTemplate implements IDistributedConfigEntry, Identi
         return hashSumSettings;
     }
 
-    //key=clusterId, value=endPointURL (http://domain:port)
+    // key=clusterId, value=endPointURL (http://domain:port)
     public Map<Long, String> getCrossClusterApiEndpoints() {
         String s = PropertyUtils.getStringProperty(properties, KEY_CROSS_CLUSTER_API_ENDPOINTS);
         if (StringUtils.isTrimmedEmpty(s)) {

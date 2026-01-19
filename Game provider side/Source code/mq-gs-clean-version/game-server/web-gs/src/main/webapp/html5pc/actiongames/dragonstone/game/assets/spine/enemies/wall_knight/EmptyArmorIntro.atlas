@@ -1,0 +1,118 @@
+
+WallKnightA90.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+90/arm_lf
+  rotate: true
+  xy: 524, 364
+  size: 144, 153
+  orig: 144, 153
+  offset: 0, 0
+  index: -1
+90/arm_rt
+  rotate: true
+  xy: 366, 259
+  size: 98, 181
+  orig: 98, 181
+  offset: 0, 0
+  index: -1
+90/body
+  rotate: false
+  xy: 90, 256
+  size: 155, 252
+  orig: 155, 252
+  offset: 0, 0
+  index: -1
+90/calf_lf
+  rotate: true
+  xy: 681, 421
+  size: 87, 210
+  orig: 87, 210
+  offset: 0, 0
+  index: -1
+90/calf_rt
+  rotate: true
+  xy: 681, 319
+  size: 98, 195
+  orig: 98, 195
+  offset: 0, 0
+  index: -1
+90/foot_lf
+  rotate: false
+  xy: 895, 423
+  size: 118, 85
+  orig: 118, 85
+  offset: 0, 0
+  index: -1
+90/foot_rt
+  rotate: false
+  xy: 269, 174
+  size: 93, 95
+  orig: 93, 95
+  offset: 0, 0
+  index: -1
+90/forearm_lf
+  rotate: false
+  xy: 205, 66
+  size: 49, 71
+  orig: 49, 71
+  offset: 0, 0
+  index: -1
+90/forearm_rt
+  rotate: false
+  xy: 679, 252
+  size: 134, 63
+  orig: 134, 63
+  offset: 0, 0
+  index: -1
+90/hand_lf
+  rotate: true
+  xy: 366, 175
+  size: 80, 92
+  orig: 80, 92
+  offset: 0, 0
+  index: -1
+90/hand_rt
+  rotate: true
+  xy: 205, 141
+  size: 111, 60
+  orig: 111, 60
+  offset: 0, 0
+  index: -1
+90/head
+  rotate: true
+  xy: 551, 260
+  size: 100, 124
+  orig: 100, 124
+  offset: 0, 0
+  index: -1
+90/hip
+  rotate: false
+  xy: 366, 361
+  size: 154, 147
+  orig: 154, 147
+  offset: 0, 0
+  index: -1
+90/leg_lf
+  rotate: false
+  xy: 249, 273
+  size: 113, 235
+  orig: 113, 235
+  offset: 0, 0
+  index: -1
+90/leg_rt
+  rotate: false
+  xy: 90, 4
+  size: 111, 248
+  orig: 111, 248
+  offset: 0, 0
+  index: -1
+90/sword
+  rotate: false
+  xy: 4, 36
+  size: 82, 472
+  orig: 82, 472
+  offset: 0, 0
+  index: -1

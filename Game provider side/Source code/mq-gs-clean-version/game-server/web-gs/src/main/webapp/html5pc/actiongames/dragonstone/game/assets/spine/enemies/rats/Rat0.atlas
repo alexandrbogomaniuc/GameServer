@@ -1,0 +1,48 @@
+
+Rat0.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0_body
+  rotate: false
+  xy: 2, 82
+  size: 202, 169
+  orig: 202, 169
+  offset: 0, 0
+  index: -1
+0_lf_arm
+  rotate: false
+  xy: 417, 155
+  size: 68, 96
+  orig: 68, 96
+  offset: 0, 0
+  index: -1
+0_lf_leg
+  rotate: true
+  xy: 206, 77
+  size: 64, 97
+  orig: 64, 97
+  offset: 0, 0
+  index: -1
+0_rt_arm
+  rotate: true
+  xy: 99, 9
+  size: 71, 91
+  orig: 71, 91
+  offset: 0, 0
+  index: -1
+0_rt_leg
+  rotate: true
+  xy: 2, 2
+  size: 78, 95
+  orig: 78, 95
+  offset: 0, 0
+  index: -1
+0_tail
+  rotate: false
+  xy: 206, 143
+  size: 209, 108
+  orig: 209, 108
+  offset: 0, 0
+  index: -1

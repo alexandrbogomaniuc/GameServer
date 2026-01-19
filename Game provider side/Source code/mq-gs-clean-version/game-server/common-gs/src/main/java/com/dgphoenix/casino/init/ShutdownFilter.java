@@ -26,8 +26,8 @@ public class ShutdownFilter implements Filter {
     private static final AtomicBoolean initialized = new AtomicBoolean(false);
 
     static {
-        StatisticsManager.getInstance().registerStatisticsGetter("ShutdownFilter", ()
-                -> "initialized=" + initialized + ", activeThreadsCount=" + getActiveThreadsCount());
+        StatisticsManager.getInstance().registerStatisticsGetter("ShutdownFilter",
+                () -> "initialized=" + initialized + ", activeThreadsCount=" + getActiveThreadsCount());
     }
 
     public static Integer getActiveThreadsCount() {
@@ -50,7 +50,8 @@ public class ShutdownFilter implements Filter {
             LOG.error("getActiveThreadsCount: error", e);
         }
         if (threads == null || idleThreads == null) {
-            LOG.warn("getActiveThreadsCount: load error, attribute not found: threads={}, idleThreads={}", threads, idleThreads);
+            LOG.warn("getActiveThreadsCount: load error, attribute not found: threads={}, idleThreads={}", threads,
+                    idleThreads);
         } else {
             return threads - idleThreads;
         }
@@ -59,14 +60,33 @@ public class ShutdownFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        initialized.set(true);
-        GameServer.getInstance().registerShutdownFilter(this);
-        LOG.info("init completed");
+        try {
+            GameServer gameServer = GameServer.getInstance();
+            if (gameServer != null) {
+                gameServer.registerShutdownFilter(this);
+            } else {
+                LOG.warn("GameServer.getInstance() returned null during filter init");
+            }
+            initialized.set(true);
+            LOG.info("ShutdownFilter init completed - BUILD VERSION: 2026-01-12-08:21-UTC - Null-safety fix applied");
+        } catch (Exception e) {
+            LOG.error("init failed", e);
+            // Don't set initialized to true on failure
+        }
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
+        if (request == null || response == null || chain == null) {
+            LOG.error("doFilter called with null parameter(s): request={}, response={}, chain={}",
+                    request, response, chain);
+            if (response instanceof HttpServletResponse) {
+                ((HttpServletResponse) response).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+            return;
+        }
+
         boolean isRequest = request.getAttribute(FILTER_APPLIED) == null;
 
         if (!initialized.get() && isRequest) {
@@ -97,7 +117,7 @@ public class ShutdownFilter implements Filter {
                 LOG.error("markDown: cannot load activeThreadsCount, shutdown immediate");
                 break;
             }
-            //8 is magic jetty number, always active threads
+            // 8 is magic jetty number, always active threads
             if (activeThreadsCount - 8 > 0) {
                 try {
                     Thread.sleep(3000);

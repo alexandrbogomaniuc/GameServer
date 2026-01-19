@@ -1,0 +1,21 @@
+﻿
+supportcf                           batchopstatus                      
+battlegroundhistory                 concurrentnotcf                    
+historyinformeritemmaxiterationscf  promowincf                         
+roundgamesessioncf                  httpcallstatistics                 
+gamesessioncf                       currentplayersessionstate          
+wopcf                               shortbetinfocf3                    
+metricscf                           dmassawardhistorycf                
+clientgamestatisticsinfocf          gamesessioncf_ag                   
+mqroundkpiinfo                      historytokencf                     
+httpcallissues                      dmassawardfailedsendcf             
+frbwincf                            tournamentpromosumfeedcf           
+archivercf                          battlegroundparticipantroundhistory
+gamesessioncf_agm                   frbonusarchcf                      
+bonusarchcf                         playersessionhistorycf             
+trackinfocf                         battlegroundprivateroomsettings    
+gamesessioncf_bag_idx               promopredefineduserspersistercf    
+laststattimecf                      httpcallinfocf                     
+historyinformeritemcf               tdrawconfig                        
+betcf                               metricsstatcf                      
+

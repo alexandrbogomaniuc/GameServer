@@ -1,0 +1,815 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.dgphoenix.casino:gsn-web-gs:war:1.89.0
+[WARNING] 'version' contains an expression but should be a constant. @ com.dgphoenix.casino:gsn-web-gs:${current.version}, /app/game-server/web-gs/pom.xml, line 13, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] annotations                                                        [jar]
+[INFO] gsn-casino-project                                                 [pom]
+[INFO] rng                                                                [jar]
+[INFO] kryo-validator                                                     [jar]
+[INFO] utils-restricted                                                   [jar]
+[INFO] gsn-utils-restricted                                               [jar]
+[INFO] gsn-cassandra-cache                                                [pom]
+[INFO] gsn-cache-restricted                                               [jar]
+[INFO] gsn-common-persisters                                              [jar]
+[INFO] common-wallet                                                      [jar]
+[INFO] common-promo                                                       [jar]
+[INFO] gsn-promo                                                          [pom]
+[INFO] gsn-promo-persisters                                               [jar]
+[INFO] gsn-promo-core                                                     [jar]
+[INFO] gsn-game-server                                                    [pom]
+[INFO] gsn-common-gs                                                      [jar]
+[INFO] gsn-web-gs                                                         [war]
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino.tools:annotations >---------------
+[INFO] Building annotations 1.1.0                                        [1/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ annotations ---
+[INFO] Deleting /app/annotations/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ annotations ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/annotations/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.0:compile (default-compile) @ annotations ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /app/annotations/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ annotations ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/annotations/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.0:testCompile (default-testCompile) @ annotations ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ annotations ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ annotations ---
+[INFO] Building jar: /app/annotations/target/annotations-1.1.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ annotations ---
+[INFO] Installing /app/annotations/target/annotations-1.1.0.jar to /root/.m2/repository/com/dgphoenix/casino/tools/annotations/1.1.0/annotations-1.1.0.jar
+[INFO] Installing /app/annotations/pom.xml to /root/.m2/repository/com/dgphoenix/casino/tools/annotations/1.1.0/annotations-1.1.0.pom
+[INFO] 
+[INFO] --------------< com.dgphoenix.casino:gsn-casino-project >---------------
+[INFO] Building gsn-casino-project 1.0.0-SNAPSHOT                        [2/17]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-casino-project ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-casino-project ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-casino-project ---
+[INFO] Installing /app/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-casino-project/1.0.0-SNAPSHOT/gsn-casino-project-1.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ----------------------< com.dgphoenix.casino:rng >----------------------
+[INFO] Building rng 2.0                                                  [3/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ rng ---
+[INFO] Deleting /app/rng/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ rng ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ rng ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/rng/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.0:compile (default-compile) @ rng ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /app/rng/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ rng ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/rng/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.0:testCompile (default-testCompile) @ rng ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /app/rng/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ rng ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ rng ---
+[INFO] Building jar: /app/rng/target/rng.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.4:jar (default) > generate-sources @ rng >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ rng ---
+[INFO] 
+[INFO] <<< maven-source-plugin:2.4:jar (default) < generate-sources @ rng <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:2.4:jar (default) @ rng ---
+[INFO] Building jar: /app/rng/target/rng-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ rng ---
+[INFO] Installing /app/rng/target/rng.jar to /root/.m2/repository/com/dgphoenix/casino/rng/2.0/rng-2.0.jar
+[INFO] Installing /app/rng/pom.xml to /root/.m2/repository/com/dgphoenix/casino/rng/2.0/rng-2.0.pom
+[INFO] Installing /app/rng/target/rng-sources.jar to /root/.m2/repository/com/dgphoenix/casino/rng/2.0/rng-2.0-sources.jar
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino.tools:kryo-validator >--------------
+[INFO] Building kryo-validator 2.9.1-SNAPSHOT                            [4/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ kryo-validator ---
+[INFO] Deleting /app/kryo-validator/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ kryo-validator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/kryo-validator/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.0:compile (default-compile) @ kryo-validator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 32 source files to /app/kryo-validator/target/classes
+[INFO] /app/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/InstanceCreator.java: Some input files use unchecked or unsafe operations.
+[INFO] /app/kryo-validator/src/main/java/com/dgphoenix/casino/tools/kryo/InstanceCreator.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ kryo-validator ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/kryo-validator/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.0:testCompile (default-testCompile) @ kryo-validator ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 16 source files to /app/kryo-validator/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ kryo-validator ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ kryo-validator ---
+[INFO] Building jar: /app/kryo-validator/target/kryo-validator-2.9.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ kryo-validator ---
+[INFO] Installing /app/kryo-validator/target/kryo-validator-2.9.1-SNAPSHOT.jar to /root/.m2/repository/com/dgphoenix/casino/tools/kryo-validator/2.9.1-SNAPSHOT/kryo-validator-2.9.1-SNAPSHOT.jar
+[INFO] Installing /app/kryo-validator/pom.xml to /root/.m2/repository/com/dgphoenix/casino/tools/kryo-validator/2.9.1-SNAPSHOT/kryo-validator-2.9.1-SNAPSHOT.pom
+[INFO] 
+[INFO] ---------------< com.dgphoenix.casino:utils-restricted >----------------
+[INFO] Building utils-restricted 1.1.0                                   [5/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ utils-restricted ---
+[INFO] Deleting /app/sb-utils/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ utils-restricted ---
+[INFO] Compiling 311 source files to /app/sb-utils/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/sb-utils/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ utils-restricted ---
+[INFO] Compiling 18 source files to /app/sb-utils/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ utils-restricted ---
+[INFO] Building jar: /app/sb-utils/target/utils-restricted.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.4:jar (default) > generate-sources @ utils-restricted >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ utils-restricted ---
+[INFO] 
+[INFO] <<< maven-source-plugin:2.4:jar (default) < generate-sources @ utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:2.4:jar (default) @ utils-restricted ---
+[INFO] Building jar: /app/sb-utils/target/utils-restricted-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ utils-restricted ---
+[INFO] Installing /app/sb-utils/target/utils-restricted.jar to /root/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.jar
+[INFO] Installing /app/sb-utils/pom.xml to /root/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0.pom
+[INFO] Installing /app/sb-utils/target/utils-restricted-sources.jar to /root/.m2/repository/com/dgphoenix/casino/utils-restricted/1.1.0/utils-restricted-1.1.0-sources.jar
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-utils-restricted >--------------
+[INFO] Building gsn-utils-restricted 1.0-SNAPSHOT                        [6/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-utils-restricted ---
+[INFO] Deleting /app/utils/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ gsn-utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/utils/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ gsn-utils-restricted ---
+[INFO] Compiling 32 source files to /app/utils/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ gsn-utils-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/utils/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ gsn-utils-restricted ---
+[INFO] Compiling 4 source files to /app/utils/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ gsn-utils-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ gsn-utils-restricted ---
+[INFO] Building jar: /app/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.4:jar (default) > generate-sources @ gsn-utils-restricted >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-utils-restricted ---
+[INFO] 
+[INFO] <<< maven-source-plugin:2.4:jar (default) < generate-sources @ gsn-utils-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:2.4:jar (default) @ gsn-utils-restricted ---
+[INFO] Building jar: /app/utils/target/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-utils-restricted ---
+[INFO] Installing /app/utils/target/gsn-utils-restricted-1.0-SNAPSHOT.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing /app/utils/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing /app/utils/target/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-utils-restricted/1.0-SNAPSHOT/gsn-utils-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --------------< com.dgphoenix.casino:gsn-cassandra-cache >--------------
+[INFO] Building gsn-cassandra-cache 1.0-SNAPSHOT                         [7/17]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-cassandra-cache ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-cassandra-cache ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-cassandra-cache ---
+[INFO] Installing /app/cassandra-cache/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-cassandra-cache/1.0-SNAPSHOT/gsn-cassandra-cache-1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-cache-restricted >--------------
+[INFO] Building gsn-cache-restricted 1.0-SNAPSHOT                        [8/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-cache-restricted ---
+[INFO] Deleting /app/cassandra-cache/cache/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-cache-restricted ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ gsn-cache-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/cassandra-cache/cache/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ gsn-cache-restricted ---
+[INFO] Compiling 32 source files to /app/cassandra-cache/cache/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ gsn-cache-restricted ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ gsn-cache-restricted ---
+[INFO] Compiling 17 source files to /app/cassandra-cache/cache/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ gsn-cache-restricted ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ gsn-cache-restricted ---
+[INFO] Building jar: /app/cassandra-cache/cache/target/gsn-cache-restricted-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.4:jar (default) > generate-sources @ gsn-cache-restricted >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-cache-restricted ---
+[INFO] 
+[INFO] <<< maven-source-plugin:2.4:jar (default) < generate-sources @ gsn-cache-restricted <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:2.4:jar (default) @ gsn-cache-restricted ---
+[INFO] Building jar: /app/cassandra-cache/cache/target/gsn-cache-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-cache-restricted ---
+[INFO] Installing /app/cassandra-cache/cache/target/gsn-cache-restricted-1.0-SNAPSHOT.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-cache-restricted/1.0-SNAPSHOT/gsn-cache-restricted-1.0-SNAPSHOT.jar
+[INFO] Installing /app/cassandra-cache/cache/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-cache-restricted/1.0-SNAPSHOT/gsn-cache-restricted-1.0-SNAPSHOT.pom
+[INFO] Installing /app/cassandra-cache/cache/target/gsn-cache-restricted-1.0-SNAPSHOT-sources.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-cache-restricted/1.0-SNAPSHOT/gsn-cache-restricted-1.0-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-common-persisters >-------------
+[INFO] Building gsn-common-persisters 1.0                                [9/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-common-persisters ---
+[INFO] Deleting /app/cassandra-cache/common-persisters/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ gsn-common-persisters ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/cassandra-cache/common-persisters/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ gsn-common-persisters ---
+[INFO] Compiling 87 source files to /app/cassandra-cache/common-persisters/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ gsn-common-persisters ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/cassandra-cache/common-persisters/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ gsn-common-persisters ---
+[INFO] Compiling 2 source files to /app/cassandra-cache/common-persisters/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ gsn-common-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ gsn-common-persisters ---
+[INFO] Building jar: /app/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.4:jar (default) > generate-sources @ gsn-common-persisters >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-persisters ---
+[INFO] 
+[INFO] <<< maven-source-plugin:2.4:jar (default) < generate-sources @ gsn-common-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:2.4:jar (default) @ gsn-common-persisters ---
+[INFO] Building jar: /app/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-common-persisters ---
+[INFO] Installing /app/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.jar
+[INFO] Installing /app/cassandra-cache/common-persisters/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0.pom
+[INFO] Installing /app/cassandra-cache/common-persisters/target/gsn-common-persisters-1.0-sources.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-common-persisters/1.0/gsn-common-persisters-1.0-sources.jar
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-wallet >-----------------
+[INFO] Building common-wallet 1.0.67                                    [10/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ common-wallet ---
+[INFO] Deleting /app/common-wallet/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-wallet ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ common-wallet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/common-wallet/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ common-wallet ---
+[INFO] Compiling 13 source files to /app/common-wallet/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ common-wallet ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 108 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ common-wallet ---
+[INFO] Compiling 4 source files to /app/common-wallet/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ common-wallet ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ common-wallet ---
+[INFO] Building jar: /app/common-wallet/target/common-wallet-1.0.67.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ common-wallet ---
+[INFO] Installing /app/common-wallet/target/common-wallet-1.0.67.jar to /root/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.jar
+[INFO] Installing /app/common-wallet/pom.xml to /root/.m2/repository/com/dgphoenix/casino/common-wallet/1.0.67/common-wallet-1.0.67.pom
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:common-promo >------------------
+[INFO] Building common-promo 1.1.0                                      [11/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ common-promo ---
+[INFO] Deleting /app/common-promo/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/common-promo/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ common-promo ---
+[INFO] Compiling 133 source files to /app/common-promo/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ common-promo ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ common-promo ---
+[INFO] Compiling 2 source files to /app/common-promo/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ common-promo ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ common-promo ---
+[INFO] Building jar: /app/common-promo/target/common-promo.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.4:jar (default) > generate-sources @ common-promo >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ common-promo ---
+[INFO] 
+[INFO] <<< maven-source-plugin:2.4:jar (default) < generate-sources @ common-promo <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:2.4:jar (default) @ common-promo ---
+[INFO] Building jar: /app/common-promo/target/common-promo-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ common-promo ---
+[INFO] Installing /app/common-promo/target/common-promo.jar to /root/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.jar
+[INFO] Installing /app/common-promo/pom.xml to /root/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0.pom
+[INFO] Installing /app/common-promo/target/common-promo-sources.jar to /root/.m2/repository/com/dgphoenix/casino/common-promo/1.1.0/common-promo-1.1.0-sources.jar
+[INFO] 
+[INFO] -------------------< com.dgphoenix.casino:gsn-promo >-------------------
+[INFO] Building gsn-promo 1.2                                           [12/17]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-promo ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-promo ---
+[INFO] Installing /app/promo/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-promo/1.2/gsn-promo-1.2.pom
+[INFO] 
+[INFO] -------------< com.dgphoenix.casino:gsn-promo-persisters >--------------
+[INFO] Building gsn-promo-persisters 1.2                                [13/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-promo-persisters ---
+[INFO] Deleting /app/promo/persisters/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ gsn-promo-persisters ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/promo/persisters/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ gsn-promo-persisters ---
+[INFO] Compiling 22 source files to /app/promo/persisters/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ gsn-promo-persisters ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/promo/persisters/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ gsn-promo-persisters ---
+[INFO] Compiling 1 source file to /app/promo/persisters/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ gsn-promo-persisters ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ gsn-promo-persisters ---
+[INFO] Building jar: /app/promo/persisters/target/gsn-promo-persisters-1.2.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.4:jar (default) > generate-sources @ gsn-promo-persisters >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-persisters ---
+[INFO] 
+[INFO] <<< maven-source-plugin:2.4:jar (default) < generate-sources @ gsn-promo-persisters <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:2.4:jar (default) @ gsn-promo-persisters ---
+[INFO] Building jar: /app/promo/persisters/target/gsn-promo-persisters-1.2-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-promo-persisters ---
+[INFO] Installing /app/promo/persisters/target/gsn-promo-persisters-1.2.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-promo-persisters/1.2/gsn-promo-persisters-1.2.jar
+[INFO] Installing /app/promo/persisters/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-promo-persisters/1.2/gsn-promo-persisters-1.2.pom
+[INFO] Installing /app/promo/persisters/target/gsn-promo-persisters-1.2-sources.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-promo-persisters/1.2/gsn-promo-persisters-1.2-sources.jar
+[INFO] 
+[INFO] ----------------< com.dgphoenix.casino:gsn-promo-core >-----------------
+[INFO] Building gsn-promo-core 1.2                                      [14/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-promo-core ---
+[INFO] Deleting /app/promo/core/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-core ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ gsn-promo-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/promo/core/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ gsn-promo-core ---
+[INFO] Compiling 17 source files to /app/promo/core/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ gsn-promo-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /app/promo/core/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ gsn-promo-core ---
+[INFO] Compiling 1 source file to /app/promo/core/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ gsn-promo-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ gsn-promo-core ---
+[INFO] Building jar: /app/promo/core/target/gsn-promo-core-1.2.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.4:jar (default) > generate-sources @ gsn-promo-core >>>
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-promo-core ---
+[INFO] 
+[INFO] <<< maven-source-plugin:2.4:jar (default) < generate-sources @ gsn-promo-core <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:2.4:jar (default) @ gsn-promo-core ---
+[INFO] Building jar: /app/promo/core/target/gsn-promo-core-1.2-sources.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-promo-core ---
+[INFO] Installing /app/promo/core/target/gsn-promo-core-1.2.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-promo-core/1.2/gsn-promo-core-1.2.jar
+[INFO] Installing /app/promo/core/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-promo-core/1.2/gsn-promo-core-1.2.pom
+[INFO] Installing /app/promo/core/target/gsn-promo-core-1.2-sources.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-promo-core/1.2/gsn-promo-core-1.2-sources.jar
+[INFO] 
+[INFO] ----------------< com.dgphoenix.casino:gsn-game-server >----------------
+[INFO] Building gsn-game-server 1.0.1                                   [15/17]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-game-server ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-game-server ---
+[INFO] 
+[INFO] --- properties-maven-plugin:1.0.0:read-project-properties (default) @ gsn-game-server ---
+[INFO] 
+[INFO] --- xml-maven-plugin:1.0.2:validate (default) @ gsn-game-server ---
+[INFO] No matching files found for ValidationSet with public ID null, system ID null.
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-game-server ---
+[INFO] Installing /app/game-server/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-game-server/1.0.1/gsn-game-server-1.0.1.pom
+[INFO] 
+[INFO] -----------------< com.dgphoenix.casino:gsn-common-gs >-----------------
+[INFO] Building gsn-common-gs 1.0                                       [16/17]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-common-gs ---
+[INFO] Deleting /app/game-server/common-gs/target
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy (default) @ gsn-common-gs ---
+[INFO] Configured Artifact: javax.xml.bind:jaxb-api:2.2.7:jar
+[INFO] Configured Artifact: javax.xml.ws:jaxws-api:2.2.9:jar
+[INFO] Copying jaxb-api-2.2.7.jar to /app/game-server/common-gs/target/endorsed/jaxb-api-2.2.7.jar
+[INFO] Copying jaxws-api-2.2.9.jar to /app/game-server/common-gs/target/endorsed/jaxws-api-2.2.9.jar
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- properties-maven-plugin:1.0.0:read-project-properties (default) @ gsn-common-gs ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ gsn-common-gs ---
+[INFO] Compiling 618 source files to /app/game-server/common-gs/target/classes
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (compile-generated-sources) @ gsn-common-gs ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ gsn-common-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 25 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ gsn-common-gs ---
+[INFO] Compiling 19 source files to /app/game-server/common-gs/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ gsn-common-gs ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ gsn-common-gs ---
+[INFO] Building jar: /app/game-server/common-gs/target/gsn-common-gs-1.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-common-gs ---
+[INFO] Installing /app/game-server/common-gs/target/gsn-common-gs-1.0.jar to /root/.m2/repository/com/dgphoenix/casino/gsn-common-gs/1.0/gsn-common-gs-1.0.jar
+[INFO] Installing /app/game-server/common-gs/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-common-gs/1.0/gsn-common-gs-1.0.pom
+[INFO] 
+[INFO] ------------------< com.dgphoenix.casino:gsn-web-gs >-------------------
+[INFO] Building gsn-web-gs 1.89.0                                       [17/17]
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ gsn-web-gs ---
+[INFO] Deleting /app/game-server/web-gs/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- properties-maven-plugin:1.0.0:read-project-properties (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 40 resources
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (gs-resources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 40 resources
+[INFO] Copying 59 resources to /app/game-server/web-gs/target/static/css
+[INFO] skip non existing resourceDirectory /app/game-server/web-gs/src/main/webapp/css_nucleus
+[INFO] Copying 104 resources to /app/game-server/web-gs/target/static/js
+[INFO] Copying 501 resources to /app/game-server/web-gs/target/static/images
+[INFO] skip non existing resourceDirectory /app/game-server/web-gs/src/main/webapp/images_nucleus
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ gsn-web-gs ---
+[INFO] Compiling 290 source files to /app/game-server/web-gs/target/classes
+[INFO] 
+[INFO] --- jetty-jspc-maven-plugin:9.4.3.v20170317:jspc (jspc) @ gsn-web-gs ---
+[INFO] Logging initialized @39168ms to org.eclipse.jetty.util.log.Slf4jLog
+[INFO] Compiling free/mp/template.jsp,frb/frbPopup.jsp,stlobbies/tournaments/tournament.jsp,real/mp/template.jsp,checkServerId.jsp,logout.jsp,templates/main.jsp,vabs/VabEngine/EngineHeader.jsp,vabs/VabEngine/VabParameters.jsp,vabs/show.jsp,gsroundhistory.jsp,standlobby.jsp,checkURL.jsp,jvmdetect.jsp,gamehistory.jsp,localized_games.jsp,gameSessionHistory.jsp,wallet_http_stat.jsp,cdn/speedTest.jsp,cdn/info.jsp,gamehistoryXMLV2.jsp,gossip/popup.jsp,defaultstlobby.jsp,handhistory.jsp,tools/banksList.jsp,tools/subCasinoInfo.jsp,tools/walletsManagerShowData.jsp,tools/editBattlegroundChrashGameFolder.jsp,tools/walletsManager.jsp,tools/setStubAccountBalance.jsp,tools/bankProperties.jsp,tools/api/service.jsp,tools/addBattlegroundGames.jsp,tools/pendingOperations.jsp,gamehistoryXML.jsp,mp-stub/template.jsp,mp-stub/room.jsp,support/getAccountInfo.jsp,support/setProperty.jsp,support/correctedCurrency.jsp,support/cacheviewer.jsp,support/EditTemplateProperty.jsp,support/autoFrbLists.jsp,support/bankReleaseReport.jsp,support/reinitFrBonusClient.jsp,support/cache/background/view.jsp,support/cache/background/reset.jsp,support/cache/domain/gameList.jsp,support/cache/domain/domainList.jsp,support/cache/bank/common/banksList.jsp,support/cache/bank/common/removeBank.jsp,support/cache/bank/common/subCasinoInfo.jsp,support/cache/bank/common/scheduleCronTask.jsp,support/cache/bank/common/addBank.jsp,support/cache/bank/common/systemInfo.jsp,support/cache/bank/common/subcasinoSelect.jsp,support/cache/bank/common/addFreeBank.jsp,support/cache/bank/common/properties.jsp,support/cache/bank/common/newBankNSubCasino.jsp,support/cache/bank/common/addSubcasino.jsp,support/cache/bank/common/addGame.jsp,support/cache/bank/common/loadAllBanks.jsp,support/cache/bank/common/bankInfo.jsp,support/cache/bank/common/banksNSubCasinos.jsp,support/cache/bank/common/editGame.jsp,support/cache/bank/common/subcasinoList.jsp,support/cache/bank/acs/acsConfig.jsp,support/cache/bank/properties/edit/bankLangTable.jsp,support/cache/bank/properties/edit/editProperties.jsp,support/cache/bank/properties/edit/allBanks.jsp,support/cache/bank/properties/edit/languageTable.jsp,support/cache/bank/properties/editProperties.jsp,support/cache/bank/properties/languageTable.jsp,support/cache/bank/properties/set_post_property.jsp,support/handleOfflineCreditInRounds.jsp,support/setlimits.jsp,support/supporthistory.jsp,support/showcassandra_account-ext.jsp,support/isShutDown.jsp,support/reinitBonusClient.jsp,support/viewFRBCoin.jsp,support/showAPIIssues.jsp,support/prepareToShutdown.jsp,support/script/addCurrRate.jsp,support/script/addCurrRateShort.jsp,support/showGamesDetailsProp3.jsp,support/bonusexp.jsp,support/templateManager/setProperty.jsp,support/templateManager/cloneTemplate.jsp,support/templateManager/invalidateBgi.jsp,support/templateManager/GameTemplate.jsp,support/templateManager/compareTemplates.jsp,support/templateManager/index.jsp,support/templateManager/ClusterList.jsp,support/templateManager/getTemplates.jsp,support/getRounds.jsp,support/health/check.jsp,support/health/ping.jsp,support/getGameSession.jsp,support/cancelMassFRBonusAward.jsp,support/updateCaches.jsp,support/logoutPlayers.jsp,support/resetAllStubBalances.jsp,support/updateIcon.jsp,support/createSubCasino.jsp,support/index.jsp,support/showcassandra_account.jsp,support/encoderutil.jsp,support/logViewer.jsp,support/configuration/serverConfiguration.jsp,support/configuration/fieldProperties.jsp,support/configuration/mapProperties.jsp,support/games/829_FixTemplate.jsp,support/games/gameClientGeneration.jsp,support/games/getGameInfoTemplates.jsp,support/games/829_step1_AddGameInfoTemplate.jsp,support/games/829_step2_AddGameInfo.jsp,support/games/getGameInfos.jsp,support/games/getLasthands.jsp,support/games/listExteralIdsByBank.jsp,support/getCdnSettingsCsv.jsp,support/saveIcon.jsp,support/reinitCurrencyRateMultipliers.jsp,support/showBanksDetailsProp.jsp,support/removeWalletForAccount.jsp,support/langTools.jsp,support/sleeper.jsp,support/currentCurrencyRates2.jsp,support/import-base-game-info.jsp,support/checkPersisters.jsp,support/bankInfo/propertyResult.jsp,support/bankInfo/propertyForm.jsp,support/currency/switchToInternalRatesExtractor.jsp,support/currency/forceUpdateRate.jsp,support/currency/initRatesConfig.jsp,support/currency/showBrokenRates.jsp,support/walletInfo.jsp,support/currentCurrencyRates.jsp,support/copyBankV3.jsp,support/currencyBank.jsp,support/getPendingFRBWin.jsp,support/reinitFrBonusWinManager.jsp,support/exportImportCoins.jsp,support/rouletteInternalLimits.jsp,support/export-base-game-info.jsp,support/deleteForbiddenCurrenciesProp.jsp,support/updateFrbGames.jsp,support/gameBankConfig/GameClass.jsp,support/gameBankConfig/removeGame.jsp,support/gameBankConfig/applyGame.jsp,support/gameBankConfig/compareBanksGames.jsp,support/gameBankConfig/deleteGameForm.jsp,support/gameBankConfig/editGameForm.jsp,support/gameBankConfig/gameConfig.jsp,support/finishRounds.jsp,support/reinitGamesList.jsp,support/version.jsp,support/disableGames.jsp,support/setIdGeneratorStartValue.jsp,support/getMassAwardRestrictions.jsp,support/showGamesDetailsProp2.jsp,support/clearLastHand.jsp,support/getSessionError.jsp,support/initGames.jsp,support/setup_replaceurl_pm_st.jsp,support/GameConfig/getGamesConfigByBanks.jsp,support/metrics/index.jsp,support/precheckPendingDataArchiving.jsp,support/copyLanguages.jsp,support/viewWallets.jsp,support/listExteralIdsByBank.jsp,support/currencyFractionsConfig.jsp,support/getBanksWithGame2.jsp,support/convertCurrency.jsp,support/reinitWalletManager.jsp,support/listGameIds.jsp,support/error.jsp,support/customGameList.jsp,gamelist.jsp,register.jsp,version.jsp,getVersion.jsp,help2.jsp,getFlash.jsp,error_pages/gamedisablederror.jsp,error_pages/history_not_found.jsp,error_pages/gameinfo_error.jsp,error_pages/game_in_maintenance_mode.jsp,error_pages/loadingerror.jsp,error_pages/error_ptpt.jsp,error_pages/incorrect_parameters_error.jsp,error_pages/error_header_si.jsp,error_pages/error_header.jsp,error_pages/gameserver_notfound_error.jsp,error_pages/reuse_launch_url_error.jsp,error_pages/errorJSON.jsp,error_pages/mq/fatal_error_843.jsp,error_pages/mq/fatal_error_875.jsp,error_pages/mq/fatal_error.jsp,error_pages/mq/fatal_error_838.jsp,error_pages/mq/fatal_error_862.jsp,error_pages/mq/fatal_error_864.jsp,error_pages/mq/fatal_error_867.jsp,error_pages/mq/fatal_error_808.jsp,error_pages/mq/fatal_error_779.jsp,error_pages/mq/fatal_error_863.jsp,error_pages/mq/fatal_error_856.jsp,error_pages/mq/fatal_error_829.jsp,error_pages/mq/fatal_error_859.jsp,error_pages/mq/fatal_error_30429.jsp,error_pages/mq/fatal_error_866.jsp,error_pages/mq/fatal_error_821.jsp,error_pages/mq/error.jsp,error_pages/error_footer.jsp,error_pages/sessionerror.jsp,error_pages/errorXml.jsp,error_pages/ng_maintenance_mode.jsp,error_pages/loc/gamedisablederror.jsp,error_pages/loc/loadingerror.jsp,error_pages/loc/sessionerror.jsp,error_pages/loc/disconnecterror.jsp,error_pages/loc/loginerror_s.jsp,error_pages/loc/gamestartederror.jsp,error_pages/disconnecterror.jsp,error_pages/loginerror_s.jsp,error_pages/gamestartederror.jsp,error_pages/error_eurobet.jsp,error_pages/error.jsp,popup/language.jsp,popup/popup.jsp,config/stub/wager_if_negativebet_error.jsp,config/stub/auth.jsp,config/stub/refund.jsp,config/stub/wager.jsp,config/stub/jwt_stub.jsp,config/stub/wager_error_322.jsp,config/stub/wager_if_bet_error.jsp,config/stub/wager_301_error.jsp,config/stub/wager_if_win_error.jsp,config/stub/cwv3/auth.jsp,config/stub/cwv3/refund.jsp,config/stub/cwv3/wager.jsp,config/stub/status.jsp,config/stub/tournaments/winners_ok.jsp,config/stub/tournaments/winners_error_400.jsp,config/stub/tournaments/winners_error_403.jsp,config/stub/tournaments/winners_invalid_response.jsp,config/stub/tournaments/winners_error_500.jsp,config/stub/refund_error.jsp,config/stub/wager_error_316.jsp,config/stub/status_error.jsp,config/stub/wager_error_300.jsp,config/stub/wager_sleep.jsp,config/stub/wager_error_323.jsp,config/stub/cwv3_long/auth.jsp,config/stub/cwv3_long/refund.jsp,config/stub/cwv3_long/wager.jsp,config/stub/reality_check_info.jsp,config/stub/wager_bad_win.jsp,config/stub/bonus/accountinfoGBP.jsp,config/stub/bonus/auth.jsp,config/stub/bonus/release.jsp,config/stub/bonus/accountinfo.jsp,config/stub/bonus/frbWinError.jsp,config/stub/bonus/frbWinHash.jsp,config/stub/bonus/frbWin.jsp,config/stub/wager_error.jsp,config/stub/balance.jsp,config/stub/wager_error_314.jsp,config/stub/wager_bet_win_different_balance.jsp,config/stub/wager_311_error.jsp,config/stub/wager_bad_bet.jsp,config/stub/wager_error_315.jsp,checkStatus.jsp,empty.jsp from includes=**/*.jsp, **/*.jspx excludes=webscripts/**
+[INFO] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ gsn-web-gs ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 78 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ gsn-web-gs ---
+[INFO] Compiling 5 source files to /app/game-server/web-gs/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ gsn-web-gs ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- xml-maven-plugin:1.0.2:validate (default) @ gsn-web-gs ---
+[INFO] 
+[INFO] --- maven-war-plugin:3.2.1:war (default-war) @ gsn-web-gs ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [gsn-web-gs] in [/app/game-server/web-gs/target/ROOT]
+[INFO] Processing war project
+[INFO] Copying webapp webResources [/app/game-server/web-gs/../config/lib/sigar] to [/app/game-server/web-gs/target/ROOT]
+[INFO] Copying webapp webResources [/app/game-server/web-gs/src/main/webapp/config/crossdomain] to [/app/game-server/web-gs/target/ROOT]
+[INFO] Copying webapp resources [/app/game-server/web-gs/src/main/webapp]
+[INFO] Webapp assembled in [1145 msecs]
+[INFO] Building war: /app/game-server/web-gs/target/ROOT.war
+[INFO] 
+[INFO] --- maven-duplicate-finder-plugin:1.0.3:check (default) @ gsn-web-gs ---
+[INFO] Checking compile classpath
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-annotations:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3,com.fasterxml.woodstox:woodstox-core:7.0.0,org.codehaus.woodstox:stax2-api:4.2.2] :
+[WARNING]   module-info
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-core:2.18.3,com.fasterxml.jackson.core:jackson-databind:2.18.3,com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.3,io.github.classgraph:classgraph:4.8.179,org.apache.logging.log4j:log4j-api:2.20.0] :
+[WARNING]   META-INF.versions.9.module-info
+[WARNING] Found duplicate resources in [com.dgphoenix.casino:gsn-common-gs:1.0,com.dgphoenix.casino:gsn-utils-restricted:1.0-SNAPSHOT,org.apache.logging.log4j:log4j-1.2-api:2.20.0,org.apache.logging.log4j:log4j-core:2.20.0] :
+[WARNING]   META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat
+[WARNING] Found duplicate resources in [io.netty:netty-buffer:4.1.34.Final,io.netty:netty-codec:4.1.34.Final,io.netty:netty-codec-http:4.1.34.Final,io.netty:netty-codec-socks:4.1.34.Final,io.netty:netty-common:4.1.34.Final,io.netty:netty-handler:4.1.34.Final,io.netty:netty-handler-proxy:4.1.34.Final,io.netty:netty-resolver:4.1.34.Final,io.netty:netty-transport:4.1.34.Final,io.netty:netty-transport-native-epoll:4.1.34.Final:linux-x86_64,io.netty:netty-transport-native-unix-common:4.1.34.Final] :
+[WARNING]   META-INF/io.netty.versions.properties
+[INFO] Checking runtime classpath
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-annotations:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3,com.fasterxml.woodstox:woodstox-core:7.0.0,javax.ws.rs:javax.ws.rs-api:2.1.1,org.codehaus.woodstox:stax2-api:4.2.2] :
+[WARNING]   module-info
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-core:2.18.3,com.fasterxml.jackson.core:jackson-databind:2.18.3,com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.3,io.github.classgraph:classgraph:4.8.179,org.apache.logging.log4j:log4j-api:2.20.0] :
+[WARNING]   META-INF.versions.9.module-info
+[WARNING] Found duplicate classes in [net.jpountz.lz4:lz4:1.3.0,org.lz4:lz4-java:1.7.1] :
+[WARNING]   net.jpountz.lz4.LZ4BlockInputStream
+[WARNING]   net.jpountz.lz4.LZ4BlockOutputStream
+[WARNING]   net.jpountz.lz4.LZ4ByteBufferUtils
+[WARNING]   net.jpountz.lz4.LZ4Compressor
+[WARNING]   net.jpountz.lz4.LZ4Constants
+[WARNING]   net.jpountz.lz4.LZ4Decompressor
+[WARNING]   net.jpountz.lz4.LZ4Exception
+[WARNING]   net.jpountz.lz4.LZ4Factory
+[WARNING]   net.jpountz.lz4.LZ4FastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJNICompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJavaSafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJavaUnsafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JNI
+[WARNING]   net.jpountz.lz4.LZ4JNICompressor
+[WARNING]   net.jpountz.lz4.LZ4JNIFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JNISafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeSafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeSafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4SafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4SafeUtils
+[WARNING]   net.jpountz.lz4.LZ4UnknownSizeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4UnsafeUtils
+[WARNING]   net.jpountz.lz4.LZ4Utils
+[WARNING]   net.jpountz.util.ByteBufferUtils
+[WARNING]   net.jpountz.util.Native
+[WARNING]   net.jpountz.util.SafeUtils
+[WARNING]   net.jpountz.util.UnsafeUtils
+[WARNING]   net.jpountz.util.Utils
+[WARNING]   net.jpountz.xxhash.AbstractStreamingXXHash32Java
+[WARNING]   net.jpountz.xxhash.AbstractStreamingXXHash64Java
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JNI
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JavaSafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JavaUnsafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JNI
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JavaSafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHash32
+[WARNING]   net.jpountz.xxhash.XXHash32JNI
+[WARNING]   net.jpountz.xxhash.XXHash32JavaSafe
+[WARNING]   net.jpountz.xxhash.XXHash32JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHash64
+[WARNING]   net.jpountz.xxhash.XXHash64JNI
+[WARNING]   net.jpountz.xxhash.XXHash64JavaSafe
+[WARNING]   net.jpountz.xxhash.XXHash64JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHashConstants
+[WARNING]   net.jpountz.xxhash.XXHashFactory
+[WARNING]   net.jpountz.xxhash.XXHashJNI
+[WARNING] Found duplicate resources in [com.dgphoenix.casino:gsn-common-gs:1.0,com.dgphoenix.casino:gsn-utils-restricted:1.0-SNAPSHOT,org.apache.logging.log4j:log4j-1.2-api:2.20.0,org.apache.logging.log4j:log4j-core:2.20.0,org.apache.logging.log4j:log4j-web:2.20.0] :
+[WARNING]   META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat
+[WARNING] Found duplicate resources in [io.netty:netty-buffer:4.1.34.Final,io.netty:netty-codec:4.1.34.Final,io.netty:netty-codec-http:4.1.34.Final,io.netty:netty-codec-socks:4.1.34.Final,io.netty:netty-common:4.1.34.Final,io.netty:netty-handler:4.1.34.Final,io.netty:netty-handler-proxy:4.1.34.Final,io.netty:netty-resolver:4.1.34.Final,io.netty:netty-transport:4.1.34.Final,io.netty:netty-transport-native-epoll:4.1.34.Final:linux-x86_64,io.netty:netty-transport-native-unix-common:4.1.34.Final] :
+[WARNING]   META-INF/io.netty.versions.properties
+[WARNING] Found duplicate resources in [org.apache.logging.log4j:log4j-web:2.20.0,org.springframework:spring-web:4.3.14.RELEASE] :
+[WARNING]   META-INF/web-fragment.xml
+[INFO] Checking test classpath
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-annotations:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.12.3,com.fasterxml.woodstox:woodstox-core:7.0.0,javax.ws.rs:javax.ws.rs-api:2.1.1,org.codehaus.woodstox:stax2-api:4.2.2] :
+[WARNING]   module-info
+[WARNING] Found duplicate classes in [com.fasterxml.jackson.core:jackson-core:2.18.3,com.fasterxml.jackson.core:jackson-databind:2.18.3,com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.3,com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.3,io.github.classgraph:classgraph:4.8.179,org.apache.logging.log4j:log4j-api:2.20.0] :
+[WARNING]   META-INF.versions.9.module-info
+[WARNING] Found duplicate classes in [com.vaadin.external.google:android-json:0.0.20131108.vaadin1,org.json:json:20090211] :
+[WARNING]   org.json.JSONArray
+[WARNING]   org.json.JSONException
+[WARNING]   org.json.JSONObject
+[WARNING]   org.json.JSONStringer
+[WARNING]   org.json.JSONTokener
+[WARNING] Found duplicate classes in [net.jpountz.lz4:lz4:1.3.0,org.lz4:lz4-java:1.7.1] :
+[WARNING]   net.jpountz.lz4.LZ4BlockInputStream
+[WARNING]   net.jpountz.lz4.LZ4BlockOutputStream
+[WARNING]   net.jpountz.lz4.LZ4ByteBufferUtils
+[WARNING]   net.jpountz.lz4.LZ4Compressor
+[WARNING]   net.jpountz.lz4.LZ4Constants
+[WARNING]   net.jpountz.lz4.LZ4Decompressor
+[WARNING]   net.jpountz.lz4.LZ4Exception
+[WARNING]   net.jpountz.lz4.LZ4Factory
+[WARNING]   net.jpountz.lz4.LZ4FastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJNICompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJavaSafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4HCJavaUnsafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JNI
+[WARNING]   net.jpountz.lz4.LZ4JNICompressor
+[WARNING]   net.jpountz.lz4.LZ4JNIFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JNISafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaSafeSafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeCompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeFastDecompressor
+[WARNING]   net.jpountz.lz4.LZ4JavaUnsafeSafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4SafeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4SafeUtils
+[WARNING]   net.jpountz.lz4.LZ4UnknownSizeDecompressor
+[WARNING]   net.jpountz.lz4.LZ4UnsafeUtils
+[WARNING]   net.jpountz.lz4.LZ4Utils
+[WARNING]   net.jpountz.util.ByteBufferUtils
+[WARNING]   net.jpountz.util.Native
+[WARNING]   net.jpountz.util.SafeUtils
+[WARNING]   net.jpountz.util.UnsafeUtils
+[WARNING]   net.jpountz.util.Utils
+[WARNING]   net.jpountz.xxhash.AbstractStreamingXXHash32Java
+[WARNING]   net.jpountz.xxhash.AbstractStreamingXXHash64Java
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JNI
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JavaSafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash32JavaUnsafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JNI
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JavaSafe
+[WARNING]   net.jpountz.xxhash.StreamingXXHash64JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHash32
+[WARNING]   net.jpountz.xxhash.XXHash32JNI
+[WARNING]   net.jpountz.xxhash.XXHash32JavaSafe
+[WARNING]   net.jpountz.xxhash.XXHash32JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHash64
+[WARNING]   net.jpountz.xxhash.XXHash64JNI
+[WARNING]   net.jpountz.xxhash.XXHash64JavaSafe
+[WARNING]   net.jpountz.xxhash.XXHash64JavaUnsafe
+[WARNING]   net.jpountz.xxhash.XXHashConstants
+[WARNING]   net.jpountz.xxhash.XXHashFactory
+[WARNING]   net.jpountz.xxhash.XXHashJNI
+[WARNING] Found duplicate classes in [org.apache.logging.log4j:log4j-slf4j-impl:2.20.0,org.slf4j:slf4j-nop:1.6.1] :
+[WARNING]   org.slf4j.impl.StaticLoggerBinder
+[WARNING]   org.slf4j.impl.StaticMDCBinder
+[WARNING]   org.slf4j.impl.StaticMarkerBinder
+[WARNING] Found duplicate classes in [org.json:json:20090211,org.skyscreamer:jsonassert:1.5.1] :
+[WARNING]   org.json.JSONString
+[WARNING] Found duplicate resources in [com.dgphoenix.casino:gsn-common-gs:1.0,com.dgphoenix.casino:gsn-utils-restricted:1.0-SNAPSHOT,org.apache.logging.log4j:log4j-1.2-api:2.20.0,org.apache.logging.log4j:log4j-core:2.20.0,org.apache.logging.log4j:log4j-web:2.20.0] :
+[WARNING]   META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat
+[WARNING] Found duplicate resources in [io.netty:netty-buffer:4.1.34.Final,io.netty:netty-codec:4.1.34.Final,io.netty:netty-codec-http:4.1.34.Final,io.netty:netty-codec-socks:4.1.34.Final,io.netty:netty-common:4.1.34.Final,io.netty:netty-handler:4.1.34.Final,io.netty:netty-handler-proxy:4.1.34.Final,io.netty:netty-resolver:4.1.34.Final,io.netty:netty-transport:4.1.34.Final,io.netty:netty-transport-native-epoll:4.1.34.Final:linux-x86_64,io.netty:netty-transport-native-unix-common:4.1.34.Final] :
+[WARNING]   META-INF/io.netty.versions.properties
+[WARNING] Found duplicate resources in [org.apache.logging.log4j:log4j-web:2.20.0,org.springframework:spring-web:4.3.14.RELEASE] :
+[WARNING]   META-INF/web-fragment.xml
+[WARNING] Found duplicate resources in [org.springframework:spring-beans:4.3.14.RELEASE,org.springframework:spring-test:4.3.14.RELEASE] :
+[WARNING]   META-INF/spring.factories
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ gsn-web-gs ---
+[INFO] Installing /app/game-server/web-gs/target/ROOT.war to /root/.m2/repository/com/dgphoenix/casino/gsn-web-gs/1.89.0/gsn-web-gs-1.89.0.war
+[INFO] Installing /app/game-server/web-gs/pom.xml to /root/.m2/repository/com/dgphoenix/casino/gsn-web-gs/1.89.0/gsn-web-gs-1.89.0.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] annotations 1.1.0 .................................. SUCCESS [  2.303 s]
+[INFO] gsn-casino-project 1.0.0-SNAPSHOT .................. SUCCESS [  0.370 s]
+[INFO] rng 2.0 ............................................ SUCCESS [  1.186 s]
+[INFO] kryo-validator 2.9.1-SNAPSHOT ...................... SUCCESS [  1.328 s]
+[INFO] utils-restricted 1.1.0 ............................. SUCCESS [  7.506 s]
+[INFO] gsn-utils-restricted 1.0-SNAPSHOT .................. SUCCESS [  1.938 s]
+[INFO] gsn-cassandra-cache 1.0-SNAPSHOT ................... SUCCESS [  0.069 s]
+[INFO] gsn-cache-restricted 1.0-SNAPSHOT .................. SUCCESS [  1.549 s]
+[INFO] gsn-common-persisters 1.0 .......................... SUCCESS [  2.307 s]
+[INFO] common-wallet 1.0.67 ............................... SUCCESS [  1.240 s]
+[INFO] common-promo 1.1.0 ................................. SUCCESS [  0.907 s]
+[INFO] gsn-promo 1.2 ...................................... SUCCESS [  0.071 s]
+[INFO] gsn-promo-persisters 1.2 ........................... SUCCESS [  0.830 s]
+[INFO] gsn-promo-core 1.2 ................................. SUCCESS [  0.641 s]
+[INFO] gsn-game-server 1.0.1 .............................. SUCCESS [  0.184 s]
+[INFO] gsn-common-gs 1.0 .................................. SUCCESS [  8.025 s]
+[INFO] gsn-web-gs 1.89.0 .................................. SUCCESS [ 41.941 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:12 min
+[INFO] Finished at: 2026-01-08T16:51:07Z
+[INFO] ------------------------------------------------------------------------

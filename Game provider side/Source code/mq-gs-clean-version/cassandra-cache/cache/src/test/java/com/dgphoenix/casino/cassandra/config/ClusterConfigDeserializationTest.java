@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.net.URL;
+import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -91,7 +92,11 @@ public class ClusterConfigDeserializationTest {
     private File getFile(String filename) {
         URL fileUrl = ClusterConfigDeserializationTest.class.getClassLoader().getResource(filename);
         if (fileUrl != null) {
-            return new File(fileUrl.getFile());
+            try {
+                return new File(fileUrl.toURI());
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
         }
         throw new RuntimeException("File not found: " + filename);
     }

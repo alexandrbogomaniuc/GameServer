@@ -92,7 +92,11 @@ public class CassandraStateCheckTask extends AbstractCheckTask {
         JMXConnector jmxConnection = null;
         try {
             JMXServiceURL url = new JMXServiceURL(String.format(URL_PATTERN, hostAddress));
-            jmxConnection = JMXConnectorFactory.connect(url, null);
+            // Add JMX credentials for authentication
+            java.util.Map<String, Object> env = new java.util.HashMap<>();
+            String[] credentials = new String[] { "monitorRole", "QED" };
+            env.put(JMXConnector.CREDENTIALS, credentials);
+            jmxConnection = JMXConnectorFactory.connect(url, env);
             MBeanServerConnection mbsc = jmxConnection.getMBeanServerConnection();
             long pendingCompactionOps = getPendingCompactionOps(mbsc);
             long pendingFlushOps = getPendingFlushMemtableOps(mbsc);
@@ -123,7 +127,9 @@ public class CassandraStateCheckTask extends AbstractCheckTask {
 
     private long getPendingFlushMemtableOps(MBeanServerConnection mbsc) {
         try {
-            return getLongAttribute(mbsc, "org.apache.cassandra.metrics:type=ThreadPools,path=internal,scope=MemtablePostFlush,name=PendingTasks", "Value");
+            return getLongAttribute(mbsc,
+                    "org.apache.cassandra.metrics:type=ThreadPools,path=internal,scope=MemtablePostFlush,name=PendingTasks",
+                    "Value");
         } catch (Exception e) {
             LOG.error("Failed to retrieve pending memtable flush operation count", e);
             return -1;
@@ -141,7 +147,8 @@ public class CassandraStateCheckTask extends AbstractCheckTask {
 
     private long getUsedSpace(MBeanServerConnection mbsc) {
         try {
-            Long spaceUsedInBytes = getLongAttribute(mbsc, "org.apache.cassandra.metrics:type=Storage,name=Load", "Count");
+            Long spaceUsedInBytes = getLongAttribute(mbsc, "org.apache.cassandra.metrics:type=Storage,name=Load",
+                    "Count");
             return spaceUsedInBytes / 1048576;
         } catch (Exception e) {
             LOG.error("Failed to retrieve used space size", e);
@@ -200,7 +207,7 @@ public class CassandraStateCheckTask extends AbstractCheckTask {
         private final long spaceUsedInMb;
 
         public HostMetrics(String host, long pendingFlushMemtableOps, long pendingCompactionOps, String operationMode,
-                           long spaceUsedInMb) {
+                long spaceUsedInMb) {
             this.host = host;
             this.pendingFlushMemtableOps = pendingFlushMemtableOps;
             this.pendingCompactionOps = pendingCompactionOps;

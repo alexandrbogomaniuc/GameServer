@@ -34,7 +34,7 @@ public class GameServerConfiguration implements IGameServerConfiguration {
     private final GeoIp geoIp;
 
     public GameServerConfiguration(ServerConfigsCache configsCache, GeoIp geoIp,
-                                   CassandraPersistenceManager persistenceManager, ServerCoordinatorInfoProvider serverIdProvider) {
+            CassandraPersistenceManager persistenceManager, ServerCoordinatorInfoProvider serverIdProvider) {
         Integer gameServerId = serverIdProvider.getServerId();
         if (gameServerId == null) {
             LOG.fatal("Couldn't find serverId. Seems ServerIdProvider is not initialized.");
@@ -90,7 +90,28 @@ public class GameServerConfiguration implements IGameServerConfiguration {
 
     @Override
     public String getStringPropertySilent(String propertyName) {
-        return config.getTemplate().getProperty(propertyName);
+        System.err.println("!!! DEBUG: getStringPropertySilent called with propertyName: " + propertyName + " !!!");
+        System.err.println("!!! DEBUG: config is " + (config == null ? "NULL" : "NOT NULL") + " !!!");
+        if (config != null) {
+            System.err.println("!!! DEBUG: config.getTemplate() is "
+                    + (config.getTemplate() == null ? "NULL" : "NOT NULL") + " !!!");
+        }
+
+        if (config == null || config.getTemplate() == null) {
+            System.err.println("!!! DEBUG: Returning null due to null config or template !!!");
+            return null;
+        }
+
+        try {
+            String result = config.getTemplate().getProperty(propertyName);
+            System.err.println("!!! DEBUG: getProperty returned: " + result + " !!!");
+            return result;
+        } catch (Exception e) {
+            System.err.println("!!! DEBUG: Exception in getProperty(): " + e.getClass().getName() + ": "
+                    + e.getMessage() + " !!!");
+            e.printStackTrace();
+            return null; // Return null instead of crashing
+        }
     }
 
     public boolean isTrustAllSslForHttpClientConnections() {
@@ -147,8 +168,7 @@ public class GameServerConfiguration implements IGameServerConfiguration {
                 LOG.error(e.getMessage(), e);
             }
             StatisticsManager.getInstance().updateRequestStatistics(
-                    "GameServerConfiguration: CheckBlockedCountries", System.currentTimeMillis() - now
-            );
+                    "GameServerConfiguration: CheckBlockedCountries", System.currentTimeMillis() - now);
         }
         return trusted;
     }
@@ -445,7 +465,6 @@ public class GameServerConfiguration implements IGameServerConfiguration {
         return config.getTemplate().getPromoFeedsRootPath();
     }
 
-
     public long getRoundWinsQueuePersistenceInterval() {
         return config.getTemplate().getRoundWinsQueuePersistenceInterval();
     }
@@ -556,6 +575,7 @@ public class GameServerConfiguration implements IGameServerConfiguration {
     public String getCmHost() {
         return config.getTemplate().getCmHost();
     }
+
     @Override
     public String toString() {
         return "GameServerConfiguration[" +

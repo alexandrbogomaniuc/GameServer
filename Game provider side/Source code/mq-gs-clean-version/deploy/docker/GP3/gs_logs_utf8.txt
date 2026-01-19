@@ -1,0 +1,7 @@
+﻿docker : Error response from daemon: No such container: gs-1
+At line:1 char:1
++ docker logs gs-1 > gs_logs.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Error response ...container: gs-1:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

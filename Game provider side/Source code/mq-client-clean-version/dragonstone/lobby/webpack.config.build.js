@@ -21,6 +21,10 @@ module.exports = {
 			path.resolve(PROJECT_SRC, 'index.js')
 		]
 	},
+	externals: {
+		'pixi.js': 'PIXI',
+		'pixi.js-legacy': 'PIXI'
+	},
 	output: {
 		path: __dirname + "/dist/build",
 		filename: '[name].js'
@@ -28,11 +32,16 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.mjs$/,
+				include: /node_modules/,
+				type: 'javascript/auto'
+			},
+			{
 				test: /\.js$/,
 				include: [PIXI_SRC, PROJECT_SRC, SHARED_SRC],
 				exclude: [],
 				loader: 'babel-loader',
-				query: { presets: ["es2015", "stage-0"], compact: false}
+				query: { presets: ["es2015", "stage-0"], compact: false }
 			},
 			{
 				test: /\.vue$/,
@@ -55,7 +64,8 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.js', '.json'],
+		extensions: ['.js', '.json', '.mjs'],
+		mainFields: ['main', 'module'],
 		alias: {
 			"P2M": PIXI_SRC,
 			'vue$': 'vue/dist/vue.esm.js'
@@ -78,6 +88,7 @@ module.exports = {
 			{ from: 'validator.js', to: path.resolve(BUILD_OUTPUT, 'validator.js') },
 			{ from: 'common_ue.js', to: path.resolve(BUILD_OUTPUT, 'common_ue.js') },
 			{ from: 'version.json', to: path.resolve(BUILD_OUTPUT, 'version.json') },
+			{ from: '../../common/PIXI/node_modules/pixi.js/dist/browser/pixi.min.js', to: path.resolve(BUILD_OUTPUT, 'pixi.min.js') },
 			{ from: 'assets/**/*', to: BUILD_OUTPUT },
 			{ from: 'favicon.ico', to: path.resolve(BUILD_OUTPUT, 'favicon.ico') }
 		], { copyUnmodified: true, debug: "warning" }),

@@ -1,0 +1,132 @@
+
+Skeleton180.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+180/arm_lf
+  rotate: false
+  xy: 426, 390
+  size: 176, 145
+  orig: 176, 145
+  offset: 0, 0
+  index: -1
+180/arm_rt
+  rotate: false
+  xy: 637, 781
+  size: 150, 201
+  orig: 150, 201
+  offset: 0, 0
+  index: -1
+180/body
+  rotate: false
+  xy: 426, 723
+  size: 207, 259
+  orig: 207, 259
+  offset: 0, 0
+  index: -1
+180/calf_lf
+  rotate: true
+  xy: 4, 65
+  size: 123, 268
+  orig: 123, 268
+  offset: 0, 0
+  index: -1
+180/calf_rt
+  rotate: false
+  xy: 330, 217
+  size: 90, 268
+  orig: 90, 268
+  offset: 0, 0
+  index: -1
+180/foot_lf
+  rotate: true
+  xy: 276, 94
+  size: 94, 73
+  orig: 94, 73
+  offset: 0, 0
+  index: -1
+180/foot_rt
+  rotate: false
+  xy: 4, 7
+  size: 144, 54
+  orig: 144, 54
+  offset: 0, 0
+  index: -1
+180/forearm_lf
+  rotate: true
+  xy: 152, 4
+  size: 57, 114
+  orig: 57, 114
+  offset: 0, 0
+  index: -1
+180/forearm_rt
+  rotate: true
+  xy: 637, 659
+  size: 118, 128
+  orig: 118, 128
+  offset: 0, 0
+  index: -1
+180/hand_lf
+  rotate: false
+  xy: 623, 572
+  size: 92, 83
+  orig: 92, 83
+  offset: 0, 0
+  index: -1
+180/hand_rt
+  rotate: false
+  xy: 719, 602
+  size: 53, 53
+  orig: 53, 53
+  offset: 0, 0
+  index: -1
+180/hand_rt2
+  rotate: false
+  xy: 970, 924
+  size: 47, 58
+  orig: 47, 58
+  offset: 0, 0
+  index: -1
+180/head
+  rotate: false
+  xy: 539, 255
+  size: 97, 131
+  orig: 97, 131
+  offset: 0, 0
+  index: -1
+180/hip
+  rotate: false
+  xy: 791, 809
+  size: 175, 173
+  orig: 175, 173
+  offset: 0, 0
+  index: -1
+180/leg_lf
+  rotate: false
+  xy: 424, 217
+  size: 111, 169
+  orig: 111, 169
+  offset: 0, 0
+  index: -1
+180/leg_rt
+  rotate: false
+  xy: 426, 539
+  size: 193, 180
+  orig: 193, 180
+  offset: 0, 0
+  index: -1
+180/shield
+  rotate: false
+  xy: 4, 192
+  size: 322, 293
+  orig: 322, 293
+  offset: 0, 0
+  index: -1
+180/sword
+  rotate: false
+  xy: 4, 489
+  size: 418, 493
+  orig: 418, 493
+  offset: 0, 0
+  index: -1

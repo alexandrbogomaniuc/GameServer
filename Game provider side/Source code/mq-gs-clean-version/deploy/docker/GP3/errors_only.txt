@@ -1,0 +1,431 @@
+﻿
+full_gs_logs.txt:18:gs-1  | 2026-01-07 
+11:38:56.311:WARN:oeja.AnnotationParser:qtp146370526-18: 
+org.apache.taglibs.standard.tag.common.core.NullAttributeException 
+scanned from multiple locations: jar:file:///usr/local/jetty/lib/apa
+che-jstl/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/org/apa
+che/taglibs/standard/tag/common/core/NullAttributeException.class, j
+ar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355
+.dir/webapp/WEB-INF/lib/jstl-1.2.jar!/org/apache/taglibs/standard/ta
+g/common/core/NullAttributeException.class
+full_gs_logs.txt:64:gs-1  | 2026-01-07 
+11:38:56.342:WARN:oeja.AnnotationParser:qtp146370526-19: 
+net.jpountz.lz4.LZ4Exception scanned from multiple locations: jar:fi
+le:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355.dir/
+webapp/WEB-INF/lib/lz4-1.3.0.jar!/net/jpountz/lz4/LZ4Exception.class
+, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239
+355.dir/webapp/WEB-INF/lib/lz4-java-1.7.1.jar!/net/jpountz/lz4/LZ4Ex
+ception.class
+full_gs_logs.txt:182:gs-1  | 2026-01-07 
+11:38:56.924:WARN:oeja.AnnotationParser:qtp146370526-14: 
+org.xmlpull.v1.XmlPullParserException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350
+834090239355.dir/webapp/WEB-INF/lib/xmlpull-1.1.3.1.jar!/org/xmlpull
+/v1/XmlPullParserException.class, jar:file:///tmp/jetty-0.0.0.0-8080
+-ROOT.war-_-any-3666350834090239355.dir/webapp/WEB-INF/lib/xpp3_min-
+1.1.4c.jar!/org/xmlpull/v1/XmlPullParserException.class
+full_gs_logs.txt:265:gs-1  | 2026-01-07 
+11:38:56.997:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.exc.WstxEOFException scanned from multiple locations: j
+ar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355
+.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc/wstx/exc/Ws
+txEOFException.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+any-3666350834090239355.dir/webapp/WEB-INF/lib/webservices-rt-2.3.ja
+r!/com/ctc/wstx/exc/WstxEOFException.class
+full_gs_logs.txt:266:gs-1  | 2026-01-07 
+11:38:56.997:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.exc.WstxException scanned from multiple locations: jar:
+file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355.di
+r/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc/wstx/exc/WstxE
+xception.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-36
+66350834090239355.dir/webapp/WEB-INF/lib/webservices-rt-2.3.jar!/com
+/ctc/wstx/exc/WstxException.class
+full_gs_logs.txt:267:gs-1  | 2026-01-07 
+11:38:56.997:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.exc.WstxIOException scanned from multiple locations: ja
+r:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355.
+dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc/wstx/exc/Wst
+xIOException.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+y-3666350834090239355.dir/webapp/WEB-INF/lib/webservices-rt-2.3.jar!
+/com/ctc/wstx/exc/WstxIOException.class
+full_gs_logs.txt:268:gs-1  | 2026-01-07 
+11:38:57.000:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.exc.WstxLazyException scanned from multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-366635083409023935
+5.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc/wstx/exc/W
+stxLazyException.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-
+_-any-3666350834090239355.dir/webapp/WEB-INF/lib/webservices-rt-2.3.
+jar!/com/ctc/wstx/exc/WstxLazyException.class
+full_gs_logs.txt:269:gs-1  | 2026-01-07 
+11:38:57.000:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.exc.WstxOutputException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350
+834090239355.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/exc/WstxOutputException.class, jar:file:///tmp/jetty-0.0.0.0-8
+080-ROOT.war-_-any-3666350834090239355.dir/webapp/WEB-INF/lib/webser
+vices-rt-2.3.jar!/com/ctc/wstx/exc/WstxOutputException.class
+full_gs_logs.txt:270:gs-1  | 2026-01-07 
+11:38:57.000:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.exc.WstxParsingException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350
+834090239355.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/exc/WstxParsingException.class, jar:file:///tmp/jetty-0.0.0.0-
+8080-ROOT.war-_-any-3666350834090239355.dir/webapp/WEB-INF/lib/webse
+rvices-rt-2.3.jar!/com/ctc/wstx/exc/WstxParsingException.class
+full_gs_logs.txt:271:gs-1  | 2026-01-07 
+11:38:57.000:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.exc.WstxUnexpectedCharException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350
+834090239355.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/exc/WstxUnexpectedCharException.class, jar:file:///tmp/jetty-0
+.0.0.0-8080-ROOT.war-_-any-3666350834090239355.dir/webapp/WEB-INF/li
+b/webservices-rt-2.3.jar!/com/ctc/wstx/exc/WstxUnexpectedCharExcepti
+on.class
+full_gs_logs.txt:272:gs-1  | 2026-01-07 
+11:38:57.010:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.exc.WstxValidationException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350
+834090239355.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/exc/WstxValidationException.class, jar:file:///tmp/jetty-0.0.0
+.0-8080-ROOT.war-_-any-3666350834090239355.dir/webapp/WEB-INF/lib/we
+bservices-rt-2.3.jar!/com/ctc/wstx/exc/WstxValidationException.class
+full_gs_logs.txt:315:gs-1  | 2026-01-07 
+11:38:57.027:WARN:oeja.AnnotationParser:qtp146370526-23: 
+com.ctc.wstx.sax.WrappedSaxException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350
+834090239355.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/sax/WrappedSaxException.class, jar:file:///tmp/jetty-0.0.0.0-8
+080-ROOT.war-_-any-3666350834090239355.dir/webapp/WEB-INF/lib/webser
+vices-rt-2.3.jar!/com/ctc/wstx/sax/WrappedSaxException.class
+full_gs_logs.txt:364:gs-1  | 2026-01-07 
+11:38:57.140:WARN:oeja.AnnotationParser:qtp146370526-25: 
+com.ctc.wstx.util.ExceptionUtil scanned from multiple locations: jar
+:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355.d
+ir/webapp/WEB-INF/lib/webservices-rt-2.3.jar!/com/ctc/wstx/util/Exce
+ptionUtil.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3
+666350834090239355.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/c
+om/ctc/wstx/util/ExceptionUtil.class
+full_gs_logs.txt:490:gs-1  | 2026-01-07 
+11:38:57.574:WARN:oeja.AnnotationParser:qtp146370526-23: 
+org.codehaus.stax2.typed.TypedXMLStreamException scanned from 
+multiple locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+y-3666350834090239355.dir/webapp/WEB-INF/lib/stax2-api-4.2.2.jar!/or
+g/codehaus/stax2/typed/TypedXMLStreamException.class, jar:file:///tm
+p/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355.dir/webapp/W
+EB-INF/lib/webservices-rt-2.3.jar!/org/codehaus/stax2/typed/TypedXML
+StreamException.class
+full_gs_logs.txt:502:gs-1  | 2026-01-07 
+11:38:57.574:WARN:oeja.AnnotationParser:qtp146370526-23: 
+org.codehaus.stax2.validation.XMLValidationException scanned from 
+multiple locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+y-3666350834090239355.dir/webapp/WEB-INF/lib/stax2-api-4.2.2.jar!/or
+g/codehaus/stax2/validation/XMLValidationException.class, jar:file:/
+//tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355.dir/weba
+pp/WEB-INF/lib/webservices-rt-2.3.jar!/org/codehaus/stax2/validation
+/XMLValidationException.class
+full_gs_logs.txt:809:gs-1  | 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'battlegroundController' defined in 
+file [/tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355.dir
+/webapp/WEB-INF/classes/com/dgphoenix/casino/controller/battleground
+/BattlegroundController.class]: Unsatisfied dependency expressed 
+through constructor parameter 0; nested exception is 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsConfiguration.class]: 
+Unsatisfied dependency expressed through method 
+'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:870:gs-1  | Caused by: 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsConfiguration.class]: 
+Unsatisfied dependency expressed through method 
+'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:887:gs-1  | Caused by: 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:903:gs-1  | Caused by: 
+java.lang.NullPointerException
+full_gs_logs.txt:918:gs-1  | 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'battlegroundController' defined in 
+file [/tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-3666350834090239355.dir
+/webapp/WEB-INF/classes/com/dgphoenix/casino/controller/battleground
+/BattlegroundController.class]: Unsatisfied dependency expressed 
+through constructor parameter 0; nested exception is 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsConfiguration.class]: 
+Unsatisfied dependency expressed through method 
+'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:980:gs-1  | 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsConfiguration.class]: 
+Unsatisfied dependency expressed through method 
+'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:1056:gs-1  | 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:1145:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1498:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1527:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1560:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1589:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1622:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1655:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1688:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1721:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1755:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1788:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1822:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1856:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1890:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1924:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1958:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:1992:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2026:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2060:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2094:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2128:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2162:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2196:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2230:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2264:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2304:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2317:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2330:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2343:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2361:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2375:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2391:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2404:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2538:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2567:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2601:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2635:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2669:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2703:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2737:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2771:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:2902:gs-1  | 2026-01-07 
+15:24:07.273:WARN:oeja.AnnotationParser:qtp146370526-18: 
+org.apache.taglibs.standard.tag.common.core.NullAttributeException 
+scanned from multiple locations: jar:file:///usr/local/jetty/lib/apa
+che-jstl/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar!/org/apa
+che/taglibs/standard/tag/common/core/NullAttributeException.class, j
+ar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144
+.dir/webapp/WEB-INF/lib/jstl-1.2.jar!/org/apache/taglibs/standard/ta
+g/common/core/NullAttributeException.class
+full_gs_logs.txt:3001:gs-1  | 2026-01-07 
+15:24:07.359:WARN:oeja.AnnotationParser:qtp146370526-18: 
+net.jpountz.lz4.LZ4Exception scanned from multiple locations: jar:fi
+le:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144.dir/
+webapp/WEB-INF/lib/lz4-1.3.0.jar!/net/jpountz/lz4/LZ4Exception.class
+, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711
+144.dir/webapp/WEB-INF/lib/lz4-java-1.7.1.jar!/net/jpountz/lz4/LZ4Ex
+ception.class
+full_gs_logs.txt:3066:gs-1  | 2026-01-07 
+15:24:07.853:WARN:oeja.AnnotationParser:qtp146370526-17: 
+org.xmlpull.v1.XmlPullParserException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395
+480912711144.dir/webapp/WEB-INF/lib/xmlpull-1.1.3.1.jar!/org/xmlpull
+/v1/XmlPullParserException.class, jar:file:///tmp/jetty-0.0.0.0-8080
+-ROOT.war-_-any-8570395480912711144.dir/webapp/WEB-INF/lib/xpp3_min-
+1.1.4c.jar!/org/xmlpull/v1/XmlPullParserException.class
+full_gs_logs.txt:3149:gs-1  | 2026-01-07 
+15:24:07.889:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.exc.WstxEOFException scanned from multiple locations: j
+ar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144
+.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc/wstx/exc/Ws
+txEOFException.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-
+any-8570395480912711144.dir/webapp/WEB-INF/lib/webservices-rt-2.3.ja
+r!/com/ctc/wstx/exc/WstxEOFException.class
+full_gs_logs.txt:3150:gs-1  | 2026-01-07 
+15:24:07.889:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.exc.WstxException scanned from multiple locations: jar:
+file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144.di
+r/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc/wstx/exc/WstxE
+xception.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-85
+70395480912711144.dir/webapp/WEB-INF/lib/webservices-rt-2.3.jar!/com
+/ctc/wstx/exc/WstxException.class
+full_gs_logs.txt:3151:gs-1  | 2026-01-07 
+15:24:07.889:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.exc.WstxIOException scanned from multiple locations: ja
+r:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144.
+dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc/wstx/exc/Wst
+xIOException.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+y-8570395480912711144.dir/webapp/WEB-INF/lib/webservices-rt-2.3.jar!
+/com/ctc/wstx/exc/WstxIOException.class
+full_gs_logs.txt:3152:gs-1  | 2026-01-07 
+15:24:07.889:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.exc.WstxLazyException scanned from multiple locations: 
+jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-857039548091271114
+4.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc/wstx/exc/W
+stxLazyException.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-
+_-any-8570395480912711144.dir/webapp/WEB-INF/lib/webservices-rt-2.3.
+jar!/com/ctc/wstx/exc/WstxLazyException.class
+full_gs_logs.txt:3153:gs-1  | 2026-01-07 
+15:24:07.889:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.exc.WstxOutputException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395
+480912711144.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/exc/WstxOutputException.class, jar:file:///tmp/jetty-0.0.0.0-8
+080-ROOT.war-_-any-8570395480912711144.dir/webapp/WEB-INF/lib/webser
+vices-rt-2.3.jar!/com/ctc/wstx/exc/WstxOutputException.class
+full_gs_logs.txt:3154:gs-1  | 2026-01-07 
+15:24:07.889:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.exc.WstxParsingException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395
+480912711144.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/exc/WstxParsingException.class, jar:file:///tmp/jetty-0.0.0.0-
+8080-ROOT.war-_-any-8570395480912711144.dir/webapp/WEB-INF/lib/webse
+rvices-rt-2.3.jar!/com/ctc/wstx/exc/WstxParsingException.class
+full_gs_logs.txt:3155:gs-1  | 2026-01-07 
+15:24:07.889:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.exc.WstxUnexpectedCharException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395
+480912711144.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/exc/WstxUnexpectedCharException.class, jar:file:///tmp/jetty-0
+.0.0.0-8080-ROOT.war-_-any-8570395480912711144.dir/webapp/WEB-INF/li
+b/webservices-rt-2.3.jar!/com/ctc/wstx/exc/WstxUnexpectedCharExcepti
+on.class
+full_gs_logs.txt:3156:gs-1  | 2026-01-07 
+15:24:07.890:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.exc.WstxValidationException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395
+480912711144.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/exc/WstxValidationException.class, jar:file:///tmp/jetty-0.0.0
+.0-8080-ROOT.war-_-any-8570395480912711144.dir/webapp/WEB-INF/lib/we
+bservices-rt-2.3.jar!/com/ctc/wstx/exc/WstxValidationException.class
+full_gs_logs.txt:3199:gs-1  | 2026-01-07 
+15:24:07.899:WARN:oeja.AnnotationParser:qtp146370526-14: 
+com.ctc.wstx.sax.WrappedSaxException scanned from multiple 
+locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395
+480912711144.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/com/ctc
+/wstx/sax/WrappedSaxException.class, jar:file:///tmp/jetty-0.0.0.0-8
+080-ROOT.war-_-any-8570395480912711144.dir/webapp/WEB-INF/lib/webser
+vices-rt-2.3.jar!/com/ctc/wstx/sax/WrappedSaxException.class
+full_gs_logs.txt:3248:gs-1  | 2026-01-07 
+15:24:07.948:WARN:oeja.AnnotationParser:qtp146370526-16: 
+com.ctc.wstx.util.ExceptionUtil scanned from multiple locations: jar
+:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144.d
+ir/webapp/WEB-INF/lib/webservices-rt-2.3.jar!/com/ctc/wstx/util/Exce
+ptionUtil.class, jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8
+570395480912711144.dir/webapp/WEB-INF/lib/woodstox-core-7.0.0.jar!/c
+om/ctc/wstx/util/ExceptionUtil.class
+full_gs_logs.txt:3374:gs-1  | 2026-01-07 
+15:24:08.392:WARN:oeja.AnnotationParser:qtp146370526-14: 
+org.codehaus.stax2.typed.TypedXMLStreamException scanned from 
+multiple locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+y-8570395480912711144.dir/webapp/WEB-INF/lib/stax2-api-4.2.2.jar!/or
+g/codehaus/stax2/typed/TypedXMLStreamException.class, jar:file:///tm
+p/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144.dir/webapp/W
+EB-INF/lib/webservices-rt-2.3.jar!/org/codehaus/stax2/typed/TypedXML
+StreamException.class
+full_gs_logs.txt:3386:gs-1  | 2026-01-07 
+15:24:08.393:WARN:oeja.AnnotationParser:qtp146370526-14: 
+org.codehaus.stax2.validation.XMLValidationException scanned from 
+multiple locations: jar:file:///tmp/jetty-0.0.0.0-8080-ROOT.war-_-an
+y-8570395480912711144.dir/webapp/WEB-INF/lib/stax2-api-4.2.2.jar!/or
+g/codehaus/stax2/validation/XMLValidationException.class, jar:file:/
+//tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144.dir/weba
+pp/WEB-INF/lib/webservices-rt-2.3.jar!/org/codehaus/stax2/validation
+/XMLValidationException.class
+full_gs_logs.txt:3693:gs-1  | 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'battlegroundController' defined in 
+file [/tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144.dir
+/webapp/WEB-INF/classes/com/dgphoenix/casino/controller/battleground
+/BattlegroundController.class]: Unsatisfied dependency expressed 
+through constructor parameter 0; nested exception is 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsConfiguration.class]: 
+Unsatisfied dependency expressed through method 
+'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:3754:gs-1  | Caused by: 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsConfiguration.class]: 
+Unsatisfied dependency expressed through method 
+'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:3771:gs-1  | Caused by: 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:3787:gs-1  | Caused by: 
+java.lang.NullPointerException
+full_gs_logs.txt:3802:gs-1  | 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'battlegroundController' defined in 
+file [/tmp/jetty-0.0.0.0-8080-ROOT.war-_-any-8570395480912711144.dir
+/webapp/WEB-INF/classes/com/dgphoenix/casino/controller/battleground
+/BattlegroundController.class]: Unsatisfied dependency expressed 
+through constructor parameter 0; nested exception is 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsConfiguration.class]: 
+Unsatisfied dependency expressed through method 
+'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:3864:gs-1  | 
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+Error creating bean with name 'getBattlegroundService' defined in 
+class path resource 
+[com/dgphoenix/casino/gs/GameServerComponentsConfiguration.class]: 
+Unsatisfied dependency expressed through method 
+'getBattlegroundService' parameter 0; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:3940:gs-1  | 
+org.springframework.beans.factory.BeanCreationException: Error 
+creating bean with name 'persistenceManager': Invocation of init 
+method failed; nested exception is java.lang.NullPointerException
+full_gs_logs.txt:4029:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4382:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4411:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4444:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4477:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4510:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4543:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4582:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4595:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4608:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4621:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4641:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4655:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4669:gs-1  | java.lang.NullPointerException
+full_gs_logs.txt:4682:gs-1  | java.lang.NullPointerException
+
+

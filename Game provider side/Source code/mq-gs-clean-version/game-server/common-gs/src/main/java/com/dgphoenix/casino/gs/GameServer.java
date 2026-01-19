@@ -98,9 +98,9 @@ public class GameServer implements IGameServer, ICommonManager {
     private static final com.dgphoenix.casino.gs.GameServer instance = new com.dgphoenix.casino.gs.GameServer();
     public static final long SERVER_INFO_UPDATE_INTERVAL = 5000;
 
-    private final GameServerConfiguration gameServerConfiguration;
-    private final int serverId;
-    private final ServerInfo serverInfo;
+    private GameServerConfiguration gameServerConfiguration;
+    private int serverId;
+    private ServerInfo serverInfo;
     private volatile boolean initialized;
 
     private boolean servletContextInitialized;
@@ -129,21 +129,9 @@ public class GameServer implements IGameServer, ICommonManager {
     private BattlegroundHistoryPersister battlegroundHistoryPersister;
     private GeoIp geoIp;
     private ForbiddenGamesForBonusProvider forbiddenGamesForBonusProvider;
-    private final PlayerBetHistoryService playerBetHistoryService;
+    private PlayerBetHistoryService playerBetHistoryService;
 
     private GameServer() {
-        ApplicationContext applicationContext = ApplicationContextHelper.getApplicationContext();
-        gameServerConfiguration = applicationContext
-                .getBean("gameServerConfiguration", GameServerConfiguration.class);
-        serverId = gameServerConfiguration.getServerId();
-        serverInfo = applicationContext.getBean("loadBalancerCache", LoadBalancerCache.class)
-                .getServerInfoById(serverId);
-        checkNotNull(serverInfo, "ServerInfo for this server must not be null");
-        promoCampaignManager = applicationContext.getBean("promoCampaignManager", IPromoCampaignManager.class);
-        checkNotNull(serverInfo, "ServerInfo for this server must not be null");
-        geoIp = applicationContext.getBean("geoIp", GeoIp.class);
-        forbiddenGamesForBonusProvider = applicationContext.getBean("forbiddenGamesForBonusProvider", ForbiddenGamesForBonusProvider.class);
-        playerBetHistoryService = applicationContext.getBean("playerBetHistoryService", PlayerBetHistoryService.class);
     }
 
     public static com.dgphoenix.casino.gs.GameServer getInstance() {
@@ -172,26 +160,44 @@ public class GameServer implements IGameServer, ICommonManager {
         serverInfoPersister = persistenceManager.getPersister(CassandraServerInfoPersister.class);
         distributedLockManager = persistenceManager.getPersister(DistributedLockManager.class);
         accountDistributedLockManager = persistenceManager.getPersister(AccountDistributedLockManager.class);
-        gameSessionExtendedPropertiesPersister = persistenceManager.getPersister(CassandraGameSessionExtendedPropertiesPersister.class);
+        gameSessionExtendedPropertiesPersister = persistenceManager
+                .getPersister(CassandraGameSessionExtendedPropertiesPersister.class);
         maxBalanceTournamentPersister = persistenceManager.getPersister(CassandraMaxBalanceTournamentPersister.class);
         roundKPIInfoPersister = persistenceManager.getPersister(RoundKPIInfoPersister.class);
         battlegroundHistoryPersister = persistenceManager.getPersister(BattlegroundHistoryPersister.class);
     }
 
     /**
-     * Init game server on start game server. (init persisters, start trackers, register metrics, ...)
+     * Init game server on start game server. (init persisters, start trackers,
+     * register metrics, ...)
+     * 
      * @throws CommonException if any unexpected error occur
      */
     public void init() throws CommonException {
         if (!initialized) {
             LOG.info("init start");
+
+            ApplicationContext applicationContext = ApplicationContextHelper.getApplicationContext();
+            gameServerConfiguration = applicationContext.getBean("gameServerConfiguration",
+                    GameServerConfiguration.class);
+            serverId = gameServerConfiguration.getServerId();
+            serverInfo = applicationContext.getBean("loadBalancerCache", LoadBalancerCache.class)
+                    .getServerInfoById(serverId);
+            checkNotNull(serverInfo, "ServerInfo for this server must not be null");
+            promoCampaignManager = applicationContext.getBean("promoCampaignManager", IPromoCampaignManager.class);
+            geoIp = applicationContext.getBean("geoIp", GeoIp.class);
+            forbiddenGamesForBonusProvider = applicationContext.getBean("forbiddenGamesForBonusProvider",
+                    ForbiddenGamesForBonusProvider.class);
+            playerBetHistoryService = applicationContext.getBean("playerBetHistoryService",
+                    PlayerBetHistoryService.class);
+
             initPersisters();
             try {
                 StartGameHelpers.getInstance().init(new IHelperCreator() {
                     @Override
                     public IStartGameHelper create(boolean old, long gameId, String servletName, String title,
-                                                   String swfLocation,
-                                                   String additionalParams, IDelegatedStartGameHelper delegatedHelper) {
+                            String swfLocation,
+                            String additionalParams, IDelegatedStartGameHelper delegatedHelper) {
                         return new NewTranslationGameHelper(gameId, servletName, title, swfLocation,
                                 additionalParams, delegatedHelper, hostCdnPersister);
                     }
@@ -206,7 +212,8 @@ public class GameServer implements IGameServer, ICommonManager {
             BonusTracker.getInstance().startup();
             LeaderboardWinTracker.getInstance().startup();
 
-            executor.scheduleWithFixedDelay(new com.dgphoenix.casino.gs.GameServer.RemoteCallUpdaterTask(), SERVER_INFO_UPDATE_INTERVAL,
+            executor.scheduleWithFixedDelay(new com.dgphoenix.casino.gs.GameServer.RemoteCallUpdaterTask(),
+                    SERVER_INFO_UPDATE_INTERVAL,
                     SERVER_INFO_UPDATE_INTERVAL, TimeUnit.MILLISECONDS);
             LongIdGeneratorFactory.getInstance().addGenerator(IdGenerator.getInstance());
             initialized = true;
@@ -278,6 +285,10 @@ public class GameServer implements IGameServer, ICommonManager {
     }
 
     public void initServerConfiguration() {
+        if (gameServerConfiguration == null) {
+            LOG.warn("initServerConfiguration() called before init() - gameServerConfiguration is null, skipping");
+            return;
+        }
         String className = gameServerConfiguration.getCloseGameProcessorClassName();
         this.closeGameProcessorClassName = StringUtils.isTrimmedEmpty(className) ? null : className.trim();
     }
@@ -286,8 +297,13 @@ public class GameServer implements IGameServer, ICommonManager {
      * Launches server info updater periodically task
      */
     public void dsoStarted() {
+        if (gameServerConfiguration == null) {
+            LOG.warn("dsoStarted() called before init() - gameServerConfiguration is null, skipping");
+            return;
+        }
         host = "games" + gameServerConfiguration.getGsDomain();
-        executor.scheduleWithFixedDelay(new com.dgphoenix.casino.gs.GameServer.ServerInfoUpdaterTask(), SERVER_INFO_UPDATE_INTERVAL,
+        executor.scheduleWithFixedDelay(new com.dgphoenix.casino.gs.GameServer.ServerInfoUpdaterTask(),
+                SERVER_INFO_UPDATE_INTERVAL,
                 SERVER_INFO_UPDATE_INTERVAL, TimeUnit.MILLISECONDS);
     }
 
@@ -344,7 +360,7 @@ public class GameServer implements IGameServer, ICommonManager {
 
     @Override
     public Long startGame(SessionInfo sessionInfo, IBaseGameInfo gameInfo,
-                          GameMode mode, Long bonusId, String lang, AccountInfo accountInfo)
+            GameMode mode, Long bonusId, String lang, AccountInfo accountInfo)
             throws CommonException {
         checkMaintenanceMode(mode, lang, accountInfo, gameInfo.getId());
         return startGame(sessionInfo, gameInfo, null, mode, bonusId, lang, accountInfo);
@@ -352,26 +368,27 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Starts game from start game actions or MQ service handler.
-     * @param sessionInfo player session info
-     * @param gameInfo game info
+     * 
+     * @param sessionInfo   player session info
+     * @param gameInfo      game info
      * @param gameSessionId gameSessionId
-     * @param mode mode (REAL|FREE|BONUS)
-     * @param bonusId bonusId
-     * @param lang language
-     * @param _accountInfo account info of player
+     * @param mode          mode (REAL|FREE|BONUS)
+     * @param bonusId       bonusId
+     * @param lang          language
+     * @param _accountInfo  account info of player
      * @return Long new game session id after start of game.
-     * @throws CommonException  if any unexpected error occur
+     * @throws CommonException if any unexpected error occur
      */
     @Override
     public Long startGame(SessionInfo sessionInfo, IBaseGameInfo gameInfo,
-                          Long gameSessionId, GameMode mode, Long bonusId,
-                          String lang, AccountInfo _accountInfo) throws CommonException {
+            Long gameSessionId, GameMode mode, Long bonusId,
+            String lang, AccountInfo _accountInfo) throws CommonException {
         long now = System.currentTimeMillis();
         checkInitialized();
         boolean externallySynchronized = _accountInfo != null;
         long accountId = sessionInfo.getAccountId();
-        AccountInfo accountInfo = _accountInfo != null ? _accountInfo : AccountManager.getInstance().
-                getAccountInfo(accountId);
+        AccountInfo accountInfo = _accountInfo != null ? _accountInfo
+                : AccountManager.getInstance().getAccountInfo(accountId);
         if (accountInfo == null) {
             throw new CommonException("account is null");
         }
@@ -385,8 +402,8 @@ public class GameServer implements IGameServer, ICommonManager {
         }
 
         Long unclosedGameSessionId = sessionInfo.getGameSessionId();
-        GameSession gameSession = unclosedGameSessionId == null ? null :
-                GameSessionPersister.getInstance().getGameSession(unclosedGameSessionId);
+        GameSession gameSession = unclosedGameSessionId == null ? null
+                : GameSessionPersister.getInstance().getGameSession(unclosedGameSessionId);
         long newGameSessionId;
         IDBLink dbLink;
         long now1 = System.currentTimeMillis();
@@ -429,16 +446,19 @@ public class GameServer implements IGameServer, ICommonManager {
     }
 
     /**
-     * Checks if the game is in maintenance mode. It is not possible to start in maintenance mode for real users.
-     * @param mode game mode
-     * @param lang language
+     * Checks if the game is in maintenance mode. It is not possible to start in
+     * maintenance mode for real users.
+     * 
+     * @param mode        game mode
+     * @param lang        language
      * @param accountInfo account info
-     * @param gameId gameId
-     * @throws MaintenanceModeException exception if real player try to start game in maintenance mode
+     * @param gameId      gameId
+     * @throws MaintenanceModeException exception if real player try to start game
+     *                                  in maintenance mode
      */
     @Override
     public void checkMaintenanceMode(GameMode mode, String lang, AccountInfo accountInfo,
-                                     long gameId) throws MaintenanceModeException {
+            long gameId) throws MaintenanceModeException {
         long bankId = accountInfo.getBankId();
         IBaseGameInfo defCurrencyBgi = BaseGameCache.getInstance().getGameInfo(bankId, gameId, "");
         if (defCurrencyBgi == null) {
@@ -454,6 +474,7 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Returns migration map for process migration data from one to other server.
+     * 
      * @param bankInfo bank info
      * @return {@code BidirectionalMultivalueMap} migration map
      */
@@ -464,6 +485,7 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Returns the gameId of the game to which old games should be migrated.
+     * 
      * @param bankId bankId
      * @param gameId gameId
      * @return Long gameId
@@ -475,7 +497,7 @@ public class GameServer implements IGameServer, ICommonManager {
             return null;
         }
         Long newGameId = gamesMap.get(gameId);
-        if (newGameId != null) { //allow start oldGame only if have unfinished round
+        if (newGameId != null) { // allow start oldGame only if have unfinished round
             // check newGeme, may exist
             IBaseGameInfo newGameInfo = BaseGameCache.getInstance().getGameInfoShared(bankId, newGameId,
                     bankInfo.getDefaultCurrency());
@@ -496,6 +518,7 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Returns a list of old gameId that should migrate to the new gameId.
+     * 
      * @param bankId bankId
      * @param gameId gameId
      * @return {@code Set<Long>} gameIds of old games
@@ -515,19 +538,21 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Internal method start of game.
-     * @param accountInfo account info
-     * @param sessionInfo player session info
-     * @param gameInfo game Info
+     * 
+     * @param accountInfo   account info
+     * @param sessionInfo   player session info
+     * @param gameInfo      game Info
      * @param gameSessionId gameSessionId
-     * @param mode mode (REAL|FREE|BONUS)
-     * @param bonusId bonusId
-     * @param lang language
-     * @param restart true if needed restart
-     * @return {@code IDBLink} result of start game will be {@code IDBLink} object dblink with data of started game.
+     * @param mode          mode (REAL|FREE|BONUS)
+     * @param bonusId       bonusId
+     * @param lang          language
+     * @param restart       true if needed restart
+     * @return {@code IDBLink} result of start game will be {@code IDBLink} object
+     *         dblink with data of started game.
      * @throws CommonException if any unexpected error occur
      */
     private IDBLink startGame_impl(AccountInfo accountInfo, SessionInfo sessionInfo, IBaseGameInfo gameInfo,
-                                   Long gameSessionId, GameMode mode, Long bonusId, String lang, boolean restart)
+            Long gameSessionId, GameMode mode, Long bonusId, String lang, boolean restart)
             throws CommonException {
         long now = System.currentTimeMillis();
 
@@ -628,7 +653,8 @@ public class GameServer implements IGameServer, ICommonManager {
                     System.currentTimeMillis() - now, accountId);
             throw new CommonException(e);
         }
-        GameSessionStateListenersFactory.getInstance().getGameSessionStateListener(bankId).listen(State.START, dbLink.getGameSession(), bankId);
+        GameSessionStateListenersFactory.getInstance().getGameSessionStateListener(bankId).listen(State.START,
+                dbLink.getGameSession(), bankId);
         if (LOG.isInfoEnabled()) {
             LOG.info("startGame accountId:" + accountId + " gameId:"
                     + gameId + " gameSessionId:" + dbLink.getGameSessionId() + " sessionId:"
@@ -648,22 +674,25 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Starts single game with creation of dblink.
-     * @param accountInfo account info of player
-     * @param sessionInfo session info of player
-     * @param gameInfo gameInfo
-     * @param bankId bankId
-     * @param lastHand lasthand. It is data of unfinished rounds in game. Actually for usual games only.
+     * 
+     * @param accountInfo   account info of player
+     * @param sessionInfo   session info of player
+     * @param gameInfo      gameInfo
+     * @param bankId        bankId
+     * @param lastHand      lasthand. It is data of unfinished rounds in game.
+     *                      Actually for usual games only.
      * @param gameSessionId gameSessionId
-     * @param mode mode (REAL|FREE|BONUS)
-     * @param bonusId bonusId
-     * @param lang language
-     * @param restart true if needed restart
-     * @return {@code IDBLink} result of start game will be {@code IDBLink} object dblink with data of started game.
+     * @param mode          mode (REAL|FREE|BONUS)
+     * @param bonusId       bonusId
+     * @param lang          language
+     * @param restart       true if needed restart
+     * @return {@code IDBLink} result of start game will be {@code IDBLink} object
+     *         dblink with data of started game.
      * @throws CommonException if any unexpected error occur
      */
     private IDBLink startSingleGame(AccountInfo accountInfo, SessionInfo sessionInfo, IBaseGameInfo gameInfo,
-                                    long bankId, String lastHand, Long gameSessionId, GameMode mode, Long bonusId,
-                                    String lang, boolean restart)
+            long bankId, String lastHand, Long gameSessionId, GameMode mode, Long bonusId,
+            String lang, boolean restart)
             throws CommonException {
         if (LOG.isDebugEnabled()) {
             LOG.debug("startSingleGame accountId:" + accountInfo.getId()
@@ -682,7 +711,9 @@ public class GameServer implements IGameServer, ICommonManager {
     }
 
     /**
-     * Restarts game session with recreation of dblink. Can be needed if dblink moved to other game server.
+     * Restarts game session with recreation of dblink. Can be needed if dblink
+     * moved to other game server.
+     * 
      * @param sessionInfo player session info
      * @param gameSession game session
      * @return {@code IDBLink} new dblink
@@ -706,14 +737,16 @@ public class GameServer implements IGameServer, ICommonManager {
             throw new CommonException("account is null, can't restart game");
         }
 
-        IBaseGameInfo gameInfo = BaseGameCache.getInstance().getGameInfoById(accountInfo.getBankId(), gameSession.getGameId(),
-                accountInfo.getCurrencyFraction() == null ? accountInfo.getCurrency() : accountInfo.getCurrencyFraction());
+        IBaseGameInfo gameInfo = BaseGameCache.getInstance().getGameInfoById(accountInfo.getBankId(),
+                gameSession.getGameId(),
+                accountInfo.getCurrencyFraction() == null ? accountInfo.getCurrency()
+                        : accountInfo.getCurrencyFraction());
         if (gameInfo == null) {
             LOG.error(LogUtils.markException("gameInfo is null, can't restart game"));
             throw new CommonException("SessionInfo or gameSession is null, can't restart game");
         }
-        GameMode mode = gameSession.isBonusGameSession() ? GameMode.BONUS :
-                gameSession.isRealMoney() ? GameMode.REAL : GameMode.FREE;
+        GameMode mode = gameSession.isBonusGameSession() ? GameMode.BONUS
+                : gameSession.isRealMoney() ? GameMode.REAL : GameMode.FREE;
         return startGame_impl(accountInfo, sessionInfo, gameInfo, gameSession.getId(), mode,
                 gameSession.isFRBonusGameSession() ? gameSession.getFrbonusId() : gameSession.getBonusId(),
                 gameSession.getLang(), true);
@@ -721,16 +754,17 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Close online game of player.
+     * 
      * @param gameSessionId gameSessionId
      * @param limitsChanged true, if limits for game session reached.
-     * @param serverId serverId
-     * @param sessionInfo player session info
-     * @param sitOut true, if needed to make sit out for MQ games.
+     * @param serverId      serverId
+     * @param sessionInfo   player session info
+     * @param sitOut        true, if needed to make sit out for MQ games.
      * @throws CommonException if any unexpected error occur
      */
     @Override
     public void closeOnlineGame(long gameSessionId, boolean limitsChanged,
-                                long serverId, SessionInfo sessionInfo, boolean sitOut) throws CommonException {
+            long serverId, SessionInfo sessionInfo, boolean sitOut) throws CommonException {
         checkInitialized();
         LOG.info("closeOnlineGame[by gameSessionId] gameSessionId:" + gameSessionId
                 + " limitsChange:" + limitsChanged + " serverId:" + serverId);
@@ -739,10 +773,11 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Close online game of player.
+     * 
      * @param gameSessionId gameSessionId
      * @param limitsChanged true, if limits for game session reached.
-     * @param _sessionInfo player session info
-     * @param sitOut true, if needed to make sit out for MQ games.
+     * @param _sessionInfo  player session info
+     * @param sitOut        true, if needed to make sit out for MQ games.
      * @throws CommonException if any unexpected error occur
      */
     private void closeOnlineGame(long gameSessionId, boolean limitsChanged, SessionInfo _sessionInfo, boolean sitOut)
@@ -753,8 +788,8 @@ public class GameServer implements IGameServer, ICommonManager {
                     + gameSessionId + " skipping because of NONE gameSession");
             return;
         }
-        SessionInfo sessionInfo = _sessionInfo != null ? _sessionInfo :
-                PlayerSessionPersister.getInstance().getSessionInfo();
+        SessionInfo sessionInfo = _sessionInfo != null ? _sessionInfo
+                : PlayerSessionPersister.getInstance().getSessionInfo();
         if (sessionInfo == null) {
             LOG.error("closeOnlineGame[by gameSessionId] sessionInfo is NULL gameSessionId:"
                     + gameSessionId);
@@ -777,16 +812,17 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Close online game of player.
-     * @param accountInfo accountInfo of player
-     * @param sessionInfo player session info
-     * @param gameSession game session of player
+     * 
+     * @param accountInfo   accountInfo of player
+     * @param sessionInfo   player session info
+     * @param gameSession   game session of player
      * @param limitsChanged true, if limits for game session reached.
-     * @param sitOut true, if needed to make sit out for MQ games.
+     * @param sitOut        true, if needed to make sit out for MQ games.
      * @throws CommonException if any unexpected error occur
      */
     @Override
     public void closeOnlineGame(AccountInfo accountInfo, SessionInfo sessionInfo, GameSession gameSession,
-                                boolean limitsChanged, boolean sitOut) throws CommonException {
+            boolean limitsChanged, boolean sitOut) throws CommonException {
         if (accountInfo == null) {
             throw new CommonException("account not found");
         }
@@ -813,10 +849,12 @@ public class GameServer implements IGameServer, ICommonManager {
     }
 
     /**
-     * Checks whether the old game session should be closed first if trying to start another game.
+     * Checks whether the old game session should be closed first if trying to start
+     * another game.
+     * 
      * @param oldGameSession old game session
-     * @param bankInfo bank info
-     * @param newGameId new gameId from start game request
+     * @param bankInfo       bank info
+     * @param newGameId      new gameId from start game request
      * @return true if needed to close old game session
      */
     @Override
@@ -826,6 +864,7 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Determines by session whether the game is multiplayer
+     * 
      * @param gameSession game session
      * @return true, if game is multiplayer (MQ games)
      */
@@ -841,18 +880,18 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      *
-     * @param accountInfo accountInfo of player
-     * @param sessionInfo  player session info
-     * @param gameSession game session of player
-     * @param limitsChanged true, if limits for game session reached.
+     * @param accountInfo         accountInfo of player
+     * @param sessionInfo         player session info
+     * @param gameSession         game session of player
+     * @param limitsChanged       true, if limits for game session reached.
      * @param internalFinishClose not used
-     * @param bankInfo not used
-     * @param sitOut  true, if needed to make sit out for MQ games.
+     * @param bankInfo            not used
+     * @param sitOut              true, if needed to make sit out for MQ games.
      * @throws CommonException if any unexpected error occur
      */
     private void closeOnlineGame_impl(AccountInfo accountInfo, SessionInfo sessionInfo, GameSession gameSession,
-                                      boolean limitsChanged, boolean internalFinishClose,
-                                      BankInfo bankInfo, boolean sitOut) throws CommonException {
+            boolean limitsChanged, boolean internalFinishClose,
+            BankInfo bankInfo, boolean sitOut) throws CommonException {
         int bankId = accountInfo.getBankId();
         boolean walletBank = WalletProtocolFactory.getInstance().isWalletBank(bankId);
         long gameId = gameSession.getGameId();
@@ -904,11 +943,11 @@ public class GameServer implements IGameServer, ICommonManager {
                 System.currentTimeMillis() - now, accountId);
         now = System.currentTimeMillis();
         GameSessionPersister.getInstance().transferGameSession(gameSession, bankId);
-        if (sessionInfo != null) {  //sync closeGameSession
+        if (sessionInfo != null) { // sync closeGameSession
             int lastPlayedMode = sessionInfo.getLastPlayedMode();
             if (lastPlayedMode == SessionConstants.NO_MODE) {
-                lastPlayedMode = gameSession.isBonusGameSession() ? SessionConstants.BONUSMODE :
-                        realMode ? SessionConstants.REALMODE : SessionConstants.FREEMODE;
+                lastPlayedMode = gameSession.isBonusGameSession() ? SessionConstants.BONUSMODE
+                        : realMode ? SessionConstants.REALMODE : SessionConstants.FREEMODE;
             } else {
                 boolean changeModeToMixed = (lastPlayedMode == SessionConstants.REALMODE ||
                         lastPlayedMode == SessionConstants.BONUSMODE)
@@ -932,8 +971,8 @@ public class GameServer implements IGameServer, ICommonManager {
                 System.currentTimeMillis() - now, accountId);
         now = System.currentTimeMillis();
 
-        GameSessionStateListenersFactory.getInstance().getGameSessionStateListener(bankId).
-                listen(State.START, gameSession, bankId);
+        GameSessionStateListenersFactory.getInstance().getGameSessionStateListener(bankId).listen(State.START,
+                gameSession, bankId);
 
         if (gameSession.hasPromoCampaign()) {
             IPromoCampaignManager campaignManager = GameServerComponentsHelper.getPromoCampaignManager();
@@ -962,6 +1001,7 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Close FRB session (Free bonus rounds)
+     * 
      * @param accountInfo accountInfo of player
      * @param gameSession game session
      * @throws CommonException if any unexpected error occur
@@ -990,6 +1030,7 @@ public class GameServer implements IGameServer, ICommonManager {
 
     /**
      * Close Cash bonus session
+     * 
      * @param accountInfo accountInfo of player
      * @param gameSession game session
      * @throws CommonException if any unexpected error occur
@@ -1016,7 +1057,7 @@ public class GameServer implements IGameServer, ICommonManager {
             }
             BaseGameInfo gameInfo = BaseGameInfoTemplateCache.getInstance().getDefaultGameInfo(gameSession.getGameId());
             if (bonus.getStatus() == BonusStatus.RELEASED && gameInfo.getGroup() != GameGroup.ACTION_GAMES) {
-                //after release, bonus balance may be changed, if set bonus.maxWinLimit
+                // after release, bonus balance may be changed, if set bonus.maxWinLimit
                 accountInfo.incrementBalance(bonus.getBalance(), false);
             }
             BonusManager.getInstance().save(bonus);
@@ -1025,9 +1066,8 @@ public class GameServer implements IGameServer, ICommonManager {
         return endBalance;
     }
 
-
     private void closeSingleGame(AccountInfo accountInfo, GameSession gameSession,
-                                 boolean limitsChanged, SessionInfo sessionInfo) throws CommonException {
+            boolean limitsChanged, SessionInfo sessionInfo) throws CommonException {
         IGameEngine ge = GameEngineManager.getInstance().getGameEngine(
                 accountInfo.getBankId(), gameSession.getGameId());
         ge.closeGameSession(gameSession, limitsChanged, sessionInfo);

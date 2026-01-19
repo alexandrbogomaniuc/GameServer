@@ -1,0 +1,1337 @@
+var SandSpread = {
+	"frames": {
+		"Sand Spray_00056.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 53,
+				"h": 26
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 268,
+				"y": 758,
+				"w": 53,
+				"h": 26
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00057.png": {
+			"frame": {
+				"x": 56,
+				"y": 1,
+				"w": 56,
+				"h": 27
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 267,
+				"y": 755,
+				"w": 56,
+				"h": 27
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00058.png": {
+			"frame": {
+				"x": 1,
+				"y": 29,
+				"w": 59,
+				"h": 29
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 264,
+				"y": 752,
+				"w": 59,
+				"h": 29
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00059.png": {
+			"frame": {
+				"x": 114,
+				"y": 1,
+				"w": 63,
+				"h": 31
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 261,
+				"y": 749,
+				"w": 63,
+				"h": 31
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00060.png": {
+			"frame": {
+				"x": 32,
+				"y": 30,
+				"w": 67,
+				"h": 33
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 258,
+				"y": 746,
+				"w": 67,
+				"h": 33
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00061.png": {
+			"frame": {
+				"x": 32,
+				"y": 65,
+				"w": 69,
+				"h": 34
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 256,
+				"y": 744,
+				"w": 69,
+				"h": 34
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00062.png": {
+			"frame": {
+				"x": 179,
+				"y": 1,
+				"w": 71,
+				"h": 34
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 255,
+				"y": 743,
+				"w": 71,
+				"h": 34
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00063.png": {
+			"frame": {
+				"x": 103,
+				"y": 34,
+				"w": 74,
+				"h": 35
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 741,
+				"w": 74,
+				"h": 35
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00064.png": {
+			"frame": {
+				"x": 252,
+				"y": 1,
+				"w": 74,
+				"h": 35
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 741,
+				"w": 74,
+				"h": 35
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00065.png": {
+			"frame": {
+				"x": 179,
+				"y": 37,
+				"w": 74,
+				"h": 35
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 741,
+				"w": 74,
+				"h": 35
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00066.png": {
+			"frame": {
+				"x": 103,
+				"y": 71,
+				"w": 72,
+				"h": 45
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 251,
+				"y": 741,
+				"w": 72,
+				"h": 45
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00067.png": {
+			"frame": {
+				"x": 1,
+				"y": 101,
+				"w": 72,
+				"h": 43
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 742,
+				"w": 72,
+				"h": 43
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00068.png": {
+			"frame": {
+				"x": 1,
+				"y": 146,
+				"w": 73,
+				"h": 41
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 743,
+				"w": 73,
+				"h": 41
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00069.png": {
+			"frame": {
+				"x": 328,
+				"y": 1,
+				"w": 74,
+				"h": 37
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 744,
+				"w": 74,
+				"h": 37
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00070.png": {
+			"frame": {
+				"x": 216,
+				"y": 38,
+				"w": 75,
+				"h": 36
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 744,
+				"w": 75,
+				"h": 36
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00071.png": {
+			"frame": {
+				"x": 216,
+				"y": 76,
+				"w": 76,
+				"h": 36
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 742,
+				"w": 76,
+				"h": 36
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00072.png": {
+			"frame": {
+				"x": 404,
+				"y": 1,
+				"w": 78,
+				"h": 38
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 739,
+				"w": 78,
+				"h": 38
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00073.png": {
+			"frame": {
+				"x": 294,
+				"y": 40,
+				"w": 79,
+				"h": 41
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 738,
+				"w": 79,
+				"h": 41
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00074.png": {
+			"frame": {
+				"x": 294,
+				"y": 83,
+				"w": 79,
+				"h": 41
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 737,
+				"w": 79,
+				"h": 41
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00075.png": {
+			"frame": {
+				"x": 294,
+				"y": 126,
+				"w": 79,
+				"h": 38
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 738,
+				"w": 79,
+				"h": 38
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00076.png": {
+			"frame": {
+				"x": 177,
+				"y": 114,
+				"w": 78,
+				"h": 40
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 736,
+				"w": 78,
+				"h": 40
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00077.png": {
+			"frame": {
+				"x": 76,
+				"y": 118,
+				"w": 77,
+				"h": 51
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 735,
+				"w": 77,
+				"h": 51
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00078.png": {
+			"frame": {
+				"x": 76,
+				"y": 171,
+				"w": 77,
+				"h": 47
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 738,
+				"w": 77,
+				"h": 47
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00079.png": {
+			"frame": {
+				"x": 1,
+				"y": 189,
+				"w": 76,
+				"h": 44
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 739,
+				"w": 76,
+				"h": 44
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00080.png": {
+			"frame": {
+				"x": 1,
+				"y": 267,
+				"w": 76,
+				"h": 39
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 742,
+				"w": 76,
+				"h": 39
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00081.png": {
+			"frame": {
+				"x": 155,
+				"y": 156,
+				"w": 75,
+				"h": 36
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 744,
+				"w": 75,
+				"h": 36
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00082.png": {
+			"frame": {
+				"x": 232,
+				"y": 156,
+				"w": 76,
+				"h": 37
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 741,
+				"w": 76,
+				"h": 37
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00083.png": {
+			"frame": {
+				"x": 155,
+				"y": 194,
+				"w": 79,
+				"h": 40
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 251,
+				"y": 739,
+				"w": 79,
+				"h": 40
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00084.png": {
+			"frame": {
+				"x": 47,
+				"y": 234,
+				"w": 79,
+				"h": 38
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 738,
+				"w": 79,
+				"h": 38
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00085.png": {
+			"frame": {
+				"x": 47,
+				"y": 274,
+				"w": 79,
+				"h": 38
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 738,
+				"w": 79,
+				"h": 38
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00086.png": {
+			"frame": {
+				"x": 47,
+				"y": 314,
+				"w": 79,
+				"h": 39
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 737,
+				"w": 79,
+				"h": 39
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00087.png": {
+			"frame": {
+				"x": 1,
+				"y": 345,
+				"w": 78,
+				"h": 40
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 736,
+				"w": 78,
+				"h": 40
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00088.png": {
+			"frame": {
+				"x": 484,
+				"y": 1,
+				"w": 78,
+				"h": 44
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 735,
+				"w": 78,
+				"h": 44
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00089.png": {
+			"frame": {
+				"x": 375,
+				"y": 41,
+				"w": 77,
+				"h": 38
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 738,
+				"w": 77,
+				"h": 38
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00090.png": {
+			"frame": {
+				"x": 375,
+				"y": 81,
+				"w": 76,
+				"h": 35
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 740,
+				"w": 76,
+				"h": 35
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00091.png": {
+			"frame": {
+				"x": 197,
+				"y": 194,
+				"w": 75,
+				"h": 31
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 744,
+				"w": 75,
+				"h": 31
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00092.png": {
+			"frame": {
+				"x": 564,
+				"y": 1,
+				"w": 74,
+				"h": 41
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 745,
+				"w": 74,
+				"h": 41
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00093.png": {
+			"frame": {
+				"x": 640,
+				"y": 1,
+				"w": 74,
+				"h": 41
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 744,
+				"w": 74,
+				"h": 41
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00094.png": {
+			"frame": {
+				"x": 716,
+				"y": 1,
+				"w": 74,
+				"h": 43
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 741,
+				"w": 74,
+				"h": 43
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00095.png": {
+			"frame": {
+				"x": 564,
+				"y": 44,
+				"w": 62,
+				"h": 42
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 264,
+				"y": 739,
+				"w": 62,
+				"h": 42
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00096.png": {
+			"frame": {
+				"x": 628,
+				"y": 44,
+				"w": 66,
+				"h": 41
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 261,
+				"y": 739,
+				"w": 66,
+				"h": 41
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00097.png": {
+			"frame": {
+				"x": 454,
+				"y": 47,
+				"w": 70,
+				"h": 40
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 258,
+				"y": 739,
+				"w": 70,
+				"h": 40
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00098.png": {
+			"frame": {
+				"x": 454,
+				"y": 89,
+				"w": 73,
+				"h": 40
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 257,
+				"y": 738,
+				"w": 73,
+				"h": 40
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00099.png": {
+			"frame": {
+				"x": 375,
+				"y": 118,
+				"w": 76,
+				"h": 39
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 255,
+				"y": 738,
+				"w": 76,
+				"h": 39
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00100.png": {
+			"frame": {
+				"x": 792,
+				"y": 1,
+				"w": 79,
+				"h": 39
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 737,
+				"w": 79,
+				"h": 39
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00101.png": {
+			"frame": {
+				"x": 873,
+				"y": 1,
+				"w": 79,
+				"h": 39
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 737,
+				"w": 79,
+				"h": 39
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00102.png": {
+			"frame": {
+				"x": 954,
+				"y": 1,
+				"w": 78,
+				"h": 38
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 738,
+				"w": 78,
+				"h": 38
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00103.png": {
+			"frame": {
+				"x": 1034,
+				"y": 1,
+				"w": 79,
+				"h": 40
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 251,
+				"y": 736,
+				"w": 79,
+				"h": 40
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00104.png": {
+			"frame": {
+				"x": 954,
+				"y": 41,
+				"w": 78,
+				"h": 38
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 737,
+				"w": 78,
+				"h": 38
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00105.png": {
+			"frame": {
+				"x": 792,
+				"y": 43,
+				"w": 76,
+				"h": 35
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 740,
+				"w": 76,
+				"h": 35
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00106.png": {
+			"frame": {
+				"x": 870,
+				"y": 43,
+				"w": 75,
+				"h": 34
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 741,
+				"w": 75,
+				"h": 34
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00107.png": {
+			"frame": {
+				"x": 529,
+				"y": 47,
+				"w": 75,
+				"h": 29
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 746,
+				"w": 75,
+				"h": 29
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00108.png": {
+			"frame": {
+				"x": 529,
+				"y": 124,
+				"w": 75,
+				"h": 27
+			},
+			"rotated": true,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 749,
+				"w": 75,
+				"h": 27
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00109.png": {
+			"frame": {
+				"x": 453,
+				"y": 131,
+				"w": 74,
+				"h": 28
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 751,
+				"w": 74,
+				"h": 28
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"Sand Spray_00110.png": {
+			"frame": {
+				"x": 453,
+				"y": 161,
+				"w": 54,
+				"h": 27
+			},
+			"rotated": false,
+			"trimmed": true,
+			"spriteSourceSize": {
+				"x": 252,
+				"y": 752,
+				"w": 54,
+				"h": 27
+			},
+			"sourceSize": {
+				"w": 542,
+				"h": 908
+			},
+			"pivot": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		}
+	},
+	"meta": {
+		"app": "http://free-tex-packer.com/",
+		"version": "0.3.3",
+		"image": "texture.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1114,
+			"h": 424
+		},
+		"scale": 2
+	}
+}
+
+export default SandSpread;

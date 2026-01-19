@@ -1,0 +1,132 @@
+
+Spider270.png
+size: 512,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+270_abs
+  rotate: false
+  xy: 2, 6
+  size: 61, 56
+  orig: 61, 56
+  offset: 0, 0
+  index: -1
+270_head
+  rotate: false
+  xy: 368, 42
+  size: 38, 20
+  orig: 38, 20
+  offset: 0, 0
+  index: -1
+270_lf_foreleg_1
+  rotate: true
+  xy: 408, 40
+  size: 22, 32
+  orig: 22, 32
+  offset: 0, 0
+  index: -1
+270_lf_foreleg_2
+  rotate: true
+  xy: 274, 45
+  size: 17, 47
+  orig: 17, 47
+  offset: 0, 0
+  index: -1
+270_lf_foreleg_3
+  rotate: true
+  xy: 214, 47
+  size: 15, 58
+  orig: 15, 58
+  offset: 0, 0
+  index: -1
+270_lf_foreleg_4
+  rotate: true
+  xy: 132, 39
+  size: 23, 80
+  orig: 23, 80
+  offset: 0, 0
+  index: -1
+270_lf_leg_1
+  rotate: false
+  xy: 217, 2
+  size: 22, 15
+  orig: 22, 15
+  offset: 0, 0
+  index: -1
+270_lf_leg_2
+  rotate: false
+  xy: 235, 28
+  size: 20, 17
+  orig: 20, 17
+  offset: 0, 0
+  index: -1
+270_lf_leg_3
+  rotate: true
+  xy: 442, 31
+  size: 16, 20
+  orig: 16, 20
+  offset: 0, 0
+  index: -1
+270_lf_leg_4
+  rotate: true
+  xy: 480, 52
+  size: 10, 30
+  orig: 10, 30
+  offset: 0, 0
+  index: -1
+270_rt_foreleg_1
+  rotate: false
+  xy: 217, 19
+  size: 16, 26
+  orig: 16, 26
+  offset: 0, 0
+  index: -1
+270_rt_foreleg_2
+  rotate: true
+  xy: 442, 49
+  size: 13, 36
+  orig: 13, 36
+  offset: 0, 0
+  index: -1
+270_rt_foreleg_3
+  rotate: true
+  xy: 323, 41
+  size: 21, 43
+  orig: 21, 43
+  offset: 0, 0
+  index: -1
+270_rt_foreleg_4
+  rotate: true
+  xy: 65, 16
+  size: 46, 65
+  orig: 46, 65
+  offset: 0, 0
+  index: -1
+270_rt_leg_1
+  rotate: true
+  xy: 235, 19
+  size: 7, 23
+  orig: 7, 23
+  offset: 0, 0
+  index: -1
+270_rt_leg_2
+  rotate: false
+  xy: 202, 10
+  size: 13, 27
+  orig: 13, 27
+  offset: 0, 0
+  index: -1
+270_rt_leg_3
+  rotate: false
+  xy: 177, 4
+  size: 23, 33
+  orig: 23, 33
+  offset: 0, 0
+  index: -1
+270_rt_leg_4
+  rotate: true
+  xy: 132, 2
+  size: 35, 43
+  orig: 35, 43
+  offset: 0, 0
+  index: -1
