@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.handlers;
 
 import com.betsoft.casino.bots.IRoomBot;
 import com.betsoft.casino.bots.Stats;
-import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
 import com.betsoft.casino.mp.transport.SitInResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,11 +25,17 @@ public class SitInHandler implements IServerMessageHandler<SitInResponse> {
             bot.count(Stats.OTHER_PLAYER_SIT_IN);
         }
 
-        if (bot instanceof ManagedMaxBlastChampionsRoomBot) {
-            ManagedMaxBlastChampionsRoomBot maxBlastBot = (ManagedMaxBlastChampionsRoomBot)bot;
-            maxBlastBot.addPlayer(response.getNickname());
-            LOG.debug("SitInHandler::handle: botId={}, user nickname {} added to players list:{}",
-                    bot.getId(), response.getNickname(), maxBlastBot.getPlayers().keySet().toArray());
-        }
+        /*
+         * if (bot instanceof ManagedMaxBlastChampionsRoomBot) {
+         * ManagedMaxBlastChampionsRoomBot maxBlastBot =
+         * (ManagedMaxBlastChampionsRoomBot)bot;
+         * maxBlastBot.addPlayer(response.getNickname());
+         * LOG.
+         * debug("SitInHandler::handle: botId={}, user nickname {} added to players list:{}"
+         * ,
+         * bot.getId(), response.getNickname(),
+         * maxBlastBot.getPlayers().keySet().toArray());
+         * }
+         */
     }
 }

@@ -3,7 +3,7 @@ package com.betsoft.casino.bots.requests;
 import com.betsoft.casino.bots.BotState;
 import com.betsoft.casino.bots.IRoomBot;
 import com.betsoft.casino.bots.Stats;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.bots.strategies.IRoomNaturalBotStrategy;
 import com.betsoft.casino.mp.model.SpecialWeaponType;
 import com.betsoft.casino.mp.transport.Error;
@@ -31,7 +31,7 @@ public class ShotRequest extends AbstractBotRequest {
     private String shotMetric;
 
     public ShotRequest(IRoomBot bot, ISocketClient client, int weaponId, long enemyId, boolean isPaidSpecialShot,
-                       String bulletId, Integer weaponPrice, float currentX, float currentY, String shotMetric) {
+            String bulletId, Integer weaponPrice, float currentX, float currentY, String shotMetric) {
         super(bot.getLogger());
         this.bot = bot;
         this.client = client;
@@ -45,7 +45,6 @@ public class ShotRequest extends AbstractBotRequest {
         this.shotMetric = shotMetric;
     }
 
-
     @Override
     public boolean isSingleResponse() {
         return mainShotResultReceived;
@@ -54,7 +53,7 @@ public class ShotRequest extends AbstractBotRequest {
     @Override
     public void send(int rid) {
 
-        if(bot.getStrategy() instanceof IRoomNaturalBotStrategy && !StringUtils.isTrimmedEmpty(shotMetric)) {
+        if (bot.getStrategy() instanceof IRoomNaturalBotStrategy && !StringUtils.isTrimmedEmpty(shotMetric)) {
             long timeMillis = System.currentTimeMillis();
             getLogger().debug("send: shot request was made by bot: {}, shotMetric: {}, timeMillis: {}",
                     bot.getId(), shotMetric, toHumanReadableFormat(timeMillis));
@@ -76,21 +75,23 @@ public class ShotRequest extends AbstractBotRequest {
         boolean battleBot = bot.isBattleBot();
         bot.setLastReceivedServerTime(response.getDate());
 
-        if(bot.getStrategy() instanceof IRoomNaturalBotStrategy && !StringUtils.isTrimmedEmpty(shotMetric)) {
+        if (bot.getStrategy() instanceof IRoomNaturalBotStrategy && !StringUtils.isTrimmedEmpty(shotMetric)) {
             long timeMillis = System.currentTimeMillis();
             getLogger().debug("handle: shot response was received by bot: {}, shotMetric: {}, timeMillis: {}",
                     bot.getId(), shotMetric, toHumanReadableFormat(timeMillis));
             ((IRoomNaturalBotStrategy) bot.getStrategy()).updateShootResponseTimeMetric(shotMetric, timeMillis);
         }
 
-        ManagedBattleGroundRoomBot managedBattleGroundRoomBot = null;
-        if(bot instanceof ManagedBattleGroundRoomBot) {
-            managedBattleGroundRoomBot = (ManagedBattleGroundRoomBot)bot;
-        }
-
-        if(managedBattleGroundRoomBot != null) {
-            managedBattleGroundRoomBot.removeRicochetBulletByRid(rid);
-        }
+        /*
+         * ManagedBattleGroundRoomBot managedBattleGroundRoomBot = null;
+         * if(bot instanceof ManagedBattleGroundRoomBot) {
+         * managedBattleGroundRoomBot = (ManagedBattleGroundRoomBot)bot;
+         * }
+         * 
+         * if(managedBattleGroundRoomBot != null) {
+         * managedBattleGroundRoomBot.removeRicochetBulletByRid(rid);
+         * }
+         */
 
         switch (className) {
             case "Hit":
@@ -133,7 +134,8 @@ public class ShotRequest extends AbstractBotRequest {
 
                 mainShotResultReceived = miss.isLastResult() && rid != -1;
                 if (miss.getAwardedWeaponId() != -1) {
-                    bot.addWeapon(miss.getAwardedWeaponId(), SpecialWeaponType.values()[miss.getAwardedWeaponId()].getAvailableShots());
+                    bot.addWeapon(miss.getAwardedWeaponId(),
+                            SpecialWeaponType.values()[miss.getAwardedWeaponId()].getAvailableShots());
                 }
 
                 if (miss.getServerAmmo() > 0) {
@@ -169,19 +171,19 @@ public class ShotRequest extends AbstractBotRequest {
                 mainShotResultReceived = true;
                 Error errorResponse = (Error) response;
                 handleError(errorResponse);
-                if(errorResponse.getCode() == ErrorCodes.NOT_ENOUGH_BULLETS) {
-                    //next shot after buyIn
-                    //makeOtherShot = false;
+                if (errorResponse.getCode() == ErrorCodes.NOT_ENOUGH_BULLETS) {
+                    // next shot after buyIn
+                    // makeOtherShot = false;
                 }
                 break;
             default:
                 getLogger().error("ShotRequest: unexpected response type: {}", response);
                 break;
         }
-        if(makeOtherShot) {
+        if (makeOtherShot) {
             boolean needProcess = !battleBot || mainShotResultReceived;
-            if(needProcess) {
-                if(bot.getState() == BotState.WAITING_FOR_RESPONSE){
+            if (needProcess) {
+                if (bot.getState() == BotState.WAITING_FOR_RESPONSE) {
                     bot.setState(BotState.PLAYING, "ShotRequest: " + className);
                 }
                 bot.doActionWithSleep("ShotRequest[" + className + "]");
@@ -192,7 +194,7 @@ public class ShotRequest extends AbstractBotRequest {
     }
 
     private void handleError(Error error) {
-        if(weaponId != -1) {
+        if (weaponId != -1) {
             bot.setDefaultWeapon();
         }
         getLogger().debug("ShotRequest: handleError error, :{}", error);
@@ -214,7 +216,7 @@ public class ShotRequest extends AbstractBotRequest {
                 bot.setState(BotState.IDLE, "ShotRequest: handleError");
                 break;
             case ErrorCodes.WRONG_WEAPON:
-//                bot.activateWeapon(-1);
+                // bot.activateWeapon(-1);
                 break;
             default:
                 getLogger().error("ShotRequest: unhandled shot error: {}", error);

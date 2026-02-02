@@ -7,54 +7,46 @@ import { APP } from '../../../../../../../common/PIXI/src/dgphoenix/unified/cont
 
 class FreeShotsLabelView extends Sprite {
 
-	i_updateFreeShotsCount(aFreeShots_int, aIsAnimationNeeded_bl = false)
-	{
+	i_updateFreeShotsCount(aFreeShots_int, aIsAnimationNeeded_bl = false) {
 		this._updateFreeShotsCount(aFreeShots_int, aIsAnimationNeeded_bl);
 	}
 
-	i_animate()
-	{
+	i_animate() {
 		this._animate();
 	}
 
-	show()
-	{
-		if (!this.visible)
-		{
+	show() {
+		if (!this.visible) {
 			this._animate();
 		}
 		super.show();
 	}
 
-	hide()
-	{
-		if (this.visible)
-		{
+	hide() {
+		if (this.visible) {
 			this._reset();
 		}
 		super.hide();
 	}
 
-	constructor()
-	{
+	constructor() {
 		super();
 
 		this._fContainer_sprt = this.addChild(new Sprite);
 
 		this._fCurrentValue_int = undefined;
+		// this._fTextField_tf.filters = [new GlowFilter({distance: 0, outerStrength: 2, innerStrength: 0, color: 0x000000, quality: 3})];
 		this._fTextField_tf = null;
 		this._fBaseFreeShotsText_str = null;
 
 		this._init();
 	}
 
-	_init()
-	{
+	_init() {
 		this._initTextField();
 	}
 
-	_initTextField()
-	{
+	_initTextField() {
 		let lAssetDescriptor_tad = I18.getTranslatableAssetDescriptor(this._freeShotsLabelTranslatableAssetName);
 		this._fTextField_tf = this._fContainer_sprt.addChild(I18.generateNewCTranslatableAsset(this._freeShotsLabelTranslatableAssetName));
 		this._fTextField_tf.anchor.set(0.5, 0.5);
@@ -64,23 +56,19 @@ class FreeShotsLabelView extends Sprite {
 		return this._fTextField_tf;
 	}
 
-	_updateFreeShotsCount(aFreeShots_int, aIsAnimationNeeded_bl = false)
-	{
+	_updateFreeShotsCount(aFreeShots_int, aIsAnimationNeeded_bl = false) {
 		this._fTextField_tf.text = this._fBaseFreeShotsText_str.replace("/VALUE/", aFreeShots_int);
-		if (this._fCurrentValue_int !== aFreeShots_int)
-		{
+		if (this._fCurrentValue_int !== aFreeShots_int) {
 			this._fCurrentValue_int = aFreeShots_int;
 			this._animate();
 		}
 	}
 
-	get _freeShotsLabelTranslatableAssetName()
-	{
+	get _freeShotsLabelTranslatableAssetName() {
 		return "TAWeaponsSidebarIconFreeShotsLabel";
 	}
 
-	_animate()
-	{
+	_animate() {
 		this._resetSequences();
 
 		this._tryToStartGlow();
@@ -104,17 +92,13 @@ class FreeShotsLabelView extends Sprite {
 		Sequence.start(this._fContainer_sprt, lScaleSequence_arr);
 	}
 
-	_tryToStartGlow()
-	{
+	_tryToStartGlow() {
 		// [Y]: prohibit glow for low spec deviceS as it needs screnshot capture for glow rendering
-		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater && !APP.isMobile)
-		{
-			if (this._fContainer_sprt.duplicateSprite != null)
-			{
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater && !APP.isMobile) {
+			if (this._fContainer_sprt.duplicateSprite != null) {
 				this._fContainer_sprt.i_invalidateDuplicateSprite();
 			}
-			else
-			{
+			else {
 				let lGlowFilterParams_obj = {
 					distance: 1,
 					innerStrength: 2,
@@ -128,7 +112,7 @@ class FreeShotsLabelView extends Sprite {
 			this._fContainer_sprt.duplicateSprite.alpha = 1;
 			let lGlowSequence_arr = [
 				{
-					tweens: [ { prop: "alpha", to: 0.7 } ],
+					tweens: [{ prop: "alpha", to: 0.7 }],
 					duration: 2 * FRAME_RATE
 				},
 				{
@@ -140,24 +124,20 @@ class FreeShotsLabelView extends Sprite {
 		}
 	}
 
-	_reset()
-	{
+	_reset() {
 		this._resetSequences();
 
 		this._fContainer_sprt.scale.set(1);
-		if (this._fContainer_sprt.duplicateSprite)
-		{
+		if (this._fContainer_sprt.duplicateSprite) {
 			this._fContainer_sprt.duplicateSprite.alpha = 0;
 		}
 	}
 
-	_resetSequences()
-	{
+	_resetSequences() {
 		Sequence.destroy(Sequence.findByTarget(this));
 	}
 
-	destroy()
-	{
+	destroy() {
 		this._resetSequences();
 		super.destroy();
 	}

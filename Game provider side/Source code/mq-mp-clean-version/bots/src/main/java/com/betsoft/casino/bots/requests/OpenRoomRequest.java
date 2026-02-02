@@ -4,7 +4,7 @@ import com.betsoft.casino.bots.BattleGroundRoomBot;
 import com.betsoft.casino.bots.BotState;
 import com.betsoft.casino.bots.IRoomBot;
 import com.betsoft.casino.bots.Stats;
-import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
 import com.betsoft.casino.mp.model.MoneyType;
 import com.betsoft.casino.mp.model.RoomState;
 import com.betsoft.casino.mp.transport.*;
@@ -23,7 +23,7 @@ public class OpenRoomRequest extends AbstractBotRequest {
     private final long roomId;
 
     public OpenRoomRequest(IRoomBot bot, ISocketClient client, long roomId, String sessionId, int serverId,
-                           MoneyType mode, String lang) {
+            MoneyType mode, String lang) {
         super(bot.getLogger());
         this.bot = bot;
         this.client = client;
@@ -62,7 +62,7 @@ public class OpenRoomRequest extends AbstractBotRequest {
                 } else {
                     bot.setRoomInfo(roomInfoResponse);
                     bot.setState(BotState.OBSERVING, "OpenRoomRequest: GetRoomInfoResponse");
-                    if(bot.isBattleBot()){
+                    if (bot.isBattleBot()) {
                         getLogger().debug("bot: {}, set openRoomAppeared true", bot.getId());
                         BattleGroundRoomBot battleGroundRoomBot = (BattleGroundRoomBot) bot;
                         battleGroundRoomBot.setBattlegroundBuyInConfirmed(false);
@@ -79,28 +79,37 @@ public class OpenRoomRequest extends AbstractBotRequest {
                     bot.restart();
                     doNextAction = false;
                 } else {
-                    //bot.sitIn(0);
+                    // bot.sitIn(0);
 
-                    if(bot instanceof ManagedMaxBlastChampionsRoomBot) {
-                        ManagedMaxBlastChampionsRoomBot maxBlastBot = (ManagedMaxBlastChampionsRoomBot) bot;
-
-                        maxBlastBot.addPlayer(maxBlastBot.getNickname());
-                        //getLogger().debug("OpenRoomRequest: botId={}, nickname={} added to players list:{}",
-                        //        maxBlastBot.getId(), maxBlastBot.getNickname(), maxBlastBot.getPlayers().keySet().toArray());
-
-                        //add existing players to the list
-                        for (Seat seat : crashGameInfo.getSeats()) {
-                            maxBlastBot.addPlayer(seat.getNickname());
-                            //getLogger().debug("OpenRoomRequest: botId={}, nickname={} added player {} to players list",
-                            //        maxBlastBot.getId(), maxBlastBot.getNickname(), seat.getNickname());
-                        }
-
-                        getLogger().debug("OpenRoomRequest: botId={}, nickname={} has players: {}",
-                                maxBlastBot.getId(), maxBlastBot.getNickname(), maxBlastBot.getPlayers().keySet().toArray());
-
-                        long msgRoundStartTime = crashGameInfo.getDate() + crashGameInfo.getTtnx();
-                        maxBlastBot.calcCrashBetRequestTime(crashGameInfo.getDate(), msgRoundStartTime);
-                    }
+                    /*
+                     * if(bot instanceof ManagedMaxBlastChampionsRoomBot) {
+                     * ManagedMaxBlastChampionsRoomBot maxBlastBot =
+                     * (ManagedMaxBlastChampionsRoomBot) bot;
+                     * 
+                     * maxBlastBot.addPlayer(maxBlastBot.getNickname());
+                     * //getLogger().
+                     * debug("OpenRoomRequest: botId={}, nickname={} added to players list:{}",
+                     * // maxBlastBot.getId(), maxBlastBot.getNickname(),
+                     * maxBlastBot.getPlayers().keySet().toArray());
+                     * 
+                     * //add existing players to the list
+                     * for (Seat seat : crashGameInfo.getSeats()) {
+                     * maxBlastBot.addPlayer(seat.getNickname());
+                     * //getLogger().
+                     * debug("OpenRoomRequest: botId={}, nickname={} added player {} to players list"
+                     * ,
+                     * // maxBlastBot.getId(), maxBlastBot.getNickname(), seat.getNickname());
+                     * }
+                     * 
+                     * getLogger().debug("OpenRoomRequest: botId={}, nickname={} has players: {}",
+                     * maxBlastBot.getId(), maxBlastBot.getNickname(),
+                     * maxBlastBot.getPlayers().keySet().toArray());
+                     * 
+                     * long msgRoundStartTime = crashGameInfo.getDate() + crashGameInfo.getTtnx();
+                     * maxBlastBot.calcCrashBetRequestTime(crashGameInfo.getDate(),
+                     * msgRoundStartTime);
+                     * }
+                     */
 
                     bot.setRoomInfo(crashGameInfo);
                     bot.setState(BotState.OBSERVING, "OpenRoomRequest: CrashGameInfo");
@@ -128,7 +137,7 @@ public class OpenRoomRequest extends AbstractBotRequest {
                 getLogger().error("OpenRoomRequest: Unexpected response type");
                 break;
         }
-        if(doNextAction) {
+        if (doNextAction) {
             long weightTime = bot.isBattleBot() ? 0 : 1000;
             bot.doActionWithSleep(weightTime, "OpenRoomRequest[" + response.getClassName() + "]");
         }

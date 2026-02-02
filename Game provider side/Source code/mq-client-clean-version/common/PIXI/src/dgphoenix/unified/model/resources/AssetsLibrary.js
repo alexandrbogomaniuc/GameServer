@@ -40,8 +40,10 @@ class AssetsLibrary {
 		this.spriteClass = Sprite;
 
 		this.atlasTextures = new Map();
-        this.atlasKeys = new Map();
+		this.atlasKeys = new Map();
 
+
+		console.log("[AssetsLibrary] Initialized with path:", path, "scale:", scale);
 		this.addAssets(assets);
 	}
 
@@ -49,25 +51,21 @@ class AssetsLibrary {
 	 * Creates images loader queue
 	 * @return {Queue}
 	 */
-	createLoaderQueue(assets, aOptIsCommonAssets_bl=false) {
+	createLoaderQueue(assets, aOptIsCommonAssets_bl = false) {
 		let lAddedAssets_arr = this.addAssets(assets);
 
-		if (!lAddedAssets_arr || !lAddedAssets_arr.length)
-		{
+		if (!lAddedAssets_arr || !lAddedAssets_arr.length) {
 			return null;
 		}
 
 		let self = this;
 		let queue = new Queue();
-		for (let asset of lAddedAssets_arr)
-		{
-			if (asset.ready)
-			{
+		for (let asset of lAddedAssets_arr) {
+			if (asset.ready) {
 				continue;
 			}
 
-			if (aOptIsCommonAssets_bl)
-			{
+			if (aOptIsCommonAssets_bl) {
 				asset.src = APP.commonAssetsController.info.generateAssetAbsoluteURL(asset.src);
 			}
 
@@ -77,7 +75,7 @@ class AssetsLibrary {
 			queue.add(ldr);
 		}
 
-		queue.on('fileload', (e)=> {
+		queue.on('fileload', (e) => {
 			let asset = this.items.get(e.item.name);
 			// console.log("asset fileload", e.item.name, e.item.data);
 			asset.bitmap = e.item.data;
@@ -98,7 +96,7 @@ class AssetsLibrary {
 		let lAddedAssets_arr = [];
 
 		for (let item of data) {
-			item.noscale = ( typeof item.noscale == 'undefined') ? false : item.noscale;
+			item.noscale = (typeof item.noscale == 'undefined') ? false : item.noscale;
 			if (!item.noscale) item.src = '%APP.layout.bitmapScale%/' + item.src;
 			let lAsset_a = this.addAsset(item);
 
@@ -121,16 +119,13 @@ class AssetsLibrary {
 	addAsset(src, name = undefined, w = undefined, h = undefined, f = 1, l = 1) {
 		if (!src) return null;
 
-		if (src.isMobile !== undefined)
-		{
+		if (src.isMobile !== undefined) {
 			if (APP.isMobile && !src.isMobile) return null;
 			if (!APP.isMobile && src.isMobile) return null;
 		}
-		if (src.vfx !== undefined)
-		{
+		if (src.vfx !== undefined) {
 			//check vfx
-			if ( APP.profilingController.info.i_isProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE, src.vfx) )
-			{
+			if (APP.profilingController.info.i_isProfileValueLessThan(ProfilingInfo.i_VFX_LEVEL_PROFILE, src.vfx)) {
 				return null;
 			}
 		}
@@ -152,6 +147,8 @@ class AssetsLibrary {
 		src = src.replace('%APP.layout.bitmapScale%', '%PATH%/' + quality);
 		src = src.replace('%PATH%', this.path);
 
+		console.log("[AssetsLibrary] Resolved Asset URL:", src);
+
 		var asset = new Asset(name, src, w, h, f, l, createTexture);
 		asset.spriteClass = spriteClass;
 		asset.scale = quality;
@@ -167,29 +164,24 @@ class AssetsLibrary {
 		return asset;
 	}
 
-	removeAsset(keyOrAsset, destroyBaseTexture=false)
-	{
+	removeAsset(keyOrAsset, destroyBaseTexture = false) {
 		let key;
 		let asset;
-		
-		if (keyOrAsset instanceof Asset)
-		{
+
+		if (keyOrAsset instanceof Asset) {
 			key = keyOrAsset.name;
 			asset = keyOrAsset;
 		}
-		else
-		{
+		else {
 			key = keyOrAsset;
 			asset = this.items.get(key);
 		}
 
-		if (!(asset instanceof Asset))
-		{
+		if (!(asset instanceof Asset)) {
 			return;
 		}
 
-		if (!!destroyBaseTexture && !!asset.baseTexture)
-		{
+		if (!!destroyBaseTexture && !!asset.baseTexture) {
 			let baseTex = asset.baseTexture;
 			baseTex.destroy();
 		}
@@ -197,22 +189,18 @@ class AssetsLibrary {
 		asset.bitmap = null;
 		asset.baseTexture = null;
 
-		if (this.items.has(key))
-		{
+		if (this.items.has(key)) {
 			this.items.delete(key);
 		}
-		
+
 	}
 
-	destroyAssets(assetNames)
-	{
-		if (!assetNames || !assetNames.length)
-		{
+	destroyAssets(assetNames) {
+		if (!assetNames || !assetNames.length) {
 			return;
 		}
 
-		for (let i=0; i<assetNames.length; i++)
-		{
+		for (let i = 0; i < assetNames.length; i++) {
 			let assetName = assetNames[i];
 			this.removeAsset(assetName, true);
 		}
@@ -240,13 +228,11 @@ class AssetsLibrary {
 		let asset = this.items.get(name);
 
 		if (!asset || !asset.bitmap) {
-			
-			if (!asset)
-			{
+
+			if (!asset) {
 				console.log("error asset", name);
 			}
-			else
-			{
+			else {
 				console.log("error asset.bitmap", name);
 			}
 			throw new Error(`Trying to get undefined asset "${name}"`);
@@ -295,48 +281,45 @@ class AssetsLibrary {
 			Object.assign(mc, params);
 		}
 
-		        if(!mc)
-        {
-            console.log("trying to get sprite from atlas " + name);
-            this.getSpriteFromAtlas(name)
-        }
+		if (!mc) {
+			console.log("trying to get sprite from atlas " + name);
+			this.getSpriteFromAtlas(name)
+		}
 
-        return mc;
-    }
-
-	/**
-     * Get asset Sprite
-     * Ima @param {String}  name in atlas file
-     * @returns {Sprite}
-     */
-    getSpriteFromAtlas(aName_str) 
-    {
-        let key = null;
-        if(this.atlasKeys.has(aName_str)){
-            key = this.atlasKeys.get(aName_str);
-        }else{
-            const map1 = new Array([...this.atlasTextures].filter(([k, v]) => aName_str.indexOf(k)>-1));  
-            key = map1[0][0][0]; 
-            this.atlasKeys.set(aName_str, key);
-        }
-        
-        const parentTexture = this.atlasTextures.get(key);
-        const mc = new Sprite(); 
-        mc.texture =  Utils.getTexture(parentTexture, aName_str);
 		return mc;
 	}
 
-	registerAtlas(file, config)
-    {
-        
-        const keyArray = file.split("/");
-        keyArray.pop();
-        const key = keyArray.join("/");
-        if(this.atlasTextures.has(key)) return;
-        const texture = AtlasSprite.getFrames(APP.library.getAsset(file), config, "");
-        this.atlasTextures.set(key, texture);
-    }
-	
+	/**
+	 * Get asset Sprite
+	 * Ima @param {String}  name in atlas file
+	 * @returns {Sprite}
+	 */
+	getSpriteFromAtlas(aName_str) {
+		let key = null;
+		if (this.atlasKeys.has(aName_str)) {
+			key = this.atlasKeys.get(aName_str);
+		} else {
+			const map1 = new Array([...this.atlasTextures].filter(([k, v]) => aName_str.indexOf(k) > -1));
+			key = map1[0][0][0];
+			this.atlasKeys.set(aName_str, key);
+		}
+
+		const parentTexture = this.atlasTextures.get(key);
+		const mc = new Sprite();
+		mc.texture = Utils.getTexture(parentTexture, aName_str);
+		return mc;
+	}
+
+	registerAtlas(file, config) {
+
+		const keyArray = file.split("/");
+		keyArray.pop();
+		const key = keyArray.join("/");
+		if (this.atlasTextures.has(key)) return;
+		const texture = AtlasSprite.getFrames(APP.library.getAsset(file), config, "");
+		this.atlasTextures.set(key, texture);
+	}
+
 	/**
 	 * Returns bitmap with required scale and size.
 	 * @param {String} name Image name

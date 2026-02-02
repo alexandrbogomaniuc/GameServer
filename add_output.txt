@@ -1,3 +1,0 @@
-error: open("Game provider side/Source code/mq-client-clean-version/sectorx/_sources/_atlases/enemies/bulletCapsule/hit/MQ_SX_ChainreactionContainer_example/MQ_SX_ChainreactionConasdasdasdatainer_example_00062.png"): Filename too long
-error: unable to index file 'Game provider side/Source code/mq-client-clean-version/sectorx/_sources/_atlases/enemies/bulletCapsule/hit/MQ_SX_ChainreactionContainer_example/MQ_SX_ChainreactionConasdasdasdatainer_example_00062.png'
-fatal: adding files failed

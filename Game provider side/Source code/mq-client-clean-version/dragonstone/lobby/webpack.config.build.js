@@ -22,8 +22,8 @@ module.exports = {
 		]
 	},
 	externals: {
-		'pixi.js': 'PIXI',
-		'pixi.js-legacy': 'PIXI'
+		'pixi.js': 'root PIXI',
+		'pixi.js-legacy': 'root PIXI'
 	},
 	output: {
 		path: __dirname + "/dist/build",

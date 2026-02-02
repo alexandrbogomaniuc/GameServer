@@ -597,6 +597,12 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         redirect.addParameter(BaseAction.GAMESERVER_URL_ATTRIBUTE, gameServerURL);
         redirect.addParameter(BaseAction.GAMESERVERID_ATTRIBUTE, String.valueOf(serverId));
         redirect.addParameter(BaseAction.LANG_ID_ATTRIBUTE, lang);
+        String webSocketUrl = getWebSocketUrl(bankInfo, request);
+        redirect.addParameter(BaseAction.WEB_SOCKET_URL, webSocketUrl);
+        // DEBUG LOGGING
+        LOG.error("DEBUG_REDIRECT: getForward ActionRedirect Object: " + redirect.toString());
+        LOG.error("DEBUG_REDIRECT: getForward Intended WEB_SOCKET_URL value: " + webSocketUrl);
+
         if (showRedirectedUnfinishedGameMessage) {
             redirect.addParameter(BaseAction.SHOW_REDIRECTED_UNFINISHED_GAME_MESSAGE, Boolean.TRUE);
         }
@@ -812,37 +818,26 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
      */
     protected ActionRedirect getMultiPlayerForward(T actionForm, HttpServletRequest request, GameMode mode,
             BankInfo bankInfo, String sessionId, String lang, long gameId) {
-        LOG.info("getMultiPlayerForward: VERSION_8080_CHECK - checking mpLobbyUrl for bank=" + bankInfo.getId());
-        String mpLobbyUrl = gameServerConfiguration.getStringPropertySilent("mp.lobby.ws.host");
-        if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
-            mpLobbyUrl = gameServerConfiguration.getStringPropertySilent(GameServerConfigTemplate.KEY_MP_LOBBY_WS_HOST);
-        }
 
-        if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
-            // Check bankInfo only if config is missing, and sanity check it (optional, or
-            // just skip it)
-            mpLobbyUrl = bankInfo.getMpLobbyWsUrl();
-            LOG.error("DEBUG_MP: Config missing, used BankInfo mpLobbyUrl=" + mpLobbyUrl);
-        } else {
-            LOG.error("DEBUG_MP: Found config mpLobbyUrl=" + mpLobbyUrl);
-        }
+        String mpLobbyUrl = getWebSocketUrl(bankInfo, request);
 
-        // Expanded check to catch 'games' or 'games/'
-        if (StringUtils.isTrimmedEmpty(mpLobbyUrl) || mpLobbyUrl.contains("gs1-mp.local") || mpLobbyUrl.equals("local")
-                || mpLobbyUrl.toLowerCase().contains("games")) {
-            LOG.error("MP_LOBBY_WS_URL property not found or invalid for bank=" + bankInfo.getId() + " found="
-                    + mpLobbyUrl + ". Resetting to localhost:8080");
-            mpLobbyUrl = "localhost:8080";
-        }
+        // NOTE: getWebSocketUrl now returns the FULL URL including schema and
+        // /websocket/mplobby path?
+        // Wait, the previous logic constructed it. Let's look at the extracted logic
+        // below.
+        // Actually, to be safe and consistent, I will make getWebSocketUrl return the
+        // FULL URL
+        // that was previously passed as BaseAction.WEB_SOCKET_URL.
 
-        String forwardedScheme = request.getHeader("X-Forwarded-Proto");
-        String webSocketScheme = request.isSecure() || "https".equals(forwardedScheme) ? "wss" : "ws";
-        if (hostConfiguration != null && hostConfiguration.isProductionCluster()) {
-            webSocketScheme = "wss";
-        }
-        mpLobbyUrl = webSocketScheme + "://" + mpLobbyUrl;
+        // However, looking at the previous code (lines 815-849), it did a lot of work
+        // (schema, host, etc).
+        // I will reimplement that exact logic in getWebSocketUrl.
 
-        String httpScheme = request.isSecure() || "https".equals(forwardedScheme) ? "https" : "http";
+        // BUT, getMultiPlayerForward ALSO calculated the HTTP URL for the redirect
+        // (line 849).
+
+        String httpScheme = request.isSecure() || "https".equals(request.getHeader("X-Forwarded-Proto")) ? "https"
+                : "http";
         if (hostConfiguration != null && hostConfiguration.isProductionCluster()) {
             httpScheme = "https";
         }
@@ -854,7 +849,7 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
         redirect.addParameter(BaseAction.GAME_ID_ATTRIBUTE, String.valueOf(gameId));
         redirect.addParameter(BaseAction.LANG_ID_ATTRIBUTE, lang);
         redirect.addParameter(BaseAction.GAMEMODE_ATTRIBUTE, mode.getModePath());
-        redirect.addParameter(BaseAction.WEB_SOCKET_URL, mpLobbyUrl + "/websocket/mplobby");
+        redirect.addParameter(BaseAction.WEB_SOCKET_URL, mpLobbyUrl);
         redirect.addParameter(BaseAction.GAMESERVERID_ATTRIBUTE, GameServer.getInstance().getServerId());
         String cdn = request.getParameter(BaseAction.KEY_CDN);
         if (!StringUtils.isTrimmedEmpty(cdn)) {
@@ -876,9 +871,40 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
         // DEBUG LOGGING
         LOG.error("DEBUG_REDIRECT: ActionRedirect Object: " + redirect.toString());
-        LOG.error("DEBUG_REDIRECT: Intended WEB_SOCKET_URL value: " + (mpLobbyUrl + "/websocket/mplobby"));
+        LOG.error("DEBUG_REDIRECT: Intended WEB_SOCKET_URL value: " + mpLobbyUrl);
 
         return redirect;
+    }
+
+    private String getWebSocketUrl(BankInfo bankInfo, HttpServletRequest request) {
+        LOG.info("getWebSocketUrl: VERSION_SINGLE_PLAYER_FIX - checking mpLobbyUrl for bank=" + bankInfo.getId());
+        String mpLobbyUrl = gameServerConfiguration.getStringPropertySilent("mp.lobby.ws.host");
+        if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
+            mpLobbyUrl = gameServerConfiguration.getStringPropertySilent(GameServerConfigTemplate.KEY_MP_LOBBY_WS_HOST);
+        }
+
+        if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
+            mpLobbyUrl = bankInfo.getMpLobbyWsUrl();
+            LOG.error("DEBUG_MP: Config missing, used BankInfo mpLobbyUrl=" + mpLobbyUrl);
+        } else {
+            LOG.error("DEBUG_MP: Found config mpLobbyUrl=" + mpLobbyUrl);
+        }
+
+        if (StringUtils.isTrimmedEmpty(mpLobbyUrl) || mpLobbyUrl.contains("gs1-mp.local") || mpLobbyUrl.equals("local")
+                || mpLobbyUrl.toLowerCase().contains("games")
+                || mpLobbyUrl.contains("localhost:8080")) {
+            LOG.error("MP_LOBBY_WS_URL property not found or invalid for bank=" + bankInfo.getId() + " found="
+                    + mpLobbyUrl + ". Resetting to 127.0.0.1");
+            mpLobbyUrl = "127.0.0.1";
+        }
+
+        String forwardedScheme = request.getHeader("X-Forwarded-Proto");
+        String webSocketScheme = request.isSecure() || "https".equals(forwardedScheme) ? "wss" : "ws";
+        if (hostConfiguration != null && hostConfiguration.isProductionCluster()) {
+            webSocketScheme = "wss";
+        }
+
+        return webSocketScheme + "://" + mpLobbyUrl + "/websocket/mplobby";
     }
 
     protected ActionRedirect redirectTIIncompleteRoundPage(BankInfo bankInfo, long gameId, Long buyIn, String lang,

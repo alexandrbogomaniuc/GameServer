@@ -67,10 +67,10 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
         serverMessageHandlers.put(ChangeMap.class, new ChangeMapHandler(this));
         serverMessageHandlers.put(RoundFinishSoon.class, new RoundFinishSoonHandler(this));
         serverMessageHandlers.put(CrashStateInfo.class, new CrashStateInfoHandler(this));
-        serverMessageHandlers.put(CrashCancelBetResponse.class, new CrashCancelBetHandler(this));
+        // serverMessageHandlers.put(CrashCancelBetResponse.class, new CrashCancelBetHandler(this));
         serverMessageHandlers.put(CrashBetResponse.class, new CrashBetResponseHandler(this));
-        serverMessageHandlers.put(CrashAllBetsResponse.class, new CrashAllBetsHandler(this));
-        serverMessageHandlers.put(CrashAllBetsRejectedDetailedResponse.class, new CrashAllBetsRejectedDetailedHandler(this));
+        // serverMessageHandlers.put(CrashAllBetsResponse.class, new CrashAllBetsHandler(this));
+        // serverMessageHandlers.put(CrashAllBetsRejectedDetailedResponse.class, new CrashAllBetsRejectedDetailedHandler(this));
 
     }
 
@@ -386,7 +386,7 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
                                 && !astronautsDatum.isCancelled()) {
                             setState(BotState.WAITING_FOR_RESPONSE, "crashCancelBetRequest");
                             astronautsDatum.setCancelled(true);
-                            send(new CrashCancelBetRequest(astronautsDatum.getEjectBetId(), false, this, client));
+                            // send(new CrashCancelBetRequest(astronautsDatum.getEjectBetId(), false, this, client));
                             break;
                         }
                     }

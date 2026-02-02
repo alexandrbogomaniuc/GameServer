@@ -20,73 +20,65 @@ const HEADS_STATE_0 = '_head3_dead'; // only for stay state
 const STATE_HEAD_DEATH = "STATE_HEAD_DEATH";
 
 const FIRES_CONFIG = {
-	[DIRECTION.RIGHT_DOWN]:		[{x: 100, y: -35, angle: 140},		{x: 75, y: -60, angle: 140},	{x: 32, y: -2, angle: 140}],
-	[DIRECTION.RIGHT_UP]:		[{x: 30, y: -100, angle: 65},		{x: 77, y: -115, angle: 110},	{x: 100, y: -65, angle: 120}],
-	[DIRECTION.LEFT_UP]:		[{x: -60, y: -35, angle: -65},		{x: -76, y: -120, angle: -110},	{x: -100, y: -65, angle: -120}],
-	[DIRECTION.LEFT_DOWN]:		[{x: -10, y: -15, angle: -140},		{x: -55, y: -52, angle: -140},	{x: -25, y: -15, angle: -140}]
+	[DIRECTION.RIGHT_DOWN]: [{ x: 100, y: -35, angle: 140 }, { x: 75, y: -60, angle: 140 }, { x: 32, y: -2, angle: 140 }],
+	[DIRECTION.RIGHT_UP]: [{ x: 30, y: -100, angle: 65 }, { x: 77, y: -115, angle: 110 }, { x: 100, y: -65, angle: 120 }],
+	[DIRECTION.LEFT_UP]: [{ x: -60, y: -35, angle: -65 }, { x: -76, y: -120, angle: -110 }, { x: -100, y: -65, angle: -120 }],
+	[DIRECTION.LEFT_DOWN]: [{ x: -10, y: -15, angle: -140 }, { x: -55, y: -52, angle: -140 }, { x: -25, y: -15, angle: -140 }]
 }
 
-class CerberusEnemy extends SpineEnemy
-{
-	static get EVENT_ON_ENEMY_STATE_CHANGED()			{return "onCerberusHeadStateChanged";}
-	static get EVENT_CERBERUS_CALLOUT_CREATED()			{return "EVENT_CERBERUS_CALLOUT_CREATED";}
+class CerberusEnemy extends SpineEnemy {
+	static get EVENT_ON_ENEMY_STATE_CHANGED() { return "onCerberusHeadStateChanged"; }
+	static get EVENT_CERBERUS_CALLOUT_CREATED() { return "EVENT_CERBERUS_CALLOUT_CREATED"; }
 
-	constructor(params, aGameField_gf)
-	{
+	constructor(params, aGameField_gf) {
 		super(params);
 		this._fGameField_gf = aGameField_gf;
 		this._delayedHeadDeath = false;
-		this._deathFilterIntensity = {intensity: {type: 'f', value: 0}};
+		this._deathFilterIntensity = { intensity: { type: 'f', value: 0 } };
 		this._fIsCalloutAwaiting_bl = true;
 	}
 
 	//override
-	__generateIgnoreCollisionsBodyPartsNames()
-	{
+	__generateIgnoreCollisionsBodyPartsNames() {
 		return [
 			"chain"
-			];
+		];
 	}
 
 	//override
-	__generatePreciseCollisionBodyPartsNames()
-	{
+	__generatePreciseCollisionBodyPartsNames() {
 		return [
 			"tail"
-			];
+		];
 	}
 
-	_initView()
-	{
+	_initView() {
 		this._invalidateCerberusState();
 
 		super._initView();
 
 		this._prevBreathId = 0;
-		this._breathTimer = new Timer(()=>this._tryNextBreath(), 80*FRAME_RATE, true);
+		this._breathTimer = new Timer(() => this._tryNextBreath(), 80 * FRAME_RATE, true);
 	}
 
-	_tryNextBreath()
-	{
+	_tryNextBreath() {
 		if (!this.container || this._fireBreath || this.isDestroyed || this.isFrozen || !this.isWalkState || this.isDeathInProgress) return;
 		if (Math.random() > 0.25) return;
 
 		let stateId = this._stateId - 1;
 		if (stateId < 0) return;
 		let breathId = stateId ? Utils.random(0, stateId) : 0;
-		if (breathId == this._prevBreathId) breathId = this._prevBreathId+1;
+		if (breathId == this._prevBreathId) breathId = this._prevBreathId + 1;
 		if (breathId > stateId) breathId = 0;
 		this._prevBreathId = breathId;
 
 		let config = FIRES_CONFIG[this.direction][breathId];
 
-		if (this.direction == DIRECTION.RIGHT_UP || this.direction == DIRECTION.LEFT_UP)
-		{
+		if (this.direction == DIRECTION.RIGHT_UP || this.direction == DIRECTION.LEFT_UP) {
 			this._fireBreath = this.container.addChildAt(new CerberusFireBreath(), 0);
 			this._fireBreath.zIndex = -1;
 		}
-		else
-		{
+		else {
 			this._fireBreath = this.container.addChild(new CerberusFireBreath());
 		}
 		this._fireBreath.position.set(config.x, config.y);
@@ -95,139 +87,114 @@ class CerberusEnemy extends SpineEnemy
 		this._fireBreath.startAnimation();
 	}
 
-	get _stateId()
-	{
-		switch (this._fCerberusState_str)
-		{
-			case HEADS_STATE_3:	return 3;
-			case HEADS_STATE_2:	return 2;
-			case HEADS_STATE_1:	return 1;
-			default:			return 0;
+	get _stateId() {
+		switch (this._fCerberusState_str) {
+			case HEADS_STATE_3: return 3;
+			case HEADS_STATE_2: return 2;
+			case HEADS_STATE_1: return 1;
+			default: return 0;
 		}
 	}
 
-	get _headStateChange()
-	{
+	get _headStateChange() {
 		return this._fheadStateChange_bl;
 	}
 
-	_onFireFinished()
-	{
+	_onFireFinished() {
 		this._fireBreath && this._fireBreath.destroy();
 		this._fireBreath = null;
 	}
 
-	changeShadowPosition()
-	{
+	changeShadowPosition() {
 		this.shadow.position.set(0, 0);
 		this.shadow.scale.set(2);
 		this.shadow.alpha = 0.7;
 	}
 
-	getSpineSpeed()
-	{
+	getSpineSpeed() {
 		let lSpineSpeed_num = 1;
 
-		switch (this.direction)
-		{
+		switch (this.direction) {
 			default:
-			case DIRECTION.RIGHT_UP:	lSpineSpeed_num = 0.108 * this.currentTrajectorySpeed / 0.75;	break;
-			case DIRECTION.RIGHT_DOWN:	lSpineSpeed_num = 0.123 * this.currentTrajectorySpeed / 0.75;	break;
-			case DIRECTION.LEFT_DOWN:	lSpineSpeed_num = 0.12 * this.currentTrajectorySpeed / 0.75;	break;
-			case DIRECTION.LEFT_UP:		lSpineSpeed_num = 0.11 * this.currentTrajectorySpeed / 0.75;	break;
+			case DIRECTION.RIGHT_UP: lSpineSpeed_num = 0.108 * this.currentTrajectorySpeed / 0.75; break;
+			case DIRECTION.RIGHT_DOWN: lSpineSpeed_num = 0.123 * this.currentTrajectorySpeed / 0.75; break;
+			case DIRECTION.LEFT_DOWN: lSpineSpeed_num = 0.12 * this.currentTrajectorySpeed / 0.75; break;
+			case DIRECTION.LEFT_UP: lSpineSpeed_num = 0.11 * this.currentTrajectorySpeed / 0.75; break;
 		}
 
-		if (this.isImpactState)
-		{
+		if (this.isImpactState) {
 			lSpineSpeed_num *= 1.8;
 		}
 
 		return lSpineSpeed_num;
 	}
 
-	_getHitRectWidth()
-	{
-		return 170*0.75;
+	_getHitRectWidth() {
+		return 170 * 0.75;
 	}
 
-	_getHitRectHeight()
-	{
-		return 160*0.75;
+	_getHitRectHeight() {
+		return 160 * 0.75;
 	}
 
-	getLocalCenterOffset()
-	{
-		return {x: 0, y: -60*0.75};
+	getLocalCenterOffset() {
+		return { x: 0, y: -60 * 0.75 };
 	}
 
-	setImpact(aImpactPosition_p)
-	{
+	setImpact(aImpactPosition_p) {
 		this._invalidateCerberusState();
 
 		super.setImpact(aImpactPosition_p);
 	}
 
-	_onEnergyUpdated(data)
-	{
+	_onEnergyUpdated(data) {
 		super._onEnergyUpdated(data);
 
 		this._invalidateCerberusState();
 	}
 
-	_invalidateCerberusState()
-	{
+	_invalidateCerberusState() {
 		let prevState = this._fCerberusState_str;
 
-		if (this._fEnergy_num == 1)
-		{
+		if (this._fEnergy_num == 1) {
 			this._fCerberusState_str = HEADS_STATE_1;
 		}
-		else if (this._fEnergy_num == 2)
-		{
+		else if (this._fEnergy_num == 2) {
 			this._fCerberusState_str = HEADS_STATE_2;
 		}
-		else
-		{
+		else {
 			this._fCerberusState_str = HEADS_STATE_3;
 		}
 
-		if (prevState !== this._fCerberusState_str)
-		{
+		if (prevState !== this._fCerberusState_str) {
 			this._onCerberusStateChanged(prevState, this._fCerberusState_str);
 			this._fheadStateChange_bl = true;
 		}
-		else
-		{
+		else {
 			this._fheadStateChange_bl = false;
 		}
 	}
 
-	get cerberusState()
-	{
+	get cerberusState() {
 		return this._fCerberusState_str;
 	}
 
-	get _isImpactAllowed()
-	{
+	get _isImpactAllowed() {
 		return super._isImpactAllowed
-				&& this.state !== STATE_HEAD_DEATH;
+			&& this.state !== STATE_HEAD_DEATH;
 	}
 
-	changeTextures(type, noChangeFrame, switchView, checkBackDirection)
-	{
+	changeTextures(type, noChangeFrame, switchView, checkBackDirection) {
 		super.changeTextures(type, noChangeFrame, switchView, checkBackDirection);
 	}
 
-	changeSpineView(type, noChangeFrame)
-	{
+	changeSpineView(type, noChangeFrame) {
 		super.changeSpineView(type, noChangeFrame);
 
-		if (type === STATE_HEAD_DEATH)
-		{
+		if (type === STATE_HEAD_DEATH) {
 			this.spineView.view.state.onComplete = (() => {
 				this._resumeWalking();
-				if (this.state !== STATE_STAY && !this.isFrozen)
-				{
+				if (this.state !== STATE_STAY && !this.isFrozen) {
 					this.setWalk();
 				}
 			});
@@ -235,81 +202,67 @@ class CerberusEnemy extends SpineEnemy
 		}
 	}
 
-	_calculateAnimationName(stateType)
-	{
-		if (stateType === STATE_HEAD_DEATH)
-		{
-			switch (this.direction)
-			{
-				case DIRECTION.LEFT_UP:		return '270' + this.cerberusState;
-				case DIRECTION.LEFT_DOWN:	return '0' + this.cerberusState;
-				case DIRECTION.RIGHT_UP:	return '180' + this.cerberusState;
-				case DIRECTION.RIGHT_DOWN:	return '90' + this.cerberusState;
+	_calculateAnimationName(stateType) {
+		if (stateType === STATE_HEAD_DEATH) {
+			switch (this.direction) {
+				case DIRECTION.LEFT_UP: return '270' + this.cerberusState;
+				case DIRECTION.LEFT_DOWN: return '0' + this.cerberusState;
+				case DIRECTION.RIGHT_UP: return '180' + this.cerberusState;
+				case DIRECTION.RIGHT_DOWN: return '90' + this.cerberusState;
 			}
 		}
 
 		return super._calculateAnimationName(stateType) + this.cerberusState;
 	}
 
-	_onCerberusStateChanged(prevState, newState)
-	{
-		if (this.isWalkState)
-		{
-			if (this.cerberusState === HEADS_STATE_2 || this.cerberusState === HEADS_STATE_1)
-			{
+	_onCerberusStateChanged(prevState, newState) {
+		if (this.isWalkState) {
+			if (this.cerberusState === HEADS_STATE_2 || this.cerberusState === HEADS_STATE_1) {
 				this.setHeadDeathAnimation();
 			}
-			else if (!this._isImpactAllowed)
-			{
+			else if (!this._isImpactAllowed) {
 				this.setWalk();
 			}
 		}
-		else if (this.isStayState)
-		{
-			if (!this.isFrozen && (this.cerberusState === HEADS_STATE_2 || this.cerberusState === HEADS_STATE_1))
-			{
+		else if (this.isStayState) {
+			if (!this.isFrozen && (this.cerberusState === HEADS_STATE_2 || this.cerberusState === HEADS_STATE_1)) {
 				this.setHeadDeathAnimation();
 			}
-			else if (this.isFrozen)
-			{
+			else if (this.isFrozen) {
 				this._delayedHeadDeath = true;
 			}
-			else if (!this._isImpactAllowed)
-			{
+			else if (!this._isImpactAllowed) {
 				this.setStay();
 			}
 		}
 
-		this.emit(CerberusEnemy.EVENT_ON_ENEMY_STATE_CHANGED, {prevState: prevState, newState: newState});
+		this.emit(CerberusEnemy.EVENT_ON_ENEMY_STATE_CHANGED, { prevState: prevState, newState: newState });
 	}
 
 	//override
-	get isBodyOutOfScreen()
-	{
+	get isBodyOutOfScreen() {
 		let lCurrentGlobalFootPointPos = this.getCurrentGlobalFootPointPosition();
 		const lX_Offset_num = 195;
 		const lY_Offset_num = 150;
 
-		if (!this.prevTurnPoint || !this.nextTurnPoint) 
-		{
+		if (!this.prevTurnPoint || !this.nextTurnPoint) {
 			return true;
 		}
 
-		if (	(	this.prevTurnPoint.x < this.nextTurnPoint.x 
-					&& (lCurrentGlobalFootPointPos.x + lX_Offset_num) >= 0 
-					&& (this.prevTurnPoint.y < this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y + lY_Offset_num) >= 0
-						|| this.prevTurnPoint.y > this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y - lY_Offset_num) <= 540 + lY_Offset_num
-						)
-				)
-				|| 
-				(	this.prevTurnPoint.x > this.nextTurnPoint.x 
-					&& (lCurrentGlobalFootPointPos.x - lX_Offset_num) <= 960
-					&& (this.prevTurnPoint.y < this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y + lY_Offset_num) >= 0
-						|| this.prevTurnPoint.y > this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y - lY_Offset_num) <= 540 + lY_Offset_num
-						)
+		if ((this.prevTurnPoint.x < this.nextTurnPoint.x
+			&& (lCurrentGlobalFootPointPos.x + lX_Offset_num) >= 0
+			&& (this.prevTurnPoint.y < this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y + lY_Offset_num) >= 0
+				|| this.prevTurnPoint.y > this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y - lY_Offset_num) <= 540 + lY_Offset_num
+			)
+		)
+			||
+			(this.prevTurnPoint.x > this.nextTurnPoint.x
+				&& (lCurrentGlobalFootPointPos.x - lX_Offset_num) <= 960
+				&& (this.prevTurnPoint.y < this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y + lY_Offset_num) >= 0
+					|| this.prevTurnPoint.y > this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y - lY_Offset_num) <= 540 + lY_Offset_num
 				)
 			)
-		{
+		) {
 			return false;
 		}
 
@@ -317,53 +270,47 @@ class CerberusEnemy extends SpineEnemy
 	}
 
 	//override
-	tick()
-	{
+	tick() {
 		super.tick();
 
-		if (this._fIsCalloutAwaiting_bl)
-		{
-			if(!this.isBodyOutOfScreen)
-			{
+		if (this._fIsCalloutAwaiting_bl) {
+			if (!this.isBodyOutOfScreen) {
 				this._fIsCalloutAwaiting_bl = false;
 				this.emit(CerberusEnemy.EVENT_CERBERUS_CALLOUT_CREATED);
 			}
 		}
 	}
 
-	setHeadDeathAnimation()
-	{
+	setHeadDeathAnimation() {
 		this._delayedHeadDeath = false;
 
 		this.changeTextures(STATE_HEAD_DEATH);
 	}
 
-	get _customSpineTransitionsDescr()
-	{
+	get _customSpineTransitionsDescr() {
 		return super._customSpineTransitionsDescr.concat([
-			{from: "<PREFIX>walk" + HEADS_STATE_3, to: "<PREFIX>walk" + HEADS_STATE_2, duration: 0.1},
-			{from: "<PREFIX>walk" + HEADS_STATE_3, to: "<PREFIX>" + HEADS_STATE_2, duration: 0.1},
-			{from: "<PREFIX>" + HEADS_STATE_3, to: "<PREFIX>walk" + HEADS_STATE_2, duration: 0.1},
-			{from: "<PREFIX>walk" + HEADS_STATE_2, to: "<PREFIX>walk" + HEADS_STATE_1, duration: 0.1},
-			{from: "<PREFIX>walk" + HEADS_STATE_2, to: "<PREFIX>" + HEADS_STATE_1, duration: 0.1},
-			{from: "<PREFIX>" + HEADS_STATE_2, to: "<PREFIX>walk" + HEADS_STATE_1, duration: 0.1},
-			{from: "<PREFIX>walk" + HEADS_STATE_3, to: "<PREFIX>hit" + HEADS_STATE_3, duration: 0.1},
-			{from: "<PREFIX>hit" + HEADS_STATE_3, to: "<PREFIX>walk" + HEADS_STATE_3, duration: 0.1},
-			{from: "<PREFIX>hit" + HEADS_STATE_3, to: "<PREFIX>" + HEADS_STATE_2, duration: 0.1},
-			{from: "<PREFIX>walk" + HEADS_STATE_2, to: "<PREFIX>hit" + HEADS_STATE_2, duration: 0.1},
-			{from: "<PREFIX>hit" + HEADS_STATE_2, to: "<PREFIX>walk" + HEADS_STATE_2, duration: 0.1},
-			{from: "<PREFIX>hit" + HEADS_STATE_2, to: "<PREFIX>" + HEADS_STATE_1, duration: 0.1},
-			{from: "<PREFIX>walk" + HEADS_STATE_1, to: "<PREFIX>hit" + HEADS_STATE_1, duration: 0.1},
-			{from: "<PREFIX>hit" + HEADS_STATE_1, to: "<PREFIX>walk" + HEADS_STATE_1, duration: 0.1}
+			{ from: "<PREFIX>walk" + HEADS_STATE_3, to: "<PREFIX>walk" + HEADS_STATE_2, duration: 0.1 },
+			{ from: "<PREFIX>walk" + HEADS_STATE_3, to: "<PREFIX>" + HEADS_STATE_2, duration: 0.1 },
+			{ from: "<PREFIX>" + HEADS_STATE_3, to: "<PREFIX>walk" + HEADS_STATE_2, duration: 0.1 },
+			{ from: "<PREFIX>walk" + HEADS_STATE_2, to: "<PREFIX>walk" + HEADS_STATE_1, duration: 0.1 },
+			{ from: "<PREFIX>walk" + HEADS_STATE_2, to: "<PREFIX>" + HEADS_STATE_1, duration: 0.1 },
+			{ from: "<PREFIX>" + HEADS_STATE_2, to: "<PREFIX>walk" + HEADS_STATE_1, duration: 0.1 },
+			{ from: "<PREFIX>walk" + HEADS_STATE_3, to: "<PREFIX>hit" + HEADS_STATE_3, duration: 0.1 },
+			{ from: "<PREFIX>hit" + HEADS_STATE_3, to: "<PREFIX>walk" + HEADS_STATE_3, duration: 0.1 },
+			{ from: "<PREFIX>hit" + HEADS_STATE_3, to: "<PREFIX>" + HEADS_STATE_2, duration: 0.1 },
+			{ from: "<PREFIX>walk" + HEADS_STATE_2, to: "<PREFIX>hit" + HEADS_STATE_2, duration: 0.1 },
+			{ from: "<PREFIX>hit" + HEADS_STATE_2, to: "<PREFIX>walk" + HEADS_STATE_2, duration: 0.1 },
+			{ from: "<PREFIX>hit" + HEADS_STATE_2, to: "<PREFIX>" + HEADS_STATE_1, duration: 0.1 },
+			{ from: "<PREFIX>walk" + HEADS_STATE_1, to: "<PREFIX>hit" + HEADS_STATE_1, duration: 0.1 },
+			{ from: "<PREFIX>hit" + HEADS_STATE_1, to: "<PREFIX>walk" + HEADS_STATE_1, duration: 0.1 }
 		]);
 	}
 
-	setDeathFramesAnimation(aIsInstantKill_bl = false)
-	{
+	setDeathFramesAnimation(aIsInstantKill_bl = false) {
 		this._deathInProgress = true;
 
 		this.deathFxAnimation = this.container.addChild(this._generateDeathFxAnimation());
-		this.deathFxAnimation.position.set(0, -this._getHitRectHeight()/2);
+		this.deathFxAnimation.position.set(0, -this._getHitRectHeight() / 2);
 		this.deathFxAnimation.scale.set(this._deathFxScale);
 		this.deathFxAnimation.gameFieldPosition = APP.gameScreen.gameField.getEnemyPosition(this.id);
 		this.deathFxAnimation.additionalZIndex = this.zIndex + 1; //+1 because his weapon must be over the sand
@@ -371,21 +318,18 @@ class CerberusEnemy extends SpineEnemy
 		this.deathFxAnimation.once(DeathFxAnimation.EVENT_ANIMATION_COMPLETED, (e) => {
 			this.onDeathFxAnimationCompleted();
 		});
-		
+
 		this.deathFxAnimation.zIndex = 20;
 
-		if (aIsInstantKill_bl)
-		{
-			if (this.spineView)
-			{
+		if (aIsInstantKill_bl) {
+			if (this.spineView) {
 				this.spineView.destroy();
 				this.spineView = null;
 				this._fCurSpineName_str = undefined;
 			}
 			this.deathFxAnimation.i_startOutroAnimation();
 		}
-		else
-		{
+		else {
 			this.spineView.stop();
 			this._startTriggeringAnimation(BigEnemyDeathFxAnimation.TRIGGERING_DURATION);
 			this.deathFxAnimation.on(BigEnemyDeathFxAnimation.ON_ENEMY_MUST_BE_HIDDEN, this._hideEnemy.bind(this));
@@ -396,29 +340,27 @@ class CerberusEnemy extends SpineEnemy
 		lEnemyPosition_pt.x += this.getCurrentFootPointPosition().x;
 		lEnemyPosition_pt.y += this.getCurrentFootPointPosition().y;
 		APP.soundsController.play('mq_dragonstone_cerberus_death');
-		this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED, {position: lEnemyPosition_pt, angle: this.angle});
+		this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED, { position: lEnemyPosition_pt, angle: this.angle });
 	}
 
-	_hideEnemy()
-	{
+	_hideEnemy() {
 		this.shadow.addTween('alpha', 0, BigEnemyDeathFxAnimation.HIDIING_DURATION).play();
 		this.spineView.addTween('alpha', 0, BigEnemyDeathFxAnimation.HIDIING_DURATION, null, this._validatezIndexOnDeath.bind(this)).play();
 		this.emit(Enemy.EVENT_ON_ENEMY_IS_HIDDEN);
 	}
 
-	_startTriggeringAnimation(aDuration_num)
-	{
-		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
-		{
+	_startTriggeringAnimation(aDuration_num) {
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater) {
 			let lPos_obj = this._getBlowingFilterPosition();
-			let lBlowFilter_bpf = new BulgePinchFilter({x: lPos_obj.x, y: lPos_obj.y}, 150, 0);
+			// [Fix] Disabling BulgePinchFilter
+			let lBlowFilter_bpf = null; // new BulgePinchFilter({x: lPos_obj.x, y: lPos_obj.y}, 150, 0);
 			this.container.filters = [lBlowFilter_bpf];
 			let lBlowing_seq = [
-				{	tweens: [{prop: 'uniforms.strength', to: 0.5}],
-					duration: aDuration_num, 
-					onfinish: ()=>{
-						if (this.container)
-						{
+				{
+					tweens: [{ prop: 'uniforms.strength', to: 0.5 }],
+					duration: aDuration_num,
+					onfinish: () => {
+						if (this.container) {
 							this.container.filters = null;
 						}
 						Sequence.destroy(Sequence.findByTarget(lBlowFilter_bpf));
@@ -430,7 +372,7 @@ class CerberusEnemy extends SpineEnemy
 
 		this._hitHighlightInProgress = true;
 		this._hitHighlightFilterIntensity.intensity.value = 0;
-		let lHighlight_seq = [{tweens: [{prop: "intensity.value", to: 0.1}], duration: aDuration_num}];
+		let lHighlight_seq = [{ tweens: [{ prop: "intensity.value", to: 0.1 }], duration: aDuration_num }];
 		Sequence.start(this._hitHighlightFilterIntensity, lHighlight_seq);
 
 		let lTriggering_seq = [
@@ -449,49 +391,42 @@ class CerberusEnemy extends SpineEnemy
 			{ tweens: [{ prop: 'position.x', to: 10 }, { prop: 'position.y', to: -5 }] },
 			{ tweens: [{ prop: 'position.x', to: -2 }, { prop: 'position.y', to: 4 }] },
 			{ tweens: [{ prop: 'position.x', to: -10 }, { prop: 'position.y', to: 8 }] },
-			{ tweens: [{ prop: 'position.x', to: 3 }, { prop: 'position.y', to: -4 }], 
-				onfinish: ()=>
-				{
+			{
+				tweens: [{ prop: 'position.x', to: 3 }, { prop: 'position.y', to: -4 }],
+				onfinish: () => {
 					this.spineView && Sequence.destroy(Sequence.findByTarget(this.spineView));
 				}
 			}
 		];
 
 		let lTweensAmount_num = lTriggering_seq.length;
-		for (let i = 0; i < lTweensAmount_num; i++)
-		{
-			lTriggering_seq[i].duration = aDuration_num/lTweensAmount_num;
+		for (let i = 0; i < lTweensAmount_num; i++) {
+			lTriggering_seq[i].duration = aDuration_num / lTweensAmount_num;
 		}
 
 		Sequence.start(this.spineView, lTriggering_seq);
 	}
 
-	_getBlowingFilterPosition()
-	{
-		return {x: 0.5, y: 0.5};
+	_getBlowingFilterPosition() {
+		return { x: 0.5, y: 0.5 };
 	}
 
 	// override
-	_resumeAfterUnfreeze()
-	{
+	_resumeAfterUnfreeze() {
 		super._resumeAfterUnfreeze();
 
-		if (this._delayedHeadDeath)
-		{
+		if (this._delayedHeadDeath) {
 			this.setHeadDeathAnimation();
 		}
 	}
 
 	// override
-	_generateDeathFxAnimation()
-	{
+	_generateDeathFxAnimation() {
 		return new CerberusDeathFxAnimation();
 	}
 
-	destroy(purely)
-	{
-		if (this._fireBreath)
-		{
+	destroy(purely) {
+		if (this._fireBreath) {
 			this._fireBreath.off(CerberusFireBreath.EVENT_ON_ANIMATION_FINISHED, this._onFireFinished, this);
 			this._fireBreath.destroy();
 		}
@@ -510,24 +445,20 @@ class CerberusEnemy extends SpineEnemy
 	}
 
 	//override
-	_restoreStateBeforeFreeze()
-	{
-		if(this._fIsDeathActivated_bl)
-		{
+	_restoreStateBeforeFreeze() {
+		if (this._fIsDeathActivated_bl) {
 			return;
 		}
 
-		if (this._curAnimationState === STATE_HEAD_DEATH && !!this._fPauseWalkingTimeMarker_num)
-		{
+		if (this._curAnimationState === STATE_HEAD_DEATH && !!this._fPauseWalkingTimeMarker_num) {
 			this._resumeWalking();
 		}
-		
+
 		this.setWalk();
 	}
 
 	//override
-	__onSpawn()
-	{
+	__onSpawn() {
 		this._fGameField_gf.onSomeEnemySpawnSoundRequired(this.typeId);
 	}
 }

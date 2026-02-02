@@ -3,7 +3,7 @@ package com.betsoft.casino.bots.requests;
 import com.betsoft.casino.bots.BattleGroundRoomBot;
 import com.betsoft.casino.bots.BotState;
 import com.betsoft.casino.bots.IRoomBot;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.mp.transport.*;
 import com.betsoft.casino.mp.transport.Error;
 import com.betsoft.casino.mp.utils.ErrorCodes;
@@ -29,7 +29,8 @@ public class ConfirmBattlegroundBuyInRequest extends AbstractBotRequest {
 
     @Override
     public void send(int rid) {
-        ConfirmBattlegroundBuyIn confirmBattlegroundBuyIn = new ConfirmBattlegroundBuyIn(System.currentTimeMillis(), rid);
+        ConfirmBattlegroundBuyIn confirmBattlegroundBuyIn = new ConfirmBattlegroundBuyIn(System.currentTimeMillis(),
+                rid);
         client.sendMessage(confirmBattlegroundBuyIn);
     }
 
@@ -41,27 +42,33 @@ public class ConfirmBattlegroundBuyInRequest extends AbstractBotRequest {
         switch (response.getClassName()) {
             case "Ok":
                 battleGroundRoomBot.setBattlegroundBuyInConfirmed(true);
-                bot.setState(OBSERVING,"ConfirmBattlegroundBuyInRequest handle");
+                bot.setState(OBSERVING, "ConfirmBattlegroundBuyInRequest handle");
                 break;
             case "Error":
 
                 Error errorResponse = (Error) response;
                 int code = errorResponse.getCode();
 
-                if(!battleGroundRoomBot.isMqbBattleBot() && code == ErrorCodes.FOUND_PENDING_OPERATION){
+                // if(!battleGroundRoomBot.isMqbBattleBot() && code ==
+                // ErrorCodes.FOUND_PENDING_OPERATION){
+                if (code == ErrorCodes.FOUND_PENDING_OPERATION) {
 
-                    getLogger().debug("ConfirmBattlegroundBuyInRequest failed, try send CheckPendingOperationStatusRequest: {}", response);
+                    getLogger().debug(
+                            "ConfirmBattlegroundBuyInRequest failed, try send CheckPendingOperationStatusRequest: {}",
+                            response);
                     bot.sentCheckPendingStatus(0);
 
                 } else {
 
                     getLogger().error("ConfirmBattlegroundBuyInRequest failed: {}", response);
 
-                    if (code == ErrorCodes.INVALID_SESSION) {
-                        if (bot instanceof ManagedBattleGroundRoomBot) {
-                            ((ManagedBattleGroundRoomBot) bot).markExpiredAndStop();
-                        }
-                    }
+                    /*
+                     * if (code == ErrorCodes.INVALID_SESSION) {
+                     * if (bot instanceof ManagedBattleGroundRoomBot) {
+                     * ((ManagedBattleGroundRoomBot) bot).markExpiredAndStop();
+                     * }
+                     * }
+                     */
                 }
                 break;
             default:

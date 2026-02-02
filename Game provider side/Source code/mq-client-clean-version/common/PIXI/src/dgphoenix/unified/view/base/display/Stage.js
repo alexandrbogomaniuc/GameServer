@@ -9,19 +9,19 @@ import { IPAD } from '../../layout/features';
  */
 class Stage extends EventDispatcher {
 
-	static get EVENT_ON_WEBGL_CONTEXT_LOST()		{return "EVENT_ON_WEBGL_CONTEXT_LOST";}
-	static get EVENT_ON_WEBGL_CONTEXT_RESTORED()	{return "EVENT_ON_WEBGL_CONTEXT_RESTORED";}
+	static get EVENT_ON_WEBGL_CONTEXT_LOST() { return "EVENT_ON_WEBGL_CONTEXT_LOST"; }
+	static get EVENT_ON_WEBGL_CONTEXT_RESTORED() { return "EVENT_ON_WEBGL_CONTEXT_RESTORED"; }
 
-	constructor(layout, config, scale=1, type=0, wrapperName) {
+	constructor(layout, config, scale = 1, type = 0, wrapperName) {
 		super();
 
 		this.wrapperName = wrapperName;
-		
+
 		this.config = Utils.clone(config);
 		this.layout = layout;
 
 		this.screen = layout.addScreen(wrapperName);
-		
+
 		var options = {
 			view: this.screen.canvas,
 			resolution: scale,
@@ -33,9 +33,8 @@ class Stage extends EventDispatcher {
 
 		this.renderer = PIXI.autoDetectRenderer(options);
 		// console.log("** new Stage renderer type:", this.renderer.type, "; name:", wrapperName);
-		
-		if (this.renderer.type == PIXI.RENDERER_TYPE.WEBGL)
-		{
+
+		if (this.renderer.type == PIXI.RENDERER_TYPE.WEBGL) {
 			let cvs = this.renderer.gl.canvas;
 			cvs.addEventListener("webglcontextlost", this._handleContextLost.bind(this), false);
 			cvs.addEventListener("webglcontextrestored", this._handleContextRestored.bind(this), false);
@@ -49,7 +48,7 @@ class Stage extends EventDispatcher {
 
 		this.view = new Sprite();
 		this.view.stageRenderer = this.renderer;
-		
+
 		this.viewAlign = {
 			x: ALIGN.CENTER,
 			y: VALIGN.MIDDLE
@@ -72,44 +71,39 @@ class Stage extends EventDispatcher {
 	// }
 	//...DEBUG
 
-	_handleContextLost(event)
-	{
+	_handleContextLost(event) {
 		console.log("[Stage] _handleContextLost");
 		this.emit(Stage.EVENT_ON_WEBGL_CONTEXT_LOST);
 	}
 
-	_handleContextRestored(event)
-	{
+	_handleContextRestored(event) {
 		console.log("[Stage] _handleContextRestored");
 		this.emit(Stage.EVENT_ON_WEBGL_CONTEXT_RESTORED);
 	}
 
-	get isWebglContextLost()
-	{
-		return this.renderer 
-				&& this.renderer.type == PIXI.RENDERER_TYPE.WEBGL
-				&& this.renderer.gl 
-				&& this.renderer.gl.isContextLost()
+	get isWebglContextLost() {
+		return this.renderer
+			&& this.renderer.type == PIXI.RENDERER_TYPE.WEBGL
+			&& this.renderer.gl
+			&& this.renderer.gl.isContextLost()
 	}
 
-	get currentScale()
-	{
+	get currentScale() {
 		return this._fCurrentScale_num;
 	}
 
-	_onFitLayout(e)
-	{
+	_onFitLayout(e) {
 		let newWidht = e.screenWidth;
 		let newHeight = e.screenHeight;
-		if(IPAD){
-			newWidht = newWidht *3;
-			newHeight = newHeight *3;
+		if (IPAD) {
+			newWidht = newWidht * 3;
+			newHeight = newHeight * 3;
 		}
 		e.screenHeight = newHeight;
 		e.screenWidth = newWidht;
 		this.emit('resize', e);
 		this._fCurrentScale_num = e.scale;
-		if(this.layout.autoFill) {
+		if (this.layout.autoFill) {
 			this.resize(newWidht, newHeight);
 		}
 	}
@@ -119,7 +113,7 @@ class Stage extends EventDispatcher {
 	 * @param {Number} align 
 	 * @param {Number} valign 
 	 */
-	alignView(align=this.viewAlign.x, valign=this.viewAlign.y) {
+	alignView(align = this.viewAlign.x, valign = this.viewAlign.y) {
 
 		this.viewAlign.x = align;
 		this.viewAlign.y = valign;
@@ -128,11 +122,11 @@ class Stage extends EventDispatcher {
 		let sw = this.screen.canvas.width / this.layout.bitmapScale;
 		let sh = this.screen.canvas.height / this.layout.bitmapScale;
 
-		if(align == ALIGN.CENTER) x = sw/2;
-		if(align == ALIGN.RIGHT) x = sw;
+		if (align == ALIGN.CENTER) x = sw / 2;
+		if (align == ALIGN.RIGHT) x = sw;
 
-		if(valign == VALIGN.MIDDLE) y = sh/2;
-		if(valign == VALIGN.BOTTOM) y = sh;
+		if (valign == VALIGN.MIDDLE) y = sh / 2;
+		if (valign == VALIGN.BOTTOM) y = sh;
 
 		this.view.position.set(x, y);
 	}
@@ -159,7 +153,7 @@ class Stage extends EventDispatcher {
 	 * @param {number} delta 
 	 */
 	tick(delta) {
-		if(!this.autoRender) return;
+		if (!this.autoRender) return;
 
 		this.render();
 	}
@@ -167,12 +161,11 @@ class Stage extends EventDispatcher {
 	/**
 	 * Destroy stage instance.
 	 */
-	destroy()
-	{
+	destroy() {
 		this.wrapperName = undefined;
 
 		this.config = null;
-		
+
 		this.layout.removeScreen(this.screen);
 		this.screen = null;
 

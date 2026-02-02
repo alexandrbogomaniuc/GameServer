@@ -4,7 +4,7 @@ import com.betsoft.casino.bots.handlers.*;
 import com.betsoft.casino.bots.model.RicochetBullet;
 import com.betsoft.casino.bots.model.Turret;
 import com.betsoft.casino.bots.model.TurretPositions;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.bots.requests.*;
 import com.betsoft.casino.bots.strategies.IRoomBotStrategy;
 import com.betsoft.casino.mp.model.*;
@@ -31,7 +31,7 @@ public class RoomBot extends AbstractBot implements IRoomBot {
     public static final int SCREEN_WIDTH = 960;
     public static final int SCREEN_HEIGHT = 540;
 
-    //double CROSSHAIR_POSITION_ACCURACY = 0.01;
+    // double CROSSHAIR_POSITION_ACCURACY = 0.01;
     public static final int SCREEN_PADDING_LEFT = 19;
     public static final int SCREEN_PADDING_RIGHT = 20;
     public static final int SCREEN_PADDING_BOTTOM = 2 * 35;
@@ -41,7 +41,6 @@ public class RoomBot extends AbstractBot implements IRoomBot {
     public static final int SCREEN_ADJUSTED_RIGHT = SCREEN_WIDTH - SCREEN_PADDING_RIGHT;
     public static final int SCREEN_ADJUSTED_TOP = 0 + SCREEN_PADDING_TOP;
     public static final int SCREEN_ADJUSTED_BOTTOM = SCREEN_HEIGHT - SCREEN_PADDING_BOTTOM;
-
 
     protected LobbyBot lobbyBot;
     private String nickname;
@@ -74,9 +73,10 @@ public class RoomBot extends AbstractBot implements IRoomBot {
     private String currentSubround;
     protected boolean pendingOperation;
 
-    public RoomBot(LobbyBot lobbyBot, String id, String url, int serverId, String sessionId, IMessageSerializer serializer,
-                   long roomId, long balance, float stake, String nickName, IRoomBotStrategy strategy,
-                   Function<Void, Integer> shutdownCallback, Function<Void, Integer> startCallback) {
+    public RoomBot(LobbyBot lobbyBot, String id, String url, int serverId, String sessionId,
+            IMessageSerializer serializer,
+            long roomId, long balance, float stake, String nickName, IRoomBotStrategy strategy,
+            Function<Void, Integer> shutdownCallback, Function<Void, Integer> startCallback) {
         super(id, url, serverId, lobbyBot.getBankId(), sessionId, serializer, shutdownCallback, startCallback);
         this.lobbyBot = lobbyBot;
         this.roomId = roomId;
@@ -129,10 +129,12 @@ public class RoomBot extends AbstractBot implements IRoomBot {
         serverMessageHandlers.put(SeatWinForQuest.class, new SeatWinForQuestHandler(this));
         serverMessageHandlers.put(BulletResponse.class, new BulletResponseHandler(this));
         serverMessageHandlers.put(ChangeEnemyMode.class, new ChangeEnemyModeHandler(this));
-        serverMessageHandlers.put(BulletClearResponse.class, new BulletClearResponseHandler(this));
+        // serverMessageHandlers.put(BulletClearResponse.class, new
+        // BulletClearResponseHandler(this));
         serverMessageHandlers.put(BetLevelResponse.class, new BetLevelResponseHandler(this));
         serverMessageHandlers.put(PendingOperationStatus.class, new PendingOperationStatusHandler(this));
-        serverMessageHandlers.put(CrashAllBetsRejectedDetailedResponse.class, new CrashAllBetsRejectedDetailedHandler(this));
+        serverMessageHandlers.put(CrashAllBetsRejectedDetailedResponse.class,
+                new CrashAllBetsRejectedDetailedHandler(this));
         serverMessageHandlers.put(FullGameInfo.class, new FullGameInfoHandler(this));
 
     }
@@ -163,7 +165,8 @@ public class RoomBot extends AbstractBot implements IRoomBot {
         qualifyStateReceived = false;
         getLogger().debug("restart: start");
         sleep(strategy.getWaitTime()).subscribe(t -> stop());
-        //call start() not required, call start from lobbyBot.connectToRoom() after process GetStartGameUrl
+        // call start() not required, call start from lobbyBot.connectToRoom() after
+        // process GetStartGameUrl
         getLogger().debug("restart: end");
     }
 
@@ -172,12 +175,12 @@ public class RoomBot extends AbstractBot implements IRoomBot {
     }
 
     public RoomEnemy getEnemy(long enemyId) {
-        if(enemies == null || enemies.isEmpty()) {
+        if (enemies == null || enemies.isEmpty()) {
             return null;
         }
 
         return enemies.stream()
-                .filter( e-> e.getId() == enemyId)
+                .filter(e -> e.getId() == enemyId)
                 .findFirst()
                 .orElse(null);
     }
@@ -231,7 +234,8 @@ public class RoomBot extends AbstractBot implements IRoomBot {
     }
 
     protected void doAction(String debugInfo) {
-        getLogger().debug("doAction: bot: {}, getSeatId(): {}, debugInfo={}, state: {}", getId(), getSeatId(), debugInfo,
+        getLogger().debug("doAction: bot: {}, getSeatId(): {}, debugInfo={}, state: {}", getId(), getSeatId(),
+                debugInfo,
                 getState());
         scheduledDoSleepAction.set(false);
         boolean needSleepAndRetry = true;
@@ -266,7 +270,8 @@ public class RoomBot extends AbstractBot implements IRoomBot {
                     setState(BotState.WAITING_FOR_RESPONSE, "switchWeapon, weaponId:  " + weaponId);
                     send(new SwitchWeaponRequest(this, client, weaponId));
                     needSleepAndRetry = false;
-                } else if (strategy.shouldPurchaseBullets() && getState() == BotState.PLAYING && RoomState.PLAY.equals(getRoomState())) {
+                } else if (strategy.shouldPurchaseBullets() && getState() == BotState.PLAYING
+                        && RoomState.PLAY.equals(getRoomState())) {
                     int weaponId = strategy.getWeaponId();
                     int shotsForWeapon = strategy.getShotsForWeapon(-1);
                     int shots = strategy.getShots();
@@ -305,13 +310,12 @@ public class RoomBot extends AbstractBot implements IRoomBot {
             } else if (started) {
 
                 sleep(waitTime)
-                        .subscribe(t ->
-                                doAction(debugInfo)
-                        );
+                        .subscribe(t -> doAction(debugInfo));
 
                 scheduledDoSleepAction.set(true);
                 if (logDebug) {
-                    getLogger().debug("doActionWithSleep: scheduled doAction with sleep={}, debugInfo={}", waitTime, debugInfo);
+                    getLogger().debug("doActionWithSleep: scheduled doAction with sleep={}, debugInfo={}", waitTime,
+                            debugInfo);
                 }
             }
         } finally {
@@ -330,7 +334,7 @@ public class RoomBot extends AbstractBot implements IRoomBot {
             setState(BotState.WAITING_FOR_RESPONSE, "openRoom");
             send(new OpenRoomRequest(this, client, roomId, sessionId, serverId, MoneyType.REAL, "en"));
         } else {
-            //this may be normal, roomId set by LobbyBot after cal GetStartGameUrl
+            // this may be normal, roomId set by LobbyBot after cal GetStartGameUrl
             getLogger().warn("Cannot send OpenRoom request, roomId=0");
         }
     }
@@ -459,7 +463,6 @@ public class RoomBot extends AbstractBot implements IRoomBot {
 
     private void sendShotWithBullet(String currentBulletId, Integer weaponPrice, boolean isPaidShot, String metric) {
 
-
         if (maxBulletsOnMap > 0 && activeWeaponId < 0) {
 
             ShotRequest shotRequest = new ShotRequest(this, client, activeWeaponId,
@@ -479,27 +482,36 @@ public class RoomBot extends AbstractBot implements IRoomBot {
         send(request);
     }
 
-    protected void sendBullet(String currentBulletId, float currentX, float currentY, boolean isPaidShot, int weaponPrice,
-                            ManagedBattleGroundRoomBot managedBattleGroundRoomBot, String metric) {
-        Point endPoint = new Point(currentX, currentY, System.currentTimeMillis());
-        Point startPoint = Turret.getMuzzleTipPoint(seatId, endPoint, activeWeaponId, getCurrentBeLevel());
-
-
-        RicochetBullet ricochetBullet = new RicochetBullet(currentBulletId, startPoint, endPoint, activeWeaponId, isPaidShot, weaponPrice);
-        getLogger().debug("sendBullet: botId:{}, ricochetBullet={}", getId(), ricochetBullet);
-
-        BulletRequest bulletRequest = new BulletRequest(this, client, currentBulletId,
-                (int)Math.round(startPoint.getX()), (int)Math.round(startPoint.getY()),
-                (int)Math.round(endPoint.getX()), (int)Math.round(endPoint.getY()),
-                (float)ricochetBullet.getBulletAngle(), null, activeWeaponId, metric);
-
-        int rid = send(bulletRequest);
-        ricochetBullet.setRid(rid);
-
-        managedBattleGroundRoomBot.putRicochetBullet(ricochetBullet);
-        getLogger().debug("sendBullet: botId:{}, ricochetBulletsMap.values()={},{}", getId(),
-                managedBattleGroundRoomBot.getRicochetBullets().size(), managedBattleGroundRoomBot.getRicochetBullets());
-    }
+    /*
+     * protected void sendBullet(String currentBulletId, float currentX, float
+     * currentY, boolean isPaidShot, int weaponPrice,
+     * ManagedBattleGroundRoomBot managedBattleGroundRoomBot, String metric) {
+     * Point endPoint = new Point(currentX, currentY, System.currentTimeMillis());
+     * Point startPoint = Turret.getMuzzleTipPoint(seatId, endPoint, activeWeaponId,
+     * getCurrentBeLevel());
+     * 
+     * 
+     * RicochetBullet ricochetBullet = new RicochetBullet(currentBulletId,
+     * startPoint, endPoint, activeWeaponId, isPaidShot, weaponPrice);
+     * getLogger().debug("sendBullet: botId:{}, ricochetBullet={}", getId(),
+     * ricochetBullet);
+     * 
+     * BulletRequest bulletRequest = new BulletRequest(this, client,
+     * currentBulletId,
+     * (int)Math.round(startPoint.getX()), (int)Math.round(startPoint.getY()),
+     * (int)Math.round(endPoint.getX()), (int)Math.round(endPoint.getY()),
+     * (float)ricochetBullet.getBulletAngle(), null, activeWeaponId, metric);
+     * 
+     * int rid = send(bulletRequest);
+     * ricochetBullet.setRid(rid);
+     * 
+     * managedBattleGroundRoomBot.putRicochetBullet(ricochetBullet);
+     * getLogger().debug("sendBullet: botId:{}, ricochetBulletsMap.values()={},{}",
+     * getId(),
+     * managedBattleGroundRoomBot.getRicochetBullets().size(),
+     * managedBattleGroundRoomBot.getRicochetBullets());
+     * }
+     */
 
     protected void findUpdateFocusedEnemy() {
         if (focusedEnemy != null) {
@@ -511,7 +523,8 @@ public class RoomBot extends AbstractBot implements IRoomBot {
         if (strategy.getRequestedEnemiesIds() != null && strategy.getRequestedEnemiesIds().length != 0) {
             IRoomEnemy enemyWithRequestedType = getRandomEnemyWithRequestedType();
             if (enemyWithRequestedType != null) {
-                getLogger().debug("findUpdateFocusedEnemy: botId={}, found enemyWithRequestedType or it's child, enemyId={}, enemyTypeId={} ",
+                getLogger().debug(
+                        "findUpdateFocusedEnemy: botId={}, found enemyWithRequestedType or it's child, enemyId={}, enemyTypeId={} ",
                         getId(), enemyWithRequestedType.getId(), enemyWithRequestedType.getTypeId());
                 focusedEnemy = enemyWithRequestedType;
             }
@@ -521,11 +534,12 @@ public class RoomBot extends AbstractBot implements IRoomBot {
             focusedEnemy = getRandomEnemy();
         }
 
-        getLogger().debug("findUpdateFocusedEnemy: botId={}, focusedEnemyId={} ", getId(), focusedEnemy != null ? focusedEnemy.getId() : null);
+        getLogger().debug("findUpdateFocusedEnemy: botId={}, focusedEnemyId={} ", getId(),
+                focusedEnemy != null ? focusedEnemy.getId() : null);
     }
 
     @Override
-    //true if shot sent
+    // true if shot sent
     public boolean shot() {
         boolean shotSent = false;
         lock.lock();
@@ -542,10 +556,12 @@ public class RoomBot extends AbstractBot implements IRoomBot {
 
                         String metric = "";
                         if (isBattleBot()) {
-                            metric = activeWeaponId == Turret.DEFAULT_WEAPON_ID ? "PISTOL" : SpecialWeaponType.values()[activeWeaponId].name();
+                            metric = activeWeaponId == Turret.DEFAULT_WEAPON_ID ? "PISTOL"
+                                    : SpecialWeaponType.values()[activeWeaponId].name();
                         }
 
-                        getLogger().debug("shot: botId={}, nickname={}, isPaidShot: {}, activeWeaponId: {}, weaponType={}",
+                        getLogger().debug(
+                                "shot: botId={}, nickname={}, isPaidShot: {}, activeWeaponId: {}, weaponType={}",
                                 getId(), getNickname(), isPaidShot, activeWeaponId, metric);
 
                         if (!isPaidShot) {
@@ -573,7 +589,8 @@ public class RoomBot extends AbstractBot implements IRoomBot {
                                 float currentX = 0;
                                 float currentY = 0;
 
-                                if (focusedEnemy.getTrajectory() != null && !focusedEnemy.getTrajectory().getPoints().isEmpty()) {
+                                if (focusedEnemy.getTrajectory() != null
+                                        && !focusedEnemy.getTrajectory().getPoints().isEmpty()) {
                                     PointD currentPoint = getEnemyPosition(focusedEnemy);
                                     if (currentPoint != null) {
                                         currentX = (float) currentPoint.x;
@@ -581,27 +598,34 @@ public class RoomBot extends AbstractBot implements IRoomBot {
                                     }
                                 }
 
-                                if(this instanceof ManagedBattleGroundRoomBot
-                                        && (activeWeaponId == Turret.DEFAULT_WEAPON_ID || activeWeaponId == SpecialWeaponType.LevelUp.getId())
-                                ) {
-
-                                    ManagedBattleGroundRoomBot managedBattleGroundRoomBot = (ManagedBattleGroundRoomBot)this;
-                                    int bulletsOnMap = managedBattleGroundRoomBot.sizeOfRicochetBulletsMap();
-
-                                    if(bulletsOnMap < maxBulletsOnMap) {
-
-                                        sendBullet(currentBulletId, currentX, currentY, isPaidShot, weaponPrice, managedBattleGroundRoomBot, metric);
-
-                                    } else {
-                                        setState(BotState.PLAYING, "Skip bullets creation");
-                                        getLogger().debug("shot: botId={}, Skip bullets creation, bulletsOnMap={}", getId(), bulletsOnMap);
-                                        //sendShot(currentX, currentY, weaponPrice, isPaidShot, metric);
-                                    }
-
-                                } else {
-
-                                    sendShot(currentX, currentY, weaponPrice, isPaidShot, metric);
-                                }
+                                /*
+                                 * if(this instanceof ManagedBattleGroundRoomBot
+                                 * && (activeWeaponId == Turret.DEFAULT_WEAPON_ID || activeWeaponId ==
+                                 * SpecialWeaponType.LevelUp.getId())
+                                 * ) {
+                                 * 
+                                 * ManagedBattleGroundRoomBot managedBattleGroundRoomBot =
+                                 * (ManagedBattleGroundRoomBot)this;
+                                 * int bulletsOnMap = managedBattleGroundRoomBot.sizeOfRicochetBulletsMap();
+                                 * 
+                                 * if(bulletsOnMap < maxBulletsOnMap) {
+                                 * 
+                                 * sendBullet(currentBulletId, currentX, currentY, isPaidShot, weaponPrice,
+                                 * managedBattleGroundRoomBot, metric);
+                                 * 
+                                 * } else {
+                                 * setState(BotState.PLAYING, "Skip bullets creation");
+                                 * getLogger().debug("shot: botId={}, Skip bullets creation, bulletsOnMap={}",
+                                 * getId(), bulletsOnMap);
+                                 * //sendShot(currentX, currentY, weaponPrice, isPaidShot, metric);
+                                 * }
+                                 * 
+                                 * } else {
+                                 * 
+                                 * sendShot(currentX, currentY, weaponPrice, isPaidShot, metric);
+                                 * }
+                                 */
+                                sendShot(currentX, currentY, weaponPrice, isPaidShot, metric);
                             }
                         }
 
@@ -649,12 +673,12 @@ public class RoomBot extends AbstractBot implements IRoomBot {
     }
 
     protected RoomEnemy getEnemyById(Long enemyId) {
-        if(enemies == null || enemyId == null)  {
+        if (enemies == null || enemyId == null) {
             return null;
         }
 
         return enemies.stream()
-                .filter( e -> enemyId.equals(e.getId()))
+                .filter(e -> enemyId.equals(e.getId()))
                 .findFirst()
                 .orElse(null);
     }
@@ -669,14 +693,14 @@ public class RoomBot extends AbstractBot implements IRoomBot {
     }
 
     protected PointD getEnemyPosition(IRoomEnemy enemy) {
-        if(enemy == null) {
+        if (enemy == null) {
             return null;
         }
 
         long serverTime = System.currentTimeMillis() + getDiffLocalAndServerTime();
-        Point locationOnScreen = getStrategy().getLocationOnScreen((RoomEnemy)enemy, serverTime);
+        Point locationOnScreen = getStrategy().getLocationOnScreen((RoomEnemy) enemy, serverTime);
 
-        if(locationOnScreen != null) {
+        if (locationOnScreen != null) {
             return new PointD(locationOnScreen.getX(), locationOnScreen.getY());
         }
 
@@ -696,8 +720,7 @@ public class RoomBot extends AbstractBot implements IRoomBot {
             }
         }
 
-        return distances.stream().
-                sorted(Comparator.comparing(Pair::getValue))
+        return distances.stream().sorted(Comparator.comparing(Pair::getValue))
                 .map(Pair::getKey)
                 .findFirst()
                 .orElse(null);
@@ -716,27 +739,27 @@ public class RoomBot extends AbstractBot implements IRoomBot {
         try {
 
             RoomEnemy boss = getBossEnemy();
-            if(boss != null && isAllowedForShot(boss)) {
+            if (boss != null && isAllowedForShot(boss)) {
                 return boss;
             }
 
             Double x = null;
             Double y = null;
 
-            if(focusedEnemy == null) {
+            if (focusedEnemy == null) {
                 TurretPositions turret = TurretPositions.getTurretPositionBySeatID(getSeatId());
                 x = turret.getCentreCoordinateX();
                 y = turret.getCentreCoordinateY();
             } else {
                 PointD point = getEnemyPosition(focusedEnemy);
-                if(point != null) {
+                if (point != null) {
                     x = point.x;
                     y = point.y;
                 }
             }
 
             RoomEnemy roomEnemy = null;
-            if(x != null && y != null) {
+            if (x != null && y != null) {
 
                 Long enemyId = getNearestEnemyIdAllowedForShot(enemies, x, y);
                 roomEnemy = getEnemyById(enemyId);
@@ -755,13 +778,12 @@ public class RoomBot extends AbstractBot implements IRoomBot {
 
     public boolean isLocationAllowedForShot(long enemyId, PointD point) {
 
-        if(point != null) {
+        if (point != null) {
 
-            boolean isLocationAllowForShot =
-                    point.x >= SCREEN_ADJUSTED_LEFT && point.x <= SCREEN_ADJUSTED_RIGHT
+            boolean isLocationAllowForShot = point.x >= SCREEN_ADJUSTED_LEFT && point.x <= SCREEN_ADJUSTED_RIGHT
                     && point.y >= SCREEN_ADJUSTED_TOP && point.y <= SCREEN_ADJUSTED_BOTTOM;
 
-            if(isLocationAllowForShot) {
+            if (isLocationAllowForShot) {
                 getLogger().debug("isLocationAllowForShot: botId={}, enemyId={}, point={}", getId(), enemyId, point);
             }
 
@@ -769,19 +791,19 @@ public class RoomBot extends AbstractBot implements IRoomBot {
 
         }
 
-        return  false;
+        return false;
     }
 
     @Override
     public boolean isAllowedForShot(IRoomEnemy roomEnemy) {
 
-        if(roomEnemy == null) {
+        if (roomEnemy == null) {
             return false;
         }
 
         PointD point = getEnemyPosition(roomEnemy);
 
-        if(point == null) {
+        if (point == null) {
             return false;
         }
 
@@ -840,7 +862,6 @@ public class RoomBot extends AbstractBot implements IRoomBot {
     public void setRoomId(long roomId) {
         this.roomId = roomId;
     }
-
 
     @Override
     public void activateWeapon(int weaponId) {
@@ -908,7 +929,6 @@ public class RoomBot extends AbstractBot implements IRoomBot {
         this.focusedEnemy = null;
     }
 
-
     public boolean isRoundFinishSoonReceived() {
         return roundFinishSoonReceived;
     }
@@ -970,8 +990,8 @@ public class RoomBot extends AbstractBot implements IRoomBot {
         sb.append(", focusedEnemy=").append(focusedEnemy);
         sb.append(", state=").append(state);
         sb.append(", roomId=").append(roomId);
-        //sb.append(", roomInfo=").append(roomInfo);
-        //sb.append(", enemies=").append(enemies);
+        // sb.append(", roomInfo=").append(roomInfo);
+        // sb.append(", enemies=").append(enemies);
         sb.append(", strategy=").append(strategy);
         sb.append(", enemiesLock=").append(enemiesLock);
         sb.append(", serverAmmo=").append(serverAmmo);

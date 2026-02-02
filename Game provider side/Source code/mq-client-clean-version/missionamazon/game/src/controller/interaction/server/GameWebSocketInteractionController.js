@@ -1,77 +1,75 @@
 import WebSocketInteractionController from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/interaction/server/WebSocketInteractionController';
-import {GameWebSocketInteractionInfo, SERVER_MESSAGES, CLIENT_MESSAGES} from '../../../model/interaction/server/GameWebSocketInteractionInfo';
-import {DEBUG_WEB_SOCKET_URL} from '../../../config/Constants';
-import {WEAPONS} from '../../../../../shared/src/CommonConstants';
-import {APP} from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
+import { GameWebSocketInteractionInfo, SERVER_MESSAGES, CLIENT_MESSAGES } from '../../../model/interaction/server/GameWebSocketInteractionInfo';
+import { DEBUG_WEB_SOCKET_URL } from '../../../config/Constants';
+import { WEAPONS } from '../../../../../shared/src/CommonConstants';
+import { APP } from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/main/globals';
 import GameScreen from '../../../main/GameScreen'
 import Game from '../../../Game'
 import I18 from '../../../../../../common/PIXI/src/dgphoenix/unified/controller/translations/I18';
 import GameExternalCommunicator from '../../../external/GameExternalCommunicator';
-import {LOBBY_MESSAGES, GAME_MESSAGES} from '../../../external/GameExternalCommunicator';
+import { LOBBY_MESSAGES, GAME_MESSAGES } from '../../../external/GameExternalCommunicator';
 import GameStateController from '../../state/GameStateController';
 import { ROUND_STATE } from '../../../model/state/GameStateInfo';
 import TournamentModeController from '../../custom/tournament/TournamentModeController';
 import { ERROR_CODE_TYPES } from '../../../../../../common/PIXI/src/dgphoenix/unified/model/interaction/server/WebSocketInteractionInfo';
-import GamePendingOperationController from '../../custom/GamePendingOperationController';
+
 import GameCafRoomManagerController from '../../uis/battleground/GameCafRoomManagerController';
 import InfoPanelController from '../../uis/info_panel/InfoPanelController';
 
-class GameWebSocketInteractionController extends WebSocketInteractionController
-{
-	static get EVENT_ON_SERVER_MESSAGE()							{ return WebSocketInteractionController.EVENT_ON_SERVER_MESSAGE };
-	static get EVENT_ON_SERVER_CONNECTION_CLOSED()					{ return WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED };
-	static get EVENT_ON_SERVER_CONNECTION_OPENED()					{ return WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_OPENED };
-	static get EVENT_ON_SERVER_ERROR_MESSAGE()						{ return WebSocketInteractionController.EVENT_ON_SERVER_ERROR_MESSAGE };
-	static get EVENT_ON_SERVER_OK_MESSAGE()							{ return WebSocketInteractionController.EVENT_ON_SERVER_OK_MESSAGE };
+class GameWebSocketInteractionController extends WebSocketInteractionController {
+	static get EVENT_ON_SERVER_MESSAGE() { return WebSocketInteractionController.EVENT_ON_SERVER_MESSAGE };
+	static get EVENT_ON_SERVER_CONNECTION_CLOSED() { return WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED };
+	static get EVENT_ON_SERVER_CONNECTION_OPENED() { return WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_OPENED };
+	static get EVENT_ON_SERVER_ERROR_MESSAGE() { return WebSocketInteractionController.EVENT_ON_SERVER_ERROR_MESSAGE };
+	static get EVENT_ON_SERVER_OK_MESSAGE() { return WebSocketInteractionController.EVENT_ON_SERVER_OK_MESSAGE };
 
-	static get EVENT_ON_SERVER_GET_ROOM_INFO_RESPONSE_MESSAGE()		{ return "EVENT_ON_SERVER_GET_ROOM_INFO_RESPONSE_MESSAGE" };
-	static get EVENT_ON_SERVER_FULL_GAME_INFO_MESSAGE()				{ return "EVENT_ON_SERVER_FULL_GAME_INFO_MESSAGE" };
-	static get EVENT_ON_SERVER_SIT_IN_RESPONSE_MESSAGE()			{ return "EVENT_ON_SERVER_SIT_IN_RESPONSE_MESSAGE" };
-	static get EVENT_ON_SERVER_SIT_OUT_RESPONSE_MESSAGE()			{ return "EVENT_ON_SERVER_SIT_OUT_RESPONSE_MESSAGE" };
-	static get EVENT_ON_SERVER_NEW_ENEMY_MESSAGE()					{ return "EVENT_ON_SERVER_NEW_ENEMY_MESSAGE" };
-	static get EVENT_ON_SERVER_NEW_ENEMIES_MESSAGE()				{ return "EVENT_ON_SERVER_NEW_ENEMIES_MESSAGE"};
-	static get EVENT_ON_SERVER_MISS_MESSAGE()						{ return "EVENT_ON_SERVER_MISS_MESSAGE" };
-	static get EVENT_ON_SERVER_HIT_MESSAGE()						{ return "EVENT_ON_SERVER_HIT_MESSAGE" };
-	static get EVENT_ON_SERVER_NEW_TREASURE_MESSAGE()				{ return "EVENT_ON_SERVER_NEW_TREASURE_MESSAGE" };
-	static get EVENT_ON_SERVER_LEVEL_UP_MESSAGE()					{ return "EVENT_ON_SERVER_LEVEL_UP_MESSAGE" };
-	static get EVENT_ON_SERVER_CLIENTS_INFO_MESSAGE()				{ return "EVENT_ON_SERVER_CLIENTS_INFO_MESSAGE" };
-	static get EVENT_ON_SERVER_ROUND_RESULT_MESSAGE()				{ return "EVENT_ON_SERVER_ROUND_RESULT_MESSAGE" };
-	static get EVENT_ON_SERVER_GAME_STATE_CHANGED_MESSAGE()			{ return "EVENT_ON_SERVER_GAME_STATE_CHANGED_MESSAGE" };
-	static get EVENT_ON_SERVER_BUY_IN_RESPONSE_MESSAGE()			{ return "EVENT_ON_SERVER_BUY_IN_RESPONSE_MESSAGE" };
-	static get EVENT_ON_SERVER_RE_BUY_RESPONSE_MESSAGE()			{ return "EVENT_ON_SERVER_RE_BUY_RESPONSE_MESSAGE" };
-	static get EVENT_ON_SERVER_ENEMY_DESTROYED_MESSAGE()			{ return "EVENT_ON_SERVER_ENEMY_DESTROYED_MESSAGE" };
-	static get EVENT_ON_SERVER_CHANGE_MAP_MESSAGE()					{ return "EVENT_ON_SERVER_CHANGE_MAP_MESSAGE" };
-	static get EVENT_ON_SERVER_WEAPONS_MESSAGE()					{ return "EVENT_ON_SERVER_WEAPONS_MESSAGE" };
-	static get EVENT_ON_SERVER_WEAPON_SWITCHED_MESSAGE()			{ return "EVENT_ON_SERVER_WEAPON_SWITCHED_MESSAGE" };
-	static get EVENT_ON_SERVER_BALANCE_UPDATED_MESSAGE()			{ return "EVENT_ON_SERVER_BALANCE_UPDATED_MESSAGE" };
-	static get EVENT_ON_SERVER_UPDATE_TRAJECTORIES_MESSAGE()		{ return "EVENT_ON_SERVER_UPDATE_TRAJECTORIES_MESSAGE"};
-	static get EVENT_ON_SERVER_ROUND_FINISH_SOON()					{ return "EVENT_ON_SERVER_ROUND_FINISH_SOON"};
-	static get EVENT_ON_CONNECTION_RECOVERY_STARTED()				{ return "EVENT_ON_CONNECTION_RECOVERY_STARTED" };
-	static get EVENT_ON_SERVER_BET_LEVEL_CHANGED()					{ return "EVENT_ON_SERVER_BET_LEVEL_CHANGED" };
-	static get EVENT_ON_SERVER_BONUS_STATUS_CHANGED_MESSAGE() 		{ return "EVENT_ON_SERVER_BONUS_STATUS_CHANGED_MESSAGE" };
-	static get EVENT_ON_SERVER_FRB_ENDED_MESSAGE()					{ return "EVENT_ON_SERVER_FRB_ENDED_MESSAGE" };
-	static get EVENT_ON_SERVER_TOURNAMENT_STATE_CHANGED() 			{ return "EVENT_ON_SERVER_TOURNAMENT_STATE_CHANGED" };
-	static get EVENT_ON_SERVER_BULLET_RESPONSE() 					{ return "EVENT_ON_SERVER_BULLET_RESPONSE" };
-	static get EVENT_ON_SERVER_BULLET_CLEAR_RESPONSE() 				{ return "EVENT_ON_SERVER_BULLET_CLEAR_RESPONSE" };
-	static get EVENT_ON_SERVER_CANCEL_BATTLEGROUND_ROUND() 			{ return "EVENT_ON_SERVER_CANCEL_BATTLEGROUND_ROUND" };
-	static get EVENT_BATTLEGROUND_SCORE_BOARD() 					{ return "EVENT_BATTLEGROUND_SCORE_BOARD" };
-	static get EVENT_ON_DELAYED_RICOCHET_SHOT_REMOVED() 			{ return "EVENT_ON_DELAYED_RICOCHET_SHOT_REMOVED" };
+	static get EVENT_ON_SERVER_GET_ROOM_INFO_RESPONSE_MESSAGE() { return "EVENT_ON_SERVER_GET_ROOM_INFO_RESPONSE_MESSAGE" };
+	static get EVENT_ON_SERVER_FULL_GAME_INFO_MESSAGE() { return "EVENT_ON_SERVER_FULL_GAME_INFO_MESSAGE" };
+	static get EVENT_ON_SERVER_SIT_IN_RESPONSE_MESSAGE() { return "EVENT_ON_SERVER_SIT_IN_RESPONSE_MESSAGE" };
+	static get EVENT_ON_SERVER_SIT_OUT_RESPONSE_MESSAGE() { return "EVENT_ON_SERVER_SIT_OUT_RESPONSE_MESSAGE" };
+	static get EVENT_ON_SERVER_NEW_ENEMY_MESSAGE() { return "EVENT_ON_SERVER_NEW_ENEMY_MESSAGE" };
+	static get EVENT_ON_SERVER_NEW_ENEMIES_MESSAGE() { return "EVENT_ON_SERVER_NEW_ENEMIES_MESSAGE" };
+	static get EVENT_ON_SERVER_MISS_MESSAGE() { return "EVENT_ON_SERVER_MISS_MESSAGE" };
+	static get EVENT_ON_SERVER_HIT_MESSAGE() { return "EVENT_ON_SERVER_HIT_MESSAGE" };
+	static get EVENT_ON_SERVER_NEW_TREASURE_MESSAGE() { return "EVENT_ON_SERVER_NEW_TREASURE_MESSAGE" };
+	static get EVENT_ON_SERVER_LEVEL_UP_MESSAGE() { return "EVENT_ON_SERVER_LEVEL_UP_MESSAGE" };
+	static get EVENT_ON_SERVER_CLIENTS_INFO_MESSAGE() { return "EVENT_ON_SERVER_CLIENTS_INFO_MESSAGE" };
+	static get EVENT_ON_SERVER_ROUND_RESULT_MESSAGE() { return "EVENT_ON_SERVER_ROUND_RESULT_MESSAGE" };
+	static get EVENT_ON_SERVER_GAME_STATE_CHANGED_MESSAGE() { return "EVENT_ON_SERVER_GAME_STATE_CHANGED_MESSAGE" };
+	static get EVENT_ON_SERVER_BUY_IN_RESPONSE_MESSAGE() { return "EVENT_ON_SERVER_BUY_IN_RESPONSE_MESSAGE" };
+	static get EVENT_ON_SERVER_RE_BUY_RESPONSE_MESSAGE() { return "EVENT_ON_SERVER_RE_BUY_RESPONSE_MESSAGE" };
+	static get EVENT_ON_SERVER_ENEMY_DESTROYED_MESSAGE() { return "EVENT_ON_SERVER_ENEMY_DESTROYED_MESSAGE" };
+	static get EVENT_ON_SERVER_CHANGE_MAP_MESSAGE() { return "EVENT_ON_SERVER_CHANGE_MAP_MESSAGE" };
+	static get EVENT_ON_SERVER_WEAPONS_MESSAGE() { return "EVENT_ON_SERVER_WEAPONS_MESSAGE" };
+	static get EVENT_ON_SERVER_WEAPON_SWITCHED_MESSAGE() { return "EVENT_ON_SERVER_WEAPON_SWITCHED_MESSAGE" };
+	static get EVENT_ON_SERVER_BALANCE_UPDATED_MESSAGE() { return "EVENT_ON_SERVER_BALANCE_UPDATED_MESSAGE" };
+	static get EVENT_ON_SERVER_UPDATE_TRAJECTORIES_MESSAGE() { return "EVENT_ON_SERVER_UPDATE_TRAJECTORIES_MESSAGE" };
+	static get EVENT_ON_SERVER_ROUND_FINISH_SOON() { return "EVENT_ON_SERVER_ROUND_FINISH_SOON" };
+	static get EVENT_ON_CONNECTION_RECOVERY_STARTED() { return "EVENT_ON_CONNECTION_RECOVERY_STARTED" };
+	static get EVENT_ON_SERVER_BET_LEVEL_CHANGED() { return "EVENT_ON_SERVER_BET_LEVEL_CHANGED" };
+	static get EVENT_ON_SERVER_BONUS_STATUS_CHANGED_MESSAGE() { return "EVENT_ON_SERVER_BONUS_STATUS_CHANGED_MESSAGE" };
+	static get EVENT_ON_SERVER_FRB_ENDED_MESSAGE() { return "EVENT_ON_SERVER_FRB_ENDED_MESSAGE" };
+	static get EVENT_ON_SERVER_TOURNAMENT_STATE_CHANGED() { return "EVENT_ON_SERVER_TOURNAMENT_STATE_CHANGED" };
+	static get EVENT_ON_SERVER_BULLET_RESPONSE() { return "EVENT_ON_SERVER_BULLET_RESPONSE" };
+	static get EVENT_ON_SERVER_BULLET_CLEAR_RESPONSE() { return "EVENT_ON_SERVER_BULLET_CLEAR_RESPONSE" };
+	static get EVENT_ON_SERVER_CANCEL_BATTLEGROUND_ROUND() { return "EVENT_ON_SERVER_CANCEL_BATTLEGROUND_ROUND" };
+	static get EVENT_BATTLEGROUND_SCORE_BOARD() { return "EVENT_BATTLEGROUND_SCORE_BOARD" };
+	static get EVENT_ON_DELAYED_RICOCHET_SHOT_REMOVED() { return "EVENT_ON_DELAYED_RICOCHET_SHOT_REMOVED" };
 	static get EVENT_ON_SERVER_BATTLEGROUND_BUY_IN_CONFIRMED_SEATS() { return "EVENT_ON_SERVER_BATTLEGROUND_BUY_IN_CONFIRMED_SEATS" };
-	static get EVENT_ON_SERVER_LATENCY_REQUEST() 					{ return "EVENT_ON_SERVER_LATENCY_REQUEST" };
+	static get EVENT_ON_SERVER_LATENCY_REQUEST() { return "EVENT_ON_SERVER_LATENCY_REQUEST" };
 
 
-	static get EVENT_ON_REQUEST_WEAPON_UPDATE_SENDED() 				{ return "EVENT_ON_REQUEST_WEAPON_UPDATE_SENDED" };
+	static get EVENT_ON_REQUEST_WEAPON_UPDATE_SENDED() { return "EVENT_ON_REQUEST_WEAPON_UPDATE_SENDED" };
 
-	static get EVENT_ON_CONNECTION_READY_TO_ROOM_OPEN()			 	{ return "EVENT_ON_CONNECTION_READY_TO_ROOM_OPEN" };
+	static get EVENT_ON_CONNECTION_READY_TO_ROOM_OPEN() { return "EVENT_ON_CONNECTION_READY_TO_ROOM_OPEN" };
 
-	static get EVENT_ON_GAME_CLIENT_SENT_MESSAGE()					{return WebSocketInteractionController.EVENT_ON_GAME_CLIENT_SENT_MESSAGE; }
+	static get EVENT_ON_GAME_CLIENT_SENT_MESSAGE() { return WebSocketInteractionController.EVENT_ON_GAME_CLIENT_SENT_MESSAGE; }
 
-	static get EVENT_ON_RESTORE_AFTER_OFFLINE_FINISHED()			{return "EVENT_ON_RESTORE_AFTER_OFFLINE_FINISHED";}
+	static get EVENT_ON_RESTORE_AFTER_OFFLINE_FINISHED() { return "EVENT_ON_RESTORE_AFTER_OFFLINE_FINISHED"; }
 
-	static get EVENT_ON_SERVER_BATTLEGROUND_CAF_KICK_RESPONSE()		{return "EVENT_ON_SERVER_BATTLEGROUND_CAF_KICK_RESPONSE";}
+	static get EVENT_ON_SERVER_BATTLEGROUND_CAF_KICK_RESPONSE() { return "EVENT_ON_SERVER_BATTLEGROUND_CAF_KICK_RESPONSE"; }
 
-	constructor()
-	{
+	constructor() {
 		super(new GameWebSocketInteractionInfo());
 
 		this._gameScreen = null;
@@ -87,54 +85,44 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		this._fRestoreAfterOffline_bl = false;
 	}
 
-	get lastUniqRequestId()
-	{
+	get lastUniqRequestId() {
 		return this._requestUniqId;
 	}
 
-	get _debugWebSocketUrl()
-	{
+	get _debugWebSocketUrl() {
 		return this._webSocketUrl;
 		return DEBUG_WEB_SOCKET_URL;
 	}
 
-	get _webSocketUrl()
-	{
+	get _webSocketUrl() {
 		return APP.urlBasedParams.WEB_SOCKET_URL;
 	}
 
-	get hasUnrespondedShots()
-	{
+	get hasUnrespondedShots() {
 		return this._hasUnRespondedRequest(CLIENT_MESSAGES.SHOT);
 	}
 
-	get hasDelayedShots()
-	{
+	get hasDelayedShots() {
 		return super._hasDelayedRequests(CLIENT_MESSAGES.SHOT);
 	}
 
-	get delayedRicochetShotsAmount()
-	{
+	get delayedRicochetShotsAmount() {
 		let lHasDelayedShots_bl = this.hasDelayedShots;
 
-		if (!lHasDelayedShots_bl)
-		{
+		if (!lHasDelayedShots_bl) {
 			return 0;
 		}
 
 		let lDelayedShotRequests = this._delayedShotRequests;
-		if (!lDelayedShotRequests || !lDelayedShotRequests.length)
-		{
+		if (!lDelayedShotRequests || !lDelayedShotRequests.length) {
 			return 0;
 		}
 
 		let lAmount = 0;
-		for (let i=0; i<lDelayedShotRequests.length; i++)
-		{
+		for (let i = 0; i < lDelayedShotRequests.length; i++) {
 			let lCurDelayedShotRequest = lDelayedShotRequests[i];
 
-			if (lCurDelayedShotRequest.data.bulletId !== undefined)
-			{
+			if (lCurDelayedShotRequest.data.bulletId !== undefined) {
 				lAmount += 1;
 			}
 		}
@@ -142,20 +130,16 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		return lAmount;
 	}
 
-	get _delayedShotRequests()
-	{
-		if (!this._delayedRequests)
-		{
+	get _delayedShotRequests() {
+		if (!this._delayedRequests) {
 			return null;
 		}
 
 		let lRequests = [];
 
-		for (let i=0; i<this._delayedRequests.length; i++)
-		{
+		for (let i = 0; i < this._delayedRequests.length; i++) {
 			let curDelayedRequestInfo = this._delayedRequests[i];
-			if (curDelayedRequestInfo.class == CLIENT_MESSAGES.SHOT)
-			{
+			if (curDelayedRequestInfo.class == CLIENT_MESSAGES.SHOT) {
 				lRequests.push(curDelayedRequestInfo);
 			}
 		}
@@ -163,27 +147,21 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		return lRequests;
 	}
 
-	get isSitoutRequestInProgress()
-	{
+	get isSitoutRequestInProgress() {
 		return this._hasUnRespondedRequest(CLIENT_MESSAGES.SIT_OUT) || this._hasDelayedRequests(CLIENT_MESSAGES.SIT_OUT);
 	}
 
-	get isCloseRoomRequestInProgress()
-	{
+	get isCloseRoomRequestInProgress() {
 		return this._hasUnRespondedRequest(CLIENT_MESSAGES.CLOSE_ROOM);
 	}
 
-	get isRebuyRequestInProgress()
-	{
+	get isRebuyRequestInProgress() {
 		return this._hasUnRespondedRequest(CLIENT_MESSAGES.RE_BUY);
 	}
 
-	get isShotRequestParseInProgress()
-	{
-		for (let id in this._requests_shot_list)
-		{
-			if (this._requests_shot_list[id])
-			{
+	get isShotRequestParseInProgress() {
+		for (let id in this._requests_shot_list) {
+			if (this._requests_shot_list[id]) {
 				return true;
 			}
 		}
@@ -191,18 +169,15 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		return false;
 	}
 
-	get isBuyInRequestInProgress()
-	{
+	get isBuyInRequestInProgress() {
 		return this._hasUnRespondedRequest(CLIENT_MESSAGES.BUY_IN);
 	}
 
-	clearShotResponseParsed()
-	{
+	clearShotResponseParsed() {
 		this._requests_shot_list = [];
 	}
 
-	__initControlLevel()
-	{
+	__initControlLevel() {
 		let tournamentModeController = APP.tournamentModeController;
 		this._fTournamentModeInfo_tmi = tournamentModeController.info;
 		tournamentModeController.on(TournamentModeController.EVENT_ON_TOURNAMENT_CLIENT_STATE_CHANGED, this._onTournamentModeClientStateChanged, this);
@@ -236,19 +211,17 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		gameScreen.on(GameScreen.EVENT_ON_BTG_ROUND_OBSERVER_DENIED, this._onBattlegroundRoundObserverDenied, this);
 		gameScreen.infoPanelController.on(InfoPanelController.LATENCY_REQUEST, this._onLatencyRequested, this);
 
-		if (gameScreen.isReady)
-		{
+		if (gameScreen.isReady) {
 			gameScreen.gameStateController.on(GameStateController.EVENT_ON_GAME_STATE_CHANGED, this._onGameStateChanged, this);
 			gameScreen.on(GameScreen.EVENT_ON_TIME_TO_OPEN_REAL_ROOM_AFTER_BONUS, this._onTimeToOpenRealRoomAfterBonus, this);
 		}
-		else
-		{
+		else {
 			gameScreen.once(GameScreen.EVENT_ON_READY, () => {
-																gameScreen.gameStateController.on(GameStateController.EVENT_ON_GAME_STATE_CHANGED, this._onGameStateChanged, this);
-																gameScreen.on(GameScreen.EVENT_ON_TIME_TO_OPEN_REAL_ROOM_AFTER_BONUS, this._onTimeToOpenRealRoomAfterBonus, this);
-															}, this);
+				gameScreen.gameStateController.on(GameStateController.EVENT_ON_GAME_STATE_CHANGED, this._onGameStateChanged, this);
+				gameScreen.on(GameScreen.EVENT_ON_TIME_TO_OPEN_REAL_ROOM_AFTER_BONUS, this._onTimeToOpenRealRoomAfterBonus, this);
+			}, this);
 		}
-		
+
 		let externalCommunicator = APP.externalCommunicator;
 		externalCommunicator.on(GameExternalCommunicator.LOBBY_MESSAGE_RECEIVED, this._onLobbyMessageReceived, this);
 
@@ -263,7 +236,7 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		let l_poc = this._fPendingOperationController_poc = APP.pendingOperationController;
 		l_poc.on(GamePendingOperationController.EVENT_ON_PENDING_OPERATION_STARTTED, this._onPendingOperationStarted, this);
 		l_poc.on(GamePendingOperationController.EVENT_ON_REFRESH_PENDING_OPERATION_STATUS_REQUIRED, this._onRefreshPendingOperationStatusRequired, this);
-		l_poc.on(GamePendingOperationController.EVENT_ON_PENDING_OPERATION_STATUS_TRACKING_TURNED_OFF, this._onPendingOperationStatusTrackingTurnedOff, this);		
+		l_poc.on(GamePendingOperationController.EVENT_ON_PENDING_OPERATION_STATUS_TRACKING_TURNED_OFF, this._onPendingOperationStatusTrackingTurnedOff, this);
 
 		// DEBUG...
 		// window.addEventListener(
@@ -272,34 +245,28 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		// ...DEBUG
 	}
 
-	_onGameStarted(event)
-	{
-		if (APP.isBattlegroundGame && APP.isCAFMode)
-		{
+	_onGameStarted(event) {
+		if (APP.isBattlegroundGame && APP.isCAFMode) {
 			console.log("latency web socket listener inited")
 			APP.gameScreen.battlegroundGameController.cafRoomManagerController.on(GameCafRoomManagerController.EVENT_ON_BATTLEGROUND_START_PRIVATE_ROOM, this._onBattlegroundStartPrivateRoom, this);
 			APP.gameScreen.battlegroundGameController.cafRoomManagerController.on(GameCafRoomManagerController.EVENT_ON_BATTLEGROUND_PLAYER_KICK_TRIGGERED, this._onBattlegroundPlayerKickTriggered, this);
 			APP.gameScreen.battlegroundGameController.cafRoomManagerController.on(GameCafRoomManagerController.EVENT_ON_BATTLEGROUND_PLAYER_REINVITE_TRIGGERED, this._onBattlegroundPlayerReinviteTriggered, this);
 			APP.gameScreen.battlegroundGameController.cafRoomManagerController.on(GameCafRoomManagerController.EVENT_ON_BATTLEGROUND_PLAYER_INVITE_TRIGGERED, this._onBattlegroundPlayerInviteTriggered, this);
-			
+
 		}
 	}
 
-	_onShotResponseParsed(aRequestData)
-	{
-		if (aRequestData.class == CLIENT_MESSAGES.SHOT && aRequestData.rid >= 0)
-			{
-				let requestData = this._requests_shot_list[aRequestData.rid];
-				if (!!requestData)
-				{
-					delete this._requests_shot_list[aRequestData.rid];
-				}
+	_onShotResponseParsed(aRequestData) {
+		if (aRequestData.class == CLIENT_MESSAGES.SHOT && aRequestData.rid >= 0) {
+			let requestData = this._requests_shot_list[aRequestData.rid];
+			if (!!requestData) {
+				delete this._requests_shot_list[aRequestData.rid];
 			}
+		}
 	}
 
 	//DEBUG...
-	keyDownHandler(keyCode)
-	{
+	keyDownHandler(keyCode) {
 		/*
 		var msg =
 		{
@@ -415,30 +382,24 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 	}
 	//...DEBUG
 
-	_handleServerMessage(messageData, requestData)
-	{
+	_handleServerMessage(messageData, requestData) {
 		super._handleServerMessage(messageData, requestData);
 
 		let msgClass = messageData.class;
 
-	    if(msgClass == SERVER_MESSAGES.ERROR)
-		{
+		if (msgClass == SERVER_MESSAGES.ERROR) {
 			let errorCode = messageData.code;
-			if(errorCode == WebSocketInteractionController.ERROR_CODES.TOO_MANY_OBSERVERS)
-			{
+			if (errorCode == WebSocketInteractionController.ERROR_CODES.TOO_MANY_OBSERVERS) {
 				APP.externalCommunicator.sendExternalMessage(GAME_MESSAGES.DO_NOT_COUNT_START_GAME_RECONNECTION_ATTEMPT);
 			}
 		}
 
-		switch(msgClass)
-		{
+		switch (msgClass) {
 			case SERVER_MESSAGES.OK:
 				let requestClass = undefined;
-				if (requestData && requestData.rid >= 0)
-				{
+				if (requestData && requestData.rid >= 0) {
 					requestClass = requestData.class;
-					if (requestClass === CLIENT_MESSAGES.CLOSE_ROOM)
-					{
+					if (requestClass === CLIENT_MESSAGES.CLOSE_ROOM) {
 						this.onRoomClosed();
 					}
 				}
@@ -446,94 +407,80 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		}
 	}
 
-	_specifyErrorCodeSeverity(messageData, requestData)
-	{
+	_specifyErrorCodeSeverity(messageData, requestData) {
 		let errorCode = messageData.code;
 		let errorCodeSeverity;
 
 		if (
-				errorCode == WebSocketInteractionController.ERROR_CODES.BAD_REQUEST
-				&& (!!requestData && requestData.class === CLIENT_MESSAGES.SHOT && requestData.bulletId !== undefined)
-			)
-		{
+			errorCode == WebSocketInteractionController.ERROR_CODES.BAD_REQUEST
+			&& (!!requestData && requestData.class === CLIENT_MESSAGES.SHOT && requestData.bulletId !== undefined)
+		) {
 			// BAD_REQUEST for ricochet shots is not considered as fatal error due to https://jira.dgphoenix.com/browse/DRAG-986
 			errorCodeSeverity = ERROR_CODE_TYPES.ERROR;
 		}
 		else if (
-					errorCode == WebSocketInteractionController.ERROR_CODES.FOUND_PENDING_OPERATION
-					&& this._fPendingOperationController_poc.info.isPendingOperationHandlingSupported
-				)
-		{
+			errorCode == WebSocketInteractionController.ERROR_CODES.FOUND_PENDING_OPERATION
+			&& this._fPendingOperationController_poc.info.isPendingOperationHandlingSupported
+		) {
 			errorCodeSeverity = ERROR_CODE_TYPES.ERROR;
 		}
 		else if (
-					errorCode == WebSocketInteractionController.ERROR_CODES.ROOM_WAS_DEACTIVATED
-					&& APP.isCAFMode
-					&& (!requestData || requestData.class != CLIENT_MESSAGES.OPEN_ROOM)
-					&& APP.gameScreen.gameField && APP.gameScreen.gameField.isGameplayStarted
-					&& !APP.gameScreen.isPaused && !APP.gameScreen.restoreAfterLagsInProgress
-					&& APP.gameScreen.gameStateController.info.isQualifyState
-					&& APP.gameScreen.gameField.roundResultScreenController.info.roundResultResponseRecieved
-				)
-		{
+			errorCode == WebSocketInteractionController.ERROR_CODES.ROOM_WAS_DEACTIVATED
+			&& APP.isCAFMode
+			&& (!requestData || requestData.class != CLIENT_MESSAGES.OPEN_ROOM)
+			&& APP.gameScreen.gameField && APP.gameScreen.gameField.isGameplayStarted
+			&& !APP.gameScreen.isPaused && !APP.gameScreen.restoreAfterLagsInProgress
+			&& APP.gameScreen.gameStateController.info.isQualifyState
+			&& APP.gameScreen.gameField.roundResultScreenController.info.roundResultResponseRecieved
+		) {
 			this.info.addDelayedFatalError(errorCode);
 
 			errorCodeSeverity = ERROR_CODE_TYPES.ERROR;
 		}
-		else
-		{
+		else {
 			errorCodeSeverity = super._specifyErrorCodeSeverity(messageData, requestData);
 		}
 
 		return errorCodeSeverity;
 	}
 
-	_onBonusCancelRoomReaload()
-	{
+	_onBonusCancelRoomReaload() {
 		this._fIsReopenSocketRequired_bl = false;
 	}
 
-	_onOffline()
-	{
-		if (!APP.isBattlegroundGame && !this._oldWebSocket)
-		{
+	_onOffline() {
+		if (!APP.isBattlegroundGame && !this._oldWebSocket) {
 			this._requests_list = {};
 			this._clearSocketHandlers();
 			this._clearDelayedRequests();
 			this._oldWebSocket = this._webSocket;
-			this._oldWebSocket.onclose = function ()
-			{
+			this._oldWebSocket.onclose = function () {
 				this._oldWebSocket = null;
 			}
 			this._webSocket = null;
 		}
-		else
-		{
+		else {
 			this._closeConnectionIfPossible();
 		}
-		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, {wasClean: false});
+		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, { wasClean: false });
 	}
 
-	_onOnlineRestored()
-	{
+	_onOnlineRestored() {
 		this._fRestoreAfterOffline_bl = true;
 		this._startRecoveringSocketConnection();
 	}
 
-	onRoomClosed()
-	{
+	onRoomClosed() {
 		this._closeConnectionIfPossible();
 		this._oldWebSocket && this._oldWebSocket.close();
-		if (APP.currentWindow.gameBonusController.info.isRoomRestartRequired)
-		{
+		if (APP.currentWindow.gameBonusController.info.isRoomRestartRequired) {
 			//wait for EnterLobby completion, then - establish new connection
 			this._fIsReopenSocketRequired_bl = true;
 		}
 		this._fOpenRoomSent_bln = false;
 	}
 
-	_processServerMessage(messageData)
-	{
+	_processServerMessage(messageData) {
 		let msgClass = messageData.class;
 
 		//DEBUG...
@@ -563,14 +510,12 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		}*/
 		//...DEBUG
 
-		switch(msgClass)
-		{
+		switch (msgClass) {
 			case SERVER_MESSAGES.HIT:
 				messageData.id = this._hitDataUniqId++;
 				break;
 			case SERVER_MESSAGES.GET_ROOM_INFO_RESPONSE:
-				if (this._fRestoreAfterOffline_bl)
-				{
+				if (this._fRestoreAfterOffline_bl) {
 					this._fRestoreAfterOffline_bl = false;
 					this.emit(GameWebSocketInteractionController.EVENT_ON_RESTORE_AFTER_OFFLINE_FINISHED);
 				}
@@ -584,29 +529,23 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		super._processServerMessage(messageData);
 	}
 
-	__performActionWithRequestOnGameLevel(aRequestData)
-	{
-		if (aRequestData.class == CLIENT_MESSAGES.SHOT)
-		{
+	__performActionWithRequestOnGameLevel(aRequestData) {
+		if (aRequestData.class == CLIENT_MESSAGES.SHOT) {
 			this._requests_shot_list[aRequestData.rid] = aRequestData;
 		}
 	}
 
-	_sendRequest(requestClass, requestData)
-	{
-		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState)
-		{
+	_sendRequest(requestClass, requestData) {
+		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState) {
 			return;
 		}
 
 		if (
-				!this._fOpenRoomSent_bln
-				&& requestClass !== CLIENT_MESSAGES.OPEN_ROOM
-				&& requestClass !== CLIENT_MESSAGES.CHECK_PENDING_OPERATION_STATUS
-			)
-		{
-			if (requestClass === CLIENT_MESSAGES.SIT_IN)
-			{
+			!this._fOpenRoomSent_bln
+			&& requestClass !== CLIENT_MESSAGES.OPEN_ROOM
+			&& requestClass !== CLIENT_MESSAGES.CHECK_PENDING_OPERATION_STATUS
+		) {
+			if (requestClass === CLIENT_MESSAGES.SIT_IN) {
 				APP.gameScreen.clearPendingRequestSitin();
 			}
 
@@ -616,13 +555,11 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		super._sendRequest(requestClass, requestData);
 	}
 
-	_onConnectionOpened()
-	{
+	_onConnectionOpened() {
 		console.log("Game -> _onConnectionOpened");
 		this._fPendingOperationController_poc.off(GamePendingOperationController.EVENT_ON_PENDING_OPERATION_COMPLETED, this._onPendingOperationCompletedForOpenRoom, this, true);
 
-		if (this._fTournamentModeInfo_tmi.isTournamentOnClientCompletedState)
-		{
+		if (this._fTournamentModeInfo_tmi.isTournamentOnClientCompletedState) {
 			this._stopReconnecting();
 			this._blockAfterCriticalError();
 			this._stopServerMesagesHandling();
@@ -633,45 +570,37 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 
 		let gameScreen = this._gameScreen;
 
-		if (gameScreen.isReady)
-		{
+		if (gameScreen.isReady) {
 			this._trySendOpenRoomRequest();
 		}
-		else
-		{
+		else {
 			gameScreen.on(GameScreen.EVENT_ON_READY, this._onGameScreenReady, this);
 		}
 	}
 
-	_onConnectionClosed(event)
-	{
+	_onConnectionClosed(event) {
 		this._fOpenRoomSent_bln = false;
 		this._fPendingOperationController_poc.off(GamePendingOperationController.EVENT_ON_PENDING_OPERATION_COMPLETED, this._onPendingOperationCompletedForOpenRoom, this, true);
 		console.log("Game -> _onConnectionClosed");
 		super._onConnectionClosed(event);
 	}
 
-	_activateReconnectTimeout()
-	{
+	_activateReconnectTimeout() {
 		console.log("Game -> _activateReconnectTimeout");
 		super._activateReconnectTimeout();
 	}
 
-	get recoveringConnectionInProgress ()
-	{
+	get recoveringConnectionInProgress() {
 		return this._reconnectingAfterGameUrlUpdatedRequired
-				|| super.recoveringConnectionInProgress;
+			|| super.recoveringConnectionInProgress;
 	}
 
-	_startRecoveringSocketConnection()
-	{
-		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState)
-		{
+	_startRecoveringSocketConnection() {
+		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState) {
 			return;
 		}
 
-		if (APP.currentWindow && APP.currentWindow.gameFrbController && APP.currentWindow.gameFrbController.info.isFrbEndedAndConnectionLost)
-		{
+		if (APP.currentWindow && APP.currentWindow.gameFrbController && APP.currentWindow.gameFrbController.info.isFrbEndedAndConnectionLost) {
 			// Do not request new start game url
 			this._startReconnectingOnConnectionLost();
 			return;
@@ -681,25 +610,21 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		this._reconnectingAfterGameUrlUpdatedRequired = true;
 
 		let lRoomId_num = window.GET ? window.GET.roomId : -1;
-		this.emit(GameWebSocketInteractionController.EVENT_ON_CONNECTION_RECOVERY_STARTED, {roomId: lRoomId_num});
+		this.emit(GameWebSocketInteractionController.EVENT_ON_CONNECTION_RECOVERY_STARTED, { roomId: lRoomId_num });
 	}
 
-	_startReconnectingOnConnectionLost()
-	{
-		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState)
-		{
+	_startReconnectingOnConnectionLost() {
+		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState) {
 			return;
 		}
 
 		super._startReconnectingOnConnectionLost();
 	}
 
-	_establishConnection()
-	{
+	_establishConnection() {
 		this._fIsReopenSocketRequired_bl = false;
 
-		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState)
-		{
+		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState) {
 			this._closeConnectionIfPossible();
 			return;
 		}
@@ -708,36 +633,29 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 
 	}
 
-	_stopRecoveringSocketConnectionIfRequired()
-	{
-		if (this._reconnectingAfterGameUrlUpdatedRequired)
-		{
+	_stopRecoveringSocketConnectionIfRequired() {
+		if (this._reconnectingAfterGameUrlUpdatedRequired) {
 			this._stopRecoveringSocketConnection();
 		}
 	}
 
-	_stopRecoveringSocketConnection()
-	{
+	_stopRecoveringSocketConnection() {
 		this._reconnectingAfterGameUrlUpdatedRequired = false;
 
 		this._stopReconnecting();
 	}
 
-	_onGameScreenReady(event)
-	{
+	_onGameScreenReady(event) {
 		this._trySendOpenRoomRequest();
 	}
 
-	_onTimeToOpenRealRoomAfterBonus()
-	{
+	_onTimeToOpenRealRoomAfterBonus() {
 		this._trySendOpenRoomRequest();
 	}
 
-	_specifyEventMessageType(messageData)
-	{
+	_specifyEventMessageType(messageData) {
 		let eventType;
-		switch(messageData.class)
-		{
+		switch (messageData.class) {
 			case SERVER_MESSAGES.CANCEL_BATTLEGROUND_ROUND:
 				eventType = GameWebSocketInteractionController.EVENT_ON_SERVER_CANCEL_BATTLEGROUND_ROUND;
 				break;
@@ -841,20 +759,18 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		return eventType;
 	}
 
-	_isServerMessageReceivingAvailable(messageClass)
-	{
-		let unaffectedResponses = [	SERVER_MESSAGES.FULL_GAME_INFO,
-									SERVER_MESSAGES.SIT_OUT_RESPONSE,
-									SERVER_MESSAGES.WEAPONS,
-									SERVER_MESSAGES.ERROR,
-									SERVER_MESSAGES.OK,
-									SERVER_MESSAGES.FRB_ENDED,
-									SERVER_MESSAGES.TOURNAMENT_STATE_CHANGED,
-									SERVER_MESSAGES.LATENCY
-								];
+	_isServerMessageReceivingAvailable(messageClass) {
+		let unaffectedResponses = [SERVER_MESSAGES.FULL_GAME_INFO,
+		SERVER_MESSAGES.SIT_OUT_RESPONSE,
+		SERVER_MESSAGES.WEAPONS,
+		SERVER_MESSAGES.ERROR,
+		SERVER_MESSAGES.OK,
+		SERVER_MESSAGES.FRB_ENDED,
+		SERVER_MESSAGES.TOURNAMENT_STATE_CHANGED,
+		SERVER_MESSAGES.LATENCY
+		];
 
-		if (this._gameScreen.isPaused || this._gameScreen.restoreAfterLagsInProgress)
-		{
+		if (this._gameScreen.isPaused || this._gameScreen.restoreAfterLagsInProgress) {
 			unaffectedResponses.push(SERVER_MESSAGES.BUY_IN_RESPONSE);
 			unaffectedResponses.push(SERVER_MESSAGES.RE_BUY_RESPONSE);
 			unaffectedResponses.push(SERVER_MESSAGES.ROUND_RESULT);
@@ -877,34 +793,28 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		return (!this._gameScreen.isPaused && !this._gameScreen.restoreAfterUnseasonableRequestInProgress && !this._gameScreen.restoreAfterLagsInProgress) || Boolean(~unaffectedResponses.indexOf(messageClass));
 	}
 
-	_handleFatalError(errorCode, requestData)
-	{
+	_handleFatalError(errorCode, requestData) {
 		this._onBulletClear();
 
 		super._handleFatalError(errorCode, requestData);
 	}
 
-	_onBattlegroundTimeTostartRequest()
-	{
+	_onBattlegroundTimeTostartRequest() {
 		this._sendRequest(CLIENT_MESSAGES.GET_FULL_GAME_INFO, {});
 	}
 
-	_onWeaponPaidMultiplierUpdateRequired(event)
-	{
-		this._sendRequest(CLIENT_MESSAGES.WEAPON_PAID_MULTIPLIER_UPDATE_REQUIRED, {roomId: event.roomId});
+	_onWeaponPaidMultiplierUpdateRequired(event) {
+		this._sendRequest(CLIENT_MESSAGES.WEAPON_PAID_MULTIPLIER_UPDATE_REQUIRED, { roomId: event.roomId });
 	}
 
-	_handleGeneralError(errorCode, requestData)
-	{
+	_handleGeneralError(errorCode, requestData) {
 		let supported_codes = WebSocketInteractionController.ERROR_CODES;
-		switch(errorCode)
-		{
+		switch (errorCode) {
 			case supported_codes.ROOM_WAS_DEACTIVATED:
 				this._blockAfterCriticalError();
 			case supported_codes.TOO_MANY_OBSERVERS:
 			case supported_codes.TOO_MANY_PLAYER:
-				if (APP.isCAFMode)
-				{
+				if (APP.isCAFMode) {
 					this._blockAfterCriticalError();
 				}
 			case supported_codes.ROOM_NOT_FOUND:
@@ -914,8 +824,7 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 				this._closeConnectionIfPossible();
 				break;
 			case supported_codes.BUYIN_NOT_ALLOWED_AT_CURRENT_GAME_STATE:
-				if (APP.isBattlegroundMode && requestData && requestData.class === CLIENT_MESSAGES.OPEN_ROOM)
-				{
+				if (APP.isBattlegroundMode && requestData && requestData.class === CLIENT_MESSAGES.OPEN_ROOM) {
 					this._stopServerMesagesHandling();
 					this._closeConnectionIfPossible();
 				}
@@ -925,26 +834,22 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		super._handleGeneralError(errorCode, requestData);
 	}
 
-	_onNoPlaceToSeatHandler(event)
-	{
+	_onNoPlaceToSeatHandler(event) {
 		this._stopServerMesagesHandling();
 		this._closeConnectionIfPossible();
 	}
 
-	_onBattlegroundRoundObserverDenied(event)
-	{
+	_onBattlegroundRoundObserverDenied(event) {
 		this._stopServerMesagesHandling();
 		this._closeConnectionIfPossible();
 	}
 
-	_trySendOpenRoomRequest()
-	{
+	_trySendOpenRoomRequest() {
 		//DEBUG error code...
 		//setTimeout(this._processServerMessage.bind(this, {"code": 1012,"msg": "ROOM_NOT_OPEN","date": 1496748898812,"class": "Error","rid": 1}), 10);
 		//...DEBUG error code
 
-		if (APP.currentWindow && APP.currentWindow.gameFrbController && APP.currentWindow.gameFrbController.info.isFrbEndedAndConnectionLost)
-		{
+		if (APP.currentWindow && APP.currentWindow.gameFrbController && APP.currentWindow.gameFrbController.info.isFrbEndedAndConnectionLost) {
 			APP.currentWindow.gameFrbController.info.isFrbEndedAndConnectionLost = false;
 			this._fOpenRoomNotSent_bln = true;
 
@@ -958,135 +863,112 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		APP.externalCommunicator.sendExternalMessage(GAME_MESSAGES.CHECK_LOBBY_CONNECTION);
 	}
 
-	_sendOpenRoomRequest()
-	{
+	_sendOpenRoomRequest() {
 		let lRoomId_num = APP.urlBasedParams.roomId;
 		let lServerId_num = APP.urlBasedParams.serverId;
-		this._onLobbyMessageReceived({type: LOBBY_MESSAGES.GAME_REFRESH_BALANCE_REQUIRED})
+		this._onLobbyMessageReceived({ type: LOBBY_MESSAGES.GAME_REFRESH_BALANCE_REQUIRED })
 
 		this._fOpenRoomSent_bln = true;
-		this._sendRequest(CLIENT_MESSAGES.OPEN_ROOM, {sid: APP.urlBasedParams.SID, serverId: lServerId_num, roomId: lRoomId_num, lang: I18.currentLocale});
+		this._sendRequest(CLIENT_MESSAGES.OPEN_ROOM, { sid: APP.urlBasedParams.SID, serverId: lServerId_num, roomId: lRoomId_num, lang: I18.currentLocale });
 	}
 
-	_closeConnectionIfPossible()
-	{
+	_closeConnectionIfPossible() {
 		super._closeConnectionIfPossible();
 		this._fOpenRoomSent_bln = false;
 	}
 
-	_onGameSocketUrlUpdated(event)
-	{
+	_onGameSocketUrlUpdated(event) {
 		let socketUrl = event.socketUrl;
-		if (socketUrl === undefined)
-		{
+		if (socketUrl === undefined) {
 			return;
 		}
 
 		this.info.socketUrl = socketUrl;
 
-		if (this._isConnectionOpened)
-		{
+		if (this._isConnectionOpened) {
 			this._recoverAfterServerShutdownRequired = false;
 			this._closeConnectionIfPossible();
 			this._establishConnection();
 		}
-		else if (this._isConnectionClosed || this._isConnectionClosing)
-		{
-			if (this._reconnectingAfterGameUrlUpdatedRequired)
-			{
+		else if (this._isConnectionClosed || this._isConnectionClosing) {
+			if (this._reconnectingAfterGameUrlUpdatedRequired) {
 				this._reconnectingAfterGameUrlUpdatedRequired = false;
 				this._startReconnectingOnConnectionLost();
 			}
-			else if (!this._reconnectInProgress)
-			{
+			else if (!this._reconnectInProgress) {
 				this._establishConnection();
 			}
 		}
 	}
 
-	_onFullGameInfoRequired(event)
-	{
-		if (this._isConnectionOpened)
-		{
+	_onFullGameInfoRequired(event) {
+		if (this._isConnectionOpened) {
 			this._sendRequest(CLIENT_MESSAGES.GET_FULL_GAME_INFO, {});
 		}
-		else if (this._isConnectionClosed)
-		{
-			if (this.recoveringConnectionInProgress || this._blockedAfterCriticalError)
-			{
+		else if (this._isConnectionClosed) {
+			if (this.recoveringConnectionInProgress || this._blockedAfterCriticalError) {
 				// no actions required
 			}
-			else
-			{
+			else {
 				this._establishConnection();
 			}
 		}
 	}
 
-	clearOpenRoomSent()
-	{
+	clearOpenRoomSent() {
 		APP.currentWindow.gameFrbController.info.isFrbEndedAndConnectionLost = false;
 		this._fOpenRoomNotSent_bln = false;
 	}
 
-	_onCloseRoomRequired(event)
-	{
-		if (!this.isCloseRoomRequestInProgress)
-		{
-			if (this._fOpenRoomNotSent_bln)
-			{
+	_onCloseRoomRequired(event) {
+		if (!this.isCloseRoomRequestInProgress) {
+			if (this._fOpenRoomNotSent_bln) {
 				this._fOpenRoomNotSent_bln = false;
 				this.onRoomClosed();
 				APP.gameScreen.onRoomClosed();
 				APP.currentWindow.gameFrbController.onRoomClosed();
 				return;
 			}
-			this._sendRequest(CLIENT_MESSAGES.CLOSE_ROOM, {roomId: event.roomId});
+			this._sendRequest(CLIENT_MESSAGES.CLOSE_ROOM, { roomId: event.roomId });
 
 		}
 	}
 
-	_onBattlegroundConfirmBuyInRequired()
-	{
+	_onBattlegroundConfirmBuyInRequired() {
 		this._sendRequest(CLIENT_MESSAGES.CONFIRM_BATTLEGROUND_BUY_IN, {});
 	}
 
-	_onSitInRequired(event)
-	{
-		this._sendRequest(CLIENT_MESSAGES.SIT_IN, {stake:event.stake});
+	_onSitInRequired(event) {
+		this._sendRequest(CLIENT_MESSAGES.SIT_IN, { stake: event.stake });
 	}
 
-	_onSitOutRequired(event)
-	{
-		if (!this.isSitoutRequestInProgress)
-		{
+	_onSitOutRequired(event) {
+		if (!this.isSitoutRequestInProgress) {
 			this._sendRequest(CLIENT_MESSAGES.SIT_OUT, {});
 			APP.logger.i_pushDebug(`GWSIC. SitOut required. ${event}`);
 		}
 	}
 
-	_onBattlegroundStartPrivateRoom(event)
-	{
+	_onBattlegroundStartPrivateRoom(event) {
 		this._sendRequest(CLIENT_MESSAGES.BATTLEGROUND_START_PRIVATE_ROOM, {});
 	}
 
-	_onBattlegroundPlayerKickTriggered(event)
-	{
-		this._sendRequest(CLIENT_MESSAGES.BATTLEGROUND_KICK, {nickname: event.nickname});
+	_onBattlegroundPlayerKickTriggered(event) {
+		this._sendRequest(CLIENT_MESSAGES.BATTLEGROUND_KICK, { nickname: event.nickname });
 	}
 
 
-	_onBattlegroundPlayerReinviteTriggered(event){
-		this._sendRequest(CLIENT_MESSAGES.BATTLEGROUND_REINVITE, {nickname: event.nickname});
+	_onBattlegroundPlayerReinviteTriggered(event) {
+		this._sendRequest(CLIENT_MESSAGES.BATTLEGROUND_REINVITE, { nickname: event.nickname });
 	}
 
-	_onBattlegroundPlayerInviteTriggered(event){
+	_onBattlegroundPlayerInviteTriggered(event) {
 		console.log("invite request " + event.nicknames);
-		this._sendRequest(CLIENT_MESSAGES.BATTLEGROUND_INVITE, {nicknames: event.nicknames});
+		this._sendRequest(CLIENT_MESSAGES.BATTLEGROUND_INVITE, { nicknames: event.nicknames });
 	}
 
-	_onLatencyRequested(event){
-		
+	_onLatencyRequested(event) {
+
 		const requestBody = {
 			serverTs: event.serverTs,
 			serverAckTs: event.serverAckTs,
@@ -1097,12 +979,10 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		this._sendRequest(CLIENT_MESSAGES.SEND_LATENCY, requestBody);
 	}
 
-	_onShotTriggered(event)
-	{
+	_onShotTriggered(event) {
 
-		let sendData = {enemyId:event.enemyId, weaponId:event.weaponId, x: event.x, y: event.y, isPaidSpecialShot: event.isPaidSWShot, weaponPrice: event.weaponPrice};
-		if (event.bulletId)
-		{
+		let sendData = { enemyId: event.enemyId, weaponId: event.weaponId, x: event.x, y: event.y, isPaidSpecialShot: event.isPaidSWShot, weaponPrice: event.weaponPrice };
+		if (event.bulletId) {
 			sendData.bulletId = event.bulletId;
 			sendData.excludeParams = sendData.excludeParams || {};
 			sendData.excludeParams.betLevel = APP.playerController.info.betLevel;
@@ -1118,15 +998,15 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		//...DEBUG
 	}
 
-	_onBullet(event)
-	{
-		this._sendRequest(CLIENT_MESSAGES.BULLET, {bulletTime: event.bulletTime, bulletAngle: event.bulletAngle,
+	_onBullet(event) {
+		this._sendRequest(CLIENT_MESSAGES.BULLET, {
+			bulletTime: event.bulletTime, bulletAngle: event.bulletAngle,
 			bulletId: event.bulletId, weaponId: event.weaponId,
-			startPointX: event.startPointX, startPointY: event.startPointY, endPointX: event.endPointX, endPointY: event.endPointY});
+			startPointX: event.startPointX, startPointY: event.startPointY, endPointX: event.endPointX, endPointY: event.endPointY
+		});
 	}
 
-	_onBulletClear()
-	{
+	_onBulletClear() {
 		this._removeSpecificDelayedRequests(CLIENT_MESSAGES.BULLET);
 
 		this._removeDelayedRicochetShots();
@@ -1134,102 +1014,84 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		this._sendRequest(CLIENT_MESSAGES.BULLET_CLEAR, {});
 	}
 
-	_removeDelayedRicochetShots()
-	{
+	_removeDelayedRicochetShots() {
 		let lDelayedRequests = this._delayedRequests;
 
-		if (!lDelayedRequests || !lDelayedRequests.length)
-		{
+		if (!lDelayedRequests || !lDelayedRequests.length) {
 			return;
 		}
 
-		for (let i=0; i<lDelayedRequests.length; i++)
-		{
+		for (let i = 0; i < lDelayedRequests.length; i++) {
 			let lCurDelayedRequest = lDelayedRequests[i];
 			let lRequestData_obj = lCurDelayedRequest.data;
 			let lBulletId = lRequestData_obj.bulletId;
 			let lWeaponId = lRequestData_obj.weaponId;
 			let lBetLevel = lRequestData_obj.excludeParams ? lRequestData_obj.excludeParams.betLevel : lRequestData_obj.betLevel;
 
-			if (lCurDelayedRequest.class == CLIENT_MESSAGES.SHOT && lBulletId !== undefined)
-			{
+			if (lCurDelayedRequest.class == CLIENT_MESSAGES.SHOT && lBulletId !== undefined) {
 				lCurDelayedRequest.timer && lCurDelayedRequest.timer.destructor();
 				lDelayedRequests.splice(i, 1);
 				i--;
 
-				this.emit(GameWebSocketInteractionController.EVENT_ON_DELAYED_RICOCHET_SHOT_REMOVED, {weaponId: lWeaponId, betLevel: lBetLevel})
+				this.emit(GameWebSocketInteractionController.EVENT_ON_DELAYED_RICOCHET_SHOT_REMOVED, { weaponId: lWeaponId, betLevel: lBetLevel })
 			}
 		}
 	}
 
-	_onBuyInRequired(event)
-	{
-		if (this.isBuyInRequestInProgress)
-		{
+	_onBuyInRequired(event) {
+		if (this.isBuyInRequestInProgress) {
 			return;
 		}
 
 		this._sendRequest(CLIENT_MESSAGES.BUY_IN, {});
 	}
 
-	_onReBuyRequired(event)
-	{
-		if (this.isRebuyRequestInProgress)
-		{
+	_onReBuyRequired(event) {
+		if (this.isRebuyRequestInProgress) {
 			return;
 		}
 
 		this._sendRequest(CLIENT_MESSAGES.RE_BUY, {});
 	}
 
-	_onChangeStakeRequired(event)
-	{
-		this._sendRequest(CLIENT_MESSAGES.CHANGE_STAKE, {stake: event.stake});
+	_onChangeStakeRequired(event) {
+		this._sendRequest(CLIENT_MESSAGES.CHANGE_STAKE, { stake: event.stake });
 	}
 
-	_onWeaponUpdated(event)
-	{
+	_onWeaponUpdated(event) {
 		if (
 			APP.currentWindow.gameFrbController.info.frbEnded
 			|| !APP.currentWindow.gameStateController.info.isPlayerSitIn
-			)
-		{
+		) {
 			return;
 		}
 
 		this._removeDelayedSwitchWeaponRequests(false);
 
-		let requestData = {weaponId: event.weaponId};
+		let requestData = { weaponId: event.weaponId };
 		this._sendRequest(CLIENT_MESSAGES.SWITCH_WEAPON, requestData);
-		this.emit(GameWebSocketInteractionController.EVENT_ON_REQUEST_WEAPON_UPDATE_SENDED, {weaponId: event.weaponId});
+		this.emit(GameWebSocketInteractionController.EVENT_ON_REQUEST_WEAPON_UPDATE_SENDED, { weaponId: event.weaponId });
 	}
 
-	_onGameStateChanged(event)
-	{
+	_onGameStateChanged(event) {
 		let lNewState_str = event.value;
 
 		if (
-				APP.currentWindow.isPaused
-				&& lNewState_str == ROUND_STATE.QUALIFY
-				&& !APP.currentWindow.isKeepSWModeActive
-			)
-		{
+			APP.currentWindow.isPaused
+			&& lNewState_str == ROUND_STATE.QUALIFY
+			&& !APP.currentWindow.isKeepSWModeActive
+		) {
 			this._removeDelayedSwitchWeaponRequests(true);
 		}
 	}
 
-	_removeDelayedSwitchWeaponRequests(aKeepDelayedDefaultWeapon_bl)
-	{
-		if (this._delayedRequests && this._delayedRequests.length)
-		{
-			for (let i=0; i<this._delayedRequests.length; i++)
-			{
+	_removeDelayedSwitchWeaponRequests(aKeepDelayedDefaultWeapon_bl) {
+		if (this._delayedRequests && this._delayedRequests.length) {
+			for (let i = 0; i < this._delayedRequests.length; i++) {
 				let curDelayedRequestInfo = this._delayedRequests[i];
-				if (curDelayedRequestInfo.class === CLIENT_MESSAGES.SWITCH_WEAPON)
-				{
+				if (curDelayedRequestInfo.class === CLIENT_MESSAGES.SWITCH_WEAPON) {
 					let curDelayedWeaponId = curDelayedRequestInfo.data.weaponId;
-					if (curDelayedWeaponId == WEAPONS.DEFAULT && aKeepDelayedDefaultWeapon_bl)
-					{
+					if (curDelayedWeaponId == WEAPONS.DEFAULT && aKeepDelayedDefaultWeapon_bl) {
 						continue;
 					}
 					curDelayedRequestInfo.timer && curDelayedRequestInfo.timer.destructor();
@@ -1241,10 +1103,8 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		}
 	}
 
-	_onRoundResultScreenClosed(event)
-	{
-		if (!APP.currentWindow.gameStateController.info.isPlayerSitIn || APP.currentWindow.gameFrbController.info.frbEnded)
-		{
+	_onRoundResultScreenClosed(event) {
+		if (!APP.currentWindow.gameStateController.info.isPlayerSitIn || APP.currentWindow.gameFrbController.info.frbEnded) {
 			return;
 		}
 
@@ -1252,42 +1112,35 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		this._onRefreshBalance();
 	}
 
-	_onRoundResultScreenOpened(event)
-	{
+	_onRoundResultScreenOpened(event) {
 		this._sendRequest(CLIENT_MESSAGES.GET_FULL_GAME_INFO, {});
 	}
 
-	_onGameBackToLobbyInitiated(event)
-	{
+	_onGameBackToLobbyInitiated(event) {
 		this._stopRecoveringSocketConnectionIfRequired();
 		this._closeConnectionIfPossible();
 	}
 
-	_onAssetsLoadingError(event)
-	{
+	_onAssetsLoadingError(event) {
 		this._blockAfterCriticalError();
 		this._stopServerMesagesHandling();
 		this._closeConnectionIfPossible();
 	}
 
-	_onWebglContextLost(event)
-	{
+	_onWebglContextLost(event) {
 		this._onBulletClear();
 		this._blockAfterCriticalError();
 		this._stopServerMesagesHandling();
 		this._closeConnectionIfPossible();
 	}
 
-	_onBetLevelChangeRequired(event)
-	{
-		this._sendRequest(CLIENT_MESSAGES.BET_LEVEL, {betLevel: event.multiplier});
+	_onBetLevelChangeRequired(event) {
+		this._sendRequest(CLIENT_MESSAGES.BET_LEVEL, { betLevel: event.multiplier });
 	}
 
-	_onTournamentModeClientStateChanged(event)
-	{
+	_onTournamentModeClientStateChanged(event) {
 		let lTournamentModeInfo_tmi = this._fTournamentModeInfo_tmi;
-		if (lTournamentModeInfo_tmi.isTournamentOnClientCompletedState)
-		{
+		if (lTournamentModeInfo_tmi.isTournamentOnClientCompletedState) {
 			this._stopRecoveringSocketConnection();
 			this._blockAfterCriticalError();
 			this._stopServerMesagesHandling();
@@ -1295,22 +1148,18 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		}
 	}
 
-	_onLobbyMessageReceived(event)
-	{
+	_onLobbyMessageReceived(event) {
 		let msgType = event.type;
 
-		switch (msgType)
-		{
+		switch (msgType) {
 			case LOBBY_MESSAGES.SERVER_ERROR_MESSAGE_RECIEVED:
-				if (GameWebSocketInteractionController.isFatalError(event.data.errorType))
-				{
+				if (GameWebSocketInteractionController.isFatalError(event.data.errorType)) {
 					this._onBulletClear();
 					this._blockAfterCriticalError();
 					this._stopServerMesagesHandling();
 					this._closeConnectionIfPossible();
 				}
-				else if (GameWebSocketInteractionController.isGeneralError(event.data.errorType))
-				{
+				else if (GameWebSocketInteractionController.isGeneralError(event.data.errorType)) {
 					this._handleLobbyGeneralError(event.data.errorCode);
 				}
 				break;
@@ -1321,31 +1170,24 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 			case LOBBY_MESSAGES.LOBBY_CONNECTION_STATE:
 				this._fLobbyConnectionState_bln = event.data.state;
 
-				if (this._fLobbyConnectionState_bln)
-				{
-					if (this._fCheckLobbyConnection_bln)
-					{
+				if (this._fLobbyConnectionState_bln) {
+					if (this._fCheckLobbyConnection_bln) {
 						this._fCheckLobbyConnection_bln = false;
 						this.emit(GameWebSocketInteractionController.EVENT_ON_CONNECTION_READY_TO_ROOM_OPEN);
 
-						if (!this._fPendingOperationController_poc.info.isPendingOperationProgressStatusDefined || this._fPendingOperationController_poc.info.isPendingOperationInProgress)
-						{
+						if (!this._fPendingOperationController_poc.info.isPendingOperationProgressStatusDefined || this._fPendingOperationController_poc.info.isPendingOperationInProgress) {
 							this._fPendingOperationController_poc.once(GamePendingOperationController.EVENT_ON_PENDING_OPERATION_COMPLETED, this._onPendingOperationCompletedForOpenRoom, this);
 						}
-						else
-						{
+						else {
 							this._sendOpenRoomRequest();
 						}
 					}
 				}
-				else
-				{
-					if (this._reconnectInProgress)
-					{
+				else {
+					if (this._reconnectInProgress) {
 						this._deactivateReconnectTimeout();
 
-						if (this._isConnectionClosed || this._isConnectionClosing)
-						{
+						if (this._isConnectionClosed || this._isConnectionClosing) {
 							this._reconnectingAfterGameUrlUpdatedRequired = false;
 							this._startReconnectingOnConnectionLost();
 						}
@@ -1360,19 +1202,16 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 				this._closeConnectionIfPossible();
 				break;
 			case LOBBY_MESSAGES.ENTER_LOBBY_MESSAGE_RECEIVED:
-				if (this._fIsReopenSocketRequired_bl)
-				{
+				if (this._fIsReopenSocketRequired_bl) {
 					this._establishConnection();
 				}
 				break;
 		}
 	}
 
-	_handleLobbyGeneralError(errorCode)
-	{
+	_handleLobbyGeneralError(errorCode) {
 		let supported_codes = GameWebSocketInteractionController.ERROR_CODES;
-		switch(errorCode)
-		{
+		switch (errorCode) {
 			case supported_codes.ROOM_NOT_FOUND:
 				this._recoverAfterServerShutdownRequired = false;
 				this._reconnectingAfterGameUrlUpdatedRequired = false;
@@ -1380,8 +1219,7 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		}
 	}
 
-	_onRefreshBalance()
-	{
+	_onRefreshBalance() {
 		let msg = {};
 		//add ammo params for debug...
 		let playerInfo = APP.playerController.info;
@@ -1391,9 +1229,8 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		let lRealAmmo_num = APP.currentWindow.weaponsController.info.realAmmo;
 		msg.clientPendingAmmo = Number(lPendingAmmo_num.toFixed(2));
 
-		let lResAmmo_num = lRealAmmo_num+lPendingAmmo_num;
-		if (APP.currentWindow.gameFrbController.info.frbMode || APP.isBattlegroundGame)
-		{
+		let lResAmmo_num = lRealAmmo_num + lPendingAmmo_num;
+		if (APP.currentWindow.gameFrbController.info.frbMode || APP.isBattlegroundGame) {
 			msg.clientPendingAmmo = 0;
 			lResAmmo_num = APP.currentWindow.weaponsController.info.realAmmo;
 		}
@@ -1404,16 +1241,13 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 		this._sendRequest(CLIENT_MESSAGES.REFRESH_BALANCE, msg);
 	}
 
-	_onTickerResumed(event)
-	{
+	_onTickerResumed(event) {
 		this._forceDelayedRequests();
 	}
 
-	destroy()
-	{
+	destroy() {
 		let gameScreen = this._gameScreen = APP.gameScreen;
-		if (gameScreen)
-		{
+		if (gameScreen) {
 			gameScreen.off(GameScreen.EVENT_ON_GAME_SOCKET_URL_UPDATED, this._onGameSocketUrlUpdated, this);
 			gameScreen.off(GameScreen.EVENT_ON_FULL_GAME_INFO_REQUIRED, this._onFullGameInfoRequired, this);
 			gameScreen.off(GameScreen.EVENT_ON_CLOSE_ROOM_REQUIRED, this._onCloseRoomRequired, this);
@@ -1435,8 +1269,7 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 
 
 		let externalCommunicator = APP.externalCommunicator;
-		if (externalCommunicator)
-		{
+		if (externalCommunicator) {
 			externalCommunicator.off(GameExternalCommunicator.LOBBY_MESSAGE_RECEIVED, this._onLobbyMessageReceived, this);
 		}
 
@@ -1444,29 +1277,25 @@ class GameWebSocketInteractionController extends WebSocketInteractionController
 	}
 
 	//PENDING_OPERATION...
-	_onPendingOperationStarted(event)
-	{
+	_onPendingOperationStarted(event) {
 		this._removeSpecificDelayedRequests(CLIENT_MESSAGES.BUY_IN);
 		this._removeSpecificDelayedRequests(CLIENT_MESSAGES.RE_BUY);
 		this._removeSpecificDelayedRequests(CLIENT_MESSAGES.SIT_IN);
 		this._removeSpecificDelayedRequests(CLIENT_MESSAGES.CONFIRM_BATTLEGROUND_BUY_IN);
 	}
 
-	_onPendingOperationCompletedForOpenRoom(event)
-	{
-		this._sendOpenRoomRequest();	
+	_onPendingOperationCompletedForOpenRoom(event) {
+		this._sendOpenRoomRequest();
 	}
 
-	_onRefreshPendingOperationStatusRequired(event)
-	{
+	_onRefreshPendingOperationStatusRequired(event) {
 		let lParams_obj = {};
 		lParams_obj.sid = APP.urlBasedParams.SID;
-		
+
 		this._sendRequest(CLIENT_MESSAGES.CHECK_PENDING_OPERATION_STATUS, lParams_obj);
 	}
 
-	_onPendingOperationStatusTrackingTurnedOff(event)
-	{
+	_onPendingOperationStatusTrackingTurnedOff(event) {
 		this._removeSpecificDelayedRequests(CLIENT_MESSAGES.CHECK_PENDING_OPERATION_STATUS);
 	}
 	//...PENDING_OPERATION

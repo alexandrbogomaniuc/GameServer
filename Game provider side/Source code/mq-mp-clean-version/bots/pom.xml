@@ -56,7 +56,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.betsoft.casino.mp</groupId>
             <artifactId>sectorx</artifactId>
             <version>1.0.0-SNAPSHOT</version>
@@ -67,19 +67,19 @@
             <artifactId>bg_sectorx</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>com.betsoft.casino.mp</groupId>
             <artifactId>bg_dragonstone</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.betsoft.casino.mp</groupId>
             <artifactId>bg_missionamazon</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -98,6 +98,12 @@
             <groupId>commons-cli</groupId>
             <artifactId>commons-cli</artifactId>
             <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.betsoft.casino.mp</groupId>
+            <artifactId>bg_maxblastchampions</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
@@ -231,6 +237,14 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <excludes>
+                        <exclude>**/NaturalBattleGroundMissionAmazonStrategy.java</exclude>
+                        <exclude>**/BattleGroundMissionAmazonStrategy.java</exclude>
+                        <exclude>**/MissionAmazonStrategy.java</exclude>
+                        <exclude>**/NaturalBattleGroundSectorXStrategy.java</exclude>
+                        <exclude>**/BattleGroundSectorXStrategy.java</exclude>
+                        <exclude>**/SectorXStrategy.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>

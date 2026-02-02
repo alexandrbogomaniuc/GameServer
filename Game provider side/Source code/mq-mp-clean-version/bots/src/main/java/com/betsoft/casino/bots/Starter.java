@@ -1,6 +1,6 @@
 package com.betsoft.casino.bots;
 
-import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
 import com.betsoft.casino.bots.strategies.*;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.web.GsonFactory;
@@ -31,7 +31,7 @@ public class Starter {
     private static final Set<Long> BTG_BOT_GAMES_ID = new HashSet<>(Arrays.asList(GameType.BG_DRAGONSTONE.getGameId(),
             GameType.BG_MISSION_AMAZON.getGameId(), GameType.BG_SECTOR_X.getGameId()));
 
-    //LOG_STAT must be use logger for StatisticsManager
+    // LOG_STAT must be use logger for StatisticsManager
     private static final Logger LOG_STAT = LogManager.getLogger(StatisticsManager.class);
     protected AtomicInteger activeBots = new AtomicInteger(0);
     protected Gson gson = GsonFactory.createGson();
@@ -71,7 +71,8 @@ public class Starter {
                 LOG_STAT.debug("Stats for Bot-{}: {}", bot.getId(), bot.getStats());
                 if (bot instanceof IRoomBot) {
                     IRoomBot roomBot = (IRoomBot) bot;
-                    LOG_STAT.debug("Current state: {}, lastChangeDate={}", roomBot.getState(), new Date(roomBot.getLastStateChangeDate()));
+                    LOG_STAT.debug("Current state: {}, lastChangeDate={}", roomBot.getState(),
+                            new Date(roomBot.getLastStateChangeDate()));
                 }
             }
         });
@@ -86,21 +87,24 @@ public class Starter {
         for (int i = 1; i <= options.getBotsCount(); i++) {
             String nickname = options.getBotPrefix() + i + options.getNickname();
             String username = options.getEmailPrefix() + i + options.getEmailDomain();
-            String token = getToken(username, options.getPass(), options.getGoogleAuthUrl(), options.getTokenGenerationUrl());
+            String token = getToken(username, options.getPass(), options.getGoogleAuthUrl(),
+                    options.getTokenGenerationUrl());
 
-            logAndPrintToConsole("Start: Process bot nickname=" + nickname + "; username=" + username + "; token=" + token);
+            logAndPrintToConsole(
+                    "Start: Process bot nickname=" + nickname + "; username=" + username + "; token=" + token);
 
             if (unifiedGame) {
                 createUnifiedBot(Integer.toString(i), options.getGameId(), options.getBankId(),
                         launchUrl, token, nickname, null, getCrashBotStrategy(options), options.getRoomId());
-            } else if(btgGame) {
+            } else if (btgGame) {
                 createBtgBot(Integer.toString(i), launchUrl, token, nickname, null, getBotStrategy(options), options,
                         idxCustomRoom > 0 ? customRoomIds.get(idxCustomRoom--) : optionsRoomId);
-            } else if(gameId == GameType.BG_MAXCRASHGAME.getGameId()) {
-                //TO DO: check how to deal with bot's external id
-                // createMaxBlastBot(Integer.toString(i), options.getGameId(), options.getBankId(), nickname, nickname, username, null, getBotStrategy(options), options);
-            }
-            else {
+            } else if (gameId == GameType.BG_MAXCRASHGAME.getGameId()) {
+                // TO DO: check how to deal with bot's external id
+                // createMaxBlastBot(Integer.toString(i), options.getGameId(),
+                // options.getBankId(), nickname, nickname, username, null,
+                // getBotStrategy(options), options);
+            } else {
                 createBot(Integer.toString(i), options.getGameId(), options.getBankId(), launchUrl, token, nickname,
                         null, getBotStrategy(options), options.getRoomId());
             }
@@ -136,7 +140,8 @@ public class Starter {
         IUnifiedBotStrategy botStrategy;
         switch (options.getBotStrategy()) {
             case "CrashGameBotStrategyCustom":
-                botStrategy = new CrashGameBotStrategyCustom(options.getNumberRoundsBeforeRestart(), options.getAstroParams());
+                botStrategy = new CrashGameBotStrategyCustom(options.getNumberRoundsBeforeRestart(),
+                        options.getAstroParams());
                 LOG.debug("CrashGameBotStrategyCustom: {} ", botStrategy);
                 break;
             default:
@@ -148,7 +153,6 @@ public class Starter {
         return botStrategy;
     }
 
-
     private IRoomBotStrategy getBotStrategy(ArgsParser options) {
         IRoomBotStrategy botStrategy;
         int specialPaidWeaponId = options.getSpecialPaidWeaponId();
@@ -158,20 +162,26 @@ public class Starter {
         String requestedEnemyIds = options.getRequestedEnemyIds();
 
         switch (options.getBotStrategy()) {
-            case "NaturalBattleGroundMissionAmazonStrategy":
-                botStrategy = new NaturalBattleGroundMissionAmazonStrategy(100, requestedBetLevel, options.getRequestedByInAmount());
-                break;
-            case "NaturalBattleGroundDragonStoneStrategy":
-                botStrategy = new NaturalBattleGroundDragonStoneStrategy(100, requestedBetLevel, options.getRequestedByInAmount());
-                break;
-            case "NaturalBattleGroundSectorXStrategy":
-                botStrategy = new NaturalBattleGroundSectorXStrategy(100, requestedBetLevel, options.getRequestedByInAmount(), requestedEnemyIds);
-                break;
+            /*
+             * case "NaturalBattleGroundMissionAmazonStrategy":
+             * botStrategy = new NaturalBattleGroundMissionAmazonStrategy(100,
+             * requestedBetLevel, options.getRequestedByInAmount());
+             * break;
+             * case "NaturalBattleGroundDragonStoneStrategy":
+             * botStrategy = new NaturalBattleGroundDragonStoneStrategy(100,
+             * requestedBetLevel, options.getRequestedByInAmount());
+             * break;
+             * case "NaturalBattleGroundSectorXStrategy":
+             * botStrategy = new NaturalBattleGroundSectorXStrategy(100, requestedBetLevel,
+             * options.getRequestedByInAmount(), requestedEnemyIds);
+             * break;
+             */
             case "CogStrategyWithWeaponId":
                 botStrategy = new CogStrategyWithWeaponId(200, specialPaidWeaponId, requestedBetLevel);
                 break;
             case "DSPaidShotStrategyWithId":
-                botStrategy = new DSPaidShotStrategyWithId(100, specialPaidWeaponId, requestedBetLevel, allowedUseDroppedSW);
+                botStrategy = new DSPaidShotStrategyWithId(100, specialPaidWeaponId, requestedBetLevel,
+                        allowedUseDroppedSW);
                 break;
             case "CryoGunPaidShots":
                 botStrategy = new CryoGunPaidShots(100);
@@ -182,15 +192,18 @@ public class Starter {
             case "PiratesWithBuyInSpecialWeapons":
                 botStrategy = new PiratesWithBuyInSpecialWeapons(100);
                 break;
-            case "MissionAmazonStrategy":
-                botStrategy = new MissionAmazonStrategy(100, specialPaidWeaponId, requestedBetLevel, allowedUseDroppedSW);
-                break;
-            case "MaxBlastChampionsBotStrategy":
-                botStrategy =  new MaxBlastChampionsBotStrategy(null, 167/*multiplayer = 1.01*/, 23050/*multiplayer = 3.9999*/, buyIn);
-                break;
-            case "SectorXStrategy":
-                botStrategy = new SectorXStrategy(100, requestedBetLevel, requestedEnemyIds);
-                break;
+            /*
+             * case "MissionAmazonStrategy":
+             * botStrategy = new MissionAmazonStrategy(100, specialPaidWeaponId,
+             * requestedBetLevel, allowedUseDroppedSW);
+             * break;
+             * case "MaxBlastChampionsBotStrategy":
+             * botStrategy = new MaxBlastChampionsBotStrategy(null, 167, 23050, buyIn);
+             * break;
+             * case "SectorXStrategy":
+             * botStrategy = new SectorXStrategy(100, requestedBetLevel, requestedEnemyIds);
+             * break;
+             */
             default:
                 botStrategy = new BurstShootingStrategyWithoutBuySW(100);
                 break;
@@ -199,71 +212,81 @@ public class Starter {
         return botStrategy;
     }
 
-    /*public void createMaxBlastBot(String id,long gameId, int bankId, String token, String nickname,
-                                  String userName, Function<Void, Integer> shutdownCallback, IRoomBotStrategy botStrategy, ArgsParser options) {
-        ManagedMaxBlastChampionsRoomBot bot = null;
-        try{
-            String maxBlastLaunchUrl = options.getUrl() +
-                    "?bankId=" + options.getBankId() +
-                    "&gameId=" + options.getGameId() +
-                    "&buyIn=" +  options.getRequestedByInAmount()+
-                    "&lang=" + "en" +
-                    "&token=" + token +
-                    "&homeUrl=homeUrl" +
-                    "&pass=" + options.getPass();
+    /*
+     * public void createMaxBlastBot(String id,long gameId, int bankId, String
+     * token, String nickname,
+     * String userName, Function<Void, Integer> shutdownCallback, IRoomBotStrategy
+     * botStrategy, ArgsParser options) {
+     * ManagedMaxBlastChampionsRoomBot bot = null;
+     * try{
+     * String maxBlastLaunchUrl = options.getUrl() +
+     * "?bankId=" + options.getBankId() +
+     * "&gameId=" + options.getGameId() +
+     * "&buyIn=" + options.getRequestedByInAmount()+
+     * "&lang=" + "en" +
+     * "&token=" + token +
+     * "&homeUrl=homeUrl" +
+     * "&pass=" + options.getPass();
+     * 
+     * logAndPrintToConsole("createMaxBlastBot: Sending base request to " +
+     * maxBlastLaunchUrl + ", token: " + token);
+     * 
+     * String response = new RestTemplate().getForObject(maxBlastLaunchUrl,
+     * String.class);
+     * 
+     * BotParams params = new
+     * BotParams(extractWebSocketUrl(response).replace("mplobby", "mpunified"),
+     * extractSessionId(response), extractServerId(response));
+     * logAndPrintToConsole("createMaxBlastBot: botParams for BTG " + params);
+     * 
+     * bot = new ManagedMaxBlastChampionsRoomBot(
+     * null,
+     * nickname,
+     * userName,
+     * options.getPass(),
+     * id,
+     * params.getSocketUrl(),
+     * params.getServerId(),
+     * bankId,
+     * params.getSessionId(),
+     * new GsonMessageSerializer(gson),
+     * aVoid -> {
+     * activeBots.decrementAndGet();
+     * if (shutdownCallback != null) {
+     * shutdownCallback.apply(null);
+     * }
+     * return 0;
+     * },
+     * unused -> {
+     * activeBots.incrementAndGet();
+     * return 0;
+     * },
+     * (int) gameId,
+     * botStrategy,
+     * (int) options.getRoomId(),
+     * token
+     * );
+     * 
+     * bot.setSelectedBuyIn(options.getRequestedByInAmount());
+     * bots.add(bot);
+     * bot.start();
+     * 
+     * } catch (Exception e) {
+     * logAndPrintToConsole("createMaxBlastBot: failed create bot=" + id +
+     * "Exception:" + e.getMessage());
+     * LOG.error("createMaxBlastBot: failed create bot={}", id , e);
+     * if (bot != null) {
+     * if (bots.remove(bot)) {
+     * activeBots.decrementAndGet();
+     * }
+     * }
+     * }
+     * }
+     */
 
-            logAndPrintToConsole("createMaxBlastBot: Sending base request to " + maxBlastLaunchUrl + ", token: " + token);
-
-            String response = new RestTemplate().getForObject(maxBlastLaunchUrl, String.class);
-
-            BotParams params = new BotParams(extractWebSocketUrl(response).replace("mplobby", "mpunified"), extractSessionId(response), extractServerId(response));
-            logAndPrintToConsole("createMaxBlastBot: botParams for BTG " + params);
-
-            bot = new ManagedMaxBlastChampionsRoomBot(
-                    null,
-                    nickname,
-                    userName,
-                    options.getPass(),
-                    id,
-                    params.getSocketUrl(),
-                    params.getServerId(),
-                    bankId,
-                    params.getSessionId(),
-                    new GsonMessageSerializer(gson),
-                    aVoid -> {
-                        activeBots.decrementAndGet();
-                        if (shutdownCallback != null) {
-                            shutdownCallback.apply(null);
-                        }
-                        return 0;
-                    },
-                    unused -> {
-                        activeBots.incrementAndGet();
-                        return 0;
-                    },
-                    (int) gameId,
-                    botStrategy,
-                    (int) options.getRoomId(),
-                    token
-            );
-
-            bot.setSelectedBuyIn(options.getRequestedByInAmount());
-            bots.add(bot);
-            bot.start();
-
-        } catch (Exception e) {
-            logAndPrintToConsole("createMaxBlastBot: failed create bot=" + id + "Exception:" + e.getMessage());
-            LOG.error("createMaxBlastBot: failed create bot={}", id , e);
-            if (bot != null) {
-                if (bots.remove(bot)) {
-                    activeBots.decrementAndGet();
-                }
-            }
-        }
-    }*/
-
-    public UnifiedBot createUnifiedBot(String id, long gameId, int bankId, String launchUrl, String token, String nickname,
-                                       Function<Void, Integer> shutdownCallback, IUnifiedBotStrategy botStrategy, long roomId) {
+    public UnifiedBot createUnifiedBot(String id, long gameId, int bankId, String launchUrl, String token,
+            String nickname,
+            Function<Void, Integer> shutdownCallback, IUnifiedBotStrategy botStrategy, long roomId) {
         UnifiedBot bot = null;
         try {
             BotParams params = createParamsForUnified(launchUrl + token);
@@ -298,7 +321,7 @@ public class Starter {
 
         } catch (Exception e) {
             logAndPrintToConsole("createUnifiedBot: failed create bot=" + id + "Exception:" + e.getMessage());
-            LOG.error("createUnifiedBot: failed create bot={}", id , e);
+            LOG.error("createUnifiedBot: failed create bot={}", id, e);
             if (bot != null) {
                 if (bots.remove(bot)) {
                     activeBots.decrementAndGet();
@@ -317,7 +340,7 @@ public class Starter {
     }
 
     public void createBtgBot(String id, String launchUrl, String token, String nickname,
-                             Function<Void, Integer> shutdownCallback, IRoomBotStrategy botStrategy, ArgsParser options, long roomId) {
+            Function<Void, Integer> shutdownCallback, IRoomBotStrategy botStrategy, ArgsParser options, long roomId) {
         LobbyBot bot = null;
         try {
             logAndPrintToConsole("createBtgBot: Sending base request to " + launchUrl + ", token: " + token);
@@ -325,28 +348,31 @@ public class Starter {
             String responseBase = getForObject(launchUrl + token);
 
             String sessionId = extractSessionId(responseBase);
-            logAndPrintToConsole("createBtgBot: sessionId from base request: " + sessionId + ", btgUrl: " + options.getUrl());
-            BotParams params = new BotParams(extractWebSocketUrl(responseBase), sessionId, extractServerId(responseBase));
+            logAndPrintToConsole(
+                    "createBtgBot: sessionId from base request: " + sessionId + ", btgUrl: " + options.getUrl());
+            BotParams params = new BotParams(extractWebSocketUrl(responseBase), sessionId,
+                    extractServerId(responseBase));
             logAndPrintToConsole("createBtgBot: botParams for BTG " + params);
 
-            bot = new LobbyBot(nickname, id, params.getSocketUrl(), options.getGameId(), options.getBankId(), params.getServerId(),
+            bot = new LobbyBot(nickname, id, params.getSocketUrl(), options.getGameId(), options.getBankId(),
+                    params.getServerId(),
                     params.getSessionId(), new GsonMessageSerializer(gson), aVoid -> {
-                activeBots.decrementAndGet();
-                if (shutdownCallback != null) {
-                    shutdownCallback.apply(null);
-                }
-                return 0;
-            }, botStrategy, unused -> {
-                activeBots.incrementAndGet();
-                return 0;
-            });
+                        activeBots.decrementAndGet();
+                        if (shutdownCallback != null) {
+                            shutdownCallback.apply(null);
+                        }
+                        return 0;
+                    }, botStrategy, unused -> {
+                        activeBots.incrementAndGet();
+                        return 0;
+                    });
             bot.setNeedTryRandomExitInWaitState(options.isNeedTryRandomExitInWaitState());
             setRoom(bot, roomId);
             bots.add(bot);
             bot.start();
         } catch (Exception e) {
             logAndPrintToConsole("createBtgBot: failed create bot=" + id + "Exception:" + e.getMessage());
-            LOG.error("createBtgBot: failed create bot={}", id , e);
+            LOG.error("createBtgBot: failed create bot={}", id, e);
             if (bot != null) {
                 if (bots.remove(bot)) {
                     activeBots.decrementAndGet();
@@ -355,29 +381,28 @@ public class Starter {
         }
     }
 
-
     public void createBot(String id, long gameId, int bankId, String launchUrl, String token, String nickname,
-                          Function<Void, Integer> shutdownCallback, IRoomBotStrategy botStrategy, long roomId) {
+            Function<Void, Integer> shutdownCallback, IRoomBotStrategy botStrategy, long roomId) {
         LobbyBot bot = null;
         try {
             BotParams params = createParams(launchUrl + token);
             bot = new LobbyBot(nickname, id, params.getSocketUrl(), (int) gameId, bankId, params.getServerId(),
                     params.getSessionId(), new GsonMessageSerializer(gson), aVoid -> {
-                activeBots.decrementAndGet();
-                if (shutdownCallback != null) {
-                    shutdownCallback.apply(null);
-                }
-                return 0;
-            }, botStrategy, unused -> {
-                activeBots.incrementAndGet();
-                return 0;
-            });
+                        activeBots.decrementAndGet();
+                        if (shutdownCallback != null) {
+                            shutdownCallback.apply(null);
+                        }
+                        return 0;
+                    }, botStrategy, unused -> {
+                        activeBots.incrementAndGet();
+                        return 0;
+                    });
             setRoom(bot, roomId);
             bots.add(bot);
             bot.start();
         } catch (Exception e) {
             logAndPrintToConsole("createBot: failed create bot=" + id + "Exception:" + e.getMessage());
-            LOG.error("createBot: failed create bot={}", id , e);
+            LOG.error("createBot: failed create bot={}", id, e);
             if (bot != null) {
                 if (bots.remove(bot)) {
                     activeBots.decrementAndGet();
@@ -471,6 +496,7 @@ public class Starter {
 
         return token;
     }
+
     private String sendPostRequest(String url, String jsonInputString) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -503,8 +529,7 @@ public class Starter {
                 launchUrl,
                 HttpMethod.GET,
                 entity,
-                String.class
-        );
+                String.class);
 
         String response = responseE.getBody();
         return response;

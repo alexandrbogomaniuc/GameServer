@@ -84,6 +84,10 @@ public class HttpServletRequestProxy implements HttpServletRequest {
                 host = request.getHeader("X-Forwarded-Server");
             }
             if (host == null) {
+                // ALLOW LOCALHOST without warning
+                if ("localhost".equals(header)) {
+                    return header;
+                }
                 LOG.warn("Bad header found, Host is: " + header +
                         ", but X-Forwarded-Host or X-Forwarded-Server undefined");
                 host = header;

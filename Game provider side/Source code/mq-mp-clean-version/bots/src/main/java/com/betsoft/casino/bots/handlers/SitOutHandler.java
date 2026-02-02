@@ -3,8 +3,8 @@ package com.betsoft.casino.bots.handlers;
 import com.betsoft.casino.bots.IRoomBot;
 import com.betsoft.casino.bots.Stats;
 import com.betsoft.casino.bots.UnifiedBot;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
-import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
 import com.betsoft.casino.mp.transport.SitOutResponse;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -34,16 +34,22 @@ public class SitOutHandler implements IServerMessageHandler<SitOutResponse> {
         LOG.debug("SitOutHandler::handle: botId:{} botNickname={}, SitOut responseNickname={}, ",
                 bot.getId(), botNickname, responseNickname);
 
-        if (bot instanceof ManagedMaxBlastChampionsRoomBot) {
-            ManagedMaxBlastChampionsRoomBot maxBlastBot = (ManagedMaxBlastChampionsRoomBot) bot;
-            maxBlastBot.removePlayer(responseNickname);
-            LOG.debug("SitOutHandler::handle: botId={}, user responseNickname={} removed from players list:{}",
-                    bot.getId(), responseNickname, maxBlastBot.getPlayers().keySet().toArray());
-        }
-
-        if (bot instanceof ManagedBattleGroundRoomBot && bot.getNickname().equals(responseNickname)) {
-            LOG.debug("SitOutHandler::handle: botId:{} call stop", bot.getId());
-            bot.stop();
-        }
+        /*
+         * if (bot instanceof ManagedMaxBlastChampionsRoomBot) {
+         * ManagedMaxBlastChampionsRoomBot maxBlastBot =
+         * (ManagedMaxBlastChampionsRoomBot) bot;
+         * maxBlastBot.removePlayer(responseNickname);
+         * LOG.
+         * debug("SitOutHandler::handle: botId={}, user responseNickname={} removed from players list:{}"
+         * ,
+         * bot.getId(), responseNickname, maxBlastBot.getPlayers().keySet().toArray());
+         * }
+         * 
+         * if (bot instanceof ManagedBattleGroundRoomBot &&
+         * bot.getNickname().equals(responseNickname)) {
+         * LOG.debug("SitOutHandler::handle: botId:{} call stop", bot.getId());
+         * bot.stop();
+         * }
+         */
     }
 }

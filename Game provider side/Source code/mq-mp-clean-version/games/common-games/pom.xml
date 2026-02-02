@@ -45,12 +45,11 @@
             <artifactId>hazelcast-kubernetes</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.cloud/google-cloud-bigquery -->
-        <dependency>
+        <!-- <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-bigquery</artifactId>
-            <!--<version>1.125.0</version>-->
             <version>1.102.0</version>
-        </dependency>
+        </dependency> -->
     </dependencies>
     <build>
         <resources>

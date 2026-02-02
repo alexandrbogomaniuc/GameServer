@@ -54,19 +54,22 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
     }
 
     /**
-     * Performs checks, make login player to the server and redirects to the game launch page or errors.
-     * @param mapping struts action mapping
+     * Performs checks, make login player to the server and redirects to the game
+     * launch page or errors.
+     * 
+     * @param mapping    struts action mapping
      * @param actionForm {@code CWStartGameForm} action form.
-     * @param request http request
-     * @param response http response
+     * @param request    http request
+     * @param response   http response
      * @return {@code ActionForward} action redirect result
      * @throws Exception if any unexpected error occur
      */
     @Override
     protected ActionForward process(ActionMapping mapping, CWStartGameForm actionForm, HttpServletRequest request,
-                                    HttpServletResponse response) throws Exception {
+            HttpServletResponse response) throws Exception {
 
-        getLog().debug("CWStartGameAction process: enter process mapping={}, actionForm={}, request={}", mapping, actionForm, request);
+        getLog().debug("CWStartGameAction process: enter process mapping={}, actionForm={}, request={}", mapping,
+                actionForm, request);
 
         try {
             long now = System.currentTimeMillis();
@@ -83,26 +86,32 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
             String lang = actionForm.getLang();
             String userAgent = request.getHeader("User-Agent");
 
-            //Makes authentication request to external side.
+            // Makes authentication request to external side.
             final CommonWalletAuthResult authResult = getAuthInfo(actionForm, actionForm.getToken(), bankInfo,
                     request.getRemoteHost(), request);
 
-
             final String extId = authResult != null ? authResult.getUserId() : null;
 
-            LOG.debug("CWStartGameAction process: call getPlayerSessionWithUnfinishedSid for externalId={}", extId);
-            CassandraPlayerSessionState playerSessionUnfinishedSid = getPlayerSessionWithUnfinishedSid(extId);
-            LOG.debug("CWStartGameAction process: playerSessionUnfinishedSid={}", playerSessionUnfinishedSid);
-
-            if (playerSessionUnfinishedSid != null) {
-
-                Pair<GameSession, Boolean> resultPair = finishGameSessionAndMakeSitOut(
-                        playerSessionUnfinishedSid.getSid(),
-                        playerSessionUnfinishedSid.getPrivateRoomId()
-                );
-
-                LOG.debug("CWStartGameAction process: finishGameSessionAndMakeSitOut resultPair={}", resultPair);
-            }
+            /*
+             * LOG.
+             * debug("CWStartGameAction process: call getPlayerSessionWithUnfinishedSid for externalId={}"
+             * , extId);
+             * CassandraPlayerSessionState playerSessionUnfinishedSid =
+             * getPlayerSessionWithUnfinishedSid(extId);
+             * LOG.debug("CWStartGameAction process: playerSessionUnfinishedSid={}",
+             * playerSessionUnfinishedSid);
+             * 
+             * if (playerSessionUnfinishedSid != null) {
+             * 
+             * Pair<GameSession, Boolean> resultPair = finishGameSessionAndMakeSitOut(
+             * playerSessionUnfinishedSid.getSid(),
+             * playerSessionUnfinishedSid.getPrivateRoomId());
+             * 
+             * LOG.
+             * debug("CWStartGameAction process: finishGameSessionAndMakeSitOut resultPair={}"
+             * , resultPair);
+             * }
+             */
 
             GameServerResponse serverResponse;
             Long accountId;
@@ -111,14 +120,15 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
             SessionHelper.getInstance().lock(actionForm.getBankId(), authResult.getUserId());
             boolean isLocked = true;
             try {
-                String authCurrency = CurrencyManager.getInstance().getCurrencyCodeByAlias(authResult.getCurrency(), bankInfo);
+                String authCurrency = CurrencyManager.getInstance().getCurrencyCodeByAlias(authResult.getCurrency(),
+                        bankInfo);
                 SessionHelper.getInstance().openSession();
                 accountInfo = AccountManager.getInstance().getByCompositeKey(actionForm.getSubCasinoId(),
                         bankInfo, extId);
 
-                getLog().debug("CWStartGameAction process: accountInfo={}",accountInfo);
+                getLog().debug("CWStartGameAction process: accountInfo={}", accountInfo);
 
-                //  If user is not found (for new players), creates new account info
+                // If user is not found (for new players), creates new account info
                 if (accountInfo == null) {
                     accountInfo = saveAccount(
                             null,
@@ -132,25 +142,28 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                             actionForm,
                             true);
 
-                    getLog().debug("CWStartGameAction process: created accountInfo={}",accountInfo);
+                    getLog().debug("CWStartGameAction process: created accountInfo={}", accountInfo);
 
-                } else if (accountInfo.getLastLoginTime() == 0) {//mass-frb created account
+                } else if (accountInfo.getLastLoginTime() == 0) {// mass-frb created account
 
-                    getLog().debug("CWStartGameAction process: mass-frb created account. accountInfo={}",accountInfo);
+                    getLog().debug("CWStartGameAction process: mass-frb created account. accountInfo={}", accountInfo);
 
                     if (StringUtils.isTrimmedEmpty(authCurrency)) {
                         try {
                             if (bankInfo.isNeedCurrencyCheckInAuth()) {
                                 IFRBonusClient frbClient = FRBonusManager.getInstance().getClient(bankInfo.getId());
                                 String extCurrency = frbClient.getAccountInfo(authResult.getUserId()).getCurrency();
-                                authCurrency = CurrencyManager.getInstance().getCurrencyCodeByAlias(extCurrency, bankInfo);
+                                authCurrency = CurrencyManager.getInstance().getCurrencyCodeByAlias(extCurrency,
+                                        bankInfo);
                             }
                         } catch (Exception e) {
-                            LOG.debug("CWStartGameAction process: Currency check error for account=" + accountInfo.getId(), e);
+                            LOG.debug("CWStartGameAction process: Currency check error for account="
+                                    + accountInfo.getId(), e);
                         }
 
                         if (StringUtils.isTrimmedEmpty(authCurrency)) {
-                            throw new WalletException("Auth result does not contain currency code", accountInfo.getId());
+                            throw new WalletException("Auth result does not contain currency code",
+                                    accountInfo.getId());
                         }
                     }
                     // Checks and update player currency if needed.
@@ -172,7 +185,7 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                 } else if (!StringUtils.isTrimmedEmpty(authResult.getUserName()) &&
                         !authResult.getUserName().equals(accountInfo.getNickName())) {
 
-                    getLog().debug("CWStartGameAction process: update accountInfo={}",accountInfo);
+                    getLog().debug("CWStartGameAction process: update accountInfo={}", accountInfo);
 
                     accountInfo = saveAccount(
                             accountInfo.getId(),
@@ -195,7 +208,8 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                 }
 
                 if (bankInfo.isAddTokenMode()) {
-                    getLog().debug("CWStartGameAction process: save token={} into accountInfo={}",actionForm.getToken(), accountInfo);
+                    getLog().debug("CWStartGameAction process: save token={} into accountInfo={}",
+                            actionForm.getToken(), accountInfo);
 
                     accountInfo.setFinsoftSessionId(actionForm.getToken());
                 }
@@ -217,70 +231,99 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                 accountId = accountInfo.getId();
                 GameSession oldGameSession = SessionHelper.getInstance().getTransactionData().getGameSession();
 
-                if (GameServer.getInstance().isMultiplayerGame(oldGameSession) && oldGameSession.isRealMoney() && GameMode.FREE.equals(actionForm.getGameMode())) {
-                    getLog().error("CWStartGameAction process: found unclosed MQ in real mode");
-                    addError(request, "error.login.unclosedRealModeSession", "found unclosed MQ in real mode");
-                    return mapping.findForward(ERROR_FORWARD);
-                }
-
-                //always close MQ game
-                if (GameServer.getInstance().needCloseMultiplayerGame(oldGameSession, bankInfo, -1)) {
-                    getLog().debug("CWStartGameAction process: needCloseMultiplayerGame oldGameSessionId={}", oldGameSession.getGameId());
-
-                    Long serverBalance = null;
-                    IWallet wallet = SessionHelper.getInstance().getTransactionData().getWallet();
-                    if (wallet != null) {
-                        serverBalance = wallet.getServerBalance();
-                    }
-                    SessionHelper.getInstance().commitTransaction();
-                    SessionHelper.getInstance().markTransactionCompleted();
-                    SessionHelper.getInstance().clearWithUnlock();
-                    isLocked = false;
-
-                    getLog().debug("CWStartGameAction process: old transactions are commited for accountId={}",accountInfo.getId());
-
-                    LoginHelper.performMaxQuestSitOut(accountInfo, oldGameSession, bankInfo);
-
-                    getLog().debug("CWStartGameAction process: performMaxQuestSitOut success for accountInfo={}",accountInfo);
-
-                    SessionHelper.getInstance().lock(actionForm.getBankId(), authResult.getUserId());
-                    isLocked = true;
-                    SessionHelper.getInstance().openSession();
-                    accountInfo = SessionHelper.getInstance().getTransactionData().getAccount();
-                    wallet = SessionHelper.getInstance().getTransactionData().getWallet();
-                    //after sitOut balance may be changed, need update if possible
-                    LOG.debug("CWStartGameAction process: After MP SitOut current accountInfo.balance={}, wallet.balance={}, " +
-                                    "old wallet.serverBalance={}, form.balance={}",
-                            accountInfo.getBalance(), wallet == null ? null : wallet.getServerBalance(),
-                            serverBalance, actionForm.getBalance());
-
-                    if (WalletProtocolFactory.getInstance().isWalletBankWithGetBalanceSupported(bankInfo)) {
-                        com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client =
-                                WalletProtocolFactory.getInstance()
-                                        .getWalletProtocolManager(accountInfo.getBankId())
-                                        .getClient();
-                        try {
-                            double dBalance = client.getBalance(accountInfo.getId(), accountInfo.getExternalId(),
-                                    accountInfo.getBankId(), accountInfo.getCurrency());
-                            long balance = bankInfo.isParseLong() ? (long) dBalance :
-                                    DigitFormatter.getCentsFromCurrency(dBalance);
-                            LOG.debug("CWStartGameAction process: Success update balance={}", balance);
-                            actionForm.setBalance(balance);
-                        } catch (Exception e) {
-                            LOG.error("CWStartGameAction process: Unable to refresh balance for accountId=" + accountId, e);
-                        }
-                    }
-
-                    if (wallet != null && (serverBalance == null || serverBalance != wallet.getServerBalance())) {
-                        LOG.debug("CWStartGameAction process: Wallet.serverBalance changed after sitOut, set new={}",
-                                wallet.getServerBalance());
-                        actionForm.setBalance(wallet.getServerBalance());
-                    }
-                }
+                /*
+                 * if (GameServer.getInstance().isMultiplayerGame(oldGameSession) &&
+                 * oldGameSession.isRealMoney()
+                 * && GameMode.FREE.equals(actionForm.getGameMode())) {
+                 * getLog().error("CWStartGameAction process: found unclosed MQ in real mode");
+                 * addError(request, "error.login.unclosedRealModeSession",
+                 * "found unclosed MQ in real mode");
+                 * return mapping.findForward(ERROR_FORWARD);
+                 * }
+                 * 
+                 * // always close MQ game
+                 * if (GameServer.getInstance().needCloseMultiplayerGame(oldGameSession,
+                 * bankInfo, -1)) {
+                 * getLog().
+                 * debug("CWStartGameAction process: needCloseMultiplayerGame oldGameSessionId={}"
+                 * ,
+                 * oldGameSession.getGameId());
+                 * 
+                 * Long serverBalance = null;
+                 * IWallet wallet =
+                 * SessionHelper.getInstance().getTransactionData().getWallet();
+                 * if (wallet != null) {
+                 * serverBalance = wallet.getServerBalance();
+                 * }
+                 * SessionHelper.getInstance().commitTransaction();
+                 * SessionHelper.getInstance().markTransactionCompleted();
+                 * SessionHelper.getInstance().clearWithUnlock();
+                 * isLocked = false;
+                 * 
+                 * getLog().
+                 * debug("CWStartGameAction process: old transactions are commited for accountId={}"
+                 * ,
+                 * accountInfo.getId());
+                 * 
+                 * LoginHelper.performMaxQuestSitOut(accountInfo, oldGameSession, bankInfo);
+                 * 
+                 * getLog().
+                 * debug("CWStartGameAction process: performMaxQuestSitOut success for accountInfo={}"
+                 * ,
+                 * accountInfo);
+                 * 
+                 * SessionHelper.getInstance().lock(actionForm.getBankId(),
+                 * authResult.getUserId());
+                 * isLocked = true;
+                 * SessionHelper.getInstance().openSession();
+                 * accountInfo = SessionHelper.getInstance().getTransactionData().getAccount();
+                 * wallet = SessionHelper.getInstance().getTransactionData().getWallet();
+                 * // after sitOut balance may be changed, need update if possible
+                 * LOG.debug(
+                 * "CWStartGameAction process: After MP SitOut current accountInfo.balance={}, wallet.balance={}, "
+                 * +
+                 * "old wallet.serverBalance={}, form.balance={}",
+                 * accountInfo.getBalance(), wallet == null ? null : wallet.getServerBalance(),
+                 * serverBalance, actionForm.getBalance());
+                 * 
+                 * if (WalletProtocolFactory.getInstance().isWalletBankWithGetBalanceSupported(
+                 * bankInfo)) {
+                 * com.dgphoenix.casino.gs.managers.payment.wallet.v2.ICommonWalletClient client
+                 * = WalletProtocolFactory
+                 * .getInstance()
+                 * .getWalletProtocolManager(accountInfo.getBankId())
+                 * .getClient();
+                 * try {
+                 * double dBalance = client.getBalance(accountInfo.getId(),
+                 * accountInfo.getExternalId(),
+                 * accountInfo.getBankId(), accountInfo.getCurrency());
+                 * long balance = bankInfo.isParseLong() ? (long) dBalance
+                 * : DigitFormatter.getCentsFromCurrency(dBalance);
+                 * LOG.debug("CWStartGameAction process: Success update balance={}", balance);
+                 * actionForm.setBalance(balance);
+                 * } catch (Exception e) {
+                 * LOG.
+                 * error("CWStartGameAction process: Unable to refresh balance for accountId=" +
+                 * accountId,
+                 * e);
+                 * }
+                 * }
+                 * 
+                 * if (wallet != null && (serverBalance == null || serverBalance !=
+                 * wallet.getServerBalance())) {
+                 * LOG.
+                 * debug("CWStartGameAction process: Wallet.serverBalance changed after sitOut, set new={}"
+                 * ,
+                 * wallet.getServerBalance());
+                 * actionForm.setBalance(wallet.getServerBalance());
+                 * }
+                 * }
+                 */
 
                 GameSession gameSessionAfterSitOut = SessionHelper.getInstance().getTransactionData().getGameSession();
 
-                boolean needRedirectToIncompleteActiveRound = LoginHelper.needRedirectToIncompleteActiveRound(gameId, gameSessionAfterSitOut);
+                boolean needRedirectToIncompleteActiveRound = LoginHelper.needRedirectToIncompleteActiveRound(gameId,
+                        gameSessionAfterSitOut);
 
                 AccountInfoAndSessionInfoPair infoPair = loginV3(actionForm, actionForm.getToken(),
                         request.getRemoteHost(), gameId, mode, accountId);
@@ -302,34 +345,41 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                 lang = LanguageDetector.resolveLanguageAlias(lang);
 
                 if (needRedirectToIncompleteActiveRound) {
-                    getLog().debug("CWStartGameAction process: needRedirectToIncompleteActiveRound gameId={}, lang={}, privateRoomId={}, request={}",
-                        gameSessionAfterSitOut.getGameId(), lang, privateRoomId, request);
+                    getLog().debug(
+                            "CWStartGameAction process: needRedirectToIncompleteActiveRound gameId={}, lang={}, privateRoomId={}, request={}",
+                            gameSessionAfterSitOut.getGameId(), lang, privateRoomId, request);
 
                     return redirectTIIncompleteRoundPage(bankInfo, gameSessionAfterSitOut.getGameId(),
                             null, lang, null, privateRoomId, request);
                 }
 
-                if (sessionInfo!= null && !StringUtils.isTrimmedEmpty(authResult.getCashierToken())) { //Hack for PlanetWin
+                if (sessionInfo != null && !StringUtils.isTrimmedEmpty(authResult.getCashierToken())) { // Hack for
+                                                                                                        // PlanetWin
                     sessionInfo.setSecretKey(authResult.getCashierToken());
                 }
 
-                // For MQ games only
                 if (isMultiPlayerGame(gameId)) {
-                    //validates password from game server config for allow launch game. (is not for production, usual used for  demo with password)
+                    // validates password from game server config for allow launch game. (is not
+                    // for production, usual used for demo with password)
                     validateMpPass(request, actionForm.getBankId());
 
-                    // for launching BTG version there is separate action battlegroundstartgamev2, see struts-config.xml
-                    if(BaseGameInfoTemplateCache.getInstance().getBaseGameInfoTemplateById(gameId).isBattleGroundsMultiplayerGame()){
-                        getLog().error("CWStartGameAction process: battle is not allowed sessionId={}", sessionId);
+                    // for launching BTG version there is separate action
+                    // battlegroundstartgamev2, see struts-config.xml
+                    if (BaseGameInfoTemplateCache.getInstance().getBaseGameInfoTemplateById(gameId).isBattleGroundsMultiplayerGame()) {
+                        getLog().error("CWStartGameAction process: battle is not allowed sessionId={}",
+                                sessionId);
                         addError(request, "error.login.incorrectParameters");
                         return mapping.findForward(ERROR_FORWARD);
                     }
-                    GameServer.getInstance().checkMaintenanceMode(mode, lang, accountInfo, gameId);
+                    GameServer.getInstance().checkMaintenanceMode(mode, lang, accountInfo,
+                            gameId);
                     checkPendingOperations(accountInfo, gameId, sessionInfo, null, mode, true);
 
-                    if (!LanguageDetector.isLocalizationAvailable(lang, bankInfo, gameId, accountInfo)) {
+                    if (!LanguageDetector.isLocalizationAvailable(lang, bankInfo, gameId,
+                            accountInfo)) {
                         if (bankInfo.isShowGameLocalizationError()) {
-                            getLog().error("CWStartGameAction process: localization error sessionId={}", sessionId);
+                            getLog().error("CWStartGameAction process: localization error sessionId={}",
+                                    sessionId);
                             addError(request, "error.login.localizationError");
                             return mapping.findForward(ERROR_FORWARD);
                         } else {
@@ -341,16 +391,18 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                         AccountManager.getInstance().setFreeBalance(accountInfo, gameId);
                     }
 
-                    ActionRedirect mpRedirect = getMultiPlayerForward(actionForm, request, mode, bankInfo,
+                    ActionRedirect mpRedirect = getMultiPlayerForward(actionForm, request, mode,
+                            bankInfo,
                             sessionId, lang, gameId);
                     SessionHelper.getInstance().commitTransaction();
                     SessionHelper.getInstance().markTransactionCompleted();
 
-                    getLog().debug("CWStartGameAction process: SID={}, ExternalId={}, PrivateRoomId={}, " +
-                                    "isFinishGameSession=false", sessionId, externalId, privateRoomId
-                    );
+                    getLog().debug("CWStartGameAction process: SID={}, ExternalId={}, PrivateRoomId={}, "
+                            +
+                            "isFinishGameSession=false", sessionId, externalId, privateRoomId);
 
-                    savePlayerSessionState(sessionId, externalId, privateRoomId, false, System.currentTimeMillis());
+                    savePlayerSessionState(sessionId, externalId, privateRoomId, false,
+                            System.currentTimeMillis());
 
                     getLog().debug("CWStartGameAction process: mpRedirect={}", mpRedirect);
                     return mpRedirect;
@@ -360,7 +412,8 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
                 serverResponse = startGame(infoPair.getAccount(), sessionInfo, actionForm, response, lang, false);
                 saveReferer(request, accountInfo);
 
-                gameId = GameSessionPersister.getInstance().getGameSession(serverResponse.getGameSessionId()).getGameId();
+                gameId = GameSessionPersister.getInstance().getGameSession(serverResponse.getGameSessionId())
+                        .getGameId();
                 if (MobileDetector.isMobile(userAgent) && bankInfo.isUseSingleGameIdForAllDevices()) {
                     if (!LanguageDetector.isLocalizationAvailable(lang, bankInfo, gameId, accountInfo, userAgent)) {
                         if (bankInfo.isShowGameLocalizationError()) {
@@ -448,5 +501,10 @@ public class CWStartGameAction extends BaseStartGameAction<CWStartGameForm> {
             balance = DigitFormatter.getCentsFromCurrency(result.getBalance());
         }
         form.setBalance(balance);
+    }
+
+    @Override
+    protected boolean isMultiPlayerGame(long gameId) {
+        return super.isMultiPlayerGame(gameId);
     }
 }

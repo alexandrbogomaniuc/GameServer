@@ -25,6 +25,7 @@ module.exports = {
 		filename: '[name].js',
 		sourceMapFilename: 'sourceMap.js.map'
 	},
+	mode: 'development',
 	module: {
 		rules: [
 			{
@@ -53,13 +54,9 @@ module.exports = {
 			"P2M": PIXI_SRC
 		}
 	},
-	externals: {
-		'pixi.js': 'PIXI',
-		'pixi.js-legacy': 'PIXI'
-	},
 	optimization: {
 
-		minimizer: [new UglifyJsPlugin({ sourceMap: true })],
+		minimizer: [ /*new UglifyJsPlugin({ sourceMap: true })*/],
 
 	},
 	plugins: [

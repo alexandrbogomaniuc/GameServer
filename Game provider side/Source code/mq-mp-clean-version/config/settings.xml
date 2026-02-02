@@ -392,8 +392,8 @@
                 <logger.dir>/www/logs/tomcat.mp/</logger.dir>
                 <logger.file-size-limit>10</logger.file-size-limit>
                 <logger.file-startup-limit>1</logger.file-startup-limit>
-                <cassandra.hosts>127.0.0.1:9042</cassandra.hosts>
-                <cassandra.contact-points>127.0.0.1</cassandra.contact-points>
+                <cassandra.hosts>c1:9042</cassandra.hosts>
+                <cassandra.contact-points>c1</cassandra.contact-points>
                 <cassandra.metadata.keyspaceName>MPMQB2</cassandra.metadata.keyspaceName>
                 <cassandra.readConsistencyLevel>LOCAL_ONE</cassandra.readConsistencyLevel>
                 <cassandra.writeConsistencyLevel>LOCAL_ONE</cassandra.writeConsistencyLevel>
@@ -402,7 +402,7 @@
                 <hz.group.password>siberteam</hz.group.password>
                 <hz.network.port>5701</hz.network.port>
                 <hz.group.name>mp-mqb</hz.group.name>
-                <hz.network.members>gs1</hz.network.members>
+                <hz.network.members>gs</hz.network.members>
                 <hz.management.center.enabled>false</hz.management.center.enabled>
                 <hz.management.center.url>http://localhost:8081/mancenter</hz.management.center.url>
                 <hz.env>multicast</hz.env> <!-- Options: kubernetes, gcp, multicast, list -->
@@ -416,7 +416,7 @@
                 <server.jetty.webroot>file:/www/html/mp/ROOT/</server.jetty.webroot>
                 <teststand.excludes>/teststand.jsp,/teststandConfig.jsp</teststand.excludes>
                 <cluster.name>mqb2-live</cluster.name>
-                <mqb.botserver.thift.host>gs4-ats</mqb.botserver.thift.host>
+                <mqb.botserver.thift.host>gs</mqb.botserver.thift.host>
                 <mqb.botserver.thift.port>6400</mqb.botserver.thift.port>
                 <google.cloud.project.id>test-maxquest</google.cloud.project.id>
                 <google.cloud.bigquery.dataset.name>mqmp_test</google.cloud.bigquery.dataset.name>
@@ -432,7 +432,7 @@
                 <room.state.monitor.enabled>true</room.state.monitor.enabled>
                 <room.state.monitor.period>60000</room.state.monitor.period>
                 <maxblastchampions.bg.private.startround.players.min>2</maxblastchampions.bg.private.startround.players.min>
-                <kafka.hosts>localhost:9092</kafka.hosts>
+                <kafka.hosts>kafka:9092</kafka.hosts>
                 <kafka.topic.send.to.gs>to_gs_topic</kafka.topic.send.to.gs>
                 <kafka.topic.reply.from.gs>to_gs_topic_response</kafka.topic.reply.from.gs>
                 <kafka.topic.receive.from.gs>to_mp_topic</kafka.topic.receive.from.gs>
@@ -442,7 +442,7 @@
                 <kafka.topic.send.to.bs>to_bs_topic</kafka.topic.send.to.bs>
                 <kafka.topic.reply.from.bs>to_bs_topic_response</kafka.topic.reply.from.bs>
                 <kafka.timeout.ms>5000</kafka.timeout.ms>
-                <zookeeper.connect>localhost:2181</zookeeper.connect>
+                <zookeeper.connect>zookeeper:2181</zookeeper.connect>
                 <zookeeper.pool-size>1</zookeeper.pool-size>
             </properties>
         </profile>

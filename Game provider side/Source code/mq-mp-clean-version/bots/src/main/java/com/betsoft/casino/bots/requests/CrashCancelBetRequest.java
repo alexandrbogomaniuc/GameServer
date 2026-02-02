@@ -4,7 +4,7 @@ import com.betsoft.casino.bots.BotState;
 import com.betsoft.casino.bots.IUnifiedBot;
 import com.betsoft.casino.bots.Stats;
 import com.betsoft.casino.bots.UnifiedBot;
-import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
 import com.betsoft.casino.mp.transport.CrashCancelBet;
 import com.betsoft.casino.mp.transport.CrashCancelBetResponse;
 import com.betsoft.casino.mp.utils.ErrorCodes;

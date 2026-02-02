@@ -7,74 +7,65 @@ import DeathFxAnimation from '../animation/death/DeathFxAnimation';
 import { Sequence } from '../../../../../common/PIXI/src/dgphoenix/unified/controller/animation';
 import { BulgePinchFilter } from '../../../../../common/PIXI/src/dgphoenix/unified/view/base/display/Filters';
 
-const FOOT_STEP_TIMES = [{time:	0.03}, {time: 0.38}];
+const FOOT_STEP_TIMES = [{ time: 0.03 }, { time: 0.38 }];
 
-class DarkKnightEnemy extends SpineEnemy
-{
-	static get EVENT_DARK_KNIGHT_CALLOUT_CREATED()			{return "EVENT_DARK_KNIGHT_CALLOUT_CREATED";}
+class DarkKnightEnemy extends SpineEnemy {
+	static get EVENT_DARK_KNIGHT_CALLOUT_CREATED() { return "EVENT_DARK_KNIGHT_CALLOUT_CREATED"; }
 
-	constructor(params)
-	{
+	constructor(params) {
 		super(params);
 
 		this._fIsCalloutAwaiting_bl = true;
 	}
 
 	//override
-	__generatePreciseCollisionBodyPartsNames()
-	{
+	__generatePreciseCollisionBodyPartsNames() {
 		return [
 			"cape",
 			"sword"
-			];
+		];
 	}
 
 	//override
-	getSpineSpeed()
-	{
-		if (this.isTurnState)
-		{
+	getSpineSpeed() {
+		if (this.isTurnState) {
 			return 2;
 		}
 
 		let lBaseSpeed_num = 0.0425;
-		switch (this.direction)
-		{
-			case DIRECTION.RIGHT_UP: 	lBaseSpeed_num = 0.0427;		break;
-			case DIRECTION.LEFT_DOWN:	lBaseSpeed_num = 0.0422;		break;
-			case DIRECTION.RIGHT_DOWN:	lBaseSpeed_num = 0.0425;		break;
-			case DIRECTION.LEFT_UP:		lBaseSpeed_num = 0.0425;		break;
+		switch (this.direction) {
+			case DIRECTION.RIGHT_UP: lBaseSpeed_num = 0.0427; break;
+			case DIRECTION.LEFT_DOWN: lBaseSpeed_num = 0.0422; break;
+			case DIRECTION.RIGHT_DOWN: lBaseSpeed_num = 0.0425; break;
+			case DIRECTION.LEFT_UP: lBaseSpeed_num = 0.0425; break;
 		}
-		return (this.currentTrajectorySpeed*lBaseSpeed_num/(SPINE_SCALE*this.getScaleCoefficient())).toFixed(2);
+		return (this.currentTrajectorySpeed * lBaseSpeed_num / (SPINE_SCALE * this.getScaleCoefficient())).toFixed(2);
 	}
 
 	//override
-	get isBodyOutOfScreen()
-	{
+	get isBodyOutOfScreen() {
 		let lCurrentGlobalFootPointPos = this.getCurrentGlobalFootPointPosition();
 		const lX_Offset_num = 175;
 		const lY_Offset_num = 155;
 
-		if (!this.prevTurnPoint || !this.nextTurnPoint) 
-		{
+		if (!this.prevTurnPoint || !this.nextTurnPoint) {
 			return true;
 		}
 
-		if (	(	this.prevTurnPoint.x < this.nextTurnPoint.x 
-					&& (lCurrentGlobalFootPointPos.x + lX_Offset_num) >= 0 
-					&& (this.prevTurnPoint.y < this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y + lY_Offset_num) >= 0
-						|| this.prevTurnPoint.y > this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y - lY_Offset_num) <= 540 + lY_Offset_num
-						)
-				)
-				|| 
-				(	this.prevTurnPoint.x > this.nextTurnPoint.x 
-					&& (lCurrentGlobalFootPointPos.x - lX_Offset_num) <= 960
-					&& (this.prevTurnPoint.y < this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y + lY_Offset_num) >= 0
-						|| this.prevTurnPoint.y > this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y - lY_Offset_num) <= 540 + lY_Offset_num
-						)
+		if ((this.prevTurnPoint.x < this.nextTurnPoint.x
+			&& (lCurrentGlobalFootPointPos.x + lX_Offset_num) >= 0
+			&& (this.prevTurnPoint.y < this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y + lY_Offset_num) >= 0
+				|| this.prevTurnPoint.y > this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y - lY_Offset_num) <= 540 + lY_Offset_num
+			)
+		)
+			||
+			(this.prevTurnPoint.x > this.nextTurnPoint.x
+				&& (lCurrentGlobalFootPointPos.x - lX_Offset_num) <= 960
+				&& (this.prevTurnPoint.y < this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y + lY_Offset_num) >= 0
+					|| this.prevTurnPoint.y > this.nextTurnPoint.y && (lCurrentGlobalFootPointPos.y - lY_Offset_num) <= 540 + lY_Offset_num
 				)
 			)
-		{
+		) {
 			return false;
 		}
 
@@ -82,14 +73,11 @@ class DarkKnightEnemy extends SpineEnemy
 	}
 
 	//override
-	tick()
-	{
+	tick() {
 		super.tick();
 
-		if (this._fIsCalloutAwaiting_bl)
-		{
-			if(!this.isBodyOutOfScreen)
-			{
+		if (this._fIsCalloutAwaiting_bl) {
+			if (!this.isBodyOutOfScreen) {
 				this._fIsCalloutAwaiting_bl = false;
 				this.emit(DarkKnightEnemy.EVENT_DARK_KNIGHT_CALLOUT_CREATED);
 			}
@@ -97,26 +85,22 @@ class DarkKnightEnemy extends SpineEnemy
 	}
 
 	// override
-	_generateDeathFxAnimation()
-	{
+	_generateDeathFxAnimation() {
 		return new DarkKnightDeathFxAnimation();
 	}
 
 	//override
-	_getHitRectHeight()
-	{
+	_getHitRectHeight() {
 		return 184;
 	}
 
 	//override
-	_getHitRectWidth()
-	{
+	_getHitRectWidth() {
 		return 92;
 	}
 
 	//override
-	changeShadowPosition()
-	{
+	changeShadowPosition() {
 		let x = 13, y = 0, scale = 1.8, alpha = 1;
 
 		this.shadow.position.set(x, y);
@@ -125,12 +109,10 @@ class DarkKnightEnemy extends SpineEnemy
 	}
 
 	//override
-	getStepTimers()
-	{
+	getStepTimers() {
 		let lTimers_arr = [];
-		for (let time of FOOT_STEP_TIMES)
-		{
-			lTimers_arr.push({time: time.time});
+		for (let time of FOOT_STEP_TIMES) {
+			lTimers_arr.push({ time: time.time });
 		}
 
 		this._stepsAmount = lTimers_arr.length;
@@ -138,26 +120,23 @@ class DarkKnightEnemy extends SpineEnemy
 	}
 
 	//override
-	getLocalCenterOffset()
-	{
-		let pos = {x: 0, y: 0};
-		switch (this.direction)
-		{
-			case DIRECTION.LEFT_DOWN:	pos = {x: 0,	y: -73};	break;
-			case DIRECTION.LEFT_UP:		pos = {x: 0,	y: -73};	break;
-			case DIRECTION.RIGHT_DOWN:	pos = {x: 0,	y: -73};	break;
-			case DIRECTION.RIGHT_UP:	pos = {x: 0,	y: -73};	break;
+	getLocalCenterOffset() {
+		let pos = { x: 0, y: 0 };
+		switch (this.direction) {
+			case DIRECTION.LEFT_DOWN: pos = { x: 0, y: -73 }; break;
+			case DIRECTION.LEFT_UP: pos = { x: 0, y: -73 }; break;
+			case DIRECTION.RIGHT_DOWN: pos = { x: 0, y: -73 }; break;
+			case DIRECTION.RIGHT_UP: pos = { x: 0, y: -73 }; break;
 		}
 		return pos;
 	}
 
 	//override
-	setDeathFramesAnimation(aIsInstantKill_bl = false)
-	{
+	setDeathFramesAnimation(aIsInstantKill_bl = false) {
 		this._deathInProgress = true;
 
 		this.deathFxAnimation = this.container.addChild(this._generateDeathFxAnimation());
-		this.deathFxAnimation.position.set(0, -this._getHitRectHeight()/2);
+		this.deathFxAnimation.position.set(0, -this._getHitRectHeight() / 2);
 		this.deathFxAnimation.scale.set(this._deathFxScale);
 		this.deathFxAnimation.gameFieldPosition = APP.gameScreen.gameField.getEnemyPosition(this.id);
 		this.deathFxAnimation.additionalZIndex = this.zIndex + 1; //+1 because his weapon must be over the sand
@@ -165,21 +144,18 @@ class DarkKnightEnemy extends SpineEnemy
 		this.deathFxAnimation.once(DeathFxAnimation.EVENT_ANIMATION_COMPLETED, (e) => {
 			this.onDeathFxAnimationCompleted();
 		});
-		
+
 		this.deathFxAnimation.zIndex = 20;
 
-		if (aIsInstantKill_bl)
-		{
-			if (this.spineView)
-			{
+		if (aIsInstantKill_bl) {
+			if (this.spineView) {
 				this.spineView.destroy();
 				this.spineView = null;
 				this._fCurSpineName_str = undefined;
 			}
 			this.deathFxAnimation.i_startOutroAnimation();
 		}
-		else
-		{
+		else {
 			this.spineView.stop();
 			this._startTriggeringAnimation(BigEnemyDeathFxAnimation.TRIGGERING_DURATION);
 			this.deathFxAnimation.on(BigEnemyDeathFxAnimation.ON_ENEMY_MUST_BE_HIDDEN, this._hideEnemy.bind(this));
@@ -190,29 +166,27 @@ class DarkKnightEnemy extends SpineEnemy
 		lEnemyPosition_pt.x += this.getCurrentFootPointPosition().x;
 		lEnemyPosition_pt.y += this.getCurrentFootPointPosition().y;
 		APP.soundsController.play('mq_dragonstone_dark_knight_death');
-		this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED, {position: lEnemyPosition_pt, angle: this.angle});
+		this.emit(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED, { position: lEnemyPosition_pt, angle: this.angle });
 	}
 
-	_hideEnemy()
-	{
+	_hideEnemy() {
 		this.shadow.addTween('alpha', 0, BigEnemyDeathFxAnimation.HIDIING_DURATION).play();
 		this.spineView.addTween('alpha', 0, BigEnemyDeathFxAnimation.HIDIING_DURATION, null, this._validatezIndexOnDeath.bind(this)).play();
 		this.emit(Enemy.EVENT_ON_ENEMY_IS_HIDDEN);
 	}
 
-	_startTriggeringAnimation(aDuration_num)
-	{
-		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater)
-		{
+	_startTriggeringAnimation(aDuration_num) {
+		if (APP.profilingController.info.isVfxProfileValueMediumOrGreater) {
 			let lPos_obj = this._getBlowingFilterPosition();
-			let lBlowFilter_bpf = new BulgePinchFilter({x: lPos_obj.x, y: lPos_obj.y}, 150, 0);
+			// [Fix] Disabling BulgePinchFilter
+			let lBlowFilter_bpf = null; // new BulgePinchFilter({x: lPos_obj.x, y: lPos_obj.y}, 150, 0);
 			this.container.filters = [lBlowFilter_bpf];
 			let lBlowing_seq = [
-				{	tweens: [{prop: 'uniforms.strength', to: 0.4}],
-					duration: aDuration_num, 
-					onfinish: ()=>{
-						if (this.container)
-						{
+				{
+					tweens: [{ prop: 'uniforms.strength', to: 0.4 }],
+					duration: aDuration_num,
+					onfinish: () => {
+						if (this.container) {
 							this.container.filters = null;
 						}
 						Sequence.destroy(Sequence.findByTarget(lBlowFilter_bpf));
@@ -224,7 +198,7 @@ class DarkKnightEnemy extends SpineEnemy
 
 		this._hitHighlightInProgress = true;
 		this._hitHighlightFilterIntensity.intensity.value = 0;
-		let lHighlight_seq = [{tweens: [{prop: "intensity.value", to: 0.1}], duration: aDuration_num}];
+		let lHighlight_seq = [{ tweens: [{ prop: "intensity.value", to: 0.1 }], duration: aDuration_num }];
 		Sequence.start(this._hitHighlightFilterIntensity, lHighlight_seq);
 
 		let lTriggering_seq = [
@@ -243,51 +217,47 @@ class DarkKnightEnemy extends SpineEnemy
 			{ tweens: [{ prop: 'position.x', to: 10 }, { prop: 'position.y', to: -5 }] },
 			{ tweens: [{ prop: 'position.x', to: -2 }, { prop: 'position.y', to: 4 }] },
 			{ tweens: [{ prop: 'position.x', to: -10 }, { prop: 'position.y', to: 8 }] },
-			{ tweens: [{ prop: 'position.x', to: 3 }, { prop: 'position.y', to: -4 }], 
-				onfinish: ()=>
-				{
+			{
+				tweens: [{ prop: 'position.x', to: 3 }, { prop: 'position.y', to: -4 }],
+				onfinish: () => {
 					this.spineView && Sequence.destroy(Sequence.findByTarget(this.spineView));
 				}
 			}
 		];
 
 		let lTweensAmount_num = lTriggering_seq.length;
-		for (let i = 0; i < lTweensAmount_num; i++)
-		{
-			lTriggering_seq[i].duration = aDuration_num/lTweensAmount_num;
+		for (let i = 0; i < lTweensAmount_num; i++) {
+			lTriggering_seq[i].duration = aDuration_num / lTweensAmount_num;
 		}
 
 		Sequence.start(this.spineView, lTriggering_seq);
 	}
 
-	_getBlowingFilterPosition()
-	{
+	_getBlowingFilterPosition() {
 		let lPos_obj;
 
-		switch (this.direction)
-		{			
+		switch (this.direction) {
 			case DIRECTION.LEFT_UP:
-				lPos_obj = {x: 0.5, y: 0.5};
+				lPos_obj = { x: 0.5, y: 0.5 };
 				break;
 			case DIRECTION.LEFT_DOWN:
-				lPos_obj = {x: 0.5, y: 0.5};
+				lPos_obj = { x: 0.5, y: 0.5 };
 				break;
 			case DIRECTION.RIGHT_UP:
-				lPos_obj = {x: 0.4, y: 0.5};
+				lPos_obj = { x: 0.4, y: 0.5 };
 				break;
 			case DIRECTION.RIGHT_DOWN:
-				lPos_obj = {x: 0.4, y: 0.5};
+				lPos_obj = { x: 0.4, y: 0.5 };
 				break;
 			default:
-				lPos_obj = {x: 0.5, y: 0.5};
+				lPos_obj = { x: 0.5, y: 0.5 };
 				break;
 		}
 
 		return lPos_obj;
 	}
 
-	destroy()
-	{
+	destroy() {
 		super.destroy();
 
 		this._fIsCalloutAwaiting_bl = null;

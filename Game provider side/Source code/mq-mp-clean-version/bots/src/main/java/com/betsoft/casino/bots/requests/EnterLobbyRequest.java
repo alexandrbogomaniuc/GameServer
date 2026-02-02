@@ -1,7 +1,7 @@
 package com.betsoft.casino.bots.requests;
 
 import com.betsoft.casino.bots.ILobbyBot;
-import com.betsoft.casino.bots.mqb.ManagedLobbyBot;
+// import com.betsoft.casino.bots.mqb.ManagedLobbyBot;
 import com.betsoft.casino.mp.transport.EnterLobby;
 import com.betsoft.casino.mp.transport.EnterLobbyBattlegroundInfo;
 import com.betsoft.casino.mp.transport.EnterLobbyResponse;
@@ -43,48 +43,54 @@ public class EnterLobbyRequest extends AbstractBotRequest {
                 bot.setStakesLimit(message.getStakesLimit());
                 bot.setStakes(message.getStakes());
 
-                if (bot instanceof ManagedLobbyBot) {
-                    String openRoomWSUrl = ((ManagedLobbyBot)bot).getOpenRoomWSUrl();
-                    String host = null;
-                    try {
-                        URI openRoomWSUri = new URI(openRoomWSUrl);
-                        host = openRoomWSUri.getHost();
-                    } catch ( Exception exception) {
-                        getLogger().error("EnterLobbyRequest: cant get host from openRoomWSUrl: {}, {}", openRoomWSUrl, exception.getMessage());
-                    }
+                /*
+                 * if (bot instanceof ManagedLobbyBot) {
+                 * String openRoomWSUrl = ((ManagedLobbyBot)bot).getOpenRoomWSUrl();
+                 * String host = null;
+                 * try {
+                 * URI openRoomWSUri = new URI(openRoomWSUrl);
+                 * host = openRoomWSUri.getHost();
+                 * } catch ( Exception exception) {
+                 * getLogger().
+                 * error("EnterLobbyRequest: cant get host from openRoomWSUrl: {}, {}",
+                 * openRoomWSUrl, exception.getMessage());
+                 * }
+                 * 
+                 * boolean skipNickNameCheck = false;
+                 * 
+                 * if (host.endsWith("mp.local") || host.endsWith("mp.local.com") ||
+                 * host.endsWith(".mydomain")//hack for local/dev deploy
+                 * || host.endsWith(".maxquest.com")) { //hack for test env. deploy
+                 * skipNickNameCheck = true;
+                 * }
+                 * if(!skipNickNameCheck) {
+                 * String botNickname = ((ManagedLobbyBot) bot).getNickname();
+                 * String messageNickname = message.getNickname();
+                 * if (!botNickname.equals(messageNickname)) {
+                 * getLogger().
+                 * error("EnterLobbyRequest: wrong nickname botNickname: {}, messageNickname: {}"
+                 * ,
+                 * botNickname, messageNickname);
+                 * bot.stop();
+                 * break;
+                 * }
+                 * }
+                 * }
+                 */
 
-                    boolean skipNickNameCheck = false;
-
-                    if (host.endsWith("mp.local") || host.endsWith("mp.local.com") || host.endsWith(".mydomain")//hack for local/dev deploy
-                            || host.endsWith(".maxquest.com")) { //hack for test env. deploy
-                        skipNickNameCheck = true;
-                    }
-                    if(!skipNickNameCheck) {
-                        String botNickname = ((ManagedLobbyBot) bot).getNickname();
-                        String messageNickname = message.getNickname();
-                        if (!botNickname.equals(messageNickname)) {
-                            getLogger().error("EnterLobbyRequest: wrong nickname botNickname: {}, messageNickname: {}",
-                                    botNickname, messageNickname);
-                            bot.stop();
-                            break;
-                        }
-                    }
-                }
-
-                if(message.isNicknameEditable()) {
+                if (message.isNicknameEditable()) {
                     bot.pickNickname(false, message.getNickname());
                 }
                 bot.setMinStake(message.getMinStake());
                 bot.setMaxStake(message.getMaxStake());
                 EnterLobbyBattlegroundInfo enterLobbyBattlegroundInfo = message.getBattleground();
-                if(enterLobbyBattlegroundInfo != null){
+                if (enterLobbyBattlegroundInfo != null) {
                     bot.setBuyIns(enterLobbyBattlegroundInfo.getBuyIns());
-                } else{
-                    bot.setWeaponPrices(message.getPaytable() != null ? message.getPaytable().getWeaponPaidMultiplier() : null);
+                } else {
+                    bot.setWeaponPrices(
+                            message.getPaytable() != null ? message.getPaytable().getWeaponPaidMultiplier() : null);
                 }
-                bot.sleep(500).subscribe(t ->
-                        bot.sendGetStartGameUrlRequest()
-                );
+                bot.sleep(500).subscribe(t -> bot.sendGetStartGameUrlRequest());
                 break;
             case "Error":
                 getLogger().error("EnterLobbyRequest: enterLobby failed: {}", response);

@@ -1,5 +1,5 @@
 import SimpleController from '../../base/SimpleController';
-import {WebSocketInteractionInfo, SERVER_MESSAGES, ERROR_CODE_TYPES, ERROR_CODE_RANGES, SUPPORTED_ERROR_CODES, GAME_CLIENT_MESSAGES} from '../../../model/interaction/server/WebSocketInteractionInfo';
+import { WebSocketInteractionInfo, SERVER_MESSAGES, ERROR_CODE_TYPES, ERROR_CODE_RANGES, SUPPORTED_ERROR_CODES, GAME_CLIENT_MESSAGES } from '../../../model/interaction/server/WebSocketInteractionInfo';
 import { APP } from '../../main/globals';
 import Timer from '../../time/Timer';
 import Application from '../../main/Application';
@@ -13,26 +13,22 @@ let MIN_RECONNECT_INTERVAL = 1000;
 const DOWNLOAD_BUTTON_ID = "save_stubs_button";
 const NOTIFICATION_PANEL_ID = "stubs_note";
 
-const getCircularReplacer = () => 
-{
+const getCircularReplacer = () => {
 	const seen = new WeakSet();
 
-	return (key, value) => 
-	{
+	return (key, value) => {
 		if (
 			typeof value === "object"
 			&& value !== null
-			)
-		{
-			if (seen.has(value))
-			{
+		) {
+			if (seen.has(value)) {
 				return;
 			}
 			seen.add(value);
 		}
 
 		return value;
-  };
+	};
 };
 
 //...STUBS
@@ -42,10 +38,9 @@ const getCircularReplacer = () =>
  * @extends SimpleController
  * @classdesc Base class for WebSocket connection: establish connection, send and receive messages
  */
-class WebSocketInteractionController extends SimpleController
-{
-	static get STUBS_PATH() { return undefined /*"!debug/stubs/stubs.txt"*/};
-	
+class WebSocketInteractionController extends SimpleController {
+	static get STUBS_PATH() { return undefined /*"!debug/stubs/stubs.txt"*/ };
+
 	static get EVENT_ON_SERVER_MESSAGE() { return "EVENT_ON_SERVER_MESSAGE" };
 	static get EVENT_ON_SERVER_ERROR_MESSAGE() { return "EVENT_ON_SERVER_ERROR_MESSAGE" };
 	static get EVENT_ON_SERVER_OK_MESSAGE() { return "EVENT_ON_SERVER_OK_MESSAGE" };
@@ -53,9 +48,9 @@ class WebSocketInteractionController extends SimpleController
 	static get EVENT_ON_SERVER_CONNECTION_CLOSED() { return "EVENT_ON_SERVER_CONNECTION_CLOSED" };
 	static get EVENT_ON_SERVER_CONNECTION_OPENED() { return "EVENT_ON_SERVER_CONNECTION_OPENED" };
 
-	static get EVENT_ON_GAME_CLIENT_SENT_MESSAGE()	{return "EVENT_ON_GAME_CLIENT_SENT_MESSAGE"; }
-	static get EVENT_ON_GAME_SESSION_FINISHED()	{return "EVENT_ON_GAME_SESSION_FINISHED"};
-	static get FINISH_WEB_SESSION()	{return "FinishGameSession";}
+	static get EVENT_ON_GAME_CLIENT_SENT_MESSAGE() { return "EVENT_ON_GAME_CLIENT_SENT_MESSAGE"; }
+	static get EVENT_ON_GAME_SESSION_FINISHED() { return "EVENT_ON_GAME_SESSION_FINISHED" };
+	static get FINISH_WEB_SESSION() { return "FinishGameSession"; }
 
 
 
@@ -64,41 +59,34 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {String} aRequestClass_str - Target request type (request `class` property)
 	 * @returns {Object} Request data
 	 */
-	i_getLastItemClassInRequestList(aRequestClass_str)
-	{
+	i_getLastItemClassInRequestList(aRequestClass_str) {
 		let lMax_int = -1;
 		let lRequest_obj = {};
 
-		for (var rid in this._requests_list)
-		{
-			
+		for (var rid in this._requests_list) {
+
 			let requestData = this._requests_list[rid];
-			if (requestData && requestData.class == aRequestClass_str && requestData.rid > lMax_int)
-			{
+			if (requestData && requestData.class == aRequestClass_str && requestData.rid > lMax_int) {
 				lMax_int = requestData.rid;
 				lRequest_obj = requestData;
 			}
 		}
 
-		return  lRequest_obj;
+		return lRequest_obj;
 	}
 
-	isStubsModeAvailable()
-	{
+	isStubsModeAvailable() {
 		return false;
 	}
 
-	isStubsMode()
-	{
+	isStubsMode() {
 		return this._fIsStubsMode_bl;
 	}
 
-	getNextSubTime()
-	{
+	getNextSubTime() {
 		let lStubs_obj_arr = this._fStubs_obj_arr;
 
-		if(this._fNextStubIndex_int >= lStubs_obj_arr.length)
-		{
+		if (this._fNextStubIndex_int >= lStubs_obj_arr.length) {
 			return lStubs_obj_arr[lStubs_obj_arr.length - 2];
 		}
 
@@ -110,8 +98,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {string} errorType 
 	 * @returns {boolean}
 	 */
-	static isFatalError(errorType)
-	{
+	static isFatalError(errorType) {
 		return errorType === ERROR_CODE_TYPES.FATAL_ERROR;
 	}
 
@@ -120,8 +107,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {string} errorType 
 	 * @returns {boolean}
 	 */
-	static isGeneralError(errorType)
-	{
+	static isGeneralError(errorType) {
 		return errorType === ERROR_CODE_TYPES.ERROR;
 	}
 
@@ -130,8 +116,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {string} errorType 
 	 * @returns {boolean}
 	 */
-	static isWarning(errorType)
-	{
+	static isWarning(errorType) {
 		return errorType === ERROR_CODE_TYPES.WARNING;
 	}
 
@@ -141,14 +126,11 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {number} errorId - Target error code
 	 * @returns {boolean}
 	 */
-	static isUnknownWalletError(errorId)
-	{
+	static isUnknownWalletError(errorId) {
 		let lIsUnknownWalletError_bl = true;
 
-		if (errorId >= ERROR_CODE_RANGES.WALLET_ERROR.from && errorId <= ERROR_CODE_RANGES.WALLET_ERROR.to)
-		{
-			switch(errorId)
-			{
+		if (errorId >= ERROR_CODE_RANGES.WALLET_ERROR.from && errorId <= ERROR_CODE_RANGES.WALLET_ERROR.to) {
+			switch (errorId) {
 				case WebSocketInteractionController.ERROR_CODES.OPERATION_FAILED:
 				case WebSocketInteractionController.ERROR_CODES.UNKNOWN_TRANSACTION_ID:
 				case WebSocketInteractionController.ERROR_CODES.EXPIRED_WEBSITE_SESSION:
@@ -159,8 +141,7 @@ class WebSocketInteractionController extends SimpleController
 					break;
 			}
 		}
-		else
-		{
+		else {
 			lIsUnknownWalletError_bl = false;
 		}
 
@@ -171,8 +152,7 @@ class WebSocketInteractionController extends SimpleController
 	 * List of supported error codes
 	 * @static
 	 */
-	static get ERROR_CODES ()
-	{
+	static get ERROR_CODES() {
 		return SUPPORTED_ERROR_CODES;
 	}
 
@@ -182,8 +162,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {object} aOptRequestParams_obj - Request params with specific values (optional parameter)
 	 * @returns {boolean}
 	 */
-	hasDelayedRequests(aRequestClass_str, aOptRequestParams_obj=undefined)
-	{
+	hasDelayedRequests(aRequestClass_str, aOptRequestParams_obj = undefined) {
 		return this._hasDelayedRequests(aRequestClass_str, aOptRequestParams_obj);
 	}
 
@@ -193,8 +172,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {object} aOptRequestParams_obj - Request params with specific values (optional parameter)
 	 * @returns {boolean}
 	 */
-	hasUnRespondedRequest(aRequestClass_str, aOptRequestParams_obj=undefined)
-	{
+	hasUnRespondedRequest(aRequestClass_str, aOptRequestParams_obj = undefined) {
 		return this._hasUnRespondedRequest(aRequestClass_str, aOptRequestParams_obj);
 	}
 
@@ -202,13 +180,11 @@ class WebSocketInteractionController extends SimpleController
 	 * Checks if socket connection is opened
 	 * @readonly
 	 */
-	get isConnectionOpened()
-	{
+	get isConnectionOpened() {
 		return this._isConnectionOpened;
 	}
 
-	constructor(optInfo)
-	{
+	constructor(optInfo) {
 		super(optInfo ? optInfo : new WebSocketInteractionInfo());
 
 		this._webSocket = null;
@@ -225,27 +201,23 @@ class WebSocketInteractionController extends SimpleController
 
 
 		//STUBS...
-		if(
+		if (
 			APP.isDebugMode &&
 			this.isStubsModeAvailable()
-			)
-		{
+		) {
 			this._fIsStubsMode_bl = WebSocketInteractionController.STUBS_PATH !== undefined;
 			this._fMessages_str_arr = [];//recordable game server responses for saving
 			this._fStubs_obj_arr = [];//loadable server stubs
 			this._fNextStubIndex_int = 0;
 
 
-			if(this._fIsStubsMode_bl)
-			{
+			if (this._fIsStubsMode_bl) {
 				//LOADING STUBS...
 				let lStubRequest_xhr = new XMLHttpRequest();
 				lStubRequest_xhr.open('GET', WebSocketInteractionController.STUBS_PATH);
-				lStubRequest_xhr.onreadystatechange = function()
-				{
+				lStubRequest_xhr.onreadystatechange = function () {
 
-					if(!this._fStubs_obj_arr.length === 0)
-					{
+					if (!this._fStubs_obj_arr.length === 0) {
 						return;
 					}
 
@@ -254,9 +226,8 @@ class WebSocketInteractionController extends SimpleController
 					lRecoveredData_str_arr.pop();
 
 					this._fStubs_obj_arr = [];
-					for( let i = 0; i < lRecoveredData_str_arr.length; i++ )
-					{
-						let lMessage_obj =  JSON.parse(lRecoveredData_str_arr[i]);
+					for (let i = 0; i < lRecoveredData_str_arr.length; i++) {
+						let lMessage_obj = JSON.parse(lRecoveredData_str_arr[i]);
 						this._fStubs_obj_arr.push(lMessage_obj);
 					}
 				}.bind(this);
@@ -297,15 +268,13 @@ class WebSocketInteractionController extends SimpleController
 	}
 
 	//STUBS...
-	setStubsTrackingMode()
-	{
+	setStubsTrackingMode() {
 		if (
 			APP.isDebugMode &&
 			this.isStubsModeAvailable() &&
 			!this._fIsStubsMode_bl &&
 			!document.getElementById(DOWNLOAD_BUTTON_ID)
-			)
-		{
+		) {
 			this._fIsStubsTrackingRequired_bl = true;
 
 			//DOWNLOAD BUTTON...
@@ -334,9 +303,9 @@ class WebSocketInteractionController extends SimpleController
 
 			l_html.innerText = "D";
 
-		
+
 			this.lDownloadButtonAnimationTimer_ref = null;
-			
+
 			l_html.addEventListener("click", this.onDownloadButtonClick.bind(this));
 
 			document.body.appendChild(l_html);
@@ -345,8 +314,7 @@ class WebSocketInteractionController extends SimpleController
 	}
 
 
-	onDownloadButtonClick()
-	{
+	onDownloadButtonClick() {
 		this.saveStubs();
 
 		//HTML BUTTON ANIMATION...
@@ -356,13 +324,12 @@ class WebSocketInteractionController extends SimpleController
 		clearInterval(this.lDownloadButtonAnimationTimer_ref);
 
 		this.lDownloadButtonAnimationTimer_ref = setInterval(
-			function(){
-				
+			function () {
+
 				let lAlpha_num = Number(l_html.style.opacity);
 				lAlpha_num -= 0.099;
 
-				if(lAlpha_num <= 0)
-				{
+				if (lAlpha_num <= 0) {
 					clearInterval(this.lDownloadButtonAnimationTimer_ref);
 					lAlpha_num = 1;
 				}
@@ -374,36 +341,30 @@ class WebSocketInteractionController extends SimpleController
 		//...HTML BUTTON ANIMATION
 	}
 
-	saveStubs()
-	{
+	saveStubs() {
 		//MERGING TEXT...
 		let lData_str = "";
 
-		for( let i = 0; i < this._fMessages_str_arr.length; i++ )
-		{
-			try
-			{
+		for (let i = 0; i < this._fMessages_str_arr.length; i++) {
+			try {
 				lData_str += this._fMessages_str_arr[i];
 				lData_str += "|";
 			}
-			catch(err)
-			{
+			catch (err) {
 				console.error(err);
-				console.error("failed to stringify message #" + i +" of total ("+  this._fMessages_str_arr.length + "): ");
+				console.error("failed to stringify message #" + i + " of total (" + this._fMessages_str_arr.length + "): ");
 				console.error(this._fMessages_str_arr[i]);
 				break;
-			}	
+			}
 		}
 		//...MERGING TEXT
 
 		//SAVING...
-		let blob = new Blob([lData_str], {type: 'text/csv'});
-		if(window.navigator.msSaveOrOpenBlob)
-		{
+		let blob = new Blob([lData_str], { type: 'text/csv' });
+		if (window.navigator.msSaveOrOpenBlob) {
 			window.navigator.msSaveBlob(blob, "stubs.txt");
 		}
-		else
-		{
+		else {
 			let l_html = window.document.createElement('a');
 			l_html.href = window.URL.createObjectURL(blob);
 			l_html.download = "stubs.txt";
@@ -411,36 +372,31 @@ class WebSocketInteractionController extends SimpleController
 			l_html.click();
 			document.body.removeChild(l_html);
 		}
-	    //...SAVING
+		//...SAVING
 	}
 
 
-	_onStubsTick()
-	{
-		if(this._fNextStubIndex_int > this._fStubs_obj_arr.length - 1)
-		{
+	_onStubsTick() {
+		if (this._fNextStubIndex_int > this._fStubs_obj_arr.length - 1) {
 			return;
 		}
 
 		let lCurrentStubsTime_num = this._currentStubsTime();
 		let lStub_obj = this._fStubs_obj_arr[this._fNextStubIndex_int];
 
-		if(lCurrentStubsTime_num >= lStub_obj.date)
-		{
+		if (lCurrentStubsTime_num >= lStub_obj.date) {
 			this._processServerMessage(lStub_obj);
 			this._fNextStubIndex_int++;
 
 			let l_html = document.getElementById(NOTIFICATION_PANEL_ID);
 
-			if(l_html)
-			{
-				l_html.innerText = "STUBS("+ this._fNextStubIndex_int + "/" + this._fStubs_obj_arr.length + ")";
+			if (l_html) {
+				l_html.innerText = "STUBS(" + this._fNextStubIndex_int + "/" + this._fStubs_obj_arr.length + ")";
 			}
 		}
 	}
 
-	get _currentStubsTime()
-	{
+	get _currentStubsTime() {
 		return Date.now();
 	}
 	//...STUBS
@@ -449,38 +405,32 @@ class WebSocketInteractionController extends SimpleController
 	 * Checks if socket connection recovering is in progress
 	 * @readonly
 	 */
-	get recoveringConnectionInProgress ()
-	{
+	get recoveringConnectionInProgress() {
 		return this._reconnectInProgress;
 	}
 
-	__initModelLevel()
-	{
+	__initModelLevel() {
 		super.__initModelLevel();
 
 		let socketUrl = APP.isDebugMode ? this._debugWebSocketUrl : this._webSocketUrl;
 		socketUrl = decodeURIComponent(socketUrl);
 
-		if (APP.isDebugMode && this._webSocketUrl.indexOf('dgphoenix') > -1)
-		{
+		if (APP.isDebugMode && this._webSocketUrl.indexOf('dgphoenix') > -1) {
 			socketUrl = socketUrl.replace('discreetgaming', 'dgphoenix');
 		}
 
 		this.info.socketUrl = socketUrl;
 	}
 
-	get _debugWebSocketUrl()
-	{
+	get _debugWebSocketUrl() {
 		return ""; // must be overridden
 	}
 
-	get _webSocketUrl()
-	{
+	get _webSocketUrl() {
 		return APP.urlBasedParams.WEB_SOCKET_URL;
 	}
 
-	__initControlLevel()
-	{
+	__initControlLevel() {
 		super.__initControlLevel();
 
 		this._establishConnection();
@@ -491,8 +441,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @readonly
 	 * @private
 	 */
-	get _isConnectionConnecting()
-	{
+	get _isConnectionConnecting() {
 		return this._webSocket && this._webSocket.readyState === WebSocket.CONNECTING;
 	}
 
@@ -501,8 +450,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @readonly
 	 * @private
 	 */
-	get _isConnectionOpened()
-	{
+	get _isConnectionOpened() {
 		return this._webSocket && this._webSocket.readyState === WebSocket.OPEN;
 	}
 
@@ -511,8 +459,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @readonly
 	 * @private
 	 */
-	get _isConnectionClosing()
-	{
+	get _isConnectionClosing() {
 		return this._webSocket && this._webSocket.readyState === WebSocket.CLOSING;
 	}
 
@@ -521,8 +468,7 @@ class WebSocketInteractionController extends SimpleController
 	 * @readonly
 	 * @private
 	 */
-	get _isConnectionClosed()
-	{
+	get _isConnectionClosed() {
 		return !this._webSocket || this._webSocket.readyState === WebSocket.CLOSED;
 	}
 
@@ -530,17 +476,15 @@ class WebSocketInteractionController extends SimpleController
 	 * Sets server messages handling to be allowed
 	 * @private
 	 */
-	_startServerMesagesHandling()
-	{
+	_startServerMesagesHandling() {
 		this.info.serverMessagesHandlingAllowed = true;
 
 
 		//STUBS EXECUTION TIMER...
-		if(
+		if (
 			this.isStubsModeAvailable() &&
 			this._fIsStubsMode_bl
-			)
-		{
+		) {
 			APP.on(Application.EVENT_ON_TICK_TIME, this._onStubsTick, this);
 		}
 		//...STUBS EXECUTION TIMER
@@ -550,8 +494,7 @@ class WebSocketInteractionController extends SimpleController
 	 * Sets server messages handling to be forbidden
 	 * @private
 	 */
-	_stopServerMesagesHandling()
-	{
+	_stopServerMesagesHandling() {
 		this.info.serverMessagesHandlingAllowed = false;
 	}
 
@@ -559,8 +502,7 @@ class WebSocketInteractionController extends SimpleController
 	 * Stops reconnection and blocks next connection. New connection won't be established.
 	 * @private
 	 */
-	_blockAfterCriticalError()
-	{
+	_blockAfterCriticalError() {
 		this._blockedAfterCriticalError = true;
 		this._deactivateReconnectTimeout();
 	}
@@ -569,16 +511,26 @@ class WebSocketInteractionController extends SimpleController
 	 * Establish new websocket connection and start messages handling
 	 * @private
 	 */
-	_establishConnection()
-	{
+	_establishConnection() {
 		this._closeConnectionIfPossible();
-		
-		if (this._blockedAfterCriticalError)
-		{
+
+		if (this._blockedAfterCriticalError) {
 			return;
 		}
 
-		let webSocket = new WebSocket(this.info.socketUrl);
+		// FIX: Intercept 'games.local' and redirect to 'localhost:8080' for local development
+		let socketUrl = this.info.socketUrl;
+		console.log("[WSIC] _establishConnection checking URL:", socketUrl);
+
+		if (socketUrl && socketUrl.indexOf("games.local") > -1) {
+			console.log("[WSIC] internal hostname detected. Redirecting to localhost:8080");
+			socketUrl = socketUrl.replace("games.local", "localhost:8080");
+			console.log("[WSIC] New URL:", socketUrl);
+		} else {
+			console.log("[WSIC] URL passed check (no games.local found).");
+		}
+
+		let webSocket = new WebSocket(socketUrl);
 
 		webSocket.onopen = this._onConnectionOpened.bind(this);
 		webSocket.onclose = this._onConnectionClosed.bind(this);
@@ -589,21 +541,18 @@ class WebSocketInteractionController extends SimpleController
 
 		//https://youtrack.dgphoenix.com/issue/MSX-842
 		// For some reasons it is needed only for iOS. Any other platform works fine with webSocket methods defined above.
-		if (IOS) 
-		{
+		if (IOS) {
 			window.ononline = this._onOnlineRestored.bind(this);
 			window.onoffline = this._onOffline.bind(this)
 		}
 	}
 
-	_onOffline()
-	{
+	_onOffline() {
 		this._closeConnectionIfPossible();
-		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, {wasClean: false});
+		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, { wasClean: false });
 	}
 
-	_onOnlineRestored()
-	{
+	_onOnlineRestored() {
 		this._startRecoveringSocketConnection();
 	}
 
@@ -611,22 +560,19 @@ class WebSocketInteractionController extends SimpleController
 	 * Close websocket connection
 	 * @private
 	 */
-	_closeConnectionIfPossible()
-	{
+	_closeConnectionIfPossible() {
 		this._requests_list = {};
 
 		let webSocket = this._webSocket;
-		
-		if (!webSocket)
-		{
+
+		if (!webSocket) {
 			return;
 		}
-		
+
 		this._clearSocketHandlers();
 		this._clearDelayedRequests();
-		
-		if (this._isConnectionOpened)
-		{
+
+		if (this._isConnectionOpened) {
 			webSocket.close();
 		}
 
@@ -636,12 +582,10 @@ class WebSocketInteractionController extends SimpleController
 	/**
 	 * Remove websocket handlers
 	 */
-	_clearSocketHandlers()
-	{
+	_clearSocketHandlers() {
 		let webSocket = this._webSocket;
 
-		if (webSocket)
-		{
+		if (webSocket) {
 			webSocket.onopen = null;
 			webSocket.onclose = null;
 			webSocket.onerror = null;
@@ -652,12 +596,10 @@ class WebSocketInteractionController extends SimpleController
 	/**
 	 * Remove delayed requests
 	 */
-	_clearDelayedRequests()
-	{
+	_clearDelayedRequests() {
 		this._requestsClassLastTimes_obj = {};
 
-		while (this._delayedRequests && this._delayedRequests.length)
-		{
+		while (this._delayedRequests && this._delayedRequests.length) {
 			let delayedRequestTimer = this._delayedRequests.pop();
 			delayedRequestTimer.timer && delayedRequestTimer.timer.destructor();
 		}
@@ -671,32 +613,24 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {object} aOptRequestParams_obj - Request params with specific values (optional parameter)
 	 * @returns {boolean}
 	 */
-	_hasDelayedRequests(aRequestClass_str, aOptRequestParams_obj=undefined)
-	{
+	_hasDelayedRequests(aRequestClass_str, aOptRequestParams_obj = undefined) {
 		let lDelayedRequests = this._delayedRequests;
-	
-		if (!lDelayedRequests || !lDelayedRequests.length)
-		{
+
+		if (!lDelayedRequests || !lDelayedRequests.length) {
 			return false;
 		}
 
-		if (!aRequestClass_str)
-		{
+		if (!aRequestClass_str) {
 			return lDelayedRequests.length > 0;
 		}
 
-		for (let i=0; i<lDelayedRequests.length; i++)
-		{
+		for (let i = 0; i < lDelayedRequests.length; i++) {
 			let curDelayedRequestInfo = lDelayedRequests[i];
-			if (curDelayedRequestInfo.class == aRequestClass_str)
-			{
-				if (!!aOptRequestParams_obj)
-				{
+			if (curDelayedRequestInfo.class == aRequestClass_str) {
+				if (!!aOptRequestParams_obj) {
 					let lIsSuitableRequest_bl = true;
-					for (let lParamName_str in aOptRequestParams_obj)
-					{
-						if (aOptRequestParams_obj[lParamName_str] !== curDelayedRequestInfo.data[lParamName_str])
-						{
+					for (let lParamName_str in aOptRequestParams_obj) {
+						if (aOptRequestParams_obj[lParamName_str] !== curDelayedRequestInfo.data[lParamName_str]) {
 							lIsSuitableRequest_bl = false;
 							break;
 						}
@@ -704,8 +638,7 @@ class WebSocketInteractionController extends SimpleController
 
 					if (lIsSuitableRequest_bl) return true;
 				}
-				else
-				{
+				else {
 					return true;
 				}
 			}
@@ -719,20 +652,16 @@ class WebSocketInteractionController extends SimpleController
 	 * @protected
 	 * @param {string} aRequestClass_str - Target request class
 	 */
-	_removeSpecificDelayedRequests(aRequestClass_str)
-	{
+	_removeSpecificDelayedRequests(aRequestClass_str) {
 		let lDelayedRequests = this._delayedRequests;
 
-		if (!lDelayedRequests || !lDelayedRequests.length)
-		{
+		if (!lDelayedRequests || !lDelayedRequests.length) {
 			return;
 		}
 
-		for (let i=0; i<lDelayedRequests.length; i++)
-		{
+		for (let i = 0; i < lDelayedRequests.length; i++) {
 			let lCurDelayedRequest = lDelayedRequests[i];
-			if (lCurDelayedRequest.class == aRequestClass_str)
-			{
+			if (lCurDelayedRequest.class == aRequestClass_str) {
 				lCurDelayedRequest.timer && lCurDelayedRequest.timer.destructor();
 				lDelayedRequests.splice(i, 1);
 				i--;
@@ -740,8 +669,7 @@ class WebSocketInteractionController extends SimpleController
 		}
 	}
 
-	_onConnectionOpened()
-	{
+	_onConnectionOpened() {
 		console.log("[WSIC] _onConnectionOpened");
 		this._stopReconnecting();
 		this._recoverAfterServerShutdownRequired = false;
@@ -752,69 +680,59 @@ class WebSocketInteractionController extends SimpleController
 		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_OPENED);
 	}
 
-	_onConnectionClosed(event)
-	{
+	_onConnectionClosed(event) {
 		let wasClean = event.wasClean;
 		console.log("[WSIC] _onConnectionClosed, wasClean:", wasClean, "; code:", event.code);
-		
+
 		//MQBG-531 - Websocket Defined Status Code 1001 CLOSE_GOING_AWAY, client is leaving (browser tab closing)
-		if(event.code == 1001)
-		{
-			this._processServerMessage({"code": 3,"msg": "New Lobby session is opening","date": Date.now(),"class": "Error","rid": -1});
+		if (event.code == 1001) {
+			this._processServerMessage({ "code": 3, "msg": "New Lobby session is opening", "date": Date.now(), "class": "Error", "rid": -1 });
 		}
 
 		this._stopServerMesagesHandling();
-		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, {wasClean: wasClean});
+		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, { wasClean: wasClean });
 
-		if (wasClean)
-		{
-			if (this._recoverAfterServerShutdownRequired)
-			{
+		if (wasClean) {
+			if (this._recoverAfterServerShutdownRequired) {
 				this._startRecoveringSocketConnection();
 			}
 		}
-		else
-		{
+		else {
 			this._startRecoveringSocketConnection();
 		}
 	}
 
-	_startRecoveringSocketConnection()
-	{
+	_startRecoveringSocketConnection() {
 		this._startReconnectingOnConnectionLost();
 	}
 
-	_onConnectionError(error)
-	{
+	_onConnectionError(error) {
 		console.log("[WSIC] _onConnectionError", error);
 	}
 
-	_onServerMessageReceived(message)
-	{
+	_onServerMessageReceived(message) {
 		if (
 			!this.info.serverMessagesHandlingAllowed &&
 			!this._fIsStubsMode_bl
-			)
-		{
+		) {
 			return;
 		}
 
 		let data = JSON.parse(message.data);
-		if (!data.class)
-		{
-			throw new Error (`Incorrect server message format: ${data}`);
+		if (!data.class) {
+			throw new Error(`Incorrect server message format: ${data}`);
 		}
 
 		//DEBUG...
 		// if (data.class == "GetStartGameUrlResponse")
-        // {
-        //     testCounter++;
-        //     if (testCounter == 1)
-        //     {
-        //         this._processServerMessage({"code": 1003,"msg": "ROOM_NOT_FOUND","date": 1496748898812,"class": "Error","rid": 1});
-        //         return;
-        //     }
-        // }
+		// {
+		//     testCounter++;
+		//     if (testCounter == 1)
+		//     {
+		//         this._processServerMessage({"code": 1003,"msg": "ROOM_NOT_FOUND","date": 1496748898812,"class": "Error","rid": 1});
+		//         return;
+		//     }
+		// }
 		/*if (data.class == "GetRoomInfoResponse")
 		{
 			console.log("fake error ")
@@ -863,88 +781,74 @@ class WebSocketInteractionController extends SimpleController
 		// 	}
 		// }
 		//...DEBUG
-		
+
 		this._processServerMessage(data);
 	}
 
-	_processServerMessage(messageData)
-	{
+	_processServerMessage(messageData) {
 		let requestData = null;
 		let lIsStubMode_bl = this._fIsStubsMode_bl;
-		
-		if(!lIsStubMode_bl)
-		{	
-			if (messageData.rid && messageData.rid >= 0)
-			{
+
+		if (!lIsStubMode_bl) {
+			if (messageData.rid && messageData.rid >= 0) {
 				requestData = this._requests_list[messageData.rid];
-				if (!!requestData)
-				{
+				if (!!requestData) {
 					requestData.responded = true;
 				}
 			}
 		}
 
-		if (!this.info.isLastServerMessageTimeDefined || messageData.date > this.info.lastServerMessageTime)
-		{
+		if (!this.info.isLastServerMessageTimeDefined || messageData.date > this.info.lastServerMessageTime) {
 			this.info.lastServerMessageTime = messageData.date;
 		}
 
-		if (this._isMessageCompleteDisregardRequired(messageData))
-		{
+		if (this._isMessageCompleteDisregardRequired(messageData)) {
 			return;
 		}
 
-		if (APP.isDebugsrmsg)
-		{
+		if (APP.isDebugsrmsg) {
 			console.log(`[E] RECI:: rid:${messageData.rid}, class:${messageData.class}, date:${messageData.date}`);
 		}
 
-		if(messageData.class == SERVER_MESSAGES.ENTER_LOBBY_RESPONSE)
-		{
+		if (messageData.class == SERVER_MESSAGES.ENTER_LOBBY_RESPONSE) {
 			APP.isLobbyApp();
 			APP.on(Application.EVENT_ON_CLOSE_GAME_SESSION, this._finishGameSession, this);
 		}
 
-		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_MESSAGE, {messageData: messageData, requestData: requestData});
+		this.emit(WebSocketInteractionController.EVENT_ON_SERVER_MESSAGE, { messageData: messageData, requestData: requestData });
 
 		let eventType = this._specifyEventMessageType(messageData);
 		let eventData = this._specifyEventData(messageData, requestData);
 
-		if (eventType === WebSocketInteractionController.EVENT_ON_SERVER_ERROR_MESSAGE)
-		{
+		if (eventType === WebSocketInteractionController.EVENT_ON_SERVER_ERROR_MESSAGE) {
 			APP.logger.i_pushError(`WSIC. Internal error! ${JSON.stringify(messageData)}`);
 		}
 
 		if (
-				lIsStubMode_bl ||
-				(
-					eventType !== undefined &&
-					this._isServerMessageReceivingAvailable(messageData.class)
-					&& this.info.serverMessagesHandlingAllowed
-				)
+			lIsStubMode_bl ||
+			(
+				eventType !== undefined &&
+				this._isServerMessageReceivingAvailable(messageData.class)
+				&& this.info.serverMessagesHandlingAllowed
 			)
-		{
+		) {
 			this.emit(eventType, eventData);
 		}
 
 		this._handleServerMessage(messageData, requestData);
 	}
 
-	_finishGameSession(event)
-	{
+	_finishGameSession(event) {
 		this._sendRequest(WebSocketInteractionController.FINISH_WEB_SESSION, APP.goToHomeParams);
 	}
 
-	_isMessageCompleteDisregardRequired(messageData)
-	{
+	_isMessageCompleteDisregardRequired(messageData) {
 		return false;
 	}
 
-	_specifyEventMessageType(messageData)
-	{
+	_specifyEventMessageType(messageData) {
 		let eventType;
-		switch(messageData.class)
-		{
+		switch (messageData.class) {
 			case SERVER_MESSAGES.ERROR:
 				eventType = WebSocketInteractionController.EVENT_ON_SERVER_ERROR_MESSAGE;
 				break;
@@ -959,11 +863,9 @@ class WebSocketInteractionController extends SimpleController
 		return eventType;
 	}
 
-	_specifyEventData(messageData, requestData)
-	{
-		let eventData = {messageData: messageData, requestData: requestData};
-		switch(messageData.class)
-		{
+	_specifyEventData(messageData, requestData) {
+		let eventData = { messageData: messageData, requestData: requestData };
+		switch (messageData.class) {
 			case SERVER_MESSAGES.ERROR:
 				eventData.errorType = this._specifyErrorCodeSeverity(messageData, requestData);
 				break;
@@ -972,46 +874,40 @@ class WebSocketInteractionController extends SimpleController
 		return eventData;
 	}
 
-	_specifyErrorCodeSeverity(messageData, requestData)
-	{
+	_specifyErrorCodeSeverity(messageData, requestData) {
 		let errorCode = messageData.code;
 		let errorCodeSeverity;
 		if (
-				(
-					errorCode >= ERROR_CODE_RANGES.FATAL_ERROR.from 
-					&& errorCode <= ERROR_CODE_RANGES.FATAL_ERROR.to
-					&& errorCode != WebSocketInteractionController.ERROR_CODES.SERVER_SHUTDOWN
-				)
-				|| errorCode == WebSocketInteractionController.ERROR_CODES.BAD_REQUEST
-				|| errorCode == WebSocketInteractionController.ERROR_CODES.BAD_BUYIN
-				|| errorCode == WebSocketInteractionController.ERROR_CODES.BAD_STAKE
-				|| errorCode == WebSocketInteractionController.ERROR_CODES.AVATAR_PART_NOT_AVAILABLE
-				|| errorCode == WebSocketInteractionController.ERROR_CODES.OPERATION_FAILED
-				|| errorCode == WebSocketInteractionController.ERROR_CODES.EXPIRED_WEBSITE_SESSION
-				|| errorCode == WebSocketInteractionController.ERROR_CODES.UNKNOWN_TRANSACTION_ID
-				|| WebSocketInteractionController.isUnknownWalletError(errorCode) //Workaround: consider all unknown Wallet error codes as an error BAD_BUYIN: 1010. Until the task is completed https://jira.dgphoenix.com/browse/DI-94
+			(
+				errorCode >= ERROR_CODE_RANGES.FATAL_ERROR.from
+				&& errorCode <= ERROR_CODE_RANGES.FATAL_ERROR.to
+				&& errorCode != WebSocketInteractionController.ERROR_CODES.SERVER_SHUTDOWN
 			)
-		{
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.BAD_REQUEST
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.BAD_BUYIN
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.BAD_STAKE
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.AVATAR_PART_NOT_AVAILABLE
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.OPERATION_FAILED
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.EXPIRED_WEBSITE_SESSION
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.UNKNOWN_TRANSACTION_ID
+			|| WebSocketInteractionController.isUnknownWalletError(errorCode) //Workaround: consider all unknown Wallet error codes as an error BAD_BUYIN: 1010. Until the task is completed https://jira.dgphoenix.com/browse/DI-94
+		) {
 			errorCodeSeverity = ERROR_CODE_TYPES.FATAL_ERROR;
 		}
 		else if (
-					(errorCode >= ERROR_CODE_RANGES.ERROR.from && errorCode <= ERROR_CODE_RANGES.ERROR.to)
-					|| errorCode == WebSocketInteractionController.ERROR_CODES.SERVER_SHUTDOWN
-					|| errorCode == WebSocketInteractionController.ERROR_CODES.SERVER_REBOOT
-				)
-		{
+			(errorCode >= ERROR_CODE_RANGES.ERROR.from && errorCode <= ERROR_CODE_RANGES.ERROR.to)
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.SERVER_SHUTDOWN
+			|| errorCode == WebSocketInteractionController.ERROR_CODES.SERVER_REBOOT
+		) {
 			errorCodeSeverity = ERROR_CODE_TYPES.ERROR;
 		}
-		else if (errorCode >= ERROR_CODE_RANGES.WARNING.from && errorCode <= ERROR_CODE_RANGES.WARNING.to)
-		{
+		else if (errorCode >= ERROR_CODE_RANGES.WARNING.from && errorCode <= ERROR_CODE_RANGES.WARNING.to) {
 			errorCodeSeverity = ERROR_CODE_TYPES.WARNING;
 		}
-		else if (errorCode >= ERROR_CODE_RANGES.WALLET_ERROR.from && errorCode <= ERROR_CODE_RANGES.WALLET_ERROR.to)
-		{
+		else if (errorCode >= ERROR_CODE_RANGES.WALLET_ERROR.from && errorCode <= ERROR_CODE_RANGES.WALLET_ERROR.to) {
 			errorCodeSeverity = ERROR_CODE_TYPES.ERROR;
 		}
-		else
-		{
+		else {
 			throw new Error(`Can't specify error type: ${messageData.code}`);
 		}
 
@@ -1024,75 +920,63 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {*} aOptRequestData_obj - Request data (optional parameter)
 	 * @returns {boolean}
 	 */
-	isFatalError(errorCode, aOptRequestData_obj)
-	{
-		let lErrorType_str = this._specifyErrorCodeSeverity({code: errorCode}, aOptRequestData_obj || undefined);
+	isFatalError(errorCode, aOptRequestData_obj) {
+		let lErrorType_str = this._specifyErrorCodeSeverity({ code: errorCode }, aOptRequestData_obj || undefined);
 
 		return WebSocketInteractionController.isFatalError(lErrorType_str);
 	}
 
-	_isServerMessageReceivingAvailable(messageClass)
-	{
+	_isServerMessageReceivingAvailable(messageClass) {
 		return true;
 	}
 
-	_handleServerMessage(messageData, requestData)
-	{
+	_handleServerMessage(messageData, requestData) {
 		let msgClass = messageData.class;
-		switch(msgClass)
-		{
+		switch (msgClass) {
 			case SERVER_MESSAGES.ERROR:
 				console.log("General ServerError " + JSON.stringify(messageData));
 				let errorType = this._specifyErrorCodeSeverity(messageData, requestData);
-				if (WebSocketInteractionController.isFatalError(errorType))
-				{
+				if (WebSocketInteractionController.isFatalError(errorType)) {
 					this._handleFatalError(messageData.code, requestData);
 				}
-				else if (WebSocketInteractionController.isGeneralError(errorType))
-				{
+				else if (WebSocketInteractionController.isGeneralError(errorType)) {
 					this._handleGeneralError(messageData.code, requestData);
 				}
-				else if (WebSocketInteractionController.isWarning(errorType))
-				{
+				else if (WebSocketInteractionController.isWarning(errorType)) {
 					this._handleWarning(messageData.code, requestData);
 				}
 				break;
 		}
 
-		
-		
+
+
 		//STUBS...
-		if(
+		if (
 			this._fIsStubsTrackingRequired_bl &&
 			this.isStubsModeAvailable() &&
 			!this._fIsStubsMode_bl
-			)
-		{
+		) {
 			//recording server messages to save them later if needed
 			this._fMessages_str_arr.push(JSON.stringify(messageData, getCircularReplacer()));
 		}
 		//...STUBS
 	}
 
-	_handleFatalError(errorCode, requestData)
-	{
+	_handleFatalError(errorCode, requestData) {
 		this._blockAfterCriticalError();
 		this._stopServerMesagesHandling();
 		this._closeConnectionIfPossible();
 	}
 
-	_handleGeneralError(errorCode, requestData)
-	{
+	_handleGeneralError(errorCode, requestData) {
 		let supported_codes = WebSocketInteractionController.ERROR_CODES;
-		switch(errorCode)
-		{
+		switch (errorCode) {
 			case supported_codes.SERVER_SHUTDOWN:
 			case supported_codes.SERVER_REBOOT:
 				this._recoverAfterServerShutdownRequired = true;
 				break;
 			case supported_codes.REQUEST_FREQ_LIMIT_EXCEEDED:
-				switch (requestData.class)
-				{
+				switch (requestData.class) {
 					case GAME_CLIENT_MESSAGES.SHOT:
 					case GAME_CLIENT_MESSAGES.MINE_COORDINATES:
 						// nothing to do
@@ -1106,53 +990,43 @@ class WebSocketInteractionController extends SimpleController
 		}
 	}
 
-	_handleWarning(errorCode, requestData)
-	{
+	_handleWarning(errorCode, requestData) {
 	}
 
-	_presetResend(requestData)
-	{
+	_presetResend(requestData) {
 		let requestDate = requestData.date;
 		let timeDelay = this._calculateRequestSendDelay(requestData, requestData.date);
-		
-		if (isNaN(timeDelay))
-		{
+
+		if (isNaN(timeDelay)) {
 			this._resendRequest(requestData.class, requestData);
 		}
-		else
-		{
+		else {
 			this._delayRequest(requestData.class, requestData, timeDelay);
 		}
 	}
 
-	_resendRequest(requestClass, requestData)
-	{
+	_resendRequest(requestClass, requestData) {
 		requestData.date = undefined;
 		this._sendRequest(requestClass, requestData);
 	}
 
-	_sendRequest(requestClass, requestData)
-	{
-		if(this._fIsStubsMode_bl)
-		{
+	_sendRequest(requestClass, requestData) {
+		if (this._fIsStubsMode_bl) {
 			return;
 		}
 
-		if (!this._isConnectionOpened)
-		{
+		if (!this._isConnectionOpened) {
 			return;
 		}
 
-		if(APP.areRequestsBlocked)
-		{
+		if (APP.areRequestsBlocked) {
 			return;
 		}
 
 		requestData.class = requestClass;
 
 		let timeDelay = this._calculateRequestSendDelay(requestData);
-		if (!isNaN(timeDelay))
-		{
+		if (!isNaN(timeDelay)) {
 			this._delayRequest(requestClass, requestData, timeDelay);
 			return;
 		}
@@ -1161,27 +1035,25 @@ class WebSocketInteractionController extends SimpleController
 
 		this.__performActionWithRequestOnGameLevel(requestData);
 
-		if(requestData.date === undefined)
-		{
+		if (requestData.date === undefined) {
 			requestData.date = Date.now();
 		}
-		
+
 		this._requests_list[requestData.rid] = requestData;
 
-		if (APP.isDebugsrmsg)
-		{
+		if (APP.isDebugsrmsg) {
 			console.log(`[E] SEND:: rid:${requestData.rid}, class:${requestData.class}, date:${requestData.date}`);
 		}
-		
+
 		let lRequestDataToSend = Object.assign({}, requestData);
-		
+
 		delete lRequestDataToSend.excludeParams;
-		
+
 		let request = JSON.stringify(lRequestDataToSend);
 
 		requestData.responded = false;
 
-			this._webSocket.send(request);
+		this._webSocket.send(request);
 
 		this._requestsClassLastTimes_obj[requestClass] = requestData.date;
 
@@ -1194,14 +1066,12 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {number} aRequestDate_int - Last request timestamp (if request was sent previously), optional parameter.
 	 * @returns {number}
 	 */
-	_calculateRequestSendDelay(requestData, aRequestDate_int=undefined)
-	{
+	_calculateRequestSendDelay(requestData, aRequestDate_int = undefined) {
 		let requestClass = requestData.class;
 		let timeDelay = undefined;
 
 		let lastRequestSendTime = aRequestDate_int || this._requestsClassLastTimes_obj[requestClass];
-		if (lastRequestSendTime)
-		{
+		if (lastRequestSendTime) {
 			let lCurClientTime_int = Date.now();
 			let timeDiff = lCurClientTime_int - lastRequestSendTime;
 			let requestTimeLimit = this.info.getRequestTimeLimit(requestClass);
@@ -1209,39 +1079,31 @@ class WebSocketInteractionController extends SimpleController
 			let lRequestDifferentTypesTimeLimit_obj = this.info.getRequestDifferentTypesTimeLimit(requestData);
 			let lRequestDifferentTypesTimeLimit_int = !!lRequestDifferentTypesTimeLimit_obj ? lRequestDifferentTypesTimeLimit_obj.interval : undefined;
 			let lRequestDifferentTypesMinDiff_int = undefined;
-			if (lRequestDifferentTypesTimeLimit_int !== undefined)
-			{
+			if (lRequestDifferentTypesTimeLimit_int !== undefined) {
 				let lRequestClasses_str_arr = lRequestDifferentTypesTimeLimit_obj.requestClasses;
-				for (let i=0; i<lRequestClasses_str_arr.length; i++)
-				{
+				for (let i = 0; i < lRequestClasses_str_arr.length; i++) {
 					let lastPairRequestTime = this._requestsClassLastTimes_obj[lRequestClasses_str_arr[i]];
-					if (lastPairRequestTime)
-					{
+					if (lastPairRequestTime) {
 						let lCurDiff_int = lCurClientTime_int - lastPairRequestTime;
-						if (lRequestDifferentTypesMinDiff_int === undefined)
-						{
+						if (lRequestDifferentTypesMinDiff_int === undefined) {
 							lRequestDifferentTypesMinDiff_int = lCurDiff_int;
 						}
-						else
-						{
+						else {
 							lRequestDifferentTypesMinDiff_int = Math.min(lRequestDifferentTypesMinDiff_int, lCurDiff_int);
 						}
 					}
 				}
 
-				if (lRequestDifferentTypesMinDiff_int === undefined)
-				{
-					lRequestDifferentTypesMinDiff_int = lRequestDifferentTypesTimeLimit_int+1;
+				if (lRequestDifferentTypesMinDiff_int === undefined) {
+					lRequestDifferentTypesMinDiff_int = lRequestDifferentTypesTimeLimit_int + 1;
 				}
 			}
 
-			if (timeDiff < requestTimeLimit)
-			{
+			if (timeDiff < requestTimeLimit) {
 				timeDelay = Math.max(requestTimeLimit - timeDiff + 1, 0);
 			}
 
-			if (lRequestDifferentTypesTimeLimit_int !== undefined && lRequestDifferentTypesMinDiff_int < lRequestDifferentTypesTimeLimit_int)
-			{
+			if (lRequestDifferentTypesTimeLimit_int !== undefined && lRequestDifferentTypesMinDiff_int < lRequestDifferentTypesTimeLimit_int) {
 				timeDelay = Math.max(lRequestDifferentTypesTimeLimit_int - lRequestDifferentTypesMinDiff_int + 1, timeDelay || 0);
 			}
 		}
@@ -1249,8 +1111,7 @@ class WebSocketInteractionController extends SimpleController
 		return timeDelay;
 	}
 
-	__performActionWithRequestOnGameLevel()
-	{
+	__performActionWithRequestOnGameLevel() {
 	}
 
 	/**
@@ -1258,62 +1119,53 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {string} aRequestClass_str - Target request class.
 	 * @returns {number}
 	 */
-	getLastRequestSendTime(aRequestClass_str)
-	{
+	getLastRequestSendTime(aRequestClass_str) {
 		return this._requestsClassLastTimes_obj[aRequestClass_str] || undefined;
 	}
 
 	/**
 	 * Gets rid of last sent request
 	 */
-	getLastRequestId()
-	{
+	getLastRequestId() {
 		return this._requestUniqId;
 	}
 
-	_delayRequest(requestClass, requestData, delayTime)
-	{
+	_delayRequest(requestClass, requestData, delayTime) {
 		let requestInfo = {
 			class: requestClass,
 			data: requestData
 		}
 
-		if (!isNaN(delayTime))
-		{
-			let timer = new Timer(() => { 
-									this._removeDelayedTimer(requestInfo);
-									this._resendRequest(requestClass, requestData) 
-								}, 
-						delayTime);
+		if (!isNaN(delayTime)) {
+			let timer = new Timer(() => {
+				this._removeDelayedTimer(requestInfo);
+				this._resendRequest(requestClass, requestData)
+			},
+				delayTime);
 
 			requestInfo.timer = timer;
 		}
 		this._delayedRequests.push(requestInfo);
 	}
 
-	_forceDelayedRequests()
-	{
+	_forceDelayedRequests() {
 		let tmpDelayedRequests = this._delayedRequests.slice();
 		this._delayedRequests = [];
 
-		while (tmpDelayedRequests && tmpDelayedRequests.length)
-		{
+		while (tmpDelayedRequests && tmpDelayedRequests.length) {
 			let delayedRequestInfo = tmpDelayedRequests.shift();
 			let delayedRequestTimer = delayedRequestInfo.timer;
 			delayedRequestTimer && delayedRequestTimer.finish();
-		}		
+		}
 	}
 
-	_removeDelayedTimer(requestInfo)
-	{
-		if (!requestInfo)
-		{
+	_removeDelayedTimer(requestInfo) {
+		if (!requestInfo) {
 			return;
 		}
 
 		let timerIndex = this._delayedRequests.indexOf(requestInfo);
-		if (timerIndex >= 0)
-		{
+		if (timerIndex >= 0) {
 			this._delayedRequests.splice(timerIndex, 1);
 		}
 
@@ -1327,29 +1179,22 @@ class WebSocketInteractionController extends SimpleController
 	 * @param {object} aOptRequestParams_obj - Request params with specific values (optional parameter)
 	 * @returns {boolean}
 	 */
-	_hasUnRespondedRequest(requestClass, aOptRequestParams_obj=undefined)
-	{
-		for (var rid in this._requests_list)
-		{
+	_hasUnRespondedRequest(requestClass, aOptRequestParams_obj = undefined) {
+		for (var rid in this._requests_list) {
 			let requestData = this._requests_list[rid];
-			if (requestData && requestData.class == requestClass && !requestData.responded)
-			{
-				if (!!aOptRequestParams_obj)
-				{
+			if (requestData && requestData.class == requestClass && !requestData.responded) {
+				if (!!aOptRequestParams_obj) {
 					let lIsSuitableRequest_bl = true;
-					for (let lParamName_str in aOptRequestParams_obj)
-					{
-						if (aOptRequestParams_obj[lParamName_str] !== requestData[lParamName_str])
-						{
+					for (let lParamName_str in aOptRequestParams_obj) {
+						if (aOptRequestParams_obj[lParamName_str] !== requestData[lParamName_str]) {
 							lIsSuitableRequest_bl = false;
 							break;
 						}
 					}
-					
+
 					if (lIsSuitableRequest_bl) return true;
 				}
-				else
-				{
+				else {
 					return true;
 				}
 			}
@@ -1357,10 +1202,8 @@ class WebSocketInteractionController extends SimpleController
 		return false;
 	}
 
-	_startReconnectingOnConnectionLost()
-	{
-		if (this._blockedAfterCriticalError)
-		{
+	_startReconnectingOnConnectionLost() {
+		if (this._blockedAfterCriticalError) {
 			console.log("[WSIC] _startReconnectingOnConnectionLost blocked after critical error");
 			return;
 		}
@@ -1368,71 +1211,60 @@ class WebSocketInteractionController extends SimpleController
 		this._reconnectInProgress = true;
 		this._recoverAfterServerShutdownRequired = false;
 
-		this._deactivateReconnectTimeout();					
+		this._deactivateReconnectTimeout();
 		this._activateReconnectTimeout();
 	}
 
-	_activateReconnectTimeout()
-	{
+	_activateReconnectTimeout() {
 		var reconnectInterval = this._lastReconnectInterval = this._calculateReconnectInterval();
 		console.log("[WSIC] _activateReconnectTimeout", reconnectInterval);
 		this._reconnectTimer = setTimeout(this._onReconnectTimeoutCompleted.bind(this), reconnectInterval);
 		APP.logger.i_pushDebug(`WSIC. _activateReconnectTimeout with interval ${this._lastReconnectInterval}`);
 	}
 
-	_calculateReconnectInterval()
-	{
+	_calculateReconnectInterval() {
 		let interval;
-		if (isNaN(this._lastReconnectInterval))
-		{
+		if (isNaN(this._lastReconnectInterval)) {
 			interval = ~~(Math.random() * FIRST_RECONNECT_INTERVAL_MAX_SECONDS * 1000);
-			if (interval < MIN_RECONNECT_INTERVAL)
-			{
+			if (interval < MIN_RECONNECT_INTERVAL) {
 				interval = MIN_RECONNECT_INTERVAL;
 			}
 		}
-		else
-		{
+		else {
 			interval = this._lastReconnectInterval * 2;
 		}
 
 		return interval;
 	}
 
-	_onReconnectTimeoutCompleted()
-	{
+	_onReconnectTimeoutCompleted() {
 		this._reconnectOnConnectionLost();
 	}
-	
-	
 
 
-	_deactivateReconnectTimeout()
-	{
-		if (!this._reconnectTimer)
-		{
+
+
+	_deactivateReconnectTimeout() {
+		if (!this._reconnectTimer) {
 			return;
 		}
 
 		clearTimeout(this._reconnectTimer);
 	}
 
-	_reconnectOnConnectionLost()
-	{
+	_reconnectOnConnectionLost() {
 		this._deactivateReconnectTimeout();
 		this._establishConnection();
 	}
 
-	_stopReconnecting()
-	{
+	_stopReconnecting() {
 		this._lastReconnectInterval = undefined;
 		this._reconnectInProgress = false;
-					
+
 		this._deactivateReconnectTimeout();
 	}
 
-	_clearRequestList()
-	{
+	_clearRequestList() {
 		this._requests_list = {};
 	}
 }

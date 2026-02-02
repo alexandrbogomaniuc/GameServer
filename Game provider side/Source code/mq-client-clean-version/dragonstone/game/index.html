@@ -12,37 +12,34 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<meta name="msapplication-tap-highlight" content="no" />
 	<meta name="MobileOptimized" content="960" />
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-	
-	<meta charset="utf-8"/>
+
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<meta charset="utf-8" />
 
 	<script>
 		window.gameEnvReady = false;
-		function onGameEnvReady() 
-		{
+		function onGameEnvReady() {
 			window.removeEventListener('load', onGameEnvReady);
 			window.gameEnvReady = true;
 		}
-		
-		if (!!window.addEventListener)
-		{
+
+		if (!!window.addEventListener) {
 			window.addEventListener("load", onGameEnvReady);
 		}
-			
+
 		var l_xhr = new XMLHttpRequest();
 		l_xhr.open('GET', 'version.json?t=' + (new Date().getTime()), true);
-		l_xhr.onload = function ()
-		{
+		l_xhr.onload = function () {
 			var l_obj = JSON.parse(l_xhr.response);
 			loadScript('validator.js', l_obj.version);
 			loadScript('game.js', l_obj.version);
 		}
 		l_xhr.send();
 
-		
-		function loadScript(src, version)
-		{
+
+		function loadScript(src, version) {
 			var lScript_e = document.createElement('script');
 			lScript_e.type = 'text/javascript';
 			lScript_e.src = src + (version ? '?version=' + version : '');
@@ -51,16 +48,16 @@
 			document.head.appendChild(lScript_e);
 		}
 
-		function onScripLoadingError() 
-		{
-			window.parent.postMessage(JSON.stringify({type: 'onScriptLoadError'}), '*');
+		function onScripLoadingError() {
+			window.parent.postMessage(JSON.stringify({ type: 'onScriptLoadError' }), '*');
 		}
 
 	</script>
 
 	<style type="text/css">
 		html {
-			touch-action: pan-x pan-y; /*Enable single-finger horizontal and vertical panning gestures. Prevent zooming.*/
+			touch-action: pan-x pan-y;
+			/*Enable single-finger horizontal and vertical panning gestures. Prevent zooming.*/
 			height: 100%;
 		}
 	</style>

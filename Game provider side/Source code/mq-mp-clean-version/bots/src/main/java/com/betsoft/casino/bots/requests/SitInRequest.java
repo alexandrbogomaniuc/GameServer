@@ -3,7 +3,7 @@ package com.betsoft.casino.bots.requests;
 import com.betsoft.casino.bots.BotState;
 import com.betsoft.casino.bots.IRoomBot;
 import com.betsoft.casino.bots.Stats;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.mp.transport.Error;
 import com.betsoft.casino.mp.transport.*;
 import com.betsoft.casino.mp.utils.ErrorCodes;
@@ -62,24 +62,29 @@ public class SitInRequest extends AbstractBotRequest {
 
                 boolean skipNickNameCheck = false;
 
-                if(bot instanceof ManagedBattleGroundRoomBot){
-                    String wsUrl =  bot.getUrl();
-                    String host = null;
-                    try {
-                        URI wSUri = new URI(wsUrl);
-                        host = wSUri.getHost();
-                    } catch ( Exception exception) {
-                        getLogger().error("SitInRequest: cant get host from wsUrl: {}, {}", wsUrl, exception.getMessage());
-                    }
-
-                    if (host.endsWith("mp.local") || host.endsWith("mp.local.com") || host.endsWith(".mydomain")//hack for local/dev deploy
-                            || host.endsWith(".maxquest.com")) { //hack for test env. deploy
-                        skipNickNameCheck = true;
-                    }
-                }
+                /*
+                 * if(bot instanceof ManagedBattleGroundRoomBot){
+                 * String wsUrl = bot.getUrl();
+                 * String host = null;
+                 * try {
+                 * URI wSUri = new URI(wsUrl);
+                 * host = wSUri.getHost();
+                 * } catch ( Exception exception) {
+                 * getLogger().error("SitInRequest: cant get host from wsUrl: {}, {}", wsUrl,
+                 * exception.getMessage());
+                 * }
+                 * 
+                 * if (host.endsWith("mp.local") || host.endsWith("mp.local.com") ||
+                 * host.endsWith(".mydomain")//hack for local/dev deploy
+                 * || host.endsWith(".maxquest.com")) { //hack for test env. deploy
+                 * skipNickNameCheck = true;
+                 * }
+                 * }
+                 */
 
                 if (!skipNickNameCheck && !bot.getNickname().equals(sitInResponse.getNickname())) {
-                    getLogger().debug("SitInRequest: other bot sitInResponse.getNickname: '{}', bot.nickName='{}'", sitInResponse.getNickname(), bot.getNickname());
+                    getLogger().debug("SitInRequest: other bot sitInResponse.getNickname: '{}', bot.nickName='{}'",
+                            sitInResponse.getNickname(), bot.getNickname());
                 } else {
                     bot.setBalance(sitInResponse.getBalance());
                     bot.setServerAmmo((int) sitInResponse.getAmmoAmount());
@@ -92,7 +97,7 @@ public class SitInRequest extends AbstractBotRequest {
 
                     bot.count(Stats.SELF_SIT_IN);
 
-                    if (bot.getState() == BotState.PLAYING ) {
+                    if (bot.getState() == BotState.PLAYING) {
                         needSleep = false;
                     } else {
                         if (bot.isBattleBot()) {
@@ -115,15 +120,12 @@ public class SitInRequest extends AbstractBotRequest {
                 Error errorResponse = (Error) response;
                 int code = errorResponse.getCode();
                 if (code == ErrorCodes.INTERNAL_ERROR &&
-                        (
-                            errorResponse.getMsg().startsWith("Buy in failed, try again")
-                            || errorResponse.getMsg().contains("QualifyGameState")
-                        )
-                ) {
+                        (errorResponse.getMsg().startsWith("Buy in failed, try again")
+                                || errorResponse.getMsg().contains("QualifyGameState"))) {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
-                        //nop
+                        // nop
                     }
                     failedCount++;
                     if (failedCount < 5) {
@@ -143,11 +145,14 @@ public class SitInRequest extends AbstractBotRequest {
                 }
 
                 if (code == ErrorCodes.INVALID_SESSION || code == ErrorCodes.NOT_ALLOWED_SIT_IN_FOR_BOT) {
-                    if (bot instanceof ManagedBattleGroundRoomBot) {
-                        ((ManagedBattleGroundRoomBot)bot).markExpiredAndStop();
-                    } else {
-                        bot.stop();
-                    }
+                    /*
+                     * if (bot instanceof ManagedBattleGroundRoomBot) {
+                     * ((ManagedBattleGroundRoomBot)bot).markExpiredAndStop();
+                     * } else {
+                     * bot.stop();
+                     * }
+                     */
+                    bot.stop();
                     break;
                 }
 

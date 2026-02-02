@@ -1,14 +1,14 @@
 <ClusterConfig>
     <clusterName>MPCluster</clusterName>
-    <keySpace>MPMAIN</keySpace>
+    <keySpace>${cassandra.metadata.keyspaceName}</keySpace>
     <hostTimeoutWindow>30000</hostTimeoutWindow>
-    <replicationStrategyClass>org.apache.cassandra.locator.SimpleStrategy</replicationStrategyClass>
-    <readConsistencyLevel>LOCAL_ONE</readConsistencyLevel>
-    <writeConsistencyLevel>LOCAL_ONE</writeConsistencyLevel>
-    <replicationFactor>1</replicationFactor>
-    <createScheme>true</createScheme>
+    <replicationStrategyClass>${cassandra.replicationStrategyClass}</replicationStrategyClass>
+    <readConsistencyLevel>${cassandra.readConsistencyLevel}</readConsistencyLevel>
+    <writeConsistencyLevel>${cassandra.writeConsistencyLevel}</writeConsistencyLevel>
+    <replicationFactor>${cassandra.replicationFactor}</replicationFactor>
+    <createScheme>${cassandra.createScheme}</createScheme>
     <hosts>c1:9042</hosts>
-    <minimumOnlineHosts>-1</minimumOnlineHosts>
+    <minimumOnlineHosts>${cassandra.general.minimumOnlineHosts}</minimumOnlineHosts>
     <columnFamilies>
         <ColumnFamily>
             <className>com.betsoft.casino.mp.data.persister.LockPersister</className>

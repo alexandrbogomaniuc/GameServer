@@ -69,7 +69,7 @@
             <artifactId>moneta-convert</artifactId>
             <version>${moneta.version}</version>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>com.betsoft.casino.mp</groupId>
             <artifactId>maxcrashgame</artifactId>
             <version>1.0.0-SNAPSHOT</version>
@@ -80,7 +80,7 @@
             <artifactId>bg_maxblastchampions</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

@@ -1,7 +1,7 @@
 package com.betsoft.casino.bots.requests;
 
 import com.betsoft.casino.bots.*;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.mp.model.RoomState;
 import com.betsoft.casino.mp.transport.Error;
 import com.betsoft.casino.mp.transport.FullGameInfo;
@@ -33,24 +33,28 @@ public class GetFullGameInfoRequest extends AbstractBotRequest {
                 bot.getLogger().debug("GetFullGameInfoRequest::handle: botId={}, nickname={}, fullGameInfo={}",
                         bot.getId(), bot.getNickname(), fullGameInfo);
 
-                if(fullGameInfo.getState() == RoomState.WAIT) {
+                if (fullGameInfo.getState() == RoomState.WAIT) {
                     bot.setRoomEnemies(fullGameInfo.getRoomEnemies());
                     if (bot.isBattleBot()) {
-                        ((BattleGroundRoomBot) bot).updateRoundStartTime(fullGameInfo.getDate(), fullGameInfo.getTimeToStart());
+                        ((BattleGroundRoomBot) bot).updateRoundStartTime(fullGameInfo.getDate(),
+                                fullGameInfo.getTimeToStart());
                         ((BattleGroundRoomBot) bot).setLastTimeFullGameInfo(System.currentTimeMillis());
                     }
-                    if (bot.isMqbBattleBot()) {
-                        ((ManagedBattleGroundRoomBot) bot).setObservers(fullGameInfo.getObservers());
-                        ((ManagedBattleGroundRoomBot) bot).generateConfirmBuyInTime();
-                    }
+                    /*
+                     * if (bot.isMqbBattleBot()) {
+                     * ((ManagedBattleGroundRoomBot) bot).setObservers(fullGameInfo.getObservers());
+                     * ((ManagedBattleGroundRoomBot) bot).generateConfirmBuyInTime();
+                     * }
+                     */
                     if (bot instanceof RoomBot) {
                         int mapId = ((FullGameInfo) response).getMapId();
                         ((RoomBot) bot).setCurrentMapId(mapId);
                         bot.getLogger().debug("update mapId from full game info: {} ", mapId);
                     }
-                } else if(fullGameInfo.getState() == RoomState.PLAY) {
+                } else if (fullGameInfo.getState() == RoomState.PLAY) {
                     if (bot.isBattleBot()) {
-                        ((BattleGroundRoomBot) bot).updateRoundEndTime(fullGameInfo.getDate(), fullGameInfo.getEndTime());
+                        ((BattleGroundRoomBot) bot).updateRoundEndTime(fullGameInfo.getDate(),
+                                fullGameInfo.getEndTime());
                     }
                 }
                 break;
@@ -59,11 +63,14 @@ public class GetFullGameInfoRequest extends AbstractBotRequest {
                 bot.count(Stats.ERRORS);
                 int code = ((Error) response).getCode();
                 if (code == ErrorCodes.REQUEST_FREQ_LIMIT_EXCEEDED || code == ErrorCodes.ROOM_NOT_FOUND) {
-                    if(bot instanceof ManagedBattleGroundRoomBot) {
-                        ((ManagedBattleGroundRoomBot)bot).markExpiredAndStop();
-                    } else {
-                        bot.stop();
-                    }
+                    /*
+                     * if(bot instanceof ManagedBattleGroundRoomBot) {
+                     * ((ManagedBattleGroundRoomBot)bot).markExpiredAndStop();
+                     * } else {
+                     * bot.stop();
+                     * }
+                     */
+                    bot.stop();
                 }
                 break;
             default:

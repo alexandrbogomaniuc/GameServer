@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.requests;
 
 import com.betsoft.casino.bots.IRoomBot;
 import com.betsoft.casino.bots.Stats;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.mp.transport.CloseRoom;
 import com.betsoft.casino.mp.web.ISocketClient;
 import com.betsoft.casino.utils.ITransportObject;
@@ -29,12 +29,19 @@ public class CloseRoomRequest extends AbstractBotRequest {
         boolean restartBot = false;
         switch (response.getClassName()) {
             case "Ok":
-                if (!(bot instanceof ManagedBattleGroundRoomBot)) {
-                    if (bot.isBattleBot()) {
-                        restartBot = true;
-                    } else {
-                        bot.openNewRoom();
-                    }
+                /*
+                 * if (!(bot instanceof ManagedBattleGroundRoomBot)) {
+                 * if (bot.isBattleBot()) {
+                 * restartBot = true;
+                 * } else {
+                 * bot.openNewRoom();
+                 * }
+                 * }
+                 */
+                if (bot.isBattleBot()) {
+                    restartBot = true;
+                } else {
+                    bot.openNewRoom();
                 }
                 break;
             case "Error":

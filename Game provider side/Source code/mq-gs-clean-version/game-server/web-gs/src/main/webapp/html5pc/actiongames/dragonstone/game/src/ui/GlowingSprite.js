@@ -94,7 +94,9 @@ class GlowingSprite extends Sprite {
 		this.baseSprite.x = -lBaseLocBounds_obj.x * this.baseSprite.scale.x;
 		this.baseSprite.y = -lBaseLocBounds_obj.y * this.baseSprite.scale.y;
 
-		this.baseSprite.filters = [new GlowFilter({ distance: this._distance, outerStrength: this._outerStrength, innerStrength: this._innerStrength, color: this._glowColor, glowColor: this._glowColor, quality: this._quality })];
+		// [Fix] Disabling GlowFilter due to PIXI undefined glowColor error
+		// this.baseSprite.filters = [new GlowFilter({distance: this._distance, outerStrength: this._outerStrength, innerStrength: this._innerStrength, color: this._glowColor, glowColor: this._glowColor, quality: this._quality})];
+		this.baseSprite.filters = [];
 		var l_txtr = PIXI.RenderTexture.create(lBaseLocBounds_obj.width * this.baseSprite.scale.x, lBaseLocBounds_obj.height * this.baseSprite.scale.y, PIXI.SCALE_MODES.LINEAR, 2);
 		APP.stage.renderer.render(this.baseSprite, { renderTexture: l_txtr });
 

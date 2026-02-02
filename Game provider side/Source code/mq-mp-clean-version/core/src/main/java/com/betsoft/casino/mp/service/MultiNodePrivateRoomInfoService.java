@@ -1,6 +1,5 @@
 package com.betsoft.casino.mp.service;
 
-import com.betsoft.casino.mp.common.SharedCrashGameState;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.model.privateroom.Player;
 import com.betsoft.casino.mp.model.privateroom.PrivateRoom;
@@ -41,16 +40,18 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
     private final IPrivateRoomPlayersStatusService privateRoomPlayersStatusService;
 
     public MultiNodePrivateRoomInfoService(ISocketService socketService,
-                                           IPrivateRoomPlayersStatusService privateRoomPlayersStatusService) {
+            IPrivateRoomPlayersStatusService privateRoomPlayersStatusService) {
         super();
         this.socketService = socketService;
         this.privateRoomPlayersStatusService = privateRoomPlayersStatusService;
         sharedGameStateService = null;
     }
 
-    public MultiNodePrivateRoomInfoService(HazelcastInstance hazelcast, int serverId, RoomTemplateService roomTemplateService,
-                                           RoomPlayerInfoService roomPlayerInfoService, IdGenerator idGenerator, ISocketService socketService,
-                                           SharedGameStateService sharedGameStateService, IPrivateRoomPlayersStatusService privateRoomPlayersStatusService) {
+    public MultiNodePrivateRoomInfoService(HazelcastInstance hazelcast, int serverId,
+            RoomTemplateService roomTemplateService,
+            RoomPlayerInfoService roomPlayerInfoService, IdGenerator idGenerator, ISocketService socketService,
+            SharedGameStateService sharedGameStateService,
+            IPrivateRoomPlayersStatusService privateRoomPlayersStatusService) {
         super(hazelcast, roomTemplateService, roomPlayerInfoService, idGenerator);
         this.socketService = socketService;
         this.sharedGameStateService = sharedGameStateService;
@@ -100,12 +101,14 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
     }
 
     @Override
-    public MultiNodePrivateRoomInfo createForTemplate(RoomTemplate template, long bankId, Money stake, String currency) {
+    public MultiNodePrivateRoomInfo createForTemplate(RoomTemplate template, long bankId, Money stake,
+            String currency) {
         throw new UnsupportedOperationException();
     }
 
-    public MultiNodePrivateRoomInfo createForTemplate(String ownerUsername, long ownerAccountId, RoomTemplate template, long bankId,
-                                                      Money stake, String currency, String domainUrl) {
+    public MultiNodePrivateRoomInfo createForTemplate(String ownerUsername, long ownerAccountId, RoomTemplate template,
+            long bankId,
+            Money stake, String currency, String domainUrl) {
         if (stake.toCents() <= 0) {
             throw new IllegalArgumentException("Illegal stake value: " + stake.toCents());
         }
@@ -115,12 +118,13 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
         int mapId = RNG.nextInt(1, 7);
 
         long currentTimeMillis = System.currentTimeMillis();
-        String generatedPrivateRoomId = this.generatePrivateRoomId(ownerUsername + bankId + currency + currentTimeMillis);
+        String generatedPrivateRoomId = this
+                .generatePrivateRoomId(ownerUsername + bankId + currency + currentTimeMillis);
 
-        String joinUrl = (domainUrl == null) ?
-                null : this.buildJoinUrl(domainUrl, generatedPrivateRoomId);
+        String joinUrl = (domainUrl == null) ? null : this.buildJoinUrl(domainUrl, generatedPrivateRoomId);
 
-        MultiNodePrivateRoomInfo roomInfo = new MultiNodePrivateRoomInfo(roomId, template, bankId, System.currentTimeMillis(),
+        MultiNodePrivateRoomInfo roomInfo = new MultiNodePrivateRoomInfo(roomId, template, bankId,
+                System.currentTimeMillis(),
                 roundId, RoomState.WAIT, mapId, stake, currency);
 
         roomInfo.setOwnerUsername(ownerUsername);
@@ -134,12 +138,14 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
     }
 
     @Override
-    public void createForTemplate(RoomTemplate template, Collection<MultiNodePrivateRoomInfo> rooms, long bankId, Money stake, String currency) {
-        //don`t need create new from templates, just ignore
+    public void createForTemplate(RoomTemplate template, Collection<MultiNodePrivateRoomInfo> rooms, long bankId,
+            Money stake, String currency) {
+        // don`t need create new from templates, just ignore
     }
 
     @Override
-    public MultiNodePrivateRoomInfo tryFindThisServerRoomAndNotFull(Collection<MultiNodePrivateRoomInfo> roomInfos, int serverId) {
+    public MultiNodePrivateRoomInfo tryFindThisServerRoomAndNotFull(Collection<MultiNodePrivateRoomInfo> roomInfos,
+            int serverId) {
         MultiNodePrivateRoomInfo bestRoom = null;
         MultiNodePrivateRoomInfo anyRoom = null;
         for (MultiNodePrivateRoomInfo roomInfo : roomInfos) {
@@ -147,8 +153,9 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
                 anyRoom = roomInfo;
             }
             short seatsCount = roomInfo.getSeatsCount(roomPlayerInfoService);
-            LOG.debug("tryFindThisServerRoomAndNotFull: seatsCount={}, room.id={}, serverId={},", seatsCount, roomInfo.getId(), serverId);
-            if (roomInfo.getMaxSeats() == 1) { //special case, single player rooms
+            LOG.debug("tryFindThisServerRoomAndNotFull: seatsCount={}, room.id={}, serverId={},", seatsCount,
+                    roomInfo.getId(), serverId);
+            if (roomInfo.getMaxSeats() == 1) { // special case, single player rooms
                 if (seatsCount == 0) {
                     bestRoom = roomInfo;
                     break;
@@ -157,14 +164,17 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
                 }
             }
 
-            if (roomInfo.getGameType().isCrashGame() && sharedGameStateService != null) {
-                SharedCrashGameState crashGameState = sharedGameStateService.get(roomInfo.getId(), SharedCrashGameState.class);
-                if (crashGameState != null) {
-                    if(crashGameState.getTotalObservers() >= roomInfo.getMaxSeats()){
-                        continue;
-                    }
-                }
-            }
+            /*
+             * if (roomInfo.getGameType().isCrashGame() && sharedGameStateService != null) {
+             * SharedCrashGameState crashGameState =
+             * sharedGameStateService.get(roomInfo.getId(), SharedCrashGameState.class);
+             * if (crashGameState != null) {
+             * if(crashGameState.getTotalObservers() >= roomInfo.getMaxSeats()){
+             * continue;
+             * }
+             * }
+             * }
+             */
             if (seatsCount >= roomInfo.getMaxSeats()) {
                 continue;
             }
@@ -176,14 +186,17 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
             }
         }
         if (bestRoom == null && anyRoom != null) {
-            bestRoom = createForTemplate(getTemplate(anyRoom.getTemplateId()), anyRoom.getBankId(), anyRoom.getStake(), anyRoom.getCurrency());
-            LOG.debug("tryFindThisServerRoomAndNotFull: bestRoom not found, create new, bestRoom.id={}", bestRoom.getId());
+            bestRoom = createForTemplate(getTemplate(anyRoom.getTemplateId()), anyRoom.getBankId(), anyRoom.getStake(),
+                    anyRoom.getCurrency());
+            LOG.debug("tryFindThisServerRoomAndNotFull: bestRoom not found, create new, bestRoom.id={}",
+                    bestRoom.getId());
         }
         return bestRoom;
     }
 
     @SuppressWarnings("rawtypes")
-    public MultiNodePrivateRoomInfo tryFindThisServerRoomAndNotFull(Collection<MultiNodePrivateRoomInfo> roomInfos, IRoomServiceFactory roomServiceFactory) {
+    public MultiNodePrivateRoomInfo tryFindThisServerRoomAndNotFull(Collection<MultiNodePrivateRoomInfo> roomInfos,
+            IRoomServiceFactory roomServiceFactory) {
         MultiNodePrivateRoomInfo bestRoom = null;
         MultiNodePrivateRoomInfo anyRoom = null;
         int badRoomsCount = 0;
@@ -197,7 +210,7 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
             totalRoomsCount++;
             short seatsCount = roomInfo.getSeatsCount(roomPlayerInfoService);
             LOG.debug("tryFindThisServerRoomAndNotFull: seatsCount={}, room.id={}", seatsCount, roomInfo.getId());
-            if (roomInfo.getMaxSeats() == 1) { //special case, single player rooms
+            if (roomInfo.getMaxSeats() == 1) { // special case, single player rooms
                 if (seatsCount == 0) {
                     bestRoom = roomInfo;
                     break;
@@ -209,7 +222,8 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
             try {
                 multiNodeRoom = (IMultiNodeRoom) roomServiceFactory.getRoom(roomInfo.getGameType(), roomInfo.getId());
             } catch (CommonException e) {
-                LOG.error("tryFindThisServerRoomAndNotFull: unable find room: getGameType={}, room.id={}, error={}", roomInfo.getGameType(), roomInfo.getId(), e);
+                LOG.error("tryFindThisServerRoomAndNotFull: unable find room: getGameType={}, room.id={}, error={}",
+                        roomInfo.getGameType(), roomInfo.getId(), e);
                 continue;
             }
             if (multiNodeRoom == null) {
@@ -229,12 +243,15 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
         }
 
         if (bestRoom == null && anyRoom != null) {
-            LOG.debug("tryFindThisServerRoomAndNotFull: bestRoom not found, totalRoomsCount={}, badRoomsCount={}, fullRoomsCount={}",
+            LOG.debug(
+                    "tryFindThisServerRoomAndNotFull: bestRoom not found, totalRoomsCount={}, badRoomsCount={}, fullRoomsCount={}",
                     totalRoomsCount, badRoomsCount, fullRoomsCount);
             if (badRoomsCount > 2) {
-                LOG.error("tryFindThisServerRoomAndNotFull: bestRoom not found and badRoomsCount > 2, stop creating new room");
+                LOG.error(
+                        "tryFindThisServerRoomAndNotFull: bestRoom not found and badRoomsCount > 2, stop creating new room");
             } else {
-                bestRoom = createForTemplate(getTemplate(anyRoom.getTemplateId()), anyRoom.getBankId(), anyRoom.getStake(), anyRoom.getCurrency());
+                bestRoom = createForTemplate(getTemplate(anyRoom.getTemplateId()), anyRoom.getBankId(),
+                        anyRoom.getStake(), anyRoom.getCurrency());
                 LOG.debug("tryFindThisServerRoomAndNotFull: bestRoom not found, created new, bestRoom{}", bestRoom);
             }
         }
@@ -257,7 +274,8 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
         return result;
     }
 
-    public List<MultiNodePrivateRoomInfo> getActualRoomsByOwnerAndGameParam(String ownerUsername, long bankId, long ownerAccountId, GameType gameType, Money stake, String currency) {
+    public List<MultiNodePrivateRoomInfo> getActualRoomsByOwnerAndGameParam(String ownerUsername, long bankId,
+            long ownerAccountId, GameType gameType, Money stake, String currency) {
         EntryObject object = new PredicateBuilder().getEntryObject();
 
         final Predicate predicate = object.get("bankId").equal(bankId)
@@ -269,8 +287,8 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
         Collection<MultiNodePrivateRoomInfo> filteredRooms = this.rooms.values(predicate);
 
         List<MultiNodePrivateRoomInfo> result = filteredRooms.stream()
-                .filter(room ->
-                        room.getStake().equals(stake) && isStillValidByTime(room.getLastTimeActivity()) && !room.isDeactivated())
+                .filter(room -> room.getStake().equals(stake) && isStillValidByTime(room.getLastTimeActivity())
+                        && !room.isDeactivated())
                 .collect(Collectors.toList());
 
         return result;
@@ -282,7 +300,8 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
 
         Collection<MultiNodePrivateRoomInfo> filteredRooms = this.rooms.values(predicate);
         if (filteredRooms.size() > 1) {
-            LOG.error("getRoomByPrivateRoomId: Find not unique privateRoomId: {}, rooms: {}.", privateRoomId, filteredRooms);
+            LOG.error("getRoomByPrivateRoomId: Find not unique privateRoomId: {}, rooms: {}.", privateRoomId,
+                    filteredRooms);
         }
         return filteredRooms.isEmpty() ? null : filteredRooms.iterator().next();
     }
@@ -292,10 +311,10 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
     }
 
     public MultiNodePrivateRoomInfo findOrCreateSuitableRoom(String ownerUsername, String ownerExternalId, long bankId,
-                                                             long ownerAccountId, GameType gameType, Money stake, String currency, String domainUrl) {
+            long ownerAccountId, GameType gameType, Money stake, String currency, String domainUrl) {
 
-        List<MultiNodePrivateRoomInfo> existingSuitableRooms =
-                this.getActualRoomsByOwnerAndGameParam(ownerUsername, bankId, ownerAccountId, gameType, stake, currency);
+        List<MultiNodePrivateRoomInfo> existingSuitableRooms = this.getActualRoomsByOwnerAndGameParam(ownerUsername,
+                bankId, ownerAccountId, gameType, stake, currency);
 
         MultiNodePrivateRoomInfo privateRoomInfo = existingSuitableRooms.stream()
                 .filter(room -> room != null && room.getCountGamesPlayed() == 0)
@@ -303,10 +322,11 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
                 .orElse(null);
 
         if (privateRoomInfo != null) {
-            LOG.debug("findOrCreateSuitableRoom: Existing multiNodePrivateRoomInfo found, ownerUsername: {}, multiNodePrivateRoomInfo: {}",
+            LOG.debug(
+                    "findOrCreateSuitableRoom: Existing multiNodePrivateRoomInfo found, ownerUsername: {}, multiNodePrivateRoomInfo: {}",
                     ownerUsername, privateRoomInfo);
             this.lock(privateRoomInfo.getId());
-            try{
+            try {
                 privateRoomInfo.updateLastTimeActivity();
                 this.update(privateRoomInfo);
             } catch (Exception e) {
@@ -318,14 +338,14 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
 
             RoomTemplate roomTemplate = this.getOrCreateTemplate(bankId, gameType, stake, currency);
 
-            privateRoomInfo =
-                    this.createForTemplate(ownerUsername, ownerAccountId, roomTemplate, bankId, stake, currency, domainUrl);
+            privateRoomInfo = this.createForTemplate(ownerUsername, ownerAccountId, roomTemplate, bankId, stake,
+                    currency, domainUrl);
 
             LOG.debug("findOrCreateSuitableRoom: New multiNodePrivateRoomInfo created, ownerUsername: {}, " +
                     "privateRoomInfo: {}", ownerUsername, privateRoomInfo);
         }
 
-        if(privateRoomInfo != null && !StringUtils.isTrimmedEmpty(privateRoomInfo.getPrivateRoomId())) {
+        if (privateRoomInfo != null && !StringUtils.isTrimmedEmpty(privateRoomInfo.getPrivateRoomId())) {
             List<Player> players = new ArrayList<>();
             Player player = new Player();
             player.setAccountId(ownerAccountId);
@@ -344,26 +364,28 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
         return privateRoomInfo;
     }
 
-    public String findOrCreateRoomAndGetUrl(String ownerUsername, String ownerExternalId, long bankId, GameType gameType, Money stake,
-                                            String currency, String domainUrl) {
+    public String findOrCreateRoomAndGetUrl(String ownerUsername, String ownerExternalId, long bankId,
+            GameType gameType, Money stake,
+            String currency, String domainUrl) {
 
-        MultiNodePrivateRoomInfo multiNodePrivateRoomInfo =
-                this.findOrCreateSuitableRoom(ownerUsername,  ownerExternalId, bankId, 0, gameType, stake, currency, domainUrl);
+        MultiNodePrivateRoomInfo multiNodePrivateRoomInfo = this.findOrCreateSuitableRoom(ownerUsername,
+                ownerExternalId, bankId, 0, gameType, stake, currency, domainUrl);
 
-        if(multiNodePrivateRoomInfo != null) {
+        if (multiNodePrivateRoomInfo != null) {
             return multiNodePrivateRoomInfo.getJoinUrl();
         }
 
         return null;
     }
 
-    public String findOrCreateRoomAndGetId(String ownerUsername, String ownerExternalId, long bankId, long ownerAccountId, GameType gameType,
-                                           Money stake, String currency) {
+    public String findOrCreateRoomAndGetId(String ownerUsername, String ownerExternalId, long bankId,
+            long ownerAccountId, GameType gameType,
+            Money stake, String currency) {
 
-        MultiNodePrivateRoomInfo multiNodePrivateRoomInfo =
-                this.findOrCreateSuitableRoom(ownerUsername, ownerExternalId, bankId, ownerAccountId, gameType, stake, currency, null);
+        MultiNodePrivateRoomInfo multiNodePrivateRoomInfo = this.findOrCreateSuitableRoom(ownerUsername,
+                ownerExternalId, bankId, ownerAccountId, gameType, stake, currency, null);
 
-        if(multiNodePrivateRoomInfo != null) {
+        if (multiNodePrivateRoomInfo != null) {
             return multiNodePrivateRoomInfo.getPrivateRoomId();
         }
 
@@ -374,13 +396,15 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
         MoneyType moneyType = MoneyType.REAL;
         int minBuyIn = (int) stake.toCents();
         int roundDurationInSecond = 90;
-        RoomTemplate existingPrivateRoomTemplate = roomTemplateService.getPrivateTemplate(bankId, moneyType, gameType, minBuyIn);
+        RoomTemplate existingPrivateRoomTemplate = roomTemplateService.getPrivateTemplate(bankId, moneyType, gameType,
+                minBuyIn);
         if (existingPrivateRoomTemplate == null) {
             long id = idGenerator.getNext(RoomTemplate.class);
             String name = moneyType.name() + ":" + currency;
 
             RoomTemplate roomTemplate = new RoomTemplate(id, bankId, gameType,
-                    gameType.getMaxSeats(), gameType.getMinSeats(), moneyType, gameType.getScreenWidth(), gameType.getScreenHeight(), minBuyIn,
+                    gameType.getMaxSeats(), gameType.getMinSeats(), moneyType, gameType.getScreenWidth(),
+                    gameType.getScreenHeight(), minBuyIn,
                     1, 1, 1, name, roundDurationInSecond);
 
             roomTemplate.setBattlegroundBuyIn(minBuyIn);
@@ -406,20 +430,21 @@ public class MultiNodePrivateRoomInfoService extends AbstractRoomInfoService<Mul
 
     @Override
     public UpdatePrivateRoomResponse updatePlayersStatusInPrivateRoom(PrivateRoom privateRoom,
-                                                                      boolean isTransitionLimited, boolean updateTime) {
+            boolean isTransitionLimited, boolean updateTime) {
 
         LOG.debug("updatePlayersStatusInPrivateRoom: isTransitionLimited:{} " +
                 "update Players Status In Private Room: {}", isTransitionLimited, privateRoom);
 
-        UpdatePrivateRoomResponse updatePrivateRoomResponse =
-                privateRoomPlayersStatusService.updatePlayersStatusInPrivateRoom(privateRoom, isTransitionLimited, updateTime);
+        UpdatePrivateRoomResponse updatePrivateRoomResponse = privateRoomPlayersStatusService
+                .updatePlayersStatusInPrivateRoom(privateRoom, isTransitionLimited, updateTime);
 
         return updatePrivateRoomResponse;
     }
 
     @Override
     public PrivateRoom getPlayersStatusInPrivateRoom(String privateRoomId) {
-        LOG.debug("getPlayersStatusInPrivateRoom: get Players Status In Private Room for privateRoomId={}", privateRoomId);
+        LOG.debug("getPlayersStatusInPrivateRoom: get Players Status In Private Room for privateRoomId={}",
+                privateRoomId);
         return privateRoomPlayersStatusService.getPrivateRoom(privateRoomId);
     }
 }

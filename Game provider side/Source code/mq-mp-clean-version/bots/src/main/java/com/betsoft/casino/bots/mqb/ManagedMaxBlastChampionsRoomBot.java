@@ -4,13 +4,13 @@ import com.betsoft.casino.bots.Stats;
 import com.betsoft.casino.bots.*;
 import com.betsoft.casino.bots.handlers.*;
 import com.betsoft.casino.bots.requests.*;
-import com.betsoft.casino.bots.service.MQBBotServiceHandler;
+// import com.betsoft.casino.bots.service.MQBBotServiceHandler;
 import com.betsoft.casino.bots.strategies.*;
 import com.betsoft.casino.mp.common.math.SWPaidCosts;
 import com.betsoft.casino.mp.model.*;
 import com.betsoft.casino.mp.transport.*;
 import com.betsoft.casino.mp.web.IMessageSerializer;
-import com.dgphoenix.casino.common.util.RNG;
+// import com.dgphoenix.casino.common.util.RNG;
 import org.springframework.web.reactive.socket.WebSocketMessage;
 import org.springframework.web.reactive.socket.WebSocketSession;
 import org.springframework.web.reactive.socket.client.ReactorNettyWebSocketClient;
@@ -53,7 +53,8 @@ public class ManagedMaxBlastChampionsRoomBot extends AbstractBot implements IUni
     private int roomId;
     protected volatile BotState state = BotState.IDLE;
     private final String token;
-    private final MQBBotServiceHandler mqbBotServiceHandler;
+    // private final MQBBotServiceHandler mqbBotServiceHandler;
+    private final Object mqbBotServiceHandler = null;
     private final Map<String, ManagedMaxBlastChampionsPlayer> playersCrashBets = new ConcurrentHashMap();
     private final Map<String, ManagedMaxBlastChampionsPlayer> playersCrashBetsPrevRound = new ConcurrentHashMap();
     private final Map<String, ManagedMaxBlastChampionsPlayer> playersCrashCancelBets = new ConcurrentHashMap();
@@ -86,8 +87,9 @@ public class ManagedMaxBlastChampionsRoomBot extends AbstractBot implements IUni
         this.nickname = nickname;
         this.roomId = roomId;
         this.token = token;
-        this.mqbBotServiceHandler = mqbBotServiceHandler;
-        this.setRoundsToPlay(RNG.nextInt(MIN_ROUNDS_TO_PLAY, MAX_ROUNDS_TO_PLAY + 1));
+        this.mqbBotServiceHandler = null; // mqbBotServiceHandler;
+        // this.setRoundsToPlay(RNG.nextInt(MIN_ROUNDS_TO_PLAY, MAX_ROUNDS_TO_PLAY + 1));
+        this.setRoundsToPlay(100);
         this.setRoundsCount(0);
         this.userName = userName;
         this.password = password;
@@ -501,24 +503,14 @@ public class ManagedMaxBlastChampionsRoomBot extends AbstractBot implements IUni
         getLogger().debug("ManagedMaxBlastChampionsRoomBot stop requested for roomId: {}, id={}", roomId, id);
         super.stop();
 
+        /*
         try {
             IApiClient apiClient = mqbBotServiceHandler.getCorrectApiClient(bankId);
-
-            if(apiClient == null) {
-                getLogger().warn("ManagedMaxBlastChampionsRoomBot stop: apiClient is null for bankId={} " +
-                        "requested for roomId: {}, id={}", bankId, roomId, id);
-                return;
-            }
-
-            FinishGameSessionResponse finishGameSessionResponse =
-                    apiClient.finishGameSession(this.getUserName(), this.getPassword(), this.getSessionId());
-            getLogger().debug("ManagedMaxBlastChampionsRoomBot stop: bankId={}, roomId: {}, id={}, FinishGameSessionResponse={}",
-                    bankId, roomId, id, finishGameSessionResponse);
-
+            ...
         } catch (Exception e) {
-            getLogger().warn("ManagedMaxBlastChampionsRoomBot stop: error during apiClient.finishGameSession " +
-                    "for nickname={}, sessionId: {}, message={}", this.getNickname(), this.getSessionId(), e.getMessage(), e);
+            ...
         }
+        */
     }
 
     public void startWithOpenRoom() {
@@ -617,6 +609,7 @@ public class ManagedMaxBlastChampionsRoomBot extends AbstractBot implements IUni
                     if (rCount > rToPlay || balance < selectedBuyIn) {
                         getLogger().debug("doAction: nickname={}, rCount > rToPlay is {} or balance < selectedBuyIn is {}, logOut bot",
                                 getNickname(), rCount > rToPlay, balance < selectedBuyIn);
+                        /*
                         try {
                             Long botId = Long.parseLong(getId());
                             this.mqbBotServiceHandler.logOut(botId, getSessionId(), getNickname(), getRoomId());
@@ -624,6 +617,7 @@ public class ManagedMaxBlastChampionsRoomBot extends AbstractBot implements IUni
                             getLogger().error("doAction: Cannot logOut bot botId={}, sessionId={}, nickname={}, roomId={}",
                                     getId(), getSessionId(), getNickname(), getRoomId(), e);
                         }
+                        */
                     }
 
                     long realPlayersSetBetPrevRound = playersCrashBetsPrevRound.values().stream()

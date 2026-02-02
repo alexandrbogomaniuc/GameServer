@@ -2,12 +2,12 @@ import Application from '../../../common/PIXI/src/dgphoenix/unified/controller/m
 import SpineLibrary from '../../../common/PIXI/src/dgphoenix/unified/model/resources/SpineLibrary';
 import GameScreen from './main/GameScreen';
 import GameExternalCommunicator from './external/GameExternalCommunicator';
-import {GAME_MESSAGES, LOBBY_MESSAGES} from './external/GameExternalCommunicator';
+import { GAME_MESSAGES, LOBBY_MESSAGES } from './external/GameExternalCommunicator';
 import GameSoundsController from './controller/sounds/GameSoundsController';
 import SoundsBackgoundLoadingController from './controller/sounds/SoundsBackgoundLoadingController';
 import GamePlayerController from './controller/custom/GamePlayerController';
 import GameWebSocketInteractionController from './controller/interaction/server/GameWebSocketInteractionController';
-import {CLIENT_MESSAGES} from './model/interaction/server/GameWebSocketInteractionInfo';
+import { CLIENT_MESSAGES } from './model/interaction/server/GameWebSocketInteractionInfo';
 import GamePreloaderSoundButtonController from './controller/uis/custom/preloader/GamePreloaderSoundButtonController';
 import Crate from './ui/Crate';
 import BrowserSupportController from '../../../common/PIXI/src/dgphoenix/unified/controller/preloading/BrowserSupportController';
@@ -26,35 +26,50 @@ import GamePendingOperationController from './controller/custom/GamePendingOpera
 import { WEAPONS } from '../../shared/src/CommonConstants';
 import CustomCurrencyInfo from './model/currency/CustomCurrencyInfo';
 
+
+// [Fix] Polyfill for getGlobalPosition which is missing in this PIXI version or configuration
+if (typeof PIXI !== 'undefined' && PIXI.DisplayObject && !PIXI.DisplayObject.prototype.getGlobalPosition) {
+	PIXI.DisplayObject.prototype.getGlobalPosition = function (point = new PIXI.Point(), skipUpdate = false) {
+		if (this.parent) {
+			return this.parent.toGlobal(this.position, point, skipUpdate);
+		} else {
+			point.x = this.position.x;
+			point.y = this.position.y;
+			return point;
+		}
+	};
+}
+
 /**
  * @augments Application
  */
-class Game extends Application
-{
-	static get EVENT_ON_SOUND_SETTINGS_CHANGED() 				{return "onSoundSettingsChanged";}
-	static get EVENT_ON_AVATAR_UPDATED() 						{return "onAvatarUpdated";}
-	static get EVENT_ON_PLAYER_INFO_UPDATED() 					{return "onPlayerInfoUpdated";}
-	static get EVENT_ON_GAME_SECONDARY_SCREEN_ACTIVATED() 		{return "onGameSecondaryScreenActivated";}
-	static get EVENT_ON_GAME_SECONDARY_SCREEN_DEACTIVATED() 	{return "onGameSecondaryScreenDeactivated";}
-	static get EVENT_ON_CLOSE_ROOM()							{return GameScreen.EVENT_ON_CLOSE_ROOM;}
-	static get EVENT_ON_LOBBY_VISIBILITY_CHANGED()				{return "onLobbyVisibilityChanged";}
-	static get EVENT_ON_ASSETS_LOADING_ERROR()					{return "EVENT_ON_GAME_ASSETS_LOADING_ERROR";}
-	static get EVENT_DEBUG_MESSAGE() 							{return "EVENT_DEBUG_MESSAGE";}
-	static get EVENT_ON_GAME_SETTINGS_INITIALIZED() 			{return "EVENT_ON_GAME_SETTINGS_INITIALIZED";}
-	static get EVENT_ON_BONUS_CANCEL_ROOM_RELOAD()				{return "EVENT_ON_BONUS_CANCEL_ROOM_RELOAD";}
-	static get EVENT_ON_OFFLINE()								{return "EVENT_ON_OFFLINE";}
-	static get EVENT_ON_ONLINE_RESTORED()						{return "EVENT_ON_ONLINE_RESTORED";}
-    static get EVENT_ON_ROUND_TIME_UPDATE()                     {return "EVENT_ON_ROUND_TIME_UPDATE";}
+class Game extends Application {
+	static get EVENT_ON_SOUND_SETTINGS_CHANGED() { return "onSoundSettingsChanged"; }
+	static get EVENT_ON_AVATAR_UPDATED() { return "onAvatarUpdated"; }
+	static get EVENT_ON_PLAYER_INFO_UPDATED() { return "onPlayerInfoUpdated"; }
+	static get EVENT_ON_GAME_SECONDARY_SCREEN_ACTIVATED() { return "onGameSecondaryScreenActivated"; }
+	static get EVENT_ON_GAME_SECONDARY_SCREEN_DEACTIVATED() { return "onGameSecondaryScreenDeactivated"; }
+	static get EVENT_ON_CLOSE_ROOM() { return GameScreen.EVENT_ON_CLOSE_ROOM; }
+	static get EVENT_ON_LOBBY_VISIBILITY_CHANGED() { return "onLobbyVisibilityChanged"; }
+	static get EVENT_ON_ASSETS_LOADING_ERROR() { return "EVENT_ON_GAME_ASSETS_LOADING_ERROR"; }
+	static get EVENT_DEBUG_MESSAGE() { return "EVENT_DEBUG_MESSAGE"; }
+	static get EVENT_ON_GAME_SETTINGS_INITIALIZED() { return "EVENT_ON_GAME_SETTINGS_INITIALIZED"; }
+	static get EVENT_ON_BONUS_CANCEL_ROOM_RELOAD() { return "EVENT_ON_BONUS_CANCEL_ROOM_RELOAD"; }
+	static get EVENT_ON_OFFLINE() { return "EVENT_ON_OFFLINE"; }
+	static get EVENT_ON_ONLINE_RESTORED() { return "EVENT_ON_ONLINE_RESTORED"; }
+	static get EVENT_ON_ROUND_TIME_UPDATE() { return "EVENT_ON_ROUND_TIME_UPDATE"; }
 
 	//override
-	get isHeavenSpineUsageAllowed()
-	{
+	get isHeavenSpineUsageAllowed() {
 		return true;
 	}
 
-	constructor(...args)
-	{
+	constructor(...args) {
+		console.log('%c[DEBUG] Game Constructor Started', 'background: blue; color: white');
 		super(...args);
+
+		// [DEBUG] Expose APP
+		window.APP = this;
 
 		this.currentWindow = null;
 		this._gameScreen = null;
@@ -86,108 +101,90 @@ class Game extends Application
 	}
 
 	//CURRENCY INFO...
-	__isCurrencyInfoSupported()
-	{
+	__isCurrencyInfoSupported() {
 		return true;
 	}
 
-	__generateCurrencyInfo()
-	{
+	__generateCurrencyInfo() {
 		return new CustomCurrencyInfo();
 	}
 	//...CURRENCY INFO
 
-	get isBattlegroundGamePlayMode()
-	{
+	get isBattlegroundGamePlayMode() {
 		return /*this.isBattlegroundGame && */this.gameScreen.isBattlegroundMode;
 	}
 
-	
 
-	get isBattlegroundMode()
-	{
+
+	get isBattlegroundMode() {
 		return this._fIsBattlegroundMode_bl;
 	}
 
-	set isBattlegroundMode(value)
-	{
+	set isBattlegroundMode(value) {
 		this._fIsBattlegroundMode_bl = value;
 	}
 
-	get isConfirmBuyinDialogExpectedOnLastHand()
-	{
+	get isConfirmBuyinDialogExpectedOnLastHand() {
 		return this._fisConfirmBuyinDialogExpectedOnLastHand_bl;
 	}
 
-	set isConfirmBuyinDialogExpectedOnLastHand(value)
-	{
+	set isConfirmBuyinDialogExpectedOnLastHand(value) {
 		this._fisConfirmBuyinDialogExpectedOnLastHand_bl = value;
 	}
 
-	get browserSupportController()
-	{
+	get browserSupportController() {
 		return this._fBrowserSupportController_bsc;
 	}
 
-	get applicationFolderURL()
-	{
+	get applicationFolderURL() {
 		let appFolderURL = this.appParamsInfo.gamePath;
-		if (!appFolderURL)
-		{
+		if (!appFolderURL) {
 			appFolderURL = super.applicationFolderURL;
 		}
 		return appFolderURL;
 	}
 
-	get mobileValidator()
-	{
+	get mobileValidator() {
 		return this._mobileValidator;
 	}
 
-	set mobileValidator(validator)
-	{
+	set mobileValidator(validator) {
 		this._mobileValidator = validator;
 	}
 
-	get playerController()
-	{
+	get playerController() {
 		return this._fGamePlayerController_gpc;
 	}
 
-	get tournamentModeController()
-	{
+	get tournamentModeController() {
 		return this._fTournamentModeController;
 	}
 
-	get isMobile()
-	{
+	get isMobile() {
 		let lPlatformInfo_obj = window.getPlatformInfo ? window.getPlatformInfo() : null;
 		let lIsMobile_bln = lPlatformInfo_obj.mobile;
 
-		if (this._mobileValidator)
-		{
+		if (this._mobileValidator) {
 			return Boolean(this._mobileValidator.mobile() || this._mobileValidator.tablet());
 		}
-		else if (lPlatformInfo_obj)
-		{
+		else if (lPlatformInfo_obj) {
 			return Boolean(
-							lPlatformInfo_obj.mobile
-							|| (
-									(
-										lPlatformInfo_obj.name === "Safari"
-										|| navigator.platform === 'MacIntel'
-									)
-									&& (navigator.maxTouchPoints > 0)
-								)
-							);
+				lPlatformInfo_obj.mobile
+				|| (
+					(
+						lPlatformInfo_obj.name === "Safari"
+						|| navigator.platform === 'MacIntel'
+					)
+					&& (navigator.maxTouchPoints > 0)
+				)
+			);
 		}
 	}
 
-	onApplicationReady()
-	{
+	onApplicationReady() {
 		this._fBrowserSupportController_bsc.init();
 
-		this.once(Game.EVENT_ON_SOUND_SETTINGS_CHANGED, () => {this.emit(Game.EVENT_ON_SOUND_CONTEXT_NEED_TO_BE_CHECKED)});
+		this.once(Game.EVENT_ON_SOUND_SETTINGS_CHANGED, () => { this.emit(Game.EVENT_ON_SOUND_CONTEXT_NEED_TO_BE_CHECKED) });
 
 		this.soundsController.init(this.config.audio.stereo, this._fBrowserSupportController_bsc.i_getInfo().isSoundEnabled);
 
@@ -220,19 +217,17 @@ class Game extends Application
 		super.onApplicationReady();
 	}
 
-	_onLoaderUICreated()
-	{
+	_onLoaderUICreated() {
 		this.loaderUI.preloaderSoundButtonController.on(GamePreloaderSoundButtonController.EVENT_SOUND_ON_BUTTON_CLICKED, this.onSoundOnClicked, this);
 		this.loaderUI.preloaderSoundButtonController.on(GamePreloaderSoundButtonController.EVENT_SOUND_OFF_BUTTON_CLICKED, this.onSoundOffClicked, this);
 	}
 
 	//override
-	get _unnecessaryPreloaderAssets()
-	{
+	get _unnecessaryPreloaderAssets() {
 		return ['preloader/loading_bar/back', 'preloader/loading_bar/fill', 'TALobbyPreloaderLogo',
-				'preloader/info_pictures/pisture_0', 'preloader/info_pictures/pisture_1', 'preloader/info_pictures/pisture_2', //teasers
-				'preloader/play_now_button_base_enabled', 'preloader/play_now_button_base_disabled', 'preloader/play_now_button_base_selected',
-				'TALobbyPreloaderLogo', 'TAPreloaderBrand'];
+			'preloader/info_pictures/pisture_0', 'preloader/info_pictures/pisture_1', 'preloader/info_pictures/pisture_2', //teasers
+			'preloader/play_now_button_base_enabled', 'preloader/play_now_button_base_disabled', 'preloader/play_now_button_base_selected',
+			'TALobbyPreloaderLogo', 'TAPreloaderBrand'];
 	}
 
 	/*showPreloader()
@@ -244,37 +239,30 @@ class Game extends Application
 	{
 	}*/
 
-	playerInfoUpdated(event)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.PLAYER_INFO_UPDATED, {data: event.data});
+	playerInfoUpdated(event) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.PLAYER_INFO_UPDATED, { data: event.data });
 	}
 
-	onLoaderUIReady()
-	{
+	onLoaderUIReady() {
 		super.onLoaderUIReady();
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.PRELOADER_READY);
 	}
 
-	initSoundsBackgroundLoading()
-	{
+	initSoundsBackgroundLoading() {
 		this.soundsBgLoadingController.init();
 	}
 
-	get soundsBgLoadingController()
-	{
+	get soundsBgLoadingController() {
 		let lSoundsBgLoadingController_ssblc = this._fSoundsBgLoadingController_ssblc;
-		if (!lSoundsBgLoadingController_ssblc)
-		{
+		if (!lSoundsBgLoadingController_ssblc) {
 			lSoundsBgLoadingController_ssblc = new SoundsBackgoundLoadingController();
 		}
 
 		return lSoundsBgLoadingController_ssblc;
 	}
 
-	run()
-	{
-		if (!this.preloaderStage)
-		{
+	run() {
+		if (!this.preloaderStage) {
 			return;
 		}
 
@@ -285,61 +273,54 @@ class Game extends Application
 		this.on("contextmenu", this._onContextMenu, this);
 	}
 
-	_onWebglContextLost(event)
-	{
+	_onWebglContextLost(event) {
 		super._onWebglContextLost(event);
 
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.WEBGL_CONTEXT_LOST);
 	}
 
-	_onContextMenu(event)
-	{
+	_onContextMenu(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.CONTEXT_MENU);
 	}
 
-	onPreloadComplete()
-	{
-		if (this.tournamentModeController.info.isTournamentOnClientCompletedState)
-		{
+	onPreloadComplete() {
+		console.log('%c[DEBUG] onPreloadComplete called', 'background: magenta; color: white');
+		if (this.tournamentModeController.info.isTournamentOnClientCompletedState) {
+			console.log('[DEBUG] Tournament completed state, aborting start.');
 			return;
 		}
 
-		if (!this.isMobile)
-		{
+		if (!this.isMobile) {
+			console.log('[DEBUG] Desktop mode: setting tick handles');
 			this._fTickHandle_arr = [
 				this._onTexturesInited.bind(this),
 				Crate.initMaskedTextures
 			];
 		}
-		else
-		{
+		else {
+			console.log('[DEBUG] Mobile mode: calling _onTexturesInited directly');
 			this._onTexturesInited();
 		}
 	}
 
-	_onTexturesInited()
-	{
-		if (this.browserSupportController.info.isAudioContextSuspended || APP.mobileValidator.ios())
-		{
+	_onTexturesInited() {
+		console.log('%c[DEBUG] _onTexturesInited called', 'background: magenta; color: white');
+		if (this.browserSupportController.info.isAudioContextSuspended || APP.mobileValidator.ios()) {
 			this.loaderUI.showClickToStart();
 			this.loaderUI.once(LoaderUI.EVENT_ON_CLICK_TO_START_CLICKED, this.onPreloaderClickToStart, this);
 		}
-		else
-		{
+		else {
 			this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_START_CLICKED);
 			this.startServerInteraction();
 		}
 	}
 
-	onPreloaderClickToStart()
-	{
-		if (this.tournamentModeController.info.isTournamentOnClientCompletedState)
-		{
+	onPreloaderClickToStart() {
+		if (this.tournamentModeController.info.isTournamentOnClientCompletedState) {
 			return;
 		}
 
-		if (this.isBattlegroundMode)
-		{
+		if (this.isBattlegroundMode) {
 			this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_START_CLICKED);
 		}
 
@@ -347,10 +328,8 @@ class Game extends Application
 		this.startServerInteraction();
 	}
 
-	startServerInteraction(aOptRoomUrl_str=undefined)
-	{
-		if (this.tournamentModeController.info.isTournamentOnClientCompletedState)
-		{
+	startServerInteraction(aOptRoomUrl_str = undefined) {
+		if (this.tournamentModeController.info.isTournamentOnClientCompletedState) {
 			return;
 		}
 
@@ -359,16 +338,16 @@ class Game extends Application
 
 		this.startGame(aOptRoomUrl_str);
 
-		//window.APP = this;
+		console.log('%c[DEBUG] Exposing window.APP', 'background: blue; color: white');
+		window.APP = this;
+		window.MY_DEBUG_MARKER = "dragonstone_v1";
 	}
 
-	_generateWebSocketInteractionInstance()
-	{
+	_generateWebSocketInteractionInstance() {
 		return new GameWebSocketInteractionController();
 	}
 
-	_startHandlingServerMessages()
-	{
+	_startHandlingServerMessages() {
 		let wsInteractionController = this.webSocketInteractionController;
 		wsInteractionController.on(GameWebSocketInteractionController.EVENT_ON_SERVER_GET_ROOM_INFO_RESPONSE_MESSAGE, this.onGetRoomInfoResponseMessage, this);
 		wsInteractionController.on(GameWebSocketInteractionController.EVENT_ON_SERVER_CONNECTION_CLOSED, this._onServerConnectionClosed, this);
@@ -377,10 +356,8 @@ class Game extends Application
 		wsInteractionController.on(GameWebSocketInteractionController.EVENT_ON_CONNECTION_RECOVERY_STARTED, this._onServerConnectionRecoveryStarted, this);
 	}
 
-	closeCurrentWindow()
-	{
-		if (this.currentWindow)
-		{
+	closeCurrentWindow() {
+		if (this.currentWindow) {
 			if (this.currentWindow.destroy) this.currentWindow.destroy();
 			else this.stage.view.removeChild(this.currentWindow);
 
@@ -388,15 +365,13 @@ class Game extends Application
 		}
 	}
 
-	showWindow(view)
-	{
+	showWindow(view) {
 		this.closeCurrentWindow();
 		this.stage.view.addChild(view);
 		this.currentWindow = view;
 	}
 
-	startGame(aOptRoomUrl_str=undefined)
-	{
+	startGame(aOptRoomUrl_str = undefined) {
 		this.showWindow(this.gameScreen);
 		this.currentWindow.init(aOptRoomUrl_str);
 
@@ -407,27 +382,23 @@ class Game extends Application
 		this.emit("onGameStarted");
 	}
 
-	get gameScreen()
-	{
+	get gameScreen() {
 		return this._gameScreen || (this._gameScreen = this._initGameScreen());
 	}
 
-	handleOffline()
-	{
+	handleOffline() {
 		this.setTickerPaused(true, "connection");
 		this.emit(Game.EVENT_ON_OFFLINE);
 	}
 
-	handleOnline()
-	{
+	handleOnline() {
 		this.emit(Game.EVENT_ON_ONLINE_RESTORED);
 		this.webSocketInteractionController.once(GameWebSocketInteractionController.EVENT_ON_RESTORE_AFTER_OFFLINE_FINISHED, () => {
 			this.setTickerPaused(false, "connection");
 		}, this);
 	}
 
-	_initGameScreen()
-	{
+	_initGameScreen() {
 		let gameScreen = new GameScreen();
 
 		gameScreen.on(GameScreen.EVENT_ON_BACK_TO_LOBBY_BUTTON_CLICKED, this.onBackToLobby, this);
@@ -454,13 +425,11 @@ class Game extends Application
 	}
 
 	//DEBUG...
-	get gameDebuggingController()
-	{
+	get gameDebuggingController() {
 		return this._fGameDebuggingController_ggc || (this._fGameDebuggingController_ggc = this._initGameDebuggingController());
 	}
 
-	_initGameDebuggingController()
-	{
+	_initGameDebuggingController() {
 		let l_ggc = new GameDebuggingController();
 		this._fGameDebuggingController_ggc = l_ggc;
 		l_ggc.i_init();
@@ -468,13 +437,11 @@ class Game extends Application
 	}
 	//...DEBUG
 
-	get gameSettingsController()
-	{
+	get gameSettingsController() {
 		return this._fGameSettingsController_gsc || (this._fGameSettingsController_gsc = this._initGameSettingsController());
 	}
 
-	_initGameSettingsController()
-	{
+	_initGameSettingsController() {
 		let l_gsc = new GameSettingsController();
 		l_gsc.i_init();
 		this._fGameSettingsController_gsc = l_gsc;
@@ -482,24 +449,21 @@ class Game extends Application
 		return l_gsc;
 	}
 
-	handleAssetsLoadingError(errorKey, errorMessage)
-	{
+	handleAssetsLoadingError(errorKey, errorMessage) {
 		let messageData = {};
 		messageData.key = errorKey;
 		messageData.message = errorMessage;
 
-		this.emit(Game.EVENT_ON_ASSETS_LOADING_ERROR, {data:messageData});
+		this.emit(Game.EVENT_ON_ASSETS_LOADING_ERROR, { data: messageData });
 
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_LOADING_ERROR, {data:messageData});
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_LOADING_ERROR, { data: messageData });
 		APP.logger.i_pushError(`Game. Assets Loading Error! ${errorKey}: ${errorMessage} `);
 	}
 
-	onLobbyMessageReceived(event)
-	{
+	onLobbyMessageReceived(event) {
 		let msgType = event.type;
 
-		switch (msgType)
-		{
+		switch (msgType) {
 			case LOBBY_MESSAGES.UPDATE_BATTLEGROUND_MODE:
 				this.isBattlegroundMode = event.data.isBattlegroundMode;
 				this.isConfirmBuyinDialogExpectedOnLastHand = event.data.isConfirmBuyinDialogExpectedOnLastHand;
@@ -512,16 +476,13 @@ class Game extends Application
 				this.emit(Game.EVENT_ON_SOUND_SETTINGS_CHANGED, event.data);
 				break;
 			case LOBBY_MESSAGES.PLAYER_INFO_UPDATED:
-				if (event.data.balance != undefined)
-				{
-					if (APP.isWebSocketInteractionInitiated && APP.webSocketInteractionController.isSitoutRequestInProgress)
-					{
+				if (event.data.balance != undefined) {
+					if (APP.isWebSocketInteractionInitiated && APP.webSocketInteractionController.isSitoutRequestInProgress) {
 						delete event.data.balance;
 					}
 				}
 
-				if (event.data.data[PlayerInfo.KEY_CURRENCY_CODE])
-				{
+				if (event.data.data[PlayerInfo.KEY_CURRENCY_CODE]) {
 					this.currencyInfo.i_setCurrencyId(event.data.data[PlayerInfo.KEY_CURRENCY_CODE].value);
 				}
 
@@ -546,8 +507,7 @@ class Game extends Application
 				break;
 			case LOBBY_MESSAGES.LOBBY_LOADING_ERROR:
 			case LOBBY_MESSAGES.WEBGL_CONTEXT_LOST:
-				if (this._loaderUI && this._loaderUI.loader)
-				{
+				if (this._loaderUI && this._loaderUI.loader) {
 					this._loaderUI.loader.stopLoading();
 				}
 				break;
@@ -572,8 +532,7 @@ class Game extends Application
 				break;
 			case LOBBY_MESSAGES.BONUS_CANCELED_DURING_LOAD:
 				this.emit("EVENT_ON_BONUS_LOADING_CANCEL");
-				if (this.currentWindow && this.currentWindow.subloadingController)
-				{
+				if (this.currentWindow && this.currentWindow.subloadingController) {
 					this.currentWindow.subloadingController.i_bonusLoadingCancelRequired();
 				}
 				break;
@@ -590,313 +549,254 @@ class Game extends Application
 		}
 	}
 
-	_updateDialogActiveState(aDialogId_num, aIsActive_bl)
-	{
+	_updateDialogActiveState(aDialogId_num, aIsActive_bl) {
 		aIsActive_bl == Boolean(aIsActive_bl);
 
-		if (aDialogId_num !== undefined)
-		{
+		if (aDialogId_num !== undefined) {
 			this._fActiveDialogs_obj[aDialogId_num] = aIsActive_bl;
 
-			if (aIsActive_bl)
-			{
+			if (aIsActive_bl) {
 				this._fIsAnyDialogActive_bl = true;
 			}
-			else
-			{
+			else {
 				this._fIsAnyDialogActive_bl = false;
 
-				for (var dlgId in this._fActiveDialogs_obj)
-				{
-					if (!!this._fActiveDialogs_obj[dlgId])
-					{
+				for (var dlgId in this._fActiveDialogs_obj) {
+					if (!!this._fActiveDialogs_obj[dlgId]) {
 						this._fIsAnyDialogActive_bl = true;
 						break;
 					}
-					
+
 				}
-			}			
+			}
 		}
 	}
 
-	get isAnyDialogActive()
-	{
+	get isAnyDialogActive() {
 		return this._fIsAnyDialogActive_bl;
 	}
 
-	isDialogActive(aDialogId_int)
-	{
-		return(this._fActiveDialogs_obj[aDialogId_int]);
+	isDialogActive(aDialogId_int) {
+		return (this._fActiveDialogs_obj[aDialogId_int]);
 	}
 
-	get isSecondaryScreenActive()
-	{
+	get isSecondaryScreenActive() {
 		return this._fIsSecondaryScreenActive_bl;
 	}
 
-	onBackToLobby(aEvent_obj)
-	{
+	onBackToLobby(aEvent_obj) {
 		// console.log("[Game] onBackToLobby -> pause");
 		this.pause();
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.BACK_TO_LOBBY, {errorCodeReason: aEvent_obj.errorCodeReason});
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.BACK_TO_LOBBY, { errorCodeReason: aEvent_obj.errorCodeReason });
 	}
 
-	onSoundOnClicked()
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_SOUND_BUTTON_CLICKED, {soundsOn: false});
+	onSoundOnClicked() {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_SOUND_BUTTON_CLICKED, { soundsOn: false });
 	}
 
-	onSoundOffClicked()
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_SOUND_BUTTON_CLICKED, {soundsOn: true});
+	onSoundOffClicked() {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_SOUND_BUTTON_CLICKED, { soundsOn: true });
 	}
 
-	onGameRoundStateChanged(e)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_ROUND_STATE_CHANGED, {state: e.value});
+	onGameRoundStateChanged(e) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_ROUND_STATE_CHANGED, { state: e.value });
 	}
 
-	onRefreshCommonPanelRequired(e)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.REFRESH_COMMON_PANEL_REQUIRED, {data:e.data})
+	onRefreshCommonPanelRequired(e) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.REFRESH_COMMON_PANEL_REQUIRED, { data: e.data })
 	}
 
-	onGetRoomInfoResponseMessage(event)
-	{
+	onGetRoomInfoResponseMessage(event) {
 		this.run();
 	}
 
-	_onServerConnectionClosed(event)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.SERVER_CONNECTION_CLOSED, {wasClean: event.wasClean});
+	_onServerConnectionClosed(event) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.SERVER_CONNECTION_CLOSED, { wasClean: event.wasClean });
 	}
 
-	_onServerConnectionOpened(event)
-	{
+	_onServerConnectionOpened(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.SERVER_CONNECTION_OPENED);
 	}
 
-	_onServerConnectionRecoveryStarted(event)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_RECOVERY_ON_CONNECTION_LOST_STARTED, {roomId: event.roomId});
+	_onServerConnectionRecoveryStarted(event) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.GAME_RECOVERY_ON_CONNECTION_LOST_STARTED, { roomId: event.roomId });
 	}
 
-	_onKeyboardButtonClicked(event)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.KEYBOARD_BUTTON_CLICKED, {code: event.code});
+	_onKeyboardButtonClicked(event) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.KEYBOARD_BUTTON_CLICKED, { code: event.code });
 	}
 
-	_onPicksUpSpecialWeaponsFirstTime()
-	{
+	_onPicksUpSpecialWeaponsFirstTime() {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.PICKS_UP_SPECIAL_WEAPONS_FIRST_TIME_REQUIRED);
 	}
 
-	_onMidRoundExitRequired(event)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.MID_ROUND_EXIT_REQUIRED, {roomId: event.roomId});
+	_onMidRoundExitRequired(event) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.MID_ROUND_EXIT_REQUIRED, { roomId: event.roomId });
 	}
 
-	_onNoPlaceToSeatHandler(event)
-	{
+	_onNoPlaceToSeatHandler(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.ROOM_NO_EMPTY_PLACE_TO_SEAT);
 	}
 
-	_onServerErrorMessage(event)
-	{
+	_onServerErrorMessage(event) {
 		// console.log("_onServerErrorMessage >> ", event);
 		let serverData = event.messageData;
 		let requestData = event.requestData;
 		let requestClass = undefined;
-		if (requestData && requestData.rid >= 0)
-		{
+		if (requestData && requestData.rid >= 0) {
 			requestClass = requestData.class;
 		}
 
 		let externalMessageAllowed = true;
 		let lIsFreeShot_bl = false;
-		switch (serverData.code)
-		{
+		switch (serverData.code) {
 			case GameWebSocketInteractionController.ERROR_CODES.NOT_ENOUGH_MONEY:
 				let lWeaponsInfo_wi = APP.currentWindow && APP.currentWindow.weaponsController && APP.currentWindow.weaponsController.i_getInfo();
 				lIsFreeShot_bl = lWeaponsInfo_wi && lWeaponsInfo_wi.isFreeWeaponsQueueActivated;
 
-				if (requestClass === CLIENT_MESSAGES.SIT_IN)
-				{
+				if (requestClass === CLIENT_MESSAGES.SIT_IN) {
 					externalMessageAllowed = this.tickerAllowed;
 				}
 				break;
 		}
 
-		if (externalMessageAllowed && !lIsFreeShot_bl)
-		{
+		if (externalMessageAllowed && !lIsFreeShot_bl) {
 			this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.SERVER_ERROR_MESSAGE_RECIEVED,
-				{errorType: event.errorType, errorCode: event.messageData.code, errorTime: event.messageData.date, requestClass: requestClass, rid: event.messageData.rid, requestData: requestData});
+				{ errorType: event.errorType, errorCode: event.messageData.code, errorTime: event.messageData.date, requestClass: requestClass, rid: event.messageData.rid, requestData: requestData });
 		}
 		!lIsFreeShot_bl && APP.logger.i_pushError(`Internal error! ${JSON.stringify(event.messageData)}`);
 	}
 
-	_onRestoredAfterUnreasonableRequest(event)
-	{
+	_onRestoredAfterUnreasonableRequest(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.RESTORED_AFTER_UNREASONABLE_REQUEST);
 	}
 
-	_onRestoreAfterUnreasonableRequestCanceled(event)
-	{
+	_onRestoreAfterUnreasonableRequestCanceled(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.RESTORE_AFTER_UNREASONABLE_REQUEST_CANCELED);
 	}
 
-	_onSitOutRequired(event)
-	{
+	_onSitOutRequired(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.ON_SIT_OUT_REQUIRED);
 		APP.logger.i_pushDebug(`Game. SitOut required.`);
 	}
 
-	_onMidRoundCompensateSWRequired(event)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.MID_ROUND_COMPENSATE_SW_REQUIRED, {compensateSpecialWeapons: event.compensateSpecialWeapons, totalReturnedSpecialWeapons: event.totalReturnedSpecialWeapons, roomId: event.roomId});
-	}
-	
-	_onRoundResultReturnSWResponse(event)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.ROUND_RESULT_RETURN_SW_RESPONSE, {weaponsReturned: event.weaponsReturned, weaponSurplus: event.weaponSurplus});
+	_onMidRoundCompensateSWRequired(event) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.MID_ROUND_COMPENSATE_SW_REQUIRED, { compensateSpecialWeapons: event.compensateSpecialWeapons, totalReturnedSpecialWeapons: event.totalReturnedSpecialWeapons, roomId: event.roomId });
 	}
 
-	_onRoundResultReturnSWDialogValidate(event)
-	{
+	_onRoundResultReturnSWResponse(event) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.ROUND_RESULT_RETURN_SW_RESPONSE, { weaponsReturned: event.weaponsReturned, weaponSurplus: event.weaponSurplus });
+	}
+
+	_onRoundResultReturnSWDialogValidate(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.ROUND_RESULT_RETURN_SW_DIALOG_SHOW_VALIDATE);
 	}
 
-	_onRoundResultScreenDeactivated(event)
-	{
+	_onRoundResultScreenDeactivated(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.ROUND_RESULT_SCREEN_DEACTIVATED);
 	}
 
-	_onForceSitOutRequired(event)
-	{
-		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.EVENT_ON_FORCE_SIT_OUT_REQUIRED, {roomId: event.roomId});
+	_onForceSitOutRequired(event) {
+		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.EVENT_ON_FORCE_SIT_OUT_REQUIRED, { roomId: event.roomId });
 	}
 
-	_onNotEnoughMoneyDialogRequired(event)
-	{
-		let data = {dialogType: event.dialogType};
+	_onNotEnoughMoneyDialogRequired(event) {
+		let data = { dialogType: event.dialogType };
 
-		if (event.specBalance !== undefined)
-		{
+		if (event.specBalance !== undefined) {
 			data.specBalance = event.specBalance;
 		}
 
-		if (event.hasUnrespondedShots !== undefined)
-		{
+		if (event.hasUnrespondedShots !== undefined) {
 			data.hasUnrespondedShots = event.hasUnrespondedShots;
 		}
 
-		if (event.hasDelayedShots !== undefined)
-		{
+		if (event.hasDelayedShots !== undefined) {
 			data.hasDelayedShots = event.hasDelayedShots;
 		}
 
-		if (event.hasUnparsedShotResponse !== undefined)
-		{
+		if (event.hasUnparsedShotResponse !== undefined) {
 			data.hasUnparsedShotResponse = event.hasUnparsedShotResponse;
 		}
 
-		if (event.hasAwardedFreeSW !== undefined)
-		{
+		if (event.hasAwardedFreeSW !== undefined) {
 			data.hasAwardedFreeSW = event.hasAwardedFreeSW;
 		}
-		
+
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.NOT_ENOUGH_MONEY_DIALOG_REQUIRED, data);
 	}
 
-	_onSWPurchaseLimitExceededDialogRequired()
-	{
+	_onSWPurchaseLimitExceededDialogRequired() {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_REQUIRED);
 	}
 
-	_onRoundResultScreenActivated(event)
-	{
+	_onRoundResultScreenActivated(event) {
 		this.externalCommunicator.sendExternalMessage(GAME_MESSAGES.ROUND_RESULT_ACTIVATED);
 	}
 
-	updateRoundTime(roundStartTime,roundEndTime)
-    {
-        this.emit(Game.EVENT_ON_ROUND_TIME_UPDATE, {roundStartTime:roundStartTime, roundEndTime:roundEndTime});
-    }
+	updateRoundTime(roundStartTime, roundEndTime) {
+		this.emit(Game.EVENT_ON_ROUND_TIME_UPDATE, { roundStartTime: roundStartTime, roundEndTime: roundEndTime });
+	}
 
 	//override
-	_initProfilingController()
-	{
+	_initProfilingController() {
 		return new GameProfilingController();
 	}
 
-	pause()
-	{
-		if(APP.criticalAnimationInProgress) return;
+	pause() {
+		if (APP.criticalAnimationInProgress) return;
 		this.setTickerPaused(true, "focus");
 	}
 
-	resume(data)
-	{
-		
+	resume(data) {
+
 		//do not resume if the ticker was not paused
-		if (!this.tickerAllowed)
-		{
+		if (!this.tickerAllowed) {
 			this.setTickerPaused(false, "focus", data);
 		}
 	}
 
-	getSoundsPauseExceptions()
-	{
+	getSoundsPauseExceptions() {
 		return ["connection"];
 	}
 
-	onTickerPaused()
-	{
+	onTickerPaused() {
 		super.onTickerPaused.call(this);
-		if (this.currentWindow && this.currentWindow.onRoomPaused)
-		{
+		if (this.currentWindow && this.currentWindow.onRoomPaused) {
 			this.currentWindow.onRoomPaused();
 		}
 	}
 
-	onTickerResumed(data = null)
-	{
+	onTickerResumed(data = null) {
 		super.onTickerResumed.call(this, data);
-		if (this.currentWindow && this.currentWindow.updateRoomInfo)
-		{
+		if (this.currentWindow && this.currentWindow.updateRoomInfo) {
 			this.currentWindow.updateRoomInfo(data);
 		}
 	}
 
-	isGamePlayInProgress()
-	{
+	isGamePlayInProgress() {
 		return this.currentWindow && this.currentWindow.isGamePlayInProgress();
 	}
 
-	tick(e)
-	{
+	tick(e) {
 		super.tick(e);
-		if (this.currentWindow && this.currentWindow.tick)
-		{
+		if (this.currentWindow && this.currentWindow.tick) {
 			this.currentWindow.tick(e.delta, e.realDelta);
-			this.emit("tick", {delta: e.delta}); //it needs for pixi particle emitter used in InstantKill effects (endless smoke in particular)
+			this.emit("tick", { delta: e.delta }); //it needs for pixi particle emitter used in InstantKill effects (endless smoke in particular)
 		}
 
-		if (this._fTickHandle_arr && this._fTickHandle_arr.length)
-		{
+		if (this._fTickHandle_arr && this._fTickHandle_arr.length) {
 			let lHandle_fn = this._fTickHandle_arr.pop();
 			lHandle_fn.call();
 		}
 	}
 
 	//PENDING OPERATION...
-	get pendingOperationController()
-	{
+	get pendingOperationController() {
 		return this._fPendingOperationController_lpoc || (this._fPendingOperationController_lpoc = this._initPendingOperationController());
 	}
 
-	_initPendingOperationController()
-	{
+	_initPendingOperationController() {
 		let l_lpoc = new GamePendingOperationController();
 		this._fPendingOperationController_lpoc = l_lpoc;
 

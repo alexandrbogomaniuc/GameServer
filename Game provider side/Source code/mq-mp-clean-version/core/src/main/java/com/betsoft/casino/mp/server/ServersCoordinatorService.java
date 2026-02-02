@@ -33,7 +33,6 @@ import org.springframework.beans.factory.annotation.Value;
 import com.betsoft.casino.mp.service.ServerConfigDto;
 import com.dgphoenix.casino.common.util.string.StringUtils;
 
-
 public class ServersCoordinatorService implements ServerCoordinatorInfoProvider, Closeable {
     private static final Logger LOG = LogManager.getLogger(ServersCoordinatorService.class);
 
@@ -64,8 +63,7 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
         this.client = CuratorFrameworkFactory.newClient(
                 properties.getConnect(),
                 SESSION_TIMEOUT_MS, SESSION_TIMEOUT_MS,
-                new ExponentialBackoffRetry(1000, 3)
-        );
+                new ExponentialBackoffRetry(1000, 3));
         this.client.getConnectionStateListenable().addListener((cli, state) -> {
             if (state == ConnectionState.RECONNECTED) {
                 try {
@@ -111,14 +109,16 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
     }
 
     private String getGameServerHostname() {
-        String gameServerHostname = System.getProperty(HOSTNAME) != null 
-                ? System.getProperty(HOSTNAME) : System.getenv(HOSTNAME);
+        String gameServerHostname = System.getProperty(HOSTNAME) != null
+                ? System.getProperty(HOSTNAME)
+                : System.getenv(HOSTNAME);
         return gameServerHostname;
     }
 
     private String getGameServerVMIP() {
-        String gameServerHostname = System.getProperty(SERVER_VM_IP) != null 
-                ? System.getProperty(SERVER_VM_IP) : System.getenv(SERVER_VM_IP);
+        String gameServerHostname = System.getProperty(SERVER_VM_IP) != null
+                ? System.getProperty(SERVER_VM_IP)
+                : System.getenv(SERVER_VM_IP);
         return gameServerHostname;
     }
 
@@ -126,7 +126,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
         String nodeId = Optional.ofNullable(getGameServerHostname())
                 .orElseThrow(() -> new RuntimeException("CRITICAL: ! Unable to get nodeId for this server."));
 
-        LOG.info("[LEADER ELECTION]:️ Node " + nodeId + " / " + thisServerId + " started and participating in elections");
+        LOG.info("[LEADER ELECTION]:️ Node " + nodeId + " / " + thisServerId
+                + " started and participating in elections");
         String leaderPath = properties.getServicePath() + "/leaders";
         this.leaderSelector = new LeaderSelector(client, leaderPath, new LeaderSelectorListenerAdapter() {
             @Override
@@ -187,8 +188,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
                         } else {
                             if (withRetry) {
                                 LOG.warn("Unable to assign serverId as serverIdentifier '"
-                                                + serverIdentifier + "' is already locked at "
-                                                + lockPath + ". Will retry in " + (SESSION_TIMEOUT_MS + 5000)  + "ms ...");
+                                        + serverIdentifier + "' is already locked at "
+                                        + lockPath + ". Will retry in " + (SESSION_TIMEOUT_MS + 5000) + "ms ...");
                                 Thread.sleep(SESSION_TIMEOUT_MS + 5000);
                                 return assignServerId(serverIdentifier, false);
                             } else {
@@ -201,7 +202,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
                         lastLockedIndex = i;
                         startHeartbeat(i, serverIdentifier);
                         return i + 1;
-                    } catch (KeeperException.NodeExistsException ignored) {}
+                    } catch (KeeperException.NodeExistsException ignored) {
+                    }
                 }
             }
         }
@@ -235,7 +237,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
                     lastLockedIndex = i;
                     startHeartbeat(i, serverIdentifier);
                     return i + 1;
-                } catch (KeeperException.NodeExistsException ignored) {}
+                } catch (KeeperException.NodeExistsException ignored) {
+                }
             }
         }
 
@@ -260,7 +263,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
     }
 
     private void reLockIfValid() throws Exception {
-        if (lastLockedIndex == null) return;
+        if (lastLockedIndex == null)
+            return;
 
         String base = properties.getPoolPath() + "/" + lastLockedIndex;
         String resPath = base + "/reservation";
@@ -272,7 +276,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
         if (System.currentTimeMillis() - lastSeen <= properties.getTtlMillis()) {
             try {
                 client.create().withMode(CreateMode.EPHEMERAL).forPath(lockPath);
-            } catch (KeeperException.NodeExistsException ignored) {}
+            } catch (KeeperException.NodeExistsException ignored) {
+            }
         }
     }
 
@@ -284,6 +289,7 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
             // ignore
         }
     }
+
     @Override
     public void close() throws IOException {
         heartbeatTimer.cancel();
@@ -304,9 +310,16 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
     @Override
     public Integer getMasterServerId() {
         try {
-            return Integer.parseInt(leaderSelector.getLeader().getId());
+            if (leaderSelector == null) {
+                return -1;
+            }
+            String leaderId = leaderSelector.getLeader().getId();
+            if (StringUtils.isTrimmedEmpty(leaderId)) {
+                return -1;
+            }
+            return Integer.parseInt(leaderId);
         } catch (Exception e) {
-            LOG.error("Error getting leader: ", e);
+            LOG.error("Error getting leader: " + e.getMessage());
             return -1;
         }
     }
@@ -337,8 +350,8 @@ public class ServersCoordinatorService implements ServerCoordinatorInfoProvider,
                 String serverIdentifier = parts[0];
                 long lastSeen = Long.parseLong(parts[1]);
                 String serverIP = parts.length == 3 ? parts[2] : null;
-                String mpServerHost = StringUtils.isTrimmedEmpty(serverNameTemplate) ? "localhost" :
-                    serverNameTemplate.replace("#", String.valueOf(serverId)) + mpServerDomain;
+                String mpServerHost = StringUtils.isTrimmedEmpty(serverNameTemplate) ? "localhost"
+                        : serverNameTemplate.replace("#", String.valueOf(serverId)) + mpServerDomain;
                 serverInfo.setOldHost(mpServerHost);
                 serverInfo.setDomain(mpServerDomain);
                 serverInfo.setServerIdentifier(serverIdentifier);

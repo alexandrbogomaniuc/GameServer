@@ -21,6 +21,10 @@ module.exports = {
 			path.resolve(PROJECT_SRC, 'index.js')
 		]
 	},
+	externals: {
+		'pixi.js': 'PIXI',
+		'pixi.js-legacy': 'PIXI'
+	},
 	output: {
 		path: __dirname + "/dist/build",
 		filename: '[name].js'
@@ -28,9 +32,14 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.mjs$/,
+				include: /node_modules/,
+				type: 'javascript/auto'
+			},
+			{
 				test: /\.js$/,
 				include: [PIXI_SRC, PROJECT_SRC, SHARED_SRC],
-				exclude: [],
+				exclude: [/node_modules/],
 				loader: 'babel-loader',
 				query: { presets: ["es2015", "stage-0"], compact: false }
 			},
@@ -55,7 +64,8 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.js', '.json'],
+		extensions: ['.js', '.json', '.mjs'],
+		mainFields: ['main', 'module'],
 		alias: {
 			"P2M": PIXI_SRC,
 			'vue$': 'vue/dist/vue.esm.js'

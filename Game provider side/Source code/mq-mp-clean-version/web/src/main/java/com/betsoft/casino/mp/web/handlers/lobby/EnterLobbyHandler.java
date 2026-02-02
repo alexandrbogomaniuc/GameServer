@@ -808,8 +808,7 @@ public class EnterLobbyHandler extends MessageHandler<EnterLobby, ILobbySocketCl
         getLog().debug("isAllowWeaponSaveInAllGames: moneyType={}, gameSettings={}", moneyType, gameSettings);
 
         return (moneyType != MoneyType.REAL && moneyType != MoneyType.FREE)
-                || (gameSettings != null && gameSettings.get(BankInfo.KEY_ROUND_WINS_WITHOUT_BETS_ALLOWED)
-                .equalsIgnoreCase(Boolean.TRUE.toString()));
+                || (gameSettings != null && Boolean.TRUE.toString().equalsIgnoreCase(gameSettings.get(BankInfo.KEY_ROUND_WINS_WITHOUT_BETS_ALLOWED)));
     }
 
     private String getNicknameGlyphs(Map<String, String> gameSettings) {
@@ -1824,7 +1823,7 @@ public class EnterLobbyHandler extends MessageHandler<EnterLobby, ILobbySocketCl
                 maxBulletsOnMap,
                 isDisabledBgInfo ? null : getBattlegroundInfo(session, client, tBattlegroundInfoList, lobbySession, roomId));
         response.setNicknameEditable(lobbySession.isNicknameEditable());
-        boolean isFree = message.getMode().equalsIgnoreCase("free");
+        boolean isFree = "free".equalsIgnoreCase(message.getMode());
         //dirty fix for find error reason
         if (lobbySession.getActiveCashBonusSession() != null && !lobbySession.getActiveCashBonusSession().isActive()) {
             getLog().warn("sendResponse: Found not active cashBonus in session, please fix reason, " +

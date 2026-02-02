@@ -1,7 +1,7 @@
 package com.betsoft.casino.bots.handlers;
 
 import com.betsoft.casino.bots.*;
-import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedMaxBlastChampionsRoomBot;
 import com.betsoft.casino.bots.strategies.BaseMetricTimeKey;
 import com.betsoft.casino.bots.strategies.IRoomNaturalBotStrategy;
 import com.betsoft.casino.mp.model.RoomState;
@@ -24,7 +24,8 @@ public class GameStateChangedHandler implements IServerMessageHandler<GameStateC
 
     @Override
     public void handle(GameStateChanged response) {
-        LOG.info("GameStateChangedHandler::handle: botId={}, nickname={}, GameStateChanged={}", bot.getId(), bot.getNickname(), response);
+        LOG.info("GameStateChangedHandler::handle: botId={}, nickname={}, GameStateChanged={}", bot.getId(),
+                bot.getNickname(), response);
         toggleGameState(response);
     }
 
@@ -38,7 +39,9 @@ public class GameStateChangedHandler implements IServerMessageHandler<GameStateC
         bot.setRoomState(roomState);
 
         boolean isBattleBotWithNaturalStrategy = bot.getStrategy() instanceof IRoomNaturalBotStrategy;
-        boolean isManagedMaxBlastChampionsRoomBot = bot instanceof ManagedMaxBlastChampionsRoomBot;
+        // boolean isManagedMaxBlastChampionsRoomBot = bot instanceof
+        // ManagedMaxBlastChampionsRoomBot;
+        boolean isManagedMaxBlastChampionsRoomBot = false;
         boolean isMqbBattleBot = bot.isMqbBattleBot();
 
         switch (roomState) {
@@ -46,46 +49,56 @@ public class GameStateChangedHandler implements IServerMessageHandler<GameStateC
             case WAIT:
                 bot.count(Stats.STATE_WAIT);
 
-                //todo check for BG DS/MA
-                if(isManagedMaxBlastChampionsRoomBot) {
-
-                    ManagedMaxBlastChampionsRoomBot maxBlastBot = (ManagedMaxBlastChampionsRoomBot)bot;
-                    maxBlastBot.clearPlayersBets();
-
-                    if(gameStateChanged.getRoundStartTime() != null) {
-                        maxBlastBot.calcCrashBetRequestTime(gameStateChanged.getDate(), gameStateChanged.getRoundStartTime());
-                    } else if(gameStateChanged.getTtnx() > 0) {
-                        long msgRoundStartTime = gameStateChanged.getDate() + gameStateChanged.getTtnx();
-                        maxBlastBot.calcCrashBetRequestTime(gameStateChanged.getDate(), msgRoundStartTime);
-                    }
-
-                    //set bot WAIT_BATTLE_PLAYERS state if bot has completed SitIn process and has balance setup
-                    if(maxBlastBot.getBalance() > 0) {
-                        bot.setState(BotState.WAIT_BATTLE_PLAYERS, "toggleGameState wait");
-                    }
-
-                } else {
-                    bot.setState(BotState.OBSERVING, "toggleGameState wait");
-                    if(isBattleBotWithNaturalStrategy) {
-                        if (isMqbBattleBot) {
-                            //if bot was playing the last round (BotState.PLAYING or BotState.WAITING_FOR_RESPONSE),
-                            //then wait to SitOut message from MP server
-                            if(BotState.PLAYING.equals(oldBotState) || BotState.WAITING_FOR_RESPONSE.equals(oldBotState)) {
-                                bot.setState(BotState.WAIT_BATTLE_PLAYERS, "MqbBattleBot should sitOut by MP server after round ends");
-                            }
-                        } else {
-                            bot.setState(BotState.IDLE, "not allow shot in QUALIFY roomState");
+                // todo check for BG DS/MA
+                /*
+                 * if(isManagedMaxBlastChampionsRoomBot) {
+                 * 
+                 * ManagedMaxBlastChampionsRoomBot maxBlastBot =
+                 * (ManagedMaxBlastChampionsRoomBot)bot;
+                 * maxBlastBot.clearPlayersBets();
+                 * 
+                 * if(gameStateChanged.getRoundStartTime() != null) {
+                 * maxBlastBot.calcCrashBetRequestTime(gameStateChanged.getDate(),
+                 * gameStateChanged.getRoundStartTime());
+                 * } else if(gameStateChanged.getTtnx() > 0) {
+                 * long msgRoundStartTime = gameStateChanged.getDate() +
+                 * gameStateChanged.getTtnx();
+                 * maxBlastBot.calcCrashBetRequestTime(gameStateChanged.getDate(),
+                 * msgRoundStartTime);
+                 * }
+                 * 
+                 * //set bot WAIT_BATTLE_PLAYERS state if bot has completed SitIn process and
+                 * has balance setup
+                 * if(maxBlastBot.getBalance() > 0) {
+                 * bot.setState(BotState.WAIT_BATTLE_PLAYERS, "toggleGameState wait");
+                 * }
+                 * 
+                 * } else {
+                 */
+                bot.setState(BotState.OBSERVING, "toggleGameState wait");
+                if (isBattleBotWithNaturalStrategy) {
+                    if (isMqbBattleBot) {
+                        // if bot was playing the last round (BotState.PLAYING or
+                        // BotState.WAITING_FOR_RESPONSE),
+                        // then wait to SitOut message from MP server
+                        if (BotState.PLAYING.equals(oldBotState) || BotState.WAITING_FOR_RESPONSE.equals(oldBotState)) {
+                            bot.setState(BotState.WAIT_BATTLE_PLAYERS,
+                                    "MqbBattleBot should sitOut by MP server after round ends");
                         }
-                        if(bot.isBattleBot()) {
-                            LOG.debug("toggleGameState: bot={}, reset ConfirmBattlegroundBuyIn, isMqbBattleBot: {}", bot.getId(), isMqbBattleBot);
-                            BattleGroundRoomBot battleGroundRoomBot = (BattleGroundRoomBot) bot;
-                            battleGroundRoomBot.setBattlegroundBuyInConfirmed(false);
-                            if(!isMqbBattleBot) {
-                                battleGroundRoomBot.setNeedReBuyInRoom(true);
-                            }
+                    } else {
+                        bot.setState(BotState.IDLE, "not allow shot in QUALIFY roomState");
+                    }
+                    if (bot.isBattleBot()) {
+                        LOG.debug("toggleGameState: bot={}, reset ConfirmBattlegroundBuyIn, isMqbBattleBot: {}",
+                                bot.getId(), isMqbBattleBot);
+                        BattleGroundRoomBot battleGroundRoomBot = (BattleGroundRoomBot) bot;
+                        battleGroundRoomBot.setBattlegroundBuyInConfirmed(false);
+                        if (!isMqbBattleBot) {
+                            battleGroundRoomBot.setNeedReBuyInRoom(true);
                         }
                     }
                 }
+                // }
                 break;
 
             case CLOSED:
@@ -95,7 +108,7 @@ public class GameStateChangedHandler implements IServerMessageHandler<GameStateC
 
             case QUALIFY:
                 bot.count(Stats.STATE_QUALIFY);
-                if(!isManagedMaxBlastChampionsRoomBot) {
+                if (!isManagedMaxBlastChampionsRoomBot) {
                     bot.clearShotRequests();
                     if (shouldCloseRoomWhenRoundFinished()) {
                         bot.setState(BotState.WAITING_FOR_RESPONSE, " waiting  sitOut");
@@ -109,21 +122,23 @@ public class GameStateChangedHandler implements IServerMessageHandler<GameStateC
                 break;
             case PLAY:
                 bot.count(Stats.STATE_PLAY);
-                if(bot instanceof RoomBot){
+                if (bot instanceof RoomBot) {
                     ((RoomBot) bot).resetRoundStatesOnPlay();
                 }
-                if(bot.getState() != BotState.OBSERVING && bot.getState() != BotState.WAITING_FOR_RESPONSE) {
+                if (bot.getState() != BotState.OBSERVING && bot.getState() != BotState.WAITING_FOR_RESPONSE) {
                     bot.setState(BotState.PLAYING, "GameStateChangedHandler: toggleGameState");
                 }
 
-                if(isBattleBotWithNaturalStrategy){
+                if (isBattleBotWithNaturalStrategy) {
                     ((IRoomNaturalBotStrategy) bot.getStrategy())
-                            .addLastShootResponseTime(BaseMetricTimeKey.PLAY_STARTED.name(), System.currentTimeMillis());
+                            .addLastShootResponseTime(BaseMetricTimeKey.PLAY_STARTED.name(),
+                                    System.currentTimeMillis());
                 }
                 break;
         }
 
-        LOG.info("toggleGameState: New botState for bot : botId={}, nickname={} is {}", bot.getId(), bot.getNickname(), bot.getState());
+        LOG.info("toggleGameState: New botState for bot : botId={}, nickname={} is {}", bot.getId(), bot.getNickname(),
+                bot.getState());
     }
 
     private boolean shouldCloseRoomWhenRoundFinished() {

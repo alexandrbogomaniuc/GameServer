@@ -1,6 +1,5 @@
 package com.betsoft.casino.mp.web;
 
-import com.betsoft.casino.mp.maxcrashgame.model.CrashRoundInfo;
 import com.betsoft.casino.mp.transport.Error;
 import com.betsoft.casino.mp.transport.*;
 import com.betsoft.casino.utils.GsonClassSerializer;
@@ -126,7 +125,7 @@ public class GsonFactory {
         typeAdapter.register(CrashChangeAutoEject.class);
         typeAdapter.register(CrashChangeAutoEjectResponse.class);
         typeAdapter.register(CrashGameInfo.class);
-        typeAdapter.register(CrashRoundInfo.class);
+        // typeAdapter.register(CrashRoundInfo.class);
         typeAdapter.register(CrashBetInfo.class);
         typeAdapter.register(BattlegroundScoreBoard.class);
         typeAdapter.register(BattlegroundRoundResult.class);

@@ -2,7 +2,7 @@ package com.betsoft.casino.bots.requests;
 
 import com.betsoft.casino.bots.LobbyBot;
 import com.betsoft.casino.bots.Stats;
-import com.betsoft.casino.bots.mqb.ManagedLobbyBot;
+// import com.betsoft.casino.bots.mqb.ManagedLobbyBot;
 import com.betsoft.casino.mp.transport.GetBattlegroundStartGameUrl;
 import com.betsoft.casino.mp.transport.GetStartGameUrlResponse;
 import com.betsoft.casino.mp.web.ISocketClient;
@@ -42,7 +42,8 @@ public class GetBattlegroundStartGameUrlRequest extends AbstractBotRequest {
                 long responseRoomId = Long.parseLong(params.get("roomId"));
                 String sessionId = params.get("SID");
 
-                getLogger().debug("GetBattlegroundStartGameUrlRequest: socketUrl={}, serverId={}, responseRoomId={}, sessionId={} ",
+                getLogger().debug(
+                        "GetBattlegroundStartGameUrlRequest: socketUrl={}, serverId={}, responseRoomId={}, sessionId={} ",
                         socketUrl, serverId, responseRoomId, sessionId);
 
                 if (bot.isWssUrl() && socketUrl.startsWith("ws:")) {
@@ -51,9 +52,11 @@ public class GetBattlegroundStartGameUrlRequest extends AbstractBotRequest {
                     socketUrl = socketUrl.replaceFirst("ws:", "wss:");
                 }
 
-                boolean isMqbBot = bot instanceof ManagedLobbyBot;
+                // boolean isMqbBot = bot instanceof ManagedLobbyBot;
+                boolean isMqbBot = false;
                 if (isMqbBot && roomId != responseRoomId) {
-                    getLogger().debug("Need stop mqb bot, mismatch roomIds, requested roomId: {}, real responseRoomId: {} ",
+                    getLogger().debug(
+                            "Need stop mqb bot, mismatch roomIds, requested roomId: {}, real responseRoomId: {} ",
                             roomId, responseRoomId);
                     bot.stop();
 
@@ -96,4 +99,3 @@ public class GetBattlegroundStartGameUrlRequest extends AbstractBotRequest {
                 .toString();
     }
 }
-

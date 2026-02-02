@@ -1,7 +1,7 @@
 package com.betsoft.casino.bots.requests;
 
 import com.betsoft.casino.bots.*;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.mp.transport.SitOut;
 import com.betsoft.casino.mp.web.ISocketClient;
 import com.betsoft.casino.utils.ITransportObject;
@@ -29,10 +29,12 @@ public class SitOutRequest extends AbstractBotRequest {
         boolean needCloseRoom = true;
         switch (response.getClassName()) {
             case "SitOutResponse":
-                if (bot instanceof ManagedBattleGroundRoomBot) {
-                    bot.stop();
-                    needCloseRoom = false;
-                }
+                /*
+                 * if (bot instanceof ManagedBattleGroundRoomBot) {
+                 * bot.stop();
+                 * needCloseRoom = false;
+                 * }
+                 */
                 if (bot instanceof UnifiedBot) {
                     ((UnifiedBot) bot).setRoundsCount(0);
                     bot.restart();
@@ -51,7 +53,7 @@ public class SitOutRequest extends AbstractBotRequest {
                 break;
         }
 
-        if(bot instanceof IUnifiedBot){
+        if (bot instanceof IUnifiedBot) {
             needCloseRoom = false;
         }
 
@@ -62,10 +64,10 @@ public class SitOutRequest extends AbstractBotRequest {
     }
 
     private void additionalCheck() {
-        if(bot instanceof UnifiedBot){
+        if (bot instanceof UnifiedBot) {
             UnifiedBot unifiedBot = (UnifiedBot) bot;
             IUnifiedBotStrategy unifiedBotStrategy = (IUnifiedBotStrategy) unifiedBot.getStrategy();
-            if(unifiedBot.getRoundsCount() >= unifiedBotStrategy.getNumberRoundBeforeRestart()) {
+            if (unifiedBot.getRoundsCount() >= unifiedBotStrategy.getNumberRoundBeforeRestart()) {
                 ((UnifiedBot) bot).setRoundsCount(0);
                 bot.restart();
             }

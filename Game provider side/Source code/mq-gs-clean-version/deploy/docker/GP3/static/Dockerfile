@@ -1,9 +1,10 @@
 FROM nginx:1.13.10
 
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY games /etc/nginx/sites-enabled/games
+COPY games.conf /etc/nginx/conf.d/games.conf
 
 RUN echo "deb http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list
+RUN mkdir -p /etc/nginx/sites-enabled
 
 RUN rm /etc/nginx/conf.d/default.conf
 RUN chmod 777 /etc/nginx/nginx.conf && chmod -R 777 /etc/nginx/sites-enabled

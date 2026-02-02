@@ -1,10 +1,10 @@
-$projectDir = "d:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\Game provider side\Source code\mq-gs-clean-version"
-$deployDir = "d:\OneDrive - Roan Solutions, Inc\DOCUMENTS\Igaming Project\deploy\webapps\gs"
+$projectDir = "E:\Dev\Igaming Project\Game provider side\Source code\mq-gs-clean-version"
+$deployDir = "E:\Dev\Igaming Project\Game provider side\Source code\mq-gs-clean-version\deploy\docker\GP3\deployments"
 
 Write-Host "Starting Maven Build in Docker..."
 # Run Maven build in a container, mounting the source code to /app
 # Mounting maven-repo volume to cache dependencies
-docker run --rm -v "${projectDir}:/app" -v "maven-repo:/root/.m2" -w /app maven:3.6-jdk-8 mvn install -DskipTests -pl game-server/web-gs -am
+docker run --rm -v "${projectDir}:/app" -v "maven-repo:/root/.m2" -w /app maven:3.6-jdk-8 mvn clean install -DskipTests -pl game-server/web-gs -am
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Build Successful!"

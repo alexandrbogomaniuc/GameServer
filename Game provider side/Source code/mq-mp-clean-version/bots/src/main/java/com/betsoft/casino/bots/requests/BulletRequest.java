@@ -3,7 +3,7 @@ package com.betsoft.casino.bots.requests;
 import com.betsoft.casino.bots.BotState;
 import com.betsoft.casino.bots.IRoomBot;
 import com.betsoft.casino.bots.Stats;
-import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
+// import com.betsoft.casino.bots.mqb.ManagedBattleGroundRoomBot;
 import com.betsoft.casino.bots.strategies.IRoomNaturalBotStrategy;
 import com.betsoft.casino.mp.transport.Bullet;
 import com.betsoft.casino.mp.web.ISocketClient;
@@ -30,7 +30,7 @@ public class BulletRequest extends AbstractBotRequest {
     private String shotMetric;
 
     public BulletRequest(IRoomBot bot, ISocketClient client, String bulletId, int startPointX, int startPointY,
-                         int endPointX, int endPointY, float bulletAngle, ShotRequest shotRequest, int weaponId, String shotMetric) {
+            int endPointX, int endPointY, float bulletAngle, ShotRequest shotRequest, int weaponId, String shotMetric) {
         super(bot.getLogger());
         this.bot = bot;
         this.client = client;
@@ -45,14 +45,15 @@ public class BulletRequest extends AbstractBotRequest {
         this.shotMetric = shotMetric;
     }
 
-    public BulletRequest(IRoomBot bot, ISocketClient client, String bulletId, ShotRequest shotRequest, int weaponId, String shotMetric) {
-        this(bot, client,bulletId, 505, 432, 573, 286, 0, shotRequest, weaponId, shotMetric);
+    public BulletRequest(IRoomBot bot, ISocketClient client, String bulletId, ShotRequest shotRequest, int weaponId,
+            String shotMetric) {
+        this(bot, client, bulletId, 505, 432, 573, 286, 0, shotRequest, weaponId, shotMetric);
     }
 
     @Override
     public void send(int rid) {
 
-        if(bot.getStrategy() instanceof IRoomNaturalBotStrategy && !StringUtils.isTrimmedEmpty(shotMetric)) {
+        if (bot.getStrategy() instanceof IRoomNaturalBotStrategy && !StringUtils.isTrimmedEmpty(shotMetric)) {
             long timeMillis = System.currentTimeMillis();
             getLogger().debug("send: bullet request was made by bot: {}, shotMetric: {}, timeMillis: {}",
                     bot.getId(), shotMetric, toHumanReadableFormat(timeMillis));
@@ -60,7 +61,8 @@ public class BulletRequest extends AbstractBotRequest {
         }
 
         long now = System.currentTimeMillis();
-        client.sendMessage(new Bullet(now, rid, now, bulletAngle, bulletId,  startPointX, startPointY, endPointX, endPointY, weaponId));
+        client.sendMessage(new Bullet(now, rid, now, bulletAngle, bulletId, startPointX, startPointY, endPointX,
+                endPointY, weaponId));
     }
 
     @Override
@@ -69,12 +71,15 @@ public class BulletRequest extends AbstractBotRequest {
         String className = response.getClassName();
         int rid = response.getRid();
 
-        ManagedBattleGroundRoomBot managedBattleGroundRoomBot = null;
-        if(bot instanceof ManagedBattleGroundRoomBot) {
-            managedBattleGroundRoomBot = (ManagedBattleGroundRoomBot)bot;
-        }
+        /*
+         * ManagedBattleGroundRoomBot managedBattleGroundRoomBot = null;
+         * if(bot instanceof ManagedBattleGroundRoomBot) {
+         * managedBattleGroundRoomBot = (ManagedBattleGroundRoomBot)bot;
+         * }
+         */
 
-        if(shotRequest == null) {//if shot is not present update metric over BulletRequest, otherwise update metric over ShotRequest
+        if (shotRequest == null) {// if shot is not present update metric over BulletRequest, otherwise update
+                                  // metric over ShotRequest
             bot.setLastReceivedServerTime(response.getDate());
 
             if (bot.getStrategy() instanceof IRoomNaturalBotStrategy && !StringUtils.isTrimmedEmpty(shotMetric)) {
@@ -89,9 +94,11 @@ public class BulletRequest extends AbstractBotRequest {
             case "BulletResponse":
                 break;
             case "Error":
-                if(managedBattleGroundRoomBot != null) {
-                    managedBattleGroundRoomBot.removeRicochetBulletByRid(rid);
-                }
+                /*
+                 * if(managedBattleGroundRoomBot != null) {
+                 * managedBattleGroundRoomBot.removeRicochetBulletByRid(rid);
+                 * }
+                 */
                 bot.count(Stats.ERRORS);
                 getLogger().error("BulletRequest: error: {}", response);
                 break;
@@ -102,14 +109,14 @@ public class BulletRequest extends AbstractBotRequest {
 
         getLogger().debug("handle: {}, send if not null shotRequest={}", response, shotRequest);
 
-        if(shotRequest != null) {
+        if (shotRequest != null) {
             bot.send(shotRequest);
         }
 
         boolean needProcess = response.getRid() != -1;
-        if(needProcess) {
+        if (needProcess) {
             BotState botState = bot.getState();
-            if(botState == BotState.WAITING_FOR_RESPONSE){
+            if (botState == BotState.WAITING_FOR_RESPONSE) {
                 bot.setState(BotState.PLAYING, "BulletRequest: " + className);
             }
             bot.doActionWithSleep("BulletRequest[" + className + "]");

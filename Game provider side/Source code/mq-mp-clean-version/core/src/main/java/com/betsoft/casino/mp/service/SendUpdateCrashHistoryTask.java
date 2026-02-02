@@ -1,7 +1,5 @@
 package com.betsoft.casino.mp.service;
 
-import com.betsoft.casino.mp.maxblastchampions.model.CrashRoundInfo;
-import com.betsoft.casino.mp.maxblastchampions.model.GameMap;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.ICrashRoundInfo;
 import com.betsoft.casino.mp.model.ISeat;
@@ -26,7 +24,8 @@ public class SendUpdateCrashHistoryTask implements Runnable, Serializable, Appli
     private final ICrashRoundInfo crashRoundInfo;
     private transient ApplicationContext context;
 
-    public SendUpdateCrashHistoryTask(Long roomId, GameType gameType, long senderServerId, ICrashRoundInfo crashRoundInfo) {
+    public SendUpdateCrashHistoryTask(Long roomId, GameType gameType, long senderServerId,
+            ICrashRoundInfo crashRoundInfo) {
         this.roomId = roomId;
         this.gameType = gameType;
         this.senderServerId = senderServerId;
@@ -42,7 +41,7 @@ public class SendUpdateCrashHistoryTask implements Runnable, Serializable, Appli
         }
         @SuppressWarnings("rawtypes")
         IServerConfigService serverConfigService = (IServerConfigService) context.getBean("serverConfigService");
-        //don't send message for server created this task
+        // don't send message for server created this task
         if (serverConfigService.getServerId() == senderServerId) {
             return;
         }
@@ -55,12 +54,16 @@ public class SendUpdateCrashHistoryTask implements Runnable, Serializable, Appli
                 return;
             }
             if (senderServerId != serverConfigService.getServerId()) {
-                if(gameType.isBattleGroundGame()) {
-                    ((GameMap) room.getMap()).addCrashHistory((CrashRoundInfo) crashRoundInfo);
-                } else {
-                    ((com.betsoft.casino.mp.maxcrashgame.model.GameMap) room.getMap()).addCrashHistory((com.betsoft.casino.mp.maxcrashgame.model.CrashRoundInfo) crashRoundInfo);
-                }
-                LOG.debug("save crashRoundInfo from other server, {}", crashRoundInfo);
+                /*
+                 * if(gameType.isBattleGroundGame()) {
+                 * ((GameMap) room.getMap()).addCrashHistory((CrashRoundInfo) crashRoundInfo);
+                 * } else {
+                 * ((com.betsoft.casino.mp.maxcrashgame.model.GameMap)
+                 * room.getMap()).addCrashHistory((com.betsoft.casino.mp.maxcrashgame.model.
+                 * CrashRoundInfo) crashRoundInfo);
+                 * }
+                 */
+                LOG.debug("save crashRoundInfo from other server (STUBBED), {}", crashRoundInfo);
             }
         } catch (Exception e) {
             LOG.error("Cannot send message={} to seat", LOG.isErrorEnabled() ? toString() : "", e);
@@ -83,4 +86,3 @@ public class SendUpdateCrashHistoryTask implements Runnable, Serializable, Appli
                 .toString();
     }
 }
-

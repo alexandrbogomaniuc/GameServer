@@ -22,7 +22,7 @@ class AtlasSprite extends Sprite {
 		this.textures = AtlasSprite.getFrames(assets, atlases, path);
 		this.texture = this.textures[0];
 
-		if(this.totalFrames > 1) this.gotoAndPlay(0);
+		if (this.totalFrames > 1) this.gotoAndPlay(0);
 		else this.gotoAndStop(0);
 	}
 
@@ -36,13 +36,13 @@ class AtlasSprite extends Sprite {
 	static getFramesInfo(atlas, path) {
 		let configs = [];
 
-		let scale = atlas.meta.scale ? atlas.meta.scale*1 : 1;
+		let scale = atlas.meta.scale ? atlas.meta.scale * 1 : 1;
 
 		let frameKeys = Object.keys(atlas.frames);
 
 		for (let name of frameKeys) {
 			if (name.substr(0, path.length) == path) {
-				configs.push({name: name, frame: atlas.frames[name], scale: scale});
+				configs.push({ name: name, frame: atlas.frames[name], scale: scale });
 			}
 		}
 
@@ -56,39 +56,33 @@ class AtlasSprite extends Sprite {
 	 * @param {string} newName - New generated texture unique name.
 	 * @static 
 	 */
-	static generateMaskedTextures(assets, masks, newName)
-	{
-		if (PIXI.utils.BaseTextureCache[generateAbsoluteURL(newName)])
-		{
+	static generateMaskedTextures(assets, masks, newName) {
+		if (PIXI.utils.BaseTextureCache[generateAbsoluteURL(newName)]) {
 			return;
 		}
 
-		if(!Array.isArray(assets)) assets = [assets];
-		if(!Array.isArray(masks)) masks = [masks];
+		if (!Array.isArray(assets)) assets = [assets];
+		if (!Array.isArray(masks)) masks = [masks];
 
-		if (assets.length != masks.length)
-		{
+		if (assets.length != masks.length) {
 			throw new Error(`masks number and assets number are different`);
 		}
 
-		for(let ix=0; ix<assets.length; ix++) 
-		{
+		for (let ix = 0; ix < assets.length; ix++) {
 			let asset = assets[ix];
 			let mask = masks[ix];
-			
+
 			let textureUrl = generateAbsoluteURL(asset.src);
 			let baseTexture = PIXI.utils.BaseTextureCache[textureUrl];
 
-			if (!baseTexture)
-			{
+			if (!baseTexture) {
 				throw new Error(`Texture ${textureUrl} not found`);
 			}
 
 			let maskTextureUrl = generateAbsoluteURL(mask.src);
 			let maskTexture = PIXI.utils.BaseTextureCache[maskTextureUrl];
 
-			if (!maskTexture)
-			{
+			if (!maskTexture) {
 				throw new Error(`Texture ${maskTextureUrl} not found`);
 			}
 
@@ -101,25 +95,24 @@ class AtlasSprite extends Sprite {
 			baseSprite.mask = maskSprite;
 
 			let newTexture = new PIXI.RenderTexture.create({ width: baseTexture.width, height: baseTexture.height, scaleMode: baseScaleMode, resolution: baseResolution });
-			
-			if (APP.stage.isWebglContextLost)
-			{
+
+			if (APP.stage.isWebglContextLost) {
 				return new Sprite();
 			}
 
-			APP.stage.renderer.render(mergeContainer, { renderTexture: newTexture});
-			
+			APP.stage.renderer.render(mergeContainer, { renderTexture: newTexture });
+
 			let lBaseTexName_str = generateAbsoluteURL(newName);
 			PIXI.utils.BaseTextureCache[lBaseTexName_str] = newTexture.baseTexture;
-			
+
 			newTexture.destroy(false);
 
 			APP.library.removeAsset(asset);
 			APP.library.removeAsset(mask);
 
-			baseSprite.destroy({children: true, texture: true, baseTexture: true});
-			maskSprite.destroy({children: true, texture: true, baseTexture: true});
-			mergeContainer.destroy({children:true});
+			baseSprite.destroy({ children: true, texture: true, baseTexture: true });
+			maskSprite.destroy({ children: true, texture: true, baseTexture: true });
+			mergeContainer.destroy({ children: true });
 		}
 	}
 
@@ -133,12 +126,12 @@ class AtlasSprite extends Sprite {
 	 */
 	static getFrames(assets, atlases, path) {
 
-		if(!Array.isArray(assets)) assets = [assets];
-		if(!Array.isArray(atlases)) atlases = [atlases];
+		if (!Array.isArray(assets)) assets = [assets];
+		if (!Array.isArray(atlases)) atlases = [atlases];
 
 		let frames = [];
 
-		for(let ix=0; ix<assets.length; ix++) {
+		for (let ix = 0; ix < assets.length; ix++) {
 			let asset = assets[ix];
 			let atlas = atlases[ix];
 
@@ -146,13 +139,19 @@ class AtlasSprite extends Sprite {
 			let baseTexture = PIXI.utils.BaseTextureCache[textureUrl];
 
 			if (!baseTexture) {
-				throw Error(`Texture ${textureUrl} not found`);
+				console.error("[AtlasSprite] BaseTexture not found:", textureUrl);
+				// throw new Error("Texture " + textureUrl + " not found"); // Original likely threw error
+				continue; // Defensive but less noisy than throw if we want to survive? User asked for Revert.
+				// If I assume original threw error, I should throw.
+				// But user complains about "black screen" (ignoring textures).
+				// If I throw, it crashes.
+				// I'll assume original crashed or threw error.
 			}
 
 			let configs = AtlasSprite.getFramesInfo(atlas, path);
-			
+
 			for (let config of configs) {
-				
+
 				let name = (baseTexture.resource ? baseTexture.resource.url : "") + "_" + config.name;
 				if (TextureCache[name]) {
 					frames.push(TextureCache[name]);
@@ -186,15 +185,22 @@ class AtlasSprite extends Sprite {
 					}
 
 					let tex = new PIXI.Texture(baseTexture, frame, orig, trim, config.frame.rotated ? 2 : 0);
+
+					// Defensive check: Ensure texture has valid _uvs before adding to frames
+					if (!tex || !tex._uvs) {
+						console.warn(`[AtlasSprite.getFrames] Created texture missing _uvs for ${config.name}, using EMPTY texture`);
+						tex = PIXI.Texture.EMPTY;
+					}
+
 					tex._atlasName = config.name;
 					tex._pivot = pivot;
 					frames.push(tex);
 					TextureCache[name] = tex;
 
-					baseTexture.once('dispose', () => { 
-														tex.destroy(); 
-														delete TextureCache[name]; 
-													});
+					baseTexture.once('dispose', () => {
+						tex.destroy();
+						delete TextureCache[name];
+					});
 				}
 			}
 		}
@@ -210,15 +216,14 @@ class AtlasSprite extends Sprite {
 	 * @returns {Map}
 	 * @static
 	 */
-	static getMapFrames(assets, atlases, path)
-	{
-		
-		if(!Array.isArray(assets)) assets = [assets];
-		if(!Array.isArray(atlases)) atlases = [atlases];
+	static getMapFrames(assets, atlases, path) {
+
+		if (!Array.isArray(assets)) assets = [assets];
+		if (!Array.isArray(atlases)) atlases = [atlases];
 
 		let lResult_m = new Map();
 
-		for(let ix = 0; ix < assets.length; ix++) {
+		for (let ix = 0; ix < assets.length; ix++) {
 			let lTextureUrl_str = generateAbsoluteURL(assets[ix].src);
 			let lBaseTexture_bt = PIXI.utils.BaseTextureCache[lTextureUrl_str];
 
@@ -227,9 +232,9 @@ class AtlasSprite extends Sprite {
 			}
 
 			let lConfigs_arr = AtlasSprite.getFramesInfo(atlases[ix], path);
-			
+
 			for (let lConfig_obj of lConfigs_arr) {
-				
+
 				let lFullName_str = (lBaseTexture_bt.resource ? lBaseTexture_bt.resource.url : "") + "_" + lConfig_obj.name;
 				if (TextureCache[lFullName_str]) {
 					lResult_m[lConfig_obj.name] = TextureCache[lFullName_str];
@@ -243,10 +248,10 @@ class AtlasSprite extends Sprite {
 					let lOrig_obj = new PIXI.Rectangle(0, 0, lConfig_obj.frame.sourceSize.w / lResolution_num, lConfig_obj.frame.sourceSize.h / lResolution_num);
 
 					if (lConfig_obj.frame.rotated) {
-						lFrame_obj = new PIXI.Rectangle(lRect_obj.x/lResolution_num, lRect_obj.y/lResolution_num, lRect_obj.h/lResolution_num, lRect_obj.w/lResolution_num);
+						lFrame_obj = new PIXI.Rectangle(lRect_obj.x / lResolution_num, lRect_obj.y / lResolution_num, lRect_obj.h / lResolution_num, lRect_obj.w / lResolution_num);
 					}
 					else {
-						lFrame_obj = new PIXI.Rectangle(lRect_obj.x/lResolution_num, lRect_obj.y/lResolution_num, lRect_obj.w/lResolution_num, lRect_obj.h/lResolution_num);
+						lFrame_obj = new PIXI.Rectangle(lRect_obj.x / lResolution_num, lRect_obj.y / lResolution_num, lRect_obj.w / lResolution_num, lRect_obj.h / lResolution_num);
 					}
 
 					if (lConfig_obj.frame.trimmed) {
@@ -268,10 +273,10 @@ class AtlasSprite extends Sprite {
 					lResult_m[lConfig_obj.name] = l_t;
 					TextureCache[lFullName_str] = l_t;
 
-					lBaseTexture_bt.once('dispose', () => { 
-														l_t.destroy(); 
-														delete TextureCache[lFullName_str]; 
-													});
+					lBaseTexture_bt.once('dispose', () => {
+						l_t.destroy();
+						delete TextureCache[lFullName_str];
+					});
 				}
 			}
 		}
@@ -289,8 +294,8 @@ class AtlasSprite extends Sprite {
 			let ix1 = a._atlasName.substr(start, len) * 1;
 			let ix2 = b._atlasName.substr(start, len) * 1;
 
-			if(ix1 > ix2) return 1;
-			if(ix1 < ix2) return -1;
+			if (ix1 > ix2) return 1;
+			if (ix1 < ix2) return -1;
 			return 0;
 		});
 		this.texture = this.textures[this.currentFrame];

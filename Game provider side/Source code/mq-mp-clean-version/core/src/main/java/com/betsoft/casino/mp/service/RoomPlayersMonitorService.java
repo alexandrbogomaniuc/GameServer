@@ -1,6 +1,5 @@
 package com.betsoft.casino.mp.service;
 
-import com.betsoft.casino.mp.maxcrashgame.model.AbstractCrashGameRoom;
 import com.betsoft.casino.mp.model.GameType;
 import com.betsoft.casino.mp.model.ICrashGameSetting;
 import com.betsoft.casino.mp.model.IRMSRoom;
@@ -65,16 +64,17 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
     protected IMap<Long, SocketClientsStats> socketClientsStats;
 
     public RoomPlayersMonitorService(HazelcastInstance hazelcast, IRoomServiceFactory roomServiceFactory,
-            ISocketService socketService, AsyncExecutorService asyncExecutorService, IAnalyticsDBClientService analyticsDBClientService) {
+            ISocketService socketService, AsyncExecutorService asyncExecutorService,
+            IAnalyticsDBClientService analyticsDBClientService) {
 
         this.hazelcast = hazelcast;
         this.socketService = socketService;
         this.asyncExecutorService = asyncExecutorService;
         this.analyticsDBClientService = analyticsDBClientService;
 
-        if(roomServiceFactory != null) {
+        if (roomServiceFactory != null) {
             this.serverConfigService = roomServiceFactory.getServerConfigService();
-            if(this.serverConfigService != null) {
+            if (this.serverConfigService != null) {
                 this.serverId = this.serverConfigService.getServerId();
             }
         }
@@ -102,7 +102,8 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
         if (this.enabled) {
             // Start the timer when enabled
             LOG.debug("initScheduller: Timer is enabled. Starting timer with period {} ms", this.timerPeriod);
-            this.executorService.scheduleAtFixedRate(this::timerOccurWrapper, 0, this.timerPeriod, TimeUnit.MILLISECONDS);
+            this.executorService.scheduleAtFixedRate(this::timerOccurWrapper, 0, this.timerPeriod,
+                    TimeUnit.MILLISECONDS);
             this.executorService.scheduleAtFixedRate(this::timerCountWrapper, 0, 1, TimeUnit.MINUTES);
 
         } else {
@@ -138,7 +139,8 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
         return socketClientInfos.tryLock(webSocketSessionId);
     }
 
-    public boolean socketClientInfosTryLock(String webSocketSessionId, long time, TimeUnit timeunit) throws InterruptedException {
+    public boolean socketClientInfosTryLock(String webSocketSessionId, long time, TimeUnit timeunit)
+            throws InterruptedException {
         return socketClientInfos.tryLock(webSocketSessionId, time, timeunit);
     }
 
@@ -166,7 +168,7 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
 
         Collection<SocketClientInfo> filteredSocketClientInfos = this.socketClientInfos.values(predicate);
 
-        if(!filteredSocketClientInfos.isEmpty()) {
+        if (!filteredSocketClientInfos.isEmpty()) {
             LOG.debug("socketClientInfosRemoveOld: There are {} old filteredSocketClientInfos records, older {}ms",
                     filteredSocketClientInfos.size(), SOCKET_CLIENT_INFO_THRESHOLD_MS);
 
@@ -190,8 +192,8 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
         LOG.debug("removeSocketClientInfoForAccountId: There are {} duplicates on accountId={}",
                 filteredSocketClientInfos.size(), accountId);
 
-        if(!filteredSocketClientInfos.isEmpty()) {
-            for(SocketClientInfo socketClientInfo : filteredSocketClientInfos) {
+        if (!filteredSocketClientInfos.isEmpty()) {
+            for (SocketClientInfo socketClientInfo : filteredSocketClientInfos) {
                 LOG.debug("removeSocketClientInfoForAccountId: remove socketClientInfo:{} from Hazelcast",
                         socketClientInfo);
                 this.removeSocketClientInfo(socketClientInfo.getWebSocketSessionId());
@@ -200,16 +202,16 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
     }
 
     public SocketClientInfo convert(ILobbySocketClient client, long buyInStack, long roomId, String playerExternalId,
-                                    boolean isOwner, int seatNr, boolean isPrivateRoom, String currency) {
+            boolean isOwner, int seatNr, boolean isPrivateRoom, String currency) {
 
-        if(client == null ) {
+        if (client == null) {
             LOG.error("convert: client or roomInfo is null, client={}", client);
             return null;
         }
 
         GameType gameType = client.getGameType();
 
-        if(gameType == null) {
+        if (gameType == null) {
             LOG.error("convert: gameType is null");
             return null;
         }
@@ -246,21 +248,21 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
 
     public SocketClientInfo convert(IGameSocketClient client, IRoom room, String playerExternalId) {
 
-        if(client == null || room == null) {
+        if (client == null || room == null) {
             LOG.error("convert: client or roomInfo is null, client={}, room={}", client, room);
             return null;
         }
 
         GameType gameType = client.getGameType();
 
-        if(gameType == null) {
+        if (gameType == null) {
             LOG.error("convert: gameType is null");
             return null;
         }
 
         IRoomInfo roomInfo = room.getRoomInfo();
 
-        if(roomInfo == null) {
+        if (roomInfo == null) {
             LOG.error("convert: roomInfo is null");
             return null;
         }
@@ -269,13 +271,20 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
             boolean isBattleground = roomInfo.isBattlegroundMode();
             long buyInStack = roomInfo.getStake().toCents();
 
+            /*
+             * if (isBattleground && !GameType.BG_MAXCRASHGAME.equals(gameType)) {
+             * buyInStack = roomInfo.getBattlegroundBuyIn();
+             * } else if (GameType.TRIPLE_MAX_BLAST.equals(gameType) && room instanceof
+             * AbstractCrashGameRoom) {
+             * ICrashGameSetting crashGameSetting = ((AbstractCrashGameRoom)
+             * room).getCrashGameSetting();
+             * if (crashGameSetting != null) {
+             * buyInStack = crashGameSetting.getMinStake();
+             * }
+             * }
+             */
             if (isBattleground && !GameType.BG_MAXCRASHGAME.equals(gameType)) {
                 buyInStack = roomInfo.getBattlegroundBuyIn();
-            } else if (GameType.TRIPLE_MAX_BLAST.equals(gameType) && room instanceof AbstractCrashGameRoom) {
-                ICrashGameSetting crashGameSetting = ((AbstractCrashGameRoom) room).getCrashGameSetting();
-                if (crashGameSetting != null) {
-                    buyInStack = crashGameSetting.getMinStake();
-                }
             }
 
             SocketClientInfo socketClientInfo = new SocketClientInfo();
@@ -308,14 +317,14 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
 
         LOG.debug("upsertSocketClientInfo: socketClientInfo: {}", socketClientInfo);
 
-        if(socketClientInfo == null ) {
+        if (socketClientInfo == null) {
             LOG.error("upsertSocketClientInfo: socketClientInfo is null.");
             return;
         }
 
         String webSocketSessionId = socketClientInfo.getWebSocketSessionId();
 
-        if(StringUtils.isTrimmedEmpty(webSocketSessionId)) {
+        if (StringUtils.isTrimmedEmpty(webSocketSessionId)) {
             LOG.error("upsertSocketClientInfo: webSocketSessionId is empty, socketClientInfo:{}.", socketClientInfo);
             return;
         }
@@ -337,9 +346,10 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
 
     public void removeSocketClientInfo(String webSocketSessionId) {
 
-        LOG.debug("removeSocketClientInfo: remove from hazelcast element with webSocketSessionId:{}", webSocketSessionId);
+        LOG.debug("removeSocketClientInfo: remove from hazelcast element with webSocketSessionId:{}",
+                webSocketSessionId);
 
-        if(StringUtils.isTrimmedEmpty(webSocketSessionId)) {
+        if (StringUtils.isTrimmedEmpty(webSocketSessionId)) {
             LOG.error("removeSocketClientInfo: webSocketSessionId is empty.");
             return;
         }
@@ -390,8 +400,7 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
 
         long now = Instant.now().truncatedTo(ChronoUnit.MINUTES).toEpochMilli();
 
-        Map<Integer, SocketClientsStat> stats =
-                new HashMap<Integer, SocketClientsStats.SocketClientsStat>();
+        Map<Integer, SocketClientsStat> stats = new HashMap<Integer, SocketClientsStats.SocketClientsStat>();
 
         for (Entry<Integer, Long> counts : serverClientsCount.entrySet()) {
             SocketClientsStat stat = new SocketClientsStat();
@@ -422,8 +431,7 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
         LOG.debug("finishGameSessionAndMakeSitOutAsync: serverId={}, sid={}, privateRoomId={}",
                 serverId, sid, privateRoomId);
         asyncExecutorService.execute(
-                () -> finishGameSessionAndMakeSitOut(serverId, sid, privateRoomId)
-        );
+                () -> finishGameSessionAndMakeSitOut(serverId, sid, privateRoomId));
     }
 
     @Override
@@ -431,7 +439,7 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
         LOG.debug("finishGameSessionAndMakeSitOut: serverId={}, sid={}, privateRoomId={}",
                 serverId, sid, privateRoomId);
 
-        if(StringUtils.isTrimmedEmpty(sid)) {
+        if (StringUtils.isTrimmedEmpty(sid)) {
             LOG.error("finishGameSessionAndMakeSitOut: sid is null or empty");
             return false;
         }
@@ -447,20 +455,19 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
     public void pushOnlineRoomsPlayersAsync(int serverId, List<IRMSRoom> trmsRooms) {
         LOG.debug("pushOnlineRoomsPlayersAsync: serverId:{}, trmsRooms:{}", serverId, trmsRooms);
         asyncExecutorService.execute(
-                () -> pushOnlineRoomsPlayers(serverId, trmsRooms)
-        );
+                () -> pushOnlineRoomsPlayers(serverId, trmsRooms));
     }
 
     @Override
     public boolean pushOnlineRoomsPlayers(int serverId, List<IRMSRoom> trmsRooms) {
         LOG.debug("pushOnlineRoomsPlayers: serverId={}, trmsRooms={}", serverId, trmsRooms);
 
-        if(trmsRooms == null) {
+        if (trmsRooms == null) {
             LOG.error("pushOnlineRoomsPlayers: trmsRooms is null");
             return false;
         }
 
-        if(trmsRooms.isEmpty()) {
+        if (trmsRooms.isEmpty()) {
             LOG.debug("pushOnlineRoomsPlayers: trmsRooms is empty, skip pushOnlineRoomsPlayers");
             return true;
         }
@@ -476,26 +483,24 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
     public void saveRoomsPlayersAsync(int serverId, List<IRMSRoom> trmsRooms) {
         LOG.debug("saveRoomsPlayersAsync: serverId:{}, trmsRooms:{}", serverId, trmsRooms);
         asyncExecutorService.execute(
-                () -> saveRoomsPlayers(serverId, trmsRooms)
-        );
+                () -> saveRoomsPlayers(serverId, trmsRooms));
     }
 
     @Override
     public boolean saveRoomsPlayers(int serverId, List<IRMSRoom> trmsRooms) {
         LOG.debug("saveRoomsPlayers: serverId={}, trmsRooms={}", serverId, trmsRooms);
 
-        if(trmsRooms == null) {
+        if (trmsRooms == null) {
             LOG.error("saveRoomsPlayers: trmsRooms is null");
             return false;
         }
 
-        if(trmsRooms.isEmpty()) {
+        if (trmsRooms.isEmpty()) {
             LOG.debug("saveRoomsPlayers: trmsRooms is empty, skip saveRoomsPlayers");
             return true;
         }
 
-        List<Map<String, Object>> roomsPlayersRows
-                = analyticsDBClientService.prepareRoomsPlayers(trmsRooms, serverId);
+        List<Map<String, Object>> roomsPlayersRows = analyticsDBClientService.prepareRoomsPlayers(trmsRooms, serverId);
 
         boolean saveResult = false;
         if (roomsPlayersRows != null && !roomsPlayersRows.isEmpty()) {
@@ -518,20 +523,23 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
 
                 Collection<SocketClientInfo> socketClientInfos = this.socketClientInfosGetAll();
 
-                if(!socketClientInfos.isEmpty()) {
+                if (!socketClientInfos.isEmpty()) {
 
                     List<IRMSRoom> trmsRooms = this.convertSocketClientInfoToTRMSRooms(socketClientInfos);
 
-                    if(trmsRooms != null && !trmsRooms.isEmpty()) {
+                    if (trmsRooms != null && !trmsRooms.isEmpty()) {
 
-                        /* MQLEG-392 Turn off players room update to Canex
-                        try {
-
-                            this.pushOnlineRoomsPlayersAsync(serverId, trmsRooms);
-
-                        } catch (Exception e) {
-                            LOG.error("timerOccur: Error exception during pushOnlineRoomsPlayersAsync", e);
-                        }*/
+                        /*
+                         * MQLEG-392 Turn off players room update to Canex
+                         * try {
+                         * 
+                         * this.pushOnlineRoomsPlayersAsync(serverId, trmsRooms);
+                         * 
+                         * } catch (Exception e) {
+                         * LOG.error("timerOccur: Error exception during pushOnlineRoomsPlayersAsync",
+                         * e);
+                         * }
+                         */
 
                         try {
 
@@ -560,7 +568,7 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
 
         LOG.debug("convertSocketClientInfoToTRMSPlayer: socketClientInfo:{}", socketClientInfo);
 
-        if(socketClientInfo == null) {
+        if (socketClientInfo == null) {
             LOG.error("convertSocketClientInfoToTRMSPlayer: socketClientInfo is null.");
             return null;
         }
@@ -579,29 +587,29 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
     }
 
     public List<IRMSRoom> convertSocketClientInfoToTRMSRooms(Collection<SocketClientInfo> socketClientInfos) {
-        if(socketClientInfos == null) {
+        if (socketClientInfos == null) {
             LOG.error("convertSocketClientInfoToTRMSRooms: socketClientInfos is null.");
             return null;
         }
         LOG.debug("convertSocketClientInfoToTRMSRooms: socketClientInfos:{}", socketClientInfos.size());
 
-        Map<Long,IRMSRoom> trmsRooms = convertSocketClientInfoToTRMSRoomsMap(socketClientInfos);
+        Map<Long, IRMSRoom> trmsRooms = convertSocketClientInfoToTRMSRoomsMap(socketClientInfos);
 
         return new ArrayList<>(trmsRooms.values());
     }
 
     public Map<Long, IRMSRoom> convertSocketClientInfoToTRMSRoomsMap(Collection<SocketClientInfo> socketClientInfos) {
 
-        if(socketClientInfos == null) {
+        if (socketClientInfos == null) {
             LOG.error("convertSocketClientInfoToTRMSRoomsMap: socketClientInfos is null.");
             return null;
         }
 
         LOG.debug("convertSocketClientInfoToTRMSRoomsMap: socketClientInfos:{}", socketClientInfos.size());
 
-        Map<Long,IRMSRoom> trmsRooms = new HashMap<>();
+        Map<Long, IRMSRoom> trmsRooms = new HashMap<>();
 
-        if(!socketClientInfos.isEmpty()) {
+        if (!socketClientInfos.isEmpty()) {
 
             for (SocketClientInfo socketClientInfo : socketClientInfos) {
 
@@ -610,7 +618,7 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
                 long roomId = socketClientInfo.getRoomId();
                 IRMSRoom trmsRoom = trmsRooms.get(roomId);
 
-                if(trmsRoom == null) {
+                if (trmsRoom == null) {
                     RMSRoom rmsRoom = new RMSRoom();
                     rmsRoom.setRoomId(roomId);
                     rmsRoom.setServerId(socketClientInfo.getServerId());
@@ -630,7 +638,7 @@ public class RoomPlayersMonitorService implements IRoomPlayersMonitorService {
 
                 RMSPlayer trmsPlayer = convertSocketClientInfoToTRMSPlayer(socketClientInfo);
 
-                if(trmsPlayer != null) {
+                if (trmsPlayer != null) {
                     trmsRoom.getPlayers().add(trmsPlayer);
                 }
             }

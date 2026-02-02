@@ -27,9 +27,8 @@ public final class ShellDetector {
     private ShellDetector() {
     }
 
-
     public static boolean isMobileShell(BaseGameInfoTemplate template, boolean singleGID, String userAgent,
-                                        String platform, boolean isHtml5Pc) {
+            String platform, boolean isHtml5Pc) {
         boolean isForceHtml5 = "html5".equalsIgnoreCase(platform);
         boolean isMobileBrowser = MobileDetector.isMobile(userAgent);
         Html5PcVersionMode html5PcMode = template.getDefaultGameInfo().getHtml5PcVersionMode();
@@ -42,10 +41,11 @@ public final class ShellDetector {
     }
 
     public static String getShellPath(BankInfo bankInfo, GameMode mode, BaseGameInfoTemplate template, String userAgent,
-                                      String platform, boolean isUnj) {
+            String platform, boolean isUnj) {
         boolean singleGID = bankInfo.isUseSingleGameIdForAllDevices() || template.isSingleGameIdForAllPlatforms();
         Html5PcVersionMode html5PcMode;
-        IBaseGameInfo gameInfo = BaseGameCache.getInstance().getGameInfoById(bankInfo.getId(), template.getGameId(), bankInfo.getDefaultCurrency());
+        IBaseGameInfo gameInfo = BaseGameCache.getInstance().getGameInfoById(bankInfo.getId(), template.getGameId(),
+                bankInfo.getDefaultCurrency());
         if (gameInfo != null) {
             html5PcMode = gameInfo.getHtml5PcVersionMode();
         } else {

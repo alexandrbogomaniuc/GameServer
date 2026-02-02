@@ -78,6 +78,14 @@ public class SubCasinoCache extends AbstractExportableCache<SubCasino> implement
     }
 
     public SubCasino getSubCasinoByDomainName(String domainName) {
+        // DEV-PATCH: Alias localhost to the main environment domain
+        if ("localhost".equals(domainName)) {
+            // Try explicit ports if pure localhost fails, or default to the main one
+             SubCasino local = byDomainNameMap.get("games-gp3.local.com"); 
+             if (local == null) local = byDomainNameMap.get("localhost:8081");
+             if (local != null) return local;
+        }
+
         final SubCasino subCasino = byDomainNameMap.get(domainName);
         if (subCasino == null) {
             LOG.error("SubCasino not found: " + domainName);

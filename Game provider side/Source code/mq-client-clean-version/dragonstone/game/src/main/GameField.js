@@ -1,5 +1,4 @@
-import
-{
+import {
 	DIALOG_ID_INSUFFICIENT_FUNDS,
 	DIALOG_ID_BATTLEGROUND_NOT_ENOUGH_PLAYERS,
 	DIALOG_ID_BATTLEGROUND_BUY_IN_CONFIRMATION,
@@ -19,7 +18,7 @@ import CharcoalFlyingDebris from './bullets/CharcoalFlyingDebris';
 import Crate from '../ui/Crate';
 import ContentItem from '../ui/content/ContentItem';
 import ContentItemInfo from '../model/uis/content/ContentItemInfo';
-import { isRageSupportEnemy, WEAPONS, RICOCHET_WEAPONS, ENEMIES, FRAME_RATE, IS_SPECIAL_WEAPON_SHOT_PAID, ENEMY_TYPES} from '../../../shared/src/CommonConstants';
+import { isRageSupportEnemy, WEAPONS, RICOCHET_WEAPONS, ENEMIES, FRAME_RATE, IS_SPECIAL_WEAPON_SHOT_PAID, ENEMY_TYPES } from '../../../shared/src/CommonConstants';
 import Sequence from '../../../../common/PIXI/src/dgphoenix/unified/controller/animation/Sequence';
 import * as Easing from '../../../../common/PIXI/src/dgphoenix/unified/model/display/animation/easing';
 import Timer from "../../../../common/PIXI/src/dgphoenix/unified/controller/time/Timer";
@@ -89,7 +88,7 @@ import EightWayEnemy from './enemies/EightWayEnemy';
 import DefaultGunFireEffect from './animation/default_gun/DefaultGunFireEffect';
 
 import KeyboardControlProxy from '../../../../common/PIXI/src/dgphoenix/unified/controller/interaction/keyboard/KeyboardControlProxy';
-import {GAME_MESSAGES, LOBBY_MESSAGES} from '../external/GameExternalCommunicator';
+import { GAME_MESSAGES, LOBBY_MESSAGES } from '../external/GameExternalCommunicator';
 import GameExternalCommunicator from '../external/GameExternalCommunicator';
 import PrizesController, { HIT_RESULT_SINGLE_CASH_ID, HIT_RESULT_ADDITIONAL_CASH_ID } from '../controller/uis/prizes/PrizesController';
 import ProfilingInfo from '../../../../common/PIXI/src/dgphoenix/unified/model/profiling/ProfilingInfo';
@@ -151,21 +150,21 @@ const AUTO_FIRE_TIMEOUTS = {
 	MIN: {
 		OTHER: 160,
 		CRYOGUN: 978,
-		FLAMETHROWER: 25*2*16.7,
+		FLAMETHROWER: 25 * 2 * 16.7,
 		RAILGUN: 500,
 		ARTILLERYSTRIKE: 1700
 	},
 	MIDDLE: {
 		OTHER: 290,
 		CRYOGUN: 1027,
-		FLAMETHROWER: 28*2*16.7,
+		FLAMETHROWER: 28 * 2 * 16.7,
 		RAILGUN: 550,
 		ARTILLERYSTRIKE: 1800
 	},
 	MAX: {
 		OTHER: 550,
 		CRYOGUN: 1202,
-		FLAMETHROWER: 31*2*16.7,
+		FLAMETHROWER: 31 * 2 * 16.7,
 		RAILGUN: 700,
 		ARTILLERYSTRIKE: 1900
 	}
@@ -176,21 +175,21 @@ const MIDDLE_FIRE_REQUEST_TIMEOUT = 230; // middle timeout between shots
 const MAX_FIRE_REQUEST_TIMEOUT = 500; // maximum timeout between shots
 
 const PLAYERS_POSITIONS = {
-	"DESKTOP":[
-		{x: 112, 		y: 493, 	direct: 0, masterOffset: {x: 0+36, y: 2}},
-		{x: 461.5-14, 	y: 493,		direct: 0, masterOffset: {x: 0+36, y: 2}},
-		{x: 811-28, 	y: 493,		direct: 0, masterOffset: {x: 0+36, y: 2}},
-		{x: 112,		y: 48+16,		direct: 1, masterOffset: {x: 0+36, y: 10-24}},
-		{x: 461.5-14, 	y: 48+16,	 	direct: 1, masterOffset: {x: 0+36, y: 10-24}},
-		{x: 811-28, 	y: 48+16, 		direct: 1, masterOffset: {x: 0+36, y: 10-24}}
+	"DESKTOP": [
+		{ x: 112, y: 493, direct: 0, masterOffset: { x: 0 + 36, y: 2 } },
+		{ x: 461.5 - 14, y: 493, direct: 0, masterOffset: { x: 0 + 36, y: 2 } },
+		{ x: 811 - 28, y: 493, direct: 0, masterOffset: { x: 0 + 36, y: 2 } },
+		{ x: 112, y: 48 + 16, direct: 1, masterOffset: { x: 0 + 36, y: 10 - 24 } },
+		{ x: 461.5 - 14, y: 48 + 16, direct: 1, masterOffset: { x: 0 + 36, y: 10 - 24 } },
+		{ x: 811 - 28, y: 48 + 16, direct: 1, masterOffset: { x: 0 + 36, y: 10 - 24 } }
 	],
 	"MOBILE": [
-		{x: 112, 		y: 470, 	direct: 0, masterOffset: {x: 0+36, y: 2}},
-		{x: 461.5-14, 	y: 470,		direct: 0, masterOffset: {x: 0+36, y: 2}},
-		{x: 811-28, 	y: 470,		direct: 0, masterOffset: {x: 0+36, y: 2}},
-		{x: 112,		y: 48+16,		direct: 1, masterOffset: {x: 0+36, y: 10-24}},
-		{x: 461.5-14, 	y: 48+16, 		direct: 1, masterOffset: {x: 0+36, y: 10-24}},
-		{x: 811-28, 	y: 48+16,	 	direct: 1, masterOffset: {x: 0+36, y: 10-24}}
+		{ x: 112, y: 470, direct: 0, masterOffset: { x: 0 + 36, y: 2 } },
+		{ x: 461.5 - 14, y: 470, direct: 0, masterOffset: { x: 0 + 36, y: 2 } },
+		{ x: 811 - 28, y: 470, direct: 0, masterOffset: { x: 0 + 36, y: 2 } },
+		{ x: 112, y: 48 + 16, direct: 1, masterOffset: { x: 0 + 36, y: 10 - 24 } },
+		{ x: 461.5 - 14, y: 48 + 16, direct: 1, masterOffset: { x: 0 + 36, y: 10 - 24 } },
+		{ x: 811 - 28, y: 48 + 16, direct: 1, masterOffset: { x: 0 + 36, y: 10 - 24 } }
 	]
 }
 
@@ -222,242 +221,226 @@ const ORCS_FORMATION_SHAKE_GROUND_INTENSIVITY_HIGH = 2;
 //     | screen
 //-----------------
 export const Z_INDEXES = {
-	WAIT_SCREEN:						100000, /*this*/
-	WAITING_CAPTION:					100000, /*this*/
-	SUBLOADING:							100001, /*this*/
-	TRANSITION_VIEW:					110002, /*this*/
-	ROUND_RESULT:						110003, /*this*/
-	COUNT_DOWN:							110004, /*this*/
-	BTG_FINAL_COUNTING:					110005, /*this*/
-	FIRE_SETTINGS:						110006, /*this*/
+	WAIT_SCREEN: 100000, /*this*/
+	WAITING_CAPTION: 100000, /*this*/
+	SUBLOADING: 100001, /*this*/
+	TRANSITION_VIEW: 110002, /*this*/
+	ROUND_RESULT: 110003, /*this*/
+	COUNT_DOWN: 110004, /*this*/
+	BTG_FINAL_COUNTING: 110005, /*this*/
+	FIRE_SETTINGS: 110006, /*this*/
 
-	CEILING_DUST:						40000, /*this.container*/
+	CEILING_DUST: 40000, /*this.container*/
 
-	GROUNDBURN:							-541, /*this.bottomScreen*/
-	SMOKE_TRAIL:						2, /*this.bottomScreen*/
-	RAGE_AOE_ANIMATION:					5, /*this.bottomScreen*/
-	STEPS_TRAIL: 						9, /*this.bottomScreen*/
-	BOSS_APPEARING_CIRCLE_FX:			260, /*this.bottomScreen*/
-	TELEPORT_FX_ANIMATION: 				1430, /*this.bottomScreen*/
-	SPECTER_EXPLOADE_ANIMATION: 		1431, /*this.bottomScreen*/
-	BOSS_APPEARING_FX:					1440, /*this.bottomScreen*/
-	MAP_FX_ANIMATION:					8000, /*this.bottomScreen*/
-	CHAIN_GUN_AMMO_CASE:				10000, /*this.bottomScreen*/
-	GRADIENT:							19000, /*this.bottomScreen*/
+	GROUNDBURN: -541, /*this.bottomScreen*/
+	SMOKE_TRAIL: 2, /*this.bottomScreen*/
+	RAGE_AOE_ANIMATION: 5, /*this.bottomScreen*/
+	STEPS_TRAIL: 9, /*this.bottomScreen*/
+	BOSS_APPEARING_CIRCLE_FX: 260, /*this.bottomScreen*/
+	TELEPORT_FX_ANIMATION: 1430, /*this.bottomScreen*/
+	SPECTER_EXPLOADE_ANIMATION: 1431, /*this.bottomScreen*/
+	BOSS_APPEARING_FX: 1440, /*this.bottomScreen*/
+	MAP_FX_ANIMATION: 8000, /*this.bottomScreen*/
+	CHAIN_GUN_AMMO_CASE: 10000, /*this.bottomScreen*/
+	GRADIENT: 19000, /*this.bottomScreen*/
 	// bottomScreen - a part of map that will move away with boss appearing
 	// topScreen - effects, elements and UI, that don't go away with boss appearing
-	BOSS_RED_SCREEN:					480, /*this.topScreen*/
-	LOGO:								19999, /*this.topScreen*/
-	PLAYERS_CONTAINER:					20000, /*this.topScreen*/
-	PLAYERS_CONTAINER_EFFECTS:			20001, /*this.topScreen*/
-	MAIN_SPOT:							20002, /*this.topScreen*/
-	BULLET:								20100, /*this.topScreen*/
-	GUN_FIRE_EFFECT:					20101, /*this.topScreen*/
-	MISS_EFFECT:						20102, /*this.topScreen*/
-	PLAZMA_LENS_FLARE:					20110, /*this.topScreen*/
-	MAIN_PLAYER_CONTAINER_EFFECTS:		20120, /*this.topScreen*/
-	SIDEBAR: 							20130, /*this.topScreen*/
-	PLAYER_REWARD:						21000, /*this.topScreen*/
-	FRAGMENTS_PANEL_VIEW:				22000, /*this.topScreen*/
-	AWARDED_FRAGMENT:					25999, /*this.topScreen*/
-	AWARDED_WEAPON_CONTENT:				26000, /*this.topScreen*/
-	AMMO_COUNTER:						26001, /*this.topScreen*/
-	TARGETING:							27000, /*this.topScreen*/
-	TIPS_VIEW:							27009, /*this.topScreen*/
-	AWARDED_WIN_CONTENT:				27010, /*this.topScreen*/
-	CRITICAL_HIT:						27011, /*this.topScreen*/
-	BIG_WINS_CONTENT: 					27016, /*this.topScreen*/
-	AUTO_TARGETING_SWITCHER:			27020, /*this.topScreen*/
-	BET_LEVEL_BUTTON_HIT_AREA:			27021, /*this.topScreen should be greater than MAIN_SPOT*/
-	BOSS_HOURGLASS_VIEW:				28001, /*this.topScreen*/
-	BOSS_APPEARING_FLAMES_FX:			28003, /*this.topScreen*/
-	BOSS_DISAPPEARING_FX:				28004, /*this.topScreen*/
-	BOSS_DIE_RED_SCREEN:				28005, /*this.topScreen*/
-	MINI_SLOT:							28006, /*this.topScreen*/
-	MINI_WINS_CONTENT: 					28007, /*this.topScreen*/
-	BOSS_CAPTION:						28020, /*this.topScreen*/
-	BOSS_YOU_WIN:						28021, /*this.topScreen*/
+	BOSS_RED_SCREEN: 480, /*this.topScreen*/
+	LOGO: 19999, /*this.topScreen*/
+	PLAYERS_CONTAINER: 20000, /*this.topScreen*/
+	PLAYERS_CONTAINER_EFFECTS: 20001, /*this.topScreen*/
+	MAIN_SPOT: 20002, /*this.topScreen*/
+	BULLET: 20100, /*this.topScreen*/
+	GUN_FIRE_EFFECT: 20101, /*this.topScreen*/
+	MISS_EFFECT: 20102, /*this.topScreen*/
+	PLAZMA_LENS_FLARE: 20110, /*this.topScreen*/
+	MAIN_PLAYER_CONTAINER_EFFECTS: 20120, /*this.topScreen*/
+	SIDEBAR: 20130, /*this.topScreen*/
+	PLAYER_REWARD: 21000, /*this.topScreen*/
+	FRAGMENTS_PANEL_VIEW: 22000, /*this.topScreen*/
+	AWARDED_FRAGMENT: 25999, /*this.topScreen*/
+	AWARDED_WEAPON_CONTENT: 26000, /*this.topScreen*/
+	AMMO_COUNTER: 26001, /*this.topScreen*/
+	TARGETING: 27000, /*this.topScreen*/
+	TIPS_VIEW: 27009, /*this.topScreen*/
+	AWARDED_WIN_CONTENT: 27010, /*this.topScreen*/
+	CRITICAL_HIT: 27011, /*this.topScreen*/
+	BIG_WINS_CONTENT: 27016, /*this.topScreen*/
+	AUTO_TARGETING_SWITCHER: 27020, /*this.topScreen*/
+	BET_LEVEL_BUTTON_HIT_AREA: 27021, /*this.topScreen should be greater than MAIN_SPOT*/
+	BOSS_HOURGLASS_VIEW: 28001, /*this.topScreen*/
+	BOSS_APPEARING_FLAMES_FX: 28003, /*this.topScreen*/
+	BOSS_DISAPPEARING_FX: 28004, /*this.topScreen*/
+	BOSS_DIE_RED_SCREEN: 28005, /*this.topScreen*/
+	MINI_SLOT: 28006, /*this.topScreen*/
+	MINI_WINS_CONTENT: 28007, /*this.topScreen*/
+	BOSS_CAPTION: 28020, /*this.topScreen*/
+	BOSS_YOU_WIN: 28021, /*this.topScreen*/
 }
 
-class GameField extends Sprite
-{
-	static get EVENT_REFRESH_COMMON_PANEL_REQUIRED()				{return "onRefreshCommonPanelRequired";}
-	static get EVENT_NOT_ENOUGH_MONEY_DIALOG_REQUIRED()				{return "onNotEnoughMoneyDialogRequired";}
-	static get EVENT_SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_REQUIRED()	{return 'onSWPurchaseLimitExceededDialogRequired';}
-	static get EVENT_ON_BUY_AMMO_REQUIRED()							{return "onBuyAmmoRequired";}
-	static get EVENT_ON_TIME_TO_CONVERT_BALANCE_TO_AMMO() 			{return "EVENT_ON_TIME_TO_CONVERT_BALANCE_TO_AMMO";}
-	static get EVENT_ON_NEW_ENEMY_CREATED()							{return "newEnemyCreated";}
-	static get EVENT_ON_NEW_BOSS_CREATED()							{return "newBossCreated";}
-	static get EVENT_ON_BOSS_DESTROYING()							{return "bossDestroying";}
-	static get EVENT_ON_BOSS_DESTROYED()							{return "bossDestroyed";}
-	static get EVENT_ON_DRAGON_DISAPPEARED()						{return "EVENT_ON_DRAGON_DISAPPEARED";}
-	static get EVENT_ON_END_SHOW_WEAPON()							{return "endShowWeapon";}
-	static get EVENT_ON_DRAW_MAP()									{return "onDrawMap";}
-	static get EVENT_ON_WEAPON_UPDATED()							{return "onWeaponUpdated";}
-	static get EVENT_ON_GAME_FIELD_SCREEN_CREATED()					{return "onGameFieldScreenCreated";}
-	static get EVENT_ON_ENEMY_HIT_ANIMATION()						{return "onEnemyHitAnimation";}
-	static get EVENT_ON_ENEMY_MISS_ANIMATION()						{return "onEnemyMissAnimation";}
-	static get EVENT_ON_ROOM_FIELD_CLEARED()						{return "roomFieldCleared";}
-	static get EVENT_ON_GUN_UNLOCKED()								{return "gunUnlocked";}
-	static get EVENT_ON_WEAPONS_INTERACTION_CHANGED()				{return "onWeaponsInteractionChanged";}
-	static get EVENT_ON_ROUND_RESULT_FORCED()						{return "onRoundResultForced";}
-	static get EVENT_ON_FREE_HIT_INTERRUPTED()						{return "onFreeHitInterrupted";}
-	static get EVENT_ON_WEAPON_TO_UNPRESENTED_TRANSFER_REQUIRED()	{return "onWEaponToUnpresentedTransferRequired";}
-	static get EVENT_ON_BET_MULTIPLIER_UPDATED()					{return "onBetMultiplierUpdate";}
-	static get EVENT_ON_BET_MULTIPLIER_UPDATE_REQUIRED()			{return "onBetMultiplierUpdateRequired";}
-	static get EVENT_ON_EXPLODER_EXPLOSION_STARTED()				{return "onExploderExplosionStarted";}
-	static get EVENT_ON_RICOCHET_BULLET_FLY_OUT()					{return "onRicochetBulletFlyOut";}
-	static get EVENT_ON_RICOCHET_BULLET_REGISTER()					{return "onRicochetBulletRegister";}
-	static get EVENT_ON_BULLET_CLEAR()								{return "onBulletClear";}
-	static get EVENT_ON_CLEAR_BULLETS_BY_SEAT_ID()					{return "onClearBulletsBySeatId";}
-	static get EVENT_ON_MASTER_SEAT_ADDED()							{return "onMasterSeatAdded";}
-	static get EVENT_ON_CLEAR_ROOM_STARTED()						{return "onRoomClearStarted";}
-	static get EVENT_ON_START_UPDATE_CURSOR_POSITION()				{return "onStartUpdateCursorPosition";}
-	static get EVENT_ON_STOP_UPDATE_CURSOR_POSITION()				{return "onStopUpdateCursorPosition";}
-	static get EVENT_ON_SET_SPECIFIC_CURSOR_POSITION()				{return "onSetSpecificCursorPosition";}
+class GameField extends Sprite {
+	static get EVENT_REFRESH_COMMON_PANEL_REQUIRED() { return "onRefreshCommonPanelRequired"; }
+	static get EVENT_NOT_ENOUGH_MONEY_DIALOG_REQUIRED() { return "onNotEnoughMoneyDialogRequired"; }
+	static get EVENT_SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_REQUIRED() { return 'onSWPurchaseLimitExceededDialogRequired'; }
+	static get EVENT_ON_BUY_AMMO_REQUIRED() { return "onBuyAmmoRequired"; }
+	static get EVENT_ON_TIME_TO_CONVERT_BALANCE_TO_AMMO() { return "EVENT_ON_TIME_TO_CONVERT_BALANCE_TO_AMMO"; }
+	static get EVENT_ON_NEW_ENEMY_CREATED() { return "newEnemyCreated"; }
+	static get EVENT_ON_NEW_BOSS_CREATED() { return "newBossCreated"; }
+	static get EVENT_ON_BOSS_DESTROYING() { return "bossDestroying"; }
+	static get EVENT_ON_BOSS_DESTROYED() { return "bossDestroyed"; }
+	static get EVENT_ON_DRAGON_DISAPPEARED() { return "EVENT_ON_DRAGON_DISAPPEARED"; }
+	static get EVENT_ON_END_SHOW_WEAPON() { return "endShowWeapon"; }
+	static get EVENT_ON_DRAW_MAP() { return "onDrawMap"; }
+	static get EVENT_ON_WEAPON_UPDATED() { return "onWeaponUpdated"; }
+	static get EVENT_ON_GAME_FIELD_SCREEN_CREATED() { return "onGameFieldScreenCreated"; }
+	static get EVENT_ON_ENEMY_HIT_ANIMATION() { return "onEnemyHitAnimation"; }
+	static get EVENT_ON_ENEMY_MISS_ANIMATION() { return "onEnemyMissAnimation"; }
+	static get EVENT_ON_ROOM_FIELD_CLEARED() { return "roomFieldCleared"; }
+	static get EVENT_ON_GUN_UNLOCKED() { return "gunUnlocked"; }
+	static get EVENT_ON_WEAPONS_INTERACTION_CHANGED() { return "onWeaponsInteractionChanged"; }
+	static get EVENT_ON_ROUND_RESULT_FORCED() { return "onRoundResultForced"; }
+	static get EVENT_ON_FREE_HIT_INTERRUPTED() { return "onFreeHitInterrupted"; }
+	static get EVENT_ON_WEAPON_TO_UNPRESENTED_TRANSFER_REQUIRED() { return "onWEaponToUnpresentedTransferRequired"; }
+	static get EVENT_ON_BET_MULTIPLIER_UPDATED() { return "onBetMultiplierUpdate"; }
+	static get EVENT_ON_BET_MULTIPLIER_UPDATE_REQUIRED() { return "onBetMultiplierUpdateRequired"; }
+	static get EVENT_ON_EXPLODER_EXPLOSION_STARTED() { return "onExploderExplosionStarted"; }
+	static get EVENT_ON_RICOCHET_BULLET_FLY_OUT() { return "onRicochetBulletFlyOut"; }
+	static get EVENT_ON_RICOCHET_BULLET_REGISTER() { return "onRicochetBulletRegister"; }
+	static get EVENT_ON_BULLET_CLEAR() { return "onBulletClear"; }
+	static get EVENT_ON_CLEAR_BULLETS_BY_SEAT_ID() { return "onClearBulletsBySeatId"; }
+	static get EVENT_ON_MASTER_SEAT_ADDED() { return "onMasterSeatAdded"; }
+	static get EVENT_ON_CLEAR_ROOM_STARTED() { return "onRoomClearStarted"; }
+	static get EVENT_ON_START_UPDATE_CURSOR_POSITION() { return "onStartUpdateCursorPosition"; }
+	static get EVENT_ON_STOP_UPDATE_CURSOR_POSITION() { return "onStopUpdateCursorPosition"; }
+	static get EVENT_ON_SET_SPECIFIC_CURSOR_POSITION() { return "onSetSpecificCursorPosition"; }
 
-	static get EVENT_SHOW_FIRE()									{return 'EVENT_SHOW_FIRE';}
-	static get EVENT_ON_BULLET_FLY_TIME()							{return 'EVENT_ON_BULLET_FLY_TIME';}
-	static get EVENT_ON_BULLET_TARGET_TIME()						{return 'EVENT_ON_BULLET_TARGET_TIME';}
-	static get EVENT_DECREASE_AMMO()								{return 'EVENT_DECREASE_AMMO';}
-	static get EVENT_NEW_WEAPON_CONTENT_LANDED_WITHOUT_CHANGING()	{return 'EVENT_NEW_WEAPON_CONTENT_LANDED_WITHOUT_CHANGING';}
-	static get EVENT_ON_TARGETING()									{return 'EVENT_ON_TARGETING';}
-	static get EVENT_ON_RESET_TARGET()								{return 'EVENT_ON_RESET_TARGET';}
-	static get EVENT_ON_ENEMY_KILLED_BY_PLAYER()					{return 'EVENT_ON_ENEMY_KILLED_BY_PLAYER';}
-	static get EVENT_ON_CEILING_DUST_ANIMATION_STARTED()			{return 'EVENT_ON_CEILING_DUST_ANIMATION_STARTED';}
-	static get EVENT_ON_CEILING_DUST_ANIMATION_COMPLETED()			{return 'EVENT_ON_CEILING_DUST_ANIMATION_COMPLETED';}
-	static get EVENT_ON_GRENADE_EXPLOSION_ANIMATION_COMPLETED()		{return 'EVENT_ON_GRENADE_EXPLOSION_ANIMATION_COMPLETED';}
-	static get EVENT_ON_CHANGE_WEAPON_FAILED()						{return 'EVENT_ON_CHANGE_WEAPON_FAILED';}
-	static get EVENT_ON_TARGET_ENEMY_IS_DEAD()						{return 'EVENT_ON_TARGET_ENEMY_IS_DEAD';}
-	static get EVENT_ON_HIT_AWARD_EXPECTED()						{return 'EVENT_ON_HIT_AWARD_EXPECTED';}
-	static get EVENT_ON_SHOT_SHOW_FIRE_START_TIME()					{return 'EVENT_ON_SHOT_SHOW_FIRE_START_TIME';}
-	static get EVENT_ON_FIRE_CANCELLED_WITH_NOT_ENOUGH_AMMO()		{return 'EVENT_ON_FIRE_CANCELLED_WITH_NOT_ENOUGH_AMMO';}
+	static get EVENT_SHOW_FIRE() { return 'EVENT_SHOW_FIRE'; }
+	static get EVENT_ON_BULLET_FLY_TIME() { return 'EVENT_ON_BULLET_FLY_TIME'; }
+	static get EVENT_ON_BULLET_TARGET_TIME() { return 'EVENT_ON_BULLET_TARGET_TIME'; }
+	static get EVENT_DECREASE_AMMO() { return 'EVENT_DECREASE_AMMO'; }
+	static get EVENT_NEW_WEAPON_CONTENT_LANDED_WITHOUT_CHANGING() { return 'EVENT_NEW_WEAPON_CONTENT_LANDED_WITHOUT_CHANGING'; }
+	static get EVENT_ON_TARGETING() { return 'EVENT_ON_TARGETING'; }
+	static get EVENT_ON_RESET_TARGET() { return 'EVENT_ON_RESET_TARGET'; }
+	static get EVENT_ON_ENEMY_KILLED_BY_PLAYER() { return 'EVENT_ON_ENEMY_KILLED_BY_PLAYER'; }
+	static get EVENT_ON_CEILING_DUST_ANIMATION_STARTED() { return 'EVENT_ON_CEILING_DUST_ANIMATION_STARTED'; }
+	static get EVENT_ON_CEILING_DUST_ANIMATION_COMPLETED() { return 'EVENT_ON_CEILING_DUST_ANIMATION_COMPLETED'; }
+	static get EVENT_ON_GRENADE_EXPLOSION_ANIMATION_COMPLETED() { return 'EVENT_ON_GRENADE_EXPLOSION_ANIMATION_COMPLETED'; }
+	static get EVENT_ON_CHANGE_WEAPON_FAILED() { return 'EVENT_ON_CHANGE_WEAPON_FAILED'; }
+	static get EVENT_ON_TARGET_ENEMY_IS_DEAD() { return 'EVENT_ON_TARGET_ENEMY_IS_DEAD'; }
+	static get EVENT_ON_HIT_AWARD_EXPECTED() { return 'EVENT_ON_HIT_AWARD_EXPECTED'; }
+	static get EVENT_ON_SHOT_SHOW_FIRE_START_TIME() { return 'EVENT_ON_SHOT_SHOW_FIRE_START_TIME'; }
+	static get EVENT_ON_FIRE_CANCELLED_WITH_NOT_ENOUGH_AMMO() { return 'EVENT_ON_FIRE_CANCELLED_WITH_NOT_ENOUGH_AMMO'; }
 
-	static get EVENT_ON_PICKS_UP_SPECIAL_WEAPONS_FIRST_TIME()		{return 'EVENT_ON_PICKS_UP_SPECIAL_WEAPONS_FIRST_TIME';}
-	static get EVENT_ON_TOTAL_WIN_UPDATED() 						{return "EVENT_ON_TOTAL_WIN_UPDATED";}
+	static get EVENT_ON_PICKS_UP_SPECIAL_WEAPONS_FIRST_TIME() { return 'EVENT_ON_PICKS_UP_SPECIAL_WEAPONS_FIRST_TIME'; }
+	static get EVENT_ON_TOTAL_WIN_UPDATED() { return "EVENT_ON_TOTAL_WIN_UPDATED"; }
 
-	static get EVENT_RELOAD_REQUIRED()								{return MainPlayerSpot.EVENT_RELOAD_REQUIRED;}
-	static get EVENT_ON_ENEMY_VIEW_REMOVING()						{return Enemy.EVENT_ON_ENEMY_VIEW_REMOVING;}
-	static get EVENT_ON_DEATH_ANIMATION_STARTED()					{return Enemy.EVENT_ON_DEATH_ANIMATION_STARTED;}
-	static get EVENT_ON_ENEMY_ADD_TRAJECTORY_POINT()				{return Enemy.EVENT_ON_ENEMY_ADD_TRAJECTORY_POINT;}
-	static get EVENT_ON_ENEMY_PAUSE_WALKING()						{return Enemy.EVENT_ON_ENEMY_PAUSE_WALKING;}
-	static get EVENT_ON_ENEMY_RESUME_WALKING()						{return Enemy.EVENT_ON_ENEMY_RESUME_WALKING;}
-	static get EVENT_ON_ENEMY_FREEZE()								{return Enemy.EVENT_ON_ENEMY_FREEZE;}
-	static get EVENT_ON_ENEMY_UNFREEZE()							{return Enemy.EVENT_ON_ENEMY_UNFREEZE;}
-	static get EVENT_ON_BOSS_DEATH_FLARE()							{return Enemy.EVENT_ON_DEATH_ANIMATION_FLARE;}
-	static get EVENT_ON_BOSS_DEATH_CRACK()							{return Enemy.EVENT_ON_DEATH_ANIMATION_CRACK;}
-	static get EVENT_ON_BOSS_ENEMY_APPEARANCE_TIME()				{return BossEnemy.EVENT_ON_BOSS_ENEMY_APPEARANCE_TIME;}
+	static get EVENT_RELOAD_REQUIRED() { return MainPlayerSpot.EVENT_RELOAD_REQUIRED; }
+	static get EVENT_ON_ENEMY_VIEW_REMOVING() { return Enemy.EVENT_ON_ENEMY_VIEW_REMOVING; }
+	static get EVENT_ON_DEATH_ANIMATION_STARTED() { return Enemy.EVENT_ON_DEATH_ANIMATION_STARTED; }
+	static get EVENT_ON_ENEMY_ADD_TRAJECTORY_POINT() { return Enemy.EVENT_ON_ENEMY_ADD_TRAJECTORY_POINT; }
+	static get EVENT_ON_ENEMY_PAUSE_WALKING() { return Enemy.EVENT_ON_ENEMY_PAUSE_WALKING; }
+	static get EVENT_ON_ENEMY_RESUME_WALKING() { return Enemy.EVENT_ON_ENEMY_RESUME_WALKING; }
+	static get EVENT_ON_ENEMY_FREEZE() { return Enemy.EVENT_ON_ENEMY_FREEZE; }
+	static get EVENT_ON_ENEMY_UNFREEZE() { return Enemy.EVENT_ON_ENEMY_UNFREEZE; }
+	static get EVENT_ON_BOSS_DEATH_FLARE() { return Enemy.EVENT_ON_DEATH_ANIMATION_FLARE; }
+	static get EVENT_ON_BOSS_DEATH_CRACK() { return Enemy.EVENT_ON_DEATH_ANIMATION_CRACK; }
+	static get EVENT_ON_BOSS_ENEMY_APPEARANCE_TIME() { return BossEnemy.EVENT_ON_BOSS_ENEMY_APPEARANCE_TIME; }
 
-	static get EVENT_ON_TIME_TO_EXPLODE_COINS()						{return Enemy.EVENT_ON_TIME_TO_EXPLODE_COINS;}
-	static get EVENT_ON_NEW_ROUND_STATE()							{return GameScreen.EVENT_ON_NEW_ROUND_STATE;}
-	static get EVENT_ON_WAITING_NEW_ROUND()							{return GameScreen.EVENT_ON_WAITING_NEW_ROUND;}
-	static get EVENT_ON_BACK_TO_LOBBY_ROUND_RESULT_BUTTON_CLICKED()	{return RoundResultScreenController.EVENT_ON_BACK_TO_LOBBY_ROUND_RESULT_BUTTON_CLICKED;}
-	static get EVENT_ON_ROUND_RESULT_SCREEN_DEACTIVATED()			{return RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_DEACTIVATED;}
-	static get EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATED()				{return RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATED;}
-	static get EVENT_ON_BATTLEGROUND_NEXT_ROUND_CLICKED() 			{return RoundResultScreenController.EVENT_ON_BATTLEGROUND_NEXT_ROUND_CLICKED; }
-	static get EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATION_START()		{return RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATION_START;}
-	static get EVENT_TIME_TO_VALIDATE_CURSOR() 						{return "EVENT_TIME_TO_VALIDATE_CURSOR";}
-	static get EVENT_TIME_TO_SHOW_PRIZES() 							{return "EVENT_TIME_TO_SHOW_PRIZES";}
-	static get EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED()				{return CriticalHitAnimation.EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED;}
-	static get EVENT_ON_ENEMY_ENERGY_UPDATED()						{return Enemy.EVENT_ON_ENEMY_ENERGY_UPDATED;}
-	static get EVENT_ON_TRY_TO_SKIP_BIG_WIN() 						{return "EVENT_ON_TRY_TO_SKIP_BIG_WIN";}
-	static get DEFAULT_GUN_SHOW_FIRE() 								{return "DEFAULT_GUN_SHOW_FIRE";}
-	static get EVENT_ON_RICOCHET_BULLET_DESTROY()					{return RicochetBullet.EVENT_ON_RICOCHET_BULLET_DESTROY;}
-	static get EVENT_ON_RICOCHET_BULLETS_UPDATED()					{return RicochetController.EVENT_ON_RICOCHET_BULLETS_UPDATED;}
-	static get EVENT_ON_BULLET_PLACE_NOT_ALLOWED()					{return GameScreen.EVENT_ON_BULLET_PLACE_NOT_ALLOWED;}
-	static get EVENT_ON_GARGOYLE_FLAPPING_WINGS()					{return "EVENT_ON_GARGOYLE_FLAPPING_WINGS";}
-	static get EVENT_ON_DRAGON_FLAPPING_WINGS()						{return "EVENT_ON_DRAGON_FLAPPING_WINGS";}
-	static get EVENT_ON_DRAGON_FIRE_BREATH_STARTED()				{return "EVENT_ON_DRAGON_FIRE_BREATH_STARTED";}
-	static get EVENT_ON_SOME_ENEMY_SPAWN_SOUND_REQUIRED()			{return "EVENT_ON_SOME_ENEMY_SPAWN_SOUND_REQUIRED";}
-	static get EVENT_ON_RAGE_SOUND_REQUIRED()						{return OgreEnemy.EVENT_OGRE_START_RAGE}
-	static get EVENT_ON_PRERAGE_ANIMATION_ENDED()					{return "EVENT_ON_PRERAGE_ANIMATION_ENDED";}
-	static get EVENT_BACK_TO_LOBBY_ON_SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_DEACTIVATED()		{return "EVENT_BACK_TO_LOBBY_ON_SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_DEACTIVATED";}
-	static get EVENT_ON_MINI_SLOT_OCCURED()							{return "EVENT_ON_MINI_SLOT_OCCURED";}
-	static get EVENT_ON_MINI_SLOT_OUTRO()							{return "EVENT_ON_MINI_SLOT_OUTRO";}
-	static get EVENT_ON_MINI_SLOT_SPIN_STARTED()					{return "EVENT_ON_MINI_SLOT_SPIN_STARTED";}
-	static get ON_FRAGMENT_LANDED()									{return FragmentsController.ON_FRAGMENT_LANDED; }
-	static get EVENT_FULL_GAME_INFO_REQUIRED()						{return "EVENT_FULL_GAME_INFO_REQUIRED"}
+	static get EVENT_ON_TIME_TO_EXPLODE_COINS() { return Enemy.EVENT_ON_TIME_TO_EXPLODE_COINS; }
+	static get EVENT_ON_NEW_ROUND_STATE() { return GameScreen.EVENT_ON_NEW_ROUND_STATE; }
+	static get EVENT_ON_WAITING_NEW_ROUND() { return GameScreen.EVENT_ON_WAITING_NEW_ROUND; }
+	static get EVENT_ON_BACK_TO_LOBBY_ROUND_RESULT_BUTTON_CLICKED() { return RoundResultScreenController.EVENT_ON_BACK_TO_LOBBY_ROUND_RESULT_BUTTON_CLICKED; }
+	static get EVENT_ON_ROUND_RESULT_SCREEN_DEACTIVATED() { return RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_DEACTIVATED; }
+	static get EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATED() { return RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATED; }
+	static get EVENT_ON_BATTLEGROUND_NEXT_ROUND_CLICKED() { return RoundResultScreenController.EVENT_ON_BATTLEGROUND_NEXT_ROUND_CLICKED; }
+	static get EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATION_START() { return RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATION_START; }
+	static get EVENT_TIME_TO_VALIDATE_CURSOR() { return "EVENT_TIME_TO_VALIDATE_CURSOR"; }
+	static get EVENT_TIME_TO_SHOW_PRIZES() { return "EVENT_TIME_TO_SHOW_PRIZES"; }
+	static get EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED() { return CriticalHitAnimation.EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED; }
+	static get EVENT_ON_ENEMY_ENERGY_UPDATED() { return Enemy.EVENT_ON_ENEMY_ENERGY_UPDATED; }
+	static get EVENT_ON_TRY_TO_SKIP_BIG_WIN() { return "EVENT_ON_TRY_TO_SKIP_BIG_WIN"; }
+	static get DEFAULT_GUN_SHOW_FIRE() { return "DEFAULT_GUN_SHOW_FIRE"; }
+	static get EVENT_ON_RICOCHET_BULLET_DESTROY() { return RicochetBullet.EVENT_ON_RICOCHET_BULLET_DESTROY; }
+	static get EVENT_ON_RICOCHET_BULLETS_UPDATED() { return RicochetController.EVENT_ON_RICOCHET_BULLETS_UPDATED; }
+	static get EVENT_ON_BULLET_PLACE_NOT_ALLOWED() { return GameScreen.EVENT_ON_BULLET_PLACE_NOT_ALLOWED; }
+	static get EVENT_ON_GARGOYLE_FLAPPING_WINGS() { return "EVENT_ON_GARGOYLE_FLAPPING_WINGS"; }
+	static get EVENT_ON_DRAGON_FLAPPING_WINGS() { return "EVENT_ON_DRAGON_FLAPPING_WINGS"; }
+	static get EVENT_ON_DRAGON_FIRE_BREATH_STARTED() { return "EVENT_ON_DRAGON_FIRE_BREATH_STARTED"; }
+	static get EVENT_ON_SOME_ENEMY_SPAWN_SOUND_REQUIRED() { return "EVENT_ON_SOME_ENEMY_SPAWN_SOUND_REQUIRED"; }
+	static get EVENT_ON_RAGE_SOUND_REQUIRED() { return OgreEnemy.EVENT_OGRE_START_RAGE }
+	static get EVENT_ON_PRERAGE_ANIMATION_ENDED() { return "EVENT_ON_PRERAGE_ANIMATION_ENDED"; }
+	static get EVENT_BACK_TO_LOBBY_ON_SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_DEACTIVATED() { return "EVENT_BACK_TO_LOBBY_ON_SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_DEACTIVATED"; }
+	static get EVENT_ON_MINI_SLOT_OCCURED() { return "EVENT_ON_MINI_SLOT_OCCURED"; }
+	static get EVENT_ON_MINI_SLOT_OUTRO() { return "EVENT_ON_MINI_SLOT_OUTRO"; }
+	static get EVENT_ON_MINI_SLOT_SPIN_STARTED() { return "EVENT_ON_MINI_SLOT_SPIN_STARTED"; }
+	static get ON_FRAGMENT_LANDED() { return FragmentsController.ON_FRAGMENT_LANDED; }
+	static get EVENT_FULL_GAME_INFO_REQUIRED() { return "EVENT_FULL_GAME_INFO_REQUIRED" }
 
-	static get EVENT_ORCS_PROCESSION_STARTED()						{return "EVENT_ORCS_PROCESSION_STARTED";}
-	static get EVENT_ORCS_PROCESSION_FINISHED()						{return "EVENT_ORCS_PROCESSION_FINISHED";}
+	static get EVENT_ORCS_PROCESSION_STARTED() { return "EVENT_ORCS_PROCESSION_STARTED"; }
+	static get EVENT_ORCS_PROCESSION_FINISHED() { return "EVENT_ORCS_PROCESSION_FINISHED"; }
 
-	static get EVENT_OGRE_CALLOUT_CREATED()							{return OgreEnemy.EVENT_OGRE_CALLOUT_CREATED; }
-	static get EVENT_DARK_KNIGHT_CALLOUT_CREATED()					{return DarkKnightEnemy.EVENT_DARK_KNIGHT_CALLOUT_CREATED; }
-	static get EVENT_CERBERUS_CALLOUT_CREATED()						{return CerberusEnemy.EVENT_CERBERUS_CALLOUT_CREATED; }
+	static get EVENT_OGRE_CALLOUT_CREATED() { return OgreEnemy.EVENT_OGRE_CALLOUT_CREATED; }
+	static get EVENT_DARK_KNIGHT_CALLOUT_CREATED() { return DarkKnightEnemy.EVENT_DARK_KNIGHT_CALLOUT_CREATED; }
+	static get EVENT_CERBERUS_CALLOUT_CREATED() { return CerberusEnemy.EVENT_CERBERUS_CALLOUT_CREATED; }
 
-	static get EVENT_ON_DESTROY_BOSS_HOURGLASS()					{return "EVENT_ON_DESTROY_BOSS_HOURGLASS";}
+	static get EVENT_ON_DESTROY_BOSS_HOURGLASS() { return "EVENT_ON_DESTROY_BOSS_HOURGLASS"; }
 
-	static get EVENT_ON_AUTOFIRE_BUTTON_ENABLED()					{ return BattlegroundMainPlayerSpot.EVENT_ON_AUTOFIRE_BUTTON_ENABLED; }
-	static get EVENT_ON_AUTOFIRE_BUTTON_DISABLED()					{ return BattlegroundMainPlayerSpot.EVENT_ON_AUTOFIRE_BUTTON_DISABLED; }
+	static get EVENT_ON_AUTOFIRE_BUTTON_ENABLED() { return BattlegroundMainPlayerSpot.EVENT_ON_AUTOFIRE_BUTTON_ENABLED; }
+	static get EVENT_ON_AUTOFIRE_BUTTON_DISABLED() { return BattlegroundMainPlayerSpot.EVENT_ON_AUTOFIRE_BUTTON_DISABLED; }
 
-	get ricochetController()
-	{
+	get ricochetController() {
 		return this._ricochetController;
 	}
 
-	get roundResultScreenController()
-	{
+	get roundResultScreenController() {
 		return this._roundResultScreenController;
 	}
 
-	get miniSlotFeatureController()
-	{
+	get miniSlotFeatureController() {
 		return this._miniSlotFeatureController;
 	}
 
-	get fireSettingsScreenActive()
-	{
+	get fireSettingsScreenActive() {
 		return this._fFireSettingsScreenActive_bln;
 	}
 
-	get fragmentsController()
-	{
+	get fragmentsController() {
 		return this._fragmentsController;
 	}
 
-	get fragmentsPanelController()
-	{
+	get fragmentsPanelController() {
 		return this._fragmentsPanelController;
 	}
 
-	get battlegroundFinalCountingController()
-	{
+	get battlegroundFinalCountingController() {
 		return this._battlegroundFinalCountingController;
 	}
 
-	get wizardTeleportSmokeAnimations()
-	{
+	get wizardTeleportSmokeAnimations() {
 		return this._fWizardTeleportSmokeAnimations_arr;
 	}
 
-	get bossHourglassController()
-	{
+	get bossHourglassController() {
 		return this._bossHourglassController;
 	}
 
-	get newWeapons()
-	{
+	get newWeapons() {
 		let lNewWeapons_arr = [];
 
-		for (let i = 0; i < this._fNewWeapons_arr.length; ++i)
-		{
+		for (let i = 0; i < this._fNewWeapons_arr.length; ++i) {
 			let lAward_obj = this._fNewWeapons_arr[i];
 			let lContentItems_arr = null;
 
-			if (lAward_obj instanceof Crate)
-			{
+			if (lAward_obj instanceof Crate) {
 				lContentItems_arr = lAward_obj.contentItems;
 			}
-			else if (lAward_obj instanceof ContentItem)
-			{
+			else if (lAward_obj instanceof ContentItem) {
 				lContentItems_arr = [lAward_obj];
 			}
 
-			for (let j = 0; j < lContentItems_arr.length; ++j)
-			{
+			for (let j = 0; j < lContentItems_arr.length; ++j) {
 				let lNewWeapon_obj = lContentItems_arr[j].info ? lContentItems_arr[j].info.awardedWeapon : lContentItems_arr[j].awardedWeapon;
-				if (lNewWeapon_obj)
-				{
+				if (lNewWeapon_obj) {
 					lNewWeapons_arr.push(lNewWeapon_obj);
 				}
 			}
@@ -466,117 +449,97 @@ class GameField extends Sprite
 		return lNewWeapons_arr;
 	}
 
-	get isGunLocked()
-	{
+	get isGunLocked() {
 		return this.gunLocked;
 	}
 
-	get totalWin()
-	{
+	get totalWin() {
 		return this._fTotalWin_num;
 	}
 
-	set totalWin(aValue_num)
-	{
+	set totalWin(aValue_num) {
 		this._fTotalWin_num = aValue_num;
-		this.emit(GameField.EVENT_ON_TOTAL_WIN_UPDATED, {value: this._fTotalWin_num});
+		this.emit(GameField.EVENT_ON_TOTAL_WIN_UPDATED, { value: this._fTotalWin_num });
 	}
 
-	set isWinLimitExceeded(aValue_bl)
-	{
+	set isWinLimitExceeded(aValue_bl) {
 		this._fIsWinLimitExceeded_bl = aValue_bl;
 	}
 
-	onSomeGargoyleFlapWings()
-	{
+	onSomeGargoyleFlapWings() {
 		this.emit(GameField.EVENT_ON_GARGOYLE_FLAPPING_WINGS);
 	}
 
-	onDragonFlapsWings()
-	{
+	onDragonFlapsWings() {
 		this.emit(GameField.EVENT_ON_DRAGON_FLAPPING_WINGS);
 	}
 
-	onDragonFireBreathStarted()
-	{
+	onDragonFireBreathStarted() {
 		this.emit(GameField.EVENT_ON_DRAGON_FIRE_BREATH_STARTED);
 	}
 
-	onSomeEnemySpawnSoundRequired(aEnemyTypeId_int)
-	{
-		this.emit(GameField.EVENT_ON_SOME_ENEMY_SPAWN_SOUND_REQUIRED, {enemyTypeId: aEnemyTypeId_int});
+	onSomeEnemySpawnSoundRequired(aEnemyTypeId_int) {
+		this.emit(GameField.EVENT_ON_SOME_ENEMY_SPAWN_SOUND_REQUIRED, { enemyTypeId: aEnemyTypeId_int });
 	}
 
-	tryToBuyAmmo()
-	{
+	tryToBuyAmmo() {
 		this._tryToBuyAmmo();
 	}
 
-	updateWeaponImmediately(aWeapon_obj, aIsNewAwardedLevelUp_bl=false)
-	{
+	updateWeaponImmediately(aWeapon_obj, aIsNewAwardedLevelUp_bl = false) {
 		this._updateWeaponImmediately(aWeapon_obj, aIsNewAwardedLevelUp_bl);
 	}
 
-	resetTargetIfRequired(aAnyway_bl = false)
-	{
+	resetTargetIfRequired(aAnyway_bl = false) {
 		this._resetTargetIfRequired(aAnyway_bl);
 	}
 
-	startTeleportAnimation(aEnemy_we, aEnemyPosition_obj, aEnemyScale_num)
-	{
+	startTeleportAnimation(aEnemy_we, aEnemyPosition_obj, aEnemyScale_num) {
 		this._startTeleportAnimation(aEnemy_we, aEnemyPosition_obj, aEnemyScale_num);
 	}
 
-	pauseTeleportAnimation()
-	{
+	pauseTeleportAnimation() {
 		this._pauseTeleportAnimation();
 	}
 
-	resumeTeleportAnimation()
-	{
+	resumeTeleportAnimation() {
 		this._resumeTeleportAnimation();
 	}
 
-	resetWaitBuyIn()
-	{
+	resetWaitBuyIn() {
 		this.waitBuyIn = false;
 		this.spot && (this.spot.reloadRequiredSent = false);
 	}
 
-	showPrizes(data, aPrizePosition_pt, aEnemyId_int, aIsBoss_bl)
-	{
+	showPrizes(data, aPrizePosition_pt, aEnemyId_int, aIsBoss_bl) {
 		this._showPrizes(data, aPrizePosition_pt, aEnemyId_int, aIsBoss_bl);
 	}
 
-	validateShakeGroundOnFormationOfOrcs()
-	{
+	validateShakeGroundOnFormationOfOrcs() {
 		this._fValidateShakeGroundOnFormationOfOrcs();
 	}
 
-	showFireSpecterExplodeAnimation()
-	{
+	showFireSpecterExplodeAnimation() {
 		this._showFireSpecterExplodeAnimation();
 	}
 
-	getBackgroundContainer()
-	{
+	getBackgroundContainer() {
 		return this.backContainer;
 	}
 
-	startSpiritSpecterExplosionRingsAnimation(aEnemyPosition_obj)
-	{
+	startSpiritSpecterExplosionRingsAnimation(aEnemyPosition_obj) {
 		this._startSpiritSpecterExplosionRingsAnimation(aEnemyPosition_obj);
 	}
 
-	constructor()
-	{
+	constructor() {
+		console.log('%c[DEBUG] GameField Constructor Started', 'background: green; color: white');
 		super();
 
 		this._fCurrentKingsOfTheHillSeatId_int_arr = [];
 		this.waitScreen = null;
 
 		this._graphicsBack = this.addChild(new PIXI.Graphics());
-		this._graphicsBack.beginFill(0xb0aeaf).drawRect(-960/2, -540/2, 960, 540).endFill();
+		this._graphicsBack.beginFill(0xb0aeaf).drawRect(-960 / 2, -540 / 2, 960, 540).endFill();
 
 		this.container = this.addChild(new Sprite);
 		this.backContainer = this.container.addChild(new GameFieldBackContainer);
@@ -596,6 +559,7 @@ class GameField extends Sprite
 		this._fDelayedRageImpactedHits_obj_arr = [];
 		this._fRageInfoHits_arr_obj = [];
 		this._fDelayedRageEnemiesDeathInfo = {};
+
 
 		this._fRoundResultAnimsCount_num = 0;
 		this._fRoundEndListenHandlers_arr = [];
@@ -671,43 +635,60 @@ class GameField extends Sprite
 
 		this.enemiesLastPositions = {};
 
-		this._fWeaponsController_wsc = APP.currentWindow.weaponsController;
-		this._fWeaponsInfo_wsi = this._fWeaponsController_wsc.i_getInfo();
+		this.enemiesLastPositions = {};
 
-		this._fGameStateController_gsc = APP.currentWindow.gameStateController;
-		this._fGameStateInfo_gsi = this._fGameStateController_gsc.info;
+		try {
+			if (!APP.currentWindow) {
+				console.error('[DEBUG] CRITICAL: APP.currentWindow is null in GameField constructor! Using fallback or mocking.');
+				// Fallback to APP if it has the controllers (temporary fix attempt)
+				var source = APP.currentWindow || APP;
+			} else {
+				var source = APP.currentWindow;
+			}
 
-		this._fTargetingController_tc = APP.currentWindow.targetingController;
-		this._fTargetingInfo_tc = this._fTargetingController_tc.info;
-		this._fTargetingController_tc.on(TargetingController.EVENT_ON_TARGET_RESET, this._tryToResumeAutofire, this);
+			this._fWeaponsController_wsc = source.weaponsController;
+			this._fWeaponsInfo_wsi = this._fWeaponsController_wsc ? this._fWeaponsController_wsc.i_getInfo() : null;
 
-		this.autofireButtonEnabled = false;
+			this._fGameStateController_gsc = source.gameStateController;
+			this._fGameStateInfo_gsi = this._fGameStateController_gsc ? this._fGameStateController_gsc.info : null;
 
-		this._fAutoTargetingSwitcherController_atsc = APP.currentWindow.autoTargetingSwitcherController;
-		this._fAutoTargetingSwitcherInfo_atsi = this._fAutoTargetingSwitcherController_atsc.info;
+			this._fTargetingController_tc = source.targetingController;
+			this._fTargetingInfo_tc = this._fTargetingController_tc ? this._fTargetingController_tc.info : null;
+			if (this._fTargetingController_tc) this._fTargetingController_tc.on(TargetingController.EVENT_ON_TARGET_RESET, this._tryToResumeAutofire, this);
 
-		this._fBossModeController_bmc = APP.currentWindow.bossModeController;
+			this.autofireButtonEnabled = false;
 
-		this._fCurChangeWeaponTimerInfo_obj = null;
+			this._fAutoTargetingSwitcherController_atsc = source.autoTargetingSwitcherController;
+			this._fAutoTargetingSwitcherInfo_atsi = this._fAutoTargetingSwitcherController_atsc ? this._fAutoTargetingSwitcherController_atsc.info : null;
 
-		this._fGameOptimizationController_goc = APP.currentWindow.gameOptimizationController;
-		this._fGameOptimizationInfo_goi = this._fGameOptimizationController_goc.info;
+			this._fBossModeController_bmc = source.bossModeController;
 
-		this._fCryogunsController_csc = APP.currentWindow.cryogunsController;
-		this._fCryogunsInfo_csi = this._fCryogunsController_csc.i_getInfo();
+			this._fCurChangeWeaponTimerInfo_obj = null;
 
-		this._fRailgunsController_rsc = APP.currentWindow.railgunsController;
-		this._fRailginsInfo_rsi = this._fRailgunsController_rsc.i_getInfo();
-		this._fRailgunsController_rsc.on(RailgunsController.EVENT_ON_BEAM_ROTATION_UPDATED, this._onRailgunBeamRotationUpdated, this);
+			this._fGameOptimizationController_goc = source.gameOptimizationController;
+			this._fGameOptimizationInfo_goi = this._fGameOptimizationController_goc ? this._fGameOptimizationController_goc.info : null;
 
-		this._fFlameThrowersController_ftsc = APP.currentWindow.flameThrowersController;
-		this._fFlameThrowersInfo_ftsi = this._fFlameThrowersController_ftsc.i_getInfo();
-		this._fFlameThrowersController_ftsc.on(FlameThrowersController.EVENT_ON_BEAM_ROTATION_UPDATED, this._onFlameThrowerBeamRotationUpdated, this);
+			this._fCryogunsController_csc = source.cryogunsController;
+			this._fCryogunsInfo_csi = this._fCryogunsController_csc ? this._fCryogunsController_csc.i_getInfo() : null;
 
-		this._fArtilleryStrikesController_assc = APP.currentWindow.artilleryStrikesController;
-		this._fArtilleryStrikesInfo_assi = this._fArtilleryStrikesController_assc.i_getInfo();
-		this._fArtilleryStrikesController_assc.on(ArtilleryStrikesController.EVENT_ON_STRIKE_MISSILE_HIT, this._onArtilleryStrikeMissileHit, this);
-		this._fArtilleryStrikesController_assc.on(ArtilleryStrikesController.EVENT_ON_ARTILLERY_GRENADE_LANDED, this._artilleryGrenadeLanded, this);
+			this._fRailgunsController_rsc = source.railgunsController;
+			this._fRailginsInfo_rsi = this._fRailgunsController_rsc ? this._fRailgunsController_rsc.i_getInfo() : null;
+			if (this._fRailgunsController_rsc) this._fRailgunsController_rsc.on(RailgunsController.EVENT_ON_BEAM_ROTATION_UPDATED, this._onRailgunBeamRotationUpdated, this);
+
+			this._fFlameThrowersController_ftsc = source.flameThrowersController;
+			this._fFlameThrowersInfo_ftsi = this._fFlameThrowersController_ftsc ? this._fFlameThrowersController_ftsc.i_getInfo() : null;
+			if (this._fFlameThrowersController_ftsc) this._fFlameThrowersController_ftsc.on(FlameThrowersController.EVENT_ON_BEAM_ROTATION_UPDATED, this._onFlameThrowerBeamRotationUpdated, this);
+
+			this._fArtilleryStrikesController_assc = source.artilleryStrikesController;
+			this._fArtilleryStrikesInfo_assi = this._fArtilleryStrikesController_assc ? this._fArtilleryStrikesController_assc.i_getInfo() : null;
+			if (this._fArtilleryStrikesController_assc) {
+				this._fArtilleryStrikesController_assc.on(ArtilleryStrikesController.EVENT_ON_STRIKE_MISSILE_HIT, this._onArtilleryStrikeMissileHit, this);
+				this._fArtilleryStrikesController_assc.on(ArtilleryStrikesController.EVENT_ON_ARTILLERY_GRENADE_LANDED, this._artilleryGrenadeLanded, this);
+			}
+
+		} catch (e) {
+			console.error("[DEBUG] GameField Constructor Crash during controller init:", e);
+		}
 
 		this._fConnectionClosed_bln = false;
 		this._fConnectionHasBeenRecentlyClosed_bln = false;
@@ -778,192 +759,156 @@ class GameField extends Sprite
 	//...DEBUG
 
 
-	hasAnyBullets()
-	{
+	hasAnyBullets() {
 		return this.bullets.length > 0;
 	}
 
-	get isRoundStatePlay()
-	{
+	get isRoundStatePlay() {
 		return this._fGameStateInfo_gsi ? (this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY) : false;
 	}
 
-	get lobbySecondaryScreenActive()
-	{
+	get lobbySecondaryScreenActive() {
 		return this._fLobbySecondaryScreenActive_bln;
 	}
 
-	set lobbySecondaryScreenActive(aVal_bln)
-	{
+	set lobbySecondaryScreenActive(aVal_bln) {
 		this._fLobbySecondaryScreenActive_bln = aVal_bln;
 		this._validateInteractivity();
 	}
 
-	get fragmentsAwardContainer()
-	{
+	get fragmentsAwardContainer() {
 		return this.topScreen;
 	}
 
-	get enemiesContainer()
-	{
+	get enemiesContainer() {
 		return this.bottomScreen;
 	}
 
-	get specialAreasMap()
-	{
+	get specialAreasMap() {
 		return this._fSpecialAreasMap_sam;
 	}
 
-	get isWaitingAnimationsEnd()
-	{
+	get isWaitingAnimationsEnd() {
 		return this._fRoundResultAnimsCount_num > 0;
 	}
 
-	get awardingContainerInfo()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.AWARDED_WIN_CONTENT, stackContainer: this.topScreen, keySparklesContainer: this.topScreen}
+	get awardingContainerInfo() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.AWARDED_WIN_CONTENT, stackContainer: this.topScreen, keySparklesContainer: this.topScreen }
 	}
 
-	get bigWinsContainerInfo()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.BIG_WINS_CONTENT, zIndexMiniSlotWins: Z_INDEXES.MINI_WINS_CONTENT};
+	get bigWinsContainerInfo() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.BIG_WINS_CONTENT, zIndexMiniSlotWins: Z_INDEXES.MINI_WINS_CONTENT };
 	}
 
-	get mapContainers()
-	{
-		return {backContainer: this.backContainer, wallsContainer: this.bottomScreen, torchesContainer: this.bottomScreen};
+	get mapContainers() {
+		return { backContainer: this.backContainer, wallsContainer: this.bottomScreen, torchesContainer: this.bottomScreen };
 	}
 
-	get cryogunEffectContainer()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.BULLET};
+	get cryogunEffectContainer() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.BULLET };
 	}
 
-	get railgunEffectContainer()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.BULLET};
+	get railgunEffectContainer() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.BULLET };
 	}
 
-	get flameThrowerEffectContainer()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.BULLET};
+	get flameThrowerEffectContainer() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.BULLET };
 	}
 
-	get artilleryStrikeEffectContainer()
-	{
-		return {grenadeContainer: this.bottomScreen, strikeContainer: this.topScreen, zIndex: Z_INDEXES.BULLET};
+	get artilleryStrikeEffectContainer() {
+		return { grenadeContainer: this.bottomScreen, strikeContainer: this.topScreen, zIndex: Z_INDEXES.BULLET };
 	}
 
-	get trollFxContainer()
-	{
-		return {container: this.bottomScreen};
+	get trollFxContainer() {
+		return { container: this.bottomScreen };
 	}
 
-	get smokeTrailContainerInfo()
-	{
-		return {container: this.bottomScreen, zIndex: Z_INDEXES.SMOKE_TRAIL};
+	get smokeTrailContainerInfo() {
+		return { container: this.bottomScreen, zIndex: Z_INDEXES.SMOKE_TRAIL };
 	}
 
-	get stepsTrailContainer()
-	{
+	get stepsTrailContainer() {
 		return this.screen ? this.screen.stepsTrailContainer : null;
 	}
 
-	get mapFXAnimationContainer()
-	{
-		return {container: this.bottomScreen, zIndex: Z_INDEXES.MAP_FX_ANIMATION};
+	get mapFXAnimationContainer() {
+		return { container: this.bottomScreen, zIndex: Z_INDEXES.MAP_FX_ANIMATION };
 	}
 
-	get teleportFXContainer()
-	{
-		return {container: this.bottomScreen,  zIndex: Z_INDEXES.TELEPORT_FX_ANIMATION};
+	get teleportFXContainer() {
+		return { container: this.bottomScreen, zIndex: Z_INDEXES.TELEPORT_FX_ANIMATION };
 	}
 
-	get rageFXContainer()
-	{
-		return {container: this.bottomScreen,  zIndex:  Z_INDEXES.RAGE_AOE_ANIMATION};
+	get rageFXContainer() {
+		return { container: this.bottomScreen, zIndex: Z_INDEXES.RAGE_AOE_ANIMATION };
 	}
 
-	get transitionViewContainerInfo()
-	{
-		return {container: this, zIndex: Z_INDEXES.TRANSITION_VIEW};
+	get transitionViewContainerInfo() {
+		return { container: this, zIndex: Z_INDEXES.TRANSITION_VIEW };
 	}
 
-	get btgFinalCountingViewContainerInfo()
-	{
-		return {container: this, zIndex: Z_INDEXES.BTG_FINAL_COUNTING};
+	get btgFinalCountingViewContainerInfo() {
+		return { container: this, zIndex: Z_INDEXES.BTG_FINAL_COUNTING };
 	}
 
 	//TARGETING...
-	get targetingContainerInfo()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.TARGETING };
+	get targetingContainerInfo() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.TARGETING };
 	}
 
-	get autoTargetingEnemy()
-	{
+	get autoTargetingEnemy() {
 		let lTargetEnemyId_int = APP.currentWindow.targetingController.info.targetEnemyId;
 		return this.getEnemyById(lTargetEnemyId_int);
 	}
 
-	get autoTargetingSwitcherContainerInfo()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.AUTO_TARGETING_SWITCHER };
+	get autoTargetingSwitcherContainerInfo() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.AUTO_TARGETING_SWITCHER };
 	}
 	//...TARGETING
 
-	get subloadingContainerInfo()
-	{
-		return {container: this, zIndex: Z_INDEXES.SUBLOADING /*+1 to the WaitScreen*/};
+	get subloadingContainerInfo() {
+		return { container: this, zIndex: Z_INDEXES.SUBLOADING /*+1 to the WaitScreen*/ };
 	}
 
-	get bossModeAppearingContainerInfo()
-	{
-		return {container: this.bottomScreen, captionContainer: this.topScreen, redScreeContainer: this.topScreen, fireContainer: this.topScreen, zIndex: Z_INDEXES.BOSS_APPEARING_FX, captionZIndex: Z_INDEXES.BOSS_CAPTION, circleZIndex: Z_INDEXES.BOSS_APPEARING_CIRCLE_FX, flamesZIndex: Z_INDEXES.BOSS_APPEARING_FLAMES_FX, redScreenZIndex: Z_INDEXES.BOSS_RED_SCREEN};
+	get bossModeAppearingContainerInfo() {
+		return { container: this.bottomScreen, captionContainer: this.topScreen, redScreeContainer: this.topScreen, fireContainer: this.topScreen, zIndex: Z_INDEXES.BOSS_APPEARING_FX, captionZIndex: Z_INDEXES.BOSS_CAPTION, circleZIndex: Z_INDEXES.BOSS_APPEARING_CIRCLE_FX, flamesZIndex: Z_INDEXES.BOSS_APPEARING_FLAMES_FX, redScreenZIndex: Z_INDEXES.BOSS_RED_SCREEN };
 	}
 
-	get bossModeDisappearingContainerInfo()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.BOSS_DISAPPEARING_FX, dieRedScreenZIndex: Z_INDEXES.BOSS_DIE_RED_SCREEN, youWinZIndex: Z_INDEXES.BOSS_YOU_WIN};
+	get bossModeDisappearingContainerInfo() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.BOSS_DISAPPEARING_FX, dieRedScreenZIndex: Z_INDEXES.BOSS_DIE_RED_SCREEN, youWinZIndex: Z_INDEXES.BOSS_YOU_WIN };
 	}
 
-	get criticalHitAnimationContainer()
-	{
-		return {container: this.topScreen, zIndex: Z_INDEXES.CRITICAL_HIT};
+	get criticalHitAnimationContainer() {
+		return { container: this.topScreen, zIndex: Z_INDEXES.CRITICAL_HIT };
 	}
 
-	get wizardTeleportAnimationContainer()
-	{
-		return {container: this.backContainer};
+	get wizardTeleportAnimationContainer() {
+		return { container: this.backContainer };
 	}
 
-	_getSpotPosition(positionId, isMasterSpot_bl)
-	{
+	_getSpotPosition(positionId, isMasterSpot_bl) {
 		let positions = APP.isMobile ? PLAYERS_POSITIONS["MOBILE"] : PLAYERS_POSITIONS["DESKTOP"]
 		let spotPosDescr = positions[positionId];
 
 		let spotPos = {
-			x: 		spotPosDescr.x + (isMasterSpot_bl ? spotPosDescr.masterOffset.x : 0),
-			y: 		spotPosDescr.y + (isMasterSpot_bl ? spotPosDescr.masterOffset.y : 0),
+			x: spotPosDescr.x + (isMasterSpot_bl ? spotPosDescr.masterOffset.x : 0),
+			y: spotPosDescr.y + (isMasterSpot_bl ? spotPosDescr.masterOffset.y : 0),
 			direct: spotPosDescr.direct,
 		}
 
 		return spotPos;
 	}
 
-	getEnemyLastPosition(enemyId)
-	{
+	getEnemyLastPosition(enemyId) {
 		return this.enemiesLastPositions[enemyId];
 	}
 
-	extractUniqueEnemiesIds(aEnemies_obj_arr)
-	{
+	extractUniqueEnemiesIds(aEnemies_obj_arr) {
 		let uniqueEnemiesIds = [];
-		for (let enemy of aEnemies_obj_arr)
-		{
+		for (let enemy of aEnemies_obj_arr) {
 			let enemyId = enemy.enemyId;
-			if (enemyId < 0 || uniqueEnemiesIds.indexOf(enemyId) > -1)
-			{
+			if (enemyId < 0 || uniqueEnemiesIds.indexOf(enemyId) > -1) {
 				continue;
 			}
 			uniqueEnemiesIds.push(enemyId);
@@ -971,15 +916,12 @@ class GameField extends Sprite
 		return uniqueEnemiesIds;
 	}
 
-	checkIfAutoTargetSwitchNeeded()
-	{
+	checkIfAutoTargetSwitchNeeded() {
 		this._checkIfAutoTargetSwitchNeeded();
 	}
 
-	addRoomGradient()
-	{
-		if (!this._screenGradient)
-		{
+	addRoomGradient() {
+		if (!this._screenGradient) {
 			var gradient = this.screen.addChild(APP.library.getSprite('gradient'));
 			gradient.scale.x = 1.026; // to avoid gaps when ground shaking
 			gradient.position.set(480, 525);
@@ -988,73 +930,59 @@ class GameField extends Sprite
 		}
 	}
 
-	removeRoomGradient()
-	{
+	removeRoomGradient() {
 		this._screenGradient && this._screenGradient.destroy();
 		this._screenGradient = null;
 	}
 
-	redrawMap()
-	{
+	redrawMap() {
 		this.emit(GameField.EVENT_ON_DRAW_MAP);
 	}
 
-	_onCurrentMapUpdated()
-	{
+	_onCurrentMapUpdated() {
 		this.validateState();
 	}
 
-	validateState()
-	{
-		if (this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT)
-		{
+	validateState() {
+		if (this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT) {
 			APP.gameScreen.roundFinishSoon = false;
 			this.changeState(this._fGameStateInfo_gsi.gameState);
 		}
-		else if (this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY)
-		{
+		else if (this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY) {
 			APP.gameScreen.roundFinishSoon = false;
 			this._fConnectionHasBeenRecentlyClosed_bln = false;
 			this._fConnectionClosed_bln = false;
-			if(!APP.isBattlegroundGame) this._onTimeToShowTutorial();
+			if (!APP.isBattlegroundGame) this._onTimeToShowTutorial();
 		}
 	}
 
-	resetRoomMap()
-	{
+	resetRoomMap() {
 		let backOffsetY_num = ((APP.config.margin.bottom || 0) - (APP.config.margin.top || 0)) / 2;
 		let back = this.backContainer.addChild(APP.library.getSprite('preloader/back'));
 		back.position.y = backOffsetY_num;
 	}
 
-	updateEnemyTrajectory(enemyId, trajectory)
-	{
+	updateEnemyTrajectory(enemyId, trajectory) {
 		let enemy = this.getExistEnemy(enemyId);
-		if (enemy)
-		{
+		if (enemy) {
 			enemy.updateTrajectory(trajectory);
 		}
 	}
 
-	notifyAboutRoundFinishSoon()
-	{
+	notifyAboutRoundFinishSoon() {
 		//APP.soundsController.play('10secleft');
 	}
 
-	isGamePlayInProgress()
-	{
+	isGamePlayInProgress() {
 		return (
 			this.waitScreen === null &&
 			this.enemies &&
 			this.enemies.length > 0);
 	}
 
-	removeWaitScreen()
-	{
-		if (this.waitScreen)
-		{
-			if (this.waitScreen.spinner)
-			{
+	removeWaitScreen() {
+		if (this.waitScreen) {
+			if (this.waitScreen.spinner) {
 				this.waitScreen.spinner.destroy();
 			}
 			this.waitScreen.destroy();
@@ -1068,10 +996,8 @@ class GameField extends Sprite
 		}
 	}
 
-	showWaitScreen()
-	{
-		if (this.waitScreen)
-		{
+	showWaitScreen() {
+		if (this.waitScreen) {
 			return;
 		}
 
@@ -1092,46 +1018,39 @@ class GameField extends Sprite
 		this.container.interactiveChildren = false;
 	}
 
-	showBlur()
-	{
+	showBlur() {
 		this._showBlur();
 	}
 
-	checkBlur()
-	{
+	checkBlur() {
 		this._checkBlur();
 	}
 
-	hideBlur()
-	{
+	hideBlur() {
 		this._hideBlur();
 	}
 
-	onCloseRoom()
-	{
+	onCloseRoom() {
 		this._onCloseRoom();
 	}
 
-	init()
-	{
-		this.on('pointerdown', (e)=> this.pushPointer(e));
+	init() {
+		this.on('pointerdown', (e) => this.pushPointer(e));
 		this.on('pointermove', (e) => {
 			this.emit(GameField.EVENT_ON_START_UPDATE_CURSOR_POSITION);
 
 			this.tryRotateGun(e);
-			if (!this.roundResultActive)
-			{
+			if (!this.roundResultActive) {
 				this._validateCursor();
 			}
 		});
 		this.on('pointerup', (e) => this.unpushPointer(e));
 		this.on('pointerupoutside', (e) => this.unpushPointer(e));
 		window.addEventListener('mouseup', (e) => {
-			if(e.button === 1)
-			{
+			if (e.button === 1) {
 				this.unpushPointer(e);
 			}
-			
+
 		});
 		this.on('rightclick', (e) => this.onPointerRightClick(e));
 		this.on('pointerclick', (e) => this.onPointerClick(e));
@@ -1212,82 +1131,68 @@ class GameField extends Sprite
 		//new SpecialAreasMapEditor();
 	}
 
-	_onNoPlaceToSeatHandler(event)
-	{
+	_onNoPlaceToSeatHandler(event) {
 		this.clearRoom(false, true, true);
 	}
 
-	_onLasthandBullets(aEvent_obj)
-	{
+	_onLasthandBullets(aEvent_obj) {
 		let bullets = aEvent_obj.bullets;
 		let alreadySeatId = aEvent_obj.alreadySitInNumber;
 		let isClearMasterBulletsRequired = false;
 
-		for (let bullet of bullets)
-		{
+		for (let bullet of bullets) {
 			let bulletId = bullet.bulletId;
 			let seatId = +bulletId.slice(0, 1);
 			let weaponId = bullet.weaponId;
 
-			if (seatId === alreadySeatId)
-			{
+			if (seatId === alreadySeatId) {
 				isClearMasterBulletsRequired = true;
 				continue;
 			}
 
-			if (this._isRicochetBulletExist(bulletId))
-			{
+			if (this._isRicochetBulletExist(bulletId)) {
 				continue;
 			}
 
-			let startPos = {x: bullet.startPointX, y: bullet.startPointY};
-			let distanationPos = {x: bullet.endPointX, y: bullet.endPointY};
+			let startPos = { x: bullet.startPointX, y: bullet.startPointY };
+			let distanationPos = { x: bullet.endPointX, y: bullet.endPointY };
 
 			this.ricochetFire(distanationPos, seatId, bulletId, weaponId, bullet.bulletTime, startPos, true);
 		}
 
-		if (isClearMasterBulletsRequired)
-		{
+		if (isClearMasterBulletsRequired) {
 			this.clearRicochetBullets();
 		}
 	}
 
-	_onWeaponUpdated(event)
-	{
+	_onWeaponUpdated(event) {
 		this._fServerMessageWeaponSwitchExpected_bln = true;
 		this._fLastRequestedWeaponId_int = event.weaponId;
 	}
 
-	_onResetSWSwitched()
-	{
+	_onResetSWSwitched() {
 		this.tryToChangeWeapon(WEAPONS.DEFAULT);
 		this._fServerMessageWeaponSwitchExpected_bln = false;
 		this._fWeaponSwitchTry_bln = false;
 		this._fWeaponSwitchInProgress_bln = false;
 	}
 
-	_onServerMessage(event)
-	{
+	_onServerMessage(event) {
 		let messageData = event.messageData;
 		let messageClass = messageData.class;
 
-		switch( messageClass )
-		{
+		switch (messageClass) {
 			case SERVER_MESSAGES.KING_OF_HILL_CHANGED:
 				this.showKingsOfTheHill(messageData.newKings);
 				break;
 		}
 	}
 
-	_isRicochetBulletExist(aOptBulletId_str=undefined)
-	{
-		for(var i = 0; i < this.bullets.length; i++)
-		{
+	_isRicochetBulletExist(aOptBulletId_str = undefined) {
+		for (var i = 0; i < this.bullets.length; i++) {
 			let lCurBullet = this.bullets[i];
-			if ( lCurBullet instanceof RicochetBullet)
-			{
-				if (aOptBulletId_str === undefined || aOptBulletId_str === lCurBullet.bulletId)
-				{
+			if (lCurBullet instanceof RicochetBullet) {
+				if (aOptBulletId_str === undefined || aOptBulletId_str === lCurBullet.bulletId) {
 					return true;
 				}
 			}
@@ -1295,84 +1200,68 @@ class GameField extends Sprite
 		return false;
 	}
 
-	i_getKingsOfTheHillSeatId()
-	{
+	i_getKingsOfTheHillSeatId() {
 		return this._fCurrentKingsOfTheHillSeatId_int_arr;
 	}
 
-	showKingsOfTheHill(aSeatId_int_arr)
-	{
+	showKingsOfTheHill(aSeatId_int_arr) {
 		let lSeatId_int_arr = (aSeatId_int_arr.length > 0) ? aSeatId_int_arr : this._fCurrentKingsOfTheHillSeatId_int_arr;
 
-		if( (lSeatId_int_arr === undefined) || (lSeatId_int_arr.length === 0) )
-		{
+		if ((lSeatId_int_arr === undefined) || (lSeatId_int_arr.length === 0)) {
 			return;
 		}
 
-		for( let i = 0; i < PLAYERS_POSITIONS["DESKTOP"].length; i++ )
-		{
+		for (let i = 0; i < PLAYERS_POSITIONS["DESKTOP"].length; i++) {
 			let lSeat_s = this.getSeat(i, true)
 
-			if(lSeat_s)
-			{
+			if (lSeat_s) {
 				lSeat_s.setBattlegroundCrownVisible(false);
 			}
 		}
-		for ( let i = 0; i < lSeatId_int_arr.length; i++ )
-		{
+		for (let i = 0; i < lSeatId_int_arr.length; i++) {
 			let lSeat_s = this.getSeat(lSeatId_int_arr[i], true)
-			if(lSeat_s)
-			{
+			if (lSeat_s) {
 				lSeat_s.setBattlegroundCrownVisible(true);
 			}
 		}
 		this._fCurrentKingsOfTheHillSeatId_int_arr = lSeatId_int_arr;
 	}
 
-	_onServerWeaponSwitchedMessage(event)
-	{
+	_onServerWeaponSwitchedMessage(event) {
 		this._fLastReceivedWeaponId_int = event.messageData.weaponId;
 
-		if(this._fLastReceivedWeaponId_int === this._fLastRequestedWeaponId_int)
-		{
+		if (this._fLastReceivedWeaponId_int === this._fLastRequestedWeaponId_int) {
 			this._fServerMessageWeaponSwitchExpected_bln = false;
 		}
 	}
 
-	_onFRBModeChanged(e)
-	{
+	_onFRBModeChanged(e) {
 		let lIsFRBMode_bln = e.value;
-		if (lIsFRBMode_bln && APP.gameScreen.room)
-		{
+		if (lIsFRBMode_bln && APP.gameScreen.room) {
 			this.resetPlayerWin();
 			this.updatePlayerWin(APP.gameScreen.room.alreadySitInWin);
 		}
 	}
 
-	_onBetLevelChangeConfirmed(aEvent_obj)
-	{
+	_onBetLevelChangeConfirmed(aEvent_obj) {
 		let lSeatId_int = aEvent_obj.seatId;
 		let lNewBetLevel_int = aEvent_obj.betLevel;
 		let l_pi = APP.playerController.info;
 
-		if (this.spot && this.spot.player.seatId === lSeatId_int)
-		{
+		if (this.spot && this.spot.player.seatId === lSeatId_int) {
 			this.spot.onBetChangeConfirmed(lNewBetLevel_int);
 		}
-		else if (l_pi.seatId === lSeatId_int && APP.currentWindow.gameStateController.info.isPlayerSitIn)
-		{
+		else if (l_pi.seatId === lSeatId_int && APP.currentWindow.gameStateController.info.isPlayerSitIn) {
 			let lBetId_num = l_pi.possibleBetLevels.indexOf(lNewBetLevel_int) > -1 ? l_pi.possibleBetLevels.indexOf(lNewBetLevel_int) : 0;
-			this._onPlayerBetMultiplierUpdated( { id: lBetId_num, multiplier: lNewBetLevel_int} );
+			this._onPlayerBetMultiplierUpdated({ id: lBetId_num, multiplier: lNewBetLevel_int });
 		}
-		else
-		{
+		else {
 			let lPlayerInfo_obj = this.getPlayerBySeatId(lSeatId_int)
 			let lPrevBetLevel_int = l_pi.roomDefaultBetLevel;
 			let lSpot_ps = this.getSeat(lSeatId_int);
 			let lCurrentWeaponId = lSpot_ps && lSpot_ps.currentWeaponId;
 
-			if (lPlayerInfo_obj)
-			{
+			if (lPlayerInfo_obj) {
 				lPrevBetLevel_int = lPlayerInfo_obj.betLevel;
 				lPlayerInfo_obj.betLevel = lNewBetLevel_int;
 				lCurrentWeaponId = lPlayerInfo_obj.currentWeaponId
@@ -1380,8 +1269,7 @@ class GameField extends Sprite
 
 			let lMult_int = l_pi.getTurretSkinId(lNewBetLevel_int); // from 1 to 5 usually
 
-			if (!APP.isBattlegroundGame && lSpot_ps && lSpot_ps.currentWeaponId === WEAPONS.DEFAULT)
-			{
+			if (!APP.isBattlegroundGame && lSpot_ps && lSpot_ps.currentWeaponId === WEAPONS.DEFAULT) {
 				lSpot_ps && lSpot_ps.changeWeapon(lSpot_ps.currentWeaponId, lMult_int);
 			}
 		}
@@ -1391,10 +1279,8 @@ class GameField extends Sprite
 		this._isMinusBetLevelChangeRequiredAfterFiring_bl = false;
 	}
 
-	_onBetLevelChangeNotConfirmed()
-	{
-		if (this.spot)
-		{
+	_onBetLevelChangeNotConfirmed() {
+		if (this.spot) {
 			this.spot.onBetChangeNotConfirmed();
 		}
 
@@ -1404,37 +1290,31 @@ class GameField extends Sprite
 	}
 
 	//CUSTOM CURSOR...
-	_validateCursor()
-	{
+	_validateCursor() {
 		this.emit(GameField.EVENT_TIME_TO_VALIDATE_CURSOR);
 	}
 	//...CUSTOM CURSOR
 
-	_onBackToLobbyRoundResultButtonClicked()
-	{
+	_onBackToLobbyRoundResultButtonClicked() {
 		this.emit(GameField.EVENT_ON_BACK_TO_LOBBY_ROUND_RESULT_BUTTON_CLICKED);
 	}
 
-	onBackToLobbyOccur()
-	{
+	onBackToLobbyOccur() {
 		this._fNewPlayerFlag_bln = false;
 
 		this.screen && this.screen.hide();
 	}
 
-	_onTargetingControllerPauseStateUpdate()
-	{
+	_onTargetingControllerPauseStateUpdate() {
 		this.fireImmediatelyIfRequired();
 	}
 
 	//RICOCHET CONTROLLER...
-	get _ricochetController()
-	{
+	get _ricochetController() {
 		return this._fRicochetController_rc || (this._fRicochetController_rc = this._initRicochetController());
 	}
 
-	_initRicochetController()
-	{
+	_initRicochetController() {
 		let l_rc = new RicochetController();
 		l_rc.init();
 		l_rc.on(RicochetController.EVENT_ON_RICOCHET_BULLETS_UPDATED, this.emit, this);
@@ -1443,66 +1323,55 @@ class GameField extends Sprite
 		return l_rc;
 	}
 
-	_onRicochetBulletsPaybackRequired(aEvent_obj)
-	{
+	_onRicochetBulletsPaybackRequired(aEvent_obj) {
 		APP.gameScreen.revertAmmoBack(aEvent_obj.weaponId, aEvent_obj.betLevel, false, false, aEvent_obj.currentBullets);
 	}
 	//...RICOCHET CONTROLLER
 
 	//BOSS MAP SCALE...
-	_onBossBlurMapRequired()
-	{
+	_onBossBlurMapRequired() {
 		this._clearScale();
 
-		this._mapScaleSequence = {strength: 0};
+		this._mapScaleSequence = { strength: 0 };
 		let seq = [
-			{tweens: [{prop: "strength", to: 0.4}], duration: 27*FRAME_RATE, ease: Easing.linear.easeIn}
+			{ tweens: [{ prop: "strength", to: 0.4 }], duration: 27 * FRAME_RATE, ease: Easing.linear.easeIn }
 		];
 		this._mapScaleSequence.sequence = Sequence.start(this._mapScaleSequence, seq);
 
-		this._fZoomFilter = new PIXI.filters.ZoomBlurFilter(0, new PIXI.Point(960/2, 540/2), 400);
+		this._fZoomFilter = new PIXI.filters.ZoomBlurFilter(0, new PIXI.Point(960 / 2, 540 / 2), 400);
 		this.backContainer.filters = [this._fZoomFilter];
 		this.bottomScreen.filters = [this._fZoomFilter];
 	}
 
-	_onBossScaleMapRequired()
-	{
+	_onBossScaleMapRequired() {
 		this._clearScale();
 	}
 
-	_clearScale()
-	{
-		if (this._mapScaleSequence && this._mapScaleSequence.sequence)
-		{
+	_clearScale() {
+		if (this._mapScaleSequence && this._mapScaleSequence.sequence) {
 			this._mapScaleSequence.sequence.destructor();
 		}
 		this._mapScaleSequence = null;
 
-		if (this.backContainer)
-		{
+		if (this.backContainer) {
 			this.backContainer.filters = null;
 		}
-		if (this.bottomScreen)
-		{
+		if (this.bottomScreen) {
 			this.bottomScreen.filters = null;
 		}
 
 		this._fZoomFilter = null;
 	}
 
-	_mapScaleTickUpdate()
-	{
-		if (this._mapScaleSequence && this._mapScaleSequence.sequence)
-		{
-			if (this._fZoomFilter)
-			{
+	_mapScaleTickUpdate() {
+		if (this._mapScaleSequence && this._mapScaleSequence.sequence) {
+			if (this._fZoomFilter) {
 				this._fZoomFilter.strength = this._mapScaleSequence.strength;
 			}
 		}
 	}
 
-	_onBossGroundFireTraceRequired()
-	{
+	_onBossGroundFireTraceRequired() {
 		this._destroyGroundFireTraceAnimation();
 
 		this._groundFireTraceAnimation = this.bottomScreen.addChild(new GroundFireTraceAnimation());
@@ -1512,64 +1381,52 @@ class GameField extends Sprite
 		this._groundFireTraceAnimation.startAnimation();
 	}
 
-	_destroyGroundFireTraceAnimation()
-	{
-		if (this._groundFireTraceAnimation)
-		{
+	_destroyGroundFireTraceAnimation() {
+		if (this._groundFireTraceAnimation) {
 			this._groundFireTraceAnimation.off(GroundFireTraceAnimation.EVENT_ON_ANIMATION_FINISHED, this._destroyGroundFireTraceAnimation, this);
 			this._groundFireTraceAnimation.destroy();
 		}
 		this._groundFireTraceAnimation = null;
 	}
 
-	_onBossModeFadedBackHiding()
-	{
+	_onBossModeFadedBackHiding() {
 		this._clearScale();
 	}
 	//...BOSS MAP SCALE
 
 	//BOSS HOURGLASS CONTROLLER...
-	get _bossHourglassController()
-	{
+	get _bossHourglassController() {
 		return this._fBossHourglassController_bmhpbc || (this._fBossHourglassController_bmhpbc = this._initBossHourglassController());
 	}
 
-	_initBossHourglassController()
-	{
+	_initBossHourglassController() {
 		let l_bmhc = new BossModeHourglassController(new BossModeHourglassInfo());
 		l_bmhc.i_init();
 
 		return l_bmhc;
 	}
 
-	_onBossCreated(aEvent_obj)
-	{
+	_onBossCreated(aEvent_obj) {
 		let lEnemy_e = this.getExistEnemy(aEvent_obj.enemyId);
 
 		this._bossHourglassController.initView(this._bossHourglassView);
 		this._bossHourglassController.updateBoss(lEnemy_e);
 
-		if (aEvent_obj.isLasthandBossView && aEvent_obj.isBossHourglassShowNeeded)
-		{
+		if (aEvent_obj.isLasthandBossView && aEvent_obj.isBossHourglassShowNeeded) {
 			this._bossHourglassView.visible = true;
 		}
-		else
-		{
-			if (this._fBossModeController_bmc.isHourglassTimeOccurred)
-			{
+		else {
+			if (this._fBossModeController_bmc.isHourglassTimeOccurred) {
 				this._bossHourglassView.visible = true;
 			}
-			else
-			{
+			else {
 				this._fBossModeController_bmc.once(BossModeController.EVENT_ON_IDLE_ANIMATION_STARTING, this._onHourglassIntroTime, this);
 			}
 		}
 	}
 
-	_onHourglassIntroTime()
-	{
-		if (this._bossHourglassView.visible)
-		{
+	_onHourglassIntroTime() {
+		if (this._bossHourglassView.visible) {
 			throw new Error("Visible hourglass of boss during last fragment landing!");
 		}
 
@@ -1577,38 +1434,30 @@ class GameField extends Sprite
 		this._bossHourglassView.visible = true;
 	}
 
-	_onBossIdleFadeBackAnimationCompleted()
-	{
+	_onBossIdleFadeBackAnimationCompleted() {
 	}
 
-	_onBossDisappearingFireFlashAnimationCompleted()
-	{
+	_onBossDisappearingFireFlashAnimationCompleted() {
 	}
 
-	_onBossIntroAnimationOnLastHandWasDefined()
-	{
+	_onBossIntroAnimationOnLastHandWasDefined() {
 	}
 
-	_hideBossHourglass(aIsNeedDisappearAnimation_bl = false)
-	{
-		if (aIsNeedDisappearAnimation_bl && this._fBossHourglassView_bmhv)
-		{
-			this._fBossHourglassView_bmhv &&this._fBossHourglassView_bmhv.showDisappearAnimation();
+	_hideBossHourglass(aIsNeedDisappearAnimation_bl = false) {
+		if (aIsNeedDisappearAnimation_bl && this._fBossHourglassView_bmhv) {
+			this._fBossHourglassView_bmhv && this._fBossHourglassView_bmhv.showDisappearAnimation();
 			this._fBossHourglassView_bmhv.once(BossModeHourglassView.EVENT_ON_DISAPPEAR_ANIMATION_COMPLETED, this._destroyBossHourglass, this);
 		}
-		else
-		{
+		else {
 			this._destroyBossHourglass();
 		}
 	}
 
-	_destroyBossHourglass()
-	{
+	_destroyBossHourglass() {
 		this._fBossHourglassView_bmhv && this.removeChild(this._fBossHourglassView_bmhv);
 		this._fBossHourglassView_bmhv = null;
 
-		if (this._fBossHourglassController_bmhpbc)
-		{
+		if (this._fBossHourglassController_bmhpbc) {
 			this._fBossHourglassController_bmhpbc.removeAllListeners();
 			this._fBossHourglassController_bmhpbc.destroy();
 			this._fBossHourglassController_bmhpbc = null;
@@ -1621,104 +1470,85 @@ class GameField extends Sprite
 	//...BOSS HOURGLASS CONTROLLER
 
 	//BOSS HOURGLASS VIEW...
-	get _bossHourglassView()
-	{
+	get _bossHourglassView() {
 		return this._fBossHourglassView_bmhv || (this._fBossHourglassView_bmhv = this._initBossHourglassView());
 	}
 
-	_initBossHourglassView()
-	{
+	_initBossHourglassView() {
 		let l_bmhv = this.topScreen.addChild(new BossModeHourglassView());
 		l_bmhv.visible = false;
 		l_bmhv.zIndex = Z_INDEXES.BOSS_HOURGLASS_VIEW;
 		l_bmhv.scale.set(0.9);
-		l_bmhv.position.set(960/2+430, 540/2-14+20);
-		if (APP.isMobile) l_bmhv.position.set(960/2+440, 540/2-24+25);
+		l_bmhv.position.set(960 / 2 + 430, 540 / 2 - 14 + 20);
+		if (APP.isMobile) l_bmhv.position.set(960 / 2 + 440, 540 / 2 - 24 + 25);
 
 		return l_bmhv;
 	}
 	//...BOSS HOURGLASS VIEW
 
 	// FRAGMENTS...
-	get _fragmentsController()
-	{
+	get _fragmentsController() {
 		return this._fFragmentsController_fsc || (this._fFragmentsController_fsc = this._initFragmentsController());
 	}
 
-	_initFragmentsController()
-	{
+	_initFragmentsController() {
 		let l_fsc = new FragmentsController();
 		return l_fsc;
 	}
 	// ...FRAGMENTS
 
 	//BATTLEGROUND FINAL COUNTING...
-	get isFinalCountingFireDenied()
-	{
+	get isFinalCountingFireDenied() {
 		return this._battlegroundFinalCountingController && this._battlegroundFinalCountingController.info.isFinalCountingFireDenied;
 	}
 
-	get _battlegroundFinalCountingController()
-	{
+	get _battlegroundFinalCountingController() {
 		return this._fBattlegroundFinalCountingController_fcc || (this._fBattlegroundFinalCountingController_fcc = this._initBattlegroundFinalCountingController());
 	}
 
-	_initBattlegroundFinalCountingController()
-	{
+	_initBattlegroundFinalCountingController() {
 		let l_fsc = new BattlegroundFinalCountingController(new BattlegroundFinalCountingInfo(), this._battlegroundFinalCountingView);
 		return l_fsc;
 	}
 
-	get _battlegroundFinalCountingView()
-	{
+	get _battlegroundFinalCountingView() {
 		return this._fBattlegroundFinalCountingView_bfcv || (this._fBattlegroundFinalCountingView_bfcv = this._initBattlegroundFinalCountingView());
 	}
 
-	_initBattlegroundFinalCountingView()
-	{
+	_initBattlegroundFinalCountingView() {
 		const l_bfcv = this.topScreen.addChild(new BattlegroundFinalCountingView());
-		l_bfcv.position.set(960/2, 540/2);
+		l_bfcv.position.set(960 / 2, 540 / 2);
 		l_bfcv.zIndex = Z_INDEXES.BTG_FINAL_COUNTING;
 
 		return l_bfcv;
 	}
 	//...BATTLEGROUND FINAL COUNTING
 
-	get _isFrbMode()
-	{
+	get _isFrbMode() {
 		return APP.currentWindow.gameFrbController.info.frbMode;
 	}
 
-	get _isBonusMode()
-	{
+	get _isBonusMode() {
 		return APP.currentWindow.gameBonusController.info.isActivated;
 	}
 
-	_onPlayerInfoUpdated(event)
-	{
-		if (event.class == SERVER_MESSAGES.ROUND_RESULT)
-		{
+	_onPlayerInfoUpdated(event) {
+		if (event.class == SERVER_MESSAGES.ROUND_RESULT) {
 			this._fRoundResultResponseReceived_bl = true;
 		}
-		else if (event.class == SERVER_MESSAGES.GET_ROOM_INFO_RESPONSE)
-		{
-			if (this._isFrbMode)
-			{
-				if (!APP.currentWindow.gameFrbController.info.frbEnded)
-				{
+		else if (event.class == SERVER_MESSAGES.GET_ROOM_INFO_RESPONSE) {
+			if (this._isFrbMode) {
+				if (!APP.currentWindow.gameFrbController.info.frbEnded) {
 					this._fExternalBalanceUpdated_bl = false;
 				}
 			}
 		}
-		else if ((event.data.balance !== undefined) && (this.roundResultActivationInProgress || this.roundResultActive || APP.currentWindow.gameFrbController.info.frbEnded))
-		{
+		else if ((event.data.balance !== undefined) && (this.roundResultActivationInProgress || this.roundResultActive || APP.currentWindow.gameFrbController.info.frbEnded)) {
 			this._fExternalBalanceUpdated_bl = true;
 
-			if (this._isBonusMode)
-			{
+			if (this._isBonusMode) {
 				let lBonusInfo_gbi = APP.currentWindow.gameBonusController.info;
-				if (lBonusInfo_gbi.isWinLimitExceeded)
-				{
+				if (lBonusInfo_gbi.isWinLimitExceeded) {
 					this._forceRoundResult();
 				}
 			}
@@ -1726,35 +1556,28 @@ class GameField extends Sprite
 		!this._fConnectionClosed_bln && this.updatePlayerBalance();
 	}
 
-	_onFRBEndedCompleted()
-	{
+	_onFRBEndedCompleted() {
 		this._fExternalBalanceUpdated_bl = false;
 	}
 
-	onFRBEnded()
-	{
+	onFRBEnded() {
 		this.updatePlayerBalance();
 	}
 
-	_onTickerResumed()
-	{
+	_onTickerResumed() {
 		this.updatePlayerBalance();
 	}
 
-	isGameplayStarted()
-	{
+	isGameplayStarted() {
 		return this.screen !== undefined;
 	}
 
-	isShakeGroundOnFormationOfOrcsActive()
-	{
+	isShakeGroundOnFormationOfOrcsActive() {
 		return this._fIsShakeGroundOnFormationOfOrcsIsActive_bl;
 	}
 
-	startGamePlay()
-	{
-		if (!this.screen)
-		{
+	startGamePlay() {
+		if (!this.screen) {
 			this.screen = new GameFieldScreen();
 
 			this.bottomScreen = this.screen.addChild(new Sprite());
@@ -1790,7 +1613,7 @@ class GameField extends Sprite
 		}
 
 		this.container.addChild(this.screen);
-		this.screen.position.set(-480,-270);
+		this.screen.position.set(-480, -270);
 
 		this._fLobbySecondaryScreenActive_bln = false;
 		this._checkBlur();
@@ -1804,10 +1627,8 @@ class GameField extends Sprite
 		this._initSidebarController();
 	}
 
-	_isDialogViewBlurForbidden(aDialogId_int)
-	{
-		switch(aDialogId_int)
-		{
+	_isDialogViewBlurForbidden(aDialogId_int) {
+		switch (aDialogId_int) {
 			case DIALOG_ID_INSUFFICIENT_FUNDS:
 			case DIALOG_ID_BATTLEGROUND_NOT_ENOUGH_PLAYERS:
 			case DIALOG_ID_BATTLEGROUND_BUY_IN_CONFIRMATION:
@@ -1820,55 +1641,45 @@ class GameField extends Sprite
 		return false;
 	}
 
-	_onDialogActivated(e)
-	{
-		if(this._isDialogViewBlurForbidden(e.dialogId))
-		{
+	_onDialogActivated(e) {
+		if (this._isDialogViewBlurForbidden(e.dialogId)) {
 			return;
 		}
 
 		this.showBlur();
 	}
 
-	_onDialogDectivated()
-	{
+	_onDialogDectivated() {
 		this._checkBlur();
 		this._validateCursor();
 	}
 
-	_checkBlur()
-	{
-		if ( this.roundResultActive ||
+	_checkBlur() {
+		if (this.roundResultActive ||
 			this.lobbySecondaryScreenActive ||
 			APP.gameScreen.compensationDialogActive ||
 			this._fMidRoundExitDialogActive_bln ||
 			this._fBonusDialogActive_bln ||
 			this._fFRBDialogActive_bln
-		)
-		{
+		) {
 			this._showBlur();
 		}
-		else
-		{
+		else {
 			this._hideBlur();
 		}
 	}
 
 	//BUY BUTTONS VALIDATOR...
-	_resetBuyButtonsValidator()
-	{
+	_resetBuyButtonsValidator() {
 		this._fGameStateController_gsc.off(GameStateController.EVENT_ON_GAME_STATE_CHANGED, this._onGameRoundStateChanged, this);
 	}
 
-	_initBuyButtonsValidator()
-	{
+	_initBuyButtonsValidator() {
 		this._fGameStateController_gsc.on(GameStateController.EVENT_ON_GAME_STATE_CHANGED, this._onGameRoundStateChanged, this);
 	}
 
-	_onGameRoundStateChanged(event)
-	{
-		if (event.value === ROUND_STATE.PLAY)
-		{
+	_onGameRoundStateChanged(event) {
+		if (event.value === ROUND_STATE.PLAY) {
 			this._fCurrentKingsOfTheHillSeatId_int_arr = [];
 			APP.gameScreen.roundFinishSoon = false;
 			this._fConnectionHasBeenRecentlyClosed_bln = false;
@@ -1879,8 +1690,7 @@ class GameField extends Sprite
 		this._tryToBuyAmmoFromRoundResult();
 	}
 
-	_validateWeaponsBlockAvailability()
-	{
+	_validateWeaponsBlockAvailability() {
 		let lNewState_str = this._fGameStateInfo_gsi.gameState;
 
 		let lAllowWeaponsBlockInteraction_bl = true;//!this.roundResultActive && (lNewState_str === ROUND_STATE.PLAY);
@@ -1888,33 +1698,27 @@ class GameField extends Sprite
 		this._onInteractionChanged(lAllowWeaponsBlockInteraction_bl);
 	}
 
-	_onInteractionChanged(aAllow_bln)
-	{
-		this.emit(GameField.EVENT_ON_WEAPONS_INTERACTION_CHANGED, {allowed: aAllow_bln})
+	_onInteractionChanged(aAllow_bln) {
+		this.emit(GameField.EVENT_ON_WEAPONS_INTERACTION_CHANGED, { allowed: aAllow_bln })
 	}
 	//...BUY BUTTONS VALIDATOR
 
-	_initSidebarController()
-	{
-		if (APP.isBattlegroundGamePlayMode)
-		{
+	_initSidebarController() {
+		if (APP.isBattlegroundGamePlayMode) {
 			this.weaponsSidebarController.i_hideView();
 			this.scoreboardController; // for init
 		}
-		else
-		{
+		else {
 			this.weaponsSidebarController.i_showView();
 		}
 	}
 
 	//BATTLEGROUND TUTORIAL...
-	get battlegroundTutorialController()
-	{
+	get battlegroundTutorialController() {
 		return this._fBattlegroundTutorialController_btc || (this._fBattlegroundTutorialController_btc = this._initBattlegroundTutorialController());
 	}
 
-	_initBattlegroundTutorialController()
-	{
+	_initBattlegroundTutorialController() {
 		let l_btc = new BattlegroundTutorialController();
 		l_btc.on(BattlegroundTutorialController.VIEW_APPEARING, this._onTutorialAppearing, this);
 		l_btc.on(BattlegroundTutorialController.VIEW_HIDDEN, this._onTutorialHidden, this);
@@ -1923,67 +1727,57 @@ class GameField extends Sprite
 	//...BATTLEGROUND TUTORIAL
 
 	// MINI SLOT FEATURE...
-	get _miniSlotFeatureController()
-	{
+	get _miniSlotFeatureController() {
 		return this._fMiniSlotFeatureController_msc || (this._fMiniSlotFeatureController_msc = this._initMiniSlotFeatureController());
 	}
 
-	_initMiniSlotFeatureController()
-	{
+	_initMiniSlotFeatureController() {
 		const l_msfc = new MiniSlotFeatureController(new MiniSlotFeatureInfo(), this._miniSlotFeatureView);
 
 		return l_msfc;
 	}
 
-	get _miniSlotFeatureView()
-	{
+	get _miniSlotFeatureView() {
 		return this._fMiniSlotFeatureView_msv || (this._fMiniSlotFeatureView_msv = this._initMiniSlotFeatureView());
 	}
 
-	_initMiniSlotFeatureView()
-	{
+	_initMiniSlotFeatureView() {
 		const l_msfv = this.topScreen.addChild(new MiniSlotFeatureView());
-		l_msfv.position.set(960/2, 540/2);
+		l_msfv.position.set(960 / 2, 540 / 2);
 		l_msfv.zIndex = Z_INDEXES.MINI_SLOT;
 
 		return l_msfv;
 	}
 	// ...MINI SLOT FEATURE
 
-	_showBlur()
-	{
+	_showBlur() {
 		let blurFilter = new PIXI.filters.BlurFilter();
 		blurFilter.blur = 2;
 
 		this.container.filters = [blurFilter];
 	}
 
-	_hideBlur()
-	{
+	_hideBlur() {
 		this.container.filters = null;
 	}
 
-	_validateInteractivity()
-	{
+	_validateInteractivity() {
 		this.interactive = !this._fFireSettingsScreenActive_bln;
 		this._validateCursor();
 	}
 
-	deactivateGameScreens()
-	{
+	deactivateGameScreens() {
 		this._fireSettingsController.hideScreen();
 		this._validateInteractivity();
 	}
 	//...BUY WEAPON SCREEN CONTROLLER
 
 	//CALLOUT...
-	get _calloutController()
-	{
+	get _calloutController() {
 		return this._fCalloutController_fcc || (this._fCalloutController_fcc = this._initCalloutsController());
 	}
 
-	_initCalloutsController()
-	{
+	_initCalloutsController() {
 		let l_cc = new CalloutsController();
 
 		return l_cc;
@@ -1991,26 +1785,22 @@ class GameField extends Sprite
 	//...CALLOUT
 
 	//FRAGMENTS PANEL...
-	get _fragmentsPanelController()
-	{
+	get _fragmentsPanelController() {
 		return this._fFragmentsPanelController_fspc || (this._fFragmentsPanelController_fspc = this._initFragmentsPanelController());
 	}
 
-	_initFragmentsPanelController()
-	{
+	_initFragmentsPanelController() {
 		let l_kqpc = new FragmentsPanelController(new FragmentsPanelInfo(), this._fragmentsPanelView);
 
 		return l_kqpc;
 	}
 
-	get _fragmentsPanelView()
-	{
+	get _fragmentsPanelView() {
 		return this._fFragmentsPanelView_fspv || (this._fFragmentsPanelView_fspv = this._initFragmentsPanelView());
 	}
 
-	_initFragmentsPanelView()
-	{
-		let pos = new PIXI.Point(960-40, 310);
+	_initFragmentsPanelView() {
+		let pos = new PIXI.Point(960 - 40, 310);
 
 		let l_fspv = this.topScreen.addChild(new FragmentsPanelView());
 		l_fspv.scale.set(0.9);
@@ -2022,13 +1812,11 @@ class GameField extends Sprite
 	//...FRAGMENTS PANEL
 
 	//FIRE SETTINGS VIEW...
-	get _fireSettingsView()
-	{
+	get _fireSettingsView() {
 		return this._fFireSettingsView_fsv || (this._fFireSettingsView_fsv = this._initFireSettingsView());
 	}
 
-	_initFireSettingsView()
-	{
+	_initFireSettingsView() {
 		let l_fsv = this.addChild(new FireSettingsView());
 		l_fsv.zIndex = Z_INDEXES.FIRE_SETTINGS;
 
@@ -2037,16 +1825,14 @@ class GameField extends Sprite
 	//...FIRE SETTINGS VIEW
 
 	//ROUND RESULT SCREEN CONTROLLER...
-	get _roundResultScreenController()
-	{
+	get _roundResultScreenController() {
 		return this._fRoundResultScreenController_bwsv || (this._fRoundResultScreenController_bwsv = this._initRoundResultScreenController());
 	}
 
-	_initRoundResultScreenController()
-	{
+	_initRoundResultScreenController() {
 		let l_rrsc = new RoundResultScreenController(new RoundResultScreenInfo(), this._roundResultScreenView, this);
 
-		l_rrsc.on(RoundResultScreenController.EVENT_ON_NEXT_ROUND_CLICKED , this._onRoundResultNextRoundClicked, this);
+		l_rrsc.on(RoundResultScreenController.EVENT_ON_NEXT_ROUND_CLICKED, this._onRoundResultNextRoundClicked, this);
 		l_rrsc.on(RoundResultScreenController.EVENT_ON_BATTLEGROUND_NEXT_ROUND_CLICKED, this.emit, this);
 		l_rrsc.on(RoundResultScreenController.EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATION_START, this.emit, this);
 
@@ -2054,44 +1840,35 @@ class GameField extends Sprite
 		return l_rrsc;
 	}
 
-	_onRoundResultNextRoundClicked()
-	{
+	_onRoundResultNextRoundClicked() {
 		this.tryRoundResultBuyAmmoRequestAllowing();
 
 		this._tryToBuyAmmoFromRoundResult(true);
 	}
 
-	tryRoundResultBuyAmmoRequestAllowing()
-	{
+	tryRoundResultBuyAmmoRequestAllowing() {
 		this._fRoundResultBuyAmmoRequest_bln = this._isFrbMode ? false : true;
 	}
 
-	_forceUsingSpecialWeaponInNextRound()
-	{
+	_forceUsingSpecialWeaponInNextRound() {
 		if (this._fGameStateInfo_gsi.gameState !== "PLAY") return;
 
-		if(this.getNextWeaponFromTheQueue() != WEAPONS.DEFAULT && !IS_SPECIAL_WEAPON_SHOT_PAID)
-		{
+		if (this.getNextWeaponFromTheQueue() != WEAPONS.DEFAULT && !IS_SPECIAL_WEAPON_SHOT_PAID) {
 			this._fRoundResultRestoreWeapon_num = this.selectNextWeaponFromTheQueue();
 		}
 	}
 
-	_tryToBuyAmmoFromRoundResult(aIgnoreRoundResultState_bln = false)
-	{
+	_tryToBuyAmmoFromRoundResult(aIgnoreRoundResultState_bln = false) {
 		let lRoundResultActive_bln = (this.roundResultActivationInProgress || this.roundResultActive) && !aIgnoreRoundResultState_bln;
-		if (this._fWeaponsInfo_wsi.ammo == 0 && this._fRoundResultBuyAmmoRequest_bln && !lRoundResultActive_bln)
-		{
+		if (this._fWeaponsInfo_wsi.ammo == 0 && this._fRoundResultBuyAmmoRequest_bln && !lRoundResultActive_bln) {
 			//https://jira.dgphoenix.com/browse/MQPRT-347...
-			if (APP.gameSettingsController.info.isBuyInNotMandatoryInRound)
-			{
+			if (APP.gameSettingsController.info.isBuyInNotMandatoryInRound) {
 				let lIsAnySWExists_bl = this._fWeaponsController_wsc.i_getInfo().isAnyAwardedWeapon;
 				let lBalance_num = this.calcBalanceValue();
 				let lCurrentStake_num = APP.playerController.info.currentStake;
-				if (lBalance_num < lCurrentStake_num && lIsAnySWExists_bl && !IS_SPECIAL_WEAPON_SHOT_PAID)
-				{
+				if (lBalance_num < lCurrentStake_num && lIsAnySWExists_bl && !IS_SPECIAL_WEAPON_SHOT_PAID) {
 					let lIsDefaultWeaponSelected_bln = this._fWeaponsController_wsc.i_getInfo().currentWeaponId === WEAPONS.DEFAULT;
-					if (lIsDefaultWeaponSelected_bln)
-					{
+					if (lIsDefaultWeaponSelected_bln) {
 						this._forceUsingSpecialWeaponInNextRound();
 					}
 					return;
@@ -2103,32 +1880,27 @@ class GameField extends Sprite
 	}
 
 	//https://jira.dgphoenix.com/browse/MQPRT-343...
-	_tryToBuyAmmoOnRoundStart()
-	{
+	_tryToBuyAmmoOnRoundStart() {
 		let lRoundResultActive_bln = this.roundResultActivationInProgress || this.roundResultActive;
 		if (
-				this._fWeaponsInfo_wsi.ammo == 0
-				&& (
-						!lRoundResultActive_bln
-						|| this._isBonusMode
-						|| this._fTournamentModeInfo_tmi.isTournamentMode
-					)
+			this._fWeaponsInfo_wsi.ammo == 0
+			&& (
+				!lRoundResultActive_bln
+				|| this._isBonusMode
+				|| this._fTournamentModeInfo_tmi.isTournamentMode
 			)
-		{
+		) {
 			let lPlayerInfo_pi = APP.playerController.info;
 			let lBalance_num = lPlayerInfo_pi.balance;
 			let lCurrentStake_num = APP.playerController.info.currentStake;
-			if (lBalance_num >= lCurrentStake_num)
-			{
-				if (this._isBonusMode || this._fTournamentModeInfo_tmi.isTournamentMode)
-				{
+			if (lBalance_num >= lCurrentStake_num) {
+				if (this._isBonusMode || this._fTournamentModeInfo_tmi.isTournamentMode) {
 					//convert balance into ammo for Cash Bonus/tournaments mode
-					this.emit(GameField.EVENT_ON_TIME_TO_CONVERT_BALANCE_TO_AMMO, {ammoAmount: ~~(lBalance_num/lCurrentStake_num)});
+					this.emit(GameField.EVENT_ON_TIME_TO_CONVERT_BALANCE_TO_AMMO, { ammoAmount: ~~(lBalance_num / lCurrentStake_num) });
 					this.updatePlayerBalance();
 
 				}
-				else
-				{
+				else {
 					this._tryToBuyAmmo();
 				}
 			}
@@ -2136,56 +1908,47 @@ class GameField extends Sprite
 	}
 	//...https://jira.dgphoenix.com/browse/MQPRT-343
 
-	_tryToBuyAmmo()
-	{
+	_tryToBuyAmmo() {
 		if (
-				APP.currentWindow.isPaused || this._isFrbMode || this._isBonusMode || this._fTournamentModeInfo_tmi.isTournamentMode
-				|| APP.pendingOperationController.info.isPendingOperationStatusCheckInProgress
-				|| APP.gameScreen.buyAmmoRetryingController.info.isRetryDialogActive
-				|| APP.gameScreen.isForcedSitOutInProgress
-			)
-		{
+			APP.currentWindow.isPaused || this._isFrbMode || this._isBonusMode || this._fTournamentModeInfo_tmi.isTournamentMode
+			|| APP.pendingOperationController.info.isPendingOperationStatusCheckInProgress
+			|| APP.gameScreen.buyAmmoRetryingController.info.isRetryDialogActive
+			|| APP.gameScreen.isForcedSitOutInProgress
+		) {
 			return;
 		}
 
 		if (
-				this._fGameStateInfo_gsi.gameState == "PLAY" 
-				&& 
-				(
-					!APP.isBattlegroundGamePlayMode	||
-					APP.isBattlegroundGamePlayMode && APP.gameScreen.battlegroundGameController.info.isPlayerClickedConfirmPlayForNextBattlegroundRound
-				)
+			this._fGameStateInfo_gsi.gameState == "PLAY"
+			&&
+			(
+				!APP.isBattlegroundGamePlayMode ||
+				APP.isBattlegroundGamePlayMode && APP.gameScreen.battlegroundGameController.info.isPlayerClickedConfirmPlayForNextBattlegroundRound
 			)
-		{
+		) {
 			this._fRoundResultBuyAmmoRequest_bln = false;
 			this.emit(GameField.EVENT_ON_BUY_AMMO_REQUIRED);
 		}
 	}
 
-	_tryToResumeAutofire()
-	{
+	_tryToResumeAutofire() {
 		//for mobile BTG: target is not reset by AutoTargetingSwitcher, shooting resumes
-		if(APP.isBattlegroundGame && this.autofireButtonEnabled) return;
+		if (APP.isBattlegroundGame && this.autofireButtonEnabled) return;
 
-		if(APP.isBattlegroundGame && !this._fAutoTargetingSwitcherInfo_atsi.isOn)
-		{
+		if (APP.isBattlegroundGame && !this._fAutoTargetingSwitcherInfo_atsi.isOn) {
 			this._validateAutofireButton(true);
 		}
-		else
-		{
+		else {
 			this._validateAutofireButton(false, null, true);
 		}
 	}
 
-	_onRoundResultScreenActivated(e)
-	{
+	_onRoundResultScreenActivated(e) {
 		this._fRoundResultActive_bln = true;
 		this._fCurrentKingsOfTheHillSeatId_int_arr = [];
 
-		if (APP.currentWindow.isKeepSWModeActive)
-		{
-			for (let i = 0; i < this._fMinesController_msc.masterMinesOnFieldLen; ++i)
-			{
+		if (APP.currentWindow.isKeepSWModeActive) {
+			for (let i = 0; i < this._fMinesController_msc.masterMinesOnFieldLen; ++i) {
 				APP.gameScreen.revertAmmoBack(WEAPONS.MINELAUNCHER);
 			}
 		}
@@ -2195,33 +1958,27 @@ class GameField extends Sprite
 		this.emit(GameField.EVENT_ON_ROUND_RESULT_SCREEN_ACTIVATED);
 		this._validateCursor();
 
-		if (!APP.currentWindow.gameStateController.info.isGameInProgress)
-		{
+		if (!APP.currentWindow.gameStateController.info.isGameInProgress) {
 			this.clearRoom(true);
 		}
 
 
-		if (!this._isFrbMode)
-		{
+		if (!this._isFrbMode) {
 			this.resetPlayerWin();
 		}
 
 		const l_wci = this._fWeaponsController_wsc.i_getInfo();
-		if (APP.isBattlegroundGame)
-		{
+		if (APP.isBattlegroundGame) {
 			this._fRestoreAfterFreeShotsWeaponId_int = undefined;
-			if (this.spot)
-			{
+			if (this.spot) {
 				this.spot.onBetChangeConfirmed(APP.playerController.info.betLevel, false);
 			}
 			this.changeWeapon(WEAPONS.DEFAULT);
 
 			this._resetCoPlayersWeaponsIfRequired(true);
 		}
-		else
-		{
-			if (!APP.currentWindow.isKeepSWModeActive && l_wci.isFreeWeaponsQueueActivated)
-			{
+		else {
+			if (!APP.currentWindow.isKeepSWModeActive && l_wci.isFreeWeaponsQueueActivated) {
 				this.selectNextWeaponFromTheQueue();
 			}
 		}
@@ -2232,49 +1989,41 @@ class GameField extends Sprite
 		this.updatePlayerBalance();
 
 		if (
-				APP.currentWindow.isKeepSWModeActive
-				&& !APP.currentWindow.isPaused  // don't remember currentWeaponId to restore if the game is paused because of https://jira.dgphoenix.com/browse/MQAMZN-119 and because for such cases this._fWeaponToRestore_int is used
-			)
-		{
-			if (this._fWeaponsController_wsc && this._fRoundResultRestoreWeapon_num === null)
-			{
+			APP.currentWindow.isKeepSWModeActive
+			&& !APP.currentWindow.isPaused  // don't remember currentWeaponId to restore if the game is paused because of https://jira.dgphoenix.com/browse/MQAMZN-119 and because for such cases this._fWeaponToRestore_int is used
+		) {
+			if (this._fWeaponsController_wsc && this._fRoundResultRestoreWeapon_num === null) {
 				this._fRoundResultRestoreWeapon_num = this._fWeaponsController_wsc.i_getInfo().currentWeaponId;
 			}
 		}
 
-		if (this._fGameStateWaitIsWatingBattlegroundRoundResult_bl)
-		{
+		if (this._fGameStateWaitIsWatingBattlegroundRoundResult_bl) {
 			this._fGameStateWaitIsWatingBattlegroundRoundResult_bl = false;
 			this._completeActionsOnRoundStateWait();
 		}
 
-		if (APP.gameScreen.room)
-		{
+		if (APP.gameScreen.room) {
 			APP.gameScreen.tryToProceedPostponedSitOut();
 		}
 
-		if (e.roundResultOnAwaitingGameUnpause)
-		{
+		if (e.roundResultOnAwaitingGameUnpause) {
 			this.emit(GameField.EVENT_FULL_GAME_INFO_REQUIRED);
 		}
-		
+
 		APP.gameScreen.onRoundResultActivated(e);
 	}
 
-	_onRoundResultDeactivatedOrSkipped()
-	{
+	_onRoundResultDeactivatedOrSkipped() {
 		this._fRoundResultActive_bln = false;
 		this._fRoundResultResponseReceived_bl = false;
 		this._fExternalBalanceUpdated_bl = false;
 		this._fServerMessageWeaponSwitchExpected_bln = false;
 		this._fRoundResultOnLasthandWaitState_bln = false;
 
-		if (!APP.currentWindow.isBackToLobbyRequired)
-		{
+		if (!APP.currentWindow.isBackToLobbyRequired) {
 			this.changeState(this._fGameStateInfo_gsi.gameState);
 
-			if (!this._roundResultScreenController.info.isActiveScreenMode)
-			{
+			if (!this._roundResultScreenController.info.isActiveScreenMode) {
 				this.tryRoundResultBuyAmmoRequestAllowing();
 			}
 			this._tryToBuyAmmoFromRoundResult();
@@ -2288,33 +2037,27 @@ class GameField extends Sprite
 		this._checkBlur();
 	}
 
-	get roundResultActivationInProgress()
-	{
+	get roundResultActivationInProgress() {
 		return this._roundResultScreenController.info.roundResultResponseRecieved || this._fRoundResultResponseReceived_bl;
 	}
 
-	get roundResultActive()
-	{
+	get roundResultActive() {
 		return this._fRoundResultActive_bln;
 	}
 	//...ROUND RESULT SCREEN CONTROLLER
 
 	//ROUND RESULT SCREEN VIEW...
-	get _roundResultScreenView()
-	{
+	get _roundResultScreenView() {
 		return this._fRoundResultScreenView_bwsv || (this._fRoundResultScreenView_bwsv = this._initRoundResultScreenView());
 	}
 
-	_initRoundResultScreenView()
-	{
+	_initRoundResultScreenView() {
 		let l_rrsv = undefined;
 
-		if(APP.isBattlegroundGame)
-		{
+		if (APP.isBattlegroundGame) {
 			l_rrsv = new BattlegroundResultScreenView();
 		}
-		else
-		{
+		else {
 			l_rrsv = new RoundResultScreenView();
 		}
 
@@ -2326,13 +2069,11 @@ class GameField extends Sprite
 	//...ROUND RESULT SCREEN VIEW
 
 	//SCOREBOARD...
-	get scoreboardController()
-	{
+	get scoreboardController() {
 		return this._fScoreboardController_sc || (this._fScoreboardController_sc = this._initScoreboardController());
 	}
 
-	_initScoreboardController()
-	{
+	_initScoreboardController() {
 		let l_sc = new ScoreboardController();
 		l_sc.i_init();
 		l_sc.on(ScoreboardController.EVENT_ON_SCORE_BOARD_SCORES_UPDATED, this._onScoreboardScoresUpdated, this);
@@ -2344,32 +2085,26 @@ class GameField extends Sprite
 		return l_sc;
 	}
 
-	_onScoreboardScoresUpdated(event)
-	{
-		if (event.seatId == APP.playerController.info.seatId)
-		{
-			this.updateCommonPanelIndicators({win: event.win}, null);
+	_onScoreboardScoresUpdated(event) {
+		if (event.seatId == APP.playerController.info.seatId) {
+			this.updateCommonPanelIndicators({ win: event.win }, null);
 		}
 	}
 
-	get isScoreboardAnimationsPlaying()
-	{
+	get isScoreboardAnimationsPlaying() {
 		return (this._fScoreboardController_sc && this._fScoreboardController_sc.view.isAnimationsPlaying) || false;
 	}
 	//...SCOREBOARD
 
 	//WEAPONS SIDEBAR...
-	get weaponsSidebarController()
-	{
+	get weaponsSidebarController() {
 		return this._fWeaponsSidebarController_wssc || (this._fWeaponsSidebarController_wssc = this._initWeaponsSidebarController());
 	}
 
-	_initWeaponsSidebarController()
-	{
+	_initWeaponsSidebarController() {
 		let l_wssv = this.topScreen.addChild(new WeaponsSidebarView());
 
-		if(APP.isMobile)
-		{
+		if (APP.isMobile) {
 			l_wssv.scale.set(0.83);
 			let lmobileY_num = l_wssv.position.y * 1.085;
 			l_wssv.position.y = lmobileY_num;
@@ -2384,15 +2119,13 @@ class GameField extends Sprite
 	}
 	//...WEAPONS SIDEBAR
 
-	_onCloseRoom()
-	{
+	_onCloseRoom() {
 		this._fRoundResultRestoreWeapon_num = null;
 		this._fWeaponToRestore_int = null;
 		this._fRestoreAfterFreeShotsWeaponId_int = undefined;
 	}
 
-	showGroundBurn(x, y, aScale_num = 1, aInitialAlpha_num = 1, aIsArtilerryHit_bl = false)
-	{
+	showGroundBurn(x, y, aScale_num = 1, aInitialAlpha_num = 1, aIsArtilerryHit_bl = false) {
 		var groundburn = this.bottomScreen.addChild(new GrenadeGroundBurn(aInitialAlpha_num, aIsArtilerryHit_bl));
 		groundburn.scale.set(aScale_num);
 		groundburn.once(GrenadeGroundBurn.EVENT_ON_ANIMATION_COMPLETED, this._onGroundBurnAnimationCompleted, this);
@@ -2402,46 +2135,39 @@ class GameField extends Sprite
 		this._fFxAnims_arr.push(groundburn);
 	}
 
-	_onGroundBurnAnimationCompleted(event)
-	{
+	_onGroundBurnAnimationCompleted(event) {
 		let groundburn = event.target;
 		groundburn.off(GrenadeGroundBurn.EVENT_ON_ANIMATION_COMPLETED, this._onGroundBurnAnimationCompleted, this, true);
 
 		let lIndex_int = this._fFxAnims_arr.indexOf(groundburn);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._fFxAnims_arr.splice(lIndex_int, 1);
 		}
 
 		groundburn.destroy();
 	}
 
-	_onGrenadeExplosionAnimationCompleted(event)
-	{
+	_onGrenadeExplosionAnimationCompleted(event) {
 		let lIndex_int = this._fFxAnims_arr.indexOf(event.target);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._fFxAnims_arr.splice(lIndex_int, 1);
 		}
 	}
 
-	reboundAllEnemies(epicentrumPoint)
-	{
-		for (let enemy of this.enemies)
-		{
+	reboundAllEnemies(epicentrumPoint) {
+		for (let enemy of this.enemies) {
 			let enemyPos = enemy.getGlobalPosition();
 			let enemyFeetPoint = enemy.getCurrentFootPointPosition();
 			let pos = new PIXI.Point(0, 0);
 			pos.x = enemyPos.x + enemyFeetPoint.x;
 			pos.y = enemyPos.y + enemyFeetPoint.y;
-			let angle = Utils.getAngle(pos, epicentrumPoint) - Math.PI/2;
+			let angle = Utils.getAngle(pos, epicentrumPoint) - Math.PI / 2;
 			let dist = Utils.getDistance(pos, epicentrumPoint);
 			enemy.showBombBounce(angle, dist, APP.currentWindow.mapsController.info.currentMapWalkingZone);
 		}
 	}
 
-	showBombReboundSmoke(x, y)
-	{
+	showBombReboundSmoke(x, y) {
 		let groundSmoke = this.bottomScreen.addChild(new Sprite);
 		groundSmoke.position.set(x, y);
 		groundSmoke.zIndex = y;
@@ -2449,7 +2175,7 @@ class GameField extends Sprite
 		Grenade.getTextures();
 		groundSmoke.textures = Grenade.textures['groundSmoke'];
 		groundSmoke.rotation = Utils.gradToRad(88);
-		groundSmoke.scale.set(2*0.67);
+		groundSmoke.scale.set(2 * 0.67);
 		groundSmoke.blendMode = PIXI.BLEND_MODES.SCREEN;
 		groundSmoke.play();
 		groundSmoke.once('animationend', (e) => {
@@ -2459,17 +2185,14 @@ class GameField extends Sprite
 		this._fFxAnims_arr.push(groundSmoke);
 	}
 
-	_onGroundSmokeAnimationCompleted(target)
-	{
+	_onGroundSmokeAnimationCompleted(target) {
 		var lIndex_int = this._fFxAnims_arr.indexOf(target);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._fFxAnims_arr.splice(lIndex_int, 1);
 		}
 	}
 
-	showInstaKillEffects(data)
-	{
+	showInstaKillEffects(data) {
 		let enemyId = data.requestEnemyId || (data.enemy ? data.enemy.id : data.enemyId);
 		let enemy = this.getEnemyById(enemyId);
 
@@ -2477,8 +2200,7 @@ class GameField extends Sprite
 		let weaponSpotView = seat ? seat.weaponSpotView : this.spot.weaponSpotView;
 		let startPos = this.getGunPosition(data.seatId);
 
-		if (!weaponSpotView)
-		{
+		if (!weaponSpotView) {
 			APP.logger.i_pushWarning("GameField. WeaponSpotView is null.");
 			console.log("ERROR! weaponSpotView is null");
 			return;
@@ -2487,12 +2209,10 @@ class GameField extends Sprite
 		let lPlasmaVolume_num = data.rid === -1 ? GameSoundsController.OPPONENT_WEAPON_VOLUME : 1;
 		let lIsAlreadyCharged_bl = weaponSpotView.gun.isAlternateView;
 
-		if (data.rid != -1)
-		{
+		if (data.rid != -1) {
 			this.lockGunOnTarget(enemy);
 			this.markEnemy(enemy, lIsAlreadyCharged_bl);
-			if (!lIsAlreadyCharged_bl)
-			{
+			if (!lIsAlreadyCharged_bl) {
 				APP.soundsController.play('plasma_target');
 			}
 		}
@@ -2504,32 +2224,28 @@ class GameField extends Sprite
 		atomizer.shotTimeOccurred = false;
 		lIsCoopPlayerShot_bl && (atomizer.alpha = 0.3);
 		atomizer.on(Sprite.EVENT_ON_DESTROYING, () => {
-			if (atomizer.shotTimeOccurred)
-			{
+			if (atomizer.shotTimeOccurred) {
 				return;
 			}
 
 			let endPos = new PIXI.Point(0, 0);
-			if (enemy && enemy.parent)
-			{
+			if (enemy && enemy.parent) {
 				endPos = enemy.getCenterPosition();
 			}
-			else if (this.enemiesLastPositions && this.enemiesLastPositions[enemyId])
-			{
+			else if (this.enemiesLastPositions && this.enemiesLastPositions[enemyId]) {
 				endPos = this.enemiesLastPositions[enemyId];
 			}
 
 			this.proceedFireResult(null, endPos, 0, data);
 			this.removeInstantKillEffect(atomizer);
 		})
-		if (!weaponSpotView.gun.isAlternateView)
-		{
-			atomizer.on(InstantKillAtomizer.EVENT_TIME_TO_SHOW_ALTERNATE_WEAPON_VIEW, ()=>{
+		if (!weaponSpotView.gun.isAlternateView) {
+			atomizer.on(InstantKillAtomizer.EVENT_TIME_TO_SHOW_ALTERNATE_WEAPON_VIEW, () => {
 				seat.weaponSpotView.gun.showAlternate();
 				APP.soundsController.play('plasma_powerup', false, lPlasmaVolume_num, data.rid === -1);
 			})
 		}
-		atomizer.on(InstantKillAtomizer.EVENT_TIME_TO_SHOOT, ()=>{
+		atomizer.on(InstantKillAtomizer.EVENT_TIME_TO_SHOOT, () => {
 			atomizer.shotTimeOccurred = true;
 
 			//shoot
@@ -2537,16 +2253,13 @@ class GameField extends Sprite
 			this.shakeTheGround("plasma");
 
 			let endPos;
-			if (enemy && enemy.parent)
-			{
+			if (enemy && enemy.parent) {
 				endPos = enemy.getCenterPosition();
 			}
-			else if (this.enemiesLastPositions && this.enemiesLastPositions[enemyId])
-			{
+			else if (this.enemiesLastPositions && this.enemiesLastPositions[enemyId]) {
 				endPos = this.enemiesLastPositions[enemyId];
 			}
-			else
-			{
+			else {
 				throw new Error("Cannot define atomizer end position!");
 			}
 
@@ -2555,9 +2268,8 @@ class GameField extends Sprite
 			lIsCoopPlayerShot_bl && (projectile.alpha = 0.3);
 			projectile.zIndex = Z_INDEXES.BULLET;
 			projectile.pivot.set(-20, 0);
-			projectile.rotation = weaponSpotView.rotation - Math.PI/2;
-			if (!weaponSpotView.isBottom)
-			{
+			projectile.rotation = weaponSpotView.rotation - Math.PI / 2;
+			if (!weaponSpotView.isBottom) {
 				projectile.rotation += Math.PI;
 			}
 
@@ -2565,8 +2277,8 @@ class GameField extends Sprite
 
 			angle = Math.PI / 2 - Utils.getAngle(startPos, endPos);
 			var distance = 38 * (1 - weaponScale);
-			startPos.x -= Math.cos(angle)*(distance);
-			startPos.y -= Math.sin(angle)*(distance);
+			startPos.x -= Math.cos(angle) * (distance);
+			startPos.y -= Math.sin(angle) * (distance);
 
 			projectile.position.set(startPos.x, startPos.y);
 			projectile.scale.x = weaponScale;
@@ -2582,8 +2294,7 @@ class GameField extends Sprite
 				const lTargerEnemy_e = this.getEnemyById(data.requestEnemyId);
 				const lStartPos_obj = (lTargerEnemy_e && lTargerEnemy_e.parent) ? lTargerEnemy_e.getCenterPosition() : this.enemiesLastPositions[data.requestEnemyId];
 				let lAddProjectilesAffectedEnemies_obj_arr = this._definePlasmaAddProjectilesEndPositions(data.requestEnemyId, lStartPos_obj, data.affectedEnemies);
-				for (let i = 0; i < lAddProjectilesAffectedEnemies_obj_arr.length; i++)
-				{
+				for (let i = 0; i < lAddProjectilesAffectedEnemies_obj_arr.length; i++) {
 					let lEndPos_obj = lAddProjectilesAffectedEnemies_obj_arr[i];
 
 					const lAngle_num = Math.PI / 2 - Utils.getAngle(lStartPos_obj, lEndPos_obj);
@@ -2608,12 +2319,11 @@ class GameField extends Sprite
 				this.removeInstantKillEffect(atomizer);
 
 				this.emit('instaKillAnimationCompleted');
-				if (data.rid != -1)
-				{
+				if (data.rid != -1) {
 					this.unlockGun();
 				}
 
-				let angleBtwGunAndEnemy = Math.atan2(endPos.x - startPos.x, endPos.y - startPos.y) + Math.PI/2;
+				let angleBtwGunAndEnemy = Math.atan2(endPos.x - startPos.x, endPos.y - startPos.y) + Math.PI / 2;
 				this.proceedFireResult(null, endPos, angleBtwGunAndEnemy, data);
 			});
 			this._fInstantKillFxAnims_arr.push(projectile);
@@ -2633,17 +2343,15 @@ class GameField extends Sprite
 			this._fInstantKillFxAnims_arr.push(explosion);
 			//...explosion
 
-			let lEnemyLocalCenterOffset_pt = (enemy && enemy.parent) ? enemy.getLocalCenterOffset() : {x: 0, y: 0};
+			let lEnemyLocalCenterOffset_pt = (enemy && enemy.parent) ? enemy.getLocalCenterOffset() : { x: 0, y: 0 };
 			let enemyFootOffsetPosition = new PIXI.Point(-lEnemyLocalCenterOffset_pt.x, -lEnemyLocalCenterOffset_pt.y);
 
-			if (enemy)
-			{
+			if (enemy) {
 				this.showGroundBurn(endPos.x + enemyFootOffsetPosition.x, endPos.y + enemyFootOffsetPosition.y);
 			}
 
 			seat = seat || this.spot;
-			if (seat)
-			{
+			if (seat) {
 				this.addPushEffect(endPos.x, endPos.y, seat);
 				seat.showInstantKillRecoilEffect();
 				seat.showFlashInstantKill();
@@ -2652,59 +2360,50 @@ class GameField extends Sprite
 		this._fInstantKillFxAnims_arr.push(atomizer);
 	}
 
-	_definePlasmaAddProjectilesEndPositions(aStartEnemyId_int, aStartPos_obj, aAffectedEnemies_obj_arr)
-	{
+	_definePlasmaAddProjectilesEndPositions(aStartEnemyId_int, aStartPos_obj, aAffectedEnemies_obj_arr) {
 		let lEndPositions_arr = [];
 
-		for (let i = 0; i < aAffectedEnemies_obj_arr.length; i++)
-		{
+		for (let i = 0; i < aAffectedEnemies_obj_arr.length; i++) {
 			let lCurAffectedEnemy_obj = aAffectedEnemies_obj_arr[i];
 
-			if (lCurAffectedEnemy_obj.enemyId == aStartEnemyId_int)
-			{
+			if (lCurAffectedEnemy_obj.enemyId == aStartEnemyId_int) {
 				continue;
 			}
 
 			const lAffectedEnemy_e = this.getEnemyById(lCurAffectedEnemy_obj.enemyId);
 			let lEndPos_obj = (lAffectedEnemy_e && lAffectedEnemy_e.parent) ? lAffectedEnemy_e.getCenterPosition() : this.enemiesLastPositions[lCurAffectedEnemy_obj.enemyId];
 
-			if (!aStartPos_obj || !lEndPos_obj)
-			{
+			if (!aStartPos_obj || !lEndPos_obj) {
 				continue;
 			}
 
 			const lEnemiesDistance_num = Utils.getDistance(aStartPos_obj, lEndPos_obj);
 
-			if (lEnemiesDistance_num < 60)
-			{
+			if (lEnemiesDistance_num < 60) {
 				continue;
 			}
 
-			lEndPos_obj = {x: lEndPos_obj.x, y: lEndPos_obj.y, distance: lEnemiesDistance_num, angle: Utils.getAngle(aStartPos_obj, lEndPos_obj)};
+			lEndPos_obj = { x: lEndPos_obj.x, y: lEndPos_obj.y, distance: lEnemiesDistance_num, angle: Utils.getAngle(aStartPos_obj, lEndPos_obj) };
 
 			lEndPositions_arr.push(lEndPos_obj);
 		}
 
 		let lSectorAngle_num = 45;
-		let lSectorsAmount_int = Math.ceil(360/lSectorAngle_num);
+		let lSectorsAmount_int = Math.ceil(360 / lSectorAngle_num);
 		let lSectorsEndPositions_arr = [];
-		for (let i=0; i<lSectorsAmount_int; i++)
-		{
-			let lSectorFromAngle_num = lSectorAngle_num*i;
+		for (let i = 0; i < lSectorsAmount_int; i++) {
+			let lSectorFromAngle_num = lSectorAngle_num * i;
 			let lSectorToAngle_num = Math.min(lSectorFromAngle_num + lSectorAngle_num, 360);
-			if (lSectorFromAngle_num >= 180)
-			{
+			if (lSectorFromAngle_num >= 180) {
 				lSectorFromAngle_num -= 360;
 				lSectorToAngle_num -= 360;
 			}
 
 			let lSectorPositions_arr = [];
-			for (let j=0; j<lEndPositions_arr.length; j++)
-			{
+			for (let j = 0; j < lEndPositions_arr.length; j++) {
 				let lEndPos = lEndPositions_arr[j];
 				let lAngle_num = lEndPos.angle;
-				if (lAngle_num >= Utils.gradToRad(lSectorFromAngle_num) && lAngle_num <= Utils.gradToRad(lSectorToAngle_num))
-				{
+				if (lAngle_num >= Utils.gradToRad(lSectorFromAngle_num) && lAngle_num <= Utils.gradToRad(lSectorToAngle_num)) {
 					lSectorPositions_arr.push(lEndPos);
 					lEndPositions_arr.splice(j, 1);
 					j--;
@@ -2713,16 +2412,12 @@ class GameField extends Sprite
 			lSectorsEndPositions_arr[i] = lSectorPositions_arr;
 		}
 
-		for (let i=0; i<lSectorsEndPositions_arr.length; i++)
-		{
+		for (let i = 0; i < lSectorsEndPositions_arr.length; i++) {
 			let lSectorPositions_arr = lSectorsEndPositions_arr[i];
-			if (lSectorPositions_arr && lSectorPositions_arr.length)
-			{
+			if (lSectorPositions_arr && lSectorPositions_arr.length) {
 				let lMaxDistPos = lSectorPositions_arr[0];
-				for (let j=1; j<lSectorPositions_arr.length; j++)
-				{
-					if (lSectorPositions_arr[j].distance > lMaxDistPos.distance)
-					{
+				for (let j = 1; j < lSectorPositions_arr.length; j++) {
+					if (lSectorPositions_arr[j].distance > lMaxDistPos.distance) {
 						lMaxDistPos = lSectorPositions_arr[j];
 					}
 				}
@@ -2734,10 +2429,9 @@ class GameField extends Sprite
 		return lEndPositions_arr;
 	}
 
-	getGunPosition(seatId)
-	{
+	getGunPosition(seatId) {
 		let seat = this.getSeat(seatId, true);
-		let gunPos = {x: 0, y: 0};
+		let gunPos = { x: 0, y: 0 };
 		let playerPos = this._getSpotPosition(SEATS_POSITION_IDS[seatId], (this.seatId === seatId));
 
 		gunPos.x = playerPos.x + seat.gunCenter.x;
@@ -2746,37 +2440,31 @@ class GameField extends Sprite
 		return gunPos;
 	}
 
-	removeAllInstantKillEffects()
-	{
-		while (this._fInstantKillFxAnims_arr.length)
-		{
+	removeAllInstantKillEffects() {
+		while (this._fInstantKillFxAnims_arr.length) {
 			var l_sprt = this._fInstantKillFxAnims_arr.shift();
 			l_sprt && l_sprt.destroy();
 		}
 		this._fInstantKillFxAnims_arr = [];
 	}
 
-	removeInstantKillEffect(aEffect_obj)
-	{
+	removeInstantKillEffect(aEffect_obj) {
 		let lIndex_int = this._fInstantKillFxAnims_arr.indexOf(aEffect_obj);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._fInstantKillFxAnims_arr.splice(lIndex_int, 1);
 		}
 	}
 
-	_getShakeAmplitudeSequence(amplitudes_arr)
-	{
+	_getShakeAmplitudeSequence(amplitudes_arr) {
 		let sequence = [];
-		for (let i = 0; i < amplitudes_arr.length; i++)
-		{
+		for (let i = 0; i < amplitudes_arr.length; i++) {
 			let curAmpl = amplitudes_arr[i];
 			let obj = {
 				tweens: [
-					{prop: 'x', to: Utils.getRandomWiggledValue(0, curAmpl)},
-					{prop: 'y', to: Utils.getRandomWiggledValue(0, curAmpl)}
+					{ prop: 'x', to: Utils.getRandomWiggledValue(0, curAmpl) },
+					{ prop: 'y', to: Utils.getRandomWiggledValue(0, curAmpl) }
 				],
-				duration: 1*FRAME_RATE
+				duration: 1 * FRAME_RATE
 			};
 			sequence.push(obj);
 		}
@@ -2784,10 +2472,8 @@ class GameField extends Sprite
 		return sequence;
 	}
 
-	startShakeGroundOnFormationOfOrcs()
-	{
-		if (this._fIsShakeGroundOnFormationOfOrcsIsActive_bl)
-		{
+	startShakeGroundOnFormationOfOrcs() {
+		if (this._fIsShakeGroundOnFormationOfOrcsIsActive_bl) {
 
 			this._fTimerShakeGroundFormationOfOrc = new Timer(() => {
 				this.shakeTheGround("formation_of_orcs");
@@ -2796,25 +2482,20 @@ class GameField extends Sprite
 		}
 	}
 
-	shakeTheGround(aShakingType_str = "", aOptResetExistingShaking_bl = false)
-	{
+	shakeTheGround(aShakingType_str = "", aOptResetExistingShaking_bl = false) {
 		let sequence;
 		let container = this.container;
 
-		if (aOptResetExistingShaking_bl)
-		{
+		if (aOptResetExistingShaking_bl) {
 			Sequence.destroy(Sequence.findByTarget(container));
 		}
 
-		switch (aShakingType_str)
-		{
+		switch (aShakingType_str) {
 			case "formation_of_orcs":
-				if (this._fCurrentOrcFormationShakeGroundIntensivity_num == ORCS_FORMATION_SHAKE_GROUND_INTENSIVITY_LOW)
-				{
+				if (this._fCurrentOrcFormationShakeGroundIntensivity_num == ORCS_FORMATION_SHAKE_GROUND_INTENSIVITY_LOW) {
 					sequence = this._getShakeAmplitudeSequence([1]);
 				}
-				else if (this._fCurrentOrcFormationShakeGroundIntensivity_num == ORCS_FORMATION_SHAKE_GROUND_INTENSIVITY_HIGH)
-				{
+				else if (this._fCurrentOrcFormationShakeGroundIntensivity_num == ORCS_FORMATION_SHAKE_GROUND_INTENSIVITY_HIGH) {
 					sequence = this._getShakeAmplitudeSequence([1, 1, 1, 1, 2]);
 				}
 
@@ -2824,46 +2505,44 @@ class GameField extends Sprite
 				break;
 			case "plasma":
 				sequence = [];
-				for (let i = 0; i < 10; i++)
-				{
-					sequence.push({tweens:[{prop:'x', to:(Utils.random(-35, 35)/10)}, {prop:'y', to:(Utils.random(-35, 35)/10)}], duration: FRAME_RATE});
+				for (let i = 0; i < 10; i++) {
+					sequence.push({ tweens: [{ prop: 'x', to: (Utils.random(-35, 35) / 10) }, { prop: 'y', to: (Utils.random(-35, 35) / 10) }], duration: FRAME_RATE });
 				}
 				break;
 
 			case "bomb":
 				sequence = [];
-				for (let i = 0; i < 7; i++)
-				{
+				for (let i = 0; i < 7; i++) {
 					let obj = {
 						tweens: [
-							{prop: 'x', to: 12 - Utils.random(0, 24)},
-							{prop: 'y', to: Utils.random(0, 20)}
+							{ prop: 'x', to: 12 - Utils.random(0, 24) },
+							{ prop: 'y', to: Utils.random(0, 20) }
 						],
 						duration: 40 + Utils.random(0, 40),
 						ease: Easing.sine.easeOut
 					};
 					sequence.push(obj);
 				}
-				sequence.push({tweens: [{prop: "x", to: 0}, {prop: "y", to: 0}],
-								duration: Utils.random(0, 30),
-								ease: Easing.sine.easeOut,
-								onfinish: () => {
-									//dust from the ceiling
-									if (aShakingType_str === "bomb")
-									{
-										this.pourDustFromTheCeiling();
-									}
-								}});
+				sequence.push({
+					tweens: [{ prop: "x", to: 0 }, { prop: "y", to: 0 }],
+					duration: Utils.random(0, 30),
+					ease: Easing.sine.easeOut,
+					onfinish: () => {
+						//dust from the ceiling
+						if (aShakingType_str === "bomb") {
+							this.pourDustFromTheCeiling();
+						}
+					}
+				});
 				break;
 
 			case "artillery":
 				sequence = [];
-				for (let i = 0; i < 10; i++)
-				{
+				for (let i = 0; i < 10; i++) {
 					let obj = {
 						tweens: [
-							{prop: 'x', to: 12 - Utils.random(0, 24)},
-							{prop: 'y', to: Utils.random(0, 20)}
+							{ prop: 'x', to: 12 - Utils.random(0, 24) },
+							{ prop: 'y', to: Utils.random(0, 20) }
 						],
 						duration: 40 + Utils.random(0, 40),
 						ease: Easing.sine.easeOut
@@ -2871,113 +2550,108 @@ class GameField extends Sprite
 					sequence.push(obj);
 				}
 				sequence.push(
-								{	tweens: [{prop: "x", to: 0}, {prop: "y", to: 0}],
-									duration: Utils.random(0, 30),
-									ease: Easing.sine.easeOut,
-									onfinish: () => {
-										this.pourDustFromTheCeiling();
-									}
-								}
+					{
+						tweens: [{ prop: "x", to: 0 }, { prop: "y", to: 0 }],
+						duration: Utils.random(0, 30),
+						ease: Easing.sine.easeOut,
+						onfinish: () => {
+							this.pourDustFromTheCeiling();
+						}
+					}
 				);
 				break;
 
 			case "bossShining":
 				sequence = [];
-				for (let i = 0; i < 50; i++)
-				{
-					sequence.push({tweens:[{prop:'x', to:(Utils.random(-35, 35)/10)}, {prop:'y', to:(Utils.random(-35, 35)/10)}], duration:100, ease:Easing.sine.easeOut});
+				for (let i = 0; i < 50; i++) {
+					sequence.push({ tweens: [{ prop: 'x', to: (Utils.random(-35, 35) / 10) }, { prop: 'y', to: (Utils.random(-35, 35) / 10) }], duration: 100, ease: Easing.sine.easeOut });
 				}
 				break;
 
 			case "bossExplosion":
 				sequence = [];
-				for (let i = 0; i < 3; i++)
-				{
-					sequence.push({tweens:[{prop:'x', to:Utils.random(-12, 12)}, {prop:'y', to:Utils.random(-7, 15)}], duration:50, ease:Easing.sine.easeOut});
+				for (let i = 0; i < 3; i++) {
+					sequence.push({ tweens: [{ prop: 'x', to: Utils.random(-12, 12) }, { prop: 'y', to: Utils.random(-7, 15) }], duration: 50, ease: Easing.sine.easeOut });
 				}
-				for (let i = 0; i < 3; i++)
-				{
-					sequence.push({tweens:[{prop:'x', to:Utils.random(-10, 10)}, {prop:'y', to:Utils.random(-7, 10)}], duration:50, ease:Easing.sine.easeOut});
+				for (let i = 0; i < 3; i++) {
+					sequence.push({ tweens: [{ prop: 'x', to: Utils.random(-10, 10) }, { prop: 'y', to: Utils.random(-7, 10) }], duration: 50, ease: Easing.sine.easeOut });
 				}
-				for (let i = 0; i < 3; i++)
-				{
-					sequence.push({tweens:[{prop:'x', to:Utils.random(-5, 5)}, {prop:'y', to:Utils.random(-5, 5)}], duration:50, ease:Easing.sine.easeOut});
+				for (let i = 0; i < 3; i++) {
+					sequence.push({ tweens: [{ prop: 'x', to: Utils.random(-5, 5) }, { prop: 'y', to: Utils.random(-5, 5) }], duration: 50, ease: Easing.sine.easeOut });
 				}
-				sequence.push({tweens:[{prop:"x", to:0}, {prop:"y", to:0}], duration:50, ease:Easing.sine.easeOut});
+				sequence.push({ tweens: [{ prop: "x", to: 0 }, { prop: "y", to: 0 }], duration: 50, ease: Easing.sine.easeOut });
 				break;
 
 			case "bombEnemy":
 				sequence = [];
 
-				sequence.push({tweens:[
-					{prop:"scale.x", to: 1.02},
-					{prop:"scale.y", to: 1.02},
-					{prop:"position.x", to: 7},
-					{prop:"position.y", to: -7}
-				], duration: 50});
-				sequence.push({tweens:[], duration: 50});
-				sequence.push({tweens:[
-					{prop:"scale.x", to: 1},
-					{prop:"scale.y", to: 1},
-					{prop:"position.x", to: 0},
-					{prop:"position.y", to: 0}
-				], duration: 50});
+				sequence.push({
+					tweens: [
+						{ prop: "scale.x", to: 1.02 },
+						{ prop: "scale.y", to: 1.02 },
+						{ prop: "position.x", to: 7 },
+						{ prop: "position.y", to: -7 }
+					], duration: 50
+				});
+				sequence.push({ tweens: [], duration: 50 });
+				sequence.push({
+					tweens: [
+						{ prop: "scale.x", to: 1 },
+						{ prop: "scale.y", to: 1 },
+						{ prop: "position.x", to: 0 },
+						{ prop: "position.y", to: 0 }
+					], duration: 50
+				});
 				break;
 
 			case "bigWinEnd":
 				sequence = [];
-				for (let i = 0; i < 5; i++)
-				{
-					sequence.push({tweens:[{prop:'x', to:(Utils.random(-5, 5))}, {prop:'y', to:(Utils.random(-5, 5))}], duration:30, ease:Easing.sine.easeOut});
+				for (let i = 0; i < 5; i++) {
+					sequence.push({ tweens: [{ prop: 'x', to: (Utils.random(-5, 5)) }, { prop: 'y', to: (Utils.random(-5, 5)) }], duration: 30, ease: Easing.sine.easeOut });
 				}
-				sequence.push({tweens:[{prop:"x", to:0}, {prop:"y", to:0}], duration:50, ease:Easing.sine.easeOut});
+				sequence.push({ tweens: [{ prop: "x", to: 0 }, { prop: "y", to: 0 }], duration: 50, ease: Easing.sine.easeOut });
 				break;
 
 			default:
 				sequence = [
-					{tweens: [{prop: "y", to: 5}], duration: 30, ease: Easing.sine.easeOut},
-					{tweens: [{prop: "y", to: 3}], duration: 20, ease: Easing.sine.easeOut},
-					{tweens: [{prop: "y", to: 7}], duration: 50, ease: Easing.sine.easeOut},
-					{tweens: [{prop: "y", to: 0}], duration: 25, ease: Easing.sine.easeOut},
+					{ tweens: [{ prop: "y", to: 5 }], duration: 30, ease: Easing.sine.easeOut },
+					{ tweens: [{ prop: "y", to: 3 }], duration: 20, ease: Easing.sine.easeOut },
+					{ tweens: [{ prop: "y", to: 7 }], duration: 50, ease: Easing.sine.easeOut },
+					{ tweens: [{ prop: "y", to: 0 }], duration: 25, ease: Easing.sine.easeOut },
 				];
 
-				if (this.playersContainer)
-				{
+				if (this.playersContainer) {
 					let oy = 0; //initial playersContainer position
 					let playersContainerRevSeq = [
-						{tweens: [{prop: "y", to: oy - 5}], duration: 30, ease: Easing.sine.easeOut},
-						{tweens: [{prop: "y", to: oy - 3}], duration: 20, ease: Easing.sine.easeOut},
-						{tweens: [{prop: "y", to: oy - 7}], duration: 50, ease: Easing.sine.easeOut},
-						{tweens: [{prop: "y", to: oy}], duration: 25, ease: Easing.sine.easeOut},
+						{ tweens: [{ prop: "y", to: oy - 5 }], duration: 30, ease: Easing.sine.easeOut },
+						{ tweens: [{ prop: "y", to: oy - 3 }], duration: 20, ease: Easing.sine.easeOut },
+						{ tweens: [{ prop: "y", to: oy - 7 }], duration: 50, ease: Easing.sine.easeOut },
+						{ tweens: [{ prop: "y", to: oy }], duration: 25, ease: Easing.sine.easeOut },
 					];
 					Sequence.start(this.playersContainer, playersContainerRevSeq);
 				}
 
-				if (this.spot)
-				{
+				if (this.spot) {
 					let oy = this.spot && this.spot.initialPosition.y;
 					let spotContainerRevSeq = [
-						{tweens: [{prop: "y", to: oy - 5}], duration: 30, ease: Easing.sine.easeOut},
-						{tweens: [{prop: "y", to: oy - 3}], duration: 20, ease: Easing.sine.easeOut},
-						{tweens: [{prop: "y", to: oy - 7}], duration: 50, ease: Easing.sine.easeOut},
-						{tweens: [{prop: "y", to: oy}], duration: 25, ease: Easing.sine.easeOut},
+						{ tweens: [{ prop: "y", to: oy - 5 }], duration: 30, ease: Easing.sine.easeOut },
+						{ tweens: [{ prop: "y", to: oy - 3 }], duration: 20, ease: Easing.sine.easeOut },
+						{ tweens: [{ prop: "y", to: oy - 7 }], duration: 50, ease: Easing.sine.easeOut },
+						{ tweens: [{ prop: "y", to: oy }], duration: 25, ease: Easing.sine.easeOut },
 					];
 					Sequence.start(this.spot, spotContainerRevSeq);
 				}
 				break;
 		}
 
-		if (sequence && sequence.length && container)
-		{
+		if (sequence && sequence.length && container) {
 			Sequence.start(container, sequence);
 		}
 	}
 
-	pourDustFromTheCeiling(aWithDebris_bl = true)
-	{
+	pourDustFromTheCeiling(aWithDebris_bl = true) {
 
-		if (this._fGameOptimizationInfo_goi.i_isCeilingDustMaximumExceed())
-		{
+		if (this._fGameOptimizationInfo_goi.i_isCeilingDustMaximumExceed()) {
 			return;
 		}
 
@@ -2989,36 +2663,28 @@ class GameField extends Sprite
 		this._fFxAnims_arr.push(ceilingDust);
 	}
 
-	_onCeilingDustAnimationCompleted(event)
-	{
+	_onCeilingDustAnimationCompleted(event) {
 		this.emit(GameField.EVENT_ON_CEILING_DUST_ANIMATION_COMPLETED);
 		let lIndex_int = this._fFxAnims_arr.indexOf(event.target);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._fFxAnims_arr.splice(lIndex_int, 1);
 		}
 	}
 
-	_tryToProceedNewPlayer()
-	{
-		if (APP.playerController.info.isNewbie)
-		{
+	_tryToProceedNewPlayer() {
+		if (APP.playerController.info.isNewbie) {
 			this._fNewPlayerFlag_bln = true;
 		}
 	}
 
-	changeState(state)
-	{
-		if (typeof state != "string")
-		{
+	changeState(state) {
+		if (typeof state != "string") {
 			return;
 		}
 
-		switch (state)
-		{
+		switch (state) {
 			case ROUND_STATE.PLAY:
-				if (this._fGameStateWaitIsWatingBattlegroundRoundResult_bl)
-				{
+				if (this._fGameStateWaitIsWatingBattlegroundRoundResult_bl) {
 					this._fGameStateWaitIsWatingBattlegroundRoundResult_bl = false;
 				}
 
@@ -3026,7 +2692,7 @@ class GameField extends Sprite
 				this.redrawMap();
 				this.addRoomGradient();
 
-				this.emit(GameField.EVENT_ON_NEW_ROUND_STATE, {state: true});
+				this.emit(GameField.EVENT_ON_NEW_ROUND_STATE, { state: true });
 				this.focusUI();
 				this.showUI();
 				this.removeTimeLeftText();
@@ -3037,10 +2703,8 @@ class GameField extends Sprite
 					{
 						this.tryToChangeWeapon(WEAPONS.DEFAULT);
 					}
-					else
-					{
-						if (this._fRoundResultRestoreWeapon_num != null || this._fWeaponToRestore_int != null)
-						{
+					else {
+						if (this._fRoundResultRestoreWeapon_num != null || this._fWeaponToRestore_int != null) {
 							let lWeaponToRestore_num = this._fRoundResultRestoreWeapon_num;
 							if (this._fWeaponToRestore_int !== null) lWeaponToRestore_num = this._fWeaponToRestore_int;
 							this._selectRememberedWeapon(lWeaponToRestore_num);
@@ -3056,17 +2720,15 @@ class GameField extends Sprite
 				let awardingController = APP.currentWindow.awardingController;
 				awardingController.removeAllAwardings();
 
-				if(!APP.isBattlegroundGame) this._onTimeToShowTutorial();
+				if (!APP.isBattlegroundGame) this._onTimeToShowTutorial();
 				break;
 
 			case ROUND_STATE.WAIT:
-				if (!APP.currentWindow.isKeepSWModeActive)
-				{
+				if (!APP.currentWindow.isKeepSWModeActive) {
 					this._fWeaponToRestore_int = null;
 				}
 
-				if (this._fGameStateWaitIsWatingBattlegroundRoundResult_bl)
-				{
+				if (this._fGameStateWaitIsWatingBattlegroundRoundResult_bl) {
 					break;
 				}
 
@@ -3074,19 +2736,16 @@ class GameField extends Sprite
 				break;
 
 			case ROUND_STATE.QUALIFY:
-				if (APP.isBattlegroundGamePlayMode)
-				{
+				if (APP.isBattlegroundGamePlayMode) {
 					this._fGameStateWaitIsWatingBattlegroundRoundResult_bl = true;
 				}
 
-				if (!APP.currentWindow.isKeepSWModeActive)
-				{
+				if (!APP.currentWindow.isKeepSWModeActive) {
 					this._fWeaponToRestore_int = null;
 				}
 				this._fRoundResultOnLasthandWaitState_bln = false;
 				this._startListenForRoundEnd();
-				if (this.seatId != -1)
-				{
+				if (this.seatId != -1) {
 					this.removeWaitScreen();
 				}
 				break;
@@ -3095,19 +2754,15 @@ class GameField extends Sprite
 		this._validateCursor();
 	}
 
-	_completeActionsOnRoundStateWait()
-	{
+	_completeActionsOnRoundStateWait() {
 		this._checkForIncompleteRoundAnimations();
 		this._stopListenForRoundEnd();
-		if (!this.roundResultActive && this.seatId != -1)
-		{
+		if (!this.roundResultActive && this.seatId != -1) {
 			this.addTimeLeftText();
 		}
 
-		if (this.playersContainer)
-		{
-			for (let seat of this.playersContainer.children)
-			{
+		if (this.playersContainer) {
+			for (let seat of this.playersContainer.children) {
 				seat.currentScore = 0;
 			}
 		}
@@ -3119,24 +2774,20 @@ class GameField extends Sprite
 	}
 
 
-	_resetCoPlayersWeaponsIfRequired(aIsIgnoreWaitState_bl = false)
-	{
+	_resetCoPlayersWeaponsIfRequired(aIsIgnoreWaitState_bl = false) {
 		let lPlayerInfo_pi = APP.playerController.info;
 		let lGameStateInfo_gsi = APP.currentWindow.gameStateController.info;
 
 		if (
-				APP.isBattlegroundGame
-				&& (lGameStateInfo_gsi.isWaitState || aIsIgnoreWaitState_bl)
-				&& this.playersContainer
-			)
-		{
+			APP.isBattlegroundGame
+			&& (lGameStateInfo_gsi.isWaitState || aIsIgnoreWaitState_bl)
+			&& this.playersContainer
+		) {
 			// reset for the case if we still havn't got WeaponSwitched for the player in QUALIFY state (ex., if his socket was aborted)
-			for (let seat of this.playersContainer.children)
-			{
+			for (let seat of this.playersContainer.children) {
 				let player = this.getPlayerBySeatId(seat.id);
 
-				if (player.betLevel !== lPlayerInfo_pi.roomDefaultBetLevel)
-				{
+				if (player.betLevel !== lPlayerInfo_pi.roomDefaultBetLevel) {
 					player.betLevel = lPlayerInfo_pi.roomDefaultBetLevel;
 
 					let lSpotCurrentDefaultWeaponId_int = lPlayerInfo_pi.getTurretSkinId(player.betLevel);
@@ -3146,52 +2797,43 @@ class GameField extends Sprite
 		}
 	}
 
-	_onTutorialAppearing()
-	{
+	_onTutorialAppearing() {
 		this.hideUI(true);
 	}
 
-	_onTutorialHidden()
-	{
+	_onTutorialHidden() {
 		this.showUI();
 	}
 
-	_onTimeToShowTutorial(aEvent_obj, aOptAutoHide_bl=false)
-	{
-		if (this.spot)
-		{
-			if (!APP.isBattlegroundGame)
-			{
+	_onTimeToShowTutorial(aEvent_obj, aOptAutoHide_bl = false) {
+		if (this.spot) {
+			if (!APP.isBattlegroundGame) {
 				APP.externalCommunicator.sendExternalMessage(GAME_MESSAGES.TIME_TO_SHOW_TUTORIAL, {
-					positionId: 		SEATS_POSITION_IDS[this.seatId],
-					mainSpot: 			this.spot.getBounds(),
-					isSpotAtBottom:		this.spot.isBottom,
-					SWPanel: 			APP.isBattlegroundGamePlayMode ? this.scoreboardController.view.getBounds() : this.weaponsSidebarController.view.getBounds(),
-					dragonStonePanel: 	this.fragmentsPanelController.view.getBounds(),
-					autoTargetSwitcher:	APP.gameScreen.autoTargetingSwitcherController.view.getBounds()
+					positionId: SEATS_POSITION_IDS[this.seatId],
+					mainSpot: this.spot.getBounds(),
+					isSpotAtBottom: this.spot.isBottom,
+					SWPanel: APP.isBattlegroundGamePlayMode ? this.scoreboardController.view.getBounds() : this.weaponsSidebarController.view.getBounds(),
+					dragonStonePanel: this.fragmentsPanelController.view.getBounds(),
+					autoTargetSwitcher: APP.gameScreen.autoTargetingSwitcherController.view.getBounds()
 				});
 			}
 		}
 	}
 
-	_onMiniSlotFeatureOccured()
-	{
-		if (this._fAllAnimationsEndedTimer_t || this._fRoundResultActive_bln && this._miniSlotFeatureController && this._miniSlotFeatureController.isAnimInProgress)
-		{
+	_onMiniSlotFeatureOccured() {
+		if (this._fAllAnimationsEndedTimer_t || this._fRoundResultActive_bln && this._miniSlotFeatureController && this._miniSlotFeatureController.isAnimInProgress) {
 			this._miniSlotFeatureController.interruptAnimations();
 		}
 
 		this.emit(GameField.EVENT_ON_MINI_SLOT_OCCURED);
 	}
 
-	_startListenForRoundEnd()
-	{
+	_startListenForRoundEnd() {
 		this._stopListenForRoundEnd();
 
 		this._fRoundResultAnimsCount_num = 0;
 
-		for (let enemy of this.enemies)
-		{
+		for (let enemy of this.enemies) {
 			if ((enemy.life != 0 || enemy.isDeathOutroAnimationStarted) && !enemy.isSpecterEnemy) continue;
 			++this._fRoundResultAnimsCount_num;
 
@@ -3205,8 +2847,7 @@ class GameField extends Sprite
 			});
 		}
 
-		for (let enemy of this.deadEnemies)
-		{
+		for (let enemy of this.deadEnemies) {
 			if ((!enemy.isBoss || enemy.life != 0 || enemy.isDeathOutroAnimationStarted) && !enemy.isSpecterEnemy) continue;
 			++this._fRoundResultAnimsCount_num;
 			enemy.once(Enemy.EVENT_ON_ENEMY_DESTROY, this._onRREnemyDestroyed, this);
@@ -3219,8 +2860,7 @@ class GameField extends Sprite
 		}
 
 		let awardingController = APP.currentWindow.awardingController;
-		if (awardingController && awardingController.isAnyAwardingInProgress)
-		{
+		if (awardingController && awardingController.isAnyAwardingInProgress) {
 			++this._fRoundResultAnimsCount_num;
 			awardingController.once(AwardingController.EVENT_ON_ALL_ANIMATIONS_COMPLETED, this._onAwardsAnimationsCompleted, this);
 
@@ -3232,8 +2872,7 @@ class GameField extends Sprite
 		}
 
 		let bigWinsController = APP.currentWindow.bigWinsController;
-		if (bigWinsController && bigWinsController.isAnyBigWinInProgress)
-		{
+		if (bigWinsController && bigWinsController.isAnyBigWinInProgress) {
 			++this._fRoundResultAnimsCount_num;
 			bigWinsController.once(BigWinsController.EVENT_ON_ALL_ANIMATIONS_COMPLETED, this._onBigWinsAnimationsCompleted, this);
 			this._fRoundEndListenHandlers_arr.push({
@@ -3251,8 +2890,7 @@ class GameField extends Sprite
 		}
 
 		let questsController = APP.currentWindow.questsController;
-		if (questsController && questsController.isAnyCompletedQuestAnimationInProgress)
-		{
+		if (questsController && questsController.isAnyCompletedQuestAnimationInProgress) {
 			++this._fRoundResultAnimsCount_num;
 			questsController.once(QuestsController.EVENT_ON_ALL_COMPLETED_QUESTS_ANIMATIONS_COMPLETED, this._onCompletedQuestsAnimationsCompleted, this);
 
@@ -3263,8 +2901,7 @@ class GameField extends Sprite
 			});
 		}
 
-		if (this._fIsWeaponAddingInProgress_bl)
-		{
+		if (this._fIsWeaponAddingInProgress_bl) {
 			++this._fRoundResultAnimsCount_num;
 			this.once(GameField.EVENT_ON_END_SHOW_WEAPON, this._onEndShowWeapon, this);
 
@@ -3275,8 +2912,7 @@ class GameField extends Sprite
 			});
 		}
 
-		if (this.gunLocked)
-		{
+		if (this.gunLocked) {
 			++this._fRoundResultAnimsCount_num;
 			this.once(GameField.EVENT_ON_GUN_UNLOCKED, this._onGunUnlockedBeforeRoundEnd, this);
 			this._fRoundEndListenHandlers_arr.push({
@@ -3286,8 +2922,7 @@ class GameField extends Sprite
 			});
 		}
 
-		if (this._fArtilleryStrikesInfo_assi.activeArtilleryStrikesCounter > 0)
-		{
+		if (this._fArtilleryStrikesInfo_assi.activeArtilleryStrikesCounter > 0) {
 			++this._fRoundResultAnimsCount_num;
 			this._fArtilleryStrikesController_assc.once(ArtilleryStrikesController.EVENT_ON_ALL_ARTILLERY_STRIKES_COMPLETED, this._onAllArtilleryStrikesCompleted, this);
 			this._fRoundEndListenHandlers_arr.push({
@@ -3298,8 +2933,7 @@ class GameField extends Sprite
 		}
 
 		const lMiniSlotFeatureController_msc = this.miniSlotFeatureController;
-		if (lMiniSlotFeatureController_msc && lMiniSlotFeatureController_msc.isAnimInProgress)
-		{
+		if (lMiniSlotFeatureController_msc && lMiniSlotFeatureController_msc.isAnimInProgress) {
 			++this._fRoundResultAnimsCount_num;
 			lMiniSlotFeatureController_msc.once(MiniSlotFeatureController.EVENT_ON_ALL_ANIMATIONS_COMPLETED, this._onMiniSlotsFeatureAnimationsCompleted, this);
 			this._fRoundEndListenHandlers_arr.push({
@@ -3310,8 +2944,7 @@ class GameField extends Sprite
 		}
 
 		let fragmentsController = this._fragmentsController;
-		if (fragmentsController && fragmentsController.isAwardingInProgress)
-		{
+		if (fragmentsController && fragmentsController.isAwardingInProgress) {
 			++this._fRoundResultAnimsCount_num;
 			fragmentsController.once(FragmentsController.EVENT_ON_ALL_FRAGMENTS_AWARDS_COMPLETED, this._onAllFragmentsAwardsCompleted, this);
 
@@ -3323,8 +2956,7 @@ class GameField extends Sprite
 		}
 
 		let bossModeController = this._fBossModeController_bmc;
-		if (bossModeController && (bossModeController.isWinPresentationAwaiting || bossModeController.isWinPresentationInProgress))
-		{
+		if (bossModeController && (bossModeController.isWinPresentationAwaiting || bossModeController.isWinPresentationInProgress)) {
 			++this._fRoundResultAnimsCount_num;
 			bossModeController.once(BossModeController.EVENT_ON_BOSS_WIN_AWARD_PRESENTATION_COMPLETED, this._onBossModeWinAwardPresentationCompleted, this);
 
@@ -3335,11 +2967,9 @@ class GameField extends Sprite
 			});
 		}
 
-		if(APP.isBattlegroundGamePlayMode)
-		{
+		if (APP.isBattlegroundGamePlayMode) {
 			let lScoreBoardController = this.scoreboardController;
-			if ( lScoreBoardController && (lScoreBoardController.isScoreBoardBossRoundPanelAnimating))
-			{
+			if (lScoreBoardController && (lScoreBoardController.isScoreBoardBossRoundPanelAnimating)) {
 				++this._fRoundResultAnimsCount_num;
 				lScoreBoardController.once(ScoreboardController.EVENT_ON_BOSS_ROUND_PANEL_ANIMATION_COMPLETED, this._onScoreBoardBossRoundPanelAnimationCompleted, this);
 				this._fRoundEndListenHandlers_arr.push({
@@ -3350,129 +2980,105 @@ class GameField extends Sprite
 			}
 		}
 
-		if (this._fRoundResultAnimsCount_num == 0)
-		{
+		if (this._fRoundResultAnimsCount_num == 0) {
 			this.onNextAnimationEnd();
 		}
 	}
 
-	_onScoreBoardBossRoundPanelAnimationCompleted()
-	{
+	_onScoreBoardBossRoundPanelAnimationCompleted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onRREnemyDeathCompleted()
-	{
+	_onRREnemyDeathCompleted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onRREnemyDestroyed()
-	{
+	_onRREnemyDestroyed() {
 		this.onNextAnimationEnd();
 	}
 
-	_onMiniSlotsFeatureAnimationsCompleted()
-	{
+	_onMiniSlotsFeatureAnimationsCompleted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onAwardsAnimationsCompleted()
-	{
+	_onAwardsAnimationsCompleted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onBigWinsAnimationsCompleted()
-	{
+	_onBigWinsAnimationsCompleted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onBigWinsAnimationsInterrupted()
-	{
+	_onBigWinsAnimationsInterrupted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onCompletedQuestsAnimationsCompleted()
-	{
+	_onCompletedQuestsAnimationsCompleted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onAllFragmentsAwardsCompleted()
-	{
+	_onAllFragmentsAwardsCompleted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onBossModeWinAwardPresentationCompleted()
-	{
+	_onBossModeWinAwardPresentationCompleted() {
 		this.onNextAnimationEnd();
 	}
 
-	_onEndShowWeapon()
-	{
+	_onEndShowWeapon() {
 		this.onNextAnimationEnd();
 	}
 
-	_onGunUnlockedBeforeRoundEnd()
-	{
+	_onGunUnlockedBeforeRoundEnd() {
 		this._stopListenForRoundEnd();
 		this._startListenForRoundEnd(); //check from the beginning
 	}
 
-	_onAllArtilleryStrikesCompleted()
-	{
+	_onAllArtilleryStrikesCompleted() {
 		this._stopListenForRoundEnd();
 		this._startListenForRoundEnd(); //check from the beginning
 	}
 
-	onNextAnimationEnd()
-	{
+	onNextAnimationEnd() {
 		--this._fRoundResultAnimsCount_num;
-		if (this._fRoundResultAnimsCount_num <= 0)
-		{
+		if (this._fRoundResultAnimsCount_num <= 0) {
 			this._destroyAnimationsEndTimer();
-			this._fAllAnimationsEndedTimer_t = new Timer(()=>this._onAllAnimationsEnd(), 100);
+			this._fAllAnimationsEndedTimer_t = new Timer(() => this._onAllAnimationsEnd(), 100);
 			this._stopListenForRoundEnd();
 		}
 	}
 
-	_onAllAnimationsEnd()
-	{
+	_onAllAnimationsEnd() {
 		this._destroyAnimationsEndTimer();
-		this.emit(GameField.EVENT_ON_NEW_ROUND_STATE, {state: (this._fGameStateInfo_gsi.gameState === ROUND_STATE.PLAY)});
+		this.emit(GameField.EVENT_ON_NEW_ROUND_STATE, { state: (this._fGameStateInfo_gsi.gameState === ROUND_STATE.PLAY) });
 	}
 
-	_destroyAnimationsEndTimer()
-	{
+	_destroyAnimationsEndTimer() {
 		this._fAllAnimationsEndedTimer_t && this._fAllAnimationsEndedTimer_t.destructor();
 		this._fAllAnimationsEndedTimer_t = null;
 	}
 
-	_checkForIncompleteRoundAnimations()
-	{
-		if (this._fRoundResultAnimsCount_num > 0)
-		{
+	_checkForIncompleteRoundAnimations() {
+		if (this._fRoundResultAnimsCount_num > 0) {
 			this.clearRoom(true);
 
 			this._forceRoundResult();
 		}
 	}
 
-	_forceRoundResult()
-	{
+	_forceRoundResult() {
 		this._stopListenForRoundEnd();
 		this.emit(GameField.EVENT_ON_ROUND_RESULT_FORCED);
-		this.emit(GameField.EVENT_ON_NEW_ROUND_STATE, {state: (this._fGameStateInfo_gsi.gameState === ROUND_STATE.PLAY)});
+		this.emit(GameField.EVENT_ON_NEW_ROUND_STATE, { state: (this._fGameStateInfo_gsi.gameState === ROUND_STATE.PLAY) });
 	}
 
-	_stopListenForRoundEnd()
-	{
-		for (let i = 0; i < this._fRoundEndListenHandlers_arr.length; ++i)
-		{
+	_stopListenForRoundEnd() {
+		for (let i = 0; i < this._fRoundEndListenHandlers_arr.length; ++i) {
 			let lObj = this._fRoundEndListenHandlers_arr[i].obj;
 			let lEvent = this._fRoundEndListenHandlers_arr[i].event;
 			let lHandler = this._fRoundEndListenHandlers_arr[i].handler;
 
-			if (this._fRoundEndListenHandlers_arr[i].obj)
-			{
+			if (this._fRoundEndListenHandlers_arr[i].obj) {
 				lObj.off(lEvent, lHandler, this);
 			}
 		}
@@ -3482,14 +3088,10 @@ class GameField extends Sprite
 		this._fRoundResultAnimsCount_num = 0;
 	}
 
-	_onTournamentModeServerStateChanged()
-	{
-		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState)
-		{
-			if (this._fRoundResultAnimsCount_num > 0)
-			{
-				for (let enemy of this.enemies)
-				{
+	_onTournamentModeServerStateChanged() {
+		if (this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState) {
+			if (this._fRoundResultAnimsCount_num > 0) {
+				for (let enemy of this.enemies) {
 					if (enemy.life != 0 || enemy.isDeathOutroAnimationStarted) continue;
 
 					this.onNextAnimationEnd();
@@ -3498,45 +3100,36 @@ class GameField extends Sprite
 		}
 	}
 
-	_onTournamentModeClientStateChanged()
-	{
-		if (this._fTournamentModeInfo_tmi.isTournamentOnClientCompletedState)
-		{
+	_onTournamentModeClientStateChanged() {
+		if (this._fTournamentModeInfo_tmi.isTournamentOnClientCompletedState) {
 			this.removeWaitScreen();
 		}
 	}
 
-	blurUI()
-	{
-		if (APP.isBattlegroundMode)
-		{
+	blurUI() {
+		if (APP.isBattlegroundMode) {
 			return;
 		}
 
 		this.spot && this.spot.blurSpot();
 
-		for (var i = 0; i < this.players.length; ++i)
-		{
+		for (var i = 0; i < this.players.length; ++i) {
 			let curCoPlayer = this.players[i].spot;
 			curCoPlayer && curCoPlayer.blurSpot();
 		}
 	}
 
-	focusUI()
-	{
+	focusUI() {
 		this.spot && this.spot.focusSpot()
 
-		for (var i = 0; i < this.players.length; ++i)
-		{
+		for (var i = 0; i < this.players.length; ++i) {
 			let curCoPlayer = this.players[i].spot;
 			curCoPlayer && curCoPlayer.focusSpot();
 		}
 	}
 
-	_validateUIBlur()
-	{
-		switch (this._fGameStateInfo_gsi.gameState)
-		{
+	_validateUIBlur() {
+		switch (this._fGameStateInfo_gsi.gameState) {
 			case ROUND_STATE.QUALIFY:
 			case ROUND_STATE.WAIT:
 				this.blurUI();
@@ -3547,33 +3140,27 @@ class GameField extends Sprite
 		}
 	}
 
-	hideUI(aOptShowOtherPlayers_bl=false)
-	{
+	hideUI(aOptShowOtherPlayers_bl = false) {
 		if (this.spot && this.spot.weaponSpotView) this.spot.weaponSpotView.visible = false;
 		if (this.spot) this.spot.visible = false;
 		if (this.playersContainer) this.playersContainer.visible = aOptShowOtherPlayers_bl;
 	}
 
-	showUI()
-	{
-		if (this.battlegroundTutorialController.isTutorialDisplayed)
-		{
+	showUI() {
+		if (this.battlegroundTutorialController.isTutorialDisplayed) {
 			return;
 		}
-		
+
 		if (this.spot && this.spot.weaponSpotView) this.spot.weaponSpotView.visible = true;
-		if (this.spot)
-		{
+		if (this.spot) {
 			this.spot.visible = true;
 		}
 		if (this.playersContainer) this.playersContainer.visible = true;
 		this._fragmentsPanelView && this._fragmentsPanelView.validatePanelVisibility();
 	}
 
-	closeRoom()
-	{
-		if (APP.isBattlegroundGamePlayMode)
-		{
+	closeRoom() {
+		if (APP.isBattlegroundGamePlayMode) {
 			return;
 		}
 
@@ -3589,54 +3176,44 @@ class GameField extends Sprite
 		this.emit('roomFieldClosed');
 	}
 
-	_addFilter(aContainer_sprt, aFilter_f)
-	{
+	_addFilter(aContainer_sprt, aFilter_f) {
 		if (!aContainer_sprt) return;
 
 		aContainer_sprt.filters = aContainer_sprt.filters || [];
 
 		let lId_num = aContainer_sprt.filters.indexOf(aFilter_f);
-		if (!~lId_num)
-		{
+		if (!~lId_num) {
 			let lAlphaFilter = new PIXI.filters.AlphaFilter();
 			lAlphaFilter.resolution = APP.stage.renderer.resolution;
 			aContainer_sprt.filters = aContainer_sprt.filters.concat([aFilter_f, lAlphaFilter]);
 		}
 	}
 
-	_removeFilter(aContainer_sprt, aFilter_f)
-	{
+	_removeFilter(aContainer_sprt, aFilter_f) {
 		if (!aContainer_sprt || !aContainer_sprt.filters || !aContainer_sprt.filters.length) return;
 
 		let lId_num = aContainer_sprt.filters.indexOf(aFilter_f);
-		if (~lId_num)
-		{
+		if (~lId_num) {
 			let lFilters_arr = [];
-			for (let i = 0; i < aContainer_sprt.filters.length; ++i)
-			{
+			for (let i = 0; i < aContainer_sprt.filters.length; ++i) {
 				lFilters_arr.push(aContainer_sprt.filters[i]);
 			}
 			aContainer_sprt.filters = [];
-			for (let i = 0; i < lFilters_arr.length; ++i)
-			{
-				if (i != lId_num)
-				{
+			for (let i = 0; i < lFilters_arr.length; ++i) {
+				if (i != lId_num) {
 					aContainer_sprt.filters = aContainer_sprt.filters.concat([lFilters_arr[i]]);
 				}
 			}
 		}
 	}
 
-	getSpotsCount()
-	{
+	getSpotsCount() {
 		let lSpotsCount_int = 0;
 
-		for( let i = 0; i < PLAYERS_POSITIONS["DESKTOP"].length; i++ )
-		{
+		for (let i = 0; i < PLAYERS_POSITIONS["DESKTOP"].length; i++) {
 			let lSeat_s = this.getSeat(i, true)
 
-			if(lSeat_s)
-			{
+			if (lSeat_s) {
 				lSpotsCount_int++;
 			}
 		}
@@ -3644,10 +3221,8 @@ class GameField extends Sprite
 		return lSpotsCount_int;
 	}
 
-	clearRoom (keepPlayersOnScreen = false, clearMasterPlayerInfo = true, aClearRicochetBullets_bl = false)
-	{
-		if (aClearRicochetBullets_bl)
-		{
+	clearRoom(keepPlayersOnScreen = false, clearMasterPlayerInfo = true, aClearRicochetBullets_bl = false) {
+		if (aClearRicochetBullets_bl) {
 			this.clearRicochetBulletsIfRequired();
 		}
 
@@ -3691,12 +3266,13 @@ class GameField extends Sprite
 		this.container.x = 0;
 		this.container.y = 0;
 
-		this._removeFilter(this.container, this._bulgePinchFilter);
 
-		if (this._fCritAnims_arr)
-		{
-			for (let lAnim_sprt of this._fCritAnims_arr)
-			{
+		if (this._bulgePinchFilter) {
+			this._removeFilter(this.container, this._bulgePinchFilter);
+		}
+
+		if (this._fCritAnims_arr) {
+			for (let lAnim_sprt of this._fCritAnims_arr) {
 				lAnim_sprt && lAnim_sprt.destroy();
 				lAnim_sprt = null;
 			}
@@ -3704,25 +3280,20 @@ class GameField extends Sprite
 			this._fCritAnims_arr = [];
 		}
 
-		if (this._fWizardSequences_arr)
-		{
-			for (let seq of this._fWizardSequences_arr)
-			{
+		if (this._fWizardSequences_arr) {
+			for (let seq of this._fWizardSequences_arr) {
 				seq && seq.destructor();
 			}
 
 			this._fWizardSequences_arr = [];
 		}
 
-		if (this._fTeleportBulgeFilters_f_arr)
-		{
+		if (this._fTeleportBulgeFilters_f_arr) {
 			this._fTeleportBulgeFilters_f_arr = [];
 		}
 
-		if (this._fWizardTeleportSmokeAnimations_arr)
-		{
-			for (let spr of this._fWizardTeleportSmokeAnimations_arr)
-			{
+		if (this._fWizardTeleportSmokeAnimations_arr) {
+			for (let spr of this._fWizardTeleportSmokeAnimations_arr) {
 				spr && spr.destroy();
 				spr = null;
 			}
@@ -3730,10 +3301,8 @@ class GameField extends Sprite
 			this._fWizardTeleportSmokeAnimations_arr = [];
 		}
 
-		if (this._fRailgunLightnings_arr)
-		{
-			for (let lLightning_sprt of this._fRailgunLightnings_arr)
-			{
+		if (this._fRailgunLightnings_arr) {
+			for (let lLightning_sprt of this._fRailgunLightnings_arr) {
 				Sequence.destroy(Sequence.findByTarget(lLightning_sprt));
 				lLightning_sprt.destroy();
 			}
@@ -3741,10 +3310,8 @@ class GameField extends Sprite
 			this._fRailgunLightnings_arr = [];
 		}
 
-		if (this._fSpectersExploadAnimations_arr_apr)
-		{
-			for (let l_sprt of this._fSpectersExploadAnimations_arr_apr)
-			{
+		if (this._fSpectersExploadAnimations_arr_apr) {
+			for (let l_sprt of this._fSpectersExploadAnimations_arr_apr) {
 				Sequence.destroy(Sequence.findByTarget(l_sprt));
 				l_sprt.destroy();
 			}
@@ -3752,36 +3319,29 @@ class GameField extends Sprite
 			this._fSpectersExploadAnimations_arr_apr = [];
 		}
 
-		if (this.playersContainer)
-		{
+		if (this.playersContainer) {
 			Sequence.destroy(Sequence.findByTarget(this.playersContainer));
 			this.playersContainer.position.set(0, 0);
 		}
 
-		if (this.spot)
-		{
+		if (this.spot) {
 			Sequence.destroy(Sequence.findByTarget(this.spot));
 			this.spot.position.set(this.playerPosition.x, this.playerPosition.y);
 			this.validateBetLevelEmptyButtonPosition();
 			this.spot.resetWaitingBetLevelChange();
 		}
 
-		if (this.spot && APP.isBattlegroundGame)
-		{
+		if (this.spot && APP.isBattlegroundGame) {
 			this.spot.forceLevelUps();
 		}
 
-		if (keepPlayersOnScreen)
-		{
+		if (keepPlayersOnScreen) {
 			this._resetPlayersSpotValues();
 
-			if (this.playersContainer)
-			{
-				for (let seat of this.playersContainer.children)
-				{
+			if (this.playersContainer) {
+				for (let seat of this.playersContainer.children) {
 					let targetWeaponSpotView = seat.weaponSpotView;
-					if (targetWeaponSpotView.pushSequence && !isNaN(targetWeaponSpotView.startPosX) && !isNaN(targetWeaponSpotView.startPosY))
-					{
+					if (targetWeaponSpotView.pushSequence && !isNaN(targetWeaponSpotView.startPosX) && !isNaN(targetWeaponSpotView.startPosY)) {
 						targetWeaponSpotView.pushSequence.stop();
 						targetWeaponSpotView.pushSequence.destructor();
 						targetWeaponSpotView.pushSequence = null;
@@ -3794,18 +3354,15 @@ class GameField extends Sprite
 				}
 			}
 		}
-		else
-		{
-			if (this.roundResultActive)
-			{
+		else {
+			if (this.roundResultActive) {
 				this._roundResultScreenController.showScreen(true);
 			}
 
 			this.resetBalanceFlags();
 			this.endShowWeapon();
 
-			if (this.spot)
-			{
+			if (this.spot) {
 				this.spot.off(MainPlayerSpot.EVENT_ON_WEAPON_SELECTED, this._onWeaponSelected, this);
 				this.spot.off(MainPlayerSpot.EVENT_RELOAD_REQUIRED, this._onReloadRequired, this);
 				this.spot.off(MainPlayerSpot.EVENT_ON_BET_MULTIPLIER_CHANGED, this._onPlayerBetMultiplierUpdated, this);
@@ -3819,18 +3376,15 @@ class GameField extends Sprite
 
 		this._destroyCurChangeWeaponTimerInfo();
 
-		if (this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY && !keepPlayersOnScreen)
-		{
+		if (this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY && !keepPlayersOnScreen) {
 			let l_wci = this._fWeaponsController_wsc.i_getInfo();
 			let lIsLastFreeShot_bln = l_wci.isFreeWeaponsQueueActivated && l_wci.currentWeaponId != WEAPONS.DEFAULT && !l_wci.remainingSWShots;
-			if (!lIsLastFreeShot_bln)
-			{
+			if (!lIsLastFreeShot_bln) {
 				this.rememberWeaponToRestore();
 			}
 		}
 
-		if (!this._isFrbMode && !APP.isBattlegroundGame)
-		{
+		if (!this._isFrbMode && !APP.isBattlegroundGame) {
 			this.resetPlayerWin();
 		}
 		this._validateInteractivity();
@@ -3839,10 +3393,8 @@ class GameField extends Sprite
 		this.removeRoomGradient();
 		// ... clear this.screen
 
-		if(this._fRageAoeAnimations_arr && this._fRageAoeAnimations_arr.length)
-		{
-			while (this._fRageAoeAnimations_arr && this._fRageAoeAnimations_arr.length)
-			{
+		if (this._fRageAoeAnimations_arr && this._fRageAoeAnimations_arr.length) {
+			while (this._fRageAoeAnimations_arr && this._fRageAoeAnimations_arr.length) {
 				this._fRageAoeAnimations_arr.shift().destroy();
 			}
 			this._fRageAoeAnimations_arr = [];
@@ -3852,7 +3404,7 @@ class GameField extends Sprite
 		this._fRageInfoHits_arr_obj = [];
 		this._fDelayedRageEnemiesDeathInfo = {};
 
-		this.emit(GameField.EVENT_ON_ROOM_FIELD_CLEARED, {keepPlayersOnScreen: keepPlayersOnScreen});
+		this.emit(GameField.EVENT_ON_ROOM_FIELD_CLEARED, { keepPlayersOnScreen: keepPlayersOnScreen });
 		this.emit(GameField.EVENT_ON_START_UPDATE_CURSOR_POSITION);
 
 		this._fCryogunsController_csc.off(CryogunsController.EVENT_ON_MAIN_SPOT_BEAM_BASIC_ANIMATION_COMPLETED, this._cryogunMainSpotBeamAnimationCompletedForQueue, this);
@@ -3868,47 +3420,38 @@ class GameField extends Sprite
 		this._fArtilleryStrikesController_assc.off(ArtilleryStrikesController.EVENT_ON_MAIN_STRIKE_ANIMATION_COMPLETED, this._artilleryStrikeMainStrikeAnimationCompletedForUnlock, this);
 	}
 
-	changeWeaponIfRequired()
-	{
-		if(this._fWeaponsInfo_wsi.isFreeWeaponsQueueActivated && this._fWeaponsInfo_wsi.remainingSWShots <= 0)
-		{
+	changeWeaponIfRequired() {
+		if (this._fWeaponsInfo_wsi.isFreeWeaponsQueueActivated && this._fWeaponsInfo_wsi.remainingSWShots <= 0) {
 			this.selectNextWeaponFromTheQueue();
 		}
 	}
 
-	clearRicochetBulletsIfRequired()
-	{
-		if (!this.ricochetController)
-		{
+	clearRicochetBulletsIfRequired() {
+		if (!this.ricochetController) {
 			return;
 		}
 
 		let lDelayedRicochetShotsAmount = APP.webSocketInteractionController.delayedRicochetShotsAmount;
 		let lHasDelayedRicochetShots = lDelayedRicochetShotsAmount > 0;
 		if (
-				this.ricochetController.info.isAnyBulletExist
-				|| lHasDelayedRicochetShots
-			)
-		{
+			this.ricochetController.info.isAnyBulletExist
+			|| lHasDelayedRicochetShots
+		) {
 			this.clearRicochetBullets();
 		}
 	}
 
-	clearRicochetBullets()
-	{
+	clearRicochetBullets() {
 		this.emit(GameField.EVENT_ON_BULLET_CLEAR);
 	}
 
-	_onDelayedRicochetShotRemoved(aEvent_obj)
-	{
-		if (this._fGameStateInfo_gsi.isPlayState || this._isFrbMode)
-		{
+	_onDelayedRicochetShotRemoved(aEvent_obj) {
+		if (this._fGameStateInfo_gsi.isPlayState || this._isFrbMode) {
 			APP.gameScreen.revertAmmoBack(aEvent_obj.weaponId, aEvent_obj.betLevel, false, false, 1);
 		}
 	}
 
-	onConnectionClosedHandled()
-	{
+	onConnectionClosedHandled() {
 		this._fWeaponSwitchInProgress_bln = false;
 
 		this._destroyCurChangeWeaponTimerInfo();
@@ -3917,67 +3460,53 @@ class GameField extends Sprite
 		this._fConnectionHasBeenRecentlyClosed_bln = true;
 
 
-		if (!this._isFrbMode && !APP.isBattlegroundGame)
-		{
+		if (!this._isFrbMode && !APP.isBattlegroundGame) {
 			this.resetPlayerWin();
 		}
 	}
 
-	onConnectionOpenedHandled()
-	{
+	onConnectionOpenedHandled() {
 		this._fConnectionClosed_bln = false;
-		if (!this._isFrbMode && !APP.isBattlegroundGame)
-		{
+		if (!this._isFrbMode && !APP.isBattlegroundGame) {
 			this.resetPlayerWin();
 		}
 	}
 
 	/*special for game pause: when player exits to lobby, open secondary screen or change active tab*/
-	hideRoom()
-	{
+	hideRoom() {
 		this.changeWeaponIfRequired();
 		this.clearRicochetBulletsIfRequired();
 		this.clearRoom(false, false);
 	}
 
 	/*special for game unpause: when player return to game from lobby or another tab, or close secondary screen*/
-	resetBalanceFlags()
-	{
+	resetBalanceFlags() {
 		this._fRoundResultResponseReceived_bl = false;
 
-		if (!this.roundResultActive)
-		{
+		if (!this.roundResultActive) {
 			this._fExternalBalanceUpdated_bl = false;
 		}
 	}
 
-	showRoom(state)
-	{
-		if (typeof state != "string")
-		{
+	showRoom(state) {
+		if (typeof state != "string") {
 			return;
 		}
 
-		switch (state)
-		{
+		switch (state) {
 			case ROUND_STATE.PLAY:
 				this.focusUI();
-				if (this.battlegroundTutorialController.isTutorialDisplayed)
-				{
+				if (this.battlegroundTutorialController.isTutorialDisplayed) {
 					this.hideUI(true);
 				}
-				else
-				{
+				else {
 					this.showUI();
 				}
 
-				if (this.spot)
-				{
+				if (this.spot) {
 					let lCurrentWeaponId_int = this._fWeaponsInfo_wsi.currentWeaponId;
-					if (lCurrentWeaponId_int != WEAPONS.DEFAULT || this._fWeaponsInfo_wsi.ammo == 0)
-					{
-						if (this._fWeaponsInfo_wsi.remainingSWShots == 0 && this.shotRequestsAwaiting == 0 && this._fWeaponsInfo_wsi.isFreeWeaponsQueueActivated)
-						{
+					if (lCurrentWeaponId_int != WEAPONS.DEFAULT || this._fWeaponsInfo_wsi.ammo == 0) {
+						if (this._fWeaponsInfo_wsi.remainingSWShots == 0 && this.shotRequestsAwaiting == 0 && this._fWeaponsInfo_wsi.isFreeWeaponsQueueActivated) {
 							this.selectNextWeaponFromTheQueue();
 						}
 					}
@@ -3989,15 +3518,13 @@ class GameField extends Sprite
 
 			case ROUND_STATE.WAIT:
 				this.blurUI();
-				if (this._fRoundResultResponseReceived_bl || this.roundResultActive)
-				{
+				if (this._fRoundResultResponseReceived_bl || this.roundResultActive) {
 					this._fRoundResultOnLasthandWaitState_bln = true;
 				}
 				this._fExternalBalanceUpdated_bl = false;
 				this._fRoundResultResponseReceived_bl = false;
 
-				if (!this.roundResultActive && this.seatId != -1)
-				{
+				if (!this.roundResultActive && this.seatId != -1) {
 					this.addTimeLeftText();
 				}
 				break;
@@ -4005,10 +3532,8 @@ class GameField extends Sprite
 			case ROUND_STATE.QUALIFY:
 				this.blurUI();
 
-				if (this.seatId != -1)
-				{
-					if (!this.roundResultActive)
-					{
+				if (this.seatId != -1) {
+					if (!this.roundResultActive) {
 						this._startListenForRoundEnd();
 					}
 
@@ -4018,10 +3543,8 @@ class GameField extends Sprite
 		}
 	}
 
-	removeTimeLeftText()
-	{
-		if (this._fWaitingCaption_spr)
-		{
+	removeTimeLeftText() {
+		if (this._fWaitingCaption_spr) {
 			this._fWaitingCaption_spr.spinner && this._fWaitingCaption_spr.spinner.destroy();
 
 			this._fWaitingCaption_spr.destroy();
@@ -4029,15 +3552,12 @@ class GameField extends Sprite
 		}
 	}
 
-	addTimeLeftText()
-	{
-		if (APP.gameScreen.transitionViewController.info.isFeatureActive)
-		{
+	addTimeLeftText() {
+		if (APP.gameScreen.transitionViewController.info.isFeatureActive) {
 			return;
 		}
 
-		if (!this._fWaitingCaption_spr)
-		{
+		if (!this._fWaitingCaption_spr) {
 			this._fWaitingCaption_spr = this.addChild(APP.library.getSprite('preloader/loading_back'));
 			this._fWaitingCaption_spr.zIndex = Z_INDEXES.WAITING_CAPTION;
 
@@ -4050,34 +3570,27 @@ class GameField extends Sprite
 		}
 	}
 
-	onAvatartUpdate(data)
-	{
+	onAvatartUpdate(data) {
 		let seat;
-		if (this.spot)
-		{
+		if (this.spot) {
 			seat = this.spot;
 		}
 
 		seat && seat.updateAvatar(data);
 	}
 
-	updateCommonPanelIndicators(data, duration = 0)
-	{
+	updateCommonPanelIndicators(data, duration = 0) {
 		let lData_obj = this._fCommonPanelIndicatorsData_obj || {};
-		if (data.balance !== undefined)
-		{
-			lData_obj.balance = { value:data.balance };
+		if (data.balance !== undefined) {
+			lData_obj.balance = { value: data.balance };
 		}
-		if (data.win !== undefined)
-		{
-			if(APP.isBattlegroundGame)
-			{
+		if (data.win !== undefined) {
+			if (APP.isBattlegroundGame) {
 				this.spot && this.spot.setScore(data.win);
 			}
-			lData_obj.win = { value:data.win };
+			lData_obj.win = { value: data.win };
 		}
-		if (duration > 0)
-		{
+		if (duration > 0) {
 			lData_obj.duration = duration;
 		}
 
@@ -4085,68 +3598,57 @@ class GameField extends Sprite
 		this._fCommonPanelIndicatorsData_obj = lData_obj;
 	}
 
-	calcBalanceValue()
-	{
+	calcBalanceValue() {
 		let lPlayerInfo_pi = APP.playerController.info;
 		let lResultState_bl = this.roundResultActivationInProgress || this.roundResultActive;
 		let lBalance_num = lPlayerInfo_pi.balance;
 
-		if (APP.pendingOperationController.info.isPendingOperationStatusCheckInProgress)
-		{
+		if (APP.pendingOperationController.info.isPendingOperationStatusCheckInProgress) {
 			return lBalance_num;
 		}
 
-		if (!this._isFrbMode && !APP.currentWindow.gameFrbController.info.continousNextModeFrb)
-		{
+		if (!this._isFrbMode && !APP.currentWindow.gameFrbController.info.continousNextModeFrb) {
 			if (
-					this._fConnectionHasBeenRecentlyClosed_bln
-					&& (
-							this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT
-							|| this._fGameStateInfo_gsi.gameState == ROUND_STATE.QUALIFY
-						)
+				this._fConnectionHasBeenRecentlyClosed_bln
+				&& (
+					this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT
+					|| this._fGameStateInfo_gsi.gameState == ROUND_STATE.QUALIFY
 				)
-			{
-				if (!APP.currentWindow.isKeepSWModeActive && this._fWeaponsController_wsc.i_getInfo().currentWeaponId !== WEAPONS.DEFAULT)
-				{
+			) {
+				if (!APP.currentWindow.isKeepSWModeActive && this._fWeaponsController_wsc.i_getInfo().currentWeaponId !== WEAPONS.DEFAULT) {
 					this.changeWeapon(WEAPONS.DEFAULT);
 				}
 			}
-			else if ((!this._fExternalBalanceUpdated_bl || !lResultState_bl) && !this._fIsWinLimitExceeded_bl && !this._fRoundResultOnLasthandWaitState_bln)
-			{
+			else if ((!this._fExternalBalanceUpdated_bl || !lResultState_bl) && !this._fIsWinLimitExceeded_bl && !this._fRoundResultOnLasthandWaitState_bln) {
 				let lRicochetBulletsAmnt_int = this.ricochetController.info.activeMasterBulletsAmount;
-				let lRicochetBulletsCost_num = lRicochetBulletsAmnt_int*lPlayerInfo_pi.currentStake*lPlayerInfo_pi.betLevel;
+				let lRicochetBulletsCost_num = lRicochetBulletsAmnt_int * lPlayerInfo_pi.currentStake * lPlayerInfo_pi.betLevel;
 				let lAmmoCost_num = !lResultState_bl ? this._fWeaponsInfo_wsi.realAmmo * lPlayerInfo_pi.currentStake : -lRicochetBulletsCost_num;
 				let lAdditional_num = lPlayerInfo_pi.qualifyWin - lPlayerInfo_pi.unpresentedWin + lAmmoCost_num;
-				if (this._fConnectionHasBeenRecentlyClosed_bln && !lResultState_bl)
-				{
+				if (this._fConnectionHasBeenRecentlyClosed_bln && !lResultState_bl) {
 					lAdditional_num = lAmmoCost_num;
 				}
 				lBalance_num += lAdditional_num;
 			}
-			else if (this._fExternalBalanceUpdated_bl && !this.roundResultActive)
-			{
+			else if (this._fExternalBalanceUpdated_bl && !this.roundResultActive) {
 				let lRicochetBulletsAmnt_int = this.ricochetController.info.activeMasterBulletsAmount;
-				let lRicochetBulletsCost_num = lRicochetBulletsAmnt_int*lPlayerInfo_pi.currentStake*lPlayerInfo_pi.betLevel;
+				let lRicochetBulletsCost_num = lRicochetBulletsAmnt_int * lPlayerInfo_pi.currentStake * lPlayerInfo_pi.betLevel;
 				lBalance_num -= lPlayerInfo_pi.unpresentedWin + lRicochetBulletsCost_num;
 
-				if (lBalance_num < 0)
-				{
+				if (lBalance_num < 0) {
 					// possible when cash bonus win limit exceeded
 					lBalance_num = 0;
 				}
 			}
 			else if (
-						(this._isBonusMode || this._fTournamentModeInfo_tmi.isTournamentMode)
-						&& this._fExternalBalanceUpdated_bl && this.roundResultActive
-						&& this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY
-					)
-			{
+				(this._isBonusMode || this._fTournamentModeInfo_tmi.isTournamentMode)
+				&& this._fExternalBalanceUpdated_bl && this.roundResultActive
+				&& this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY
+			) {
 				let lAmmoCost_num = this._fWeaponsInfo_wsi.realAmmo * lPlayerInfo_pi.currentStake;
 				lBalance_num += lAmmoCost_num;
 			}
 		}
-		else
-		{
+		else {
 			// calculations for frb mode
 			// notes:
 			// 1. total frb win amount should be added to balance value only at the end of frb (when frb end notification appears)
@@ -4154,15 +3656,12 @@ class GameField extends Sprite
 			// 3. frb end notification can be delayed after "FRBEnded" message due to awaiting for win animation (coins flying)
 
 			let lBalanceAdd_num = 0;
-			if (APP.currentWindow.gameFrbController.info.frbEnded && APP.currentWindow.gameFrbController.info.isFrbCompleted)
-			{
-				if (!this.roundResultActive)
-				{
+			if (APP.currentWindow.gameFrbController.info.frbEnded && APP.currentWindow.gameFrbController.info.isFrbCompleted) {
+				if (!this.roundResultActive) {
 					// "FRBEnded" already occured but notification still not presented
 					lBalanceAdd_num = this._fExternalBalanceUpdated_bl ? -lPlayerInfo_pi.qualifyWin : 0;
 				}
-				else
-				{
+				else {
 					// frb end notification already presented
 					lBalanceAdd_num = this._fExternalBalanceUpdated_bl ? 0 : lPlayerInfo_pi.qualifyWin;
 				}
@@ -4173,25 +3672,20 @@ class GameField extends Sprite
 		return lBalance_num;
 	}
 
-	updatePlayerBalance()
-	{
+	updatePlayerBalance() {
 		let lBalance_num = this.calcBalanceValue();
-		this.updateCommonPanelIndicators({balance: lBalance_num});
+		this.updateCommonPanelIndicators({ balance: lBalance_num });
 
 		//JIRA... https://jira.dgphoenix.com/browse/MQAMZN-164
-		if (lBalance_num < this.currentWin && !this._isFrbMode && !APP.isBattlegroundGame)
-		{
+		if (lBalance_num < this.currentWin && !this._isFrbMode && !APP.isBattlegroundGame) {
 			this.resetPlayerWin();
 		}
 		//...JIRA
 	}
 
-	updatePlayerWin(aValue_num = 0, aOptDuration_num = 0, aOptBounce_bln = false)
-	{
-		if (!this._isFrbMode && !APP.isBattlegroundGame)
-		{
-			if (this._fRoundResultActive_bln)
-			{
+	updatePlayerWin(aValue_num = 0, aOptDuration_num = 0, aOptBounce_bln = false) {
+		if (!this._isFrbMode && !APP.isBattlegroundGame) {
+			if (this._fRoundResultActive_bln) {
 				return;
 			}
 
@@ -4199,8 +3693,7 @@ class GameField extends Sprite
 			this.currentWinTimeout = new Timer(this.resetPlayerWin.bind(this), 3000);
 		}
 
-		if (aOptBounce_bln)
-		{
+		if (aOptBounce_bln) {
 			this.spotBounce();
 		}
 
@@ -4209,40 +3702,33 @@ class GameField extends Sprite
 
 		//JIRA... https://jira.dgphoenix.com/browse/MQAMZN-164
 		let lBalance_num = this.calcBalanceValue();
-		if (lBalance_num < this.currentWin && !this._isFrbMode && !APP.isBattlegroundGame)
-		{
+		if (lBalance_num < this.currentWin && !this._isFrbMode && !APP.isBattlegroundGame) {
 			this.resetPlayerWin();
 		}
-		else
-		{
-			this.updateCommonPanelIndicators({balance:this.calcBalanceValue(), win:this.currentWin}, aOptDuration_num);
+		else {
+			this.updateCommonPanelIndicators({ balance: this.calcBalanceValue(), win: this.currentWin }, aOptDuration_num);
 		}
 		//...JIRA
 	}
 
-	resetPlayerWin()
-	{
+	resetPlayerWin() {
 		this.currentWinTimeout && this.currentWinTimeout.destructor();
 		this.currentWinTimeout = null;
 
 		this.currentWin = 0;
-		this.updateCommonPanelIndicators({win:this.currentWin});
+		this.updateCommonPanelIndicators({ win: this.currentWin });
 	}
 
 	//returns PlayerSpot ?
-	getSeat(id, optAllowSpot)
-	{
+	getSeat(id, optAllowSpot) {
 		optAllowSpot = Boolean(optAllowSpot);
 
-		if (optAllowSpot && this.spot && this.spot.id == id)
-		{
+		if (optAllowSpot && this.spot && this.spot.id == id) {
 			return this.spot;
 		}
 
-		if (this.playersContainer)
-		{
-			for (let seat of this.playersContainer.children)
-			{
+		if (this.playersContainer) {
+			for (let seat of this.playersContainer.children) {
 				if (seat.id == id) return seat;
 			}
 		}
@@ -4250,56 +3736,44 @@ class GameField extends Sprite
 		return null;
 	}
 
-	getPlayerBySeatId(seatId)
-	{
-		for (let player of this.players)
-		{
-			if (player.seatId == seatId)
-			{
+	getPlayerBySeatId(seatId) {
+		for (let player of this.players) {
+			if (player.seatId == seatId) {
 				return player;
 			}
 		}
 		return null;
 	}
 
-	_onWeaponSelected(event)
-	{
+	_onWeaponSelected(event) {
 		let weaponId = event.weaponId;
 
 		let lSuccess_bl = this.tryToChangeWeapon(weaponId);
-		if (!lSuccess_bl)
-		{
+		if (!lSuccess_bl) {
 			//change selected weapon back
 			this.emit(GameField.EVENT_ON_CHANGE_WEAPON_FAILED);
 		}
 	}
 
-	tryToChangeWeaponOnPlayerBetMultiplierUpdated()
-	{
+	tryToChangeWeaponOnPlayerBetMultiplierUpdated() {
 		let lCurrentWeaponId_int = this._fWeaponsController_wsc.i_getInfo().currentWeaponId;
 
-		if (lCurrentWeaponId_int === WEAPONS.DEFAULT)
-		{
+		if (lCurrentWeaponId_int === WEAPONS.DEFAULT) {
 			this.tryToChangeWeapon(WEAPONS.DEFAULT);
 		}
 	}
 
-	get isWeaponChangeInProcess()
-	{
+	get isWeaponChangeInProcess() {
 		return !!this._fCurChangeWeaponTimerInfo_obj && !!this._fCurChangeWeaponTimerInfo_obj.timer;
 	}
 
-	tryToChangeWeapon(weaponId, aIgnoreRoundResult_bln, aIsNewAwardedLevelUp_bl=false)
-	{
-		if (this._fCurChangeWeaponTimerInfo_obj)
-		{
-			if (this._fCurChangeWeaponTimerInfo_obj.weaponId == WEAPONS.HIGH_LEVEL)
-			{
+	tryToChangeWeapon(weaponId, aIgnoreRoundResult_bln, aIsNewAwardedLevelUp_bl = false) {
+		if (this._fCurChangeWeaponTimerInfo_obj) {
+			if (this._fCurChangeWeaponTimerInfo_obj.weaponId == WEAPONS.HIGH_LEVEL) {
 				// we should not interrupt HIGH_LEVEL weapon switch
 				return;
 			}
-			else
-			{
+			else {
 				this._destroyCurChangeWeaponTimerInfo();
 			}
 		}
@@ -4309,9 +3783,8 @@ class GameField extends Sprite
 		let lFireTimeout_num = this._fireTimeout;
 
 		if (this.gunLocked || this.shotRequestsAwaiting > 0
-			|| (lTimeout_num  < lFireTimeout_num && weaponId != WEAPONS.HIGH_LEVEL) /* after switching weapon fireImmediately might be initiated, we need to be sure there enough time passed*/
-			|| this._fWeaponSwitchInProgress_bln)
-		{
+			|| (lTimeout_num < lFireTimeout_num && weaponId != WEAPONS.HIGH_LEVEL) /* after switching weapon fireImmediately might be initiated, we need to be sure there enough time passed*/
+			|| this._fWeaponSwitchInProgress_bln) {
 			//this.gunLocked - this means that weapon shooting animation in progress
 			this._startChangeWeaponTimer(weaponId, aIsNewAwardedLevelUp_bl);
 
@@ -4320,29 +3793,25 @@ class GameField extends Sprite
 
 		this.changeWeapon(weaponId, aIgnoreRoundResult_bln, false, aIsNewAwardedLevelUp_bl);
 
-		if (this.spot && this.spot.hasPendingHighLevelShots)
-		{
+		if (this.spot && this.spot.hasPendingHighLevelShots) {
 			this._startChangeWeaponTimer(WEAPONS.HIGH_LEVEL, true);
 		}
 
 		return true;
 	}
 
-	_startChangeWeaponTimer(weaponId, aIsNewAwardedLevelUp_bl)
-	{
-		let lChangeWeaponTimer_tmr = new Timer( () => {
-															this._destroyCurChangeWeaponTimerInfo();
-															this.tryToChangeWeapon(weaponId, false, aIsNewAwardedLevelUp_bl, true);
-														},
-												150);
+	_startChangeWeaponTimer(weaponId, aIsNewAwardedLevelUp_bl) {
+		let lChangeWeaponTimer_tmr = new Timer(() => {
+			this._destroyCurChangeWeaponTimerInfo();
+			this.tryToChangeWeapon(weaponId, false, aIsNewAwardedLevelUp_bl, true);
+		},
+			150);
 
-		this._fCurChangeWeaponTimerInfo_obj = {timer: lChangeWeaponTimer_tmr, weaponId:weaponId};
+		this._fCurChangeWeaponTimerInfo_obj = { timer: lChangeWeaponTimer_tmr, weaponId: weaponId };
 	}
 
-	_destroyCurChangeWeaponTimerInfo()
-	{
-		if (!this._fCurChangeWeaponTimerInfo_obj)
-		{
+	_destroyCurChangeWeaponTimerInfo() {
+		if (!this._fCurChangeWeaponTimerInfo_obj) {
 			return;
 		}
 
@@ -4355,17 +3824,14 @@ class GameField extends Sprite
 		this._fCurChangeWeaponTimerInfo_obj = null;
 	}
 
-	changeWeapon(weaponId, aIgnoreRoundResult_bln = false, aIsSkipAnimation_bl = false, aIsNewAwardedLevelUp_bl=false)
-	{
-		if (APP.currentWindow.gameFrbController.info.frbEnded || !APP.currentWindow.gameStateController.info.isPlayerSitIn)
-		{
+	changeWeapon(weaponId, aIgnoreRoundResult_bln = false, aIsSkipAnimation_bl = false, aIsNewAwardedLevelUp_bl = false) {
+		if (APP.currentWindow.gameFrbController.info.frbEnded || !APP.currentWindow.gameStateController.info.isPlayerSitIn) {
 			console.log(" FireProblem unable to change weapon 1 ");
 			return;
 		}
 
 		//BATTLEGROUND...
-		if(APP.isBattlegroundGame)
-		{
+		if (APP.isBattlegroundGame) {
 			this.spot && this.spot.updateAmmo();
 		}
 		//...BATTLEGROUND
@@ -4375,40 +3841,34 @@ class GameField extends Sprite
 		let lWeaponsInfo_wsi = this._fWeaponsController_wsc.info;
 		let lNextWeaponIdByWSI_num = lWeaponsInfo_wsi.i_getNextWeaponIdToShoot();
 
-		if (lNextWeaponIdByWSI_num !== WEAPONS.DEFAULT)
-		{
+		if (lNextWeaponIdByWSI_num !== WEAPONS.DEFAULT) {
 			let lShots_num = lWeaponsInfo_wsi.i_getWeaponFreeShots(lNextWeaponIdByWSI_num);
-			if (aIsSkipAnimation_bl && lShots_num > 0 && this.spot)
-			{
+			if (aIsSkipAnimation_bl && lShots_num > 0 && this.spot) {
 				weaponId = lNextWeaponIdByWSI_num;
 			}
 		}
 
-		if (this._fCurChangeWeaponTimerInfo_obj)
-		{
-			if (this._fCurChangeWeaponTimerInfo_obj.weaponId == WEAPONS.HIGH_LEVEL)
-			{
+		if (this._fCurChangeWeaponTimerInfo_obj) {
+			if (this._fCurChangeWeaponTimerInfo_obj.weaponId == WEAPONS.HIGH_LEVEL) {
 				console.log("FireProblem unable to change weapon 2 ");
 				return;
 			}
-			else
-			{
+			else {
 				this._destroyCurChangeWeaponTimerInfo();
 			}
 		}
 
 		if (
-				!APP.currentWindow.player.sitIn
-				&& !(
-						this._fConnectionHasBeenRecentlyClosed_bln
-						&& (
-								this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT
-								|| this._fGameStateInfo_gsi.gameState == ROUND_STATE.QUALIFY
-							)
-					)
+			!APP.currentWindow.player.sitIn
+			&& !(
+				this._fConnectionHasBeenRecentlyClosed_bln
+				&& (
+					this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT
+					|| this._fGameStateInfo_gsi.gameState == ROUND_STATE.QUALIFY
+				)
 			)
-		{
-			console.log("FireProblem unable to change weapon 3 " + this._fConnectionHasBeenRecentlyClosed_bln + " state qualify or wait  " + (this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT|| this._fGameStateInfo_gsi.gameState == ROUND_STATE.QUALIFY));
+		) {
+			console.log("FireProblem unable to change weapon 3 " + this._fConnectionHasBeenRecentlyClosed_bln + " state qualify or wait  " + (this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT || this._fGameStateInfo_gsi.gameState == ROUND_STATE.QUALIFY));
 			return;
 		}
 
@@ -4416,37 +3876,32 @@ class GameField extends Sprite
 
 		let lSpotCurrentDefaultWeaponId_int = lWeaponsInfo_wsi.currentDefaultWeaponId;
 
-		if(
+		if (
 			lWeaponsInfo_wsi.isAnyAwardedWeapon
 			&& !lWeaponsInfo_wsi.isFreeWeaponsQueueActivated
 			&& this._fRestoreAfterFreeShotsWeaponId_int === undefined
-			)
-		{
-			if(lCurrentWeaponId_int === undefined)
-			{
+		) {
+			if (lCurrentWeaponId_int === undefined) {
 				lCurrentWeaponId_int = WEAPONS.DEFAULT;
 			}
 
 			this._fRestoreAfterFreeShotsWeaponId_int = lCurrentWeaponId_int;
 		}
 
-		if (lCurrentWeaponId_int === weaponId && !this._fWeaponSwitchTry_bln)
-		{
-			if (this.spot)
-			{
+		if (lCurrentWeaponId_int === weaponId && !this._fWeaponSwitchTry_bln) {
+			if (this.spot) {
 				if (
-						this._fWeaponToRestore_int === null
-						&& lCurrentWeaponId_int !== WEAPONS.DEFAULT
-						&& (
-							(lWeaponsInfo_wsi.remainingSWShots > 0
+					this._fWeaponToRestore_int === null
+					&& lCurrentWeaponId_int !== WEAPONS.DEFAULT
+					&& (
+						(lWeaponsInfo_wsi.remainingSWShots > 0
 							&& !lWeaponsInfo_wsi.isFreeWeaponsQueueActivated) //when current SW switches from paid to free
-							|| (lWeaponsInfo_wsi.remainingSWShots <= 0
+						|| (lWeaponsInfo_wsi.remainingSWShots <= 0
 							&& lNextWeaponIdByWSI_num === WEAPONS.DEFAULT)) //when current SW switches from free to paid
 
-					)
-				{
+				) {
 					console.log("FireProblem weapon change emited 1 " + weaponId);
-					this.emit(GameField.EVENT_ON_WEAPON_UPDATED, {weaponId: weaponId});
+					this.emit(GameField.EVENT_ON_WEAPON_UPDATED, { weaponId: weaponId });
 				}
 
 				this.redrawAmmoText();
@@ -4458,11 +3913,10 @@ class GameField extends Sprite
 			this._fWeaponSwitchTry_bln = false;
 			this._fWeaponSwitchInProgress_bln = false;
 
-			if (this._fWeaponToRestore_int !== null)
-			{
+			if (this._fWeaponToRestore_int !== null) {
 				console.log("FireProblem weapon change emited 2 " + weaponId);
-				this.emit(GameField.EVENT_ON_WEAPON_UPDATED, {weaponId: weaponId});
-			}else{
+				this.emit(GameField.EVENT_ON_WEAPON_UPDATED, { weaponId: weaponId });
+			} else {
 				console.log("FireProblem unable to change weapon 3 ");
 
 			}
@@ -4470,30 +3924,27 @@ class GameField extends Sprite
 			return;
 		}
 
-		if (lCurrentWeaponId_int == WEAPONS.DEFAULT && weaponId != WEAPONS.DEFAULT && weaponId != WEAPONS.HIGH_LEVEL)
-		{
+		if (lCurrentWeaponId_int == WEAPONS.DEFAULT && weaponId != WEAPONS.DEFAULT && weaponId != WEAPONS.HIGH_LEVEL) {
 			APP.soundsController.play('mq_booster_end');
 		}
 
 		this.shotRequestsAwaiting = 0;
 
-		if (!APP.currentWindow.isPaused)
-		{
+		if (!APP.currentWindow.isPaused) {
 			this._fWeaponSwitchTry_bln = true;
 			this._fWeaponSwitchInProgress_bln = true;
 		}
 		console.log("FireProblem weapon change emited 2 " + weaponId);
-		this.emit(GameField.EVENT_ON_WEAPON_UPDATED, {weaponId: weaponId});
+		this.emit(GameField.EVENT_ON_WEAPON_UPDATED, { weaponId: weaponId });
 
 		if (
-				!APP.currentWindow.isKeepSWModeActive
-				&& (
-						this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT
-						|| this._fGameStateInfo_gsi.gameState == ROUND_STATE.QUALIFY
-					)
+			!APP.currentWindow.isKeepSWModeActive
+			&& (
+				this._fGameStateInfo_gsi.gameState == ROUND_STATE.WAIT
+				|| this._fGameStateInfo_gsi.gameState == ROUND_STATE.QUALIFY
 			)
-		{
-			APP.externalCommunicator.sendExternalMessage(GAME_MESSAGES.WEAPON_SELECTED, {weaponId: weaponId});
+		) {
+			APP.externalCommunicator.sendExternalMessage(GAME_MESSAGES.WEAPON_SELECTED, { weaponId: weaponId });
 		}
 
 		this.redrawAmmoText();
@@ -4503,52 +3954,44 @@ class GameField extends Sprite
 	}
 
 
-	changeWeaponToDefaultImmediatelyAfterSitOut()
-	{
+	changeWeaponToDefaultImmediatelyAfterSitOut() {
 		this._destroyCurChangeWeaponTimerInfo();
 
-		this.emit(GameField.EVENT_ON_WEAPON_UPDATED, {weaponId: WEAPONS.DEFAULT});
+		this.emit(GameField.EVENT_ON_WEAPON_UPDATED, { weaponId: WEAPONS.DEFAULT });
 	}
 
-	_selectRememberedWeapon(aWeapon_num)
-	{
+	_selectRememberedWeapon(aWeapon_num) {
 		this.changeWeapon(aWeapon_num, null, true);
 	}
 
-	selectNextWeaponFromTheQueue()
-	{
+	selectNextWeaponFromTheQueue() {
 		let lNextWeaponId_int = this.getNextWeaponFromTheQueue();
 		console.log("FireProblem next weapon id " + lNextWeaponId_int)
 		this.changeWeapon(lNextWeaponId_int);
 		return lNextWeaponId_int;
 	}
 
-	getNextWeaponFromTheQueue()
-	{
+	getNextWeaponFromTheQueue() {
 		let lWeaponsInfo_wsi = this._fWeaponsController_wsc.i_getInfo();
 		let lNextWeaponId_int = undefined;
 
-		if(lWeaponsInfo_wsi.i_getWeaponFreeShots(WEAPONS.HIGH_LEVEL) > 0)
-		{
+		if (lWeaponsInfo_wsi.i_getWeaponFreeShots(WEAPONS.HIGH_LEVEL) > 0) {
 			lNextWeaponId_int = WEAPONS.HIGH_LEVEL;
 		}
-		else if(lWeaponsInfo_wsi.autoEquipFreeSW)
-		{
+		else if (lWeaponsInfo_wsi.autoEquipFreeSW) {
 			lNextWeaponId_int = lWeaponsInfo_wsi.i_getNextWeaponIdToShoot();
 
 			//WHEN NO FREE SHOTS LEFT, RESTORE WEAPON
-			if(
+			if (
 				lNextWeaponId_int === WEAPONS.DEFAULT &&
 				this._fRestoreAfterFreeShotsWeaponId_int !== undefined
-				)
-			{
+			) {
 				lNextWeaponId_int = this._fRestoreAfterFreeShotsWeaponId_int;
 				this._fRestoreAfterFreeShotsWeaponId_int = undefined;
 			}
 			//...WHEN NO FREE SHOTS LEFT, RESTORE WEAPON
 		}
-		else
-		{
+		else {
 			lNextWeaponId_int = WEAPONS.DEFAULT;
 		}
 
@@ -4557,19 +4000,16 @@ class GameField extends Sprite
 		return lNextWeaponId_int;
 	}
 
-	onClearAmmo()
-	{
+	onClearAmmo() {
 		this.updatePlayerBalance();
 
-		if (this._fUnpresentedWeaponSurplus_num)
-		{
-			this.emit(GameField.EVENT_ON_WEAPON_TO_UNPRESENTED_TRANSFER_REQUIRED, {winValue: this._fUnpresentedWeaponSurplus_num})
+		if (this._fUnpresentedWeaponSurplus_num) {
+			this.emit(GameField.EVENT_ON_WEAPON_TO_UNPRESENTED_TRANSFER_REQUIRED, { winValue: this._fUnpresentedWeaponSurplus_num })
 			this._fUnpresentedWeaponSurplus_num = null;
 		}
 	}
 
-	onBuyAmmoResponse()
-	{
+	onBuyAmmoResponse() {
 		//this._fRoundResultBuyAmmoRequest_bln = false;
 
 		this.resetBalanceFlags();
@@ -4578,99 +4018,82 @@ class GameField extends Sprite
 		this.redrawAmmoText();
 	}
 
-	onReBuyAmmoResponse()
-	{
+	onReBuyAmmoResponse() {
 		this.updatePlayerBalance();
 		this.redrawAmmoText();
 	}
 
-	showAddWeapon(weapon, pos, enemyLife, optMultipleWeapons, optFinalPosition)
-	{
-		if (!pos)
-		{
+	showAddWeapon(weapon, pos, enemyLife, optMultipleWeapons, optFinalPosition) {
+		if (!pos) {
 			throw new Error('GameField :: showAddWeapon >> pos is null');
 		}
 		this._fIsWeaponAddingInProgress_bl = true;
-		if (enemyLife === 0)
-		{
-			if (optMultipleWeapons)
-			{
+		if (enemyLife === 0) {
+			if (optMultipleWeapons) {
 				this.showWeapon(pos, weapon, optFinalPosition);
 			}
-			else
-			{
+			else {
 				this.showCrateWithWeapon(pos.x, pos.y, this.spot, weapon);
 			}
 		}
-		else
-		{
+		else {
 			this.showWeapon(pos, weapon);
 		}
 	}
 
-	getWeaponEmblemAssetName(weaponId)
-	{
+	getWeaponEmblemAssetName(weaponId) {
 		let assetName = '';
 
-		switch (weaponId)
-		{
-			case WEAPONS.DEFAULT: 			assetName = 'weapons/DefaultGun/turret_1/turret'; break;
+		switch (weaponId) {
+			case WEAPONS.DEFAULT: assetName = 'weapons/DefaultGun/turret_1/turret'; break;
 
-			case WEAPONS.INSTAKILL: 		assetName = 'weapons/emblems/plasma_emblem'; break;
-			case WEAPONS.CRYOGUN: 			assetName = 'weapons/emblems/cryogun_emblem'; break;
-			case WEAPONS.RAILGUN: 			assetName = 'weapons/emblems/railgun_emblem'; break;
-			case WEAPONS.FLAMETHROWER: 		assetName = 'weapons/emblems/flamethrower_emblem'; break;
-			case WEAPONS.ARTILLERYSTRIKE:	assetName = 'weapons/emblems/artillerystrike_emblem'; break;
-			case WEAPONS.HIGH_LEVEL:		assetName = 'battleground/powerup/background'; break;
-			default: throw new Error ('no assets for weapon id ' + weaponId);
+			case WEAPONS.INSTAKILL: assetName = 'weapons/emblems/plasma_emblem'; break;
+			case WEAPONS.CRYOGUN: assetName = 'weapons/emblems/cryogun_emblem'; break;
+			case WEAPONS.RAILGUN: assetName = 'weapons/emblems/railgun_emblem'; break;
+			case WEAPONS.FLAMETHROWER: assetName = 'weapons/emblems/flamethrower_emblem'; break;
+			case WEAPONS.ARTILLERYSTRIKE: assetName = 'weapons/emblems/artillerystrike_emblem'; break;
+			case WEAPONS.HIGH_LEVEL: assetName = 'battleground/powerup/background'; break;
+			default: throw new Error('no assets for weapon id ' + weaponId);
 		}
 		return assetName;
 	}
 
-	getWeaponEmblemGlowAssetName(weaponId)
-	{
+	getWeaponEmblemGlowAssetName(weaponId) {
 		let assetName = '';
-		switch (weaponId)
-		{
-			case WEAPONS.DEFAULT: 			assetName = 'weapons/DefaultGun/turret_1/turret'; break;
+		switch (weaponId) {
+			case WEAPONS.DEFAULT: assetName = 'weapons/DefaultGun/turret_1/turret'; break;
 
-			case WEAPONS.INSTAKILL: 		assetName = 'weapons/emblems/plasma_emblem_glow'; break;
-			case WEAPONS.CRYOGUN: 			assetName = 'weapons/emblems/cryogun_emblem_glow'; break;
-			case WEAPONS.RAILGUN: 			assetName = 'weapons/emblems/railgun_emblem_glow'; break;
-			case WEAPONS.FLAMETHROWER: 		assetName = 'weapons/emblems/flamethrower_emblem_glow'; break;
-			case WEAPONS.ARTILLERYSTRIKE:	assetName = 'weapons/emblems/artillerystrike_emblem_glow'; break;
-			case WEAPONS.HIGH_LEVEL:		assetName = 'battleground/powerup/background'; break;
-			default: throw new Error ('no assets for weapon id ' + weaponId);
+			case WEAPONS.INSTAKILL: assetName = 'weapons/emblems/plasma_emblem_glow'; break;
+			case WEAPONS.CRYOGUN: assetName = 'weapons/emblems/cryogun_emblem_glow'; break;
+			case WEAPONS.RAILGUN: assetName = 'weapons/emblems/railgun_emblem_glow'; break;
+			case WEAPONS.FLAMETHROWER: assetName = 'weapons/emblems/flamethrower_emblem_glow'; break;
+			case WEAPONS.ARTILLERYSTRIKE: assetName = 'weapons/emblems/artillerystrike_emblem_glow'; break;
+			case WEAPONS.HIGH_LEVEL: assetName = 'battleground/powerup/background'; break;
+			default: throw new Error('no assets for weapon id ' + weaponId);
 		}
 		return assetName;
 	}
 
-	getWeaponEmblemAnchor()
-	{
-		return {x: 0.5, y: 0.5};
+	getWeaponEmblemAnchor() {
+		return { x: 0.5, y: 0.5 };
 	}
 
-	getWeaponEmblemGlowAnchor(weaponId)
-	{
-		let anchor = {x: 0.5, y: 0.5};
-		switch (weaponId)
-		{
-			case WEAPONS.INSTAKILL: 		anchor = {x: 123/256, y: 120/256}; break;
-			case WEAPONS.FLAMETHROWER: 		anchor = {x: 122/256, y: 121/256}; break;
-			case WEAPONS.ARTILLERYSTRIKE: 	anchor = {x: 128/256, y: 128/256}; break;
-			case WEAPONS.CRYOGUN: 	 		anchor = {x: 130/256, y: 128/256}; break;
-			case WEAPONS.RAILGUN: 	 		anchor = {x: 126/256, y: 112/256}; break;
+	getWeaponEmblemGlowAnchor(weaponId) {
+		let anchor = { x: 0.5, y: 0.5 };
+		switch (weaponId) {
+			case WEAPONS.INSTAKILL: anchor = { x: 123 / 256, y: 120 / 256 }; break;
+			case WEAPONS.FLAMETHROWER: anchor = { x: 122 / 256, y: 121 / 256 }; break;
+			case WEAPONS.ARTILLERYSTRIKE: anchor = { x: 128 / 256, y: 128 / 256 }; break;
+			case WEAPONS.CRYOGUN: anchor = { x: 130 / 256, y: 128 / 256 }; break;
+			case WEAPONS.RAILGUN: anchor = { x: 126 / 256, y: 112 / 256 }; break;
 		}
 		return anchor;
 	}
 
-	getWeaponContentLandingPosition(aOptWeaponId_int)
-	{
-		if (this.spot)
-		{
+	getWeaponContentLandingPosition(aOptWeaponId_int) {
+		if (this.spot) {
 			//BATTLEGROUND...
-			if(APP.isBattlegroundGame)
-			{
+			if (APP.isBattlegroundGame) {
 				let l_pt = this.spot.getAwardedWeaponLandingPosition(aOptWeaponId_int);
 
 				return this.spot.localToGlobal(l_pt.x, l_pt.y);
@@ -4680,31 +4103,26 @@ class GameField extends Sprite
 			if (
 				aOptWeaponId_int != null &&
 				this._fWeaponsInfo_wsi.remainingSWShots > 0
-				)
-			{
+			) {
 				// move to sidebar
 				return this.weaponsSidebarController.i_getWeaponLandingPosition(aOptWeaponId_int);
 			}
 			return this.spot.spotVisualCenterPoint;
 		}
-		return APP.isMobile ? {x: 502, y: 532} : {x: 534, y: 532};
+		return APP.isMobile ? { x: 502, y: 532 } : { x: 534, y: 532 };
 	}
 
-	getMasterCoinsLandingPosition()
-	{
-		if (this.spot && this.spot.parent)
-		{
+	getMasterCoinsLandingPosition() {
+		if (this.spot && this.spot.parent) {
 			return this.spot.parent.localToGlobal(this.spot.spotVisualCenterPoint.x, this.spot.spotVisualCenterPoint.y);
 		}
 		return null;
 	}
 
-	showWeapon(pos, aAwardedWeapon_obj, aOptFinalPosition_pt)
-	{
+	showWeapon(pos, aAwardedWeapon_obj, aOptFinalPosition_pt) {
 		let lAwardedWeapon_obj = aAwardedWeapon_obj || this._fWeaponsInfo_wsi.i_extractAwardedWeapon();
 
-		if (!this.spot)
-		{
+		if (!this.spot) {
 			return;
 		}
 
@@ -4745,12 +4163,10 @@ class GameField extends Sprite
 			lFreeShotsCounterLabelWidth_num + lFreeShotCounterOffset_num
 		);
 
-		if (pos.x < ((lMaxWidth_num / 2) - lFinalPosition_pt.x))
-		{
-			lPosX_num = ((lMaxWidth_num / 2)  - lFinalPosition_pt.x);
+		if (pos.x < ((lMaxWidth_num / 2) - lFinalPosition_pt.x)) {
+			lPosX_num = ((lMaxWidth_num / 2) - lFinalPosition_pt.x);
 		}
-		else if (pos.x > (APP.config.size.width - (lMaxWidth_num / 2)))
-		{
+		else if (pos.x > (APP.config.size.width - (lMaxWidth_num / 2))) {
 			lPosX_num = APP.config.size.width - (lMaxWidth_num / 2);
 		}
 
@@ -4761,12 +4177,10 @@ class GameField extends Sprite
 		);
 
 
-		if (pos.y < ((lMaxHeight_num/2) - lFinalPosition_pt.y))
-		{
+		if (pos.y < ((lMaxHeight_num / 2) - lFinalPosition_pt.y)) {
 			lPosY_num = (lMaxHeight_num / 2) - lFinalPosition_pt.y;
 		}
-		else if (pos.y > (APP.config.size.height - (lMaxHeight_num / 2)))
-		{
+		else if (pos.y > (APP.config.size.height - (lMaxHeight_num / 2))) {
 			lPosY_num = APP.config.size.height - (lMaxHeight_num / 2);
 		}
 
@@ -4776,20 +4190,17 @@ class GameField extends Sprite
 		this._fNewWeapons_arr.push(contentItem);
 
 		lFreeShotCounterAreaDescriptor_fscad = null;
-		lWeaponItemHeight_num= null;
+		lWeaponItemHeight_num = null;
 		lWeaponItemWidth_num = null;
 	}
 
-	_onWeaponContentLanded(aLandedWeapon_obj, event)
-	{
+	_onWeaponContentLanded(aLandedWeapon_obj, event) {
 		let lLandedWeapon_obj = aLandedWeapon_obj;
 		let contentItem = event ? event.target : null;
 
-		if (contentItem)
-		{
+		if (contentItem) {
 			var lIndex_int = this._fNewWeapons_arr.indexOf(contentItem);
-			if (~lIndex_int)
-			{
+			if (~lIndex_int) {
 				this._fNewWeapons_arr.splice(lIndex_int, 1);
 			}
 			contentItem.destroy();
@@ -4802,17 +4213,14 @@ class GameField extends Sprite
 		APP.gameScreen.awardWeaponLanded(lLandedWeapon_obj);
 	}
 
-	_updateWeaponImmediately(aWeapon_obj, aIsNewAwardedLevelUp_bl=false)
-	{
-		if (aIsNewAwardedLevelUp_bl && !!this.spot)
-		{
+	_updateWeaponImmediately(aWeapon_obj, aIsNewAwardedLevelUp_bl = false) {
+		if (aIsNewAwardedLevelUp_bl && !!this.spot) {
 			this.spot.addPendingHighLevelShots(aWeapon_obj.shots);
 		}
 
 		this.redrawAmmoText();
 
-		if (APP.currentWindow.isPaused)
-		{
+		if (APP.currentWindow.isPaused) {
 			this.rememberWeaponToRestore();
 		}
 
@@ -4820,27 +4228,24 @@ class GameField extends Sprite
 		this.emit(GameField.EVENT_NEW_WEAPON_CONTENT_LANDED_WITHOUT_CHANGING);
 	}
 
-	_onWeaponAddingAnimationCompleted(aLandedWeapon_obj, aIsNewAwardedLevelUp_bl=false)
-	{
+	_onWeaponAddingAnimationCompleted(aLandedWeapon_obj, aIsNewAwardedLevelUp_bl = false) {
 		this._fIsWeaponAddingInProgress_bl = false;
 
 		if (
-				this._fRoundResultActive_bln
-				|| (
-						APP.currentWindow.isPaused
-						&& this._fGameStateInfo_gsi.gameState != ROUND_STATE.PLAY
-						&& !APP.currentWindow.isKeepSWModeActive
-					)
+			this._fRoundResultActive_bln
+			|| (
+				APP.currentWindow.isPaused
+				&& this._fGameStateInfo_gsi.gameState != ROUND_STATE.PLAY
+				&& !APP.currentWindow.isKeepSWModeActive
 			)
-		{
+		) {
 			return;
 		}
 
-		this.emit(GameField.EVENT_ON_END_SHOW_WEAPON, {weapon: aLandedWeapon_obj});
+		this.emit(GameField.EVENT_ON_END_SHOW_WEAPON, { weapon: aLandedWeapon_obj });
 		this.redrawAmmoText();
 
-		if(!APP.playerController.info.didThePlayerWinSWAlready && aLandedWeapon_obj !== undefined && aLandedWeapon_obj.id !== WEAPONS.HIGH_LEVEL)
-		{
+		if (!APP.playerController.info.didThePlayerWinSWAlready && aLandedWeapon_obj !== undefined && aLandedWeapon_obj.id !== WEAPONS.HIGH_LEVEL) {
 			this._fFirstPicksUpWeapon_num = aLandedWeapon_obj.id;
 			this.emit(GameField.EVENT_ON_PICKS_UP_SPECIAL_WEAPONS_FIRST_TIME);
 			return;
@@ -4851,49 +4256,40 @@ class GameField extends Sprite
 		let lIsFreeShot_bl = lCurrentWeaponId_int !== WEAPONS.DEFAULT && lWeaponsInfo_wsi.remainingSWShots > 0 && lWeaponsInfo_wsi.isFreeWeaponsQueueActivated;
 
 		if (
-				(lWeaponsInfo_wsi.autoEquipFreeSW
+			(lWeaponsInfo_wsi.autoEquipFreeSW
 				&& aLandedWeapon_obj !== undefined
 				&& !lIsFreeShot_bl
 				&& this._isProperWeaponLevelApplied(aLandedWeapon_obj.id))
-				||
-				(aLandedWeapon_obj !== undefined && aLandedWeapon_obj.id == WEAPONS.HIGH_LEVEL)
-			)
-		{
+			||
+			(aLandedWeapon_obj !== undefined && aLandedWeapon_obj.id == WEAPONS.HIGH_LEVEL)
+		) {
 			this.tryToChangeWeapon(aLandedWeapon_obj.id, false, aIsNewAwardedLevelUp_bl);
 		}
 	}
 
-	endShowWeapon()
-	{
-		while (this._fNewWeapons_arr.length)
-		{
+	endShowWeapon() {
+		while (this._fNewWeapons_arr.length) {
 			let lAward_obj = this._fNewWeapons_arr.shift();
 
 			let lContentItems_arr = null;
 
-			if (lAward_obj instanceof Crate)
-			{
+			if (lAward_obj instanceof Crate) {
 				lContentItems_arr = lAward_obj.contentItems;
 			}
-			else if (lAward_obj instanceof ContentItem)
-			{
+			else if (lAward_obj instanceof ContentItem) {
 				lContentItems_arr = [lAward_obj];
 			}
 
-			while (lContentItems_arr.length)
-			{
+			while (lContentItems_arr.length) {
 				let lContentItem = lContentItems_arr.pop();
 				let lAwardedWeapon_obj = lContentItem.info ? lContentItem.info.awardedWeapon : lContentItem.awardedWeapon;
 
-				if (lAwardedWeapon_obj)
-				{
-					if (!APP.currentWindow.player.sitIn)
-					{
+				if (lAwardedWeapon_obj) {
+					if (!APP.currentWindow.player.sitIn) {
 						this._fIsWeaponAddingInProgress_bl = false;
-						this.emit(GameField.EVENT_ON_END_SHOW_WEAPON, {weapon: lAwardedWeapon_obj});
+						this.emit(GameField.EVENT_ON_END_SHOW_WEAPON, { weapon: lAwardedWeapon_obj });
 					}
-					else
-					{
+					else {
 						this._onWeaponAddingAnimationCompleted(lAwardedWeapon_obj);
 					}
 				}
@@ -4903,10 +4299,8 @@ class GameField extends Sprite
 		}
 	}
 
-	showCrateWithWeapon(x, y, playerSeat, aAwardedWeapon_obj)
-	{
-		if (!this.spot)
-		{
+	showCrateWithWeapon(x, y, playerSeat, aAwardedWeapon_obj) {
+		if (!this.spot) {
 			return;
 		}
 
@@ -4931,7 +4325,7 @@ class GameField extends Sprite
 		var crate = this.topScreen.addChild(new Crate(cratePos, [crateContentItemInfo]));
 		crate.once(Crate.ON_CRATE_DISAPPEARED, this._onCrateDisappeared, this);
 		crate.once(Crate.ON_CRATE_WEAPON_REVEAL, () => {
-			let shift = crate.calculateCrateFinalPoint({x:x, y:y});
+			let shift = crate.calculateCrateFinalPoint({ x: x, y: y });
 		});
 		crate.zIndex = crate.y + crate.finalPoint.y + 65;
 
@@ -4941,33 +4335,27 @@ class GameField extends Sprite
 		return crate;
 	}
 
-	_onCrateDisappeared(event)
-	{
+	_onCrateDisappeared(event) {
 		let crate = event.target;
 		var lIndex_int = this._fNewWeapons_arr.indexOf(crate);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._fNewWeapons_arr.splice(lIndex_int, 1);
 		}
 		crate.destroy();
 	}
 
-	spotBounce()
-	{
+	spotBounce() {
 		this.spot && this.spot.bounceEffect();
 	}
 
-	playerSeatBounce(aSeatId_int)
-	{
+	playerSeatBounce(aSeatId_int) {
 		let playerSeat = this.getSeat(aSeatId_int, true);
 		playerSeat && playerSeat.bounceEffect();
 	}
 
 	// DRAW PLAYERS ...
-	drawAllPlayers(players, masterSeatId = -1, aRedrawMasterPlayerScore_bl = false)
-	{//GetRoomInfo, response field "seats"
-		if (APP.currentWindow.isPaused)
-		{
+	drawAllPlayers(players, masterSeatId = -1, aRedrawMasterPlayerScore_bl = false) {//GetRoomInfo, response field "seats"
+		if (APP.currentWindow.isPaused) {
 			return;
 		}
 
@@ -4976,18 +4364,14 @@ class GameField extends Sprite
 		this._initSeatsBurstContainerIfRequired();
 
 		let lPlayerPos_int = -1;
-		for (var i = 0; i < players.length; i ++)
-		{
-			if (masterSeatId>=0 && players[i].seatId == masterSeatId)
-			{
-				if (aRedrawMasterPlayerScore_bl)
-				{
+		for (var i = 0; i < players.length; i++) {
+			if (masterSeatId >= 0 && players[i].seatId == masterSeatId) {
+				if (aRedrawMasterPlayerScore_bl) {
 					this.redrawPlayerScore(players[i]);
 				}
 				continue;
 			}
-			else if (this.seatId>=0 && players[i].seatId == this.seatId)
-			{
+			else if (this.seatId >= 0 && players[i].seatId == this.seatId) {
 				continue;
 			}
 
@@ -4999,19 +4383,17 @@ class GameField extends Sprite
 			this.players.push(players[i]);
 		}
 
-		if (	this.roundResultActive
-			&&	this._fGameStateInfo_gsi
-			&&	this._fGameStateInfo_gsi.gameState != ROUND_STATE.PLAY
-			)
-		{
+		if (this.roundResultActive
+			&& this._fGameStateInfo_gsi
+			&& this._fGameStateInfo_gsi.gameState != ROUND_STATE.PLAY
+		) {
 			this._resetPlayersSpotValues();
 		}
 
 		this.showKingsOfTheHill([]);
 	}
 
-	_drawCoPlayer(player, aId_int)
-	{
+	_drawCoPlayer(player, aId_int) {
 		let pos = this._getSpotPosition(aId_int, false);
 		player.master = false;
 		player.positionId = aId_int;
@@ -5021,50 +4403,41 @@ class GameField extends Sprite
 		return playerContainer;
 	}
 
-	_removeCoPlayers()
-	{
-		while (this.players && this.players.length)
-		{
+	_removeCoPlayers() {
+		while (this.players && this.players.length) {
 			delete this.players.pop();
 		}
 		this.players = [];
 
-		if (this.playersContainer)
-		{
+		if (this.playersContainer) {
 			this.playersContainer.destroyChildren();
 		}
 	}
 
-	_onPlayerBetMultiplierUpdateRequired(aEvent_obj)
-	{
+	_onPlayerBetMultiplierUpdateRequired(aEvent_obj) {
 		this._isWaitingResponseToBetLevelChangeRequest = true;
-		this.emit(GameField.EVENT_ON_BET_MULTIPLIER_UPDATE_REQUIRED, {id: aEvent_obj.id, multiplier: aEvent_obj.multiplier});
+		this.emit(GameField.EVENT_ON_BET_MULTIPLIER_UPDATE_REQUIRED, { id: aEvent_obj.id, multiplier: aEvent_obj.multiplier });
 	}
 
-	_onPlayerBetMultiplierUpdated(aEvent_obj)
-	{
-		this.emit(GameField.EVENT_ON_BET_MULTIPLIER_UPDATED, {id: aEvent_obj.id, multiplier: aEvent_obj.multiplier});
+	_onPlayerBetMultiplierUpdated(aEvent_obj) {
+		this.emit(GameField.EVENT_ON_BET_MULTIPLIER_UPDATED, { id: aEvent_obj.id, multiplier: aEvent_obj.multiplier });
 
-		if (aEvent_obj.weaponUpdateAllowed)
-		{
+		if (aEvent_obj.weaponUpdateAllowed) {
 			this.tryToChangeWeaponOnPlayerBetMultiplierUpdated();
 		}
 	}
 
-	addMasterPlayerSpot(player, aOptCurrentWeaponId_int = -1)
-	{
+	addMasterPlayerSpot(player, aOptCurrentWeaponId_int = -1) {
 		this.removeMasterPlayerSpot();
 
 		this.seatId = player.seatId;
 		this.nickname = player.nickname;
 		this.currentScore = player.currentScore;
 
-		if (!this._isFrbMode && !APP.isBattlegroundGame)
-		{
+		if (!this._isFrbMode && !APP.isBattlegroundGame) {
 			this.resetPlayerWin();
 		}
-		else if (APP.isBattlegroundGame)
-		{
+		else if (APP.isBattlegroundGame) {
 			this.currentWin = APP.gameScreen.player.lastReceivedBattlegroundScore_int;
 		}
 
@@ -5080,14 +4453,12 @@ class GameField extends Sprite
 
 
 		let lMainPlayerSpot_s;
-		if (APP.isBattlegroundGame)
-		{
+		if (APP.isBattlegroundGame) {
 			lMainPlayerSpot_s = new BattlegroundMainPlayerSpot(player, this.playerPosition, true);
 			lMainPlayerSpot_s.on(BattlegroundMainPlayerSpot.EVENT_ON_AUTOFIRE_BUTTON_ENABLED, this._onAutoFireButtonEnabled, this);
 			lMainPlayerSpot_s.on(BattlegroundMainPlayerSpot.EVENT_ON_AUTOFIRE_BUTTON_DISABLED, this._onAutoFireButtonDisabled, this);
 		}
-		else
-		{
+		else {
 			lMainPlayerSpot_s = new MainPlayerSpot(player, this.playerPosition, true);
 		}
 
@@ -5102,8 +4473,7 @@ class GameField extends Sprite
 		this.spot.on(MainPlayerSpot.EVENT_ON_CHANGE_WEAPON_TO_DEFAULT_REQUIRED, this._onPlayerChangeWeaponToDefaultRequired, this);
 		this.spot.on(MainPlayerSpot.EVENT_ON_ROTATE_GUN_TO_ZERO, this._onPlayerSpotRotateToZeroWeaponRequired, this);
 
-		if (!this._fBetLevelPlusButtonHitArea_b)
-		{
+		if (!this._fBetLevelPlusButtonHitArea_b) {
 			let lButtonParameters_obj = this.spot.betLevelPlusButtonParameters;
 			this._fBetLevelPlusButtonHitArea_b = this.topScreen.addChild(new BetLevelEmptyButton(lButtonParameters_obj.width, lButtonParameters_obj.height));
 			this._fBetLevelPlusButtonHitArea_b.zIndex = Z_INDEXES.BET_LEVEL_BUTTON_HIT_AREA;
@@ -5111,8 +4481,7 @@ class GameField extends Sprite
 			this._fBetLevelPlusButtonHitArea_b.on(BetLevelEmptyButton.EVENT_BET_LEVEL_EMPTY_BUTTON_RESTRICTED_ZONE, this._onBetLevelEmptyButtonRestrictedZone, this);
 		}
 
-		if (!this._fBetLevelMinusButtonHitArea_b)
-		{
+		if (!this._fBetLevelMinusButtonHitArea_b) {
 			let lButtonParameters_obj = this.spot.betLevelMinusButtonParameters;
 			this._fBetLevelMinusButtonHitArea_b = this.topScreen.addChild(new BetLevelEmptyButton(lButtonParameters_obj.width, lButtonParameters_obj.height));
 			this._fBetLevelMinusButtonHitArea_b.zIndex = Z_INDEXES.BET_LEVEL_BUTTON_HIT_AREA;
@@ -5122,8 +4491,7 @@ class GameField extends Sprite
 
 		this.validateBetLevelEmptyButtonPosition();
 
-		if (this._fWeaponToRestore_int !== null && this._fWeaponsInfo_wsi.remainingSWShots)
-		{
+		if (this._fWeaponToRestore_int !== null && this._fWeaponsInfo_wsi.remainingSWShots) {
 			this.changeWeapon(this._fWeaponToRestore_int);
 			this.redrawAmmoText();
 
@@ -5134,22 +4502,18 @@ class GameField extends Sprite
 
 			this._fWeaponToRestore_int = null;
 		}
-		else
-		{
+		else {
 			let lCurrentWeaponId_int = aOptCurrentWeaponId_int !== undefined ? aOptCurrentWeaponId_int : WEAPONS.DEFAULT;
 
 			const l_wci = this._fWeaponsController_wsc.i_getInfo();
-			if (!l_wci.isFreeWeaponsQueueActivated && !isNaN(this._fRestoreAfterFreeShotsWeaponId_int))
-			{
+			if (!l_wci.isFreeWeaponsQueueActivated && !isNaN(this._fRestoreAfterFreeShotsWeaponId_int)) {
 				lCurrentWeaponId_int = this._fRestoreAfterFreeShotsWeaponId_int;
 				this._fRestoreAfterFreeShotsWeaponId_int = undefined;
 			}
 
-			if ((this._fRoundResultRestoreWeapon_num !== null || this._fWeaponToRestore_int != null) && this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY)
-			{
+			if ((this._fRoundResultRestoreWeapon_num !== null || this._fWeaponToRestore_int != null) && this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY) {
 				let lWeaponToRestore_num = this._fRoundResultRestoreWeapon_num;
-				if (this._fWeaponToRestore_int !== null)
-				{
+				if (this._fWeaponToRestore_int !== null) {
 					lWeaponToRestore_num = this._fWeaponToRestore_int;
 				}
 				this._selectRememberedWeapon(lWeaponToRestore_num);
@@ -5157,23 +4521,19 @@ class GameField extends Sprite
 				this._fWeaponToRestore_int = null;
 			}
 			else if (
-						(this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY || this.roundResultActivationInProgress)
-						&& lCurrentWeaponId_int != WEAPONS.DEFAULT
-						&& !this._fNewPlayerFlag_bln
-					)
-			{
+				(this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY || this.roundResultActivationInProgress)
+				&& lCurrentWeaponId_int != WEAPONS.DEFAULT
+				&& !this._fNewPlayerFlag_bln
+			) {
 				this.tryToChangeWeapon(lCurrentWeaponId_int);
 			}
-			else if (this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY && !this._fNewPlayerFlag_bln)
-			{
+			else if (this._fGameStateInfo_gsi.gameState == ROUND_STATE.PLAY && !this._fNewPlayerFlag_bln) {
 				this.selectNextWeaponFromTheQueue();
 			}
-			else if (this._fNewPlayerFlag_bln)
-			{
+			else if (this._fNewPlayerFlag_bln) {
 				this.selectNextWeaponFromTheQueue();
 			}
-			else
-			{
+			else {
 				this.changeWeapon(lCurrentWeaponId_int);
 			}
 
@@ -5183,34 +4543,27 @@ class GameField extends Sprite
 
 		this._validateCursor();
 
-		this.emit(GameField.EVENT_ON_MASTER_SEAT_ADDED, {seatId: this.seatId});
+		this.emit(GameField.EVENT_ON_MASTER_SEAT_ADDED, { seatId: this.seatId });
 	}
 
-	validateBetLevelEmptyButtonPosition()
-	{
-		let lBottomOffset_num = this.spot.isBottom ? 0: 6;
+	validateBetLevelEmptyButtonPosition() {
+		let lBottomOffset_num = this.spot.isBottom ? 0 : 6;
 
-		if (this._fBetLevelPlusButtonHitArea_b)
-		{
+		if (this._fBetLevelPlusButtonHitArea_b) {
 			let lButtonParameters_obj = this.spot.betLevelPlusButtonParameters;
 			this._fBetLevelPlusButtonHitArea_b.position.set(this.spot.x + lButtonParameters_obj.x, this.spot.y + lButtonParameters_obj.y + lBottomOffset_num);
 		}
 
-		if (this._fBetLevelMinusButtonHitArea_b)
-		{
+		if (this._fBetLevelMinusButtonHitArea_b) {
 			let lButtonParameters_obj = this.spot.betLevelMinusButtonParameters;
 			this._fBetLevelMinusButtonHitArea_b.position.set(this.spot.x + lButtonParameters_obj.x, this.spot.y + lButtonParameters_obj.y + lBottomOffset_num);
 		}
 	}
 
-	_onBetLevelEmptyPlusButtonClicked()
-	{
-		if (this._isWaitingResponseToBetLevelChangeRequest || this.isMasterBulletExist() || this.shotRequestsAwaiting > 0)
-		{
-			if (this.spot && this.spot.isPlusButtonClickedAllowed())
-			{
-				if(APP.isAutoFireMode)
-				{
+	_onBetLevelEmptyPlusButtonClicked() {
+		if (this._isWaitingResponseToBetLevelChangeRequest || this.isMasterBulletExist() || this.shotRequestsAwaiting > 0) {
+			if (this.spot && this.spot.isPlusButtonClickedAllowed()) {
+				if (APP.isAutoFireMode) {
 					this._resetTargetIfRequired(true);
 				}
 				this._isPlusBetLevelChangeRequiredAfterFiring_bl = true;
@@ -5219,24 +4572,18 @@ class GameField extends Sprite
 
 			return;
 		}
-		else if (this.spot && this.spot.isPlusButtonClickedAllowed())
-		{
-			if(APP.isAutoFireMode)
-			{
+		else if (this.spot && this.spot.isPlusButtonClickedAllowed()) {
+			if (APP.isAutoFireMode) {
 				this._resetTargetIfRequired(true);
 			}
 			this.spot.onPlusButtonClicked(true, false);
 		}
 	}
 
-	_onBetLevelEmptyMinusButtonClicked()
-	{
-		if (this._isWaitingResponseToBetLevelChangeRequest || this.isMasterBulletExist() || this.shotRequestsAwaiting > 0)
-		{
-			if (this.spot && this.spot.isMinusButtonClickedAllowed())
-			{
-				if(APP.isAutoFireMode)
-				{
+	_onBetLevelEmptyMinusButtonClicked() {
+		if (this._isWaitingResponseToBetLevelChangeRequest || this.isMasterBulletExist() || this.shotRequestsAwaiting > 0) {
+			if (this.spot && this.spot.isMinusButtonClickedAllowed()) {
+				if (APP.isAutoFireMode) {
 					this._resetTargetIfRequired(true);
 				}
 				this._isMinusBetLevelChangeRequiredAfterFiring_bl = true;
@@ -5245,163 +4592,133 @@ class GameField extends Sprite
 
 			return;
 		}
-		else if (this.spot && this.spot.isMinusButtonClickedAllowed())
-		{
-			if(APP.isAutoFireMode)
-			{
+		else if (this.spot && this.spot.isMinusButtonClickedAllowed()) {
+			if (APP.isAutoFireMode) {
 				this._resetTargetIfRequired(true);
 			}
 			this.spot.onMinusButtonClicked(true, false);
 		}
 	}
 
-	_onAutoFireButtonEnabled(aEvent_obj)
-	{
+	_onAutoFireButtonEnabled(aEvent_obj) {
 		this.autofireButtonEnabled = true;
 
-		if (aEvent_obj.enemy)
-		{
+		if (aEvent_obj.enemy) {
 			this.emit(GameField.EVENT_ON_AUTOFIRE_BUTTON_ENABLED);
 			this._tryUpdateTargetAndFire(aEvent_obj.enemy);
 		}
-		else
-		{
+		else {
 			let lTargetEnemy_enm = this.getNearestEnemy(this.spot.x, this.spot.y, 2);
 
-			if (!lTargetEnemy_enm)
-			{
+			if (!lTargetEnemy_enm) {
 				this._validateAutofireButton(false);
 				return;
 			}
-			else
-			{
+			else {
 				this.emit(GameField.EVENT_ON_AUTOFIRE_BUTTON_ENABLED);
 				this._tryUpdateTargetAndFire(lTargetEnemy_enm);
 			}
 		}
 	}
 
-	_onAutoFireButtonDisabled()
-	{
+	_onAutoFireButtonDisabled() {
 		this.autofireButtonEnabled = false;
 
 		this.emit(GameField.EVENT_ON_AUTOFIRE_BUTTON_DISABLED);
 		this.resetTargetIfRequired(true);
 	}
 
-	checkingNeedChangeBetLevelAfterFiring()
-	{
-		if (!this.isMasterBulletExist() && this.shotRequestsAwaiting <= 0)
-		{
-			if (this._isPlusBetLevelChangeRequiredAfterFiring_bl)
-			{
+	checkingNeedChangeBetLevelAfterFiring() {
+		if (!this.isMasterBulletExist() && this.shotRequestsAwaiting <= 0) {
+			if (this._isPlusBetLevelChangeRequiredAfterFiring_bl) {
 				this._isPlusBetLevelChangeRequiredAfterFiring_bl = false;
 				this.spot.onPlusButtonClicked(false, false);
 			}
 
-			if (this._isMinusBetLevelChangeRequiredAfterFiring_bl)
-			{
+			if (this._isMinusBetLevelChangeRequiredAfterFiring_bl) {
 				this._isMinusBetLevelChangeRequiredAfterFiring_bl = false;
 				this.spot.onMinusButtonClicked(false, false);
 			}
 		}
 	}
 
-	_onBetLevelEmptyButtonRestrictedZone(e)
-	{
-		if (this.spot)
-		{
+	_onBetLevelEmptyButtonRestrictedZone(e) {
+		if (this.spot) {
 			this.spot.betLevelEmptyButtonRestrictedZone = e.isRestricted;
 		}
 	}
 
-	_onPlayerChangeWeaponToDefaultRequired()
-	{
+	_onPlayerChangeWeaponToDefaultRequired() {
 		this.tryToChangeWeapon(WEAPONS.DEFAULT);
 	}
 
-	_onPlayerSpotRotateToZeroWeaponRequired()
-	{
-		this.rotateGun(APP.config.size.width/2, APP.config.size.height/2);
+	_onPlayerSpotRotateToZeroWeaponRequired() {
+		this.rotateGun(APP.config.size.width / 2, APP.config.size.height / 2);
 	}
 
-	rememberWeaponToRestore()
-	{
+	rememberWeaponToRestore() {
 		let lPendingWeaponId_num = null;
 		let lPendingMasterSWAwards = APP.gameScreen.pendingMasterSWAwards;
-		if (lPendingMasterSWAwards && lPendingMasterSWAwards.length)
-		{
+		if (lPendingMasterSWAwards && lPendingMasterSWAwards.length) {
 			lPendingWeaponId_num = lPendingMasterSWAwards[0].id;
 		}
 
 		const l_wci = this._fWeaponsController_wsc.i_getInfo();
 
-		if (lPendingWeaponId_num !== null)
-		{
+		if (lPendingWeaponId_num !== null) {
 			this._fWeaponToRestore_int = lPendingWeaponId_num;
 		}
 		else if (
-					l_wci
-					&& l_wci.autoEquipFreeSW
-					&& (l_wci.isAnyAwardedWeapon || l_wci.isAnyFreeSpecialWeaponExist)
-					&& l_wci.currentWeaponId == WEAPONS.DEFAULT
-				)
-		{
+			l_wci
+			&& l_wci.autoEquipFreeSW
+			&& (l_wci.isAnyAwardedWeapon || l_wci.isAnyFreeSpecialWeaponExist)
+			&& l_wci.currentWeaponId == WEAPONS.DEFAULT
+		) {
 			this._fWeaponToRestore_int = l_wci.i_getNextWeaponIdToShoot()
 		}
-		else if (l_wci && l_wci.currentWeaponId !== undefined && this._fGameStateInfo_gsi.gameState === ROUND_STATE.PLAY)
-		{
+		else if (l_wci && l_wci.currentWeaponId !== undefined && this._fGameStateInfo_gsi.gameState === ROUND_STATE.PLAY) {
 			this._fWeaponToRestore_int = l_wci.currentWeaponId;
 		}
-		else
-		{
+		else {
 			this._fWeaponToRestore_int = null;
 		}
 	}
 
-	clearWeapons()
-	{
+	clearWeapons() {
 		this._fWeaponToRestore_int = null;
 		this._fWeaponsController_wsc.i_clearAll();
 	}
 
-	_onReloadRequired()
-	{
+	_onReloadRequired() {
 		this._tryToBuyAmmo();
 	}
 
-	removeMasterPlayerSpot(clearMasterPlayerInfo = true)
-	{
+	removeMasterPlayerSpot(clearMasterPlayerInfo = true) {
 		this.spot && this.spot.destroy();
 		this.spot = null;
 
-		if (this._fBetLevelPlusButtonHitArea_b)
-		{
+		if (this._fBetLevelPlusButtonHitArea_b) {
 			this._fBetLevelPlusButtonHitArea_b.off(BetLevelEmptyButton.EVENT_BET_LEVEL_EMPTY_BUTTON_CLICK, this._onBetLevelEmptyPlusButtonClicked, this);
 			this._fBetLevelPlusButtonHitArea_b.off(BetLevelEmptyButton.EVENT_BET_LEVEL_EMPTY_BUTTON_RESTRICTED_ZONE, this._onBetLevelEmptyButtonRestrictedZone, this);
 			this._fBetLevelPlusButtonHitArea_b.destroy();
 			this._fBetLevelPlusButtonHitArea_b = null;
 		}
 
-		if (this._fBetLevelMinusButtonHitArea_b)
-		{
+		if (this._fBetLevelMinusButtonHitArea_b) {
 			this._fBetLevelMinusButtonHitArea_b.off(BetLevelEmptyButton.EVENT_BET_LEVEL_EMPTY_BUTTON_CLICK, this._onBetLevelEmptyMinusButtonClicked, this);
 			this._fBetLevelMinusButtonHitArea_b.off(BetLevelEmptyButton.EVENT_BET_LEVEL_EMPTY_BUTTON_RESTRICTED_ZONE, this._onBetLevelEmptyButtonRestrictedZone, this);
 			this._fBetLevelMinusButtonHitArea_b.destroy();
 			this._fBetLevelMinusButtonHitArea_b = null;
 		}
 
-		if (clearMasterPlayerInfo)
-		{
+		if (clearMasterPlayerInfo) {
 			this.seatId = -1;
 			this.playerPosition = null;
 		}
 	}
 
-	_initPlayersContainerIfRequired()
-	{
-		if (this.playersContainer)
-		{
+	_initPlayersContainerIfRequired() {
+		if (this.playersContainer) {
 			return;
 		}
 
@@ -5409,25 +4726,20 @@ class GameField extends Sprite
 		this.playersContainer.zIndex = Z_INDEXES.PLAYERS_CONTAINER;
 	}
 
-	_removeAllPlayersSpots(clearMasterPlayerInfo = true)
-	{
+	_removeAllPlayersSpots(clearMasterPlayerInfo = true) {
 		this._removeCoPlayers();
 		this.removeMasterPlayerSpot(clearMasterPlayerInfo);
 	}
 
-	_resetPlayersSpotValues()
-	{
-		if (!this._isFrbMode && !APP.isBattlegroundGame)
-		{
+	_resetPlayersSpotValues() {
+		if (!this._isFrbMode && !APP.isBattlegroundGame) {
 			this.resetPlayerWin();
 		}
 	}
 
 
-	_initSeatsBurstContainerIfRequired()
-	{
-		if (this.playerRewardContainer)
-		{
+	_initSeatsBurstContainerIfRequired() {
+		if (this.playerRewardContainer) {
 			return;
 		}
 
@@ -5436,67 +4748,55 @@ class GameField extends Sprite
 	}
 	// ... DRAW PLAYERS
 
-	redrawPlayerScore(player)
-	{
-		if (!this.spot)
-		{
+	redrawPlayerScore(player) {
+		if (!this.spot) {
 			let playerInfo = APP.currentWindow.player;
-			if (!playerInfo)
-			{
+			if (!playerInfo) {
 				throw new Error("Cannot redraw master player spot - no player info.");
 			}
 			this.addMasterPlayerSpot(playerInfo, player.weapon.id);
 		}
 	}
 
-	handleAmmoBackMessage()
-	{
+	handleAmmoBackMessage() {
 		this.redrawAmmoText();
 		this.updatePlayerBalance();
 		this.unlockGun()
 	}
 
-	onShotRequest()
-	{
+	onShotRequest() {
 		this.shotRequestsAwaiting++;
 	}
 
-	onShotResponse()
-	{
+	onShotResponse() {
 		this.shotRequestsAwaiting--;
-		if (this.shotRequestsAwaiting < 0)
-		{
+		if (this.shotRequestsAwaiting < 0) {
 			this.shotRequestsAwaiting = 0;
 		}
 		this.checkingNeedChangeBetLevelAfterFiring();
 	}
 
-	decreaseAmmo(aShotAmmoAmount_int, aIsPaidSWShot_bl = false)
-	{
-		if (isNaN(aShotAmmoAmount_int) || aShotAmmoAmount_int < 1)
-		{
+	decreaseAmmo(aShotAmmoAmount_int, aIsPaidSWShot_bl = false) {
+		if (isNaN(aShotAmmoAmount_int) || aShotAmmoAmount_int < 1) {
 			throw new Error(`Incorrect decrease ammo amount: ${aShotAmmoAmount_int}`);
 		}
 
-		this.emit(GameField.EVENT_DECREASE_AMMO, {decreaseAmmoAmount: aShotAmmoAmount_int, isPaidSpecialShot: aIsPaidSWShot_bl});
+		this.emit(GameField.EVENT_DECREASE_AMMO, { decreaseAmmoAmount: aShotAmmoAmount_int, isPaidSpecialShot: aIsPaidSWShot_bl });
 		this.redrawAmmoText();
 		this.updatePlayerBalance();
 	}
 
-	updateCurrentWeapon(aIsPaidSpecialShot_bl)
-	{
+	updateCurrentWeapon(aIsPaidSpecialShot_bl) {
 		let lWeaponsInfo_wsi = this._fWeaponsController_wsc.i_getInfo();
 		let lCurrentWeaponId_int = lWeaponsInfo_wsi.currentWeaponId;
 
-		if (!(this.spot && lCurrentWeaponId_int !== undefined && this.shotRequestsAwaiting === 0) )return;
+		if (!(this.spot && lCurrentWeaponId_int !== undefined && this.shotRequestsAwaiting === 0)) return;
 
-		if (lCurrentWeaponId_int !== WEAPONS.DEFAULT && lWeaponsInfo_wsi.remainingSWShots == 0 && !aIsPaidSpecialShot_bl)
-		{
+		if (lCurrentWeaponId_int !== WEAPONS.DEFAULT && lWeaponsInfo_wsi.remainingSWShots == 0 && !aIsPaidSpecialShot_bl) {
 
 			if (this.isRicochetSW(lCurrentWeaponId_int) && this.ricochetController.info.getMasterBullets(true, lCurrentWeaponId_int).length > 0) return;
 
-			switch (lCurrentWeaponId_int)
-			{
+			switch (lCurrentWeaponId_int) {
 				case WEAPONS.INSTAKILL:
 					this.once('instaKillAnimationCompleted', () => {
 						this.selectNextWeaponFromTheQueue();
@@ -5523,63 +4823,50 @@ class GameField extends Sprite
 		}
 	}
 
-	_cryogunMainSpotBeamAnimationCompletedForQueue()
-	{
+	_cryogunMainSpotBeamAnimationCompletedForQueue() {
 		this.selectNextWeaponFromTheQueue();
 	}
 
-	_cryogunMainSpotBeamAnimationCompletedForUnlock()
-	{
+	_cryogunMainSpotBeamAnimationCompletedForUnlock() {
 		this.unlockGun();
 	}
 
-	_railgunMainSpotBeamAnimationCompletedForQueue()
-	{
+	_railgunMainSpotBeamAnimationCompletedForQueue() {
 		this.selectNextWeaponFromTheQueue();
 	}
 
-	_railgunMainSpotBeamAnimationCompletedForUnlock()
-	{
+	_railgunMainSpotBeamAnimationCompletedForUnlock() {
 		this.unlockGun();
 	}
 
-	_flameThrowerMainSpotBeamAnimationCompletedForQueue()
-	{
+	_flameThrowerMainSpotBeamAnimationCompletedForQueue() {
 		this.selectNextWeaponFromTheQueue();
 	}
 
-	_flameThrowerMainSpotBeamAnimationCompletedForUnlock()
-	{
+	_flameThrowerMainSpotBeamAnimationCompletedForUnlock() {
 		this.unlockGun();
 	}
 
-	_artilleryStrikeMainStrikeAnimationCompletedForQueue()
-	{
+	_artilleryStrikeMainStrikeAnimationCompletedForQueue() {
 		this.selectNextWeaponFromTheQueue();
 	}
 
-	_artilleryStrikeMainStrikeAnimationCompletedForUnlock()
-	{
+	_artilleryStrikeMainStrikeAnimationCompletedForUnlock() {
 		this.unlockGun();
 	}
 
-	_artilleryGrenadeLanded()
-	{
+	_artilleryGrenadeLanded() {
 		this.shakeTheGround();
 	}
 
-	_onWeaponSurplusUpdated(aEvent_obj)
-	{
+	_onWeaponSurplusUpdated(aEvent_obj) {
 		this._fUnpresentedWeaponSurplus_num = aEvent_obj.winBonus;
 	}
 
-	redrawAmmoText()
-	{
-		if (this.spot)
-		{
+	redrawAmmoText() {
+		if (this.spot) {
 			let lAmmo_int = this._fWeaponsInfo_wsi.ammo;
-			if (this._fWeaponsInfo_wsi.currentWeaponId != WEAPONS.DEFAULT/* && this._fWeaponsInfo_wsi.remainingSWShots > 0*/)
-			{
+			if (this._fWeaponsInfo_wsi.currentWeaponId != WEAPONS.DEFAULT/* && this._fWeaponsInfo_wsi.remainingSWShots > 0*/) {
 				lAmmo_int = this._fWeaponsInfo_wsi.remainingSWShots;
 			}
 
@@ -5587,25 +4874,20 @@ class GameField extends Sprite
 		}
 	}
 
-	get isAmmoBuyingInProgress()
-	{
+	get isAmmoBuyingInProgress() {
 		return this.waitBuyIn || APP.webSocketInteractionController.isRebuyRequestInProgress;
 	}
 
-	get _fireSettingsController()
-	{
+	get _fireSettingsController() {
 		return APP.currentWindow.fireSettingsController;
 	}
 
-	get _fireSettingsInfo()
-	{
+	get _fireSettingsInfo() {
 		return this._fireSettingsController.info;
 	}
 
-	get _fireTimeout()
-	{
-		switch (this._fireSettingsInfo.fireSpeed)
-		{
+	get _fireTimeout() {
+		switch (this._fireSettingsInfo.fireSpeed) {
 			case 1:
 				return MAX_FIRE_REQUEST_TIMEOUT;
 			case 2:
@@ -5616,11 +4898,9 @@ class GameField extends Sprite
 		}
 	}
 
-	get _autoFireTimeout()
-	{
+	get _autoFireTimeout() {
 		let timeoutObj;
-		switch (this._fireSettingsInfo.fireSpeed)
-		{
+		switch (this._fireSettingsInfo.fireSpeed) {
 			case 1:
 				timeoutObj = AUTO_FIRE_TIMEOUTS.MAX;
 				break;
@@ -5634,8 +4914,7 @@ class GameField extends Sprite
 		}
 
 		let timeout = timeoutObj.OTHER;
-		switch (this._fWeaponsInfo_wsi.currentWeaponId)
-		{
+		switch (this._fWeaponsInfo_wsi.currentWeaponId) {
 			case WEAPONS.CRYOGUN:
 				timeout = timeoutObj.CRYOGUN;
 				break;
@@ -5653,51 +4932,47 @@ class GameField extends Sprite
 		return timeout;
 	}
 
-	get _turretRotationTimeout()
-	{
+	get _turretRotationTimeout() {
 		return 10;
 	}
 
-	get _turretKeysMoveTimeout()
-	{
+	get _turretKeysMoveTimeout() {
 		return 10;
 	}
 
-	get _isFireDenied()
-	{
-		return	this._fGameStateInfo_gsi.gameState != ROUND_STATE.PLAY
-				|| !this.spot
-				|| (this.spot.weaponSpotView && !this.spot.weaponSpotView.visible)
-				|| this.gunLocked
-				|| this.roundResultActive
-				|| APP.currentWindow.subloadingController.isLoadingScreenShown /*map is loading*/
-				|| this._fWeaponSwitchInProgress_bln
-				|| this.isWeaponChangeInProcess
-				|| this.lobbySecondaryScreenActive
-				|| this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState
-				|| APP.webSocketInteractionController.isSitoutRequestInProgress
-				|| APP.isAnyDialogActive
-				|| this._fWeaponToRestore_int !== null
-				|| this._fServerMessageWeaponSwitchExpected_bln
-				|| !this._isFireAllowed()
-				|| (this.spot.weaponSpotView && this.spot.weaponSpotView.isWeaponChangeInProgress)
-				|| this.spot && this.spot.isWeaponChangeEffectsInProgress
-				|| 
-					(
-						APP.currentWindow.isExpectedBuyInOnRoomStarted &&
-						(this._fWeaponsInfo_wsi.currentWeaponId === WEAPONS.DEFAULT || this._isPaidSWShot)
-					)
-				|| this._isPlusBetLevelChangeRequiredAfterFiring_bl
-				|| this._isMinusBetLevelChangeRequiredAfterFiring_bl
-				|| !this._isProperWeaponLevelApplied()
-				|| APP.isBattlegroundGame && this.isFinalCountingFireDenied
-				|| APP.isBattlegroundGame && !this._fGameStateInfo_gsi.isBossSubround && APP.gameScreen.roundFinishSoon
-				|| APP.isBattlegroundGame && !this._fGameStateInfo_gsi.isBossSubround && this.scoreboardController.info.isRoundTimeIsOver
-				|| this._fTargetingInfo_tc.isActiveTargetPaused
+	get _isFireDenied() {
+		return this._fGameStateInfo_gsi.gameState != ROUND_STATE.PLAY
+			|| !this.spot
+			|| (this.spot.weaponSpotView && !this.spot.weaponSpotView.visible)
+			|| this.gunLocked
+			|| this.roundResultActive
+			|| APP.currentWindow.subloadingController.isLoadingScreenShown /*map is loading*/
+			|| this._fWeaponSwitchInProgress_bln
+			|| this.isWeaponChangeInProcess
+			|| this.lobbySecondaryScreenActive
+			|| this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState
+			|| APP.webSocketInteractionController.isSitoutRequestInProgress
+			|| APP.isAnyDialogActive
+			|| this._fWeaponToRestore_int !== null
+			|| this._fServerMessageWeaponSwitchExpected_bln
+			|| !this._isFireAllowed()
+			|| (this.spot.weaponSpotView && this.spot.weaponSpotView.isWeaponChangeInProgress)
+			|| this.spot && this.spot.isWeaponChangeEffectsInProgress
+			||
+			(
+				APP.currentWindow.isExpectedBuyInOnRoomStarted &&
+				(this._fWeaponsInfo_wsi.currentWeaponId === WEAPONS.DEFAULT || this._isPaidSWShot)
+			)
+			|| this._isPlusBetLevelChangeRequiredAfterFiring_bl
+			|| this._isMinusBetLevelChangeRequiredAfterFiring_bl
+			|| !this._isProperWeaponLevelApplied()
+			|| APP.isBattlegroundGame && this.isFinalCountingFireDenied
+			|| APP.isBattlegroundGame && !this._fGameStateInfo_gsi.isBossSubround && APP.gameScreen.roundFinishSoon
+			|| APP.isBattlegroundGame && !this._fGameStateInfo_gsi.isBossSubround && this.scoreboardController.info.isRoundTimeIsOver
+			|| this._fTargetingInfo_tc.isActiveTargetPaused
 	}
 
-	get _fireDenyReasons()
-	{
+	get _fireDenyReasons() {
 		let lReasons_obj = {
 			"Not a PLAY state": this._fGameStateInfo_gsi.gameState != ROUND_STATE.PLAY,
 			"Spot is not defined": !this.spot,
@@ -5706,16 +4981,16 @@ class GameField extends Sprite
 			"Map is loading": APP.currentWindow.subloadingController.isLoadingScreenShown,
 			"Weapon switch in progress": this._fWeaponSwitchInProgress_bln,
 			"Weapon change in process": this.isWeaponChangeInProcess,
-			"Lobby secondary screen is active":this.lobbySecondaryScreenActive,
+			"Lobby secondary screen is active": this.lobbySecondaryScreenActive,
 			"Tournament completed": this._fTournamentModeInfo_tmi.isTournamentOnServerCompletedState,
 			"Sit Out request is awaited": APP.webSocketInteractionController.isSitoutRequestInProgress,
 			"Some dialogs are active": APP.isAnyDialogActive,
-			"Active restore of weapond " : this._fWeaponToRestore_int !== null,
+			"Active restore of weapond ": this._fWeaponToRestore_int !== null,
 			"Server's message of weapon switch is awaited": this._fServerMessageWeaponSwitchExpected_bln,
 			"Fire is now allowe": !this._isFireAllowed(),
 			"Spot is waiting for bet level response": (this.spot && this.spot.weaponSpotView && this.spot.weaponSpotView.isWeaponChangeInProgress),
 			"Spot weapon change is in progress": this.spot && this.spot.isWeaponChangeEffectsInProgress,
-			"Expected buy in on room started": 	(
+			"Expected buy in on room started": (
 				APP.currentWindow.isExpectedBuyInOnRoomStarted &&
 				(this._fWeaponsInfo_wsi.currentWeaponId === WEAPONS.DEFAULT || this._isPaidSWShot)
 			),
@@ -5725,15 +5000,13 @@ class GameField extends Sprite
 			"BTG final counting denies fire": APP.isBattlegroundGame && this.isFinalCountingFireDenied,
 			"Round finishes soon ": APP.isBattlegroundGame && !this._fGameStateInfo_gsi.isBossSubround && APP.gameScreen.roundFinishSoon,
 			"Round time is ower ": APP.isBattlegroundGame && !this._fGameStateInfo_gsi.isBossSubround && this.scoreboardController.info.isRoundTimeIsOver,
-			"Active target paused":this._fTargetingInfo_tc.isActiveTargetPaused
+			"Active target paused": this._fTargetingInfo_tc.isActiveTargetPaused
 		}
-		return Object.entries(lReasons_obj).filter(([k, v]) => Boolean(v)).map(([k, v])=> k);
+		return Object.entries(lReasons_obj).filter(([k, v]) => Boolean(v)).map(([k, v]) => k);
 	}
 
-	_isProperWeaponLevelApplied(aOptWeaponId_int=undefined)
-	{
-		if (!APP.isBattlegroundGame)
-		{
+	_isProperWeaponLevelApplied(aOptWeaponId_int = undefined) {
+		if (!APP.isBattlegroundGame) {
 			return true;
 		}
 
@@ -5743,16 +5016,14 @@ class GameField extends Sprite
 		let lCompareWeaponId_int = aOptWeaponId_int !== undefined ? aOptWeaponId_int : lCurrentWeaponId_int;
 
 		return (lCurrentBetLevel_int == lPlayerInfo_pi.possibleBetLevels[0] && lCompareWeaponId_int !== WEAPONS.HIGH_LEVEL)
-				|| (lCurrentBetLevel_int > lPlayerInfo_pi.possibleBetLevels[0] && lCompareWeaponId_int == WEAPONS.HIGH_LEVEL)
+			|| (lCurrentBetLevel_int > lPlayerInfo_pi.possibleBetLevels[0] && lCompareWeaponId_int == WEAPONS.HIGH_LEVEL)
 	}
 
-	_isEnoughMoneyForOneShot()
-	{
+	_isEnoughMoneyForOneShot() {
 		let lPlayerInfo_pi = APP.playerController.info;
 		let lRealAmmo_num = lPlayerInfo_pi.realAmmo;
 
-		if (isNaN(lRealAmmo_num))
-		{
+		if (isNaN(lRealAmmo_num)) {
 			lRealAmmo_num = 0;
 		}
 
@@ -5761,21 +5032,18 @@ class GameField extends Sprite
 		if (
 			lPlayerInfo_pi.balance >= this._fWeaponsInfo_wsi.i_getCurrentWeaponShotPrice()
 			|| ~~(lRealAmmo_num) > 0
-		)
-		{
+		) {
 			return true;
 		}
 
-		if (APP.isBattlegroundGame && this._fWeaponsInfo_wsi.currentWeaponId == WEAPONS.DEFAULT)
-		{
+		if (APP.isBattlegroundGame && this._fWeaponsInfo_wsi.currentWeaponId == WEAPONS.DEFAULT) {
 			return true;
 		}
 
 		return false;
 	}
 
-	fire(e, isRicochet = false)
-	{
+	fire(e, isRicochet = false) {
 		//console.log("fire problem fire" )
 		//debug info for QA...
 		// if (this._fWeaponsInfo_wsi && this._fWeaponsInfo_wsi.currentWeaponId === WEAPONS.DEFAULT)
@@ -5795,51 +5063,43 @@ class GameField extends Sprite
 			this._isFrbMode
 			&& !IsFreeSWShots_bl
 			&& lWeaponsInfo_wsi.ammo <= 0
-		)
-		{
+		) {
 			return;
 		}
 
-		if (this._isFireDenied)
-		{
+		if (this._isFireDenied) {
 			let lReasons_arr = this._fireDenyReasons;
-			if (lReasons_arr.length > 0)
-			{
+			if (lReasons_arr.length > 0) {
 				console.log(`FireProblem:Denied. because ${lReasons_arr.toString()}`);
 			}
 
-			if(!this._isProperWeaponLevelApplied())
-			{
-						
-					if(!this._reset_weapon_time_int || Date.now() - this._reset_weapon_time_int > 1500)
-					{
-							console.log("FireController. Fire denied yatzieeee ");
-							console.log("FireController. Fire denied fix 1 ");
-							this._reset_weapon_time_int = Date.now();
-							this.selectNextWeaponFromTheQueue();
-					}else{
-						console.log("FireController. Fire denied  fix cooldown period ");
-					}
+			if (!this._isProperWeaponLevelApplied()) {
+
+				if (!this._reset_weapon_time_int || Date.now() - this._reset_weapon_time_int > 1500) {
+					console.log("FireController. Fire denied yatzieeee ");
+					console.log("FireController. Fire denied fix 1 ");
+					this._reset_weapon_time_int = Date.now();
+					this.selectNextWeaponFromTheQueue();
+				} else {
+					console.log("FireController. Fire denied  fix cooldown period ");
+				}
 			}
-		
-				
-			if (lIsFreeShot_bl || this._isBonusMode || this._fTargetingInfo_tc.isActiveTargetPaused)
-			{
+
+
+			if (lIsFreeShot_bl || this._isBonusMode || this._fTargetingInfo_tc.isActiveTargetPaused) {
 				return;
 			}
-			else if (!this._isEnoughMoneyForOneShot() && !this.roundResultActive)
-			{
+			else if (!this._isEnoughMoneyForOneShot() && !this.roundResultActive) {
 				//PREVENT FOR BATTLEGROUND MODE ON ROUND RESULT ACTIVATION...
 				//https://jira.dgphoenix.com/browse/MQBG-114
-				if(
+				if (
 					APP.gameScreen.isBattlegroundMode
 					&&
 					(
 						this.roundResultActivationInProgress ||
 						this._fGameStateInfo_gsi.gameState === ROUND_STATE.WAIT
-						)
 					)
-				{
+				) {
 					console.log("FireProblem: Denied FOR BATTLEGROUND MODE ON ROUND RESULT ACTIVATION ");
 					return;
 				}
@@ -5850,8 +5110,7 @@ class GameField extends Sprite
 					console.log("FireProblem: Denied win is not presented ");
 					return;
 				}
-				if(!APP.isBattlegroundGame)
-				{
+				if (!APP.isBattlegroundGame) {
 					console.log("FireProblem: Denied_show_EVENT_NOT_ENOUGH_MONEY_DIALOG_REQUIRED");
 					this.emit(
 						GameField.EVENT_NOT_ENOUGH_MONEY_DIALOG_REQUIRED,
@@ -5863,29 +5122,26 @@ class GameField extends Sprite
 						}
 					);
 				}
-				
+
 			}
 
-			
+
 			return;
-			
-	
+
+
 		}
 
 		this.autofireTime = 0;
 
 		let lTargetPoint_pt = e.data.global;
 
-		if (!this._fLastFireTime_num)
-		{
+		if (!this._fLastFireTime_num) {
 			this._fLastFireTime_num = Date.now();
 		}
-		else
-		{
-			if(	this._fWeaponsInfo_wsi.currentWeaponId !== WEAPONS.DEFAULT 
-				&& this._fWeaponsInfo_wsi.currentWeaponId !== WEAPONS.HIGH_LEVEL 
-				&& this.shotRequestsAwaiting > 0)
-			{
+		else {
+			if (this._fWeaponsInfo_wsi.currentWeaponId !== WEAPONS.DEFAULT
+				&& this._fWeaponsInfo_wsi.currentWeaponId !== WEAPONS.HIGH_LEVEL
+				&& this.shotRequestsAwaiting > 0) {
 				console.log("FireController. Fire denied  this.shotRequestsAwaiting " + this.shotRequestsAwaiting);
 				return;
 			}
@@ -5895,8 +5151,7 @@ class GameField extends Sprite
 
 			let lFireTimeout_num = this._fireTimeout;
 
-			if (lTimeout_num  < lFireTimeout_num)
-			{
+			if (lTimeout_num < lFireTimeout_num) {
 				APP.logger.i_pushDebug(`GameField. Shot is refused because the previous shot was done ${lTimeout_num} ms ago. This is less then a minimum timeout of ${lFireTimeout_num} ms.`);
 				console.log(`FireController. Fire denied - Shot is refused because the previous shot was done ${lTimeout_num} ms ago. This is less then a minimum timeout of ${lFireTimeout_num} ms.`);
 				return;
@@ -5909,20 +5164,16 @@ class GameField extends Sprite
 		let lShotMultiplier_int = lPlayerInfo_pi.betLevel * this._calcShotMultiplier();
 		let lShotAmmoAmount_int = lShotMultiplier_int;
 
-		if (lIsFreeShot_bl)
-		{
+		if (lIsFreeShot_bl) {
 			lShotAmmoAmount_int = 1; // for FREE SW
 		}
 
 		let lIsBattlegroundDefaultShot_bl = lCurrentWeaponId_int == WEAPONS.DEFAULT && APP.isBattlegroundGame;
-		if ( !lIsFreeShot_bl && !lIsBattlegroundDefaultShot_bl && lWeaponsInfo_wsi.ammo < lShotAmmoAmount_int)
-		{
+		if (!lIsFreeShot_bl && !lIsBattlegroundDefaultShot_bl && lWeaponsInfo_wsi.ammo < lShotAmmoAmount_int) {
 			APP.logger.i_pushDebug(`GameField. Rest ammo (${lWeaponsInfo_wsi.ammo}) < shot required ammo (${lShotAmmoAmount_int}).`);
 			console.log(`rest ammo (${lWeaponsInfo_wsi.ammo}) < shot required ammo (${lShotAmmoAmount_int})`);
-			if (!this.isAmmoBuyingInProgress)
-			{
-				if (this._fIsWeaponAddingInProgress_bl)
-				{
+			if (!this.isAmmoBuyingInProgress) {
+				if (this._fIsWeaponAddingInProgress_bl) {
 					console.log(`FireController denied _fIsWeaponAddingInProgress_bl`);
 
 					return;
@@ -5931,45 +5182,38 @@ class GameField extends Sprite
 				this.redrawAmmoText();
 
 				let lRicochetBullets_num = lPlayerInfo_pi.ricochetBullets;
-				if ((lPlayerInfo_pi.betLevel > 1 || lCurrentWeaponId_int !== WEAPONS.DEFAULT) && (lWeaponsInfo_wsi.ammo >= 1))
-				{
+				if ((lPlayerInfo_pi.betLevel > 1 || lCurrentWeaponId_int !== WEAPONS.DEFAULT) && (lWeaponsInfo_wsi.ammo >= 1)) {
 					lRicochetBullets_num = 0; // Ignore if bet > 1 or not default weapon
 				}
 				let lShotCost_num = this._fWeaponsInfo_wsi.i_getCurrentWeaponShotPrice();
-				if (lPlayerInfo_pi.balance < lShotCost_num && !lPlayerInfo_pi.unpresentedWin)
-				{
+				if (lPlayerInfo_pi.balance < lShotCost_num && !lPlayerInfo_pi.unpresentedWin) {
 					if (
-							this._fTournamentModeInfo_tmi.isTournamentMode
-							&& this._fWeaponsController_wsc.i_getInfo().isAnyAwardedWeapon
-							&& !IS_SPECIAL_WEAPON_SHOT_PAID
-						)
-					{
+						this._fTournamentModeInfo_tmi.isTournamentMode
+						&& this._fWeaponsController_wsc.i_getInfo().isAnyAwardedWeapon
+						&& !IS_SPECIAL_WEAPON_SHOT_PAID
+					) {
 						// in tournaments we should not trigger rebuy if we still have
 						this._resetTargetIfRequired();
 					}
-					else if (lRicochetBullets_num || this._fWeaponsController_wsc.i_getInfo().isAnyAwardedWeapon || APP.webSocketInteractionController.hasUnrespondedShots)
-					{
+					else if (lRicochetBullets_num || this._fWeaponsController_wsc.i_getInfo().isAnyAwardedWeapon || APP.webSocketInteractionController.hasUnrespondedShots) {
 						console.log('FireController denied becaise no action is needed ');
 
 						return; // No actions needed if we don't have money, but have ricochet bullets on screen
 					}
-					else
-					{
-						if(!APP.isBattlegroundGame)
-						{
+					else {
+						if (!APP.isBattlegroundGame) {
 							console.log('FireController denied not enough money dialog requered ');
 							this.emit(GameField.EVENT_NOT_ENOUGH_MONEY_DIALOG_REQUIRED, {
-									hasUnrespondedShots: APP.webSocketInteractionController.hasUnrespondedShots,
-									hasDelayedShots: APP.webSocketInteractionController.hasDelayedShots,
-									hasUnparsedShotResponse: APP.webSocketInteractionController.isShotRequestParseInProgress,
-									hasAwardedFreeSW: this._fWeaponsController_wsc.i_getInfo().isAnyAwardedWeapon || APP.gameScreen.isAwardWeaponLandExpected
-								}
+								hasUnrespondedShots: APP.webSocketInteractionController.hasUnrespondedShots,
+								hasDelayedShots: APP.webSocketInteractionController.hasDelayedShots,
+								hasUnparsedShotResponse: APP.webSocketInteractionController.isShotRequestParseInProgress,
+								hasAwardedFreeSW: this._fWeaponsController_wsc.i_getInfo().isAnyAwardedWeapon || APP.gameScreen.isAwardWeaponLandExpected
+							}
 							);
 						}
 					}
 				}
-				else
-				{
+				else {
 					let lTotalRealAmmoAmount_num = lWeaponsInfo_wsi.realAmmo + lPlayerInfo_pi.pendingAmmo;
 					lTotalRealAmmoAmount_num = Number(lTotalRealAmmoAmount_num.toFixed(2));
 
@@ -5979,18 +5223,15 @@ class GameField extends Sprite
 						this.emit(GameField.EVENT_ON_FIRE_CANCELLED_WITH_NOT_ENOUGH_AMMO);
 					}
 
-					if (this._isBonusMode)
-					{
+					if (this._isBonusMode) {
 						this.selectNextWeaponFromTheQueue();
 					}
 				}
 			}
 			return;
 		}
-		if (lWeaponsInfo_wsi.currentWeaponId != WEAPONS.DEFAULT)
-		{
-			if (lWeaponsInfo_wsi.remainingSWShots == 0 && !lIsPaidSWShot_bl)
-			{
+		if (lWeaponsInfo_wsi.currentWeaponId != WEAPONS.DEFAULT) {
+			if (lWeaponsInfo_wsi.remainingSWShots == 0 && !lIsPaidSWShot_bl) {
 				APP.logger.i_pushDebug(`GameField. '0 special ammo left, this.shotRequestsAwaiting = ${this.shotRequestsAwaiting}.`);
 				console.log('0 remaining stots,  this.shotRequestsAwaiting = ' + this.shotRequestsAwaiting);
 				return;
@@ -6001,73 +5242,61 @@ class GameField extends Sprite
 		let lEnemyY_num = this.lastPointerPos.y = e.data.global.y;
 
 		//check autoTargetingEnemy, if it's already dead or fire dinied...
-		if (this.autoTargetingEnemy)
-		{
+		if (this.autoTargetingEnemy) {
 			let enemyId = this.autoTargetingEnemy.id;
 			let enemyObj = APP.currentWindow.getExistEnemy(enemyId);
 			let lEnemy_e = this.getEnemyById(enemyId);
 
-			if ((enemyObj && enemyObj.life === 0) || lEnemy_e.isFireDenied || lEnemy_e.invulnerable)
-			{
+			if ((enemyObj && enemyObj.life === 0) || lEnemy_e.isFireDenied || lEnemy_e.invulnerable) {
 				//select another target
-				this.emit(GameField.EVENT_ON_TARGET_ENEMY_IS_DEAD, {enemyId: enemyId});
+				this.emit(GameField.EVENT_ON_TARGET_ENEMY_IS_DEAD, { enemyId: enemyId });
 			}
 		}
 		//...check autoTargetingEnemy, if it's already dead or fire dinied
 
 		let enemy = this.autoTargetingEnemy || this.indicatedEnemy || this.getNearestEnemy(lEnemyX_num, lEnemyY_num);
 
-		if(
+		if (
 			enemy &&
 			!isRicochet &&
 			!enemy.isTargetable()
-			)
-		{
+		) {
 			APP.logger.i_pushDebug("GameField. Fire attempt: nearest enemy is not targetable.");
 			console.log('Fire attempt: nearest enemy is not targetable.');
 			return;
 		}
 
-		if (!enemy && !isRicochet)
-		{
+		if (!enemy && !isRicochet) {
 			APP.logger.i_pushDebug("GameField. Fire attempt: nearest enemy not found.");
 			console.log('Fire attempt: nearest enemy not found.');
 			return;
 		}
 
-		if (enemy && enemy.isDestroyed)
-		{
-			if (APP.mobileValidator.ios())
-			{
+		if (enemy && enemy.isDestroyed) {
+			if (APP.mobileValidator.ios()) {
 				//IOS fire on reconnect fix
 				enemy = this.getNearestEnemy(lEnemyX_num, lEnemyY_num);
 			}
 
-			if (enemy.isDestroyed)
-			{
+			if (enemy.isDestroyed) {
 				return;
 			}
-			else
-			{
+			else {
 				this.indicatedEnemy = enemy;
 			}
 		}
 
 		if (
 			lCurrentWeaponId_int === WEAPONS.CRYOGUN
-			|| lCurrentWeaponId_int === WEAPONS.ARTILLERYSTRIKE)
-		{
+			|| lCurrentWeaponId_int === WEAPONS.ARTILLERYSTRIKE) {
 			this.indicatedEnemy = null;
 		}
 
-		if (lCurrentWeaponId_int != WEAPONS.INSTAKILL)
-		{
+		if (lCurrentWeaponId_int != WEAPONS.INSTAKILL) {
 			let pushPos = this.lastPointerPos;
 
-			if (this.autoTargetingEnemy)
-			{
-				if (lCurrentWeaponId_int === WEAPONS.ARTILLERYSTRIKE)
-				{
+			if (this.autoTargetingEnemy) {
+				if (lCurrentWeaponId_int === WEAPONS.ARTILLERYSTRIKE) {
 					let currentPos = this.autoTargetingEnemy.getGlobalPosition(); // enemie's feet
 
 					let enemyId = this.autoTargetingEnemy.id;
@@ -6075,29 +5304,23 @@ class GameField extends Sprite
 					let futurePos = APP.currentWindow.getEnemyPositionInTheFuture(enemyId, lTime_num);
 					pushPos = futurePos || currentPos;
 				}
-				else
-				{
+				else {
 					pushPos = this.autoTargetingEnemy.getCenterPosition(); // enemie's center
 				}
 			}
-			else
-			{
-				if (lCurrentWeaponId_int === WEAPONS.CRYOGUN)
-				{
+			else {
+				if (lCurrentWeaponId_int === WEAPONS.CRYOGUN) {
 					// if the nearest enemy is out of the CRYOGUN radius - snap it to aim
-					if (enemy)
-					{
+					if (enemy) {
 						let lEnemyGlobalPosition_pt = enemy.getGlobalPosition();
 						let distance = Utils.getDistance(pushPos, lEnemyGlobalPosition_pt);
-						if (distance > CryogunsController.WEAPON_ACTION_RADIUS)
-						{
+						if (distance > CryogunsController.WEAPON_ACTION_RADIUS) {
 							pushPos = lEnemyGlobalPosition_pt;
 						}
 					}
 
 				}
-				else if (this.indicatedEnemy)
-				{
+				else if (this.indicatedEnemy) {
 					pushPos = this.indicatedEnemy.getCenterPosition();
 				}
 			}
@@ -6112,8 +5335,7 @@ class GameField extends Sprite
 
 		this.decreaseAmmo(lShotAmmoAmount_int, lIsPaidSWShot_bl);
 
-		if (!isRicochet)
-		{
+		if (!isRicochet) {
 			this.onShotRequest();
 			this.emit(
 				'fire',
@@ -6123,19 +5345,17 @@ class GameField extends Sprite
 					x: lTargetPoint_pt.x,
 					y: lTargetPoint_pt.y,
 					isPaidSWShot: lIsPaidSWShot_bl,
-					weaponPrice:  this._calcShotWeaponPrice(lCurrentWeaponId_int)
+					weaponPrice: this._calcShotWeaponPrice(lCurrentWeaponId_int)
 				});
 		}
-		else
-		{
+		else {
 			this.ricochetFire(this._getPointOutsideWeaponRadius(this.lastPointerPos), this.seatId);
 		}
 
 		this.changeIndicator(e);
 	}
 
-	_getPointOutsideWeaponRadius(point)
-	{
+	_getPointOutsideWeaponRadius(point) {
 		let lSpot_ps = this.getSeat(this.seatId, true);
 		let centerPoint = lSpot_ps.globalGunCenter;
 		let gunRadius = lSpot_ps.weaponSpotView.gun.muzzleTipOffset;
@@ -6144,20 +5364,18 @@ class GameField extends Sprite
 
 		let distance = Utils.getDistance(point, centerPoint);
 
-		if (distance <= gunRadius)
-		{
+		if (distance <= gunRadius) {
 			let moveDistX = gunPos.x - point.x;
 			let moveDistY = gunPos.y - point.y;
 
-			let newPoint = {x: point.x + moveDistX*2, y: point.y + moveDistY*2};
+			let newPoint = { x: point.x + moveDistX * 2, y: point.y + moveDistY * 2 };
 			return newPoint;
 		}
 
 		return point;
 	}
 
-	_onCollisionOccurred(aBullet_rb, aEnemy_e)
-	{
+	_onCollisionOccurred(aBullet_rb, aEnemy_e) {
 		aEnemy_e.showHitBounce(aBullet_rb.directionAngle, aBullet_rb.weaponId);
 		aEnemy_e.playHitHighlightAnimation(5 * FRAME_RATE);
 
@@ -6174,8 +5392,7 @@ class GameField extends Sprite
 	}
 
 
-	onRicochetBulletShotOccurred(aBullet_rb, aEnemy_e)
-	{
+	onRicochetBulletShotOccurred(aBullet_rb, aEnemy_e) {
 		this.onShotRequest();
 		this.emit(
 			'fire',
@@ -6190,16 +5407,13 @@ class GameField extends Sprite
 			});
 	}
 
-	ricochetFire(distanationPos, seatId, optResponseBulletId_str = null, optResponseWeaponId_int = null, optStartTime = null, optStartPos = null, lasthand = false)
-	{
-		if(APP.isCAFMode && !APP.currentWindow.gameStateController.info.isPlayerSitIn)
-		{
+	ricochetFire(distanationPos, seatId, optResponseBulletId_str = null, optResponseWeaponId_int = null, optStartTime = null, optStartPos = null, lasthand = false) {
+		if (APP.isCAFMode && !APP.currentWindow.gameStateController.info.isPlayerSitIn) {
 			return;
 		}
-		
+
 		let lSpot_ps = this.getSeat(seatId, true);
-		if (!lSpot_ps)
-		{
+		if (!lSpot_ps) {
 			APP.logger.i_pushWarning(`GameField. Cannot show ricochet fire, no target seat detected, seatId: ${seatId}.`);
 			console.log(`Cannot show ricochet fire, no target seat detected, seatId: ${seatId}`);
 			return;
@@ -6208,44 +5422,40 @@ class GameField extends Sprite
 		this.emit(GameField.EVENT_ON_BULLET_FLY_TIME);
 		this.playWeaponSound(WEAPONS.DEFAULT, seatId !== this.seatId, lSpot_ps.currentDefaultWeaponId);
 
-		let endPos = {x: Math.round(distanationPos.x), y: Math.round(distanationPos.y)};
+		let endPos = { x: Math.round(distanationPos.x), y: Math.round(distanationPos.y) };
 		let startPos = optStartPos ? optStartPos : lSpot_ps.muzzleTipGlobalPoint;
-		startPos = {x: Math.round(startPos.x), y: Math.round(startPos.y)};
+		startPos = { x: Math.round(startPos.x), y: Math.round(startPos.y) };
 		let angle = Math.atan2(endPos.x - startPos.x, endPos.y - startPos.y);
 		let len = Math.sqrt(Math.pow(startPos.x - endPos.x, 2) + Math.pow(startPos.y - endPos.y, 2));
 
 		this.rotatePlayerGun(seatId, endPos.x, endPos.y);
-		this.emit(GameField.DEFAULT_GUN_SHOW_FIRE, {seat: seatId});
+		this.emit(GameField.DEFAULT_GUN_SHOW_FIRE, { seat: seatId });
 
-		if(seatId != this.seatId)
-		{
-			this._addDefaultGunFireEffect(lSpot_ps.muzzleTipGlobalPoint.x, lSpot_ps.muzzleTipGlobalPoint.y, angle + Math.PI/2, len, lSpot_ps.currentDefaultWeaponId, lSpot_ps);
+		if (seatId != this.seatId) {
+			this._addDefaultGunFireEffect(lSpot_ps.muzzleTipGlobalPoint.x, lSpot_ps.muzzleTipGlobalPoint.y, angle + Math.PI / 2, len, lSpot_ps.currentDefaultWeaponId, lSpot_ps);
 		}
-		else
-		{
-			this._addDefaultGunFireEffect(startPos.x, startPos.y, angle + Math.PI/2, len, lSpot_ps.currentDefaultWeaponId, lSpot_ps);
+		else {
+			this._addDefaultGunFireEffect(startPos.x, startPos.y, angle + Math.PI / 2, len, lSpot_ps.currentDefaultWeaponId, lSpot_ps);
 		}
 
 		this.addPushEffect(endPos.x, endPos.y, lSpot_ps);
 
 		let startTime = 0;
-		if (optStartTime !== null)
-		{
+		if (optStartTime !== null) {
 			startTime = optStartTime;
 		}
 
 		let lWeaponId_num = optResponseWeaponId_int !== null ? optResponseWeaponId_int : lSpot_ps.currentWeaponId;
 
-		var bullet = new RicochetBullet({weaponId: lWeaponId_num, defaultWeaponId: lSpot_ps.currentDefaultWeaponId}, startPos, endPos, optResponseBulletId_str, startTime, lasthand);
+		var bullet = new RicochetBullet({ weaponId: lWeaponId_num, defaultWeaponId: lSpot_ps.currentDefaultWeaponId }, startPos, endPos, optResponseBulletId_str, startTime, lasthand);
 		bullet.zIndex = Z_INDEXES.BULLET;
 		bullet.once(RicochetBullet.EVENT_ON_RICOCHET_BULLET_DESTROY, this.emit, this);
 
-		if (!optResponseBulletId_str)
-		{
-			this.emit(GameField.EVENT_ON_RICOCHET_BULLET_REGISTER, {bullet: bullet});
+		if (!optResponseBulletId_str) {
+			this.emit(GameField.EVENT_ON_RICOCHET_BULLET_REGISTER, { bullet: bullet });
 		}
 
-		this.emit(GameField.EVENT_ON_RICOCHET_BULLET_FLY_OUT, {bullet: bullet});
+		this.emit(GameField.EVENT_ON_RICOCHET_BULLET_FLY_OUT, { bullet: bullet });
 
 		this.topScreen.addChild(bullet);
 		this.bullets.push(bullet);
@@ -6253,162 +5463,139 @@ class GameField extends Sprite
 		this.updatePlayerBalance();
 	}
 
-	_onBulletResponse(aEvent_obj)
-	{
+	_onBulletResponse(aEvent_obj) {
 		let data = aEvent_obj.data;
 		let isMasterSeat = (data.rid !== -1);
 
-		for( let i = 0; i < this.bullets.length; i++ )
-		{
-			if(this.bullets[i].bulletId === data.bulletId)
-			{
+		for (let i = 0; i < this.bullets.length; i++) {
+			if (this.bullets[i].bulletId === data.bulletId) {
 				this.bullets[i].onBulletResponse();
 			}
 		}
 
 
-		if (!isMasterSeat)
-		{
+		if (!isMasterSeat) {
 			let bulletId = data.bulletId;
 			let seatId = +bulletId.slice(0, 1);
 			let weaponId = data.weaponId;
 
-			let startPos = {x: data.startPointX, y: data.startPointY};
-			let distanationPos = {x: data.endPointX, y: data.endPointY};
+			let startPos = { x: data.startPointX, y: data.startPointY };
+			let distanationPos = { x: data.endPointX, y: data.endPointY };
 
 			this.ricochetFire(distanationPos, seatId, bulletId, weaponId, data.bulletTime, startPos);
 		}
 	}
 
-	_onBulletPlaceNotAllowed(aEvent_obj)
-	{
+	_onBulletPlaceNotAllowed(aEvent_obj) {
 		let requestData = aEvent_obj.requestData;
 		APP.gameScreen.revertAmmoBack(requestData.weaponId, undefined, requestData.isPaidSpecialShot, requestData.isRoundNotStartedError);
 
-		this.emit(GameField.EVENT_ON_BULLET_PLACE_NOT_ALLOWED, {bulletId: requestData.bulletId});
+		this.emit(GameField.EVENT_ON_BULLET_PLACE_NOT_ALLOWED, { bulletId: requestData.bulletId });
 	}
 
-	_onBulletClearResponse(aEvent_obj)
-	{
+	_onBulletClearResponse(aEvent_obj) {
 		let seatId = aEvent_obj.data.seatNumber;
-		this.emit(GameField.EVENT_ON_CLEAR_BULLETS_BY_SEAT_ID, {seatId: seatId});
+		this.emit(GameField.EVENT_ON_CLEAR_BULLETS_BY_SEAT_ID, { seatId: seatId });
 	}
 
-	_isFireAllowed()
-	{
+	_isFireAllowed() {
 		return !this._isWaitingResponseToBetLevelChangeRequest;
 	}
 
-	_checkIfAutoTargetSwitchNeeded()
-	{
-		if (this.autoTargetingEnemy)
-		{
+	_checkIfAutoTargetSwitchNeeded() {
+		if (this.autoTargetingEnemy) {
 			let enemyId = this.autoTargetingEnemy.id;
 			let enemyObj = APP.currentWindow.getExistEnemy(enemyId);
 			let lEnemy_e = this.getEnemyById(enemyId);
-			if ((enemyObj && enemyObj.life === 0) || lEnemy_e.isFireDenied || lEnemy_e.invulnerable)
-			{
+			if ((enemyObj && enemyObj.life === 0) || lEnemy_e.isFireDenied || lEnemy_e.invulnerable) {
 				//select another target
-				if (this._isAutoTargetingEnemyAvailableForFire)
-				{
-					this.emit(GameField.EVENT_ON_TARGET_ENEMY_IS_DEAD, {enemyId: enemyId});
+				if (this._isAutoTargetingEnemyAvailableForFire) {
+					this.emit(GameField.EVENT_ON_TARGET_ENEMY_IS_DEAD, { enemyId: enemyId });
 				}
 			}
 		}
 	}
 
-	_onLobbyExternalMessageReceived(event)
-	{
-		switch (event.type)
-		{
+	_onLobbyExternalMessageReceived(event) {
+		switch (event.type) {
 			case LOBBY_MESSAGES.KEYBOARD_BUTTON_CLICKED:
 				this._chooseKeyboardAction(event.data.code);
-			break;
+				break;
 			case LOBBY_MESSAGES.MID_ROUND_EXIT_DIALOG_ACTIVATED:
 				this._fMidRoundExitDialogActive_bln = true;
 				this._checkBlur();
-			break;
+				break;
 			case LOBBY_MESSAGES.MID_ROUND_EXIT_DIALOG_DEACTIVATED:
 				this._fMidRoundExitDialogActive_bln = false;
 				this._checkBlur();
-			break;
+				break;
 			case LOBBY_MESSAGES.BONUS_DIALOG_ACTIVATED:
 				this._fBonusDialogActive_bln = true;
 				this._checkBlur();
-			break;
+				break;
 			case LOBBY_MESSAGES.BONUS_DIALOG_DEACTIVATED:
 				this._fBonusDialogActive_bln = false;
 				this._checkBlur();
-			break;
+				break;
 			case LOBBY_MESSAGES.FRB_DIALOG_ACTIVATED:
 				this._fFRBDialogActive_bln = true;
 				this._checkBlur();
-			break;
+				break;
 			case LOBBY_MESSAGES.FRB_DIALOG_DEACTIVATED:
 				this._fFRBDialogActive_bln = false;
 				this._checkBlur();
-			break;
+				break;
 			case LOBBY_MESSAGES.SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_DEACTIVATED:
-				if (event.data.backToLobby)
-				{
+				if (event.data.backToLobby) {
 					this.emit(GameField.EVENT_BACK_TO_LOBBY_ON_SW_PURCHASE_LIMIT_EXCEEDED_DIALOG_DEACTIVATED);
 				}
-			break;
+				break;
 		}
 	}
 
-	_onKeyboardButtonClicked(event)
-	{
+	_onKeyboardButtonClicked(event) {
 		this._chooseKeyboardAction(event.code);
 	}
 
-	_chooseKeyboardAction(code)
-	{
-		switch (code)
-		{
+	_chooseKeyboardAction(code) {
+		switch (code) {
 			case "Space":
-				if (!APP.keyboardControlProxy.isSpaceDown)
-				{
+				if (!APP.keyboardControlProxy.isSpaceDown) {
 					this.chooseFireType();
 				}
-			break;
+				break;
 			case "ArrowLeft":
 			case "KeyA":
-				if (!APP.keyboardControlProxy.isLeftDown)
-				{
+				if (!APP.keyboardControlProxy.isLeftDown) {
 					this.turretRotationTime = 0;
 					this._tryRotateTurretLeft();
 				}
-			break;
+				break;
 			case "ArrowRight":
 			case "KeyD":
-				if (!APP.keyboardControlProxy.isRightDown)
-				{
+				if (!APP.keyboardControlProxy.isRightDown) {
 					this.turretRotationTime = 0;
 					this._tryRotateTurretRight();
 				}
-			break;
+				break;
 			case "ArrowUp":
 			case "KeyW":
-				if (!APP.keyboardControlProxy.isUpDown)
-				{
+				if (!APP.keyboardControlProxy.isUpDown) {
 					this.cursorKeysMoveTime = 0;
 					this._tryMoveCursorUp();
 				}
-			break;
+				break;
 			case "ArrowDown":
 			case "KeyS":
-				if (!APP.keyboardControlProxy.isDownDown)
-				{
+				if (!APP.keyboardControlProxy.isDownDown) {
 					this.cursorKeysMoveTime = 0;
 					this._tryMoveCursorDown();
 				}
-			break;
+				break;
 		}
 	}
 
-	_calcShotMultiplier()
-	{
+	_calcShotMultiplier() {
 		let lWeaponsInfo_wsi = this._fWeaponsInfo_wsi;
 		let lCurrentWeaponId_int = lWeaponsInfo_wsi.currentWeaponId;
 		let lPlayerInfo_pi = APP.playerController.info;
@@ -6418,8 +5605,7 @@ class GameField extends Sprite
 		return lShotMultiplier_int;
 	}
 
-	_calcShotWeaponPrice(aWeaponId_int=undefined)
-	{
+	_calcShotWeaponPrice(aWeaponId_int = undefined) {
 		let lWeaponsInfo_wsi = this._fWeaponsInfo_wsi;
 		let lCurrentWeaponId_int = aWeaponId_int !== undefined ? aWeaponId_int : lWeaponsInfo_wsi.currentWeaponId;
 		let lPlayerInfo_pi = APP.playerController.info;
@@ -6429,24 +5615,21 @@ class GameField extends Sprite
 		return lShotMultiplier_int;
 	}
 
-	get _isPaidSWShot()
-	{
+	get _isPaidSWShot() {
 		let lWeaponsInfo_wsi = this._fWeaponsInfo_wsi;
 		let lCurrentWeaponId_int = lWeaponsInfo_wsi.currentWeaponId;
 
 		let lIsPaidSWShot_bl = lCurrentWeaponId_int !== WEAPONS.DEFAULT
-								&& lWeaponsInfo_wsi.remainingSWShots <= 0
-								&& !lWeaponsInfo_wsi.isFreeWeaponsQueueActivated;
+			&& lWeaponsInfo_wsi.remainingSWShots <= 0
+			&& !lWeaponsInfo_wsi.isFreeWeaponsQueueActivated;
 		return lIsPaidSWShot_bl;
 	}
 
-	pushPointer(e)
-	{
+	pushPointer(e) {
 		console.log("fire problem pushing")
 		this.emit(GameField.EVENT_ON_START_UPDATE_CURSOR_POSITION);
 
-		if (APP.currentWindow.bigWinsController.isAnyBigWinAnimationInProgress)
-		{
+		if (APP.currentWindow.bigWinsController.isAnyBigWinAnimationInProgress) {
 			this._tryToSkipBigWin();
 			return; //prevent firing while any Big Win animations are playing
 		}
@@ -6460,132 +5643,108 @@ class GameField extends Sprite
 		var interaction = APP.stage.renderer.plugins.interaction;
 
 		if (
-				APP.isMobile
-				|| (
-						interaction.mouse.global.y > MIN_SHOT_Y
-						&& interaction.mouse.global.y < MAX_SHOT_Y
-					)
+			APP.isMobile
+			|| (
+				interaction.mouse.global.y > MIN_SHOT_Y
+				&& interaction.mouse.global.y < MAX_SHOT_Y
 			)
-		{
+		) {
 			this.tryRotateGun(e);
 			this.changeIndicator(e);
 
-			if(this._fAutoTargetingSwitcherInfo_atsi.isOn)
-			{
-				setTimeout(()=>{
-					if(!this._fTargetingInfo_tc.targetEnemyId)
-					{
+			if (this._fAutoTargetingSwitcherInfo_atsi.isOn) {
+				setTimeout(() => {
+					if (!this._fTargetingInfo_tc.targetEnemyId) {
 						this.chooseFireType(e);
-					}else{
+					} else {
 						console.log("target defined ignore shooting");
 					}
-				},100);
-			}else{
+				}, 100);
+			} else {
 				this.chooseFireType(e);
 			}
 
 		}
 	}
 
-	chooseFireType(e)
-	{
+	chooseFireType(e) {
 		//console.log("fire problem chose type")
-		if(APP.isCAFMode && !APP.currentWindow.gameStateController.info.isPlayerSitIn)
-		{
+		if (APP.isCAFMode && !APP.currentWindow.gameStateController.info.isPlayerSitIn) {
 			return;
 		}
-		
-		if (!this.isRicochetAllowed)
-		{
-			if (e)
-			{
+
+		if (!this.isRicochetAllowed) {
+			if (e) {
 				this.fire(e);
 			}
-			else
-			{
+			else {
 				console.log("fire problem no fire 1");
 				this._isAutoTargetingEnemyAvailableForFire && this.fireImmediately();
 			}
 		}
-		else
-		{
-			if (this.isRicochetLimitReached)
-			{
+		else {
+			if (this.isRicochetLimitReached) {
 				let limit = this._ricochetController ? this._ricochetController.info.bulletsLimit : undefined;
 				console.log(`Ricochet bullets has reached their limit: ${limit}, shot is refused.`);
 			}
-			else
-			{
-				let data = data || {data: {global:{x: this.lastPointerPos.x, y: this.lastPointerPos.y}}}
+			else {
+				let data = data || { data: { global: { x: this.lastPointerPos.x, y: this.lastPointerPos.y } } }
 				this.fire(data, true);
 			}
 		}
 	}
 
-	get _isAutoTargetingEnemyAvailableForFire()
-	{
-		if(
+	get _isAutoTargetingEnemyAvailableForFire() {
+		if (
 			this.autoTargetingEnemy &&
 			!this.autoTargetingEnemy.isTargetable()
-			)
-		{
+		) {
 			return false;
 		}
 
 
-		if (this.autoTargetingEnemy && isRageSupportEnemy(this.autoTargetingEnemy.typeId))
-		{
-			if (!this.autoTargetingEnemy.invulnerable && !this.isBossSubround)
-			{
+		if (this.autoTargetingEnemy && isRageSupportEnemy(this.autoTargetingEnemy.typeId)) {
+			if (!this.autoTargetingEnemy.invulnerable && !this.isBossSubround) {
 				return true;
 			}
-			else
-			{
+			else {
 				return false;
 			}
 		}
-		else
-		{
+		else {
 			return true;
 		}
 	}
 
-	get isRicochetAllowed()
-	{
+	get isRicochetAllowed() {
 		let lCurWeaponId_num = this._fWeaponsInfo_wsi ? this._fWeaponsInfo_wsi.currentWeaponId : undefined;
 		let isAutotargetActive = this._fTargetingInfo_tc.isActive;
 		return this.isRicochetWeapon(lCurWeaponId_num) && !isAutotargetActive;
 	}
 
-	isRicochetWeapon(aWeaponId)
-	{
+	isRicochetWeapon(aWeaponId) {
 		return RICOCHET_WEAPONS.indexOf(aWeaponId) >= 0;
 	}
 
-	isRicochetSW(aWeaponId)
-	{
+	isRicochetSW(aWeaponId) {
 		return this.isRicochetWeapon(aWeaponId) && aWeaponId !== WEAPONS.DEFAULT;
 	}
 
-	get isRicochetLimitReached()
-	{
+	get isRicochetLimitReached() {
 		let isRicochetsLimitReached = (this._ricochetController && this._ricochetController.info.isMasterBulletsLimitReached);
 
 		return isRicochetsLimitReached;
 	}
 
-	get isPointerPushed()
-	{
+	get isPointerPushed() {
 		return this.pointerPushed;
 	}
 
-	_tryToSkipBigWin()
-	{
+	_tryToSkipBigWin() {
 		this.emit(GameField.EVENT_ON_TRY_TO_SKIP_BIG_WIN);
 	}
 
-	unpushPointer()
-	{
+	unpushPointer() {
 		this.emit(GameField.EVENT_ON_START_UPDATE_CURSOR_POSITION);
 
 		this.pointerPushed = false;
@@ -6593,27 +5752,21 @@ class GameField extends Sprite
 		this._checkWeaponRecoilOffsetAfterEndShooting();
 	}
 
-	onPointerRightClick(e)
-	{
-		if (APP.currentWindow.bigWinsController.isAnyBigWinAnimationInProgress)
-		{
+	onPointerRightClick(e) {
+		if (APP.currentWindow.bigWinsController.isAnyBigWinAnimationInProgress) {
 			this._tryToSkipBigWin();
 		}
 
 		if (!this._fireSettingsInfo.lockOnTarget) return;
 
-		if(!APP.isBattlegroundGame)
-		{
+		if (!APP.isBattlegroundGame) {
 			this.unpushPointer();
 			this.emit(GameField.EVENT_ON_RESET_TARGET);
 		}
 
-		for( let i = 0; i < this.enemies.length; i++ )
-		{
-			if(this.enemies[i].onPointerRightClick(e.data.global.x, e.data.global.y))
-			{
-				if(APP.isBattlegroundGame)
-				{
+		for (let i = 0; i < this.enemies.length; i++) {
+			if (this.enemies[i].onPointerRightClick(e.data.global.x, e.data.global.y)) {
+				if (APP.isBattlegroundGame) {
 					this.unpushPointer();
 					this.emit(GameField.EVENT_ON_RESET_TARGET);
 				}
@@ -6621,8 +5774,7 @@ class GameField extends Sprite
 				this._fTargetingInfo_tc.targetEnemyId = this.enemies[i].id;
 				this._onEnemyRightClick(this.enemies[i]);
 
-				if (this._fireSettingsInfo.lockOnTarget)
-				{
+				if (this._fireSettingsInfo.lockOnTarget) {
 					this._validateAutofireButton(true, this.enemies[i]);
 				}
 
@@ -6634,8 +5786,7 @@ class GameField extends Sprite
 
 	}
 
-	onPointerClick(e)
-	{
+	onPointerClick(e) {
 		if (
 			this._fAutoTargetingSwitcherInfo_atsi.isOn ||
 			(
@@ -6643,21 +5794,17 @@ class GameField extends Sprite
 				&& this._fireSettingsInfo.autoFire
 				&& !(e.target instanceof WeaponSidebarIcon)
 			)
-		)
-		{
-			if(!APP.isBattlegroundGame) this._resetTargetIfRequired(true);
+		) {
+			if (!APP.isBattlegroundGame) this._resetTargetIfRequired(true);
 
-			for( let i = 0; i < this.enemies.length; i++ )
-			{
-				if(this.enemies[i].onPointerClick(e.data.global.x, e.data.global.y))
-				{
-					if(APP.isBattlegroundGame) this._resetTargetIfRequired(true);
+			for (let i = 0; i < this.enemies.length; i++) {
+				if (this.enemies[i].onPointerClick(e.data.global.x, e.data.global.y)) {
+					if (APP.isBattlegroundGame) this._resetTargetIfRequired(true);
 
 					this._fTargetingInfo_tc.targetEnemyId = this.enemies[i].id;
 					this._onEnemyClick(this.enemies[i]);
 
-					if (this._fireSettingsInfo.lockOnTarget)
-					{
+					if (this._fireSettingsInfo.lockOnTarget) {
 						this._validateAutofireButton(true, this.enemies[i]);
 					}
 
@@ -6669,41 +5816,34 @@ class GameField extends Sprite
 		}
 	}
 
-	_onFireSettingsChanged()
-	{
-		if (!this._fireSettingsInfo.lockOnTarget)
-		{
+	_onFireSettingsChanged() {
+		if (!this._fireSettingsInfo.lockOnTarget) {
 			this._resetTargetIfRequired(true);
 			this._validateAutofireButton(false, null, true);
 		}
 	}
 
-	_onFireSettingsActivated()
-	{
+	_onFireSettingsActivated() {
 		this.unpushPointer();
 		this._fFireSettingsScreenActive_bln = true;
 
 		this._validateInteractivity();
 	}
 
-	_onFireSettingsDeactivated()
-	{
+	_onFireSettingsDeactivated() {
 		this._fFireSettingsScreenActive_bln = false;
 
 		this._validateInteractivity();
 	}
 
-	_resetTargetIfRequired(aAnyway_bl = false)
-	{
-		if (aAnyway_bl)
-		{
+	_resetTargetIfRequired(aAnyway_bl = false) {
+		if (aAnyway_bl) {
 			this.unpushPointer();
 			this.emit(GameField.EVENT_ON_RESET_TARGET);
 		}
 	}
 
-	_onEnemyRightClick(aEnemy_e)
-	{
+	_onEnemyRightClick(aEnemy_e) {
 		//DEBUG...
 		// console.log("RIGHT CLICK ON ENEMY ID = " + aEnemy_e.id);
 		//...DEBUG
@@ -6711,20 +5851,16 @@ class GameField extends Sprite
 		this._tryUpdateTargetAndFire(aEnemy_e);
 	}
 
-	_onEnemyClick(aEnemy_e)
-	{
+	_onEnemyClick(aEnemy_e) {
 		let lId_int = aEnemy_e.id;
 
-		if (this._fTargetingInfo_tc.isActive)
-		{
+		if (this._fTargetingInfo_tc.isActive) {
 			this._tryUpdateTargetAndFire(aEnemy_e);
 		}
-		else if (this._fAutoTargetingSwitcherInfo_atsi.isOn && this._fireSettingsInfo.lockOnTarget)
-		{
+		else if (this._fAutoTargetingSwitcherInfo_atsi.isOn && this._fireSettingsInfo.lockOnTarget) {
 			const lTargetEnemyId_int = lId_int;
-			this.emit(GameField.EVENT_ON_TARGETING, {targetEnemyId: lTargetEnemyId_int});
-			if (this._fireSettingsInfo.autoFire && !this._fTargetingInfo_tc.isPaused)
-			{
+			this.emit(GameField.EVENT_ON_TARGETING, { targetEnemyId: lTargetEnemyId_int });
+			if (this._fireSettingsInfo.autoFire && !this._fTargetingInfo_tc.isPaused) {
 				this.chooseFireType();
 			}
 			return;
@@ -6732,8 +5868,7 @@ class GameField extends Sprite
 		this.unpushPointer();
 	}
 
-	_tryUpdateTargetAndFire(aEnemy_e)
-	{
+	_tryUpdateTargetAndFire(aEnemy_e) {
 		// DEBUG... stub update trajectory
 		// this.emit("stubUpdateTrajectory", {enemyId: e.enemyId});
 		// return;
@@ -6743,40 +5878,33 @@ class GameField extends Sprite
 		if (!this._fireSettingsInfo.lockOnTarget || aEnemy_e.isEnemyLockedForTarget) return;
 
 		this.unpushPointer();
-		this.emit(GameField.EVENT_ON_TARGETING, {targetEnemyId: lId_int});
-		if (this._fireSettingsInfo.autoFire && !this._fTargetingInfo_tc.isPaused)
-		{
+		this.emit(GameField.EVENT_ON_TARGETING, { targetEnemyId: lId_int });
+		if (this._fireSettingsInfo.autoFire && !this._fTargetingInfo_tc.isPaused) {
 			this.fireImmediately();
 			this._validateAutofireButton(true);
 		}
 	}
 
-	onChooseWeaponsStateChanged(aVal_bln)
-	{
+	onChooseWeaponsStateChanged(aVal_bln) {
 		this._fChooseWeaponsScreenActive_bln = aVal_bln;
 	}
 
-	_validateAutofireButton(aState_bl, aEnemy_e, aOptIsQuietMode_bl=false)
-	{
-		if (APP.isBattlegroundGame && this.spot && this.spot.autofireButton.enabled != aState_bl && APP.isAutoFireEnabled)
-		{
+	_validateAutofireButton(aState_bl, aEnemy_e, aOptIsQuietMode_bl = false) {
+		if (APP.isBattlegroundGame && this.spot && this.spot.autofireButton.enabled != aState_bl && APP.isAutoFireEnabled) {
 			this.autofireButtonEnabled = aState_bl;
 			this.spot.autofireButton.i_setEnable(aState_bl, aEnemy_e, aOptIsQuietMode_bl);
 		}
 	}
 
-	_tryRotateTurretLeft()
-	{
+	_tryRotateTurretLeft() {
 		this._tryRotateTurretOnAngle(1);
 	}
 
-	_tryRotateTurretRight()
-	{
+	_tryRotateTurretRight() {
 		this._tryRotateTurretOnAngle(-1);
 	}
 
-	_tryRotateTurretOnAngle(aDirect_num)
-	{
+	_tryRotateTurretOnAngle(aDirect_num) {
 		if (this.seatId === null || this.seatId === undefined) return;
 		if (!APP.gameScreen.cursorController.isCursorRendering) return;
 
@@ -6794,31 +5922,27 @@ class GameField extends Sprite
 		if (coef < 0.3) coef = 0.3;
 		let stepAngle = coef * TURRET_TURN_UNIT;
 
-		let newAngle = (angle + aDirect_num * stepAngle - Math.PI/2);
-		let newPosition = {x: gunPos.x + Math.cos(newAngle)*dist, y: gunPos.y - Math.sin(newAngle)*dist};
+		let newAngle = (angle + aDirect_num * stepAngle - Math.PI / 2);
+		let newPosition = { x: gunPos.x + Math.cos(newAngle) * dist, y: gunPos.y - Math.sin(newAngle) * dist };
 
-		let e = {data: {global: newPosition}};
+		let e = { data: { global: newPosition } };
 		let isRotated = this.tryRotateGun(e);
 
-		if (isRotated)
-		{
+		if (isRotated) {
 			this.emit(GameField.EVENT_ON_STOP_UPDATE_CURSOR_POSITION);
-			this.emit(GameField.EVENT_ON_SET_SPECIFIC_CURSOR_POSITION, {pos: newPosition});
+			this.emit(GameField.EVENT_ON_SET_SPECIFIC_CURSOR_POSITION, { pos: newPosition });
 		}
 	}
 
-	_tryMoveCursorUp()
-	{
+	_tryMoveCursorUp() {
 		this._tryMoveCursor(1);
 	}
 
-	_tryMoveCursorDown()
-	{
+	_tryMoveCursorDown() {
 		this._tryMoveCursor(-1);
 	}
 
-	_tryMoveCursor(aDirect_num)
-	{
+	_tryMoveCursor(aDirect_num) {
 		if (this.seatId === null || this.seatId === undefined) return;
 		if (!APP.gameScreen.cursorController.isCursorRendering) return;
 
@@ -6833,30 +5957,28 @@ class GameField extends Sprite
 
 		let newDist = dist + aDirect_num * CURSOR_MOVE_UNIT;
 		if (newDist < 60) newDist = 60;
-		let newPosition = {x: gunPos.x + Math.cos(angle - Math.PI/2)*newDist, y: gunPos.y - Math.sin(angle - Math.PI/2)*newDist};
+		let newPosition = { x: gunPos.x + Math.cos(angle - Math.PI / 2) * newDist, y: gunPos.y - Math.sin(angle - Math.PI / 2) * newDist };
 
-		let e = {data: {global: newPosition}};
+		let e = { data: { global: newPosition } };
 		this.tryRotateGun(e);
 
-		
+
 		this.emit(GameField.EVENT_ON_STOP_UPDATE_CURSOR_POSITION);
-		this.emit(GameField.EVENT_ON_SET_SPECIFIC_CURSOR_POSITION, {pos: newPosition});
-		
+		this.emit(GameField.EVENT_ON_SET_SPECIFIC_CURSOR_POSITION, { pos: newPosition });
+
 	}
 
-	tryRotateGun(e)
-	{
-		if (	!this.spot ||
-				this._fTargetingInfo_tc.isActive ||
-				this._fChooseWeaponsScreenActive_bln ||
-				this.roundResultActive 
-		)
-		{
+	tryRotateGun(e) {
+		if (!this.spot ||
+			this._fTargetingInfo_tc.isActive ||
+			this._fChooseWeaponsScreenActive_bln ||
+			this.roundResultActive
+		) {
 			return false;
 		}
 
 		var x = e.data.global.x;
-	
+
 		var y = e.data.global.y;
 
 
@@ -6864,90 +5986,79 @@ class GameField extends Sprite
 		let lKeyBoardRotation = e.data.isKeyboardRotation ? e.data.isKeyboardRotation : false;
 
 		let lAPPSize_obj = APP.config.size;
-		const margin  = 10;
-		
-		if(x>lAPPSize_obj.width -margin){
+		const margin = 10;
+
+		if (x > lAPPSize_obj.width - margin) {
 			x = lAPPSize_obj.width - margin;
 		}
 
-		if(x<margin){
+		if (x < margin) {
 			x = margin;
 		}
 
-		if(y>lAPPSize_obj.height - margin){
-			y= lAPPSize_obj.height - margin;
+		if (y > lAPPSize_obj.height - margin) {
+			y = lAPPSize_obj.height - margin;
 		}
 
-		if(y<margin){
-			y= margin;
+		if (y < margin) {
+			y = margin;
 		}
 
 		let A = this.spot.isBottom ? new PIXI.Point(0, lAPPSize_obj.height) : new PIXI.Point(0, 0); //left corner
 		let B = this.spot.isBottom ? new PIXI.Point(lAPPSize_obj.width, lAPPSize_obj.height) : new PIXI.Point(lAPPSize_obj.width, 0); //right corner
 		let C = this.getGunPosition(this.seatId); //spot point
 		let D = new PIXI.Point(x, y); //cursor point
-        let isRotationLimit = this._f(B,C,A,D) && this._f(C,A,B,D);
+		let isRotationLimit = this._f(B, C, A, D) && this._f(C, A, B, D);
 
-		if (isRotationLimit)
-		{
-			if (x > C.x && !lKeyBoardRotation)
-			{
+		if (isRotationLimit) {
+			if (x > C.x && !lKeyBoardRotation) {
 				this.rotateGun(B.x, B.y);
 				this.lastPointerPos = B;
 			}
-			else if (!lKeyBoardRotation)
-			{
+			else if (!lKeyBoardRotation) {
 				this.rotateGun(A.x, A.y);
 				this.lastPointerPos = A;
 			}
 		}
 
 		this.lastPointerPos = D;
-		
+
 		this.rotateGun(x, y);
 
 		return true;
 	}
 
-	_g(a, b, d)
-	{
+	_g(a, b, d) {
 		return (d.x - a.x) * (b.y - a.y) - (d.y - a.y) * (b.x - a.x);
 	}
 
-	_f(a, b, c, d)
-	{
+	_f(a, b, c, d) {
 		return this._g(a, b, c) * this._g(a, b, d) >= 0;
 	}
 
-	changeIndicator(e)
-	{
+	changeIndicator(e) {
 		if (this._fGameStateInfo_gsi.gameState != ROUND_STATE.PLAY || !this.spot || this.gunLocked) return;
 
 		let x = e.data.global.x;
 		let y = e.data.global.y;
 
-		let enemy = this.getNearestEnemy(x,y),
+		let enemy = this.getNearestEnemy(x, y),
 			dist = 100;
 		let len = (enemy) ? Math.sqrt(Math.pow(enemy.x - x, 2) + Math.pow(enemy.y - y, 2)) : Infinity;
 
-		if (!enemy || len >= dist)
-		{
+		if (!enemy || len >= dist) {
 			this.indicatedEnemy = null;
 		}
-		else
-		{
+		else {
 			if (enemy && enemy.life !== 0 &&
-				((this.indicatedEnemy && this.indicatedEnemy != enemy) || !this.indicatedEnemy))
-			{
+				((this.indicatedEnemy && this.indicatedEnemy != enemy) || !this.indicatedEnemy)) {
 				this.indicatedEnemy = enemy;
 			}
 		}
 	}
 
-	getEnemyById(id)
-	{
-		for (let enemy of this.enemies)
-		{
+	getEnemyById(id) {
+		for (let enemy of this.enemies) {
 			if (enemy.id == id) return enemy;
 		}
 
@@ -6960,21 +6071,17 @@ class GameField extends Sprite
 	** 1 - forced selection nearest toward point (x, y),
 	** 2 - forced selection nearest to point (x, y)
 	*/
-	getNearestEnemy(x,y, aOptForcedSelectionType_int = 0, aOptFilteredEnemyIds_int_arr = null)
-	{
-		if (!this.enemies || !this.enemies.length || this.seatId < 0 || !this.spot)
-		{
+	getNearestEnemy(x, y, aOptForcedSelectionType_int = 0, aOptFilteredEnemyIds_int_arr = null) {
+		if (!this.enemies || !this.enemies.length || this.seatId < 0 || !this.spot) {
 			//console.log("[GameField] getNearestEnemy: can't detect nearest enemy, no enemies on the screen.");
 			return null;
 		}
 
 		let activeEnemiesPositions = [];
-		for (let i = 0; i < this.enemies.length; i ++)
-		{
+		for (let i = 0; i < this.enemies.length; i++) {
 			var enemy = this.enemies[i];
 
-			if (aOptFilteredEnemyIds_int_arr && aOptFilteredEnemyIds_int_arr.indexOf(enemy.id) < 0)
-			{
+			if (aOptFilteredEnemyIds_int_arr && aOptFilteredEnemyIds_int_arr.indexOf(enemy.id) < 0) {
 				continue;
 			}
 
@@ -6985,47 +6092,40 @@ class GameField extends Sprite
 			if (enemy.isDestroyed) continue; //[Y]TODO to figure out why the destroyed enemy wasn't removed from the array
 
 			var enemyPos = enemy.getCenterPosition();
-			activeEnemiesPositions.push({enemyPos: enemyPos, enemyIndex:i});
+			activeEnemiesPositions.push({ enemyPos: enemyPos, enemyIndex: i });
 		}
 
 		let nearestEnemyIndex = -1;
-		if (aOptForcedSelectionType_int === 0)
-		{
+		if (aOptForcedSelectionType_int === 0) {
 			nearestEnemyIndex = this._isGunTowardPointerEnemySelectionTypeAvailable(this._fWeaponsInfo_wsi.currentWeaponId)
-									? this._getNearestTowardPointerEnemyIndex(new PIXI.Point(x, y), activeEnemiesPositions)
-									: this._getNearestToPointerEnemyIndex(new PIXI.Point(x, y), activeEnemiesPositions);
+				? this._getNearestTowardPointerEnemyIndex(new PIXI.Point(x, y), activeEnemiesPositions)
+				: this._getNearestToPointerEnemyIndex(new PIXI.Point(x, y), activeEnemiesPositions);
 		}
-		else if (aOptForcedSelectionType_int === 1)
-		{
+		else if (aOptForcedSelectionType_int === 1) {
 			nearestEnemyIndex = this._getNearestTowardPointerEnemyIndex(new PIXI.Point(x, y), activeEnemiesPositions);
 		}
-		else if (aOptForcedSelectionType_int === 2)
-		{
+		else if (aOptForcedSelectionType_int === 2) {
 			nearestEnemyIndex = this._getNearestToPointerEnemyIndex(new PIXI.Point(x, y), activeEnemiesPositions);
 		}
 
 		return nearestEnemyIndex < 0 ? null : this.enemies[nearestEnemyIndex];
 	}
 
-	_isGunTowardPointerEnemySelectionTypeAvailable(weaponId)
-	{
-		if (weaponId === WEAPONS.DEFAULT)
-		{
+	_isGunTowardPointerEnemySelectionTypeAvailable(weaponId) {
+		if (weaponId === WEAPONS.DEFAULT) {
 			return true;
 		}
 
 		return false;
 	}
 
-	_getNearestTowardPointerEnemyIndex(pointerPosition, activeEnemiesPositions)
-	{
+	_getNearestTowardPointerEnemyIndex(pointerPosition, activeEnemiesPositions) {
 		let gunPos = this.getGunPosition(this.seatId);
 		var angles = [];
 		var minAngle = 180;
 		var minUnderPadAngle = 180;
-		
-		for (let i = 0; i < activeEnemiesPositions.length; i ++)
-		{
+
+		for (let i = 0; i < activeEnemiesPositions.length; i++) {
 			var enemyPosDescr = activeEnemiesPositions[i];
 			var enemyPos = enemyPosDescr.enemyPos;
 			var enemyIndex = enemyPosDescr.enemyIndex;
@@ -7036,30 +6136,27 @@ class GameField extends Sprite
 				enemyPos.x < spotRight &&
 				enemyPos.y > spotTop &&
 				enemyPos.y < spotBottom
-			)
-			{
+			) {
 				lIsUnderPadEnemy_bl = true;
 			}
 
-			let pointA = {x: pointerPosition.x, y: pointerPosition.y};
-			let pointB = {x: gunPos.x, y: gunPos.y};
-			let pointC = {x: enemyPos.x, y: enemyPos.y};
+			let pointA = { x: pointerPosition.x, y: pointerPosition.y };
+			let pointB = { x: gunPos.x, y: gunPos.y };
+			let pointC = { x: enemyPos.x, y: enemyPos.y };
 
 			let cosABC = Utils.cosABC(pointA, pointB, pointC);
 			cosABC = Math.min(cosABC, 1);
 			cosABC = Math.max(cosABC, -1);
 			let angleABCInRad = Math.acos(cosABC);
 			let angleABC = Utils.radToGrad(angleABCInRad)
-			if (lIsUnderPadEnemy_bl && angleABC < minUnderPadAngle)
-			{
+			if (lIsUnderPadEnemy_bl && angleABC < minUnderPadAngle) {
 				minUnderPadAngle = angleABC;
 			}
-			if (angleABC < minAngle && !lIsUnderPadEnemy_bl)
-			{
+			if (angleABC < minAngle && !lIsUnderPadEnemy_bl) {
 				minAngle = angleABC;
 			}
 
-			angles.push({angle:angleABC, enemyPos:enemyPos, index: enemyIndex, isUnderPadEnemy: lIsUnderPadEnemy_bl});
+			angles.push({ angle: angleABC, enemyPos: enemyPos, index: enemyIndex, isUnderPadEnemy: lIsUnderPadEnemy_bl });
 		}
 
 		if (angles.length == 0) return -1;
@@ -7069,72 +6166,61 @@ class GameField extends Sprite
 		let sortAngle = Math.max(10, minAngle);
 		let edgeDist = 50; //50px to the edge of the standard weapon length
 		let spotBounds = this.spot.getBounds();
-		let spotLeft = this.spot.position.x - spotBounds.width/2;
-		let spotRight = this.spot.position.x + spotBounds.width/2;
-		let spotTop = this.spot.position.y - spotBounds.height/2;
-		let spotBottom = this.spot.position.y + spotBounds.height/2;
+		let spotLeft = this.spot.position.x - spotBounds.width / 2;
+		let spotRight = this.spot.position.x + spotBounds.width / 2;
+		let spotTop = this.spot.position.y - spotBounds.height / 2;
+		let spotBottom = this.spot.position.y + spotBounds.height / 2;
 		let underPadEnemies = [];
-		for (let i = 0; i < angles.length; i ++)
-		{
+		for (let i = 0; i < angles.length; i++) {
 			let lEnemyAngleDescr = angles[i];
-			
+
 			if (lEnemyAngleDescr.angle > sortAngle) continue;
 
-			if (lEnemyAngleDescr.isUnderPadEnemy)
-			{
-				if (lEnemyAngleDescr.angle <= minUnderPadAngle)
-				{
+			if (lEnemyAngleDescr.isUnderPadEnemy) {
+				if (lEnemyAngleDescr.angle <= minUnderPadAngle) {
 					underPadEnemies.unshift(lEnemyAngleDescr);
 				}
-				else
-				{
+				else {
 					underPadEnemies.push(lEnemyAngleDescr);
 				}
 				continue;
 			}
 
 			var curDistance = Math.sqrt(Math.pow(lEnemyAngleDescr.enemyPos.x - gunPos.x, 2) + Math.pow(lEnemyAngleDescr.enemyPos.y - gunPos.y, 2));
-			if ((minDist == -1 || curDistance < minDist) && curDistance > edgeDist)
-			{
+			if ((minDist == -1 || curDistance < minDist) && curDistance > edgeDist) {
 				minDist = curDistance;
 				min = i;
 			}
 		}
 
-		if (min < 0)
-		{
-			if (!!underPadEnemies && !!underPadEnemies.length)
-			{
+		if (min < 0) {
+			if (!!underPadEnemies && !!underPadEnemies.length) {
 				return underPadEnemies[0].index;
 			}
-			
+
 			return angles[0].index;
 		}
 
 		return angles[min].index;
 	}
 
-	_getNearestToPointerEnemyIndex(pointerPosition, activeEnemiesPositions)
-	{
+	_getNearestToPointerEnemyIndex(pointerPosition, activeEnemiesPositions) {
 		var distances = [];
-		for (let i = 0; i < activeEnemiesPositions.length; i ++)
-		{
+		for (let i = 0; i < activeEnemiesPositions.length; i++) {
 			var enemyPosDescr = activeEnemiesPositions[i];
 			var enemyPos = enemyPosDescr.enemyPos;
 			var enemyIndex = enemyPosDescr.enemyIndex;
 
-			var  len = Math.sqrt(Math.pow(enemyPos.x - pointerPosition.x, 2) + Math.pow(enemyPos.y - pointerPosition.y, 2));
-			distances.push({len:len, index: enemyIndex});
+			var len = Math.sqrt(Math.pow(enemyPos.x - pointerPosition.x, 2) + Math.pow(enemyPos.y - pointerPosition.y, 2));
+			distances.push({ len: len, index: enemyIndex });
 
 		}
 
 		if (distances.length == 0) return -1;
 
-		var  min = 0;
-		for (let i = 1; i < distances.length; i ++)
-		{
-			if (distances[i].len < distances[min].len)
-			{
+		var min = 0;
+		for (let i = 1; i < distances.length; i++) {
+			if (distances[i].len < distances[min].len) {
 				min = i;
 			}
 		}
@@ -7142,8 +6228,7 @@ class GameField extends Sprite
 		return distances[min].index;
 	}
 
-	rotateGun(x, y, aOptFire = false)
-	{
+	rotateGun(x, y, aOptFire = false) {
 		if (!this.spot) return;
 		if (!this.spot.weaponSpotView) return;
 		if (this.spot.rotationBlocked && !aOptFire) return;
@@ -7151,10 +6236,9 @@ class GameField extends Sprite
 		let weaponSpotView = this.spot.weaponSpotView;
 		let gunX = weaponSpotView.localToGlobal().x;
 		let gunY = weaponSpotView.localToGlobal().y;
-		let angle = Math.atan2(y - gunY, x - gunX) + Math.PI/2; //(x - gunX)/(y - gunY);
+		let angle = Math.atan2(y - gunY, x - gunX) + Math.PI / 2; //(x - gunX)/(y - gunY);
 
-		if (!this.spot.isBottom)
-		{
+		if (!this.spot.isBottom) {
 			angle += Math.PI;
 		}
 
@@ -7162,27 +6246,23 @@ class GameField extends Sprite
 		return angle;
 	}
 
-	rotatePlayerGun(seatId, x, y)
-	{
-		if (seatId == this.seatId)
-		{
+	rotatePlayerGun(seatId, x, y) {
+		if (seatId == this.seatId) {
 			return this.rotateGun(x, y);
 		}
 
 		let player = this.getPlayerBySeatId(seatId);
 
-		if (!player || !player.weaponSpotView)
-		{
+		if (!player || !player.weaponSpotView) {
 			return null;
 		}
 
 		let weaponSpotView = player.weaponSpotView;
 		let gunX = weaponSpotView.localToGlobal().x;
 		let gunY = weaponSpotView.localToGlobal().y;
-		let angle = Math.atan2(y - gunY, x - gunX) + Math.PI/2;//(x - gunX)/(y - gunY);
+		let angle = Math.atan2(y - gunY, x - gunX) + Math.PI / 2;//(x - gunX)/(y - gunY);
 
-		if (!player.spot.isBottom)
-		{
+		if (!player.spot.isBottom) {
 			angle += Math.PI;
 		}
 
@@ -7191,8 +6271,7 @@ class GameField extends Sprite
 		return angle;
 	}
 
-	addPushEffect(x, y, seat)
-	{
+	addPushEffect(x, y, seat) {
 		let target = seat.weaponSpotView;
 		let gun = seat.weaponSpotView.gun;
 
@@ -7202,13 +6281,11 @@ class GameField extends Sprite
 		var gunX = seat.gunCenter.x, gunY = seat.gunCenter.y;
 		gunX = seat.localToGlobal(gunX, gunY).x;
 		gunY = seat.localToGlobal(gunX, gunY).y;
-		if (!target.pushSequence)
-		{
+		if (!target.pushSequence) {
 			target.startPosX = target.x;
 			target.startPosY = target.y;
 		}
-		else
-		{
+		else {
 			target.pushSequence.stop();
 			target.pushSequence.destructor();
 			target.pushSequence = null;
@@ -7217,8 +6294,7 @@ class GameField extends Sprite
 			target.y = target.startPosY;
 		}
 
-		if (gun.id !== WEAPONS.INSTAKILL)
-		{
+		if (gun.id !== WEAPONS.INSTAKILL) {
 			gun.showAlternate();
 		}
 		gun.showShotlight();
@@ -7228,22 +6304,21 @@ class GameField extends Sprite
 
 		var dist = 8;
 		let durations = [40, 0, 60, 5];
-		switch (gun.id)
-		{
+		switch (gun.id) {
 			case WEAPONS.INSTAKILL:
 				durations = [200, 0, 60, 0];
 				dist = 80;
 				break;
 			case WEAPONS.CRYOGUN:
-				durations = [2*2*16.7, 0, 4*2*16.7, 0];
+				durations = [2 * 2 * 16.7, 0, 4 * 2 * 16.7, 0];
 				dist = 40;
 				break;
 			case WEAPONS.RAILGUN:
-				durations = [2*2*16.7, 0, 2*2*16.7];
+				durations = [2 * 2 * 16.7, 0, 2 * 2 * 16.7];
 				dist = 30;
 				break;
 			case WEAPONS.FLAMETHROWER:
-				durations = [2*2*16.7, 26*2*16.7, 2*2*16.7, 0];
+				durations = [2 * 2 * 16.7, 26 * 2 * 16.7, 2 * 2 * 16.7, 0];
 				dist = 25;
 				break;
 			default:
@@ -7252,14 +6327,14 @@ class GameField extends Sprite
 
 		dist *= PlayerSpot.WEAPON_SCALE;
 
-		let ang = -Math.PI/2;//Math.atan2(y - gunY, x - gunX);
+		let ang = -Math.PI / 2;//Math.atan2(y - gunY, x - gunX);
 		/*if (!target.isBottom)
 		{
 			ang += Math.PI;
 		}*/
 
-		let dx = dist*Math.cos(ang);
-		let dy = dist*Math.sin(ang);
+		let dx = dist * Math.cos(ang);
+		let dy = dist * Math.sin(ang);
 
 		var pushX = endX - dx;
 		var pushY = endY - dy;
@@ -7267,8 +6342,8 @@ class GameField extends Sprite
 		let sequence = [
 			{
 				tweens: [
-					{prop: "x", to: pushX},
-					{prop: "y", to: pushY}
+					{ prop: "x", to: pushX },
+					{ prop: "y", to: pushY }
 				],
 				duration: durations[0],
 				ease: Easing.quadratic.easeInOut
@@ -7279,8 +6354,8 @@ class GameField extends Sprite
 			},
 			{
 				tweens: [
-					{prop: "x", to: endX},
-					{prop: "y", to: endY}
+					{ prop: "x", to: endX },
+					{ prop: "y", to: endY }
 				],
 				duration: durations[2],
 				ease: Easing.quadratic.easeInOut
@@ -7289,14 +6364,12 @@ class GameField extends Sprite
 				tweens: [],
 				duration: durations[3],
 				onfinish: () => {
-					if (gun.id !== WEAPONS.INSTAKILL)
-					{
+					if (gun.id !== WEAPONS.INSTAKILL) {
 						gun.hideAlternate();
 					}
 					gun.hideShotlight();
 
-					if (!this.pointerPushed && !this.isAutoFireEnabled)
-					{
+					if (!this.pointerPushed && !this.isAutoFireEnabled) {
 						gun.y = 0;
 						this._fWeaponOffsetYFiringContinuously_int = 0;
 					}
@@ -7306,49 +6379,47 @@ class GameField extends Sprite
 			}
 		];
 
-		if (gun.id === WEAPONS.CRYOGUN)
-		{
+		if (gun.id === WEAPONS.CRYOGUN) {
 			let additionalSequence = [
 				{
 					tweens: [
-						{prop: "x", to: pushX + Math.cos(ang - Math.PI/7)*7},
-						{prop: "y", to: pushY + Math.sin(ang - Math.PI/7)*7}
+						{ prop: "x", to: pushX + Math.cos(ang - Math.PI / 7) * 7 },
+						{ prop: "y", to: pushY + Math.sin(ang - Math.PI / 7) * 7 }
 					],
-					duration: 2*2*16.7
+					duration: 2 * 2 * 16.7
 				},
 				{
 					tweens: [
-						{prop: "x", to: pushX + Math.cos(ang + Math.PI/6)*7},
-						{prop: "y", to: pushY + Math.sin(ang + Math.PI/6)*7}
+						{ prop: "x", to: pushX + Math.cos(ang + Math.PI / 6) * 7 },
+						{ prop: "y", to: pushY + Math.sin(ang + Math.PI / 6) * 7 }
 					],
-					duration: 3*2*16.7
+					duration: 3 * 2 * 16.7
 				},
 				{
 					tweens: [
-						{prop: "x", to: pushX + Math.cos(ang - Math.PI/5)*7},
-						{prop: "y", to: pushY + Math.sin(ang - Math.PI/5)*7}
+						{ prop: "x", to: pushX + Math.cos(ang - Math.PI / 5) * 7 },
+						{ prop: "y", to: pushY + Math.sin(ang - Math.PI / 5) * 7 }
 					],
-					duration: 2*2*16.7
+					duration: 2 * 2 * 16.7
 				},
 				{
 					tweens: [
-						{prop: "x", to: pushX - Math.cos(ang)*10},
-						{prop: "y", to: pushY - Math.sin(ang)*10}
+						{ prop: "x", to: pushX - Math.cos(ang) * 10 },
+						{ prop: "y", to: pushY - Math.sin(ang) * 10 }
 					],
-					duration: 2*2*16.7
+					duration: 2 * 2 * 16.7
 				}
 			];
 			sequence = [sequence[0], ...additionalSequence, sequence[2]];
 		}
 
-		if (gun.id === WEAPONS.FLAMETHROWER)
-		{
+		if (gun.id === WEAPONS.FLAMETHROWER) {
 			let addFlameThrowerStep = {
 				tweens: [
-					{prop: "x", to: pushX - Math.cos(ang)*4},
-					{prop: "y", to: pushY - Math.sin(ang)*4}
+					{ prop: "x", to: pushX - Math.cos(ang) * 4 },
+					{ prop: "y", to: pushY - Math.sin(ang) * 4 }
 				],
-				duration: 2*2*16.7
+				duration: 2 * 2 * 16.7
 			}
 			sequence = [sequence[0], sequence[1], addFlameThrowerStep, sequence[2]];
 		}
@@ -7356,20 +6427,16 @@ class GameField extends Sprite
 		target.pushSequence = Sequence.start(gun, sequence);
 	}
 
-	_checkWeaponRecoilOffsetAfterEndShooting()
-	{
+	_checkWeaponRecoilOffsetAfterEndShooting() {
 		if (!this._fPushWeaponEffectPlaying_bl
 			&& this._fWeaponOffsetYFiringContinuously_int > 0
-			&& this._fCurrentWeaponSpotGun.id === WEAPONS.DEFAULT)
-		{
+			&& this._fCurrentWeaponSpotGun.id === WEAPONS.DEFAULT) {
 			this._fCurrentWeaponSpotGun.y = 0;
 		}
 	}
 
-	_addDefaultGunFireEffect(x, y, angle, len, aOptSpotCurrentDefaultWeaponId_int = 1, aOptSpot_s)
-	{
-		if (aOptSpot_s && APP.profilingController.info.isVfxProfileValueMediumOrGreater)
-		{
+	_addDefaultGunFireEffect(x, y, angle, len, aOptSpotCurrentDefaultWeaponId_int = 1, aOptSpot_s) {
+		if (aOptSpot_s && APP.profilingController.info.isVfxProfileValueMediumOrGreater) {
 			let lSpotCurrentDefaultWeaponId_int = aOptSpotCurrentDefaultWeaponId_int;
 			let fireEffect = new DefaultGunFireEffect(lSpotCurrentDefaultWeaponId_int, this._fWeaponOffsetYFiringContinuously_int, aOptSpot_s.isMaster);
 
@@ -7379,8 +6446,7 @@ class GameField extends Sprite
 
 			let lWeaponMultiplierValue_num;
 
-			switch (lSpotCurrentDefaultWeaponId_int)
-			{
+			switch (lSpotCurrentDefaultWeaponId_int) {
 				case 1:
 					hitboomScaleX = 1.05;
 					hitboomScaleY = 1.09;
@@ -7431,37 +6497,30 @@ class GameField extends Sprite
 		}
 	}
 
-	_onDefaultGunAnimationCompleted(event)
-	{
+	_onDefaultGunAnimationCompleted(event) {
 		this._destroyDefaultGunFireEffect(event.target);
 	}
 
-	_onDefaultGunAnimationDestroying(event)
-	{
-		if (!this._defaultGunFireEffects_sprt_arr || !this._defaultGunFireEffects_sprt_arr.length)
-		{
+	_onDefaultGunAnimationDestroying(event) {
+		if (!this._defaultGunFireEffects_sprt_arr || !this._defaultGunFireEffects_sprt_arr.length) {
 			return;
 		}
 
 		let fireEffect = event.target;
 
 		let lIndex_int = this._defaultGunFireEffects_sprt_arr.indexOf(fireEffect);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._defaultGunFireEffects_sprt_arr.splice(lIndex_int, 1);
 		}
 	}
 
-	_destroyDefaultGunFireEffect(fireEffect)
-	{
-		if (!fireEffect)
-		{
+	_destroyDefaultGunFireEffect(fireEffect) {
+		if (!fireEffect) {
 			return;
 		}
 
 		let lIndex_int = this._defaultGunFireEffects_sprt_arr.indexOf(fireEffect);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._defaultGunFireEffects_sprt_arr.splice(lIndex_int, 1);
 		}
 
@@ -7469,15 +6528,12 @@ class GameField extends Sprite
 		fireEffect.destroy();
 	}
 
-	_removeAllDefaultGunFireEffects()
-	{
-		if (!this._defaultGunFireEffects_sprt_arr)
-		{
+	_removeAllDefaultGunFireEffects() {
+		if (!this._defaultGunFireEffects_sprt_arr) {
 			return;
 		}
 
-		while (this._defaultGunFireEffects_sprt_arr.length)
-		{
+		while (this._defaultGunFireEffects_sprt_arr.length) {
 			let fireEffect = this._defaultGunFireEffects_sprt_arr.pop();
 			fireEffect.off(DefaultGunFireEffect.EVENT_ON_ANIMATION_COMPLETED, this._onDefaultGunAnimationCompleted, this, true);
 			fireEffect.destroy();
@@ -7485,32 +6541,25 @@ class GameField extends Sprite
 		this._defaultGunFireEffects_sprt_arr = [];
 	}
 
-	showAwards(scores_arr)
-	{
-		for (let i=0; i<scores_arr.length; i++)
-		{
+	showAwards(scores_arr) {
+		for (let i = 0; i < scores_arr.length; i++) {
 			let scoreData = scores_arr[i];
 
 			let qualifyWin = scoreData.qualifyWin;
-			if (qualifyWin > 0)
-			{
+			if (qualifyWin > 0) {
 				this.updatePlayerWin(qualifyWin/*, countTime*/);
 			}
 		}
 	}
 
-	showMiss(data, aIsPaidSpecialShot_bl)
-	{
-		if (data.rid != -1 && (!data.bulletId || this.isRicochetSW(data.usedSpecialWeapon)))
-		{
+	showMiss(data, aIsPaidSpecialShot_bl) {
+		if (data.rid != -1 && (!data.bulletId || this.isRicochetSW(data.usedSpecialWeapon))) {
 			this.updateCurrentWeapon(aIsPaidSpecialShot_bl);
 		}
 
-		if (data.killedMiss || data.invulnerable)
-		{
+		if (data.killedMiss || data.invulnerable) {
 			//do not show animation of bullet flying nowhere
-			if (data.usedSpecialWeapon == WEAPONS.INSTAKILL && data.rid != -1)
-			{
+			if (data.usedSpecialWeapon == WEAPONS.INSTAKILL && data.rid != -1) {
 				this.unlockGun();
 			}
 			return;
@@ -7518,80 +6567,68 @@ class GameField extends Sprite
 
 		let missData = Object.assign({}, data);
 
-		for (let obj of ShotResultsUtil.excludeFakeEnemies(missData.affectedEnemies))
-		{
+		for (let obj of ShotResultsUtil.excludeFakeEnemies(missData.affectedEnemies)) {
 			if (
-					this._isAnyCashAwardAnimationRequired(obj.data)
-					|| this._isMasterScoreAwardRequired(obj.data)
-				)
-			{
+				this._isAnyCashAwardAnimationRequired(obj.data)
+				|| this._isMasterScoreAwardRequired(obj.data)
+			) {
 				obj.data.rid = data.rid;
-				this.emit(GameField.EVENT_ON_HIT_AWARD_EXPECTED, {hitData:obj.data, masterSeatId: this.seatId});
+				this.emit(GameField.EVENT_ON_HIT_AWARD_EXPECTED, { hitData: obj.data, masterSeatId: this.seatId });
 			}
 		}
 
 		this.showFire(missData, (e, endPos, angle) => this.proceedFireResult(e, endPos, angle, missData));
 	}
 
-	showHit(data, aIsPaidSpecialShot_bl)
-	{
-		if (data.rid != -1 && (!data.bulletId || this.isRicochetSW(data.usedSpecialWeapon)))
-		{
+	showHit(data, aIsPaidSpecialShot_bl) {
+		if (data.rid != -1 && (!data.bulletId || this.isRicochetSW(data.usedSpecialWeapon))) {
 			this.updateCurrentWeapon(aIsPaidSpecialShot_bl);
 		}
 
 		let hitData = Object.assign({}, data);
 
-		for (let obj of ShotResultsUtil.excludeFakeEnemies(hitData.affectedEnemies))
-		{
+		for (let obj of ShotResultsUtil.excludeFakeEnemies(hitData.affectedEnemies)) {
 			if (
-					this._isAnyCashAwardAnimationRequired(obj.data)
-					|| this._isMasterScoreAwardRequired(obj.data)
-				)
-			{
+				this._isAnyCashAwardAnimationRequired(obj.data)
+				|| this._isMasterScoreAwardRequired(obj.data)
+			) {
 				obj.data.rid = data.rid;
-				this.emit(GameField.EVENT_ON_HIT_AWARD_EXPECTED, {hitData:obj.data, masterSeatId: this.seatId});
+				this.emit(GameField.EVENT_ON_HIT_AWARD_EXPECTED, { hitData: obj.data, masterSeatId: this.seatId });
 			}
 		}
 
 		this.showFire(hitData, (e, endPos, angle) => this.proceedFireResult(e, endPos, angle, hitData));
 	}
 
-	updatePlayerScore(aAddScore_num, aOptBounce_bln = false)
-	{
+	updatePlayerScore(aAddScore_num, aOptBounce_bln = false) {
 		if (!this.spot) return;
 
-		if (this.roundResultActive)
-		{
-			if (aOptBounce_bln)
-			{
+		if (this.roundResultActive) {
+			if (aOptBounce_bln) {
 				this.spotBounce();
 			}
 		}
 	}
 
-	_showFireCryogun(data, callback)
-	{
+	_showFireCryogun(data, callback) {
 		this.playWeaponSound(data.usedSpecialWeapon, data.rid === -1);
 		this.showPlayersWeaponEffect(data);
 		APP.profilingController.info.isVfxProfileValueMediumOrGreater && this._addCryogunFireEffect(data);
 
-		this.emit(GameField.EVENT_SHOW_FIRE, {data: data, callback: () => callback(null, null, 0, data)});
+		this.emit(GameField.EVENT_SHOW_FIRE, { data: data, callback: () => callback(null, null, 0, data) });
 
 		let seat = this.getSeat(data.seatId, true);
 		let gun = seat.weaponSpotView.gun;
 		gun.shot();
 
-		if (data.rid !== -1)
-		{
+		if (data.rid !== -1) {
 			this.rotateGun(data.x, data.y);
 			this.lockGunOnTarget(null);
 			this._fCryogunsController_csc.once(CryogunsController.EVENT_ON_MAIN_SPOT_BEAM_BASIC_ANIMATION_COMPLETED, this._cryogunMainSpotBeamAnimationCompletedForUnlock, this);
 		}
 	}
 
-	_showFireRailgun(data, callback)
-	{
+	_showFireRailgun(data, callback) {
 		let enemyId = data.requestEnemyId || ShotResultsUtil.getFirstNonFakeEnemy(data); //in current implementation all Railgun's damage goes to one enemy
 		let enemy = this.getExistEnemy(enemyId);
 
@@ -7606,97 +6643,83 @@ class GameField extends Sprite
 			lPushEffectPos_pt = lCurrentEnemyPosition_pt || lPushEffectPos_pt;
 			this.addPushEffect(lPushEffectPos_pt.x, lPushEffectPos_pt.y, seat);
 
-			this.emit(GameField.EVENT_SHOW_FIRE, {data: data, callback: (endPos, angle) => callback(null, endPos, angle) } );
+			this.emit(GameField.EVENT_SHOW_FIRE, { data: data, callback: (endPos, angle) => callback(null, endPos, angle) });
 		});
 		gun.reload();
 
-		if (data.rid !== -1)
-		{
+		if (data.rid !== -1) {
 			this.lockGunOnTarget(enemy);
 			this._fRailgunsController_rsc.once(RailgunsController.EVENT_ON_MAIN_SPOT_BEAM_BASIC_ANIMATION_COMPLETED, this._railgunMainSpotBeamAnimationCompletedForUnlock, this);
 		}
 	}
 
-	_showFireFlameThrower(data, callback)
-	{
+	_showFireFlameThrower(data, callback) {
 		let enemyId = data.requestEnemyId;
 
-		if (isNaN(enemyId))
-		{
+		if (isNaN(enemyId)) {
 			throw new Error(`FlameThrower's target enemyId is ${enemyId}`);
 		}
 
 		this.playWeaponSound(data.usedSpecialWeapon, data.rid === -1);
 		this.showPlayersWeaponEffect(data);
 		let lResultProceeded = false;
-		this.emit(GameField.EVENT_SHOW_FIRE, {data: data, callback: (endPos, angle) => {callback(null, endPos, angle); lResultProceeded = true;} } );
+		this.emit(GameField.EVENT_SHOW_FIRE, { data: data, callback: (endPos, angle) => { callback(null, endPos, angle); lResultProceeded = true; } });
 
 		let seat = this.getSeat(data.seatId, true);
 		let gun = seat.weaponSpotView.gun;
 		gun.shot();
 
-		if (data.rid !== -1 && !lResultProceeded)
-		{
+		if (data.rid !== -1 && !lResultProceeded) {
 			let enemy = this.getExistEnemy(enemyId);
 			this.lockGunOnTarget(enemy);
 			this._fFlameThrowersController_ftsc.once(FlameThrowersController.EVENT_ON_MAIN_SPOT_BEAM_BASIC_ANIMATION_COMPLETED, this._flameThrowerMainSpotBeamAnimationCompletedForUnlock, this);
 		}
 	}
 
-	_showFireArtilleryStrike(data, callback)
-	{
+	_showFireArtilleryStrike(data, callback) {
 		let enemyId = ShotResultsUtil.getFirstNonFakeEnemy(data);
 
 		enemyId = data.requestEnemyId;
-		if (isNaN(enemyId))
-		{
+		if (isNaN(enemyId)) {
 			throw new Error(`Artillery Strike's target enemyId is ${enemyId}`);
 		}
 
-		if (data.rid !== -1)
-		{
+		if (data.rid !== -1) {
 			this.lockGunOnTarget(null);
 			this._fArtilleryStrikesController_assc.once(ArtilleryStrikesController.EVENT_ON_MAIN_STRIKE_ANIMATION_COMPLETED, this._artilleryStrikeMainStrikeAnimationCompletedForUnlock, this);
 		}
 
 		this.playWeaponSound(data.usedSpecialWeapon, data.rid === -1);
 		this.showPlayersWeaponEffect(data);
-		this.emit(GameField.EVENT_SHOW_FIRE, {data: data, callback: () => callback(null)});
+		this.emit(GameField.EVENT_SHOW_FIRE, { data: data, callback: () => callback(null) });
 	}
 
-	_isMassWeapon(usedSpecialWeapon)
-	{
-		return	usedSpecialWeapon == WEAPONS.ARTILLERYSTRIKE ||
-				usedSpecialWeapon == WEAPONS.FLAMETHROWER ||
-				usedSpecialWeapon == WEAPONS.CRYOGUN ||
-				usedSpecialWeapon == WEAPONS.RAILGUN ||
-				usedSpecialWeapon == WEAPONS.INSTAKILL;
+	_isMassWeapon(usedSpecialWeapon) {
+		return usedSpecialWeapon == WEAPONS.ARTILLERYSTRIKE ||
+			usedSpecialWeapon == WEAPONS.FLAMETHROWER ||
+			usedSpecialWeapon == WEAPONS.CRYOGUN ||
+			usedSpecialWeapon == WEAPONS.RAILGUN ||
+			usedSpecialWeapon == WEAPONS.INSTAKILL;
 	}
 
-	showFire(data, callback)
-	{
-		if(APP.isCAFMode && !APP.currentWindow.gameStateController.info.isPlayerSitIn)
-		{
+	showFire(data, callback) {
+		if (APP.isCAFMode && !APP.currentWindow.gameStateController.info.isPlayerSitIn) {
 			return;
 		}
 
-		this.emit(GameField.EVENT_ON_SHOT_SHOW_FIRE_START_TIME, {data:data, masterSeatId: this.seatId});
+		this.emit(GameField.EVENT_ON_SHOT_SHOW_FIRE_START_TIME, { data: data, masterSeatId: this.seatId });
 
-		if (!this.getSeat(data.seatId, true))
-		{
+		if (!this.getSeat(data.seatId, true)) {
 			APP.logger.i_pushWarning(`GameField. Cannot show fire, no target seat detected, seatId: ${data.seatId}.`);
 			console.log(`Cannot show fire, no target seat detected, seatId: ${data.seatId}`);
 			return;
 		}
 
-		if (data.isExplode && !this._isMassWeapon(data.usedSpecialWeapon))
-		{
-			if (this._fNeedExplodeFeatureInitiated_bln)
-			{
-				this.once(GameField.EVENT_ON_EXPLODER_EXPLOSION_STARTED, ()=>callback(null, null, 0), this);
+		if (data.isExplode && !this._isMassWeapon(data.usedSpecialWeapon)) {
+			if (this._fNeedExplodeFeatureInitiated_bln) {
+				this.once(GameField.EVENT_ON_EXPLODER_EXPLOSION_STARTED, () => callback(null, null, 0), this);
 			}
-			else
-			{
+			else {
 				callback(null, null, 0);
 			}
 
@@ -7705,14 +6728,12 @@ class GameField extends Sprite
 
 		this.emit(GameField.EVENT_ON_BULLET_FLY_TIME);
 
-		if (data.needExplode)
-		{
+		if (data.needExplode) {
 			this._fNeedExplodeFeatureInitiated_bln = true;
 		}
 
 		//NEW WEAPONS...
-		switch (data.usedSpecialWeapon)
-		{
+		switch (data.usedSpecialWeapon) {
 			case WEAPONS.CRYOGUN:
 				this._showFireCryogun(data, callback);
 				return;
@@ -7728,42 +6749,35 @@ class GameField extends Sprite
 		}
 		//...NEW WEAPONS
 
-		let startPos = {}, endPos = {x: 0, y: 0};
+		let startPos = {}, endPos = { x: 0, y: 0 };
 		let enemyId = (data.enemy) ? data.enemy.id : data.enemyId;
 		let enemy, affectedEnemiesIds = [];
 
-		for (let affectedEnemy of data.affectedEnemies)
-		{
+		for (let affectedEnemy of data.affectedEnemies) {
 			affectedEnemiesIds.push(affectedEnemy.enemyId);
 		}
 
-		let uniqueAffectedEnemiesIds = affectedEnemiesIds.filter(function(value, index, self)
-		{
+		let uniqueAffectedEnemiesIds = affectedEnemiesIds.filter(function (value, index, self) {
 			return self.indexOf(value) === index;
 		});
 
-		if (data.usedSpecialWeapon == WEAPONS.RAILGUN)
-		{
+		if (data.usedSpecialWeapon == WEAPONS.RAILGUN) {
 			//find where is the originally targeted enemy
 			enemyId = data.requestEnemyId;
 		}
 
-		if (Array.isArray(data.affectedEnemies) && data.affectedEnemies.length > 1)
-		{
+		if (Array.isArray(data.affectedEnemies) && data.affectedEnemies.length > 1) {
 			enemyId = data.requestEnemyId;
 		}
 
 		enemy = this.getEnemyById(enemyId);
-		if (!enemy)
-		{
+		if (!enemy) {
 			APP.logger.i_pushWarning(`GameField. The affected enemy with enemyId=${enemyId} no longer exists in the game field!`);
 			console.log(`Attention! The affected enemy with enemyId=${enemyId} no longer exists in the game field!`);
 
 			endPos = this.enemiesLastPositions[enemyId];
-			if (!endPos)
-			{
-				if (data.usedSpecialWeapon == WEAPONS.INSTAKILL && data.rid != -1)
-				{
+			if (!endPos) {
+				if (data.usedSpecialWeapon == WEAPONS.INSTAKILL && data.rid != -1) {
 					this.unlockGun();
 				}
 
@@ -7771,8 +6785,7 @@ class GameField extends Sprite
 				return;
 			}
 		}
-		else
-		{
+		else {
 			endPos = enemy.getCenterPosition();
 		}
 
@@ -7781,13 +6794,11 @@ class GameField extends Sprite
 		let lSpotCurrentDefaultWeaponId_int = lSpot_ps ? lSpot_ps.currentDefaultWeaponId : 1;
 		let lIsRicochetBulletResultData_bl = this._isRicochetBulletResultData(data);
 
-		if (!lIsRicochetBulletResultData_bl)
-		{
+		if (!lIsRicochetBulletResultData_bl) {
 			this.playWeaponSound(data.usedSpecialWeapon, data.rid === -1, lSpotCurrentDefaultWeaponId_int);
 		}
 
-		if (data.usedSpecialWeapon == WEAPONS.INSTAKILL)
-		{
+		if (data.usedSpecialWeapon == WEAPONS.INSTAKILL) {
 			this.showInstaKillEffects(data);
 			return;
 		}
@@ -7799,50 +6810,45 @@ class GameField extends Sprite
 
 		let points = [startPos];
 
-		if (data.rid != -1)
-		{
+		if (data.rid != -1) {
 			let lIsAutoTargetingEnemyInAffectedEnemies_bl = this.autoTargetingEnemy ? uniqueAffectedEnemiesIds.indexOf(this.autoTargetingEnemy.id) > -1 : false;
 			let lIsIndicatedEnemyInAffectedEnemies_bl = this.indicatedEnemy ? uniqueAffectedEnemiesIds.indexOf(this.indicatedEnemy.id) > -1 : false;
 
 			if (
 				(enemy
-				&& (!this.autoTargetingEnemy || !lIsAutoTargetingEnemyInAffectedEnemies_bl)
-				&& (!this.indicatedEnemy || !lIsIndicatedEnemyInAffectedEnemies_bl))
-				)
-			{
+					&& (!this.autoTargetingEnemy || !lIsAutoTargetingEnemyInAffectedEnemies_bl)
+					&& (!this.indicatedEnemy || !lIsIndicatedEnemyInAffectedEnemies_bl))
+			) {
 
 				let dist = 0;
 				let clickX = data.x || this.lastPointerPos.x;
 				let clickY = data.y || this.lastPointerPos.y;
 
 				let afterPoint;
-				if (this._isGunTowardPointerEnemySelectionTypeAvailable(data.usedSpecialWeapon))
-				{
+				if (this._isGunTowardPointerEnemySelectionTypeAvailable(data.usedSpecialWeapon)) {
 					//for weapons that select the closest to gun enemy on a way toward pointer
-					let pointA = {x: clickX, y: clickY};
-					let pointB = {x: points[0].x, y: points[0].y};
-					let pointC = {x: endPos.x, y: endPos.y};
+					let pointA = { x: clickX, y: clickY };
+					let pointB = { x: points[0].x, y: points[0].y };
+					let pointC = { x: endPos.x, y: endPos.y };
 
-					dist = Math.sqrt(Math.pow(pointC.x - pointB.x, 2) + Math.pow(pointC.y - pointB.y, 2))/3;
+					dist = Math.sqrt(Math.pow(pointC.x - pointB.x, 2) + Math.pow(pointC.y - pointB.y, 2)) / 3;
 					let pointerDist = Math.sqrt(Math.pow(clickX - pointB.x, 2) + Math.pow(clickY - pointB.y, 2));
-					if (pointerDist < dist)
-					{
+					if (pointerDist < dist) {
 						dist = pointerDist;
 					}
 
-					angle = Math.atan2(clickX - points[0].x, clickY - points[0].y) + Math.PI/2;
+					angle = Math.atan2(clickX - points[0].x, clickY - points[0].y) + Math.PI / 2;
 					afterPoint = {
-						x: pointB.x + Math.cos(angle-Math.PI)*dist,
-						y: pointB.y - Math.sin(angle-Math.PI)*dist,
+						x: pointB.x + Math.cos(angle - Math.PI) * dist,
+						y: pointB.y - Math.sin(angle - Math.PI) * dist,
 					}
 				}
-				else
-				{
-					angle = Math.atan2(clickX - points[0].x, clickY - points[0].y) + Math.PI/2;
+				else {
+					angle = Math.atan2(clickX - points[0].x, clickY - points[0].y) + Math.PI / 2;
 
 					afterPoint = {
-						x: clickX + Math.cos(angle - Math.PI)*dist,
-						y: clickY - Math.sin(angle - Math.PI)*dist,
+						x: clickX + Math.cos(angle - Math.PI) * dist,
+						y: clickY - Math.sin(angle - Math.PI) * dist,
 					}
 				}
 
@@ -7852,54 +6858,44 @@ class GameField extends Sprite
 
 		points.push(endPos);
 
-		angle = Math.atan2(points[1].x - points[0].x, points[1].y - points[0].y) + Math.PI/2;
+		angle = Math.atan2(points[1].x - points[0].x, points[1].y - points[0].y) + Math.PI / 2;
 		len = Math.sqrt(Math.pow(points[0].x - points[1].x, 2) + Math.pow(points[0].y - points[1].y, 2));
 
-		if (!seat)
-		{
-			if (!lIsRicochetBulletResultData_bl)
-			{
+		if (!seat) {
+			if (!lIsRicochetBulletResultData_bl) {
 				this.rotateGun(points[1].x, points[1].y);
 			}
 		}
 
-		switch (data.usedSpecialWeapon)
-		{
+		switch (data.usedSpecialWeapon) {
 			case WEAPONS.DEFAULT:
 			case WEAPONS.HIGH_LEVEL:
-				this.emit(GameField.DEFAULT_GUN_SHOW_FIRE, {seat: data.seatId});
-				if (!lIsRicochetBulletResultData_bl)
-				{
+				this.emit(GameField.DEFAULT_GUN_SHOW_FIRE, { seat: data.seatId });
+				if (!lIsRicochetBulletResultData_bl) {
 					this._addDefaultGunFireEffect(startPos.x, startPos.y, angle, len, lSpotCurrentDefaultWeaponId_int, lSpot_ps);
 				}
 				break;
 		}
 
-		if (!lIsRicochetBulletResultData_bl)
-		{
+		if (!lIsRicochetBulletResultData_bl) {
 			this.showPlayersWeaponEffect(data, angle, points[1]);
 		}
 
-		if (lIsRicochetBulletResultData_bl)
-		{
+		if (lIsRicochetBulletResultData_bl) {
 			let lBulletPos = null;
 			let lBulletAngle = 0;
 
 			// ricochet bullet results
 			let lIsMasterRicochetBullet_bl = this._isMasterRicochetBulletResultData(data);
-			if (!lIsMasterRicochetBullet_bl)
-			{
-				if (!isNaN(data.x) && !isNaN(data.y))
-				{
-					lBulletPos = {x: data.x, y: data.y};
+			if (!lIsMasterRicochetBullet_bl) {
+				if (!isNaN(data.x) && !isNaN(data.y)) {
+					lBulletPos = { x: data.x, y: data.y };
 				}
 
 				let lTargetRicochetBullet_rb = this.ricochetController.info.getBulletByBulletId(data.bulletId);
-				if (lTargetRicochetBullet_rb)
-				{
-					if (!lBulletPos)
-					{
-						lBulletPos = {x: lTargetRicochetBullet_rb.x, y: lTargetRicochetBullet_rb.y};
+				if (lTargetRicochetBullet_rb) {
+					if (!lBulletPos) {
+						lBulletPos = { x: lTargetRicochetBullet_rb.x, y: lTargetRicochetBullet_rb.y };
 					}
 
 					lBulletAngle = lTargetRicochetBullet_rb.directionAngle;
@@ -7914,20 +6910,18 @@ class GameField extends Sprite
 			typeId: data.usedSpecialWeapon
 		};
 
-		if (enemy)
-		{
+		if (enemy) {
 			bulletProps.targetEnemy = enemy;
 		}
 
-		switch (data.usedSpecialWeapon)
-		{
+		switch (data.usedSpecialWeapon) {
 			case WEAPONS.DEFAULT:
 			case WEAPONS.HIGH_LEVEL:
 				bulletProps.defaultWeaponBulletId = lSpotCurrentDefaultWeaponId_int;
 				break;
 		}
 
-		let lWeaponScale = seat ? seat.weaponSpotView.gun.i_getWeaponScale(this._fWeaponsController_wsc.i_getInfo().currentWeaponId): 1;
+		let lWeaponScale = seat ? seat.weaponSpotView.gun.i_getWeaponScale(this._fWeaponsController_wsc.i_getInfo().currentWeaponId) : 1;
 		bulletProps.weaponScale = lWeaponScale;
 
 
@@ -7940,18 +6934,15 @@ class GameField extends Sprite
 		this.bullets.push(projectile);
 	}
 
-	_validateCoPlayerHighLevel(data)
-	{
+	_validateCoPlayerHighLevel(data) {
 		let lSpot_ps = this.getSeat(data.seatId);
 
-		if (data.rid !== -1 || !lSpot_ps || lSpot_ps.currentWeaponId !== WEAPONS.HIGH_LEVEL)
-		{
+		if (data.rid !== -1 || !lSpot_ps || lSpot_ps.currentWeaponId !== WEAPONS.HIGH_LEVEL) {
 			return;
 		}
 
 		let lExpectedMult_int = APP.playerController.info.getTurretSkinId(lSpot_ps.player.betLevel);
-		if (lExpectedMult_int > lSpot_ps.currentDefaultWeaponId)
-		{
+		if (lExpectedMult_int > lSpot_ps.currentDefaultWeaponId) {
 			this._fCurrentLevelUpTimeout && this._fCurrentLevelUpTimeout.destructor();
 			this._fCurrentLevelUpTimeout = new Timer(() => {
 				this._fCurrentLevelUpTimeout && this._fCurrentLevelUpTimeout.destructor();
@@ -7961,43 +6952,42 @@ class GameField extends Sprite
 		}
 	}
 
-	_isRicochetBulletResultData(data)
-	{
+	_isRicochetBulletResultData(data) {
 		return (data.bulletId !== undefined && data.bulletId.length > 0);
 	}
 
-	_isMasterRicochetBulletResultData(data)
-	{
+	_isMasterRicochetBulletResultData(data) {
 		return this._isRicochetBulletResultData(data) && data.seatId == this.seatId;
 	}
 
-	_startExploderExplosion()
-	{
+	_startExploderExplosion() {
 		this.emit(GameField.EVENT_ON_EXPLODER_EXPLOSION_STARTED);
 	}
 
-	_startTeleportAnimation(aEnemy_we, aEnemyPosition_obj, aEnemyScale_num)
-	{
+	_startTeleportAnimation(aEnemy_we, aEnemyPosition_obj, aEnemyScale_num) {
 		if (this._fBossModeController_bmc.isIdleAnimating) return;
 
 		let lAnimationOffsetY = -100;
 
 		let lIsFilterRequired_bln = APP.profilingController.info.isVfxProfileValueMediumOrGreater;
 		let lBulgeFilter_f = null;
-		if (lIsFilterRequired_bln)
-		{
+		if (lIsFilterRequired_bln) {
+
 			lBulgeFilter_f = this._bulgePinchFilter;
-			let lCenter_p = new PIXI.Point(aEnemyPosition_obj.x / APP.config.size.width, ( aEnemyPosition_obj.y + lAnimationOffsetY ) / APP.config.size.height);
+
+			if (!lBulgeFilter_f) return;
+
+			let lCenter_p = new PIXI.Point(aEnemyPosition_obj.x / APP.config.size.width, (aEnemyPosition_obj.y + lAnimationOffsetY) / APP.config.size.height);
 			lBulgeFilter_f.uniforms.center = [lCenter_p.x, lCenter_p.y];
 			lBulgeFilter_f.uniforms.radius = 330 * aEnemyScale_num;
 			lBulgeFilter_f.uniforms.strength = 0;
 
-			this._fTeleportBulgeFilters_f_arr.push({enemyId: aEnemy_we.id, filter: lBulgeFilter_f});
+			this._fTeleportBulgeFilters_f_arr.push({ enemyId: aEnemy_we.id, filter: lBulgeFilter_f });
 
 			this._addFilter(this.backContainer, lBulgeFilter_f);
 			let lFilter_seq = [
-				{tweens: [{prop: 'uniforms.strength', to: 0.5}],	duration: 9*FRAME_RATE},
-				{tweens: [{prop: 'uniforms.strength', to: 0}],		duration: 3*FRAME_RATE}
+				{ tweens: [{ prop: 'uniforms.strength', to: 0.5 }], duration: 9 * FRAME_RATE },
+				{ tweens: [{ prop: 'uniforms.strength', to: 0 }], duration: 3 * FRAME_RATE }
 			];
 			let l_seq = Sequence.start(lBulgeFilter_f, lFilter_seq);
 			l_seq.once(Sequence.EVENT_ON_SEQUENCE_PLAYING_COMPLETED, this._onWizardSequenceCompleted.bind(this, aEnemy_we.id));
@@ -8005,71 +6995,59 @@ class GameField extends Sprite
 		}
 	}
 
-	_onWizardSequenceCompleted(enemyId_int, event)
-	{
+	_onWizardSequenceCompleted(enemyId_int, event) {
 		this._removeTeleportFilter(enemyId_int);
 
 		let seq = event.target;
 		let lId_num = this._fWizardSequences_arr.indexOf(seq);
-		if (~lId_num)
-		{
+		if (~lId_num) {
 			this._fWizardSequences_arr.splice(lId_num, 1);
 		}
 		seq && seq.destructor();
 	}
 
-	removeTeleportFilter(aEnemyId_int)
-	{
+	removeTeleportFilter(aEnemyId_int) {
 		this._removeTeleportFilter(aEnemyId_int);
 	}
 
-	_removeTeleportFilter(aEnemyId_int)
-	{
+	_removeTeleportFilter(aEnemyId_int) {
 		let lId_num = this._fTeleportBulgeFilters_f_arr.findIndex(element => element.enemyId == aEnemyId_int);
-		if (~lId_num)
-		{
+		if (~lId_num) {
 			let lFilter_obj = this._fTeleportBulgeFilters_f_arr.splice(lId_num, 1);
 			this._removeFilter(this.backContainer, lFilter_obj.filter);
 			lFilter_obj = null;
 		}
 	}
 
-	_pauseTeleportAnimation()
-	{
-		if (this._fWizardSequences_arr)
-		{
-			for (let seq of this._fWizardSequences_arr)
-			{
+	_pauseTeleportAnimation() {
+		if (this._fWizardSequences_arr) {
+			for (let seq of this._fWizardSequences_arr) {
 				seq && seq.pause();
 			}
 		}
 	}
 
-	_resumeTeleportAnimation()
-	{
-		if (this._fWizardSequences_arr)
-		{
-			for (let seq of this._fWizardSequences_arr)
-			{
+	_resumeTeleportAnimation() {
+		if (this._fWizardSequences_arr) {
+			for (let seq of this._fWizardSequences_arr) {
 				seq && seq.resume();
 			}
 		}
 	}
 
-	_addCryogunFireEffect(data)
-	{
+	_addCryogunFireEffect(data) {
 		let startPos = this.getGunPosition(data.seatId);
 		let endPos = new PIXI.Point(data.x, data.y);
 		let points = [startPos, endPos];
-		let angle = Math.atan2(points[1].x - points[0].x, points[1].y - points[0].y) + Math.PI/2;
+		let angle = Math.atan2(points[1].x - points[0].x, points[1].y - points[0].y) + Math.PI / 2;
 
 		let fireEffect = this.topScreen.addChild(new CryogunFireEffect);
-		fireEffect.rotation = -angle - Math.PI/2;
+		fireEffect.rotation = -angle - Math.PI / 2;
 
 		let x = startPos.x;
 		let y = startPos.y;
-		x += Math.cos(angle)*(-40);
-		y -= Math.sin(angle)*(-40);
+		x += Math.cos(angle) * (-40);
+		y -= Math.sin(angle) * (-40);
 
 		fireEffect.position.set(x, y);
 
@@ -8078,48 +7056,40 @@ class GameField extends Sprite
 
 		fireEffect.once(CryogunFireEffect.EVENT_ON_ANIMATION_END, this._onSomeGunFireEffectAnimationCompleted, this);
 
-		if (data.rid == -1)
-		{
+		if (data.rid == -1) {
 			fireEffect.alpha = 0.3;
 		}
 	}
 
-	_onSomeGunFireEffectAnimationCompleted(event)
-	{
+	_onSomeGunFireEffectAnimationCompleted(event) {
 		let lIndex_int = this._fFxAnims_arr.indexOf(event.target);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._fFxAnims_arr.splice(lIndex_int, 1);
 			event.target.destroy();
 		}
 	}
 
-	generateBullet(weaponId, bulletProps, points, callback, rid, aIsMasterBullet_bl)
-	{
+	generateBullet(weaponId, bulletProps, points, callback, rid, aIsMasterBullet_bl) {
 		let bullet;
-		switch (weaponId)
-		{
+		switch (weaponId) {
 			default:
 				bullet = new Bullet(bulletProps, points, callback, aIsMasterBullet_bl);
-				bullet.on(Bullet.EVENT_ON_SHOW_RICOCHET_EFFECT, (e) => {this.showRicochetEffect(e.x, e.y)});
+				bullet.on(Bullet.EVENT_ON_SHOW_RICOCHET_EFFECT, (e) => { this.showRicochetEffect(e.x, e.y) });
 		}
 		return bullet;
 	}
 
-	playWeaponSound(id, aOptOtherPlayersShot_bl = false, aDefaultWeaponId_int = 1)
-	{
+	playWeaponSound(id, aOptOtherPlayersShot_bl = false, aDefaultWeaponId_int = 1) {
 		let lVolume_num = 1;
 		let soundName = '';
 		let randomSoundIndex = 1;
-		switch (id)
-		{
+		switch (id) {
 			case WEAPONS.DEFAULT:
 			case WEAPONS.HIGH_LEVEL:
 				let lSpotCurrentDefaultWeaponId_int = aDefaultWeaponId_int; //this._fWeaponsController_wsc.i_getInfo().currentDefaultWeaponId;
 				soundName = 'mq_turret_burst' + lSpotCurrentDefaultWeaponId_int;
-				if(lSpotCurrentDefaultWeaponId_int === 5)
-				{
-					if(!APP.isMobile) lVolume_num *= 0.25;
+				if (lSpotCurrentDefaultWeaponId_int === 5) {
+					if (!APP.isMobile) lVolume_num *= 0.25;
 					else lVolume_num *= 0.7;
 				}
 				break;
@@ -8141,33 +7111,27 @@ class GameField extends Sprite
 				break;
 		}
 
-		if (soundName)
-		{
+		if (soundName) {
 			lVolume_num *= aOptOtherPlayersShot_bl ? GameSoundsController.OPPONENT_WEAPON_VOLUME : 1;
 			APP.soundsController.play(soundName, false, lVolume_num, aOptOtherPlayersShot_bl);
 		}
 	}
 
-	lockGunOnTarget(enemy)
-	{
+	lockGunOnTarget(enemy) {
 		this.gunLockTargetedEnemy = enemy;
 		this.gunLocked = true;
 	}
 
-	unlockGun()
-	{
+	unlockGun() {
 		this.gunLocked = false;
 		this.isWeaponChangeInProcess && this._fCurChangeWeaponTimerInfo_obj.timer.finish();
 		this.emit(GameField.EVENT_ON_GUN_UNLOCKED);
 	}
 
-	showPlayersWeaponEffect(data, angle = undefined, endPos = undefined)
-	{
-		if (angle === undefined || endPos == undefined)
-		{
+	showPlayersWeaponEffect(data, angle = undefined, endPos = undefined) {
+		if (angle === undefined || endPos == undefined) {
 			let startPos = this.getGunPosition(data.seatId);
-			switch (data.usedSpecialWeapon)
-			{
+			switch (data.usedSpecialWeapon) {
 				case WEAPONS.CRYOGUN:
 				case WEAPONS.ARTILLERYSTRIKE:
 					endPos = new PIXI.Point(data.x, data.y);
@@ -8178,34 +7142,28 @@ class GameField extends Sprite
 					let enemy = this.getExistEnemy(enemyId);
 					let enemyPos = enemy ? enemy.getCenterPosition() : this.getEnemyLastPosition(enemyId);
 					endPos = enemyPos || new PIXI.Point(data.x, data.y);
-					if (data.rid !== -1)
-					{
+					if (data.rid !== -1) {
 						this.addPushEffect(endPos.x, endPos.y, this.spot);
 					}
 					break;
 				default:
-					throw new Error ('angle and/or endPos are undefined, weapons effect can\'t proceed');
+					throw new Error('angle and/or endPos are undefined, weapons effect can\'t proceed');
 			}
-			angle = Math.atan2(endPos.x - startPos.x, endPos.y - startPos.y) + Math.PI/2;
+			angle = Math.atan2(endPos.x - startPos.x, endPos.y - startPos.y) + Math.PI / 2;
 		}
-		for (var i = 0; i < this.players.length; ++i)
-		{
-			if (this.players[i].seatId == data.seatId)
-			{
-				if (this.players[i].weaponSpotView)
-				{
+		for (var i = 0; i < this.players.length; ++i) {
+			if (this.players[i].seatId == data.seatId) {
+				if (this.players[i].weaponSpotView) {
 					if (this.players[i].currentWeaponId != data.usedSpecialWeapon
-							|| (data.betLevel && this.players[i].spot.currentDefaultWeaponId != this._getDefaultWeaponIdByBetLeavel(data.betLevel)))
-					{
+						|| (data.betLevel && this.players[i].spot.currentDefaultWeaponId != this._getDefaultWeaponIdByBetLeavel(data.betLevel))) {
 						this.players[i].currentWeaponId = this.players[i].specialWeaponId = data.usedSpecialWeapon;
 						let lMult_int = APP.playerController.info.getTurretSkinId(data.betLevel);
 						this.players[i].spot.changeWeapon(data.usedSpecialWeapon, lMult_int);
 					}
 
-					this.players[i].weaponSpotView.rotation = -angle - Math.PI/2;
+					this.players[i].weaponSpotView.rotation = -angle - Math.PI / 2;
 
-					if (!this.players[i].spot.isBottom)
-					{
+					if (!this.players[i].spot.isBottom) {
 						this.players[i].weaponSpotView.rotation += Math.PI;
 					}
 
@@ -8218,12 +7176,10 @@ class GameField extends Sprite
 		}
 	}
 
-	_getDefaultWeaponIdByBetLeavel(aBetLevel_num)
-	{
+	_getDefaultWeaponIdByBetLeavel(aBetLevel_num) {
 		let lDefaultWeaponId_num = 1;
 
-		switch(aBetLevel_num)
-		{
+		switch (aBetLevel_num) {
 			case 1:
 				lDefaultWeaponId_num = 1;
 				break;
@@ -8246,15 +7202,12 @@ class GameField extends Sprite
 		return lDefaultWeaponId_num;
 	}
 
-	showPlayersWeaponSwitched(data)
-	{
-		if (data.seatId == this.seatId)
-		{
+	showPlayersWeaponSwitched(data) {
+		if (data.seatId == this.seatId) {
 			if (data.weaponId != WEAPONS.DEFAULT &&
 				this.spot &&
 				data.weaponId != this._fWeaponsInfo_wsi.currentWeaponId &&
-				!this._fRoundResultActive_bln)
-			{
+				!this._fRoundResultActive_bln) {
 				this.changeWeapon(data.weaponId);
 				this.redrawAmmoText();
 				this.spot.on(MainPlayerSpot.EVENT_RELOAD_REQUIRED, this._onReloadRequired, this);
@@ -8268,14 +7221,11 @@ class GameField extends Sprite
 			this.fireImmediatelyIfRequired();
 		}
 
-		for (var i = 0; i < this.players.length; i ++)
-		{
+		for (var i = 0; i < this.players.length; i++) {
 			let lPlayer_obj = this.players[i];
-			if (lPlayer_obj.seatId == data.seatId && data.rid == -1)
-			{
+			if (lPlayer_obj.seatId == data.seatId && data.rid == -1) {
 				lPlayer_obj.currentWeaponId = lPlayer_obj.specialWeaponId = data.weaponId;
-				if (lPlayer_obj.spot)
-				{
+				if (lPlayer_obj.spot) {
 					let lSpotCurrentDefaultWeaponId_int = APP.playerController.info.getTurretSkinId(lPlayer_obj.betLevel);
 					lPlayer_obj.spot.changeWeapon(data.weaponId, lSpotCurrentDefaultWeaponId_int);
 				}
@@ -8284,8 +7234,7 @@ class GameField extends Sprite
 	}
 
 	//RAILGUN...
-	_onRailgunBeamRotationUpdated(aEvent_obj)
-	{
+	_onRailgunBeamRotationUpdated(aEvent_obj) {
 		let seatId = aEvent_obj.seatId;
 		let endPoint = aEvent_obj.endPoint;
 
@@ -8294,8 +7243,7 @@ class GameField extends Sprite
 	//...RAILGUN
 
 	//FLAMETHROWER..
-	_onFlameThrowerBeamRotationUpdated(aEvent_obj)
-	{
+	_onFlameThrowerBeamRotationUpdated(aEvent_obj) {
 		let seatId = aEvent_obj.seatId;
 		let endPoint = aEvent_obj.endPoint;
 
@@ -8304,8 +7252,7 @@ class GameField extends Sprite
 	//...FLAMETHROWER
 
 	//ARTILLERY STRIKE...
-	_onArtilleryStrikeMissileHit(aEvent_obj)
-	{
+	_onArtilleryStrikeMissileHit(aEvent_obj) {
 		let isFinal = aEvent_obj.isFinal;
 		let isFirst = aEvent_obj.isFirst;
 		let pos = new PIXI.Point(aEvent_obj.x, aEvent_obj.y);
@@ -8316,8 +7263,7 @@ class GameField extends Sprite
 		let strikeExplosion = this.topScreen.addChild(new ArtillerystrikeExplosion(isFinal));
 		strikeExplosion.position.set(pos.x, pos.y);
 		strikeExplosion.zIndex = pos.y + 200;
-		if (this._fGameStateInfo_gsi.isBossSubround)
-		{
+		if (this._fGameStateInfo_gsi.isBossSubround) {
 			strikeExplosion.zIndex += 500;
 		}
 		strikeExplosion.start();
@@ -8328,45 +7274,37 @@ class GameField extends Sprite
 		this.showGroundBurn(pos.x, pos.y + lGroundBurnOffsetY_num, lGroundBurnScale_num, 0.7 /*initial alpha*/, true);
 
 		let lIsMainPlayerShot_bl = rid >= 0;
-		if (isFirst)
-		{
+		if (isFirst) {
 			let lVolume_num = lIsMainPlayerShot_bl ? GameSoundsController.MAIN_PLAYER_VOLUME : GameSoundsController.OPPONENT_WEAPON_VOLUME;
 			APP.soundsController.play('artillery_explosion', false, lVolume_num, !lIsMainPlayerShot_bl);
 		}
 
-		if (!lIsMainPlayerShot_bl)
-		{
+		if (!lIsMainPlayerShot_bl) {
 			strikeExplosion.alpha = 0.1;
 		}
 	}
 	//...ARTILLERY STRIKE
 
-	showRicochetEffect(x, y)
-	{
+	showRicochetEffect(x, y) {
 		let ricochetEffect = this.topScreen.addChild(new RicochetEffect(x, y));
 		ricochetEffect.once("animationFinish", this.onRicochetEffectFinished, this);
 
 		this._fFxAnims_arr.push(ricochetEffect);
 	}
 
-	onRicochetEffectFinished(event)
-	{
+	onRicochetEffectFinished(event) {
 		let lIndex_int = this._fFxAnims_arr.indexOf(event.target);
-		if (~lIndex_int)
-		{
+		if (~lIndex_int) {
 			this._fFxAnims_arr.splice(lIndex_int, 1);
 		}
 	}
 
-	showMissEffect(x, y, weaponId, optTargetEnemy, aOptCurrentDefaultWeaponId_int = 1, aOptIsMasterEffect_bl = true)
-	{
-		switch (weaponId)
-		{
+	showMissEffect(x, y, weaponId, optTargetEnemy, aOptCurrentDefaultWeaponId_int = 1, aOptIsMasterEffect_bl = true) {
+		switch (weaponId) {
 			case WEAPONS.DEFAULT:
 			case WEAPONS.HIGH_LEVEL:
 
-				if(MissEffect.IS_MISS_EFFECT_REQUIRED)
-				{
+				if (MissEffect.IS_MISS_EFFECT_REQUIRED) {
 					this._fMissEffectsPool_mep.addMissEffect(
 						aOptCurrentDefaultWeaponId_int,
 						x,
@@ -8380,23 +7318,19 @@ class GameField extends Sprite
 		}
 	}
 
-	removeAllFxAnimations()
-	{
+	removeAllFxAnimations() {
 		this._fMissEffectsPool_mep && this._fMissEffectsPool_mep.drop();
 
-		while (this._fFxAnims_arr.length)
-		{
+		while (this._fFxAnims_arr.length) {
 			this._fFxAnims_arr.shift().destroy();
 		}
 		this._fFxAnims_arr = [];
 	}
 
-	proceedFireResult(e, endPos, angle, data)
-	{
-		this.emit(GameField.EVENT_ON_BULLET_TARGET_TIME, {data: data});
+	proceedFireResult(e, endPos, angle, data) {
+		this.emit(GameField.EVENT_ON_BULLET_TARGET_TIME, { data: data });
 
-		switch (data.usedSpecialWeapon)
-		{
+		switch (data.usedSpecialWeapon) {
 			case WEAPONS.CRYOGUN:
 				this.proceedTypicalGrenadeResult(data, endPos, angle);
 				break;
@@ -8415,8 +7349,7 @@ class GameField extends Sprite
 			case WEAPONS.HIGH_LEVEL:
 				this._validateCoPlayerHighLevel(data);
 			default:
-				for (let obj of data.affectedEnemies)
-				{
+				for (let obj of data.affectedEnemies) {
 					if (obj.data.class == 'Miss') this.showMissAnimation(e, endPos, angle, obj.data);
 					if (obj.data.class == 'Hit') this.showHitAnimation(e, endPos, angle, obj.data);
 				}
@@ -8424,38 +7357,30 @@ class GameField extends Sprite
 		}
 	}
 
-	proceedTypicalGrenadeResult(data, endPos, angle)
-	{
+	proceedTypicalGrenadeResult(data, endPos, angle) {
 		let realAffectedEnemies = ShotResultsUtil.excludeFakeEnemies(data.affectedEnemies);
-		for (let obj of realAffectedEnemies)
-		{
+		for (let obj of realAffectedEnemies) {
 			if (obj.data.class == 'Miss') this.showMissAnimation(null, endPos, angle, obj.data);
 			if (obj.data.class == 'Hit') this.showHitAnimation(null, endPos, angle, obj.data);
 		}
 	}
 
-	proceedRailgunResult(data, endPos, angle)
-	{
-		if (!endPos && data.rid != -1)
-		{
+	proceedRailgunResult(data, endPos, angle) {
+		if (!endPos && data.rid != -1) {
 			this.unlockGun();
 		}
 
-		for (let obj of data.affectedEnemies)
-		{
+		for (let obj of data.affectedEnemies) {
 			if (obj.data.class == 'Miss') this.showMissAnimation(null, endPos, angle, obj.data);
 			if (obj.data.class == 'Hit') this.showHitAnimation(null, endPos, angle, obj.data);
 		}
 
 		// group enemies
 		let lEnemies_obj = {}; // enemyId : [shotResultData, shotResultData]
-		for (let obj of ShotResultsUtil.excludeFakeEnemies(data.affectedEnemies))
-		{
+		for (let obj of ShotResultsUtil.excludeFakeEnemies(data.affectedEnemies)) {
 			let lEnemyId_int = obj.enemyId;
-			if (lEnemyId_int !== data.requestEnemyId)
-			{
-				if (!lEnemies_obj[lEnemyId_int])
-				{
+			if (lEnemyId_int !== data.requestEnemyId) {
+				if (!lEnemies_obj[lEnemyId_int]) {
 					lEnemies_obj[lEnemyId_int] = [];
 				}
 				lEnemies_obj[lEnemyId_int].push(obj.data);
@@ -8463,37 +7388,31 @@ class GameField extends Sprite
 		}
 
 		// create debris flying to affected enemies
-		if (Object.keys(lEnemies_obj).length > 0)
-		{
-			for (let enemyId in lEnemies_obj)
-			{
+		if (Object.keys(lEnemies_obj).length > 0) {
+			for (let enemyId in lEnemies_obj) {
 				this.startRailgunLightnings(enemyId, data.requestEnemyId, data.seatId);
 			}
 		}
 	}
 
-	startRailgunLightnings(enemyId, requestEnemyId, seatId)
-	{
+	startRailgunLightnings(enemyId, requestEnemyId, seatId) {
 		if (!enemyId || !requestEnemyId) return;
 
 		let lEnemyPos_obj = this.getEnemyPosition(enemyId);
 		let lEndPos_obj = this.getEnemyPosition(requestEnemyId);
 		let lStartPos_obj = this.getGunPosition(seatId);
 
-		if (lStartPos_obj && lEndPos_obj && lEnemyPos_obj)
-		{
+		if (lStartPos_obj && lEndPos_obj && lEnemyPos_obj) {
 			this._createElectricArc(lStartPos_obj, lEndPos_obj, lEnemyPos_obj);
 		}
 	}
 
-	_createElectricArc(aLightStartPoint_p, aLightEndPoint_p, aEndPoint_p)
-	{
+	_createElectricArc(aLightStartPoint_p, aLightEndPoint_p, aEndPoint_p) {
 		let lDistance_num = this._getDistanceLineToPoint(aLightStartPoint_p, aLightEndPoint_p, aEndPoint_p);
 		if (Math.abs(lDistance_num) < 30) return;
 
 		let y0 = aEndPoint_p.y + (aLightStartPoint_p.y - aEndPoint_p.y) / 2;
-		if (y0 > aLightStartPoint_p.y)
-		{
+		if (y0 > aLightStartPoint_p.y) {
 			y0 = aLightStartPoint_p.y - 40;
 		}
 		let lStartPoint_p = this._getPointOnTheLine(aLightStartPoint_p, aLightEndPoint_p, y0);
@@ -8502,9 +7421,9 @@ class GameField extends Sprite
 
 		let lElectricArc_sprt = APP.library.getSpriteFromAtlas('weapons/Railgun/ElectricArc_LIGHTEN');
 		let lElectricArcBounds_obj = lElectricArc_sprt.getBounds();
-		let lCurrentScaleX_num = Math.max(lLightningLength_num / (lElectricArcBounds_obj.width*0.8), 0.5);
+		let lCurrentScaleX_num = Math.max(lLightningLength_num / (lElectricArcBounds_obj.width * 0.8), 0.5);
 
-		lElectricArc_sprt.anchor.set(33/751, 79/151);
+		lElectricArc_sprt.anchor.set(33 / 751, 79 / 151);
 		lElectricArc_sprt.scale.set(lCurrentScaleX_num, 1.2 * lCurrentScaleX_num);
 		lElectricArc_sprt.position.set(0, 0);
 		lElectricArcBounds_obj = lElectricArc_sprt.getBounds();
@@ -8517,20 +7436,22 @@ class GameField extends Sprite
 		let lFinalScaleX_num = lElectricArcBounds_obj.width / lMaskLocalBounds_obj.width;
 
 		let lMaskSequence_seq = [
-			{tweens: [{ prop: 'scale.x', to: lFinalScaleX_num }], duration: 5*FRAME_RATE, onfinish: () => {
-				lMask_sprt.anchor.x = 1;
-				lMask_sprt.position.x = lMask_sprt.position.x + lMaskLocalBounds_obj.width * lFinalScaleX_num;
-			}},
-			{tweens: [{ prop: 'scale.x', to: 0 }], duration: 5*FRAME_RATE, onfinish: () => {
-				if (this._fRailgunLightnings_arr && lElectricArc_sprt)
-				{
-					let lId_num = this._fRailgunLightnings_arr.indexOf(lElectricArc_sprt);
-					if (~lId_num)
-					{
-						this._fRailgunLightnings_arr.splice(lId_num, 1);
+			{
+				tweens: [{ prop: 'scale.x', to: lFinalScaleX_num }], duration: 5 * FRAME_RATE, onfinish: () => {
+					lMask_sprt.anchor.x = 1;
+					lMask_sprt.position.x = lMask_sprt.position.x + lMaskLocalBounds_obj.width * lFinalScaleX_num;
+				}
+			},
+			{
+				tweens: [{ prop: 'scale.x', to: 0 }], duration: 5 * FRAME_RATE, onfinish: () => {
+					if (this._fRailgunLightnings_arr && lElectricArc_sprt) {
+						let lId_num = this._fRailgunLightnings_arr.indexOf(lElectricArc_sprt);
+						if (~lId_num) {
+							this._fRailgunLightnings_arr.splice(lId_num, 1);
+						}
 					}
 				}
-			}}
+			}
 		];
 
 		lElectricArc_sprt.mask = lMask_sprt;
@@ -8539,111 +7460,92 @@ class GameField extends Sprite
 		this._fRailgunLightnings_arr.push(lElectricArc_sprt);
 	}
 
-	_getDistanceLineToPoint(p1, p2, p0)
-	{
+	_getDistanceLineToPoint(p1, p2, p0) {
 		let a = p1.y - p2.y;
 		let b = p2.x - p1.x;
-		let c = p2.y*p1.x - p1.y*p2.x;
-		let h = (a*p0.x + b*p0.y + c) / Math.sqrt(a*a + b*b);
+		let c = p2.y * p1.x - p1.y * p2.x;
+		let h = (a * p0.x + b * p0.y + c) / Math.sqrt(a * a + b * b);
 		return h;
 	}
 
-	_getDistanceBetweenTwoPoints(p1, p2)
-	{
+	_getDistanceBetweenTwoPoints(p1, p2) {
 		var a = p1.x - p2.x;
 		var b = p1.y - p2.y;
 
-		return Math.sqrt(a*a + b*b);
+		return Math.sqrt(a * a + b * b);
 	}
 
-	_getPointOnTheLine(p1, p2, y0)
-	{
+	_getPointOnTheLine(p1, p2, y0) {
 		let k = (p1.y - p2.y) / (p1.x - p2.x);
 		let b = p2.y - k * p2.x;
 		let x0 = (y0 - b) / k;
 
-		return {x: x0, y: y0};
+		return { x: x0, y: y0 };
 	}
 
-	proceedFlameThrowerResult(data, endPos, angle)
-	{
-		if (!endPos && data.rid != -1)
-		{
+	proceedFlameThrowerResult(data, endPos, angle) {
+		if (!endPos && data.rid != -1) {
 			this.unlockGun();
 		}
 
 		// group enemies
 		let lEnemies_obj = {}; // enemyId : [shotResultData, shotResultData]
-		for (let obj of ShotResultsUtil.excludeFakeEnemies(data.affectedEnemies))
-		{
+		for (let obj of ShotResultsUtil.excludeFakeEnemies(data.affectedEnemies)) {
 			let lEnemyId_int = obj.enemyId;
-			if (!lEnemies_obj[lEnemyId_int])
-			{
+			if (!lEnemies_obj[lEnemyId_int]) {
 				lEnemies_obj[lEnemyId_int] = [];
 			}
 			lEnemies_obj[lEnemyId_int].push(obj.data);
 		}
 
 		// create debris flying to affected enemies
-		if (Object.keys(lEnemies_obj).length > 0)
-		{
-			for (let enemyId in lEnemies_obj)
-			{
+		if (Object.keys(lEnemies_obj).length > 0) {
+			for (let enemyId in lEnemies_obj) {
 				this.startExplosionDebris(WEAPONS.FLAMETHROWER, enemyId, lEnemies_obj[enemyId], endPos, angle);
 			}
 		}
 	}
 
-	proceedArtilleryStrikeResult(data)
-	{
+	proceedArtilleryStrikeResult(data) {
 		// group enemies
 		let lEnemies_obj = {}; // enemyId : [shotResultData, shotResultData]
-		for (let obj of ShotResultsUtil.excludeFakeEnemies(data.affectedEnemies))
-		{
+		for (let obj of ShotResultsUtil.excludeFakeEnemies(data.affectedEnemies)) {
 			let lEnemyId_int = obj.enemyId;
-			if (!lEnemies_obj[lEnemyId_int])
-			{
+			if (!lEnemies_obj[lEnemyId_int]) {
 				lEnemies_obj[lEnemyId_int] = [];
 			}
 			lEnemies_obj[lEnemyId_int].push(obj.data);
 		}
 
 		// create artillery strikes flying to affected enemies
-		if (Object.keys(lEnemies_obj).length > 0)
-		{
-			for (let enemyId in lEnemies_obj)
-			{
-				this.proceedExplosionDebrisResult(null/*e*/, null/*endPos*/, Math.PI/2/*angle*/, lEnemies_obj[enemyId]);
+		if (Object.keys(lEnemies_obj).length > 0) {
+			for (let enemyId in lEnemies_obj) {
+				this.proceedExplosionDebrisResult(null/*e*/, null/*endPos*/, Math.PI / 2/*angle*/, lEnemies_obj[enemyId]);
 			}
 		}
 	}
 
-	startExplosionDebris(weaponId, enemyId, data_arr, explosionCenterPosition, defaultAngle = 0)
-	{
+	startExplosionDebris(weaponId, enemyId, data_arr, explosionCenterPosition, defaultAngle = 0) {
 		let bulletProps = {
 			typeId: weaponId
 		};
 
 		let lAffectedEnemy_enm = this.getExistEnemy(enemyId);
-		if (lAffectedEnemy_enm)
-		{
+		if (lAffectedEnemy_enm) {
 			let lEnemyPos_pt = lAffectedEnemy_enm.getGlobalPosition();
 			let lDistance_num = Utils.getDistance(lEnemyPos_pt, explosionCenterPosition);
-			if ( lDistance_num !== undefined && lDistance_num > 100)
-			{
+			if (lDistance_num !== undefined && lDistance_num > 100) {
 				bulletProps.targetEnemy = lAffectedEnemy_enm;
 			}
 		}
 
-		if (!bulletProps.targetEnemy && data_arr)
-		{
+		if (!bulletProps.targetEnemy && data_arr) {
 			this.proceedExplosionDebrisResult(null, explosionCenterPosition, defaultAngle, data_arr);
 		}
 
 		let points = [];
 		points.push(explosionCenterPosition); // startPos
-		if (bulletProps.targetEnemy)
-		{
+		if (bulletProps.targetEnemy) {
 			let lEnemyPos_pt = bulletProps.targetEnemy.getGlobalPosition();
 			let lEnemyCurrentFootPoint_pt = bulletProps.targetEnemy.getCurrentFootPointPosition();
 			lEnemyPos_pt.y += lEnemyCurrentFootPoint_pt.y;
@@ -8652,7 +7554,7 @@ class GameField extends Sprite
 			let hitRect = bulletProps.targetEnemy.getHitRectangle();
 			let dx = lEnemyCurrentFootPoint_pt.x + hitRect.width - Utils.random(0, hitRect.width * 2, true);
 			let dy = hitRect.height - Utils.random(0, hitRect.height * 2, true);
-			bulletProps.randomOffset = {x: dx, y: dy};
+			bulletProps.randomOffset = { x: dx, y: dy };
 			//...random offset
 
 			points.push(lEnemyPos_pt);
@@ -8663,37 +7565,30 @@ class GameField extends Sprite
 		}
 	}
 
-	getFloorRandomPoint()
-	{
+	getFloorRandomPoint() {
 		let lRandomEnemy_enm = this.getRandomEnemy();
 
-		if (lRandomEnemy_enm)
-		{
+		if (lRandomEnemy_enm) {
 			let lPointsCount_int = lRandomEnemy_enm.trajectory.points.length;
-			let lRandom_int = Utils.random(0, lPointsCount_int-1);
+			let lRandom_int = Utils.random(0, lPointsCount_int - 1);
 			let lRandomPoint_pt = lRandomEnemy_enm.trajectory.points[lRandom_int];
 			return lRandomPoint_pt;
 		}
 
-		return {x: Utils.random(960/4, 960/2), y: Utils.random(540/4, 540/2)};
+		return { x: Utils.random(960 / 4, 960 / 2), y: Utils.random(540 / 4, 540 / 2) };
 	}
 
-	getRandomEnemy()
-	{
-		if (this.enemies && this.enemies.length > 0)
-		{
+	getRandomEnemy() {
+		if (this.enemies && this.enemies.length > 0) {
 			let n = Utils.random(0, this.enemies.length - 1);
 			return this.enemies[n];
 		}
 		return null;
 	}
 
-	proceedExplosionDebrisResult(e, endPos, angle, data_arr)
-	{
-		for (let data of data_arr)
-		{
-			switch (data.class)
-			{
+	proceedExplosionDebrisResult(e, endPos, angle, data_arr) {
+		for (let data of data_arr) {
+			switch (data.class) {
 				case 'Miss':
 					this.showMissAnimation(null, endPos, angle, data);
 					break;
@@ -8704,44 +7599,35 @@ class GameField extends Sprite
 		}
 	}
 
-	showMissAnimation(e, endPos, angle, data)
-	{
+	showMissAnimation(e, endPos, angle, data) {
 		let enemyId = (data.enemy) ? data.enemy.id : data.enemyId;
 		let enemy = this.getExistEnemy(enemyId);
 		let lIsMasterRicochetBullet_bl = this._isMasterRicochetBulletResultData(data);
 
 		let isRageEffect = data.effects ? Boolean(~data.effects.indexOf(ENEMIES_EFFECTS_LIST.RAGE)) : false;
-		if(isRageEffect && !data.rage && !SpecterEnemy.isSpecter(data.enemy.typeId))
-		{
+		if (isRageEffect && !data.rage && !SpecterEnemy.isSpecter(data.enemy.typeId)) {
 			this._fDelayedRageImpactedHits_obj_arr.push(data);
 			return;
 		}
 
-		if (data.rage && !data.allRageResponcesArrived)
-		{
+		if (data.rage && !data.allRageResponcesArrived) {
 			this._fRageInfoHits_arr_obj.push(data);
 			return;
 		}
 
-		this.emit(GameField.EVENT_ON_ENEMY_MISS_ANIMATION, {data: data, enemyId: enemyId, rid: data.rid});
+		this.emit(GameField.EVENT_ON_ENEMY_MISS_ANIMATION, { data: data, enemyId: enemyId, rid: data.rid });
 
-		if (enemy)
-		{
-			enemy.typeId === ENEMY_TYPES.BOSS && enemy.rememberImpactPosition(endPos || {x: data.x, y: data.y});
+		if (enemy) {
+			enemy.typeId === ENEMY_TYPES.BOSS && enemy.rememberImpactPosition(endPos || { x: data.x, y: data.y });
 
-			if (data.killedMiss)
-			{
+			if (data.killedMiss) {
 				let lPlayerWin_bln = false;
 				let lCoPlayerWin_bln = false;
 
-				if (data.hitResultBySeats)
-				{
-					for (let key in data.hitResultBySeats)
-					{
-						for (let prize of data.hitResultBySeats[key])
-						{
-							if ((prize.id === HIT_RESULT_SINGLE_CASH_ID || prize.id === HIT_RESULT_ADDITIONAL_CASH_ID) && +prize.value > 0)
-							{
+				if (data.hitResultBySeats) {
+					for (let key in data.hitResultBySeats) {
+						for (let prize of data.hitResultBySeats[key]) {
+							if ((prize.id === HIT_RESULT_SINGLE_CASH_ID || prize.id === HIT_RESULT_ADDITIONAL_CASH_ID) && +prize.value > 0) {
 								lPlayerWin_bln = lPlayerWin_bln || !!(+key === +this.seatId);
 								lCoPlayerWin_bln = lCoPlayerWin_bln || !!(+key !== +this.seatId);
 							}
@@ -8750,17 +7636,15 @@ class GameField extends Sprite
 				}
 
 				enemy.childHvEnemyId = data.hvEnemyId;
-				enemy.setDeath(false, {playerWin: lPlayerWin_bln, coPlayerWin: lCoPlayerWin_bln});
+				enemy.setDeath(false, { playerWin: lPlayerWin_bln, coPlayerWin: lCoPlayerWin_bln });
 
 				this.pushEnemyToDeadList(data.enemyId);
-				this.emit("removeEnemy", {id: data.enemyId});
+				this.emit("removeEnemy", { id: data.enemyId });
 			}
-			else
-			{
-				if (!lIsMasterRicochetBullet_bl)
-				{
+			else {
+				if (!lIsMasterRicochetBullet_bl) {
 					enemy.showHitBounce(angle, data.usedSpecialWeapon);
-					enemy.playHitHighlightAnimation(5*FRAME_RATE);
+					enemy.playHitHighlightAnimation(5 * FRAME_RATE);
 				}
 			}
 		}
@@ -8768,63 +7652,50 @@ class GameField extends Sprite
 		this.onEnemyImpacted(endPos, data, enemyId, enemy);
 	}
 
-	showHitAnimation(e, endPos, angle, data)
-	{
+	showHitAnimation(e, endPos, angle, data) {
 		let enemyId = (data.enemy) ? data.enemy.id : data.enemyId;
 		let enemy = this.getExistEnemy(enemyId);
 		let lIsMasterRicochetBullet_bl = this._isMasterRicochetBulletResultData(data);
 
 		let isRageEffect = data.effects ? Boolean(~data.effects.indexOf(ENEMIES_EFFECTS_LIST.RAGE)) : false;
-		if (isRageEffect && !data.rage && !SpecterEnemy.isSpecter(data.enemy.typeId))
-		{
+		if (isRageEffect && !data.rage && !SpecterEnemy.isSpecter(data.enemy.typeId)) {
 			this._fDelayedRageImpactedHits_obj_arr.push(data);
 			return;
 		}
 
-		if (data.rage && !data.allRageResponcesArrived)
-		{
+		if (data.rage && !data.allRageResponcesArrived) {
 			this._fRageInfoHits_arr_obj.push(data);
 			return;
 		}
 
-		this.emit(GameField.EVENT_ON_ENEMY_HIT_ANIMATION, {data: data, enemyId: enemyId, damage: data.damage, rid: data.rid});
+		this.emit(GameField.EVENT_ON_ENEMY_HIT_ANIMATION, { data: data, enemyId: enemyId, damage: data.damage, rid: data.rid });
 
-		if (enemy)
-		{
-			if (!data.killed)
-			{
+		if (enemy) {
+			if (!data.killed) {
 				enemy.awardedPrizes = data.enemy.awardedPrizes;
 
-				if (!lIsMasterRicochetBullet_bl)
-				{
+				if (!lIsMasterRicochetBullet_bl) {
 					enemy.showHitBounce(angle, data.usedSpecialWeapon);
-					enemy.playHitHighlightAnimation(5*FRAME_RATE);
+					enemy.playHitHighlightAnimation(5 * FRAME_RATE);
 				}
 
-				enemy.setImpact(endPos || {x: data.x, y: data.y});
-				if(enemy._headStateChange)
-				{
+				enemy.setImpact(endPos || { x: data.x, y: data.y });
+				if (enemy._headStateChange) {
 					this.emit(GameField.EVENT_ON_ENEMY_KILLED_BY_PLAYER, {
 						playerName: data.playerName || "",
 						enemyName: "CerberusHead"
 					});
 				}
 			}
-			else
-			{
+			else {
 				let lPlayerWin_bln = false;
 				let lCoPlayerWin_bln = false;
 
-				if (data.hitResultBySeats)
-				{
-					for (let key in data.hitResultBySeats)
-					{
-						for (let prize of data.hitResultBySeats[key])
-						{
-							if ((prize.id === HIT_RESULT_SINGLE_CASH_ID || prize.id === HIT_RESULT_ADDITIONAL_CASH_ID) && +prize.value > 0)
-							{
-								if (prize.id === HIT_RESULT_SINGLE_CASH_ID && !!data.skipAwardedWin && data.enemy.typeId != ENEMY_TYPES.BOSS)
-								{
+				if (data.hitResultBySeats) {
+					for (let key in data.hitResultBySeats) {
+						for (let prize of data.hitResultBySeats[key]) {
+							if ((prize.id === HIT_RESULT_SINGLE_CASH_ID || prize.id === HIT_RESULT_ADDITIONAL_CASH_ID) && +prize.value > 0) {
+								if (prize.id === HIT_RESULT_SINGLE_CASH_ID && !!data.skipAwardedWin && data.enemy.typeId != ENEMY_TYPES.BOSS) {
 									continue;
 								}
 								lPlayerWin_bln = lPlayerWin_bln || !!(+key === +this.seatId);
@@ -8836,9 +7707,9 @@ class GameField extends Sprite
 
 				enemy.childHvEnemyId = data.hvEnemyId;
 
-				enemy.setDeath(false, {playerWin: lPlayerWin_bln, coPlayerWin: lCoPlayerWin_bln}, data.isRageExploadeTarget);
+				enemy.setDeath(false, { playerWin: lPlayerWin_bln, coPlayerWin: lCoPlayerWin_bln }, data.isRageExploadeTarget);
 				this.pushEnemyToDeadList(enemyId);
-				this.emit("removeEnemy", {id: enemyId});
+				this.emit("removeEnemy", { id: enemyId });
 
 
 				this.emit(GameField.EVENT_ON_ENEMY_KILLED_BY_PLAYER, {
@@ -8847,10 +7718,8 @@ class GameField extends Sprite
 				});
 			}
 		}
-		else
-		{
-			if (data && data.enemy && data.enemy.typeId)
-			{
+		else {
+			if (data && data.enemy && data.enemy.typeId) {
 				var name = GameScreen.calculateEnemyName(~~data.enemy.typeId, data.enemy.skin);
 
 				this.emit(GameField.EVENT_ON_ENEMY_KILLED_BY_PLAYER, {
@@ -8859,8 +7728,7 @@ class GameField extends Sprite
 				});
 
 
-				if (data.enemy.typeId === ENEMY_TYPES.BOSS)
-				{
+				if (data.enemy.typeId === ENEMY_TYPES.BOSS) {
 					this._hideBossHourglass();
 				}
 			}
@@ -8869,8 +7737,7 @@ class GameField extends Sprite
 		this.onEnemyImpacted(endPos, data, enemyId, enemy, true);
 	}
 
-	_checkSpectorExplosionStart()
-	{
+	_checkSpectorExplosionStart() {
 		if (this._fDelayedRageImpactedHits_obj_arr &&
 			this._fDelayedRageImpactedHits_obj_arr.length > 0 &&
 			this._fRageInfoHits_arr_obj &&
@@ -8878,8 +7745,7 @@ class GameField extends Sprite
 
 			this._fRageInfoHits_arr_obj.forEach(info => {
 				const lIsAllResponcesArrived_bl = this._isAllRageResponcesArrived(info.rage);
-				if (lIsAllResponcesArrived_bl)
-				{
+				if (lIsAllResponcesArrived_bl) {
 					if (info.allRageResponcesArrived) return;
 					info.allRageResponcesArrived = true;
 					const angle = 0;
@@ -8889,13 +7755,10 @@ class GameField extends Sprite
 			});
 	}
 
-	_isAllRageResponcesArrived(aRage_arr)
-	{
-		for (let i = 0; i < aRage_arr.length; i++)
-		{
+	_isAllRageResponcesArrived(aRage_arr) {
+		for (let i = 0; i < aRage_arr.length; i++) {
 			const l_bl = this._fDelayedRageImpactedHits_obj_arr.some(info => info.enemyId == aRage_arr[i].id);
-			if (!l_bl)
-			{
+			if (!l_bl) {
 				return false;
 			}
 		}
@@ -8903,8 +7766,7 @@ class GameField extends Sprite
 		return true;
 	}
 
-	startRageAOEAnimation(position, enemyPosition)
-	{
+	startRageAOEAnimation(position, enemyPosition) {
 		this._fRageAoeAnimations_arr.push(this.rageFXContainer.container.addChild(new RageAreaOfEffectAnimation(enemyPosition)));
 
 		let lRageAOEAnimation = this._fRageAoeAnimations_arr[this._fRageAoeAnimations_arr.length - 1];
@@ -8915,15 +7777,12 @@ class GameField extends Sprite
 		lRageAOEAnimation.once(RageAreaOfEffectAnimation.EVENT_ON_ANIMATION_ENDED, this._onRageAoeEffectAnimationCompleted, this);
 	}
 
-	_onRageAoeEffectAnimationCompleted(event)
-	{
+	_onRageAoeEffectAnimationCompleted(event) {
 		let lRageAoeAnimation = event.target;
 
-		if (this._fRageAoeAnimations_arr && this._fRageAoeAnimations_arr.length)
-		{
+		if (this._fRageAoeAnimations_arr && this._fRageAoeAnimations_arr.length) {
 			let lRageAoeAnimationIndex = this._fRageAoeAnimations_arr.indexOf(lRageAoeAnimation);
-			if (lRageAoeAnimationIndex >= 0)
-			{
+			if (lRageAoeAnimationIndex >= 0) {
 				this._fRageAoeAnimations_arr.splice(lRageAoeAnimationIndex, 1);
 			}
 		}
@@ -8931,20 +7790,18 @@ class GameField extends Sprite
 		lRageAoeAnimation.destroy();
 	}
 
-	rageImpactOnOtherEnemies(aSpecterId_num)
-	{
+	rageImpactOnOtherEnemies(aSpecterId_num) {
 		const lRageHitInfo_obj = this._getRageHitInfoById(aSpecterId_num);
 		if (!lRageHitInfo_obj) { return; }
 
-		this.emit(GameField.EVENT_ON_PRERAGE_ANIMATION_ENDED, {data: lRageHitInfo_obj});
+		this.emit(GameField.EVENT_ON_PRERAGE_ANIMATION_ENDED, { data: lRageHitInfo_obj });
 
 		const lEnemies_arr_obj = this._getDelayedRageImpactedHitsData(lRageHitInfo_obj.rid);
 
 		lEnemies_arr_obj.forEach((lDelayedRageImpactedHitData) => {
 			let lEffects = lDelayedRageImpactedHitData.effects;
 			let lRageEffectIndex = lEffects.indexOf(ENEMIES_EFFECTS_LIST.RAGE);
-			if (lRageEffectIndex >= 0)
-			{
+			if (lRageEffectIndex >= 0) {
 				lEffects.splice(lRageEffectIndex, 1);
 			}
 			lDelayedRageImpactedHitData.isRageExploadeTarget = true;
@@ -8955,13 +7812,10 @@ class GameField extends Sprite
 		});
 	}
 
-	_getRageHitInfoById(aSpecterId_num)
-	{
-		for (let i = 0; i < this._fRageInfoHits_arr_obj.length; i++)
-		{
+	_getRageHitInfoById(aSpecterId_num) {
+		for (let i = 0; i < this._fRageInfoHits_arr_obj.length; i++) {
 			const lCurHitData = this._fRageInfoHits_arr_obj[i];
-			if (lCurHitData.enemyId == aSpecterId_num)
-			{
+			if (lCurHitData.enemyId == aSpecterId_num) {
 				this._fRageInfoHits_arr_obj.splice(i, 1);
 				return lCurHitData;
 			}
@@ -8972,11 +7826,9 @@ class GameField extends Sprite
 		return null;
 	}
 
-	_getDelayedRageImpactedHitsData(aShotRid_num)
-	{
+	_getDelayedRageImpactedHitsData(aShotRid_num) {
 		const l_arr_obj = [];
-		if (!this._fDelayedRageImpactedHits_obj_arr || !this._fDelayedRageImpactedHits_obj_arr.length)
-		{
+		if (!this._fDelayedRageImpactedHits_obj_arr || !this._fDelayedRageImpactedHits_obj_arr.length) {
 			return l_arr_obj;
 		}
 
@@ -8986,30 +7838,24 @@ class GameField extends Sprite
 		return l_arr_obj;
 	}
 
-	hideEnemyEffectsBeforeDeathIfRequired(enemy)
-	{
-		for (let i = 0; i < this.enemies.length; i ++)
-		{
+	hideEnemyEffectsBeforeDeathIfRequired(enemy) {
+		for (let i = 0; i < this.enemies.length; i++) {
 			const enemyView = this.enemies[i];
-			if (enemy.id == enemyView.id)
-			{
+			if (enemy.id == enemyView.id) {
 				enemyView.hideEnemyEffectsBeforeDeathIfRequired();
 				break;
 			}
 		}
 	}
 
-	onEnemyImpacted(endPos, data, enemyId, enemy)
-	{
+	onEnemyImpacted(endPos, data, enemyId, enemy) {
 		let lIsMasterRicochetBullet_bl = this._isMasterRicochetBulletResultData(data);
 
-		if (endPos && !lIsMasterRicochetBullet_bl)
-		{
+		if (endPos && !lIsMasterRicochetBullet_bl) {
 			let lSeat_pt = this.getSeat(data.seatId, true);
 			let lSpotCurrentDefaultWeaponId_int = lSeat_pt ? lSeat_pt.currentDefaultWeaponId : 1;
 			let lTargetRicochetBullet_rb = this.ricochetController.info.getBulletByBulletId(data.bulletId);
-			if (lTargetRicochetBullet_rb && !lTargetRicochetBullet_rb.disappeared)
-			{
+			if (lTargetRicochetBullet_rb && !lTargetRicochetBullet_rb.disappeared) {
 				this.showMissEffect(
 					endPos.x,
 					endPos.y,
@@ -9020,145 +7866,130 @@ class GameField extends Sprite
 			}
 		}
 
-		let lCurrentEnemyPosition_pt = this.enemiesLastPositions[enemyId] || new PIXI.Point(data.x+Utils.random(-10, 10), data.y+Utils.random(-10, 10));
+		let lCurrentEnemyPosition_pt = this.enemiesLastPositions[enemyId] || new PIXI.Point(data.x + Utils.random(-10, 10), data.y + Utils.random(-10, 10));
 		let lPreviousEnemyPosition_pt = new PIXI.Point();
 		let lEnemyFootPoint_pt = new PIXI.Point();
-		if (enemy)
-		{
+		if (enemy) {
 			lCurrentEnemyPosition_pt = enemy.getGlobalPosition();
 			lEnemyFootPoint_pt = enemy.footPoint;
-			if (enemy.prevTurnPoint)
-			{
+			if (enemy.prevTurnPoint) {
 				lPreviousEnemyPosition_pt.x = enemy.prevTurnPoint.x - lEnemyFootPoint_pt.x;
 				lPreviousEnemyPosition_pt.y = enemy.prevTurnPoint.y - lEnemyFootPoint_pt.y;
 			}
 		}
 
-		if (!endPos)
-		{
+		if (!endPos) {
 			endPos = Utils.clone(lCurrentEnemyPosition_pt);
 		}
 
 		let lEnemyId_int = enemy ? enemy.id : null;
 		let lPrizePosition_pt = lCurrentEnemyPosition_pt;
 		let lIsBoss_bl = enemy && enemy.isBoss;
-		if (enemy && enemy.isBoss)
-		{
+		if (enemy && enemy.isBoss) {
 			lPrizePosition_pt.y -= 70;
 		}
 
 		let lIsMainPlayer_bln = !!(data.seatId == APP.playerController.info.seatId);
-		if (!lIsMainPlayer_bln)
-		{
+		if (!lIsMainPlayer_bln) {
 			data.chMult = 0;
-			if (data.killed && data.isKilledBossHit)
-			{
+			if (data.killed && data.isKilledBossHit) {
 				// keep killBonusPay for killed boss hits
 			}
-			else
-			{
+			else {
 				data.win += (data.killBonusPay || 0);
 				data.killBonusPay = 0;
 			}
 		}
 
-		if (data.needExplode)
-		{
+		if (data.needExplode) {
 			let lXShift_num = 0;
-			if (!enemy || !enemy.direction)
-			{
+			if (!enemy || !enemy.direction) {
 				lXShift_num = 0;
 			}
-			else if (enemy.direction == ENEMY_DIRECTION.LEFT_DOWN || enemy.direction == ENEMY_DIRECTION.LEFT_UP)
-			{
+			else if (enemy.direction == ENEMY_DIRECTION.LEFT_DOWN || enemy.direction == ENEMY_DIRECTION.LEFT_UP) {
 				lXShift_num = -25;
 			}
-			else
-			{
+			else {
 				lXShift_num = 25;
 			}
-			this._startExploderExplosion({x: lCurrentEnemyPosition_pt.x + lXShift_num, y: lCurrentEnemyPosition_pt.y - 40});
+			this._startExploderExplosion({ x: lCurrentEnemyPosition_pt.x + lXShift_num, y: lCurrentEnemyPosition_pt.y - 40 });
 		}
 
 		let lIsBigWin_bln = data.skipAwardedWin;
 
-		if (data.chMult > 1 && data.win != 0 && !lIsBigWin_bln)
-		{
+		if (data.chMult > 1 && data.win != 0 && !lIsBigWin_bln) {
 			this._startCriticalHitAnimation(data.win, data.chMult, lPrizePosition_pt, enemy ? enemy.id : null, enemy ? enemy.name : null, enemy ? enemy.direction : null, data.rid);
 		}
 
 		this._showPrizes(data, lPrizePosition_pt, lEnemyId_int, lIsBoss_bl);
 
-		this.emit('showEnemyHit', {id: enemyId, data: data, enemyView: enemy, position: endPos});
+		this.emit('showEnemyHit', { id: enemyId, data: data, enemyView: enemy, position: endPos });
 	}
 
 	/*
 	@aPrizePosition_pt - current dying enemy position
 	*/
-	_showPrizes(data, aPrizePosition_pt, aEnemyId_int, aIsBoss_bl)
-	{
-		this.emit(GameField.EVENT_TIME_TO_SHOW_PRIZES, {	prizesData:
-															{
-																hitData: data,
-																prizePosition: aPrizePosition_pt,
-																enemyId: aEnemyId_int,
-																isBoss: aIsBoss_bl
-															}
-														}
+	_showPrizes(data, aPrizePosition_pt, aEnemyId_int, aIsBoss_bl) {
+		this.emit(GameField.EVENT_TIME_TO_SHOW_PRIZES, {
+			prizesData:
+			{
+				hitData: data,
+				prizePosition: aPrizePosition_pt,
+				enemyId: aEnemyId_int,
+				isBoss: aIsBoss_bl
+			}
+		}
 		);
 	}
 
-	_getOffscreenOffsetY(aPosY_num, aAssetName_str)
-	{
+	_getOffscreenOffsetY(aPosY_num, aAssetName_str) {
 		let lOffscreenOffsetY_num = 0;
 		let lMaxOverkillScaleValue_num = 1.9;
 		let lHeigth_num = I18.generateNewCTranslatableAsset(aAssetName_str).getBounds().height;
 		lHeigth_num *= lMaxOverkillScaleValue_num;
 
-		if (aPosY_num - lHeigth_num / 2 < 10) /* 10 - not to be covered by top black bar (infobar)*/
-		{
+		if (aPosY_num - lHeigth_num / 2 < 10) /* 10 - not to be covered by top black bar (infobar)*/ {
 			lOffscreenOffsetY_num = 10 - (aPosY_num - lHeigth_num / 2) + Math.random() * 50;
 		}
-		else if (aPosY_num + lHeigth_num / 2 > 540)
-		{
+		else if (aPosY_num + lHeigth_num / 2 > 540) {
 			lOffscreenOffsetY_num = 540 - (aPosY_num + lHeigth_num / 2) - Math.random() * 50;
 		}
 
 		return lOffscreenOffsetY_num;
 	}
 
-	_getOffscreenOffsetX(aPosX_num, aAssetName_str)
-	{
+	_getOffscreenOffsetX(aPosX_num, aAssetName_str) {
 		let lOffscreenOffsetX_num = 0;
 		let lMaxOverkillScaleValue_num = 1.9;
 		let lWidth_num = I18.generateNewCTranslatableAsset(aAssetName_str).getBounds().width;
 		lWidth_num *= lMaxOverkillScaleValue_num;
 
-		if (aPosX_num - lWidth_num / 2 < 0)
-		{
+		if (aPosX_num - lWidth_num / 2 < 0) {
 			lOffscreenOffsetX_num = 0 - (aPosX_num - lWidth_num / 2) + Math.random() * 50;
 		}
-		else if (aPosX_num + lWidth_num / 2 > 960)
-		{
+		else if (aPosX_num + lWidth_num / 2 > 960) {
 			lOffscreenOffsetX_num = 960 - (aPosX_num + lWidth_num / 2) - Math.random() * 50;
 		}
 
 		return lOffscreenOffsetX_num;
 	}
 
-	get _bulgePinchFilter()
-	{
-		if (!this._fBulgePinchFilter_f)
-		{
-			this._fBulgePinchFilter_f = new BulgePinchFilter();
-			this._fBulgePinchFilter_f.resolution = APP.stage.renderer.resolution;
+	get _bulgePinchFilter() {
+		if (!this._fBulgePinchFilter_f) {
+			// [Fix] Disabling BulgePinchFilter
+			// this._fBulgePinchFilter_f = new BulgePinchFilter();
+			// this._fBulgePinchFilter_f.resolution = APP.stage.renderer.resolution;
 		}
 
-		return this._fBulgePinchFilter_f;
+		return null; // this._fBulgePinchFilter_f;
 	}
 
-	_startCriticalHitAnimation(aWin_num, aMult_num, aPos_obj, aEnemyId_num, aEnemyName_str, aEnemyDirection_str, aRid_num)
-	{
+	set _bulgePinchFilter(value) {
+		// [Fix] Dummy setter to prevent "Cannot set property ... which has only a getter" error
+		this._fBulgePinchFilter_f = value;
+	}
+
+	_startCriticalHitAnimation(aWin_num, aMult_num, aPos_obj, aEnemyId_num, aEnemyName_str, aEnemyDirection_str, aRid_num) {
 		let lOffsetX_num = this._getOffscreenOffsetX(aPos_obj.x, "TACriticalHitLabel");
 		let lOffsetY_num = this._getOffscreenOffsetY(aPos_obj.y - 70, "TACriticalHitLabel");
 
@@ -9172,43 +8003,36 @@ class GameField extends Sprite
 		if (lCrit_anim.position.x > (APP.config.size.width - lBounds_obj.width)) lCrit_anim.position.x = APP.config.size.width - lBounds_obj.width;
 		if (lCrit_anim.position.y > (APP.config.size.height - lBounds_obj.height)) lCrit_anim.position.y = APP.config.size.height - lBounds_obj.height;
 		if (lCrit_anim.position.x < lBounds_obj.width) lCrit_anim.position.x = lBounds_obj.width;
-		if (lCrit_anim.position.y < lBounds_obj.height)lCrit_anim.position.y = lBounds_obj.height;
+		if (lCrit_anim.position.y < lBounds_obj.height) lCrit_anim.position.y = lBounds_obj.height;
 
-		lCrit_anim.once(CriticalHitAnimation.EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED, ()=>{
+		lCrit_anim.once(CriticalHitAnimation.EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED, () => {
 			let lId_num = this._fCritAnims_arr.indexOf(lCrit_anim);
-			if (~lId_num)
-			{
+			if (~lId_num) {
 				this._fCritAnims_arr.splice(lId_num, 1);
 			}
 
-			this.emit(GameField.EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED, {rid: lCrit_anim.rid, enemyId: lCrit_anim.enemyId});
+			this.emit(GameField.EVENT_ON_CRITICAL_HIT_ANIMATION_ENDED, { rid: lCrit_anim.rid, enemyId: lCrit_anim.enemyId });
 			lCrit_anim && lCrit_anim.destroy();
 		});
 
 		this._fCritAnims_arr.push(lCrit_anim);
 		lCrit_anim.startAnimation();
 
-		if (!!lIsMasterPlayer_bl)
-		{
-			if (APP.soundsController.isSoundPlaying("critical_hit"))
-			{
+		if (!!lIsMasterPlayer_bl) {
+			if (APP.soundsController.isSoundPlaying("critical_hit")) {
 				APP.soundsController.stop("critical_hit");
 			}
 
 			APP.soundsController.play("critical_hit");
 		}
-		else
-		{
+		else {
 			lCrit_anim.alpha = 0.3;
 		}
 	}
 
-	getCriticalAnimationById(aRid_num, aEnemyId_num)
-	{
-		for (let lCrit_anim of this._fCritAnims_arr)
-		{
-			if ((lCrit_anim.rid === aRid_num) && (lCrit_anim.enemyId === aEnemyId_num))
-			{
+	getCriticalAnimationById(aRid_num, aEnemyId_num) {
+		for (let lCrit_anim of this._fCritAnims_arr) {
+			if ((lCrit_anim.rid === aRid_num) && (lCrit_anim.enemyId === aEnemyId_num)) {
 				return lCrit_anim;
 			}
 		}
@@ -9216,20 +8040,16 @@ class GameField extends Sprite
 		return null;
 	}
 
-	_isAnyCashAwardAnimationRequired(hitData)
-	{
+	_isAnyCashAwardAnimationRequired(hitData) {
 		return PrizesController.isAnyCashAwardAnimationRequired(hitData);
 	}
 
-	_isMasterScoreAwardRequired(hitData)
-	{
+	_isMasterScoreAwardRequired(hitData) {
 		return this.spot && (hitData.score > 0 && hitData.seatId === this.seatId);
 	}
 
-	markEnemy(enemy, aIsFast_bl = false)
-	{
-		if (!enemy || enemy.instaMark)
-		{
+	markEnemy(enemy, aIsFast_bl = false) {
+		if (!enemy || enemy.instaMark) {
 			return;
 		}
 		let mark = new InstantKillMarker(aIsFast_bl);
@@ -9238,12 +8058,9 @@ class GameField extends Sprite
 		enemy.instaMark = mark;
 	}
 
-	checkExistEnemy(id)
-	{
-		for (var i = 0; i < this.enemies.length; i ++)
-		{
-			if (this.enemies[i].id == id)
-			{
+	checkExistEnemy(id) {
+		for (var i = 0; i < this.enemies.length; i++) {
+			if (this.enemies[i].id == id) {
 				return true;
 			}
 		}
@@ -9251,23 +8068,17 @@ class GameField extends Sprite
 		return false;
 	}
 
-	getExistEnemy(id)
-	{
-		for (var i = 0; i < this.enemies.length; i ++)
-		{
-			if (this.enemies[i].id == id)
-			{
+	getExistEnemy(id) {
+		for (var i = 0; i < this.enemies.length; i++) {
+			if (this.enemies[i].id == id) {
 				return this.enemies[i];
 			}
 		}
 	}
 
-	get isBossEnemyExist()
-	{
-		for (var i = 0; i < this.enemies.length; i ++)
-		{
-			if (this.enemies[i].isBoss)
-			{
+	get isBossEnemyExist() {
+		for (var i = 0; i < this.enemies.length; i++) {
+			if (this.enemies[i].isBoss) {
 				return true;
 			}
 		}
@@ -9275,45 +8086,34 @@ class GameField extends Sprite
 		return false;
 	}
 
-	getFirstEverExistedEnemyIdFromTheList(aEnemiesIds_int_arr)
-	{
-		for (let lEnemyId_int of aEnemiesIds_int_arr)
-		{
-			if (this.getEnemyPosition(lEnemyId_int))
-			{
+	getFirstEverExistedEnemyIdFromTheList(aEnemiesIds_int_arr) {
+		for (let lEnemyId_int of aEnemiesIds_int_arr) {
+			if (this.getEnemyPosition(lEnemyId_int)) {
 				return lEnemyId_int;
 			}
 		}
 		return null;
 	}
 
-	getEnemyPosition(enemyId, aFootPosition_bl = false)
-	{
+	getEnemyPosition(enemyId, aFootPosition_bl = false) {
 		let enemy = this.getExistEnemy(enemyId);
-		if (enemy)
-		{
+		if (enemy) {
 			return aFootPosition_bl ? enemy.getGlobalPosition() : enemy.getCenterPosition();
 		}
 		return this.enemiesLastPositions[enemyId];
 	}
 
-	getDeadEnemy(id)
-	{
-		for (var i = 0; i < this.deadEnemies.length; i ++)
-		{
-			if (this.deadEnemies[i].id == id)
-			{
+	getDeadEnemy(id) {
+		for (var i = 0; i < this.deadEnemies.length; i++) {
+			if (this.deadEnemies[i].id == id) {
 				return this.deadEnemies[i];
 			}
 		}
 	}
 
-	checkExistBullet(id)
-	{
-		for (var i = 0; i < this.bullets.length; i ++)
-		{
-			if (this.bullets[i].id == id)
-			{
+	checkExistBullet(id) {
+		for (var i = 0; i < this.bullets.length; i++) {
+			if (this.bullets[i].id == id) {
 				return true;
 			}
 		}
@@ -9321,33 +8121,27 @@ class GameField extends Sprite
 		return false;
 	}
 
-	getExistBullet(id)
-	{
-		for (var i = 0; i < this.bullets.length; i ++)
-		{
-			if (this.bullets[i].id == id)
-			{
+	getExistBullet(id) {
+		for (var i = 0; i < this.bullets.length; i++) {
+			if (this.bullets[i].id == id) {
 				return this.bullets[i];
 			}
 		}
 	}
 
-	isMasterBulletExist()
-	{
-		let lMasterSeatBuletCount_num = this.bullets.filter(function(item) {
+	isMasterBulletExist() {
+		let lMasterSeatBuletCount_num = this.bullets.filter(function (item) {
 			return item.isMasterBullet;
 		}).length;
 
 		return lMasterSeatBuletCount_num > 0;
 	}
 
-	createEnemy(aEnemy_obj)
-	{
+	createEnemy(aEnemy_obj) {
 		let zombie;
-		let lIsNeedPrepareForBossAppearance_bl = aEnemy_obj.typeId == ENEMY_TYPES.BOSS ? this._fBossModeController_bmc.isNeedPrepareForBossAppearance(aEnemy_obj.trajectory.points): false;
+		let lIsNeedPrepareForBossAppearance_bl = aEnemy_obj.typeId == ENEMY_TYPES.BOSS ? this._fBossModeController_bmc.isNeedPrepareForBossAppearance(aEnemy_obj.trajectory.points) : false;
 
-		switch (aEnemy_obj.name)
-		{
+		switch (aEnemy_obj.name) {
 			case ENEMIES.BrownSpider:
 			case ENEMIES.BlackSpider:
 				zombie = new SpiderEnemy(aEnemy_obj);
@@ -9384,15 +8178,14 @@ class GameField extends Sprite
 				break;
 			case ENEMIES.Dragon:
 				aEnemy_obj.isNeedPrepareForBossAppearance = lIsNeedPrepareForBossAppearance_bl;
-				aEnemy_obj.isNeedBossHideOnIntro = this._fGameStateInfo_gsi.subroundLasthand ? this._fBossModeController_bmc.isNeedBossHideOnIntro(aEnemy_obj.trajectory.points): false;
-				aEnemy_obj.isFirstAnimationAppearance = this._fGameStateInfo_gsi.subroundLasthand ? this._fBossModeController_bmc.isNextAnimationAppearanceOnIntro(aEnemy_obj.trajectory.points): false;
+				aEnemy_obj.isNeedBossHideOnIntro = this._fGameStateInfo_gsi.subroundLasthand ? this._fBossModeController_bmc.isNeedBossHideOnIntro(aEnemy_obj.trajectory.points) : false;
+				aEnemy_obj.isFirstAnimationAppearance = this._fGameStateInfo_gsi.subroundLasthand ? this._fBossModeController_bmc.isNextAnimationAppearanceOnIntro(aEnemy_obj.trajectory.points) : false;
 
 				zombie = new DragonEnemy(aEnemy_obj);
 				break;
 			case ENEMIES.Orc:
 
-				if (!this._fIsShakeGroundOnFormationOfOrcsIsActive_bl && this._fIsNeedStartShakeGroundOnFormationOfOrcs(aEnemy_obj))
-				{
+				if (!this._fIsShakeGroundOnFormationOfOrcsIsActive_bl && this._fIsNeedStartShakeGroundOnFormationOfOrcs(aEnemy_obj)) {
 					this._fIsShakeGroundOnFormationOfOrcsIsActive_bl = true;
 					//START ORCS FORMATION
 					this.emit(GameField.EVENT_ORCS_PROCESSION_STARTED);
@@ -9437,56 +8230,46 @@ class GameField extends Sprite
 				break;
 		}
 
-		if (zombie.isBoss)
-		{
+		if (zombie.isBoss) {
 			this.topScreen.addChild(zombie);
 		}
-		else
-		{
+		else {
 			this.bottomScreen.addChild(zombie);
 		}
 		this.enemies.push(zombie);
 
-		this.emit(GameField.EVENT_ON_NEW_ENEMY_CREATED, {enemyId: aEnemy_obj.id});
+		this.emit(GameField.EVENT_ON_NEW_ENEMY_CREATED, { enemyId: aEnemy_obj.id });
 
-		if (APP.isBattlegroundGame && this.spot && this.spot.autofireButton.enabled && !this._fTargetingInfo_tc.targetEnemyId && !this._fAutoTargetingSwitcherInfo_atsi.isOn)
-		{
+		if (APP.isBattlegroundGame && this.spot && this.spot.autofireButton.enabled && !this._fTargetingInfo_tc.targetEnemyId && !this._fAutoTargetingSwitcherInfo_atsi.isOn) {
 			this._onEnemyRightClick(zombie);
 		}
 
-		if (this._fGameStateInfo_gsi.subroundLasthand)
-		{
-			if (zombie.isBoss)
-			{
+		if (this._fGameStateInfo_gsi.subroundLasthand) {
+			if (zombie.isBoss) {
 				let lBossHourglassShowNeeded_bl = true;
-				if (lIsNeedPrepareForBossAppearance_bl)
-				{
+				if (lIsNeedPrepareForBossAppearance_bl) {
 					lBossHourglassShowNeeded_bl = false;
 				}
 
-				this.emit(GameField.EVENT_ON_NEW_BOSS_CREATED, {enemyId: aEnemy_obj.id, isLasthandBossView:true, isBossHourglassShowNeeded: lBossHourglassShowNeeded_bl, bossName: aEnemy_obj.name});
+				this.emit(GameField.EVENT_ON_NEW_BOSS_CREATED, { enemyId: aEnemy_obj.id, isLasthandBossView: true, isBossHourglassShowNeeded: lBossHourglassShowNeeded_bl, bossName: aEnemy_obj.name });
 			}
 		}
-		else
-		{
-			if (zombie.isBoss)
-			{
+		else {
+			if (zombie.isBoss) {
 
-				this.emit(GameField.EVENT_ON_NEW_BOSS_CREATED, {enemyId: aEnemy_obj.id, isLasthandBossView:false, isBossHourglassShowNeeded: false, bossName: aEnemy_obj.name});
+				this.emit(GameField.EVENT_ON_NEW_BOSS_CREATED, { enemyId: aEnemy_obj.id, isLasthandBossView: false, isBossHourglassShowNeeded: false, bossName: aEnemy_obj.name });
 			}
 		}
 
 		zombie.on(Enemy.EVENT_ON_DEATH_ANIMATION_STARTED, this._onEnemyDeathAnimationStarted, this);
-		if (zombie.isBoss)
-		{
+		if (zombie.isBoss) {
 			zombie.on(BossEnemy.EVENT_ON_BOSS_ENEMY_APPEARANCE_TIME, this.emit, this);
 			zombie.on(Enemy.EVENT_ON_DEATH_ANIMATION_FLARE, this.emit, this);
 			zombie.once(Enemy.EVENT_ON_DEATH_ANIMATION_CRACK, this.emit, this);
 			zombie.on(Enemy.EVENT_ON_ENEMY_START_DYING, (e) => {
-				this.emit(GameField.EVENT_ON_BOSS_DESTROYING, {bossName: e.bossName, enemy: e.enemy, isInstantKill: e.isInstantKill});
+				this.emit(GameField.EVENT_ON_BOSS_DESTROYING, { bossName: e.bossName, enemy: e.enemy, isInstantKill: e.isInstantKill });
 
-				if (e.isInstantKill)
-				{
+				if (e.isInstantKill) {
 					this._hideBossHourglass();
 
 					Sequence.destroy(Sequence.findByTarget(this.container));
@@ -9494,7 +8277,7 @@ class GameField extends Sprite
 					this.container.y = 0;
 				}
 			});
-			zombie.once(DragonEnemy.EVENT_ON_DRAGON_DISAPPEARED, ()=>{
+			zombie.once(DragonEnemy.EVENT_ON_DRAGON_DISAPPEARED, () => {
 				this.emit(GameField.EVENT_ON_DRAGON_DISAPPEARED);
 				this._hideBossHourglass(true);
 			});
@@ -9510,8 +8293,7 @@ class GameField extends Sprite
 		zombie.on(Enemy.EVENT_ON_ENEMY_ENERGY_UPDATED, this.emit, this);
 		zombie.once(Sprite.EVENT_ON_DESTROYING, this._onEnemyViewDestroying, this);
 
-		if(!this._fGameStateInfo_gsi.isBossSubround)
-		{
+		if (!this._fGameStateInfo_gsi.isBossSubround) {
 			zombie.on(OgreEnemy.EVENT_OGRE_CALLOUT_CREATED, this.emit, this);
 			zombie.on(DarkKnightEnemy.EVENT_DARK_KNIGHT_CALLOUT_CREATED, this.emit, this);
 			zombie.on(CerberusEnemy.EVENT_CERBERUS_CALLOUT_CREATED, this.emit, this);
@@ -9520,55 +8302,42 @@ class GameField extends Sprite
 		return zombie;
 	}
 
-	_fIsNeedStartShakeGroundOnFormationOfOrcs(aEnemy_obj)
-	{
-		if (!this._fIsShakeGroundOnFormationOfOrcsIsActive_bl)
-		{
-			if (aEnemy_obj.swarmType == ORCS_FORMATION_SWARM_TYPE)
-			{
+	_fIsNeedStartShakeGroundOnFormationOfOrcs(aEnemy_obj) {
+		if (!this._fIsShakeGroundOnFormationOfOrcsIsActive_bl) {
+			if (aEnemy_obj.swarmType == ORCS_FORMATION_SWARM_TYPE) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	_fValidateShakeGroundOnFormationOfOrcs()
-	{
-		if (this._fIsShakeGroundOnFormationOfOrcsIsActive_bl)
-		{
+	_fValidateShakeGroundOnFormationOfOrcs() {
+		if (this._fIsShakeGroundOnFormationOfOrcsIsActive_bl) {
 			let lOrcsFormationCount_num = 0;
 			let lIsOrcsFormationExist_bl = false;
 
-			for (var i = 0; i < this.enemies.length; i ++)
-			{
+			for (var i = 0; i < this.enemies.length; i++) {
 				let enemy = this.enemies[i];
-				if (enemy.typeId == ENEMY_TYPES.ORC && enemy.swarmType == ORCS_FORMATION_SWARM_TYPE)
-				{
-					if (!lIsOrcsFormationExist_bl )
-					{
+				if (enemy.typeId == ENEMY_TYPES.ORC && enemy.swarmType == ORCS_FORMATION_SWARM_TYPE) {
+					if (!lIsOrcsFormationExist_bl) {
 						lIsOrcsFormationExist_bl = true;
 					}
 
-					if (!enemy.isFrozen)
-					{
+					if (!enemy.isFrozen) {
 						lOrcsFormationCount_num++;
 					}
 				}
 			}
 
 
-			if (lIsOrcsFormationExist_bl)
-			{
-				if (lOrcsFormationCount_num > ORCS_FORMATION_COUNT_FOR_SHAKE_GROUND_INTENSIVITY_HIGH)
-				{
+			if (lIsOrcsFormationExist_bl) {
+				if (lOrcsFormationCount_num > ORCS_FORMATION_COUNT_FOR_SHAKE_GROUND_INTENSIVITY_HIGH) {
 					this._fCurrentOrcFormationShakeGroundIntensivity_num = ORCS_FORMATION_SHAKE_GROUND_INTENSIVITY_HIGH;
 				}
-				else if (lOrcsFormationCount_num > ORCS_FORMATION_COUNT_FOR_SHAKE_GROUND_INTENSIVITY_LOW)
-				{
+				else if (lOrcsFormationCount_num > ORCS_FORMATION_COUNT_FOR_SHAKE_GROUND_INTENSIVITY_LOW) {
 					this._fCurrentOrcFormationShakeGroundIntensivity_num = ORCS_FORMATION_SHAKE_GROUND_INTENSIVITY_LOW;
 				}
-				else
-				{
+				else {
 					this._fCurrentOrcFormationShakeGroundIntensivity_num = ORCS_FORMATION_SHAKE_GROUND_INTENSIVITY_NONE;
 				}
 
@@ -9578,75 +8347,64 @@ class GameField extends Sprite
 			//FINISH ORCS FORMATION
 			this._fIsShakeGroundOnFormationOfOrcsIsActive_bl = false;
 
-			if(
+			if (
 				!APP.currentWindow.isPaused ||
 				APP.isSecondaryScreenActive
-				)
-			{
+			) {
 				this.emit(GameField.EVENT_ORCS_PROCESSION_FINISHED);
 			}
 		}
 	}
 
-	_onEnemyDeathAnimationStarted(event)
-	{
+	_onEnemyDeathAnimationStarted(event) {
 		let zombie = event.target;
-		if (zombie.isBoss)
-		{
+		if (zombie.isBoss) {
 			this.shakeTheGround("bossShining");
 			zombie.once(Enemy.EVENT_ON_DEATH_ANIMATION_OUTRO_STARTED, (e) => {
-				this.emit(GameField.EVENT_ON_BOSS_DESTROYED, {enemyGlobalPoint: e.position});
+				this.emit(GameField.EVENT_ON_BOSS_DESTROYED, { enemyGlobalPoint: e.position });
 				this.shakeTheGround("bossExplosion", true);
 			});
 			zombie.once(Enemy.EVENT_ON_TIME_TO_EXPLODE_COINS, (e) => {
 				this._hideBossHourglass(true);
-				this.emit(GameField.EVENT_ON_TIME_TO_EXPLODE_COINS, {enemyGlobalPoint: e.position, isCoPlayerWin: e.isCoPlayerWin});
+				this.emit(GameField.EVENT_ON_TIME_TO_EXPLODE_COINS, { enemyGlobalPoint: e.position, isCoPlayerWin: e.isCoPlayerWin });
 			});
 		}
-		this.emit(GameField.EVENT_ON_DEATH_ANIMATION_STARTED, {enemyId:zombie.id});
+		this.emit(GameField.EVENT_ON_DEATH_ANIMATION_STARTED, { enemyId: zombie.id });
 	}
 
-	_onEnemyViewRemoving(event)
-	{
+	_onEnemyViewRemoving(event) {
 		let zombie = event.target;
 		let enemyId = zombie.id;
 
-		if (this.gunLockTargetedEnemy && this.gunLockTargetedEnemy.id === enemyId)
-		{
+		if (this.gunLockTargetedEnemy && this.gunLockTargetedEnemy.id === enemyId) {
 			this.gunLockTargetedEnemy = null;
 		}
 
 		this.enemiesLastPositions[enemyId] = zombie.getGlobalPosition();
 		this.pushEnemyToDeadList(enemyId);
 
-		this.emit(GameField.EVENT_ON_ENEMY_VIEW_REMOVING, {enemyId:enemyId});
+		this.emit(GameField.EVENT_ON_ENEMY_VIEW_REMOVING, { enemyId: enemyId });
 	}
 
-	_onEnemyViewDestroying(event)
-	{
+	_onEnemyViewDestroying(event) {
 		let zombie = event.target;
 		let enemyId = zombie.id;
 
-		if (this.gunLockTargetedEnemy && this.gunLockTargetedEnemy.id === enemyId)
-		{
+		if (this.gunLockTargetedEnemy && this.gunLockTargetedEnemy.id === enemyId) {
 			this.gunLockTargetedEnemy = null;
 		}
 
 		let index = this.deadEnemies.indexOf(zombie);
-		if (~index)
-		{
+		if (~index) {
 			this.deadEnemies.splice(index, 1);
 		}
 	}
 
-	getEnemiesByParentId(aId_num)
-	{
+	getEnemiesByParentId(aId_num) {
 		let lEnemies_arr = [];
 
-		for (let enemy of this.enemies)
-		{
-			if (enemy.parentEnemyId == aId_num)
-			{
+		for (let enemy of this.enemies) {
+			if (enemy.parentEnemyId == aId_num) {
 				lEnemies_arr.push(enemy);
 			}
 		}
@@ -9654,41 +8412,31 @@ class GameField extends Sprite
 		return lEnemies_arr;
 	}
 
-	getEnemy(id)
-	{
-		for (var enemy of this.enemies)
-		{
-			if (enemy.id == id)
-			{
+	getEnemy(id) {
+		for (var enemy of this.enemies) {
+			if (enemy.id == id) {
 				return enemy;
 			}
 		}
 	}
 
-	removeAllEnemies()
-	{
-		while (this.enemies.length)
-		{
-			try
-			{
+	removeAllEnemies() {
+		while (this.enemies.length) {
+			try {
 				this.enemies.pop().destroy(true);
 			}
-			catch (err)
-			{
+			catch (err) {
 				console.log("GameField.js :: removeAllEnemies >> ", err);
 			}
 		}
 		this.enemies = [];
 		this.enemiesLastPositions = {};
 
-		while (this.deadEnemies.length)
-		{
-			try
-			{
+		while (this.deadEnemies.length) {
+			try {
 				this.deadEnemies.pop().destroy(true);
 			}
-			catch (err)
-			{
+			catch (err) {
 				console.log("GameField.js :: removeAllEnemies (dead) >> ", err);
 			}
 		}
@@ -9697,45 +8445,36 @@ class GameField extends Sprite
 	}
 
 
-	removeEnemy(enemy)
-	{
+	removeEnemy(enemy) {
 
 		this._fValidateShakeGroundOnFormationOfOrcs();
 
-		for (var i = 0; i < this.enemies.length; i ++)
-		{
+		for (var i = 0; i < this.enemies.length; i++) {
 			var enemyView = this.enemies[i];
-			if (enemy.id == enemyView.id)
-			{
+			if (enemy.id == enemyView.id) {
 				enemyView.i_playPreDeathAnimation(); //includes destroy instaMark
 				break;
 			}
 		}
 	}
 
-	pushEnemyToDeadList(id)
-	{
-		if (id !== undefined)
-		{
+	pushEnemyToDeadList(id) {
+		if (id !== undefined) {
 			this._fValidateShakeGroundOnFormationOfOrcs();
 
-			if (this.indicatedEnemy && this.indicatedEnemy.id == id)
-			{
+			if (this.indicatedEnemy && this.indicatedEnemy.id == id) {
 				this.indicatedEnemy = null;
 			}
-			for (var i = 0; i < this.enemies.length; i ++)
-			{
+			for (var i = 0; i < this.enemies.length; i++) {
 				let zombie = this.enemies[i];
-				if (zombie.id == id)
-				{
+				if (zombie.id == id) {
 					this.enemiesLastPositions[id] = zombie.getGlobalPosition();
 					this.enemies.splice(i, 1);
 
 					this.deadEnemies.push(zombie);
 					zombie.once(Enemy.EVENT_ON_DEATH_ANIMATION_COMPLETED, (e) => {
 						let index = this.deadEnemies.indexOf(e.target);
-						if (~index)
-						{
+						if (~index) {
 							this.deadEnemies.splice(this.deadEnemies.indexOf(e.target), 1);
 						}
 					})
@@ -9745,13 +8484,10 @@ class GameField extends Sprite
 		}
 	}
 
-	removeOutsideEnemies()
-	{
-		for (var i = 0; i < this.enemies.length; i ++)
-		{
+	removeOutsideEnemies() {
+		for (var i = 0; i < this.enemies.length; i++) {
 			let enemy = this.enemies[i];
-			if (enemy.isEnded)
-			{
+			if (enemy.isEnded) {
 				this.enemies.splice(i, 1);
 				i--;
 			}
@@ -9766,82 +8502,66 @@ class GameField extends Sprite
 	 *						0 - as a result of usual death;
 	 *						1 - as a result of quick disappearing before/after boss
 	 */
-	setEnemyDestroy(id, reason = 0)
-	{
+	setEnemyDestroy(id, reason = 0) {
 		let enemy = this.getExistEnemy(id);
-		if (enemy)
-		{
+		if (enemy) {
 			enemy.updateLife(0);
 			enemy.deathReason = reason;
 		}
 
 		if (reason == 1) //immediately
 		{
-			if (enemy)
-			{
+			if (enemy) {
 				enemy.setDeath(true);
 				this.pushEnemyToDeadList(id);
 			}
-			this.emit("removeEnemy", {id:id});
+			this.emit("removeEnemy", { id: id });
 		}
 	}
 
-	drawEnemies(enemies)
-	{
+	drawEnemies(enemies) {
 		var zombie;
-		for (var i = 0; i < enemies.length; i ++)
-		{
+		for (var i = 0; i < enemies.length; i++) {
 			let enemyInfo = enemies[i];
-			if (enemyInfo.angle === undefined)
-			{
+			if (enemyInfo.angle === undefined) {
 				continue;
 			}
 
-			if (!this.checkExistEnemy(enemyInfo.id))
-			{
-				if (enemyInfo.life === 0 || enemyInfo.isEnded)
-				{
-					if (enemyInfo.life === 0)
-					{
+			if (!this.checkExistEnemy(enemyInfo.id)) {
+				if (enemyInfo.life === 0 || enemyInfo.isEnded) {
+					if (enemyInfo.life === 0) {
 						//this means that when it's time to add enemy to the screen it's already killed
 						this.enemiesLastPositions[enemyInfo.id] = new PIXI.Point(enemyInfo.x, enemyInfo.y);
-						this.emit("removeEnemy", {id:enemyInfo.id});
+						this.emit("removeEnemy", { id: enemyInfo.id });
 					}
 
 					continue;
 				}
 
 				zombie = this.createEnemy(enemyInfo);
-				if (!zombie.isBoss)
-				{
+				if (!zombie.isBoss) {
 					zombie.setStay();
 				}
 			}
-			else
-			{
+			else {
 				zombie = this.getExistEnemy(enemyInfo.id);
 				if (
 					enemyInfo.prevTurnPoint.x === enemyInfo.x &&
 					enemyInfo.prevTurnPoint.y === enemyInfo.y
-				)
-				{
+				) {
 					enemyInfo.angle = zombie.angle;
 				}
 
-				if (!zombie.trajectoryPositionChangeInitiated)
-				{
+				if (!zombie.trajectoryPositionChangeInitiated) {
 					zombie.trajectoryPositionChangeInitiated = (zombie.position.x !== (enemyInfo.x - zombie.footPoint.x) || zombie.position.y !== (enemyInfo.y - zombie.footPoint.y))
 				}
 
 				if (!zombie.isFrozen && zombie.isStayState &&
-					zombie.trajectoryPositionChangeInitiated)
-				{
-					if (enemyInfo.allowUpdatePosition)
-					{
+					zombie.trajectoryPositionChangeInitiated) {
+					if (enemyInfo.allowUpdatePosition) {
 						zombie.setWalk();
 					}
-					else
-					{
+					else {
 						zombie.continueStayedStateAnim();
 					}
 				}
@@ -9850,10 +8570,8 @@ class GameField extends Sprite
 			zombie.life = enemyInfo.life;
 			zombie.invulnerable = enemyInfo.invulnerable;
 
-			if (enemyInfo.life != 0)
-			{
-				if (enemyInfo.isEnded && !zombie.isBoss)
-				{
+			if (enemyInfo.life != 0) {
+				if (enemyInfo.isEnded && !zombie.isBoss) {
 					zombie.visible = false;
 					zombie.destroy();
 					zombie.isEnded = true;
@@ -9863,21 +8581,18 @@ class GameField extends Sprite
 				zombie.visible = !enemies[i].isHidden;
 			}
 
-			if (zombie.isBoss || (zombie.trajectory && zombie.trajectory.points && zombie.trajectory.points[0].portal))
-			{
+			if (zombie.isBoss || (zombie.trajectory && zombie.trajectory.points && zombie.trajectory.points[0].portal)) {
 				zombie.isFireDenied = enemyInfo.isFirstStep;
 			}
 
 			zombie.upateCurrentNearbyTrajectoryPoints(enemyInfo.prevTurnPoint, enemyInfo.nextTurnPoint);
 
 			zombie.angle = enemyInfo.angle;
-			if (!zombie.appearancePositionUpdated)
-			{
+			if (!zombie.appearancePositionUpdated) {
 				zombie.position.set(enemyInfo.x - zombie.footPoint.x, enemyInfo.y - zombie.footPoint.y);
 
 				let lOptJumpOffset_num = zombie.jumpOffset;
-				if (lOptJumpOffset_num)
-				{
+				if (lOptJumpOffset_num) {
 					zombie.position.y += lOptJumpOffset_num;
 				}
 			}
@@ -9891,27 +8606,23 @@ class GameField extends Sprite
 		}
 	}
 
-	fireImmediatelyIfRequired()
-	{
-		if (this._fireSettingsInfo.autoFire)
-		{
+	fireImmediatelyIfRequired() {
+		if (this._fireSettingsInfo.autoFire) {
 			if (
-					(this._fTargetingInfo_tc.isActive && !!this.autoTargetingEnemy)
-					|| this.pointerPushed
-				)
-			{
+				(this._fTargetingInfo_tc.isActive && !!this.autoTargetingEnemy)
+				|| this.pointerPushed
+			) {
 				this._isAutoTargetingEnemyAvailableForFire && this.fireImmediately();
 			}
 		}
 
 	}
 
-	fireImmediately()
-	{
+	fireImmediately() {
 
 		this.fire({
 			data: {
-				global:{
+				global: {
 					x: this.lastPointerPos.x,
 					y: this.lastPointerPos.y,
 				}
@@ -9919,98 +8630,80 @@ class GameField extends Sprite
 		});
 	}
 
-	get isAutoFireEnabled()
-	{
+	get isAutoFireEnabled() {
 		return (this._fTargetingInfo_tc.isActive || this._fTargetingInfo_tc.isActiveTargetPaused) && this._fireSettingsInfo.autoFire;
 	}
 
-	thisCursorMove(delta)
-	{
+	thisCursorMove(delta) {
 		let isUpDown = APP.keyboardControlProxy.isUpDown;
 		let isDownDown = APP.keyboardControlProxy.isDownDown;
 
-		if (isUpDown || isDownDown)
-		{
+		if (isUpDown || isDownDown) {
 			let timeout = this._turretKeysMoveTimeout;
 			this.cursorKeysMoveTime += delta;
 
-			if (this.cursorKeysMoveTime >= timeout)
-			{
+			if (this.cursorKeysMoveTime >= timeout) {
 				this.cursorKeysMoveTime = 0;
 
-				if (isUpDown)
-				{
+				if (isUpDown) {
 					this._tryMoveCursorUp();
 				}
-				if (isDownDown)
-				{
+				if (isDownDown) {
 					this._tryMoveCursorDown();
 				}
 			}
 		}
 	}
 
-	tickTurretRotation(delta)
-	{
+	tickTurretRotation(delta) {
 		let isLeftDown = APP.keyboardControlProxy.isLeftDown;
 		let isRightDown = APP.keyboardControlProxy.isRightDown;
 
-		if (isLeftDown || isRightDown)
-		{
+		if (isLeftDown || isRightDown) {
 			let timeout = this._turretRotationTimeout;
 			this.turretRotationTime += delta;
 
-			if (this.turretRotationTime >= timeout)
-			{
+			if (this.turretRotationTime >= timeout) {
 				this.turretRotationTime = 0;
 
-				if (isRightDown)
-				{
+				if (isRightDown) {
 					this._tryRotateTurretRight();
 				}
-				if (isLeftDown)
-				{
+				if (isLeftDown) {
 					this._tryRotateTurretLeft();
 				}
 			}
 		}
 	}
 
-	tickAutoFire(delta)
-	{
+	tickAutoFire(delta) {
 		if (
-				(this.pointerPushed || this._fTargetingInfo_tc.isActive || APP.keyboardControlProxy.isSpaceDown) &&
-				this._fireSettingsInfo.autoFire
-			)
-		{
+			(this.pointerPushed || this._fTargetingInfo_tc.isActive || APP.keyboardControlProxy.isSpaceDown) &&
+			this._fireSettingsInfo.autoFire
+		) {
 			let timeout = this._autoFireTimeout;
 			this.autofireTime += delta;
 
-			if (this.autofireTime >= timeout)
-			{
+			if (this.autofireTime >= timeout) {
 				this.autofireTime = 0;
 				this.chooseFireType();
 			}
 		}
 	}
 
-	tickBullets(delta, realDelta)
-	{
+	tickBullets(delta, realDelta) {
 		let lDelta_num = realDelta;
 
-		for (let bullet of this.bullets)
-		{
+		for (let bullet of this.bullets) {
 			if (
 				bullet.isConfirmedOrDeniedByServer() &&
 				!bullet.isRequired()
-				)
-			{
+			) {
 				this.removeBullet(bullet);
 			}
 
 			//NON RICOCHET BULLETS...
-			if(!bullet.isRicochetBullet())
-			{
+			if (!bullet.isRicochetBullet()) {
 				bullet.tick(delta, realDelta);
 			}
 			//...NON RICOCHET BULLETS
@@ -10018,27 +8711,22 @@ class GameField extends Sprite
 
 
 		//RICOCHET BULLETS...
-		while(lDelta_num > 0)
-		{
+		while (lDelta_num > 0) {
 			let lStepDelta_num = 16;
 
-			if(lDelta_num < lStepDelta_num)
-			{
+			if (lDelta_num < lStepDelta_num) {
 				lStepDelta_num = lDelta_num;
 			}
 
 			lDelta_num -= lStepDelta_num;
 
-			for (let bullet of this.bullets)
-			{
+			for (let bullet of this.bullets) {
 
-				if(
+				if (
 					bullet.isRicochetBullet() &&
 					bullet.isRequired()
-					)
-				{
-					if(bullet.lasthand)
-					{
+				) {
+					if (bullet.lasthand) {
 						bullet.tick(lStepDelta_num, lStepDelta_num);
 						this.ricochetController.onBulletMove(bullet);
 					}
@@ -10046,21 +8734,18 @@ class GameField extends Sprite
 					this.ricochetController.onBulletMove(bullet);
 
 					//CHECK COLLISIONS...
-					if(bullet.isRequired() && !bullet.lasthand)
-					{
-						for( let i = 0; i < this.enemies.length; i++ )
-						{
+					if (bullet.isRequired() && !bullet.lasthand) {
+						for (let i = 0; i < this.enemies.length; i++) {
 							let lEnemy_e = this.enemies[i];
 
-							if(
+							if (
 								bullet.isRequired() &&
 								!lEnemy_e.isBehindWall() &&
 								lEnemy_e.isTargetable() &&
 								lEnemy_e.isCollision(
 									bullet.position.x,
 									bullet.position.y)
-								)
-							{
+							) {
 								bullet.onCollisionOccurred(lEnemy_e);
 								this._onCollisionOccurred(bullet, lEnemy_e);
 								bullet.setIsRequired(false);
@@ -10075,94 +8760,74 @@ class GameField extends Sprite
 		//...RICOCHET BULLETS
 	}
 
-	tickEmitters(delta)
-	{
-		if (this.emitter)
-		{
-			this.emitter.update(delta/1000);
+	tickEmitters(delta) {
+		if (this.emitter) {
+			this.emitter.update(delta / 1000);
 		}
 	}
 
-	removeBullet(bullet)
-	{
-		if (!this.bullets)
-		{
+	removeBullet(bullet) {
+		if (!this.bullets) {
 			return;
 		}
 
-		if(bullet.isRicochetBullet())
-		{
+		if (bullet.isRicochetBullet()) {
 			bullet.tryToCompleteShotIfCollisionHappenedBeforeBulletWasApprovedByServer();
 		}
 
 		let bulletIndex = this.bullets.indexOf(bullet);
-		if (bulletIndex >= 0)
-		{
+		if (bulletIndex >= 0) {
 			let bullet = this.bullets.splice(bulletIndex, 1)[0];
 		}
 
-		if(bullet.isRicochetBullet())
-		{
+		if (bullet.isRicochetBullet()) {
 			this.ricochetController.onBulletDestroy(bullet);
 		}
 
-		if (!this.isMasterBulletExist())
-		{
+		if (!this.isMasterBulletExist()) {
 			this.checkingNeedChangeBetLevelAfterFiring();
 		}
 
-		if(bullet)
-		{
+		if (bullet) {
 			bullet.destroy();
 		}
 	}
 
-	removeAllBullets()
-	{
-		while (this.bullets.length)
-		{
-			try
-			{
+	removeAllBullets() {
+		while (this.bullets.length) {
+			try {
 				this.bullets.shift().destroy();
 			}
-			catch (err)
-			{
+			catch (err) {
 				console.log("GameField.js :: removeAllBullets >> ", err);
 			}
 		}
 		this.bullets = [];
 	}
 
-	rotateLockedGun()
-	{
+	rotateLockedGun() {
 		let enemyPos;
 
-		if (this.gunLocked && this.gunLockTargetedEnemy && this.gunLockTargetedEnemy.parent)
-		{
+		if (this.gunLocked && this.gunLockTargetedEnemy && this.gunLockTargetedEnemy.parent) {
 			enemyPos = this.gunLockTargetedEnemy.getCenterPosition();
 		}
 
-		if (enemyPos)
-		{
+		if (enemyPos) {
 			this.rotateGun(enemyPos.x, enemyPos.y);
 		}
 	}
 
-	tickEnemies(delta)
-	{
-		for (let enemy of this.enemies)
-		{
+	tickEnemies(delta) {
+		for (let enemy of this.enemies) {
 			enemy.tick(delta);
 		}
 
-		for (let enemy of this.deadEnemies)
-		{
+		for (let enemy of this.deadEnemies) {
 			enemy.i_hitHiglightUpdate(delta);
 		}
 	}
 
-	_showFireSpecterExplodeAnimation()
-	{
+	_showFireSpecterExplodeAnimation() {
 		this._fSpectersExploadAnimations_arr_apr = this._fSpectersExploadAnimations_arr_apr || [];
 		const lFrame_spr = this.addChild(new Sprite);
 		lFrame_spr.textures = FireSpecterEnemy.FRAME_TEXTURES;
@@ -10173,24 +8838,23 @@ class GameField extends Sprite
 		this._fSpectersExploadAnimations_arr_apr.push(lFrame_spr);
 
 		let lAlpha_seq = [
-			{tweens: [	{prop: "alpha", to: 1}],	duration: 2 * FRAME_RATE},
-			{tweens: [	{prop: "alpha", to: 0}],	duration: 10 * FRAME_RATE, onfinish: () => {
-				const lId_num = this._fSpectersExploadAnimations_arr_apr.indexOf(lFrame_spr);
-				if (~lId_num)
-				{
-					this._fSpectersExploadAnimations_arr_apr.splice(lId_num, 1);
-					lFrame_spr.destroy();
+			{ tweens: [{ prop: "alpha", to: 1 }], duration: 2 * FRAME_RATE },
+			{
+				tweens: [{ prop: "alpha", to: 0 }], duration: 10 * FRAME_RATE, onfinish: () => {
+					const lId_num = this._fSpectersExploadAnimations_arr_apr.indexOf(lFrame_spr);
+					if (~lId_num) {
+						this._fSpectersExploadAnimations_arr_apr.splice(lId_num, 1);
+						lFrame_spr.destroy();
+					}
 				}
-			}}
+			}
 		];
 
 		Sequence.start(lFrame_spr, lAlpha_seq);
 	}
 
-	_startSpiritSpecterExplosionRingsAnimation(aEnemyPosition_obj)
-	{
-		if (this.bottomScreen)
-		{
+	_startSpiritSpecterExplosionRingsAnimation(aEnemyPosition_obj) {
+		if (this.bottomScreen) {
 			const lAnimationOffsetY = -100;
 
 			this._fSpectersExploadAnimations_arr_apr = this._fSpectersExploadAnimations_arr_apr || [];
@@ -10203,20 +8867,21 @@ class GameField extends Sprite
 			this._fSpectersExploadAnimations_arr_apr.push(lOuterRing_spr);
 
 			let lAlpha_seq = [
-				{tweens: [],							duration: 4 * FRAME_RATE},
-				{tweens: [	{prop: "alpha", to: 0}],	duration: 10 * FRAME_RATE, ease: Easing.exponential.easeOut, onfinish: () => {
-					const lId_num = this._fSpectersExploadAnimations_arr_apr.indexOf(lOuterRing_spr);
-					if (~lId_num)
-					{
-						this._fSpectersExploadAnimations_arr_apr.splice(lId_num, 1);
-						Sequence.destroy(Sequence.findByTarget(lOuterRing_spr));
-						lOuterRing_spr.destroy();
+				{ tweens: [], duration: 4 * FRAME_RATE },
+				{
+					tweens: [{ prop: "alpha", to: 0 }], duration: 10 * FRAME_RATE, ease: Easing.exponential.easeOut, onfinish: () => {
+						const lId_num = this._fSpectersExploadAnimations_arr_apr.indexOf(lOuterRing_spr);
+						if (~lId_num) {
+							this._fSpectersExploadAnimations_arr_apr.splice(lId_num, 1);
+							Sequence.destroy(Sequence.findByTarget(lOuterRing_spr));
+							lOuterRing_spr.destroy();
+						}
 					}
-				}}
+				}
 			];
 			Sequence.start(lOuterRing_spr, lAlpha_seq);
 			let lScale_seq = [
-				{tweens: [{prop: 'scale.x', to: 13}, {prop: 'scale.y', to: 13}],		duration: 14 * FRAME_RATE, ease: Easing.exponential.easeOut}
+				{ tweens: [{ prop: 'scale.x', to: 13 }, { prop: 'scale.y', to: 13 }], duration: 14 * FRAME_RATE, ease: Easing.exponential.easeOut }
 			];
 			Sequence.start(lOuterRing_spr, lScale_seq);
 
@@ -10230,28 +8895,28 @@ class GameField extends Sprite
 			this._fSpectersExploadAnimations_arr_apr.push(lInnerRing_spr);
 
 			lAlpha_seq = [
-				{tweens: [],							duration: 5 * FRAME_RATE},
-				{tweens: [	{prop: "alpha", to: 0}],	duration: 10 * FRAME_RATE, ease: Easing.exponential.easeOut, onfinish: () => {
-					const lId_num = this._fSpectersExploadAnimations_arr_apr.indexOf(lInnerRing_spr);
-					if (~lId_num)
-					{
-						this._fSpectersExploadAnimations_arr_apr.splice(lId_num, 1);
-						Sequence.destroy(Sequence.findByTarget(lInnerRing_spr));
-						lInnerRing_spr.destroy();
+				{ tweens: [], duration: 5 * FRAME_RATE },
+				{
+					tweens: [{ prop: "alpha", to: 0 }], duration: 10 * FRAME_RATE, ease: Easing.exponential.easeOut, onfinish: () => {
+						const lId_num = this._fSpectersExploadAnimations_arr_apr.indexOf(lInnerRing_spr);
+						if (~lId_num) {
+							this._fSpectersExploadAnimations_arr_apr.splice(lId_num, 1);
+							Sequence.destroy(Sequence.findByTarget(lInnerRing_spr));
+							lInnerRing_spr.destroy();
+						}
 					}
-				}}
+				}
 			];
 			Sequence.start(lInnerRing_spr, lAlpha_seq);
 			lScale_seq = [
-				{tweens: [],																duration: 1 * FRAME_RATE},
-				{tweens: [{prop: 'scale.x', to: 13}, {prop: 'scale.y', to: 13}],			duration: 14 * FRAME_RATE, ease: Easing.exponential.easeOut}
+				{ tweens: [], duration: 1 * FRAME_RATE },
+				{ tweens: [{ prop: 'scale.x', to: 13 }, { prop: 'scale.y', to: 13 }], duration: 14 * FRAME_RATE, ease: Easing.exponential.easeOut }
 			];
 			Sequence.start(lInnerRing_spr, lScale_seq);
 		}
 	}
 
-	tick(delta, realDelta)
-	{
+	tick(delta, realDelta) {
 		this.tickAutoFire(delta);
 		this.tickEmitters(delta);
 		this.rotateLockedGun();
@@ -10266,26 +8931,22 @@ class GameField extends Sprite
 		this._mapScaleTickUpdate();
 		this.spot && this.spot.tick && this.spot.tick(delta);
 
-		if (this._fCommonPanelIndicatorsData_obj)
-		{
+		if (this._fCommonPanelIndicatorsData_obj) {
 			let lCommonPanelIndicatorsData_obj = Object.assign({}, this._fCommonPanelIndicatorsData_obj);
 			this._fCommonPanelIndicatorsData_obj = null;
 
-			this.emit(GameField.EVENT_REFRESH_COMMON_PANEL_REQUIRED, { data:lCommonPanelIndicatorsData_obj } );
+			this.emit(GameField.EVENT_REFRESH_COMMON_PANEL_REQUIRED, { data: lCommonPanelIndicatorsData_obj });
 		}
 	}
 
 	//PENDING_OPERATION...
-	_onPendingOperationStarted(event)
-	{
+	_onPendingOperationStarted(event) {
 		this.resetWaitBuyIn();
 	}
 
-	_onPendingOperationCompleted(event)
-	{
+	_onPendingOperationCompleted(event) {
 		const lPlayerInfo_pi = APP.playerController.info;
-		if (lPlayerInfo_pi.isMasterServerSeatIdDefined)
-		{
+		if (lPlayerInfo_pi.isMasterServerSeatIdDefined) {
 			this._tryToBuyAmmoFromRoundResult();
 		}
 	}

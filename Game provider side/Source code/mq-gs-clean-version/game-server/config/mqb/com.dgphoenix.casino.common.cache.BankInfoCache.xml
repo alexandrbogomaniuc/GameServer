@@ -403,7 +403,7 @@
         </entry>
         <entry>
           <string>ALLOWED_ORIGIN</string>
-          <string>https://mqbase.com</string>
+          <string>https://mqbase.com,http://localhost,http://localhost:80,http://localhost:8081,http://host.docker.internal,http://host.docker.internal:80,http://host.docker.internal:8081</string>
         </entry>
         <entry>
           <string>FATAL_ERROR_PAGE_URL</string>
@@ -411,7 +411,7 @@
         </entry>
         <entry>
           <string>ALLOWED_DOMAINS</string>
-          <string>mqbase.com</string>
+          <string>mqbase.com,localhost,host.docker.internal</string>
         </entry>
         <entry>
           <string>STANDALONE_LOBBY_JSP</string>
@@ -1141,7 +1141,7 @@
         </entry>
         <entry>
           <string>ALLOWED_ORIGIN</string>
-          <string>https://mqbase.com</string>
+          <string>https://mqbase.com,http://localhost,http://localhost:80,http://localhost:8081,http://host.docker.internal,http://host.docker.internal:80,http://host.docker.internal:8081</string>
         </entry>
         <entry>
           <string>FATAL_ERROR_PAGE_URL</string>
@@ -1149,7 +1149,7 @@
         </entry>
         <entry>
           <string>ALLOWED_DOMAINS</string>
-          <string>mqbase.com</string>
+          <string>mqbase.com,localhost,host.docker.internal</string>
         </entry>
         <entry>
           <string>STANDALONE_LOBBY_JSP</string>

@@ -70,7 +70,8 @@ public abstract class CommonActionForm extends ActionForm {
         ActionErrors actionErrors = new ActionErrors();
         this.host = request.getRemoteHost();
         String serverName = request.getServerName();
-        //getLogger().warn("serverName=" + serverName + ", request=" + request + ", host=" + request.getHeader("Host"));
+        // getLogger().warn("serverName=" + serverName + ", request=" + request + ",
+        // host=" + request.getHeader("Host"));
 
         try {
             String strSubCasinoId = request.getParameter("subCasinoId");
@@ -78,6 +79,13 @@ public abstract class CommonActionForm extends ActionForm {
                 subCasinoId = Short.parseShort(strSubCasinoId);
             } else {
                 SubCasino subCasino = SubCasinoCache.getInstance().getSubCasinoByDomainName(serverName);
+
+                // FIX: Handle Nginx Proxy sending "localhost" while DB expects "localhost:8081"
+                if (subCasino == null && "localhost".equals(serverName)) {
+                    ThreadLog.info("Localhost lookup failed, trying 'localhost:8081' fallback");
+                    subCasino = SubCasinoCache.getInstance().getSubCasinoByDomainName("localhost:8081");
+                }
+
                 if (subCasino == null) {
                     actionErrors.add(VALID_NAME, new ActionMessage(incorrectSubCasino));
                     return actionErrors;
@@ -156,7 +164,8 @@ public abstract class CommonActionForm extends ActionForm {
         String requestIp = request.getRemoteAddr();
         if (GameServerConfiguration.getInstance().isIpTrusted(requestIp)) {
             getLogger().debug("CommonActionForm::checkLaunchPermission ip " + requestIp + " is trusted");
-            StatisticsManager.getInstance().updateRequestStatistics("checkLaunchPermission::ip trusted", System.currentTimeMillis() - start);
+            StatisticsManager.getInstance().updateRequestStatistics("checkLaunchPermission::ip trusted",
+                    System.currentTimeMillis() - start);
             return;
         }
 
@@ -166,13 +175,16 @@ public abstract class CommonActionForm extends ActionForm {
 
         if (GameServerConfiguration.getInstance().isCountryTrusted(requestIp)) {
             if (bankInfo.isDomainAllowed(requestDomain)) {
-                getLogger().debug("CommonActionForm::checkLaunchPermission domain " + requestDomain + " is trusted for bankId: "
-                        + bankInfo.getId());
-                StatisticsManager.getInstance().updateRequestStatistics("checkLaunchPermission::domain trusted", System.currentTimeMillis() - start);
+                getLogger().debug(
+                        "CommonActionForm::checkLaunchPermission domain " + requestDomain + " is trusted for bankId: "
+                                + bankInfo.getId());
+                StatisticsManager.getInstance().updateRequestStatistics("checkLaunchPermission::domain trusted",
+                        System.currentTimeMillis() - start);
                 return;
             }
         }
-        StatisticsManager.getInstance().updateRequestStatistics("checkLaunchPermission::launch denied", System.currentTimeMillis() - start);
+        StatisticsManager.getInstance().updateRequestStatistics("checkLaunchPermission::launch denied",
+                System.currentTimeMillis() - start);
         getLogger().debug("CommonActionForm::checkLaunchPermission validation fail: access for 'ip " +
                 requestIp + ", referer " + requestDomain + "' denied for bankId: " + bankInfo.getId());
         errors.add(VALID_NAME, new ActionMessage("error.startgame.launchDenied"));

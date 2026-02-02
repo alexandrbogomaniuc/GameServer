@@ -59,8 +59,6 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
     protected ConcurrentMap<String, Disposable> latencyDisposables = new ConcurrentHashMap<>();
 
     public AbstractWebSocketHandler() {
-        System.out.println("--- DEPLOYMENT VERSION: v20260116-1645 ---");
-        System.out.println("--- WEB SOCKET HANDLER INSTANTIATED ---");
         handlers = new HashMap<>();
         dataBufferFactory = new NettyDataBufferFactory(ByteBufAllocator.DEFAULT);
         localDevOriginsAllowed = false;
@@ -81,8 +79,7 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
     protected void startPing(WebSocketSession session, FluxSink<WebSocketMessage> sink) {
         Flux.interval(Duration.ofSeconds(PING_INTERVAL))
                 .takeUntil(i -> !isConnected(session))
-                .map(i -> session.pingMessage(
-                        factory -> factory.wrap(AESEncryptionDecryption.encryptTimestamp(System.currentTimeMillis()))))
+                .map(i -> session.pingMessage(factory -> factory.wrap(AESEncryptionDecryption.encryptTimestamp(System.currentTimeMillis()))))
                 .doOnNext(sink::next)
                 .subscribeOn(Schedulers.elastic())
                 .subscribe();
@@ -92,16 +89,14 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
         T client = getClient(session);
         // Store the subscription so that it can be disposed of later
         return Flux.interval(Duration.ofSeconds(latencyIntervalSec))
-                .doOnTerminate(() -> System.out.println(
-                        "startLatencyMeasurement: Terminating latency measurement for session " + session.getId()))
-                .subscribe(e -> client.sendMessage(Latency.Builder.newBuilder(System.currentTimeMillis(), -1, 1)
-                        .withServerTs(System.currentTimeMillis())
-                        .build())
+                .doOnTerminate(() -> System.out.println("startLatencyMeasurement: Terminating latency measurement for session " + session.getId()))
+                .subscribe(e ->
+                                client.sendMessage(Latency.Builder.newBuilder(System.currentTimeMillis(), -1, 1)
+                                        .withServerTs(System.currentTimeMillis())
+                                        .build())
 
                         , error -> {
-                            getLog().error(
-                                    "startLatencyMeasurement: Error during latency measurement for session {}. Error: {}",
-                                    session.getId(), error.getMessage());
+                            getLog().error("startLatencyMeasurement: Error during latency measurement for session {}. Error: {}", session.getId(), error.getMessage());
                         });
 
     }
@@ -131,19 +126,17 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
         return handlers.get(klass);
     }
 
+
     public boolean isAllowedOrigin(String origin) {
         URL url = null;
         try {
             url = new URL(origin);
         } catch (MalformedURLException e) {
-            // allow if origin is wrong, because we allow also if origin == null ||
-            // origin.isEmpty()
+            //allow if origin is wrong, because we allow also if origin == null || origin.isEmpty()
             return true;
         }
 
         String host = url.getHost();
-        getLog().error("DEBUG_ORIGIN_CHECK [v20260116-1400]: origin='{}', host='{}', localDevAllowed={}", origin, host,
-                isLocalDevOriginsAllowed());
 
         return isLocalDevOriginsAllowed()
                 || origin == null || origin.isEmpty()
@@ -158,8 +151,7 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
                 || host.endsWith(".mdtest.io")
                 || host.endsWith(".mdbase.io")
                 || host.endsWith(".maxduel.com")
-                || host.endsWith(".maxduel.io")
-                || host.equals("localhost");
+                || host.endsWith(".maxduel.io");
     }
 
     @Override
@@ -179,12 +171,17 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
         }
 
         Mono<Void> outbound = session.send(
-                Flux.create((FluxSink<WebSocketMessage> sink) -> createConnection(session, sink),
-                        FluxSink.OverflowStrategy.BUFFER)
-                        .doFinally(s -> closeConnection(session)));
+                Flux.create((FluxSink<WebSocketMessage> sink) ->
+                                createConnection(session, sink), FluxSink.OverflowStrategy.BUFFER
+                        )
+                        .doFinally(s ->
+                                closeConnection(session)
+                        )
+        );
 
         Mono<Void> inbound = session.receive()
-                .doOnNext(message -> processMessage(session, message))
+                .doOnNext(message ->
+                        processMessage(session, message))
                 .then();
 
         return Mono.when(outbound, inbound);
@@ -192,8 +189,7 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
 
     void processMessage(WebSocketSession session, WebSocketMessage message) {
         if (WebSocketMessage.Type.PONG.equals(message.getType())) {
-            if (latencyPingTypeEnabled
-                    && (this instanceof GameWebSocketHandler || this instanceof UnifiedWebSocketHandler)) {
+            if (latencyPingTypeEnabled && (this instanceof GameWebSocketHandler || this instanceof  UnifiedWebSocketHandler)) {
                 measurePingLatency(message, session);
             }
             return;
@@ -225,14 +221,12 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
         if (handler != null) {
             try {
                 RequestStatistic requestStatistic = client.getRequestStatistic(tMessage.getClass());
-                if (requestStatistic != null
-                        && !handler.isLimitApproved(tMessage, requestStatistic, tMessage.getFrequencyLimit())) {
+                if (requestStatistic != null && !handler.isLimitApproved(tMessage, requestStatistic, tMessage.getFrequencyLimit())) {
                     sendMessage(client, createErrorMessage(ErrorCodes.REQUEST_FREQ_LIMIT_EXCEEDED, "Too many requests",
                             tMessage.getRid()));
                 } else {
 
-                    client.addRequestStatistic(tMessage.getClass(), tMessage.getRid(), System.currentTimeMillis(),
-                            tMessage.getDate());
+                    client.addRequestStatistic(tMessage.getClass(), tMessage.getRid(), System.currentTimeMillis(), tMessage.getDate());
 
                     handler.handle(session, tMessage, client);
 
@@ -261,7 +255,7 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
     abstract void onSuccess(TObject message, T client);
 
     protected boolean isDropOnBadMessage() {
-        // todo: must be configurable, true on production, false on dev/staging
+        //todo: must be configurable, true on production, false on dev/staging
         return false;
     }
 
@@ -306,10 +300,7 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
                 " avg: " + client.getLatencyStatistic().getAvgValue() + " ms;" +
                 " min: " + client.getLatencyStatistic().getMinValue() + " ms;" +
                 " max: " + client.getLatencyStatistic().getMaxValue() + " ms;" +
-                " ["
-                + (StringUtils.isTrimmedEmpty(client.getLatencyStatistic().getMaxValueInfo()) ? ""
-                        : client.getLatencyStatistic().getMaxValueInfo())
-                + "] " +
+                " [" + (StringUtils.isTrimmedEmpty(client.getLatencyStatistic().getMaxValueInfo()) ? "" : client.getLatencyStatistic().getMaxValueInfo()) + "] " +
                 " maxValueTime: " + (new Date(client.getLatencyStatistic().getMaxValueTime()));
 
         String sessionPingStat = client.getPingLatencyStatistic().getName() + "; " +
@@ -317,10 +308,7 @@ public abstract class AbstractWebSocketHandler<T extends ISocketClient> implemen
                 " avg: " + client.getPingLatencyStatistic().getAvgValue() + " ms;" +
                 " min: " + client.getPingLatencyStatistic().getMinValue() + " ms;" +
                 " max: " + client.getPingLatencyStatistic().getMaxValue() + " ms;" +
-                " ["
-                + (StringUtils.isTrimmedEmpty(client.getPingLatencyStatistic().getMaxValueInfo()) ? ""
-                        : client.getPingLatencyStatistic().getMaxValueInfo())
-                + "] " +
+                " [" + (StringUtils.isTrimmedEmpty(client.getPingLatencyStatistic().getMaxValueInfo()) ? "" : client.getPingLatencyStatistic().getMaxValueInfo()) + "] " +
                 " maxValueTime: " + (new Date(client.getPingLatencyStatistic().getMaxValueTime()));
 
         if (latencyStandardTypeEnabled) {

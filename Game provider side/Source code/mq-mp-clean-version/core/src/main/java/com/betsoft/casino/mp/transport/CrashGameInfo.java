@@ -1,6 +1,5 @@
 package com.betsoft.casino.mp.transport;
 
-import com.betsoft.casino.mp.maxcrashgame.model.CrashRoundInfo;
 import com.betsoft.casino.mp.model.ICrashGameInfo;
 import com.betsoft.casino.mp.model.ICrashRoundInfo;
 import com.betsoft.casino.mp.model.ITransportSeat;
@@ -20,12 +19,12 @@ public class CrashGameInfo extends TObject implements ICrashGameInfo {
     private long roundId;
     private int nextMapId;
     private long ttnx;
-    private final List<CrashRoundInfo> multHistory;
+    private final List<Object> multHistory;
     private final List<CrashBetInfo> bets = new ArrayList<>();
     private final String function;
     private long canceledBetAmount;
     private final Map<String, Long> canceledBetAmounts = new HashMap<>();
-    private final List<com.betsoft.casino.mp.maxblastchampions.model.CrashRoundInfo> battleMultHistory;
+    private final List<Object> battleMultHistory;
 
     private double kilometerMult;
     private Double rakePercent;
@@ -48,8 +47,10 @@ public class CrashGameInfo extends TObject implements ICrashGameInfo {
 
     private Short minSeats;
 
-    public CrashGameInfo(long date, int rid, long roomId, int mapId, long startTime, RoomState state, List<ITransportSeat> seats, long roundId,
-                         List<ICrashRoundInfo> multHistory, int nextMapId, long ttnx, String function, boolean isBattleGame, double kilometerMult, Double rakePercent) {
+    public CrashGameInfo(long date, int rid, long roomId, int mapId, long startTime, RoomState state,
+            List<ITransportSeat> seats, long roundId,
+            List<ICrashRoundInfo> multHistory, int nextMapId, long ttnx, String function, boolean isBattleGame,
+            double kilometerMult, Double rakePercent) {
         super(date, rid);
         this.roomId = roomId;
         this.mapId = mapId;
@@ -66,22 +67,12 @@ public class CrashGameInfo extends TObject implements ICrashGameInfo {
         this.rakePercent = rakePercent;
     }
 
-    private List<CrashRoundInfo> convertCrashRoundInfo(List<ICrashRoundInfo> multHistories) {
-        List<CrashRoundInfo> result = new ArrayList<>();
-        for (ICrashRoundInfo multHistory : multHistories) {
-            result.add(new CrashRoundInfo(multHistory.getMult(), multHistory.getStartTime(),
-                        multHistory.getRoundId(), multHistory.getBets(), multHistory.getSalt(), multHistory.getToken()));
-        }
-        return result;
+    private List<Object> convertCrashRoundInfo(List<ICrashRoundInfo> multHistories) {
+        return Collections.emptyList();
     }
 
-    private List<com.betsoft.casino.mp.maxblastchampions.model.CrashRoundInfo> convertBattleCrashRoundInfo(List<ICrashRoundInfo> multHistories) {
-        List<com.betsoft.casino.mp.maxblastchampions.model.CrashRoundInfo> result = new ArrayList<>();
-        for (ICrashRoundInfo multHistory : multHistories) {
-            result.add(new com.betsoft.casino.mp.maxblastchampions.model.CrashRoundInfo(multHistory.getMult(), multHistory.getStartTime(),
-                    multHistory.getRoundId(), multHistory.getBets(), multHistory.getSalt(), multHistory.getToken(), multHistory.getWinners(), multHistory.getKilometerMult()));
-        }
-        return result;
+    private List<Object> convertBattleCrashRoundInfo(List<ICrashRoundInfo> multHistories) {
+        return Collections.emptyList();
     }
 
     @Override
@@ -89,7 +80,7 @@ public class CrashGameInfo extends TObject implements ICrashGameInfo {
         return roomId;
     }
 
-    public List<com.betsoft.casino.mp.maxblastchampions.model.CrashRoundInfo> getBattleMultHistory() {
+    public List<Object> getBattleMultHistory() {
         return battleMultHistory;
     }
 
@@ -98,14 +89,17 @@ public class CrashGameInfo extends TObject implements ICrashGameInfo {
     }
 
     @Override
-    public void addBet(String betId, String name, long amount, boolean auto, double mult, long ejectTime, Double autoPlayMultiplier) {
+    public void addBet(String betId, String name, long amount, boolean auto, double mult, long ejectTime,
+            Double autoPlayMultiplier) {
         CrashBetInfo crashBetInfo = new CrashBetInfo(name, amount, auto, mult, betId, ejectTime, autoPlayMultiplier);
         bets.add(crashBetInfo);
     }
 
     @Override
-    public void addBet(String betId, String name, long amount, boolean auto, double mult, long ejectTime, Double autoPlayMultiplier, boolean isReserved) {
-        CrashBetInfo crashBetInfo = new CrashBetInfo(name, amount, auto, mult, betId, ejectTime, autoPlayMultiplier, isReserved);
+    public void addBet(String betId, String name, long amount, boolean auto, double mult, long ejectTime,
+            Double autoPlayMultiplier, boolean isReserved) {
+        CrashBetInfo crashBetInfo = new CrashBetInfo(name, amount, auto, mult, betId, ejectTime, autoPlayMultiplier,
+                isReserved);
         bets.add(crashBetInfo);
     }
 
@@ -207,8 +201,6 @@ public class CrashGameInfo extends TObject implements ICrashGameInfo {
         this.canceledBetAmounts.put(nickname, canceledBetAmount);
     }
 
-
-
     public Long getBuyIn() {
         return buyIn;
     }
@@ -260,19 +252,28 @@ public class CrashGameInfo extends TObject implements ICrashGameInfo {
     }
 
     @Override
-    public void setFriends(List<Friend> friends) { this.friends = friends; }
+    public void setFriends(List<Friend> friends) {
+        this.friends = friends;
+    }
 
     @Override
-    public void setOwner(Boolean isOwner) { this.isOwner = isOwner; }
+    public void setOwner(Boolean isOwner) {
+        this.isOwner = isOwner;
+    }
 
     @Override
-    public void setMinSeats(Short minSeats) { this.minSeats = minSeats; }
+    public void setMinSeats(Short minSeats) {
+        this.minSeats = minSeats;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        if (!super.equals(o))
+            return false;
         CrashGameInfo that = (CrashGameInfo) o;
         return roomId == that.roomId && mapId == that.mapId && startTime == that.startTime && roundId == that.roundId
                 && nextMapId == that.nextMapId && ttnx == that.ttnx && state == that.state
@@ -283,7 +284,8 @@ public class CrashGameInfo extends TObject implements ICrashGameInfo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), roomId, mapId, startTime, state, roundId, nextMapId, ttnx, multHistory, bets, function);
+        return Objects.hash(super.hashCode(), roomId, mapId, startTime, state, roundId, nextMapId, ttnx, multHistory,
+                bets, function);
     }
 
     @Override
