@@ -20,7 +20,7 @@ To build, deploy, and run a reliable Game Server for the iGaming platform, ensur
 * **Build Success:** `gsn-web-gs` built successfully.
 * **WebSocket Fix:** Identified and fixed `ws://games/1` error by patching `AbstractStartGameUrlHandler` in MP Server.
 * **Duplicate Class Fix:** Removed/Patched duplicate `BaseStartGameAction.java` that was overriding fixes.
-* **Client Fix:** Fixed `GlowingSprite.js` `TypeError` by explicitly passing `glowColor` to PIXI filter.
+* **Git Synchronization:** Resolved over 7,000 changes, cleaned up repository with .gitignore, and synced in chunks to GitHub.
 
 ### 🚧 In Progress (Current Focus)
 * **Pivot to Standalone RNG**
