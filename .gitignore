@@ -22,3 +22,16 @@ node_modules/
 Thumbs.db
 ~$*
 
+# Temp logs and debug files
+*.log
+*.txt
+*.html
+*.json
+temp_*
+deploy/
+stats_app/
+tools/
+launch_chrome_debug.ps1
+rebuild_mp_lobby.ps1
+setup_env.ps1
+deploy-static-global.ps1
