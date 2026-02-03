@@ -296,12 +296,11 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
         String roomWebSocketUrl;
         if (host.endsWith("mp.local") || host.endsWith("mp.local.com") || host.endsWith(".mydomain")
                 || "localhost".equals(host) || "127.0.0.1".equals(host)) { // hack for local/dev deploy
-            roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + host + ":8081/websocket/";
+            roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + host + ":8081/webSocket";
         } else {
             roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + "games" + domain + "/" + serverId
-                    + "/websocket/";
+                    + "/webSocket";
         }
-        roomWebSocketUrl += gameType.isCrashGame() ? "mpunified" : "mpgame";
 
         return "?SID=" + client.getSessionId() +
                 "&serverId=" + serverConfig.getId() +
