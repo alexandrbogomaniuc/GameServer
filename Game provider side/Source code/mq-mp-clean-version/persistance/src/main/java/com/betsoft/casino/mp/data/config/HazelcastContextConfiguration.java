@@ -71,8 +71,10 @@ public class HazelcastContextConfiguration implements ApplicationContextAware {
                         MultiNodeRoomInfoPersister multiNodeRoomInfoPersister,
                         MultiNodeSeatPersister multiNodeSeatPersister,
                         RoomPlayerInfoPersister roomPlayerInfoPersister,
-                        BotConfigInfoPersister botConfigInfoPersister,
-                        BotServiceConfigPersister botServiceConfigPersister,
+                        /*
+                         * BotConfigInfoPersister botConfigInfoPersister,
+                         * BotServiceConfigPersister botServiceConfigPersister,
+                         */
                         BGPrivateRoomPlayersStatusPersister bgPrivateRoomPlayersStatusPersister,
                         FriendsPersister friendsPersister,
                         OnlinePlayerPersister onlinePlayerPersister,
@@ -253,24 +255,26 @@ public class HazelcastContextConfiguration implements ApplicationContextAware {
                                                                 .setInitialLoadMode(
                                                                                 MapStoreConfig.InitialLoadMode.EAGER)
                                                                 .setImplementation(serverConfigPersister)))
-                                .addMapConfig(new MapConfig(BotConfigInfoService.BOT_CONFIG_INFO_STORE)
-                                                .setBackupCount(1)
-                                                .setAsyncBackupCount(1)
-                                                .setEvictionPolicy(EvictionPolicy.NONE)
-                                                .setMapStoreConfig(new MapStoreConfig()
-                                                                .setEnabled(true)
-                                                                .setInitialLoadMode(
-                                                                                MapStoreConfig.InitialLoadMode.EAGER)
-                                                                .setImplementation(botConfigInfoPersister)))
-                                .addMapConfig(new MapConfig(BotConfigInfoService.BOT_SERVICE_CONFIG)
-                                                .setBackupCount(1)
-                                                .setAsyncBackupCount(1)
-                                                .setEvictionPolicy(EvictionPolicy.NONE)
-                                                .setMapStoreConfig(new MapStoreConfig()
-                                                                .setEnabled(true)
-                                                                .setInitialLoadMode(
-                                                                                MapStoreConfig.InitialLoadMode.EAGER)
-                                                                .setImplementation(botServiceConfigPersister)))
+                                /*
+                                 * .addMapConfig(new MapConfig(BotConfigInfoService.BOT_CONFIG_INFO_STORE)
+                                 * .setBackupCount(1)
+                                 * .setAsyncBackupCount(1)
+                                 * .setEvictionPolicy(EvictionPolicy.NONE)
+                                 * .setMapStoreConfig(new MapStoreConfig()
+                                 * .setEnabled(true)
+                                 * .setInitialLoadMode(
+                                 * MapStoreConfig.InitialLoadMode.EAGER)
+                                 * .setImplementation(botConfigInfoPersister)))
+                                 * .addMapConfig(new MapConfig(BotConfigInfoService.BOT_SERVICE_CONFIG)
+                                 * .setBackupCount(1)
+                                 * .setAsyncBackupCount(1)
+                                 * .setEvictionPolicy(EvictionPolicy.NONE)
+                                 * .setMapStoreConfig(new MapStoreConfig()
+                                 * .setEnabled(true)
+                                 * .setInitialLoadMode(
+                                 * MapStoreConfig.InitialLoadMode.EAGER)
+                                 * .setImplementation(botServiceConfigPersister)))
+                                 */
                                 .addMapConfig(new MapConfig(BGPrivateRoomPlayersStatusService.ROOM_PLAYER_STATUS_STORE)
                                                 .setBackupCount(1)
                                                 .setAsyncBackupCount(1)
@@ -318,14 +322,16 @@ public class HazelcastContextConfiguration implements ApplicationContextAware {
                                                                 .setInitialLoadMode(
                                                                                 MapStoreConfig.InitialLoadMode.EAGER)
                                                                 .setImplementation(socketClientCountPersister)))
-                                .addMapConfig(new MapConfig(BotManagerService.ACTIVE_BOTS_STORE)
-                                                .setBackupCount(1)
-                                                .setAsyncBackupCount(1)
-                                                .setEvictionPolicy(EvictionPolicy.NONE))
-                                .addMapConfig(new MapConfig(BotManagerService.BOTS_LOCK_STORE)
-                                                .setBackupCount(1)
-                                                .setAsyncBackupCount(1)
-                                                .setEvictionPolicy(EvictionPolicy.NONE))
+                                /*
+                                 * .addMapConfig(new MapConfig(BotManagerService.ACTIVE_BOTS_STORE)
+                                 * .setBackupCount(1)
+                                 * .setAsyncBackupCount(1)
+                                 * .setEvictionPolicy(EvictionPolicy.NONE))
+                                 * .addMapConfig(new MapConfig(BotManagerService.BOTS_LOCK_STORE)
+                                 * .setBackupCount(1)
+                                 * .setAsyncBackupCount(1)
+                                 * .setEvictionPolicy(EvictionPolicy.NONE))
+                                 */
                                 .addMapConfig(new MapConfig(RoomPlayerInfoService.ROOM_PLAYER_INFO_STORE)
                                                 .setBackupCount(1)
                                                 .setEvictionPolicy(EvictionPolicy.LRU)
@@ -443,15 +449,19 @@ public class HazelcastContextConfiguration implements ApplicationContextAware {
                 return getKeyspaceManager(persistenceManager).getPersister(MultiNodeSeatPersister.class);
         }
 
-        @Bean
-        public BotConfigInfoPersister botConfigInfoPersister(CassandraPersistenceManager persistenceManager) {
-                return getKeyspaceManager(persistenceManager).getPersister(BotConfigInfoPersister.class);
-        }
-
-        @Bean
-        public BotServiceConfigPersister botServiceConfigPersister(CassandraPersistenceManager persistenceManager) {
-                return getKeyspaceManager(persistenceManager).getPersister(BotServiceConfigPersister.class);
-        }
+        // @Bean
+        // public BotConfigInfoPersister
+        // botConfigInfoPersister(CassandraPersistenceManager persistenceManager) {
+        // return
+        // getKeyspaceManager(persistenceManager).getPersister(BotConfigInfoPersister.class);
+        // }
+        //
+        // @Bean
+        // public BotServiceConfigPersister
+        // botServiceConfigPersister(CassandraPersistenceManager persistenceManager) {
+        // return
+        // getKeyspaceManager(persistenceManager).getPersister(BotServiceConfigPersister.class);
+        // }
 
         @Bean
         public BGPrivateRoomPlayersStatusPersister bgPrivateRoomPlayersStatusPersister(

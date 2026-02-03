@@ -44,3 +44,6 @@ To build, deploy, and run a reliable Game Server for the iGaming platform, ensur
 * **Git:** Fixed commit lock issue.
 * **MP Server:** URL generation logic for `mpgame` is in `AbstractStartGameUrlHandler`, NOT Game Server.
 * **Client Code:** Client JS is served from `gsn-web-gs` WAR, so client edits must be synced there.
+* **Tools Routes:**
+    * ATS Config: `http://localhost:8081/ats/listAts.jsp` (Check Port 8081)
+    * Test Connection: `http://localhost:8081/support/testconnection/index.html`

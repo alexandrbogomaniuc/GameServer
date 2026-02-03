@@ -16,7 +16,15 @@ services:
       - "9000:9000"
     environment:
       - CLUSTER_TYPE=${CLUSTER_TYPE}
-    command: sh -c "echo DEBUG_START_GP3; ls -la /var/lib/jetty/webapps; /wait-for-cassandra-and-start.sh && java -DGS_SERVER_ID=1 -Xmx512m -Xdebug -agentlib:jdwp=transport=dt_socket,address=9000,server=y,suspend=n -Dcommon_log_level=DEBUG -jar /usr/local/jetty/start.jar"
+      - kafka.hosts=kafka:9092
+      - kafka.topic.send.to.mp=gs-send-to-mp
+      - kafka.topic.reply.from.mp=gs-reply-from-mp
+      - kafka.topic.receive.from.mp=gs-receive-from-mp
+      - kafka.topic.reply.to.mp=gs-reply-to-mp
+      - kafka.topic.send.in-service=gs-send-in-service
+      - kafka.topic.reply.in-service=gs-reply-in-service
+      - kafka.timeout.ms=15000
+    command: sh -c "echo DEBUG_START_GP3; ls -la /var/lib/jetty/webapps; /wait-for-cassandra-and-start.sh && java -DGS_SERVER_ID=1 -Dkafka.hosts=kafka:9092 -Dkafka.topic.send.to.mp=gs-send-to-mp -Dkafka.topic.reply.from.mp=gs-reply-from-mp -Dkafka.topic.receive.from.mp=gs-receive-from-mp -Dkafka.topic.reply.to.mp=gs-reply-to-mp -Dkafka.topic.send.in-service=gs-send-in-service -Dkafka.topic.reply.in-service=gs-reply-in-service -Dkafka.timeout.ms=15000 -Xmx512m -Xdebug -agentlib:jdwp=transport=dt_socket,address=9000,server=y,suspend=n -Dcommon_log_level=DEBUG -Dorg.eclipse.jetty.annotations.maxWait=300 -jar /usr/local/jetty/start.jar"
     depends_on:
       - "c1"
 
@@ -66,6 +74,53 @@ services:
     environment:
       - HOSTNAME=mp-lobby-local
       - SERVER_VM_IP=172.18.0.10
+      - mpserver.domain=${LOBBY_DOMAIN}
+      - mpserver.domain.servername=
+      - logger.dir=/usr/local/tomcat/logs
+      - server.port=8080
+      - server.host=mp-lobby
+      - server.jetty.host=mp-lobby
+      - server.jetty.port=8080
+      - server.jetty.webroot=/usr/local/tomcat/webapps
+      - cluster.name=development
+      - kafka.hosts=kafka:9092
+      - kafka.topic.send.to.gs=gs-receive-from-mp
+      - kafka.topic.reply.from.gs=gs-reply-to-mp
+      - kafka.topic.receive.from.gs=gs-send-to-mp
+      - kafka.topic.reply.to.gs=gs-reply-from-mp
+      - kafka.topic.send.in-service=gs-send-in-service
+      - kafka.topic.reply.in-service=gs-reply-in-service
+      - kafka.topic.send.to.bs=mp-send-to-bs
+      - kafka.topic.reply.from.bs=mp-reply-from-bs
+      - zookeeper.connect=zookeeper:2181
+      - zookeeper.pool-size=50
+      - zookeeper.ttl-millis=3000
+      - zookeeper.heartbeat-interval=500
+      - zookeeper.server-id-path=/game_servers
+      - zookeeper.server-id-pool-path=/game_servers_pool
+      - google.cloud.bigquery.enabled=false
+      - google.cloud.project.id=none
+      - google.cloud.bigquery.dataset.name=none
+      - google.cloud.bigquery.connect.timeout=1000
+      - google.cloud.bigquery.valid.currencies=EUR,USD
+      - canex.async.request.number.of.threads=10
+      - room.state.monitor.enabled=false
+      - room.state.monitor.period=1000
+      - maxblastchampions.bg.private.startround.players.min=2
+      - websocket.latency.interval.sec=30
+      - websocket.latency.threshold.ms=500
+      - websocket.latency.game.session.threshold.ms=1000
+      - websocket.latency.standard.type.enabled=true
+      - websocket.latency.ping.type.enabled=true
+      - teststand.excludes=none
+      - ticketed.draw.ssh.host=none
+      - ticketed.draw.ssh.port=22
+      - ticketed.draw.ssh.user=none
+      - ticketed.draw.ssh.pass=none
+      - ticketed.draw.upload.path=/tmp
+      - mqb.botserver.thift.host=none
+      - mqb.botserver.thift.port=9090
+      - server.botDuels=false
     volumes:
       - "${WEBAPP_DIR}/mp-lobby:/usr/local/tomcat/webapps"
     depends_on:

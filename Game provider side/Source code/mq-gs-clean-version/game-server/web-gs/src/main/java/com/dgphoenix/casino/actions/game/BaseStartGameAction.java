@@ -541,15 +541,15 @@ public abstract class BaseStartGameAction<F extends CommonStartGameForm, L exten
 
         // Expanded check to catch 'games', 'games/', 'local', or 'gs1-mp.local'
         if (StringUtils.isTrimmedEmpty(mpLobbyUrl) || mpLobbyUrl.contains("gs1-mp.local") || mpLobbyUrl.equals("local")
-                || mpLobbyUrl.toLowerCase().contains("games")) {
+                || mpLobbyUrl.toLowerCase().contains("games") || mpLobbyUrl.contains("127.0.0.1")) {
             LOG.error("MP_LOBBY_WS_URL invalid/bad for bank=" + bankInfo.getId() + " found="
-                    + mpLobbyUrl + ". FORCE RESETTING to localhost:8080");
-            mpLobbyUrl = "localhost:8080";
+                    + mpLobbyUrl + ". FORCE RESETTING to localhost");
+            mpLobbyUrl = "localhost";
         }
 
         if (StringUtils.isTrimmedEmpty(mpLobbyUrl)) {
-            LOG.error("MP_LOBBY_WS_URL final check failed (empty). Defaulting to localhost:8080");
-            mpLobbyUrl = "localhost:8080";
+            LOG.error("MP_LOBBY_WS_URL final check failed (empty). Defaulting to localhost");
+            mpLobbyUrl = "localhost";
         }
 
         String forwardedScheme = request.getHeader("X-Forwarded-Proto");

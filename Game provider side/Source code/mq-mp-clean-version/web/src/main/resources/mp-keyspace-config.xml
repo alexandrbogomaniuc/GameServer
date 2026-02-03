@@ -146,10 +146,7 @@
             <className>com.betsoft.casino.mp.data.persister.BotServiceConfigPersister</className>
             <enabled>true</enabled>
         </ColumnFamily>
-        <ColumnFamily>
-            <className>com.betsoft.casino.mp.data.persister.CrashGameStatePersister</className>
-            <enabled>true</enabled>
-        </ColumnFamily>
+
         <ColumnFamily>
             <className>com.betsoft.casino.mp.data.persister.PendingOperationPersister</className>
             <enabled>true</enabled>

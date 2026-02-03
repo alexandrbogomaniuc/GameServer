@@ -892,10 +892,10 @@ public abstract class BaseStartGameAction<T extends ActionForm & IStartGameForm>
 
         if (StringUtils.isTrimmedEmpty(mpLobbyUrl) || mpLobbyUrl.contains("gs1-mp.local") || mpLobbyUrl.equals("local")
                 || mpLobbyUrl.toLowerCase().contains("games")
-                || mpLobbyUrl.contains("localhost:8080")) {
+                || mpLobbyUrl.contains("localhost:8080") || mpLobbyUrl.contains("127.0.0.1")) {
             LOG.error("MP_LOBBY_WS_URL property not found or invalid for bank=" + bankInfo.getId() + " found="
-                    + mpLobbyUrl + ". Resetting to 127.0.0.1");
-            mpLobbyUrl = "127.0.0.1";
+                    + mpLobbyUrl + ". Resetting to localhost");
+            mpLobbyUrl = "localhost";
         }
 
         String forwardedScheme = request.getHeader("X-Forwarded-Proto");

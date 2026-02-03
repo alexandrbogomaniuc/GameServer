@@ -37,28 +37,28 @@ public class LobbyWebSocketHandler extends AbstractWebSocketHandler<LobbySocketC
 
     @Autowired
     public LobbyWebSocketHandler(IMessageSerializer serializer,
-                                 LobbySessionService lobbySessionService,
-                                 RoomPlayerInfoService playerInfoService,
-                                 RoomPlayersMonitorService roomPlayersMonitorService,
-                                 ServerConfigService serverConfigService,
-                                 EnterLobbyHandler enterLobbyHandler,
-                                 GetRoomInfoHandler getRoomInfoHandler,
-                                 GetStartGameUrlHandler getStartGameUrlHandler,
-                                 CheckNicknameAvailabilityHandler checkNicknameAvailabilityHandler,
-                                 ChangeNicknameHandler changeNicknameHandler,
-                                 ChangeAvatarHandler changeAvatarHandler,
-                                 LobbyRefreshBalanceHandler lobbyRefreshBalanceHandler,
-                                 GetTimeHandler getTimeHandler,
-                                 CloseRoundResultNotificationHandler closeRoundResultNotificationHandler,
-                                 ChangeTooltipsHandler changeTooltipsHandler,
-                                 CollectQuestsHandler collectQuestsHandler,
-                                 GetQuestsHandler getQuestsHandler,
-                                 GetWeaponsHandler getWeaponsHandler,
-                                 LobbyReBuyHandler lobbyReBuyHandler,
-                                 GetBattlegroundStartGameUrlHandler battlegroundStartGameUrlHandler,
-                                 GetPrivateBattlegroundStartGameUrlHandler privateBattlegroundStartGameUrlHandler,
-                                 PendingOperationLobbyHandler pendingOperationHandler,
-                                 FinishGameSessionHandler finishGameSessionHandler) {
+            LobbySessionService lobbySessionService,
+            RoomPlayerInfoService playerInfoService,
+            RoomPlayersMonitorService roomPlayersMonitorService,
+            ServerConfigService serverConfigService,
+            EnterLobbyHandler enterLobbyHandler,
+            GetRoomInfoHandler getRoomInfoHandler,
+            GetStartGameUrlHandler getStartGameUrlHandler,
+            CheckNicknameAvailabilityHandler checkNicknameAvailabilityHandler,
+            ChangeNicknameHandler changeNicknameHandler,
+            ChangeAvatarHandler changeAvatarHandler,
+            LobbyRefreshBalanceHandler lobbyRefreshBalanceHandler,
+            GetTimeHandler getTimeHandler,
+            CloseRoundResultNotificationHandler closeRoundResultNotificationHandler,
+            ChangeTooltipsHandler changeTooltipsHandler,
+            CollectQuestsHandler collectQuestsHandler,
+            GetQuestsHandler getQuestsHandler,
+            GetWeaponsHandler getWeaponsHandler,
+            LobbyReBuyHandler lobbyReBuyHandler,
+            GetBattlegroundStartGameUrlHandler battlegroundStartGameUrlHandler,
+            GetPrivateBattlegroundStartGameUrlHandler privateBattlegroundStartGameUrlHandler,
+            PendingOperationLobbyHandler pendingOperationHandler,
+            FinishGameSessionHandler finishGameSessionHandler) {
 
         this.serializer = serializer;
         this.lobbySessionService = lobbySessionService;
@@ -100,7 +100,7 @@ public class LobbyWebSocketHandler extends AbstractWebSocketHandler<LobbySocketC
 
     @PostConstruct
     private void init() {
-        // nop
+        LOG.debug("init: PostConstruct - LobbyWebSocketHandler registered");
     }
 
     @Override

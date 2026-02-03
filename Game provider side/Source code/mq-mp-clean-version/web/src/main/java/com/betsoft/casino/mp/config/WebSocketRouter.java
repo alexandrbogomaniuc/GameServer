@@ -89,23 +89,23 @@ public class WebSocketRouter implements ApplicationContextAware {
 
     @Bean
     public ServersStatusWatcher serversStatusWatcher(ServerConfigService serverConfigService,
-                                                     KafkaMessageService kafkaMessageService,
-                                                     ServerCoordinatorInfoProvider serverCoordinatorInfoProvider) {
+            KafkaMessageService kafkaMessageService,
+            ServerCoordinatorInfoProvider serverCoordinatorInfoProvider) {
         return new ServersStatusWatcher(serverConfigService, kafkaMessageService, serverCoordinatorInfoProvider);
     }
 
     @Bean
-    public HandlerMapping webSocketMapping(LobbyWebSocketHandler lobbyHandler, GameWebSocketHandler gameHandler,
-                                           UnifiedWebSocketHandler unifiedHandler) {
+    public HandlerMapping webSocketMapping(LobbyWebSocketHandler lobbyHandler,
+            UnifiedWebSocketHandler unifiedHandler) {
         LOG.debug("webSocketMapping");
         Map<String, WebSocketHandler> map = new HashMap<>();
         map.put("/websocket/echo", new EchoFluxWebSocketHandler());
         map.put("/websocket/tick", new TickWebSocketHandler());
         map.put("/websocket/mplobby", lobbyHandler);
         map.put("/mplobby", lobbyHandler);
-        //todo: add Binary(compressed) MessageSerializer for production
-        map.put("/websocket/mpgame", gameHandler);
-        map.put("/mpgame", gameHandler);
+        // todo: add Binary(compressed) MessageSerializer for production
+        // map.put("/websocket/mpgame", gameHandler);
+        // map.put("/mpgame", gameHandler);
 
         map.put("/websocket/mpunified", unifiedHandler);
         map.put("/mpunified", unifiedHandler);
@@ -137,31 +137,37 @@ public class WebSocketRouter implements ApplicationContextAware {
         return new GsonMessageSerializer(gson);
     }
 
-    @Bean
-    public BotGameWebSocketHandler botGameHandler(Gson gson, SingleNodeRoomInfoService singleNodeRoomInfoService,
-                                                  MultiNodeRoomInfoService multiNodeRoomInfoService,
-                                                  RoomPlayerInfoService playerInfoService,
-                                                  RoomServiceFactory roomServiceFactory,
-                                                  LobbySessionService lobbySessionService,
-                                                  NicknameGenerator nicknameGenerator,
-                                                  ServerConfigService serverConfigService,
-                                                  CassandraPersistenceManager persistenceManager,
-                                                  SocketService socketService, CurrencyRateService currencyRateService,
-                                                  CrashGameSettingsService crashGameSettingsService,
-                                                  BGPrivateRoomInfoService bgPrivateRoomInfoService,
-                                                  MultiNodePrivateRoomInfoService multiNodePrivateRoomInfoService,
-                                                  BotConfigInfoService botConfigInfoService,
-                                                  PendingOperationService pendingOperationService) {
-        return new BotGameWebSocketHandler(new GsonMessageSerializer(gson), singleNodeRoomInfoService, multiNodeRoomInfoService,
-                playerInfoService, roomServiceFactory, lobbySessionService, nicknameGenerator, serverConfigService, persistenceManager,
-                socketService, currencyRateService, crashGameSettingsService, bgPrivateRoomInfoService, multiNodePrivateRoomInfoService, botConfigInfoService, pendingOperationService);
-    }
+    // @Bean
+    // public BotGameWebSocketHandler botGameHandler(Gson gson,
+    // SingleNodeRoomInfoService singleNodeRoomInfoService,
+    // MultiNodeRoomInfoService multiNodeRoomInfoService,
+    // RoomPlayerInfoService playerInfoService,
+    // RoomServiceFactory roomServiceFactory,
+    // LobbySessionService lobbySessionService,
+    // NicknameGenerator nicknameGenerator,
+    // ServerConfigService serverConfigService,
+    // CassandraPersistenceManager persistenceManager,
+    // SocketService socketService, CurrencyRateService currencyRateService,
+    // CrashGameSettingsService crashGameSettingsService,
+    // BGPrivateRoomInfoService bgPrivateRoomInfoService,
+    // MultiNodePrivateRoomInfoService multiNodePrivateRoomInfoService,
+    // BotConfigInfoService botConfigInfoService,
+    // PendingOperationService pendingOperationService) {
+    // return new BotGameWebSocketHandler(new GsonMessageSerializer(gson),
+    // singleNodeRoomInfoService, multiNodeRoomInfoService,
+    // playerInfoService, roomServiceFactory, lobbySessionService,
+    // nicknameGenerator, serverConfigService, persistenceManager,
+    // socketService, currencyRateService, crashGameSettingsService,
+    // bgPrivateRoomInfoService, multiNodePrivateRoomInfoService,
+    // botConfigInfoService, pendingOperationService);
+    // }
 
     @Bean
     public WebSocketHandlerAdapter handlerAdapter(WebSocketService service) {
         LOG.debug("handlerAdapter: create");
 
-        //todo: create custom WebSocketHandlerAdapter, HandshakeWebSocketService for implement handshake redirect logic
+        // todo: create custom WebSocketHandlerAdapter, HandshakeWebSocketService for
+        // implement handshake redirect logic
         return new WebSocketHandlerAdapter(service);
     }
 
@@ -193,47 +199,48 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider", "lockService",
-            "roomPlayerInfoPersister", "botManagerService"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider", "lockService",
+            "roomPlayerInfoPersister" })
     public RoomServiceFactory roomServiceFactory(HazelcastInstance hazelcastInstance,
-                                                 CassandraPersistenceManager cpm,
-                                                 IGameConfigProvider gameConfigProvider,
-                                                 ISpawnConfigProvider spawnConfigProvider,
-                                                 BotManagerService botManagerService) {
-        RoomServiceFactory roomServiceFactory =
-                new RoomServiceFactory(getApplicationContext(), hazelcastInstance, cpm, loggerDir, gameConfigProvider, spawnConfigProvider);
+            CassandraPersistenceManager cpm,
+            IGameConfigProvider gameConfigProvider,
+            ISpawnConfigProvider spawnConfigProvider
+    /* , BotManagerService botManagerService */) {
+        RoomServiceFactory roomServiceFactory = new RoomServiceFactory(getApplicationContext(), hazelcastInstance, cpm,
+                loggerDir, gameConfigProvider, spawnConfigProvider);
 
-        botManagerService.setRoomServiceFactory(roomServiceFactory);
+        // botManagerService.setRoomServiceFactory(roomServiceFactory);
 
         return roomServiceFactory;
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider" })
     public SingleNodeRoomInfoService singleNodeRoomInfoService(HazelcastInstance hazelcastInstance,
-                                                               ServerConfigService serverConfigService,
-                                                               RoomTemplateService roomTemplateService,
-                                                               RoomPlayerInfoService roomPlayerInfoService,
-                                                               IdGenerator idGenerator) {
+            ServerConfigService serverConfigService,
+            RoomTemplateService roomTemplateService,
+            RoomPlayerInfoService roomPlayerInfoService,
+            IdGenerator idGenerator) {
         return new SingleNodeRoomInfoService(hazelcastInstance, serverConfigService.getServerId(), roomTemplateService,
                 roomPlayerInfoService, idGenerator);
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance","canexRequestAsyncExecutor"})
+    @DependsOn({ "hazelcastInstance", "canexRequestAsyncExecutor" })
     public IPrivateRoomPlayersStatusService privateRoomPlayersStatusService(HazelcastInstance hazelcastInstance,
-                                                                            @Qualifier("canexRequestAsyncExecutor") AsyncExecutorService asyncExecutorService) {
+            @Qualifier("canexRequestAsyncExecutor") AsyncExecutorService asyncExecutorService) {
         return new BGPrivateRoomPlayersStatusService(hazelcastInstance, asyncExecutorService);
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider", "privateRoomPlayersStatusService"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider",
+            "privateRoomPlayersStatusService" })
     public BGPrivateRoomInfoService bgPrivateRoomInfoService(HazelcastInstance hazelcastInstance,
-                                                             ServerConfigService serverConfigService,
-                                                             RoomTemplateService roomTemplateService,
-                                                             RoomPlayerInfoService roomPlayerInfoService,
-                                                             IdGenerator idGenerator, ISocketService socketService,
-                                                             IPrivateRoomPlayersStatusService privateRoomPlayersStatusService) {
+            ServerConfigService serverConfigService,
+            RoomTemplateService roomTemplateService,
+            RoomPlayerInfoService roomPlayerInfoService,
+            IdGenerator idGenerator, ISocketService socketService,
+            IPrivateRoomPlayersStatusService privateRoomPlayersStatusService) {
 
         BGPrivateRoomInfoService bgPrivateRoomInfoService = new BGPrivateRoomInfoService(hazelcastInstance,
                 serverConfigService.getServerId(), roomTemplateService,
@@ -246,18 +253,20 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider" })
     public MultiNodePrivateRoomInfoService multiNodePrivateRoomInfoService(HazelcastInstance hazelcastInstance,
-                                                             ServerConfigService serverConfigService,
-                                                             RoomTemplateService roomTemplateService,
-                                                             RoomPlayerInfoService roomPlayerInfoService,
-                                                             IdGenerator idGenerator, ISocketService socketService,
-                                                             SharedGameStateService sharedGameStateService,
-                                                             IPrivateRoomPlayersStatusService privateRoomPlayersStatusService) {
+            ServerConfigService serverConfigService,
+            RoomTemplateService roomTemplateService,
+            RoomPlayerInfoService roomPlayerInfoService,
+            IdGenerator idGenerator, ISocketService socketService,
+            SharedGameStateService sharedGameStateService,
+            IPrivateRoomPlayersStatusService privateRoomPlayersStatusService) {
 
-        MultiNodePrivateRoomInfoService multiNodePrivateRoomInfoService = new MultiNodePrivateRoomInfoService(hazelcastInstance,
+        MultiNodePrivateRoomInfoService multiNodePrivateRoomInfoService = new MultiNodePrivateRoomInfoService(
+                hazelcastInstance,
                 serverConfigService.getServerId(), roomTemplateService,
-                roomPlayerInfoService, idGenerator, socketService, sharedGameStateService, privateRoomPlayersStatusService);
+                roomPlayerInfoService, idGenerator, socketService, sharedGameStateService,
+                privateRoomPlayersStatusService);
 
         privateRoomPlayersStatusService.setMultiNodePrivateRoomInfoService(multiNodePrivateRoomInfoService);
 
@@ -265,12 +274,12 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "persistenceManager", "timeProvider" })
     public MultiNodeRoomInfoService multiNodeRoomInfoService(HazelcastInstance hazelcastInstance,
-                                                             ServerConfigService serverConfigService,
-                                                             RoomTemplateService roomTemplateService,
-                                                             RoomPlayerInfoService roomPlayerInfoService,
-                                                             IdGenerator idGenerator,  SharedGameStateService sharedGameStateService) {
+            ServerConfigService serverConfigService,
+            RoomTemplateService roomTemplateService,
+            RoomPlayerInfoService roomPlayerInfoService,
+            IdGenerator idGenerator, SharedGameStateService sharedGameStateService) {
         return new MultiNodeRoomInfoService(hazelcastInstance, serverConfigService.getServerId(), roomTemplateService,
                 roomPlayerInfoService, idGenerator, sharedGameStateService);
     }
@@ -286,9 +295,9 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"mainKeyspaceManager", "persistenceManager", "timeProvider"})
+    @DependsOn({ "mainKeyspaceManager", "persistenceManager", "timeProvider" })
     public LockService lockService(LockPersister lockPersister, ClusterInfoService clusterInfoService,
-                                   IRemoteUnlocker remoteUnlocker) {
+            IRemoteUnlocker remoteUnlocker) {
         return new LockService(lockPersister, clusterInfoService, remoteUnlocker);
     }
 
@@ -298,7 +307,7 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"mainKeyspaceManager", "persistenceManager"})
+    @DependsOn({ "mainKeyspaceManager", "persistenceManager" })
     public LockPersister lockPersister(CassandraPersistenceManager persistenceManager) {
         return persistenceManager.getPersister(LockPersister.class);
     }
@@ -309,9 +318,9 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider", "currencyRateService"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider", "currencyRateService" })
     public RoomTemplateService roomTemplateService(HazelcastInstance hazelcastInstance,
-                                                   CurrencyRateService currencyRateService) {
+            CurrencyRateService currencyRateService) {
         return new RoomTemplateService(hazelcastInstance, currencyRateService);
     }
 
@@ -322,24 +331,25 @@ public class WebSocketRouter implements ApplicationContextAware {
 
     @Bean
     public ServerConfigService serverConfigService(ServerConfigPersister serverConfigPersister,
-                                                   ServersCoordinatorService serversCoordinatorService) {
+            ServersCoordinatorService serversCoordinatorService) {
         return new ServerConfigService(serverConfigPersister, serversCoordinatorService);
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider" })
     public RoomPlayerInfoService playerInfoService(HazelcastInstance hazelcastInstance) {
         return new RoomPlayerInfoService(hazelcastInstance);
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider"})
-    public BotConfigInfoService botConfigInfoService(HazelcastInstance hazelcastInstance, IdGenerator idGenerator, NicknameService nicknameService) {
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider" })
+    public BotConfigInfoService botConfigInfoService(HazelcastInstance hazelcastInstance, IdGenerator idGenerator,
+            NicknameService nicknameService) {
         return new BotConfigInfoService(hazelcastInstance, idGenerator, nicknameService);
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider" })
     public SharedGameStateService sharedGameStateService(HazelcastInstance hazelcastInstance) {
         return new SharedGameStateService(hazelcastInstance);
     }
@@ -351,55 +361,64 @@ public class WebSocketRouter implements ApplicationContextAware {
 
     @Bean
     @Primary
-    public AsyncExecutorService bigQueryAsyncExecutor(){
+    public AsyncExecutorService bigQueryAsyncExecutor() {
         int numberOfThreads = (int) Math.ceil(Runtime.getRuntime().availableProcessors());
-        return new AsyncExecutorService(1,numberOfThreads,1,TimeUnit.MINUTES,100,new ThreadPoolExecutor.CallerRunsPolicy());
-    }
-    @Bean
-    public AsyncExecutorService canexRequestAsyncExecutor(){
-        return new AsyncExecutorService(0,canexAsyncRequestNumberOfThreads,1,TimeUnit.MINUTES,100,new ThreadPoolExecutor.CallerRunsPolicy());
+        return new AsyncExecutorService(1, numberOfThreads, 1, TimeUnit.MINUTES, 100,
+                new ThreadPoolExecutor.CallerRunsPolicy());
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "roomServiceFactory", "canexRequestAsyncExecutor", "analyticsDBClientService"})
+    public AsyncExecutorService canexRequestAsyncExecutor() {
+        return new AsyncExecutorService(0, canexAsyncRequestNumberOfThreads, 1, TimeUnit.MINUTES, 100,
+                new ThreadPoolExecutor.CallerRunsPolicy());
+    }
+
+    @Bean
+    @DependsOn({ "hazelcastInstance", "roomServiceFactory", "canexRequestAsyncExecutor", "analyticsDBClientService" })
     public RoomPlayersMonitorService roomPlayersMonitorService(HazelcastInstance hazelcastInstance,
-                                                               IRoomServiceFactory roomServiceFactory,
-                                                               ISocketService socketService,
-                                                               @Qualifier("canexRequestAsyncExecutor") AsyncExecutorService asyncExecutorService,
-                                                               BigQueryClientService analyticsDBClientService) {
-        return new RoomPlayersMonitorService(hazelcastInstance, roomServiceFactory, socketService, asyncExecutorService, analyticsDBClientService);
+            IRoomServiceFactory roomServiceFactory,
+            ISocketService socketService,
+            @Qualifier("canexRequestAsyncExecutor") AsyncExecutorService asyncExecutorService,
+            BigQueryClientService analyticsDBClientService) {
+        return new RoomPlayersMonitorService(hazelcastInstance, roomServiceFactory, socketService, asyncExecutorService,
+                analyticsDBClientService);
     }
 
     @Bean
-    @DependsOn({"roomPlayersMonitorService"})
-    public SocketClientStatisticsService socketClientStatisticsService(RoomPlayersMonitorService roomPlayersMonitorService) {
+    @DependsOn({ "roomPlayersMonitorService" })
+    public SocketClientStatisticsService socketClientStatisticsService(
+            RoomPlayersMonitorService roomPlayersMonitorService) {
         return new SocketClientStatisticsService(roomPlayersMonitorService);
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider" })
     public PendingOperationService pendingOperationService(HazelcastInstance hazelcastInstance) {
         return new PendingOperationService(hazelcastInstance);
     }
 
     @Bean
     public PendingOperationTracker pendingOperationTracker(PendingOperationService pendingOperationService,
-                                                           SocketService socketService, ServerConfigService serverConfigService) {
+            SocketService socketService, ServerConfigService serverConfigService) {
         return new PendingOperationTracker(pendingOperationService, socketService, serverConfigService);
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "botConfigInfoService"})
-    public BotManagerService botManagerService(HazelcastInstance hazelcastInstance, BotConfigInfoService botConfigInfoService, BotServiceClient botServiceClient,
-                                               SingleNodeRoomInfoService singleNodeRoomInfoService,
-                                               MultiNodeRoomInfoService multiNodeRoomInfoService,
-                                               ServerConfigService serverConfigService,
-                                               LobbySessionService lobbySessionService,
-                                               RoomPlayerInfoService roomPlayerInfoService) {
-        BotManagerService botManagerService = new BotManagerService(hazelcastInstance, botConfigInfoService, botServiceClient, singleNodeRoomInfoService, multiNodeRoomInfoService,
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "botConfigInfoService" })
+    public BotManagerService botManagerService(HazelcastInstance hazelcastInstance,
+            BotConfigInfoService botConfigInfoService,
+            BotServiceClient botServiceClient,
+            SingleNodeRoomInfoService singleNodeRoomInfoService,
+            MultiNodeRoomInfoService multiNodeRoomInfoService,
+            ServerConfigService serverConfigService,
+            LobbySessionService lobbySessionService,
+            RoomPlayerInfoService roomPlayerInfoService) {
+        BotManagerService botManagerService = new BotManagerService(hazelcastInstance, botConfigInfoService,
+                botServiceClient,
+                singleNodeRoomInfoService, multiNodeRoomInfoService,
                 serverConfigService, lobbySessionService, roomPlayerInfoService);
 
-        if(botServiceClient != null) {
+        if (botServiceClient != null) {
             botServiceClient.setBotManagerService(botManagerService);
         }
 
@@ -407,13 +426,13 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider" })
     public MultiNodeSeatService multiNodeSeatService(HazelcastInstance hazelcastInstance) {
         return new MultiNodeSeatService(hazelcastInstance);
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider" })
     public LobbySessionService lobbySessionService(HazelcastInstance hazelcastInstance) {
         return new LobbySessionService(hazelcastInstance);
     }
@@ -424,10 +443,10 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider" })
     public SocketService socketService(PendingOperationService pendingOperationService,
-                                       KafkaMessageService kafkaMessageService,
-                                       ServerConfigService serverConfigService) {
+            KafkaMessageService kafkaMessageService,
+            ServerConfigService serverConfigService) {
         return new SocketService(pendingOperationService, kafkaMessageService, serverConfigService);
     }
 
@@ -437,7 +456,7 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    @DependsOn({"hazelcastInstance", "mainKeyspaceManager", "timeProvider"})
+    @DependsOn({ "hazelcastInstance", "mainKeyspaceManager", "timeProvider" })
     public StatisticsService statisticsService() {
         return new StatisticsService();
     }
@@ -448,15 +467,18 @@ public class WebSocketRouter implements ApplicationContextAware {
     }
 
     @Bean
-    public CrashGameSettingsService crashGameSettingsService(SocketService socketService, CurrencyRateService currencyRateService) {
+    public CrashGameSettingsService crashGameSettingsService(SocketService socketService,
+            CurrencyRateService currencyRateService) {
         return new CrashGameSettingsService(socketService, currencyRateService);
     }
 
-//    @Bean
-//    public BotService botService(RoomInfoService roomInfoService, ServerConfigService serverConfigService,
-//                                 IMessageSerializer serializer, BotGameWebSocketHandler handler) {
-//        return new BotService(roomInfoService, serverConfigService, serializer, handler);
-//    }
+    // @Bean
+    // public BotService botService(RoomInfoService roomInfoService,
+    // ServerConfigService serverConfigService,
+    // IMessageSerializer serializer, BotGameWebSocketHandler handler) {
+    // return new BotService(roomInfoService, serverConfigService, serializer,
+    // handler);
+    // }
 
     @Bean
     public NicknameGenerator nicknameGenerator() {

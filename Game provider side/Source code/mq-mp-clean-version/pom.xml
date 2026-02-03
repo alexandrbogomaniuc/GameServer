@@ -65,8 +65,8 @@
         <hz.gcp.label.value>true</hz.gcp.label.value>
         <curator.version>5.8.0</curator.version>
         <!-- add to /etc/hosts - 127.0.0.1       gs1.local gs1-mp.local -->
-        <mpserver.domain>.local</mpserver.domain>
-        <mpserver.domain.servername>gs#-mp</mpserver.domain.servername>
+        <mpserver.domain></mpserver.domain>
+        <mpserver.domain.servername>localhost</mpserver.domain.servername>
         <server.port>8080</server.port>
         <server.host>local</server.host>
         <server.jetty.port>8081</server.jetty.port>
@@ -119,7 +119,7 @@
         <module>persistance</module>
         <module>tektosyne</module>
         <module>web</module>
-        <module>bots</module>
+<!-- <module>bots</module> -->
         <module>kafka</module>
     </modules>
 

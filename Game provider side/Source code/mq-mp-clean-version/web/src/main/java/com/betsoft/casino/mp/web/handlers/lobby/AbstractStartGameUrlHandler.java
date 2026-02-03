@@ -43,12 +43,12 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
     private final RoomPlayersMonitorService roomPlayersMonitorService;
 
     protected AbstractStartGameUrlHandler(Gson gson, LobbySessionService lobbySessionService, LobbyManager lobbyManager,
-                                          SingleNodeRoomInfoService singleNodeRoomInfoService, MultiNodeRoomInfoService multiNodeRoomInfoService,
-                                          ServerConfigService serverConfigService,
-                                          RoomServiceFactory roomServiceFactory, RoomTemplateService roomTemplateService,
-                                          RoomPlayerInfoService playerInfoService, BGPrivateRoomInfoService bgPrivateRoomInfoService,
-                                          MultiNodePrivateRoomInfoService multiNodePrivateRoomInfoService,
-                                          RoomPlayersMonitorService roomPlayersMonitorService) {
+            SingleNodeRoomInfoService singleNodeRoomInfoService, MultiNodeRoomInfoService multiNodeRoomInfoService,
+            ServerConfigService serverConfigService,
+            RoomServiceFactory roomServiceFactory, RoomTemplateService roomTemplateService,
+            RoomPlayerInfoService playerInfoService, BGPrivateRoomInfoService bgPrivateRoomInfoService,
+            MultiNodePrivateRoomInfoService multiNodePrivateRoomInfoService,
+            RoomPlayersMonitorService roomPlayersMonitorService) {
         super(gson, lobbySessionService, lobbyManager);
         this.singleNodeRoomInfoService = singleNodeRoomInfoService;
         this.multiNodeRoomInfoService = multiNodeRoomInfoService;
@@ -62,10 +62,13 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
     }
 
     /**
-     * Handles StartGameUrl messages from clients. Finds free room for player and create url getRoomUrl for next game socket connection.
+     * Handles StartGameUrl messages from clients. Finds free room for player and
+     * create url getRoomUrl for next game socket connection.
+     * 
      * @param session web socket session
-     * @param message StartGameUrl message (GetStartGameUrl|GetBattlegroundStartGameUrl|GetPrivateBattlegroundStartGameUrl)
-     * @param client socket client
+     * @param message StartGameUrl message
+     *                (GetStartGameUrl|GetBattlegroundStartGameUrl|GetPrivateBattlegroundStartGameUrl)
+     * @param client  socket client
      */
     @Override
     public void handle(WebSocketSession session, MESSAGE message, CLIENT client) {
@@ -110,7 +113,7 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
                     if (roomPlayerInfo != null && roomPlayerInfo.getRoomId() > 0) {
 
                         getLog().debug("handle {}, {}: there is a roomPlayerInfo for account={} and " +
-                                        "roomPlayerInfo.getRoomId()={}, roomPlayerInfo={}", nickname, sid,
+                                "roomPlayerInfo.getRoomId()={}, roomPlayerInfo={}", nickname, sid,
                                 client.getAccountId(), roomPlayerInfo.getRoomId(), roomPlayerInfo);
 
                         roomInfo = getRoomInfo(message.getRid(), roomPlayerInfo.getRoomId(), client, roomInfoService);
@@ -132,11 +135,12 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
                         } else {
 
-                            //if number of players is bigger or equal the max allowed try to get other RoomInfo
-                            if(thereAreNoEmptySeats(roomInfo, nickname, sid, client)) {
+                            // if number of players is bigger or equal the max allowed try to get other
+                            // RoomInfo
+                            if (thereAreNoEmptySeats(roomInfo, nickname, sid, client)) {
 
                                 getLog().debug("handle {}, {}: numberOfPlayers >= maxSeats, try " +
-                                                "find more appropriate roomInfo. currency={}, roomInfo={}, client={}",
+                                        "find more appropriate roomInfo. currency={}, roomInfo={}, client={}",
                                         nickname, sid, currency, roomInfo, client);
 
                                 roomInfo = this.getBestRoomForStake(lobbySession, gameType, client, currency, message);
@@ -144,20 +148,21 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
                                 getLog().debug("handle {}, {}: roomInfo returned from getBestRoomForStake (2) " +
                                         "roomInfo={}, client={}", nickname, sid, roomInfo, client);
 
-                                //if existing roomInfo defers from requested MoneyType and GameType
+                                // if existing roomInfo defers from requested MoneyType and GameType
                             } else if (roomInfo.getMoneyType() != moneyType || roomInfo.getGameType() != gameType) {
 
                                 getLog().debug("handle {}, {}: Found roomInfo, but LobbySocketClient params " +
-                                                "mismatch to roomInfo specification, try find more appropriate roomInfo. " +
-                                                "(roomInfo:MoneyType={},GameType={}), (SocketClient:MoneyType={},GameType={})",
-                                        nickname, sid, roomInfo.getMoneyType(), roomInfo.getGameType(), moneyType, gameType);
+                                        "mismatch to roomInfo specification, try find more appropriate roomInfo. " +
+                                        "(roomInfo:MoneyType={},GameType={}), (SocketClient:MoneyType={},GameType={})",
+                                        nickname, sid, roomInfo.getMoneyType(), roomInfo.getGameType(), moneyType,
+                                        gameType);
 
                                 roomInfo = this.getBestRoomForStake(lobbySession, gameType, client, currency, message);
 
                                 getLog().debug("handle {}, {}: roomInfo returned from  getBestRoomForStake (3) " +
                                         "roomInfo={}, client={}", nickname, sid, roomInfo, client);
 
-                                //if existing roomInfo is Battleground and non-Crash
+                                // if existing roomInfo is Battleground and non-Crash
                             } else if (roomInfo.isBattlegroundMode() && !roomInfo.getGameType().isCrashGame()) {
 
                                 getLog().debug("handle {}, {}: Found roomInfo is Battleground and non-Crash " +
@@ -172,10 +177,14 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
                                 if (!buyInConfirmed || buyInAmount == 0) {
 
-                                    getLog().debug("handle {}, {}: Need get other roomInfo, found BTG roomInfo without confirm " +
-                                            "or buyInAmount=0 roomInfo={}, client={}", nickname, sid, roomInfo, client);
+                                    getLog().debug(
+                                            "handle {}, {}: Need get other roomInfo, found BTG roomInfo without confirm "
+                                                    +
+                                                    "or buyInAmount=0 roomInfo={}, client={}",
+                                            nickname, sid, roomInfo, client);
 
-                                    roomInfo = this.getBestRoomForStake(lobbySession, gameType, client, playerInfo.getCurrency().getCode(), message);
+                                    roomInfo = this.getBestRoomForStake(lobbySession, gameType, client,
+                                            playerInfo.getCurrency().getCode(), message);
 
                                     getLog().debug("handle {}, {}: roomInfo returned from  getBestRoomForStake (4) " +
                                             "roomInfo={}, client={}", nickname, sid, roomInfo, client);
@@ -187,14 +196,15 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
                         getLog().debug("handle {}, {}: roomIdFromMessage is -1 and no roomPlayerInfo.getRoomId()>0 " +
                                 "found in roomPlayerInfo={}", nickname, sid, roomPlayerInfo);
 
-                        roomInfo = this.getBestRoomForStake(lobbySession, gameType, client, playerInfo.getCurrency().getCode(), message);
+                        roomInfo = this.getBestRoomForStake(lobbySession, gameType, client,
+                                playerInfo.getCurrency().getCode(), message);
 
                         getLog().debug("handle {}, {}: roomInfo returned from  getBestRoomForStake (5) " +
                                 "roomInfo={}, client={}", nickname, sid, roomInfo, client);
                     }
                 }
 
-                //error message must be already send, just exit
+                // error message must be already send, just exit
                 if (roomInfo == null) {
                     getLog().warn("handle {}, {}: Cannot find roomInfo, exit. message={}, client={}, roomPlayerInfo={}",
                             nickname, sid, message, client, roomPlayerInfo);
@@ -209,12 +219,14 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
                         getRoomServiceFactory().getRoom(roomInfo.getGameType(), roomInfo.getId());
                         roomInfo = getRoomInfoService(client).getRoom(roomInfo.getId());
-                        getLog().debug("handle {}, {}: Room Found={} not started, try to start it: {}", client.getNickname(), client.getSessionId(),
+                        getLog().debug("handle {}, {}: Room Found={} not started, try to start it: {}",
+                                client.getNickname(), client.getSessionId(),
                                 roomInfo.getId(), roomInfo);
                     }
 
                     if (thereAreNoEmptySeats(roomInfo, nickname, sid, client)) {
-                        getLog().debug("handle {}, {}: Too many players in roomInfo={}", client.getNickname(), client.getSessionId(), roomInfo);
+                        getLog().debug("handle {}, {}: Too many players in roomInfo={}", client.getNickname(),
+                                client.getSessionId(), roomInfo);
                         sendErrorMessage(client, ErrorCodes.TOO_MANY_PLAYER, "Too many players", message.getRid());
                         return;
                     }
@@ -229,27 +241,30 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
                     IServerConfig serverConfig = getServerConfigService().getConfig(serverId);
                     if (serverConfig == null) {
-                        getLog().warn("ServerConfig not found for serverId=" + serverId + ". Seems that server is down. Migrating down games.");
+                        getLog().warn("ServerConfig not found for serverId=" + serverId
+                                + ". Seems that server is down. Migrating down games.");
                         roomServiceFactory.repairRoomsOnDownServer(serverId);
                         serverId = getServerConfigService().getServerId();
                         serverConfig = getServerConfigService().getConfig();
                     }
 
-                    String roomUrl = getRoomUrl(session, roomInfo.getId(), serverConfig, client, stakeFromMessage.toCents(),
+                    String roomUrl = getRoomUrl(session, roomInfo.getId(), serverConfig, client,
+                            stakeFromMessage.toCents(),
                             roomInfo.getGameType());
 
                     GetStartGameUrlResponse response = new GetStartGameUrlResponse(
                             System.currentTimeMillis(),
                             message.getRid(),
                             roomInfo.getId(),
-                            roomUrl
-                    );
+                            roomUrl);
 
-                    getLog().debug("handle {}, {}: GetStartGameUrlResponse={}", client.getNickname(), client.getSessionId(), response);
+                    getLog().debug("handle {}, {}: GetStartGameUrlResponse={}", client.getNickname(),
+                            client.getSessionId(), response);
                     client.sendMessage(response, message);
 
                 } else {
-                    getLog().debug("handle {}, {}: Room not assigned for message={}", client.getNickname(), client.getSessionId(), message);
+                    getLog().debug("handle {}, {}: Room not assigned for message={}", client.getNickname(),
+                            client.getSessionId(), message);
                     sendErrorMessage(client, ErrorCodes.ROOM_NOT_OPEN, "Room not assigned", message.getRid());
                 }
             } catch (Exception e) {
@@ -263,24 +278,28 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
     /**
      * Check input message for incorrect data.
-     * @param message message from client
-     * @param client lobby web socket client
+     * 
+     * @param message      message from client
+     * @param client       lobby web socket client
      * @param lobbySession lobby session
      * @return true if data is incorrect and sends error to client
      */
-    abstract boolean checkIsBadMessageAndSendError(MESSAGE message, ILobbySocketClient client, ILobbySession lobbySession);
+    abstract boolean checkIsBadMessageAndSendError(MESSAGE message, ILobbySocketClient client,
+            ILobbySession lobbySession);
 
     public static String getRoomUrl(WebSocketSession session, long roomId, IServerConfig serverConfig,
-                                    ILobbySocketClient client, long stake, GameType gameType) {
+            ILobbySocketClient client, long stake, GameType gameType) {
         String host = serverConfig.getHost();
         int serverId = serverConfig.getId();
         String domain = serverConfig.getDomain();
         String origin = IMessageHandler.getOrigin(session);
         String roomWebSocketUrl;
-        if (host.endsWith("mp.local") || host.endsWith("mp.local.com") || host.endsWith(".mydomain")) { //hack for local/dev deploy
+        if (host.endsWith("mp.local") || host.endsWith("mp.local.com") || host.endsWith(".mydomain")
+                || "localhost".equals(host) || "127.0.0.1".equals(host)) { // hack for local/dev deploy
             roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + host + ":8081/websocket/";
         } else {
-            roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + "games" + domain + "/" + serverId + "/websocket/";
+            roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + "games" + domain + "/" + serverId
+                    + "/websocket/";
         }
         roomWebSocketUrl += gameType.isCrashGame() ? "mpunified" : "mpgame";
 
@@ -294,15 +313,16 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
     /**
      * Find free room for player
-     * @param client lobby socket client
-     * @param stake stake
-     * @param gameType gameType
-     * @param currency currency of player
+     * 
+     * @param client    lobby socket client
+     * @param stake     stake
+     * @param gameType  gameType
+     * @param currency  currency of player
      * @param moneyType moneyType
      * @return {@code IRoomInfo} room info
      */
     public IRoomInfo getRoomInfoByStake(CLIENT client, Money stake, GameType gameType, String currency,
-                                        MoneyType moneyType) {
+            MoneyType moneyType) {
         RoomTemplate template = getRoomTemplateService().getMostSuitable(client.getBankId(), stake,
                 moneyType, gameType);
         getLog().debug("getBestRoomForStake: accountId={}, bankId={}, stake={}, gameType={}, moneyType={}, template={}",
@@ -320,10 +340,11 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
             getLog().debug("getBestRoomForStake: after removing deactivated roomInfos.size()={}", roomInfos.size());
             getLog().debug("getBestRoomForStake: accountId={}, roomInfos={}", client.getAccountId(), roomInfos);
 
-            IRoomInfo roomInfo = roomInfoService.tryFindThisServerRoomAndNotFull(roomInfos, getServerConfigService().getServerId());
+            IRoomInfo roomInfo = roomInfoService.tryFindThisServerRoomAndNotFull(roomInfos,
+                    getServerConfigService().getServerId());
             getLog().debug("getBestRoomForStake: accountId={}, best roomInfo={}", client.getAccountId(), roomInfo);
 
-            if(roomInfo == null) {
+            if (roomInfo == null) {
                 roomInfo = roomInfoService.createForTemplate(template, client.getBankId(), stake, currency);
             }
 
@@ -331,17 +352,18 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
         }
 
         getLog().error("getBestRoomForStake: accountId={}, bankId={}, stake={}, gameType={}, moneyType={}, " +
-                        "roomInfoService is null", client.getAccountId(), client.getBankId(), stake, gameType, moneyType);
+                "roomInfoService is null", client.getAccountId(), client.getBankId(), stake, gameType, moneyType);
 
         return null;
     }
 
     /**
      * Find free room for special modes (FRB,TOURNAMENT)
-     * @param gameType gameType
-     * @param client lobby socket client
+     * 
+     * @param gameType  gameType
+     * @param client    lobby socket client
      * @param moneyType moneyType
-     * @param stake stake
+     * @param stake     stake
      * @return {@code IRoomInfo} room info
      */
     protected IRoomInfo getSpecialRoom(GameType gameType, CLIENT client, MoneyType moneyType, Money stake) {
@@ -382,29 +404,32 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
             }).collect(Collectors.toSet());
         }
         getLog().debug("getSpecialRoom: roomInfosWithoutObservers={}", roomInfos);
-        bestRoom = getRoomInfoService(client).tryFindThisServerRoomAndNotFull(roomInfos, getServerConfigService().getServerId());
+        bestRoom = getRoomInfoService(client).tryFindThisServerRoomAndNotFull(roomInfos,
+                getServerConfigService().getServerId());
         return bestRoom;
     }
 
     /**
      * Find best room for stake.
+     * 
      * @param lobbySession lobby session of player
-     * @param gameType gameType
-     * @param client lobby socket client
-     * @param currency currency of player
-     * @param message message from client
+     * @param gameType     gameType
+     * @param client       lobby socket client
+     * @param currency     currency of player
+     * @param message      message from client
      * @return {@code IRoomInfo} room info
      * @throws CommonException if any unexpected error occur
      */
     abstract IRoomInfo getBestRoomForStake(LobbySession lobbySession, GameType gameType,
-                                           ILobbySocketClient client, String currency, MESSAGE message)
+            ILobbySocketClient client, String currency, MESSAGE message)
             throws CommonException;
 
     abstract Money getStakeFromMessage(MESSAGE message) throws CommonException;
 
     public IRoomInfoService getRoomInfoService(CLIENT client) {
         if (client.isPrivateRoom()) {
-            return client.getGameType().isSingleNodeRoomGame() ? bgPrivateRoomInfoService : multiNodePrivateRoomInfoService;
+            return client.getGameType().isSingleNodeRoomGame() ? bgPrivateRoomInfoService
+                    : multiNodePrivateRoomInfoService;
         }
         return client.getGameType().isSingleNodeRoomGame() ? singleNodeRoomInfoService : multiNodeRoomInfoService;
     }
@@ -439,7 +464,7 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
             getLog().error("thereAreNoEmptySeats {}, {}: Exception={}", nickname, sid, e.getMessage());
         }
 
-        //try to check the room if it is running locally on the node
+        // try to check the room if it is running locally on the node
         if (roomWithoutCreation != null) {
             short seatsCount = roomWithoutCreation.getSeatsCount();
             boolean clientNotSeater = roomWithoutCreation
@@ -450,7 +475,7 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
             thereAreNoEmptySeats = (clientNotSeater && seatsCount >= maxSeats);
 
-            //if room does not run on the local node
+            // if room does not run on the local node
         } else {
 
             int numberOfPlayers = getNumberOfPlayers(roomInfo, client.getAccountId(), client);
@@ -470,30 +495,38 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
         int numberOfPlayers = 0;
 
-        if(roomInfo instanceof SingleNodeRoomInfo) { //for single node room request the node for number of observers
+        if (roomInfo instanceof SingleNodeRoomInfo) { // for single node room request the node for number of observers
 
             long serverId = ((SingleNodeRoomInfo) roomInfo).getGameServerId();
 
-            if(serverId == IRoomInfo.NOT_ASSIGNED_ID) { //SingleNodeRoom is not started, node is not assigned serverId == IRoomInfo.NOT_ASSIGNED_ID
+            if (serverId == IRoomInfo.NOT_ASSIGNED_ID) { // SingleNodeRoom is not started, node is not assigned serverId
+                                                         // == IRoomInfo.NOT_ASSIGNED_ID
 
-                getLog().debug("getNumberOfPlayersForSingleNodeRoom {}, {}: SingleNodeRoom is not started, no node is " +
-                        "assigned to the room, serverId == {}", client.getNickname(), client.getSessionId(), IRoomInfo.NOT_ASSIGNED_ID);
+                getLog().debug(
+                        "getNumberOfPlayersForSingleNodeRoom {}, {}: SingleNodeRoom is not started, no node is " +
+                                "assigned to the room, serverId == {}",
+                        client.getNickname(), client.getSessionId(), IRoomInfo.NOT_ASSIGNED_ID);
             } else {
 
                 getLog().debug("getNumberOfPlayersForSingleNodeRoom {}, {}: SingleNode room, serverId={}",
                         client.getNickname(), client.getSessionId(), serverId);
 
-                //int numberOfObservers = getTotalObserversCount(client, serverId, roomInfo.getId(), (int) roomInfo.getGameType().getGameId());
-                //getLog().debug("getNumberOfPlayers {}, {}: roomId={}, gameId={}, numberOfObservers={}",
-                //        client.getNickname(), client.getSessionId(), roomInfo.getId(), roomInfo.getGameType().getGameId(),
-                //        numberOfObservers);
-                //numberOfPlayers = numberOfObservers;
+                // int numberOfObservers = getTotalObserversCount(client, serverId,
+                // roomInfo.getId(), (int) roomInfo.getGameType().getGameId());
+                // getLog().debug("getNumberOfPlayers {}, {}: roomId={}, gameId={},
+                // numberOfObservers={}",
+                // client.getNickname(), client.getSessionId(), roomInfo.getId(),
+                // roomInfo.getGameType().getGameId(),
+                // numberOfObservers);
+                // numberOfPlayers = numberOfObservers;
 
                 Collection<SocketClientInfo> socketClientInfos = roomPlayersMonitorService.socketClientInfosGetAll();
-                Map<Long, IRMSRoom> trmsRooms = roomPlayersMonitorService.convertSocketClientInfoToTRMSRoomsMap(socketClientInfos);
-                getLog().debug("getNumberOfPlayersForSingleNodeRoom {}, {}: accountId={}, trmsRooms={}", client.getNickname(), client.getSessionId(), accountId, trmsRooms);
+                Map<Long, IRMSRoom> trmsRooms = roomPlayersMonitorService
+                        .convertSocketClientInfoToTRMSRoomsMap(socketClientInfos);
+                getLog().debug("getNumberOfPlayersForSingleNodeRoom {}, {}: accountId={}, trmsRooms={}",
+                        client.getNickname(), client.getSessionId(), accountId, trmsRooms);
 
-                if(trmsRooms.isEmpty()){
+                if (trmsRooms.isEmpty()) {
 
                     getLog().debug("getNumberOfPlayersForSingleNodeRoom {}, {}: accountId={}, trmsRooms.isEmpty={}",
                             client.getNickname(), client.getSessionId(), accountId, trmsRooms.isEmpty());
@@ -502,7 +535,8 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
                     IRMSRoom trmsRoom = trmsRooms.get(roomInfo.getId());
 
                     if (trmsRoom == null || trmsRoom.getPlayers() == null) {
-                        getLog().debug("getNumberOfPlayersForSingleNodeRoom {}, {}: accountId={}, roomId={}, trmsRoom={}",
+                        getLog().debug(
+                                "getNumberOfPlayersForSingleNodeRoom {}, {}: accountId={}, roomId={}, trmsRoom={}",
                                 client.getNickname(), client.getSessionId(), accountId, roomInfo.getId(), trmsRoom);
                     } else {
 
@@ -510,7 +544,8 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
                                 .filter(player -> !player.getNickname().equals(client.getNickname()))
                                 .collect(Collectors.toList());
 
-                        getLog().debug("getNumberOfPlayersForSingleNodeRoom {}, {}: roomId={}, gameId={}, filteredPlayers.size()={}",
+                        getLog().debug(
+                                "getNumberOfPlayersForSingleNodeRoom {}, {}: roomId={}, gameId={}, filteredPlayers.size()={}",
                                 client.getNickname(), client.getSessionId(), roomInfo.getId(),
                                 roomInfo.getGameType().getGameId(), filteredPlayers.size());
 
@@ -535,11 +570,11 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
             IRoom roomWithoutCreation = getRoomServiceFactory()
                     .getRoomWithoutCreation(roomInfo.getGameType(), roomInfo.getId());
 
-            if(roomWithoutCreation != null) {
+            if (roomWithoutCreation != null) {
 
                 List<ISeat> seats = roomWithoutCreation.getAllSeats();
 
-                if(seats != null) {
+                if (seats != null) {
 
                     getLog().debug("getNumberOfPlayersForMultiNodeRoom {}, {}: roomId={}, gameId={}, seats.size()={}",
                             client.getNickname(), client.getSessionId(), roomInfo.getId(),
@@ -548,8 +583,10 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
                     numberOfPlayers = seats.size();
                 }
             } else {
-                getLog().error("getNumberOfPlayersForMultiNodeRoom {}, {}: roomId={}, gameId={}, roomWithoutCreation is null",
-                        client.getNickname(), client.getSessionId(), roomInfo.getId(), roomInfo.getGameType().getGameId());
+                getLog().error(
+                        "getNumberOfPlayersForMultiNodeRoom {}, {}: roomId={}, gameId={}, roomWithoutCreation is null",
+                        client.getNickname(), client.getSessionId(), roomInfo.getId(),
+                        roomInfo.getGameType().getGameId());
 
             }
 
@@ -567,15 +604,16 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
 
     protected int getNumberOfPlayers(IRoomInfo roomInfo, long accountId, ILobbySocketClient client) {
 
-        getLog().debug("getNumberOfPlayers {}, {}: accountId={}, roomInfo={}", client.getNickname(), client.getSessionId(), accountId, roomInfo);
+        getLog().debug("getNumberOfPlayers {}, {}: accountId={}, roomInfo={}", client.getNickname(),
+                client.getSessionId(), accountId, roomInfo);
 
         int numberOfPlayers;
 
-        if(roomInfo instanceof SingleNodeRoomInfo) { //for single node room request the node for number of observers
+        if (roomInfo instanceof SingleNodeRoomInfo) { // for single node room request the node for number of observers
 
             numberOfPlayers = getNumberOfPlayersForSingleNodeRoom(roomInfo, accountId, client);
 
-        } else { //for multinode room, get all seats
+        } else { // for multinode room, get all seats
 
             numberOfPlayers = getNumberOfPlayersForMultiNodeRoom(roomInfo, accountId, client);
         }

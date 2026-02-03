@@ -1,7 +1,9 @@
 package com.betsoft.casino.bots;
 
 import com.betsoft.casino.bots.handlers.*;
-import com.betsoft.casino.bots.requests.*;
+// import com.betsoft.casino.bots.requests.*;
+import com.betsoft.casino.bots.requests.OpenRoomRequest;
+import com.betsoft.casino.bots.requests.CloseRoomRequest;
 import com.betsoft.casino.bots.strategies.IRoomBotStrategy;
 import com.betsoft.casino.mp.common.math.SWPaidCosts;
 import com.betsoft.casino.mp.model.*;
@@ -41,8 +43,9 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
     private int roundsCount;
 
     public UnifiedBot(String nickname, String id, String url, int gameId, int bankId, int serverId, String sessionId,
-                      IMessageSerializer serializer,
-                      Function<Void, Integer> shutdownCallback, IUnifiedBotStrategy botStrategy, Function<Void, Integer> startCallback) {
+            IMessageSerializer serializer,
+            Function<Void, Integer> shutdownCallback, IUnifiedBotStrategy botStrategy,
+            Function<Void, Integer> startCallback) {
         super(id, url, serverId, bankId, sessionId, serializer, shutdownCallback, startCallback);
         this.nickname = nickname;
         this.gameId = gameId;
@@ -66,17 +69,24 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
         serverMessageHandlers.put(WeaponSwitched.class, new WeaponSwitchedHandler(this));
         serverMessageHandlers.put(ChangeMap.class, new ChangeMapHandler(this));
         serverMessageHandlers.put(RoundFinishSoon.class, new RoundFinishSoonHandler(this));
-        serverMessageHandlers.put(CrashStateInfo.class, new CrashStateInfoHandler(this));
-        // serverMessageHandlers.put(CrashCancelBetResponse.class, new CrashCancelBetHandler(this));
-        serverMessageHandlers.put(CrashBetResponse.class, new CrashBetResponseHandler(this));
-        // serverMessageHandlers.put(CrashAllBetsResponse.class, new CrashAllBetsHandler(this));
-        // serverMessageHandlers.put(CrashAllBetsRejectedDetailedResponse.class, new CrashAllBetsRejectedDetailedHandler(this));
+        // serverMessageHandlers.put(CrashStateInfo.class, new
+        // CrashStateInfoHandler(this));
+        // serverMessageHandlers.put(CrashCancelBetResponse.class, new
+        // CrashCancelBetHandler(this));
+        // serverMessageHandlers.put(CrashBetResponse.class, new
+        // CrashBetResponseHandler(this));
+        // serverMessageHandlers.put(CrashAllBetsResponse.class, new
+        // CrashAllBetsHandler(this));
+        // serverMessageHandlers.put(CrashAllBetsRejectedDetailedResponse.class, new
+        // CrashAllBetsRejectedDetailedHandler(this));
 
     }
 
     @Override
     protected void sendInitialRequest() {
-        sleep(300).subscribe(t -> send(new EnterLobbyRequest(this, client, gameId, serverId, sessionId)));
+        sleep(300).subscribe(t -> {
+            // send(new EnterLobbyRequest(this, client, gameId, serverId, sessionId));
+        });
     }
 
     @Override
@@ -85,7 +95,8 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
     }
 
     private void sendOpenRoomRequest() {
-        sleep(300).subscribe(t -> send(new OpenRoomRequest(this, client, roomId, sessionId, serverId, MoneyType.REAL, "en")));
+        sleep(300).subscribe(
+                t -> send(new OpenRoomRequest(this, client, roomId, sessionId, serverId, MoneyType.REAL, "en")));
     }
 
     @Override
@@ -98,7 +109,8 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
     }
 
     public void startWithOpenRoom() {
-        getLogger().debug("startWithOpenRoom: Starting bot with params ws='{}', sid='{}', server={}", url, sessionId, serverId);
+        getLogger().debug("startWithOpenRoom: Starting bot with params ws='{}', sid='{}', server={}", url, sessionId,
+                serverId);
         started = true;
         if (stats == null) {
             stats = new Stats();
@@ -117,24 +129,19 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
                 }
 
                 Mono<Void> outbound = session.send(
-                        Flux.create((FluxSink<WebSocketMessage> sink) ->
-                                        createClient(session, sink, getBankId()), FluxSink.OverflowStrategy.BUFFER
-                                )
-                                .doFinally(s ->
-                                        closeConnection(session)
-                                )
-                );
+                        Flux.create((FluxSink<WebSocketMessage> sink) -> createClient(session, sink, getBankId()),
+                                FluxSink.OverflowStrategy.BUFFER)
+                                .doFinally(s -> closeConnection(session)));
 
                 Mono<Void> inbound = session.receive()
-                        .doOnNext(message ->
-                                processMessage(session, message))
+                        .doOnNext(message -> processMessage(session, message))
                         .then();
 
                 return Mono.when(outbound, inbound);
             }
         };
 
-        //noinspection NullableProblems
+        // noinspection NullableProblems
         webSocketClient.execute(URI.create(url), webSocketHandler).subscribe();
         startCallback.apply(null);
     }
@@ -142,7 +149,9 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
     protected void createClientAndEnter(WebSocketSession session, FluxSink<WebSocketMessage> sink, int bankId) {
         client = new SocketClient(session, sink, serializer, bankId, LOG);
         getLogger().debug("createClient: new client created, sendInitialRequest");
-        sleep(10).subscribe(t -> send(new EnterLobbyRequest(this, client, gameId, serverId, sessionId)));
+        sleep(10).subscribe(t -> {
+            // send(new EnterLobbyRequest(this, client, gameId, serverId, sessionId));
+        });
     }
 
     @Override
@@ -269,7 +278,7 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
     @Override
     public void sendSitInRequest(int failedCount) {
         setState(BotState.WAITING_FOR_RESPONSE, "unified sendSitInRequest");
-        send(new CrashSitInRequest(this, client, "en"));
+        // send(new CrashSitInRequest(this, client, "en"));
     }
 
     @Override
@@ -332,7 +341,8 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
 
     protected void doAction(String debugInfo) {
         RoomState roomState = roomInfo.getState();
-        getLogger().debug("doAction: bot: {}, getSeatId(): {}, debugInfo={}, state: {}, roomState={}", getId(), getSeatId(), debugInfo,
+        getLogger().debug("doAction: bot: {}, getSeatId(): {}, debugInfo={}, state: {}, roomState={}", getId(),
+                getSeatId(), debugInfo,
                 state, roomState);
         scheduledDoSleepAction.set(false);
         boolean needSleepAndRetry = true;
@@ -341,18 +351,22 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
             case WAITING_FOR_RESPONSE:
                 break;
             case IDLE:
-/*                openRoom();
-                needSleepAndRetry = false;
-                break;*/
+                /*
+                 * openRoom();
+                 * needSleepAndRetry = false;
+                 * break;
+                 */
                 break;
             case OBSERVING:
                 if (roomState.equals(RoomState.WAIT)) {
                     int numberRoundBeforeRestart = ((IUnifiedBotStrategy) getStrategy()).getNumberRoundBeforeRestart();
                     if (roundsCount > numberRoundBeforeRestart) {
-                        getLogger().debug("doActionWithSleep: roundsCount: {} more allowed {}, need restart debugInfo{}", roundsCount,
+                        getLogger().debug(
+                                "doActionWithSleep: roundsCount: {} more allowed {}, need restart debugInfo{}",
+                                roundsCount,
                                 numberRoundBeforeRestart, debugInfo);
                         setState(BotState.IDLE, "Need restart for bot: " + getId());
-                        send(new SitOutRequest(this, client));
+                        // send(new SitOutRequest(this, client));
                     } else {
                         sendSitInRequest(0);
                     }
@@ -366,27 +380,36 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
                     AstronautBetData newAstronautBetData = null;
                     if (currentAstronautCounter.get() == 0) {
                         roundsCount++;
-                        newAstronautBetData = ((IUnifiedBotStrategy) getStrategy()).generateMultiplierForFirst(nickname);
+                        newAstronautBetData = ((IUnifiedBotStrategy) getStrategy())
+                                .generateMultiplierForFirst(nickname);
                     } else if (currentAstronautCounter.get() == 1) {
-                        newAstronautBetData = ((IUnifiedBotStrategy) getStrategy()).generateMultiplierForSecond(nickname);
+                        newAstronautBetData = ((IUnifiedBotStrategy) getStrategy())
+                                .generateMultiplierForSecond(nickname);
                     } else if (currentAstronautCounter.get() == 2) {
-                        newAstronautBetData = ((IUnifiedBotStrategy) getStrategy()).generateMultiplierForThird(nickname);
+                        newAstronautBetData = ((IUnifiedBotStrategy) getStrategy())
+                                .generateMultiplierForThird(nickname);
                     }
                     if (newAstronautBetData != null) {
                         setState(BotState.WAITING_FOR_RESPONSE, "betRequest");
                         astronautsData.add(newAstronautBetData);
-                        getLogger().debug("new newAstronautBetData added {}, astronautsData size{}: ", newAstronautBetData, astronautsData.size());
-                        double sentMultiplier = newAstronautBetData.isNeedAutoEject() ? newAstronautBetData.getMultiplierForCancelOrEject() : 0.0;
-                        send(new CrashBetRequest(this, client, maxStake.intValue(), sentMultiplier, newAstronautBetData.getEjectBetId()));
+                        getLogger().debug("new newAstronautBetData added {}, astronautsData size{}: ",
+                                newAstronautBetData, astronautsData.size());
+                        double sentMultiplier = newAstronautBetData.isNeedAutoEject()
+                                ? newAstronautBetData.getMultiplierForCancelOrEject()
+                                : 0.0;
+                        // send(new CrashBetRequest(this, client, maxStake.intValue(), sentMultiplier,
+                        // newAstronautBetData.getEjectBetId()));
                         sleepPause = 500L;
                     }
                 } else if (RoomState.PLAY.equals(roomState)) {
                     for (AstronautBetData astronautsDatum : astronautsData) {
-                        if (!astronautsDatum.isNeedAutoEject() && currentMultiplier >= astronautsDatum.getMultiplierForCancelOrEject()
+                        if (!astronautsDatum.isNeedAutoEject()
+                                && currentMultiplier >= astronautsDatum.getMultiplierForCancelOrEject()
                                 && !astronautsDatum.isCancelled()) {
                             setState(BotState.WAITING_FOR_RESPONSE, "crashCancelBetRequest");
                             astronautsDatum.setCancelled(true);
-                            // send(new CrashCancelBetRequest(astronautsDatum.getEjectBetId(), false, this, client));
+                            // send(new CrashCancelBetRequest(astronautsDatum.getEjectBetId(), false, this,
+                            // client));
                             break;
                         }
                     }
@@ -410,7 +433,8 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
                 sleep(waitTime).subscribe(t -> doAction(debugInfo));
                 scheduledDoSleepAction.set(true);
                 if (logDebug) {
-                    getLogger().debug("doActionWithSleep: scheduled doAction with sleep={}, debugInfo={}", waitTime, debugInfo);
+                    getLogger().debug("doActionWithSleep: scheduled doAction with sleep={}, debugInfo={}", waitTime,
+                            debugInfo);
                 }
             }
         } finally {
@@ -425,7 +449,8 @@ public class UnifiedBot extends AbstractBot implements IUnifiedBot {
             roomId = this.roomId;
         }
         long finalRoomId = roomId;
-        sleep(300).subscribe(t -> send(new OpenRoomRequest(this, client, finalRoomId, sessionId, serverId, MoneyType.REAL, "en")));
+        sleep(300).subscribe(
+                t -> send(new OpenRoomRequest(this, client, finalRoomId, sessionId, serverId, MoneyType.REAL, "en")));
     }
 
     @Override
