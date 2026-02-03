@@ -18,7 +18,8 @@ public class ServerConfigDto implements IServerConfig {
     private boolean online = false;
     private boolean isMaster = false;
 
-    public ServerConfigDto() {}
+    public ServerConfigDto() {
+    }
 
     public ServerConfigDto(int id) {
         this.id = id;
@@ -102,8 +103,10 @@ public class ServerConfigDto implements IServerConfig {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         ServerConfigDto that = (ServerConfigDto) o;
         return id == that.id &&
                 Objects.equals(label, that.label) &&
@@ -112,8 +115,9 @@ public class ServerConfigDto implements IServerConfig {
     }
 
     @Override
-    public boolean isLocalDevAllowed(){
-        return domain.equals("-gp3.dgphoenix.com") || domain.equals(".local");
+    public boolean isLocalDevAllowed() {
+        return domain.equals("-gp3.dgphoenix.com") || domain.equals(".local") || domain.equals("localhost")
+                || domain.equals("127.0.0.1");
     }
 
     @Override
