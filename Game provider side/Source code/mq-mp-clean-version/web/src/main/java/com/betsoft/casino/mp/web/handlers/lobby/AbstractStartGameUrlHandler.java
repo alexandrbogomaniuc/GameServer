@@ -295,11 +295,21 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
         String origin = IMessageHandler.getOrigin(session);
         String roomWebSocketUrl;
         if (host.endsWith("mp.local") || host.endsWith("mp.local.com") || host.endsWith(".mydomain")
-                || "localhost".equals(host) || "127.0.0.1".equals(host)) { // hack for local/dev deploy
-            roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + host + ":8081/webSocket";
+                || "localhost".equals(host) || "127.0.0.1".equals(host) || "mplobby".equals(host)
+                || "mp-lobby".equals(host)) { // hack for local/dev deploy
+            if (gameType.isBattleGroundGame() || gameType.isSingleNodeRoomGame()) {
+                roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + host + ":8080/websocket/mpunified";
+            } else {
+                roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + host + ":8081/webSocket";
+            }
         } else {
-            roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + "games" + domain + "/" + serverId
-                    + "/webSocket";
+            if (gameType.isBattleGroundGame() || gameType.isSingleNodeRoomGame()) {
+                roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + "games" + domain + "/" + serverId
+                        + "/websocket/mpgame";
+            } else {
+                roomWebSocketUrl = IMessageHandler.getWsProtocol(origin) + "games" + domain + "/" + serverId
+                        + "/webSocket";
+            }
         }
 
         return "?SID=" + client.getSessionId() +
@@ -307,7 +317,9 @@ public abstract class AbstractStartGameUrlHandler<MESSAGE extends TInboundObject
                 "&lang=" + (StringUtils.isTrimmedEmpty(client.getLang()) ? "en" : client.getLang()) +
                 "&roomId=" + roomId +
                 (stake > 0 ? "&stake=" + stake : "") +
-                "&WEB_SOCKET_URL=" + roomWebSocketUrl;
+                "&WEB_SOCKET_URL=" + roomWebSocketUrl + "?sessionId=" + client.getSessionId() +
+                "&serverId=" + serverConfig.getId() +
+                "&roomId=" + roomId;
     }
 
     /**

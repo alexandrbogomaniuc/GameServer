@@ -43,44 +43,54 @@ public class UnifiedWebSocketHandler extends AbstractWebSocketHandler<UnifiedSoc
 
     @Autowired
     public UnifiedWebSocketHandler(IMessageSerializer serializer,
-                                   SingleNodeRoomInfoService singleNodeRoomInfoService,
-                                   MultiNodeRoomInfoService multiNodeRoomInfoService,
-                                   LobbySessionService lobbySessionService,
-                                   RoomPlayerInfoService playerInfoService,
-                                   RoomServiceFactory roomServiceFactory,
-                                   RoomPlayersMonitorService roomPlayersMonitorService,
-                                   ServerConfigService serverConfigService,
-                                   EnterLobbyHandler enterLobbyHandler,
-                                   GetRoomInfoHandler getRoomInfoHandler,
-                                   CheckNicknameAvailabilityHandler checkNicknameAvailabilityHandler,
-                                   ChangeNicknameHandler changeNicknameHandler,
-                                   ChangeAvatarHandler changeAvatarHandler,
-                                   LobbyRefreshBalanceHandler lobbyRefreshBalanceHandler,
-                                   GetTimeHandler getTimeHandler,
-                                   CloseRoundResultNotificationHandler closeRoundResultNotificationHandler,
-                                   ChangeTooltipsHandler changeTooltipsHandler,
-                                   LobbyReBuyHandler lobbyReBuyHandler,
-                                   GetBattlegroundStartGameUrlHandler battlegroundStartGameUrlHandler,
-                                   GetPrivateBattlegroundStartGameUrlHandler privateBattlegroundStartGameUrlHandler,
-                                   OpenRoomHandler openRoomHandler, SitInHandler sitInHandler,
-                                   SitOutHandler sitOutHandler, CrashBetHandler crashBetHandler,
-                                   CrashCancelBetHandler crashCancelBetHandler,
-                                   UpdateWeaponPaidMultiplierHandler updateWeaponPaidMultiplierHandler,
-                                   GetFullGameInfoHandler getFullGameInfoHandler,
-                                   CloseRoundResultsHandler closeRoundResultsHandler,
-                                   ConfirmBattlegroundBuyInHandler confirmBattlegroundBuyInHandler,
-                                   CrashCancelAllBetsHandler crashCancelAllBetsHandler,
-                                   CrashCancelAutoEjectHandler crashCancelAutoEjectHandler,
-                                   CrashChangeAutoEjectHandler crashChangeAutoEjectHandler,
-                                   CrashBetsHandler crashBetsHandler,
-                                   PendingOperationHandler pendingOperationHandler,
-                                   LatencyHandler latencyHandler,
-                                   StartBattlegroundPrivateRoomHandler startBattlegroundPrivateRoomHandler,
-                                   KickHandler kickHandler,
-                                   CancelKickHandler cancelKickHandler,
-                                   PrivateRoomInviteHandler privateRoomInviteHandler,
-                                   FinishGameSessionHandler finishGameSessionHandler
-                                   ) {
+            SingleNodeRoomInfoService singleNodeRoomInfoService,
+            MultiNodeRoomInfoService multiNodeRoomInfoService,
+            LobbySessionService lobbySessionService,
+            RoomPlayerInfoService playerInfoService,
+            RoomServiceFactory roomServiceFactory,
+            RoomPlayersMonitorService roomPlayersMonitorService,
+            ServerConfigService serverConfigService,
+            EnterLobbyHandler enterLobbyHandler,
+            GetRoomInfoHandler getRoomInfoHandler,
+            CheckNicknameAvailabilityHandler checkNicknameAvailabilityHandler,
+            ChangeNicknameHandler changeNicknameHandler,
+            ChangeAvatarHandler changeAvatarHandler,
+            LobbyRefreshBalanceHandler lobbyRefreshBalanceHandler,
+            GetTimeHandler getTimeHandler,
+            CloseRoundResultNotificationHandler closeRoundResultNotificationHandler,
+            ChangeTooltipsHandler changeTooltipsHandler,
+            LobbyReBuyHandler lobbyReBuyHandler,
+            GetBattlegroundStartGameUrlHandler battlegroundStartGameUrlHandler,
+            GetPrivateBattlegroundStartGameUrlHandler privateBattlegroundStartGameUrlHandler,
+            OpenRoomHandler openRoomHandler, SitInHandler sitInHandler,
+            SitOutHandler sitOutHandler, CrashBetHandler crashBetHandler,
+            CrashCancelBetHandler crashCancelBetHandler,
+            UpdateWeaponPaidMultiplierHandler updateWeaponPaidMultiplierHandler,
+            GetFullGameInfoHandler getFullGameInfoHandler,
+            CloseRoundResultsHandler closeRoundResultsHandler,
+            ConfirmBattlegroundBuyInHandler confirmBattlegroundBuyInHandler,
+            CrashCancelAllBetsHandler crashCancelAllBetsHandler,
+            CrashCancelAutoEjectHandler crashCancelAutoEjectHandler,
+            CrashChangeAutoEjectHandler crashChangeAutoEjectHandler,
+            CrashBetsHandler crashBetsHandler,
+            PendingOperationHandler pendingOperationHandler,
+            LatencyHandler latencyHandler,
+            StartBattlegroundPrivateRoomHandler startBattlegroundPrivateRoomHandler,
+            KickHandler kickHandler,
+            CancelKickHandler cancelKickHandler,
+            PrivateRoomInviteHandler privateRoomInviteHandler,
+            FinishGameSessionHandler finishGameSessionHandler,
+            SwitchWeaponHandler switchWeaponHandler,
+            BuyInHandler buyInHandler,
+            PurchaseWeaponLootBoxHandler purchaseWeaponLootBoxHandler,
+            MinesHandler minesHandler,
+            FreeShotHandler freeShotHandler,
+            BetLevelHandler betLevelHandler,
+            BulletHandler bulletHandler,
+            BulletClearHandler bulletClearHandler,
+            CollectQuestsHandler collectQuestsHandler,
+            GetQuestsHandler getQuestsHandler,
+            GetWeaponsHandler getWeaponsHandler) {
         this.serializer = serializer;
         this.lobbySessionService = lobbySessionService;
         this.roomPlayersMonitorService = roomPlayersMonitorService;
@@ -98,8 +108,9 @@ public class UnifiedWebSocketHandler extends AbstractWebSocketHandler<UnifiedSoc
         register(GetBattlegroundStartGameUrl.class, battlegroundStartGameUrlHandler);
         register(GetPrivateBattlegroundStartGameUrl.class, privateBattlegroundStartGameUrlHandler);
         register(OpenRoom.class, openRoomHandler);
-        register(CloseRoom.class, new CloseRoomHandler(serializer, singleNodeRoomInfoService, multiNodeRoomInfoService, playerInfoService,
-                roomServiceFactory, serverConfigService, this::closeConnection));
+        register(CloseRoom.class,
+                new CloseRoomHandler(serializer, singleNodeRoomInfoService, multiNodeRoomInfoService, playerInfoService,
+                        roomServiceFactory, serverConfigService, this::closeConnection));
         register(SitIn.class, sitInHandler);
         register(SitOut.class, sitOutHandler);
         register(CrashBet.class, crashBetHandler);
@@ -119,6 +130,26 @@ public class UnifiedWebSocketHandler extends AbstractWebSocketHandler<UnifiedSoc
         register(CancelKick.class, cancelKickHandler);
         register(PrivateRoomInvite.class, privateRoomInviteHandler);
         register(FinishGameSession.class, finishGameSessionHandler);
+        register(SwitchWeapon.class, switchWeaponHandler);
+        register(BuyIn.class, buyInHandler);
+        register(PurchaseWeaponLootBox.class, purchaseWeaponLootBoxHandler);
+        register(MineCoordinates.class, minesHandler);
+        register(AddFreeShotsToQueue.class, freeShotHandler);
+        register(BetLevel.class, betLevelHandler);
+        register(Bullet.class, bulletHandler);
+        register(BulletClear.class, bulletClearHandler);
+        register(CollectQuest.class, collectQuestsHandler);
+        register(GetQuests.class, getQuestsHandler);
+        register(GetWeapons.class, getWeaponsHandler);
+
+        register(Shot.class,
+                new ShotHandler(serializer, singleNodeRoomInfoService, multiNodeRoomInfoService, playerInfoService,
+                        roomServiceFactory,
+                        serverConfigService));
+        register(SyncLobby.class,
+                new SyncLobbyHandler(serializer, singleNodeRoomInfoService, multiNodeRoomInfoService, playerInfoService,
+                        roomServiceFactory, serverConfigService));
+
         setLocalDevOriginsAllowed(serverConfigService.getConfig().isLocalDevAllowed());
     }
 
@@ -167,9 +198,9 @@ public class UnifiedWebSocketHandler extends AbstractWebSocketHandler<UnifiedSoc
             clients.remove(session.getId());
 
             IRoom room = getRoom(client);
-            if(room != null) {
+            if (room != null) {
                 IRoomInfo roomInfo = room.getRoomInfo();
-                if(roomInfo.isPrivateRoom()) {
+                if (roomInfo.isPrivateRoom()) {
                     room.removeObserverByAccountId(client.getAccountId());
                 }
             }
@@ -232,10 +263,10 @@ public class UnifiedWebSocketHandler extends AbstractWebSocketHandler<UnifiedSoc
                 .build();
         client.sendMessage(response);
 
-        if (latency > latencyThresholdMS){
+        if (latency > latencyThresholdMS) {
             getLog().warn("HIGH PING LATENCY: {} ms; Player: {}; sessionId: {};  game: {};",
                     latency, client.getNickname(), client.getSessionId(), client.getGameType().name());
-        }else{
+        } else {
             getLog().debug("LOW PING LATENCY: {} ms; Player: {}; sessionId: {};  game: {};",
                     latency, client.getNickname(), client.getSessionId(), client.getGameType().name());
         }

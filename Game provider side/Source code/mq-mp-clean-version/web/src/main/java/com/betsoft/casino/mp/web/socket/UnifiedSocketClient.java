@@ -47,7 +47,7 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
     private GameType gameType;
     private MoneyType moneyType;
     private Long lastUpdatedBalance;
-    /** current roomId of room   */
+    /** current roomId of room */
     private Long roomId;
     /** seatNumber of player, isn't used for multinode rooms */
     private int seatNumber = -1;
@@ -61,10 +61,14 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
     private Logger logger = LOG;
     private WebSocketSession session;
 
+    private Long accountId;
+    private Long bankId;
+
     private IntervalStatistics latencyStatistic;
     private IntervalStatistics pingLatencyStatistic;
 
-    public UnifiedSocketClient(WebSocketSession session, String webSocketSessionId, FluxSink<WebSocketMessage> connection, IMessageSerializer serializer) {
+    public UnifiedSocketClient(WebSocketSession session, String webSocketSessionId,
+            FluxSink<WebSocketMessage> connection, IMessageSerializer serializer) {
         super(webSocketSessionId, connection, serializer);
         this.session = session;
     }
@@ -85,7 +89,7 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
 
     @Override
     public void startBalanceUpdater(ISocketService socketService, int serverId, String sessionId,
-                                    ILobbySessionService lobbySessionService) {
+            ILobbySessionService lobbySessionService) {
         LOG.debug("startBalanceUpdater: serverId={}, sessionId={}", serverId, sessionId);
         balanceUpdater = Flux
                 .interval(Duration.ofSeconds(10))
@@ -94,7 +98,7 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
                     ILobbySession session = lobbySessionService.get(sessionId);
 
                     if (session != null && (session.getActiveCashBonusSession() != null ||
-                                    session.getTournamentSession() != null)) {
+                            session.getTournamentSession() != null)) {
 
                         long balance = session.getBalance();
                         sendMessage(new BalanceUpdated(System.currentTimeMillis(), balance, 0));
@@ -127,7 +131,8 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
                                     }
                                 })
                                 .doOnError(error -> {
-                                    LOG.error("Failed to update balance, nickName={}, sid={}", nickname, sessionId, error);
+                                    LOG.error("Failed to update balance, nickName={}, sid={}", nickname, sessionId,
+                                            error);
                                     stopBalanceUpdater();
                                 })
                                 .subscribeOn(Schedulers.elastic())
@@ -224,22 +229,28 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
 
     @Override
     public Long getAccountId() {
+        if (accountId != null) {
+            return accountId;
+        }
         return playerInfo == null ? null : playerInfo.getAccountId();
     }
 
     @Override
     public void setAccountId(Long accountId) {
-        //nop, need only for compatibility with IGameSocketClient
+        this.accountId = accountId;
     }
 
     @Override
     public Long getBankId() {
+        if (bankId != null) {
+            return bankId;
+        }
         return playerInfo == null ? null : playerInfo.getBankId();
     }
 
     @Override
     public void setBankId(Long bankId) {
-        //nop, need only for compatibility with IGameSocketClient
+        this.bankId = bankId;
     }
 
     @Override
@@ -383,13 +394,13 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
         this.enterDate = enterDate;
     }
 
-    //todo: remove seat from IGameSocketClient
+    // todo: remove seat from IGameSocketClient
     @Override
     public void setSeat(ISeat seat) {
-        //nop
+        // nop
     }
 
-    //todo: remove seat from IGameSocketClient
+    // todo: remove seat from IGameSocketClient
     @Override
     public ISeat getSeat() {
         return null;
@@ -429,10 +440,11 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
         sb.append(", privateRoom=").append(privateRoom);
         sb.append(", isOwner=").append(isOwner);
         sb.append(", isKicked=").append(isKicked);
+        sb.append(", accountId=").append(accountId);
+        sb.append(", bankId=").append(bankId);
         sb.append(']');
         return sb.toString();
     }
-
 
     public void setKicked(boolean isKicked) {
         this.isKicked = isKicked;
@@ -446,9 +458,11 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
     public IntervalStatistics getLatencyStatistic() {
         if (latencyStatistic == null) {
             this.latencyStatistic = new IntervalStatistics(
-                    "Session id: " + session != null ? session.getId() : "'session is null'"
-                    + "; GameType: " + getGameType() != null ? getGameType().name() : "null"
-                    + "; Nickname: " + getNickname());
+                    "Session id: " + session != null ? session.getId()
+                            : "'session is null'"
+                                    + "; GameType: " + getGameType() != null ? getGameType().name()
+                                            : "null"
+                                                    + "; Nickname: " + getNickname());
         }
         return latencyStatistic;
     }
@@ -457,9 +471,11 @@ public class UnifiedSocketClient extends AbstractWebSocketClient implements ILob
     public IntervalStatistics getPingLatencyStatistic() {
         if (pingLatencyStatistic == null) {
             this.pingLatencyStatistic = new IntervalStatistics(
-                    "PING Session id: " + session != null ? session.getId() : "'session is null'"
-                            + "; GameType: " + getGameType() != null ? getGameType().name() : "null"
-                            + "; Nickname: " + getNickname());
+                    "PING Session id: " + session != null ? session.getId()
+                            : "'session is null'"
+                                    + "; GameType: " + getGameType() != null ? getGameType().name()
+                                            : "null"
+                                                    + "; Nickname: " + getNickname());
         }
         return pingLatencyStatistic;
     }

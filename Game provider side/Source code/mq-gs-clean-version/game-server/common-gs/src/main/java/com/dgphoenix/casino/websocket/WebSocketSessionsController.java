@@ -17,6 +17,7 @@ import com.dgphoenix.casino.promo.messages.handlers.IMessageHandler;
 import com.dgphoenix.casino.promo.messages.handlers.MessagesHandlersFactory;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.websocket.api.Session;
@@ -53,7 +54,8 @@ public class WebSocketSessionsController implements IWebSocketSessionsController
     private volatile boolean initialized;
     private ScheduledFuture<?> scheduledFuture;
 
-    public WebSocketSessionsController(MessagesHandlersFactory messagesHandlersFactory, ScheduledExecutorService keeperExecutor) {
+    public WebSocketSessionsController(MessagesHandlersFactory messagesHandlersFactory,
+            ScheduledExecutorService keeperExecutor) {
         this.messagesHandlersFactory = messagesHandlersFactory;
         this.keeperExecutor = keeperExecutor;
     }
@@ -61,7 +63,8 @@ public class WebSocketSessionsController implements IWebSocketSessionsController
     @PostConstruct
     private void init() {
         WebSocketImpl.registerSessionsController(this);
-        scheduledFuture = keeperExecutor.scheduleWithFixedDelay(new WebSocketSessionsKeeper(), 30, 30, TimeUnit.SECONDS);
+        scheduledFuture = keeperExecutor.scheduleWithFixedDelay(new WebSocketSessionsKeeper(), 30, 30,
+                TimeUnit.SECONDS);
         initialized = true;
         StatisticsManager.getInstance().registerStatisticsGetter(getClass().getSimpleName(),
                 () -> "sessions count=" + sessionsByPlayers.size());
@@ -87,7 +90,8 @@ public class WebSocketSessionsController implements IWebSocketSessionsController
 
         String fullMessage = message.getClass().getSimpleName() + "=" + GSON.toJson(message);
         LOG.debug("sendMessage: sessionId = {}, message = {}", sessionId, fullMessage);
-        WebSocketMessageCallback webSocketMessageCallback = new WebSocketMessageCallback(session, sessionId, fullMessage);
+        WebSocketMessageCallback webSocketMessageCallback = new WebSocketMessageCallback(session, sessionId,
+                fullMessage);
         session.getRemote().sendString(fullMessage, webSocketMessageCallback);
     }
 
@@ -189,10 +193,39 @@ public class WebSocketSessionsController implements IWebSocketSessionsController
 
     @Override
     public void processMessage(String sessionId, String message) throws CommonException {
-        String[] messageParts = message.split(MESSAGE_TYPE_DELIMITER);
-        checkArgument(messageParts.length == 2, "Message must have the format Type=params");
-        String messageType = messageParts[0];
-        String messageParams = messageParts[1];
+        String messageType;
+        String messageParams;
+
+        // Support both JSON format {"class":"Type",...} and legacy format Type={...}
+        String trimmedMessage = message.trim();
+        if (trimmedMessage.startsWith("{")) {
+            // New JSON format: {"class":"MessageType","param1":"value1",...}
+            try {
+                JsonObject jsonObject = GSON.fromJson(trimmedMessage, JsonObject.class);
+                if (!jsonObject.has("class")) {
+                    throw new IllegalArgumentException("JSON message must contain 'class' field");
+                }
+                messageType = jsonObject.get("class").getAsString();
+
+                // Remove 'class' field and use remaining JSON as params
+                jsonObject.remove("class");
+                messageParams = GSON.toJson(jsonObject);
+
+                LOG.debug("processMessage (JSON format): sessionId = {}, type = {}, params = {}",
+                        sessionId, messageType, messageParams);
+            } catch (Exception e) {
+                throw new CommonException("Invalid JSON message format: " + message, e);
+            }
+        } else {
+            // Legacy format: MessageType={"params"}
+            String[] messageParts = message.split(MESSAGE_TYPE_DELIMITER, 2);
+            checkArgument(messageParts.length == 2,
+                    "Message must have the format Type=params or be valid JSON with 'class' field");
+            messageType = messageParts[0];
+            messageParams = messageParts[1];
+
+            LOG.debug("processMessage (legacy format): sessionId = {}, type = {}", sessionId, messageType);
+        }
 
         IMessageHandler<?> messageHandler = messagesHandlersFactory.getHandler(messageType);
         if (messageHandler != null) {
@@ -253,7 +286,7 @@ public class WebSocketSessionsController implements IWebSocketSessionsController
             if (!isSessionOnline(session)) {
                 return;
             }
-            session.getRemote().sendPing(null); //to keep connection alive
+            session.getRemote().sendPing(null); // to keep connection alive
             pingsCount++;
         }
     }
@@ -274,13 +307,17 @@ public class WebSocketSessionsController implements IWebSocketSessionsController
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
 
             PlayerKey playerKey = (PlayerKey) o;
 
-            if (bankId != playerKey.bankId) return false;
-            return !(externalUserId != null ? !externalUserId.equals(playerKey.externalUserId) : playerKey.externalUserId != null);
+            if (bankId != playerKey.bankId)
+                return false;
+            return !(externalUserId != null ? !externalUserId.equals(playerKey.externalUserId)
+                    : playerKey.externalUserId != null);
         }
 
         @Override
